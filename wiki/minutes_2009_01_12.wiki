@@ -1,0 +1,91 @@
+subsystems
+
+
+core features
+-single server
+-single map
+-one ship
+	-ROF
+	-Max Velocity
+	-ROR
+-collision
+-one bullet
+-single resolution
+-audio
+	-hits
+	-firing
+	-thrust
+-points
+
+
+
+possible features:
+-auto map generation (random)
+-teams
+-custom resolution
+-voice chat
+-website score viewing
+
+
+networking
+-client sends actions to server
+	-rotate
+	-thrust
+	-shoot
+-server sends statuses to client
+	-damage
+	-position
+	-velocity
+
+details:
+	-viewport is screen + buffer
+	-no lag compensation
+	-game is primarily on the server
+	-set to 60fps
+
+
+objects:
+	-client to server (network transmission)
+		-updates on input
+	-server to client (network transmission)
+		-60 updates/sec
+
+
+
+
+groups:
+	-graphics
+		-UI
+		-lobby
+		-menus
+		-animations
+		-sprites
+		-sounds
+	-gameplay
+		-collision detection
+		-gameplay
+		-movement
+		-command processing
+	-communications
+		-server comm
+		-client comm
+	-engine
+		-client init
+		-server init
+		-updates/events
+		-input
+
+milestones:
+	#1:
+		-executable
+		-each system should be stubbed in (empty functions)
+		-allows empty methods
+	#2:
+		-some sprites
+		-75% written
+		-connects to a server
+	#3:
+		-ugly
+	#4:
+		-minimum function set working
+		-halfway through term
