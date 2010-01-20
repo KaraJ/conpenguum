@@ -1,6 +1,7 @@
 #labels statusreport
 List your status reports here under the heading of your group name.
 Label the wiki page with 'statusreport' and the name of your group.
+Group leaders are listed first.
 
 ==Communications==
 Kara, Aaron, Ben, Stevan
@@ -8,6 +9,7 @@ Kara, Aaron, Ben, Stevan
 [http://code.google.com/p/conpenguum/wiki/Status_2009_01_17_Comm 2010-01-17]
 
 ==Engine==
+Brad, Erick, Jeff, John, Renz
 
 ==Gameplay==
 Matt, Doug, Ash, Cody, John
@@ -15,6 +17,7 @@ Matt, Doug, Ash, Cody, John
 [http://code.google.com/p/conpenguum/wiki/Status_2010_01_17_Gameplay 2010-01-17]
 
 ==Graphics==
+Jordan, Carson, James, Ben, Daraius
 
 ==Overall==
 [http://conpenguum.googlecode.com/files/Status%20report%20%231.doc Status Report #1]
