@@ -5,11 +5,14 @@ Label the wiki page with 'statusreport' and the name of your group.
 ==Communications==
 Kara, Aaron, Ben, Stevan
 
-[http://code.google.com/p/conpenguum/wiki/Status_2009_01_17_Comm 2009-01-17]
+[http://code.google.com/p/conpenguum/wiki/Status_2009_01_17_Comm 2010-01-17]
 
 ==Engine==
 
 ==Gameplay==
+Matt, Doug, Ash, Cody, John
+
+[http://code.google.com/p/conpenguum/wiki/Status_2010_01_17_Gameplay 2010-01-17]
 
 ==Graphics==
 
