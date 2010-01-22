@@ -1,0 +1,23 @@
+#summary Main starting point
+#labels index
+
+= Design Work =
+
+== Comm ==
+
+[http://conpenguum.googlecode.com/files/Communications_Interface.doc Comm_Interface]
+
+== Engine ==
+
+== Gameplay ==
+
+== Graphics ==
+
+= Status Reports & Member List =
+
+[http://code.google.com/p/conpenguum/wiki/Status_Reports]
+
+= Meeting Minutes =
+Minutes to be uploaded as format: "minutes_YYYY_MM_DD"
+
+[http://code.google.com/p/conpenguum/wiki/minutes_2009_01_12 minutes_2009_01_12]
