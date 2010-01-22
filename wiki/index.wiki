@@ -3,11 +3,13 @@
 
 = Design Work =
 
-[http://conpenguum.googlecode.com/files/Spec.docx SPEC_DOCUMENT]
+[http://conpenguum.googlecode.com/files/Spec.docx Spec_Document]
 
 == Comm ==
 
 [http://conpenguum.googlecode.com/files/Communications_Interface.doc Comm_Interface]
+
+[http://conpenguum.googlecode.com/files/comm%20-%20initial%20design.docx Initial_Design_Work]
 
 == Engine ==
 
