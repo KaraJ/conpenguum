@@ -19,6 +19,8 @@
 
 == Graphics ==
 
+[http://conpenguum.googlecode.com/files/Animation_DesignClass.pdf Design_Class_Diagram]
+
 = Status Reports & Member List =
 
 [http://code.google.com/p/conpenguum/wiki/Status_Reports]
