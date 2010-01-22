@@ -7,8 +7,7 @@
 
 == Comm ==
 
-[http://conpenguum.googlecode.com/files/Communications_Interface.doc Comm_Interface]
-
+[http://conpenguum.googlecode.com/files/Communications_Interface.doc Comm_Interface]<br>
 [http://conpenguum.googlecode.com/files/comm%20-%20initial%20design.docx Initial_Design_Work]
 
 == Engine ==
@@ -19,9 +18,9 @@
 
 == Graphics ==
 
-[http://conpenguum.googlecode.com/files/Animation_DesignClass.pdf Animation-STD]
-[http://conpenguum.googlecode.com/files/Animation-STD.pdf Animation-STD]
-[http://conpenguum.googlecode.com/files/GUI-SD.pdf GUI-SD]
+[http://conpenguum.googlecode.com/files/Animation_DesignClass.pdf Animation-STD]<br>
+[http://conpenguum.googlecode.com/files/Animation-STD.pdf Animation-STD]<br>
+[http://conpenguum.googlecode.com/files/GUI-SD.pdf GUI-SD]<br>
 [http://conpenguum.googlecode.com/files/GUI-STD.pdf GUI-STD]
 
 = Status Reports & Member List =
