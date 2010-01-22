@@ -1,6 +1,4 @@
-#summary Main starting point
 #labels index
-
 = Design Work =
 
 [http://conpenguum.googlecode.com/files/Spec.docx Spec_Document]
@@ -28,6 +26,5 @@
 [http://code.google.com/p/conpenguum/wiki/Status_Reports]
 
 = Meeting Minutes =
-Minutes to be uploaded as format: "minutes_YYYY_MM_DD"
 
 [http://code.google.com/p/conpenguum/wiki/minutes_2009_01_12 minutes_2009_01_12]
