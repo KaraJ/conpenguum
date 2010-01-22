@@ -13,6 +13,8 @@
 
 == Engine ==
 
+[http://code.google.com/p/conpenguum/wiki/Engine_Initial Initial_Design_Work]
+
 == Gameplay ==
 
 == Graphics ==
