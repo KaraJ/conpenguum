@@ -3,6 +3,8 @@
 
 = Design Work =
 
+[http://conpenguum.googlecode.com/files/Spec.docx SPEC_DOCUMENT]
+
 == Comm ==
 
 [http://conpenguum.googlecode.com/files/Communications_Interface.doc Comm_Interface]
