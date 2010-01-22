@@ -7,7 +7,7 @@ show some (very) high level steps instead of a diagram.
 The steps below are meant to show interactions between the
 various segments in the engine and the order in which things
 will be executed.
-
+{{{
 init graphics
 init physics
 call menu
@@ -25,4 +25,4 @@ Start game loop
 	
 disconnect client from server
 call menu
-exit or start game again
+exit or start game again}}}
