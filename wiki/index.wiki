@@ -19,7 +19,10 @@
 
 == Graphics ==
 
-[http://conpenguum.googlecode.com/files/Animation_DesignClass.pdf Design_Class_Diagram]
+[http://conpenguum.googlecode.com/files/Animation_DesignClass.pdf Animation-STD]
+[http://conpenguum.googlecode.com/files/Animation-STD.pdf Animation-STD]
+[http://conpenguum.googlecode.com/files/GUI-SD.pdf GUI-SD]
+[http://conpenguum.googlecode.com/files/GUI-STD.pdf GUI-STD]
 
 = Status Reports & Member List =
 
