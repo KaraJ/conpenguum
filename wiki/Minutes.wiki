@@ -1,5 +1,0 @@
-#This page lists all the meeting minutes.
-
-Minutes to be uploaded as format: "minutes_YYYY_MM_DD"
-
-* [minutes_2009_01_12]
