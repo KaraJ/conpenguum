@@ -11,7 +11,9 @@ We will use BSD Sockets not QT Sockets
   # tiny high level calls
   # basic call order
   # internal CRC
-  # add getbytes() to outward objects
+  # create serializable base class
+    * add getbytes() to transmittable classes
+    * add constructor that takes a byte stream to transmittable classes
 
 ==Task Breakdown==
 || || *UDP* || *TCP* ||
