@@ -1,15 +1,20 @@
-vars - fooBar
-classes - FooBar
-functions - FooBar
-members - fooBar
-tab - 4 spaces
-constants/macros - FOOBAR
-curly brace - newline
-single line control statement - optional braces
+Minutes for January 26, 2010
+
+
+  * vars - fooBar
+  * classes - FooBar
+  * functions - FooBar
+  * members - fooBar
+  * tab - 4 spaces
+  * constants/macros - FOOBAR
+  * curly brace - newline
+  * single line control statement - optional braces
 
 
 ALL DEFINITIONS IN HEADER FILES!!!
+
 Class foo {
+
 private:
 	int foo;
 public vars:
