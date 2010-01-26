@@ -1,0 +1,27 @@
+#labels comm
+=Meeting Jan 26=
+
+The great debate - Processes or Threads? On the Client? On the Server?
+
+We will use BSD Sockets not QT Sockets
+
+==To Do This Week==
+  # message class
+  # prototypes BSD client/server stuff
+  # tiny high level calls
+  # basic call order
+  # internal CRC
+  # add getbytes() to outward objects
+
+==Task Breakdown==
+|| || *UDP* || *TCP* ||
+|| *Client* || Kara || Steve ||
+|| *Server* || Ben || Aaron ||
+
+==Milestones==
+
+*Feb 9* - Single Client Server - Send and receive any packet
+
+*Feb 23* - Multiple Clients - Actual Packets sending
+
+*Mar 2* - Everything works 
