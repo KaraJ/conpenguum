@@ -1,4 +1,4 @@
-#labels statusreport
+#labels statusreport,Phase-Design
 List your status reports here under the heading of your group name.
 Label the wiki page with 'statusreport' and the name of your group.
 Group leaders are listed first.
@@ -14,6 +14,8 @@ Kara, Aaron, Ben, Stevan
 Brad, Erick, Jeff, John, Renz
 
 [http://conpenguum.googlecode.com/files/Engine_StatusReport1.pdf 2010-01-17]
+
+[http://conpenguum.googlecode.com/files/Engine-Status%20Report%20%232.pdf 2010-01-24]
 
 ==Gameplay==
 Matt, Doug, Ash, Cody, John
