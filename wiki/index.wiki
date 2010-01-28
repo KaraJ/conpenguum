@@ -30,3 +30,6 @@
 = Meeting Minutes =
 
 [http://code.google.com/p/conpenguum/wiki/minutes_2009_01_12 minutes_2009_01_12]
+
+= Edit this page =
+[http://code.google.com/p/conpenguum/w/edit/index]
