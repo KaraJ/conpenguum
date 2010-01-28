@@ -22,6 +22,7 @@
 [http://conpenguum.googlecode.com/files/GUI-STD.pdf GUI-STD]
 
 == Administration and Other ==
+[http://code.google.com/p/conpenguum/wiki/AdministrationLinks General Links]
 
 = Status Reports & Member List =
 
