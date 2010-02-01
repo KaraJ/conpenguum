@@ -12,7 +12,7 @@ Minutes for January 26, 2010
 }}}
 
 ALL DEFINITIONS IN HEADER FILES!!!
-
+{{{
 Class foo {
 
 private:
@@ -24,3 +24,4 @@ private methods:
 public methods:
 	int Bar();
 }
+}}}
