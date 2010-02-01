@@ -21,11 +21,25 @@
 
 == Graphics ==
 
-[http://conpenguum.googlecode.com/files/Animation_DesignClass.pdf Animation-DCD]<br>
-[http://conpenguum.googlecode.com/files/Animation-STD.pdf Animation-STD]<br>
+[http://conpenguum.googlecode.com/files/TaskBreakDown_V2.pdf Task Breakdown]
+
+=== Animation ===
+[http://conpenguum.googlecode.com/files/Animation_DesignClass.pdf DCD]<br>
+[http://conpenguum.googlecode.com/files/Animation-STD.pdf STD]<br>
+[http://conpenguum.googlecode.com/files/Animation_DesignClassV3.pdf DCDv3]<br>
+[http://conpenguum.googlecode.com/files/AnimationPseudoCodeV2.pdf PseudoCode]<br>
+[http://conpenguum.googlecode.com/files/AnimationSTD.pdf STDv2]
+
+=== GUI ===
 [http://conpenguum.googlecode.com/files/GUI-SD.pdf GUI-SD]<br>
 [http://conpenguum.googlecode.com/files/GUI-STD.pdf GUI-STD]<br>
-[http://conpenguum.googlecode.com/files/TaskBreakDown_V2.pdf Task Breakdown]
+[http://conpenguum.googlecode.com/files/GUI_SD.pdf SDv2]<br>
+[http://conpenguum.googlecode.com/files/GUI_STD.pdf STDv2]<br>
+[http://conpenguum.googlecode.com/files/Pseudo-code_GUI.pdf PseudoCode]
+
+=== Renderer ===
+[http://conpenguum.googlecode.com/files/Render%20STD.pdf STD]<br>
+[http://conpenguum.googlecode.com/files/RendererClassPseudoCode.pdf PseudoCode]
 
 == Administration and Other ==
 [http://code.google.com/p/conpenguum/wiki/AdministrationLinks General Links]
