@@ -1,56 +1,56 @@
 #labels index
 = Design Work =
 
-[http://conpenguum.googlecode.com/files/Spec.docx Spec_Document]
+ [http://conpenguum.googlecode.com/files/Spec.docx Spec_Document]
 
 == Comm ==
 
-[http://conpenguum.googlecode.com/files/Communications_Interface.doc Comm_Interface]<br>
-[http://conpenguum.googlecode.com/files/comm%20-%20initial%20design.docx Initial_Design_Work]
+ [http://conpenguum.googlecode.com/files/Communications_Interface.doc Comm_Interface]<br>
+ [http://conpenguum.googlecode.com/files/comm%20-%20initial%20design.docx Initial_Design_Work]
 
 == Engine ==
 
 == Gameplay ==
-=== Minutes ===
-[http://conpenguum.googlecode.com/files/1_15_2010minutes.doc Jan 15 meeting minutes]<br>
-[http://conpenguum.googlecode.com/files/27_1_2010minutes.docx Jan 27 meeting minutes]<br>
+ === Minutes ===
+  [http://conpenguum.googlecode.com/files/1_15_2010minutes.doc Jan 15 meeting minutes]<br>
+  [http://conpenguum.googlecode.com/files/27_1_2010minutes.docx Jan 27 meeting minutes]<br>
 
-=== Design ===
-[http://conpenguum.googlecode.com/files/std.png STDv0.1]<br>
-[http://conpenguum.googlecode.com/files/GamePlay-STD.pdf STDv0.2]
+ === Design ===
+  [http://conpenguum.googlecode.com/files/std.png STDv0.1]<br>
+  [http://conpenguum.googlecode.com/files/GamePlay-STD.pdf STDv0.2]
 
 == Graphics ==
 
-[http://conpenguum.googlecode.com/files/TaskBreakDown_V2.pdf Task Breakdown]
+ [http://conpenguum.googlecode.com/files/TaskBreakDown_V2.pdf Task Breakdown]
 
-=== Animation ===
-[http://conpenguum.googlecode.com/files/Animation_DesignClass.pdf DCD]<br>
-[http://conpenguum.googlecode.com/files/Animation-STD.pdf STD]<br>
-[http://conpenguum.googlecode.com/files/Animation_DesignClassV3.pdf DCDv3]<br>
-[http://conpenguum.googlecode.com/files/AnimationPseudoCodeV2.pdf PseudoCode]<br>
-[http://conpenguum.googlecode.com/files/AnimationSTD.pdf STDv2]
+ === Animation ===
+  [http://conpenguum.googlecode.com/files/Animation_DesignClass.pdf DCD]<br>
+  [http://conpenguum.googlecode.com/files/Animation-STD.pdf STD]<br>
+  [http://conpenguum.googlecode.com/files/Animation_DesignClassV3.pdf DCDv3]<br>
+  [http://conpenguum.googlecode.com/files/AnimationPseudoCodeV2.pdf PseudoCode]<br>
+  [http://conpenguum.googlecode.com/files/AnimationSTD.pdf STDv2]
 
-=== GUI ===
-[http://conpenguum.googlecode.com/files/GUI-SD.pdf GUI-SD]<br>
-[http://conpenguum.googlecode.com/files/GUI-STD.pdf GUI-STD]<br>
-[http://conpenguum.googlecode.com/files/GUI_SD.pdf SDv2]<br>
-[http://conpenguum.googlecode.com/files/GUI_STD.pdf STDv2]<br>
-[http://conpenguum.googlecode.com/files/Pseudo-code_GUI.pdf PseudoCode]
+ === GUI ===
+  [http://conpenguum.googlecode.com/files/GUI-SD.pdf GUI-SD]<br>
+  [http://conpenguum.googlecode.com/files/GUI-STD.pdf GUI-STD]<br>
+  [http://conpenguum.googlecode.com/files/GUI_SD.pdf SDv2]<br>
+  [http://conpenguum.googlecode.com/files/GUI_STD.pdf STDv2]<br>
+  [http://conpenguum.googlecode.com/files/Pseudo-code_GUI.pdf PseudoCode]
 
-=== Renderer ===
-[http://conpenguum.googlecode.com/files/Render%20STD.pdf STD]<br>
-[http://conpenguum.googlecode.com/files/RendererClassPseudoCode.pdf PseudoCode]
+ === Renderer ===
+  [http://conpenguum.googlecode.com/files/Render%20STD.pdf STD]<br>
+  [http://conpenguum.googlecode.com/files/RendererClassPseudoCode.pdf PseudoCode]
 
 == Administration and Other ==
-[http://code.google.com/p/conpenguum/wiki/AdministrationLinks General Links]
+ [http://code.google.com/p/conpenguum/wiki/AdministrationLinks General Links]
 
 == Status Reports & Member List ==
 
-[http://code.google.com/p/conpenguum/wiki/Status_Reports]
+ [http://code.google.com/p/conpenguum/wiki/Status_Reports]
 
 == Meeting Minutes ==
 
-[http://code.google.com/p/conpenguum/wiki/minutes_2009_01_12 minutes_2009_01_12]
+ [http://code.google.com/p/conpenguum/wiki/minutes_2009_01_12 minutes_2009_01_12]
 
 == Edit this page ==
-[http://code.google.com/p/conpenguum/w/edit/index]
+ [http://code.google.com/p/conpenguum/w/edit/index]
