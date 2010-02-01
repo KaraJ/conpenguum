@@ -1,13 +1,13 @@
 Minutes for January 26, 2010
 
 {{{
-  * vars - fooBar
-  * classes - FooBar
-  * functions - FooBar
-  * members - fooBar
-  * tab - 4 spaces
+  * vars             - fooBar
+  * classes          - FooBar
+  * functions        - FooBar
+  * member variables - fooBar
+  * tab              - 4 spaces
   * constants/macros - FOOBAR
-  * curly brace - newline
+  * curly brace      - newline
   * single line control statement - optional braces
 }}}
 
