@@ -53,7 +53,8 @@
 
 == Meeting Minutes ==
 
- [http://code.google.com/p/conpenguum/wiki/minutes_2009_01_12 minutes_2009_01_12]
+ [http://code.google.com/p/conpenguum/wiki/minutes_2009_01_12 minutes_2010_01_12]
+ [http://code.google.com/p/conpenguum/wiki/minutes_2009_01_26 minutes_2010_01_26]
 
 == Edit this page ==
  [http://code.google.com/p/conpenguum/w/edit/index]
