@@ -8,6 +8,8 @@
  [http://conpenguum.googlecode.com/files/Communications_Interface.doc Comm_Interface]<br>
  [http://conpenguum.googlecode.com/files/comm%20-%20initial%20design.docx Initial_Design_Work]
 
+ [http://code.google.com/p/conpenguum/wiki/Comm_Notes Team Notes]
+
  === TCP Client ===
   [http://conpenguum.googlecode.com/files/Comm-TCPC-TB.doc Task Breakdown]
 
