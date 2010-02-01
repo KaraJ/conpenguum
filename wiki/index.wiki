@@ -28,13 +28,13 @@
 == Administration and Other ==
 [http://code.google.com/p/conpenguum/wiki/AdministrationLinks General Links]
 
-= Status Reports & Member List =
+== Status Reports & Member List ==
 
 [http://code.google.com/p/conpenguum/wiki/Status_Reports]
 
-= Meeting Minutes =
+== Meeting Minutes ==
 
 [http://code.google.com/p/conpenguum/wiki/minutes_2009_01_12 minutes_2009_01_12]
 
-= Edit this page =
+== Edit this page ==
 [http://code.google.com/p/conpenguum/w/edit/index]
