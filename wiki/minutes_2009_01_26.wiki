@@ -16,12 +16,12 @@ ALL DEFINITIONS IN HEADER FILES!!!
 Class foo {
 
 private:
-	int foo;
+    int foo;
 public vars:
-	int bar;
+    int bar;
 private methods:
-	int Foo();
+    int Foo();
 public methods:
-	int Bar();
+    int Bar();
 }
 }}}
