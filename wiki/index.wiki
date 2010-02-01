@@ -14,9 +14,6 @@
 === Minutes ===
 [http://conpenguum.googlecode.com/files/1_15_2010minutes.doc Jan 15 meeting minutes]<br>
 [http://conpenguum.googlecode.com/files/27_1_2010minutes.docx Jan 27 meeting minutes]<br>
-=== Status Reports ===
-[http://conpenguum.googlecode.com/files/status%20report18_1_2010.docx Jan 18 status report]<br>
-[http://conpenguum.googlecode.com/files/status%20report25_1_2010.docx Jan 25 status report]
 
 === State Transition Diagram ===
 [http://conpenguum.googlecode.com/files/std.png STDv0.1]
