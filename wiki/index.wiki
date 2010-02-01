@@ -1,5 +1,5 @@
 #labels index
-= Design Work =
+== Design Work ==
 
  [http://conpenguum.googlecode.com/files/Spec.docx Spec_Document]
 
