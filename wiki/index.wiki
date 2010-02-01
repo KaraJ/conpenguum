@@ -24,7 +24,8 @@
 [http://conpenguum.googlecode.com/files/Animation_DesignClass.pdf Animation-DCD]<br>
 [http://conpenguum.googlecode.com/files/Animation-STD.pdf Animation-STD]<br>
 [http://conpenguum.googlecode.com/files/GUI-SD.pdf GUI-SD]<br>
-[http://conpenguum.googlecode.com/files/GUI-STD.pdf GUI-STD]
+[http://conpenguum.googlecode.com/files/GUI-STD.pdf GUI-STD]<br>
+[http://conpenguum.googlecode.com/files/TaskBreakDown_V2.pdf Task Breakdown]
 
 == Administration and Other ==
 [http://code.google.com/p/conpenguum/wiki/AdministrationLinks General Links]
