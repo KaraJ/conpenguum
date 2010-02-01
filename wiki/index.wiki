@@ -15,8 +15,9 @@
 [http://conpenguum.googlecode.com/files/1_15_2010minutes.doc Jan 15 meeting minutes]<br>
 [http://conpenguum.googlecode.com/files/27_1_2010minutes.docx Jan 27 meeting minutes]<br>
 
-=== State Transition Diagram ===
-[http://conpenguum.googlecode.com/files/std.png STDv0.1]
+=== Design ===
+[http://conpenguum.googlecode.com/files/std.png STDv0.1]<br>
+[http://conpenguum.googlecode.com/files/GamePlay-STD.pdf STDv0.2]
 
 == Graphics ==
 
