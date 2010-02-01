@@ -1,6 +1,6 @@
 Minutes for January 26, 2010
 
-
+{{{
   * vars - fooBar
   * classes - FooBar
   * functions - FooBar
@@ -9,7 +9,7 @@ Minutes for January 26, 2010
   * constants/macros - FOOBAR
   * curly brace - newline
   * single line control statement - optional braces
-
+}}}
 
 ALL DEFINITIONS IN HEADER FILES!!!
 
