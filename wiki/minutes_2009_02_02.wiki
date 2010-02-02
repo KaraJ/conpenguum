@@ -1,0 +1,6 @@
+Meeting Minutes for 2009-02-02
+
+  * Create branches if you need them (you are responsible for merging into your group's branch)
+  * Carson will handle all branch-to-trunk merges upon request
+  * SVN should be ready for merging tonight or tomorrow.
+  * All teams appear to be on track.
