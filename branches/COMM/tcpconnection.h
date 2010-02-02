@@ -2,20 +2,22 @@
 #define TCPCONNECTION_H
 
 //This class to hold low-level protocol specific functionality
+#include <string>
+#include	<netinet/in.h>	/* sockaddr_in{} and other Internet defns */
 
 class TCPConnection
 {
 public:
-    GetInstance();
-    HostToIp();
-    Connect();
-    Close();
-    ReadMessage();
-    WriteMessage();
+    TCPConnection GetInstance();
+    std::string HostToIp();
+    bool Connect();
+    bool Close();
+    bool ReadMessage();
+    bool WriteMessage();
 
 private:
     TCPConnection();
-    struct sock_addr sa;
+    struct sockaddr sa;
 
 };
 

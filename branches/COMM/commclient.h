@@ -48,16 +48,16 @@ public:
         return update;
     }
     inline bool hasNextChatMessage() { return !chatMsgs_.empty(); }
-    inline string nextChatMessage()
+    inline ServerMessage nextChatMessage()
     {
-        string chatMsg = chatMsgs_.front();
+        ServerMessage chatMsg = chatMsgs_.front();
         chatMsgs_.pop();
         return chatMsg;
     }
     inline bool hasNextServerMessage() { return !serverMsgs_.empty(); }
-    inline string nextServerMessage()
+    inline ServerMessage nextServerMessage()
     {
-        string serverMsg = serverMsgs_.front();
+        ServerMessage serverMsg = serverMsgs_.front();
         serverMsgs_.pop();
         return serverMsg;
     }

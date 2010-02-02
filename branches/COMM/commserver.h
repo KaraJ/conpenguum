@@ -21,8 +21,11 @@
 #ifndef COMMSERVER_H
 #define COMMSERVER_H
 
+#include <string>
+#include <queue>
 #include "clientaction.h"
 #include "updateobject.h"
+#include "servermessage.h"
 
 class CommServer
 {
@@ -30,29 +33,29 @@ public:
     static CommServer* Instance();
 
     inline bool hasNextClientAction() { return !actions_.empty(); }
-    inline string nexthasNextClientAction()
+    inline std::string nexthasNextClientAction()
     {
         ClientAction action = actions_.front();
         actions_.pop();
-        return action;
+        return "";
     }
     inline bool hasNextServerMessage() { return !serverMsgs_.empty(); }
-    inline string nextServerMessage()
+    inline ServerMessage nextServerMessage()
     {
-        string serverMsg = serverMsgs_.front();
+        ServerMessage serverMsg = serverMsgs_.front();
         serverMsgs_.pop();
         return serverMsg;
     }
     void sendUpdate(const UpdateObject update);
-    void sendServerMsg(const string msg);
+    void sendServerMsg(const std::string msg);
 private:
     CommServer() {}
     CommServer(const CommServer& cpy);
     CommServer& operator=(const CommServer& cc);
     ~CommServer();
 
-    queue<ClientAction> actions_;
-    queue<string> serverMsgs_;
+    std::queue<ClientAction> actions_;
+    std::queue<ServerMessage> serverMsgs_;
 };
 
 #endif

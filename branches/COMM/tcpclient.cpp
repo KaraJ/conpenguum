@@ -6,6 +6,7 @@ TCPClient::TCPClient()
 {
 }
 
-TCPClient::Login(string ip, int port)
+int TCPClient::Login(string ip, int port)
 {
+    return 0;
 }

@@ -1,24 +1,24 @@
 #include "socketwrapper.h"
 
-
+using namespace std;
 
 int SocketWrapper::Socket(int family, int type, int protocol)
 {
     int n;
 
     if ( (n = socket(family, type, protocol)) < 0)
-        fprintf(stderr, "socket error");
+        cerr << "socket error" << endl;
 
     return (n);
 }
 
-void Bind(int fd, const struct sockaddr *sa, socklen_t salen)
+void SocketWrapper::Bind(int fd, const struct sockaddr *sa, socklen_t salen)
 {
     if (bind(fd, sa, salen) < 0)
-        fprintf(stderr, "bind error");
+        cerr << "bind error" << endl;
 }
 
-int Accept(int fd, struct sockaddr *sa, socklen_t *salenptr)
+int SocketWrapper::Accept(int fd, struct sockaddr *sa, socklen_t *salenptr)
 {
     int n;
 
@@ -28,20 +28,20 @@ int Accept(int fd, struct sockaddr *sa, socklen_t *salenptr)
         {
             if (errno == ECONNABORTED)
                 continue;
-            fprintf(stderr, "accept error");
+            cerr << "accept error" << endl;
             break;
         }
     }
     return(n);
 }
 
-void Connect(int fd, const struct sockaddr *sa, socklen_t salen)
+void SocketWrapper::Connect(int fd, const struct sockaddr *sa, socklen_t salen)
 {
     if (connect(fd, sa, salen) < 0)
-        fprintf(stderr, "connect error");
+        cerr << "connect error" << endl;
 }
 
-void Listen(int fd, int backlog)
+void SocketWrapper::SocketWrapper::Listen(int fd, int backlog)
 {
     char *ptr;
 
@@ -50,30 +50,28 @@ void Listen(int fd, int backlog)
         backlog = atoi(ptr);
 
     if (listen(fd, backlog) < 0)
-        fprinf(stderr, "listen error");
+        cerr << "listen error" << endl;
 }
 
-void Write(int fd, const void *vptr, size_t n)
+void SocketWrapper::Write(int fd, const void *vptr, size_t n)
 {
     size_t nleft;
     ssize_t nwritten;
     const char *ptr;
 
-    ptr = vptr;
+    ptr = (char*) vptr;
     nleft = n;
-    while (nleft > 0) {
+    while (nleft > 0)
+    {
         if ( (nwritten = write(fd, ptr, nleft)) <= 0)
         {
             if (nwritten < 0 && errno == EINTR)
                 nwritten = 0; /* and call write() again */
             else
-                fprintf(stderr, "write error"); /* error */
+                cerr << "write error" << endl; /* error */
         }
 
         nleft -= nwritten;
         ptr   += nwritten;
     }
-
-    return(n);
 }
-/* end writen */

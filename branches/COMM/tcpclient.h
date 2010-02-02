@@ -5,7 +5,6 @@
 
 #include <string>
 #include "servermessage.h"
-#include "chatmessage.h"
 
     /*
      Get host by name
@@ -63,15 +62,9 @@ public:
     int Login(std::string ip, int port);
     bool IsConnected();
     bool Logout();
-    bool HasServerMessage();
-    bool HasChatMessage();
-    ServerMessage GetServerMessage();
-    ChatMessage GetChatMessage();
 
 private:
     bool connected;
-    queue<ServerMessage> serverMessages;
-    queue<ChatMessage> chatMessages;
 };
 
 #endif // TCPCLIENT_H
