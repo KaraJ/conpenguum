@@ -10,6 +10,8 @@ Kara, Aaron, Ben, Stevan
 
 [http://code.google.com/p/conpenguum/wiki/Status_2009_01_24_Comm 2010-01-24]
 
+[http://code.google.com/p/conpenguum/wiki/Status_2009_01_31_Comm 2010-01-31]
+
 ==Engine==
 Brad, Erick, Jeff, John, Renz
 
