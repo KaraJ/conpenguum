@@ -40,7 +40,8 @@
   [http://conpenguum.googlecode.com/files/GUI-STD.pdf GUI-STD]<br>
   [http://conpenguum.googlecode.com/files/GUI_SD.pdf SDv2]<br>
   [http://conpenguum.googlecode.com/files/GUI_STD.pdf STDv2]<br>
-  [http://conpenguum.googlecode.com/files/Pseudo-code_GUI.pdf PseudoCode]
+  [http://conpenguum.googlecode.com/files/Pseudo-code_GUI.pdf PseudoCode]<br>
+  [http://conpenguum.googlecode.com/files/GUI_V1.rar GUI sample code]
 
  === Renderer ===
   [http://conpenguum.googlecode.com/files/Render%20STD.pdf STD]<br>
