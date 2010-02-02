@@ -23,7 +23,6 @@
  === Design ===
   [http://conpenguum.googlecode.com/files/pseduoCode_gameplayPhysics PseudoCode]<br>
   [http://conpenguum.googlecode.com/files/std.png STDv0.1]<br>
-  [http://conpenguum.googlecode.com/files/GamePlay-STD.pdf STDv0.2]
 
 == Graphics ==
 
