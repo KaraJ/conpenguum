@@ -5,7 +5,7 @@ SOURCES += bitmask.cpp \
     tcpclient.cpp \
     tcpconnection.cpp \
     servermessage.cpp \
-    chatmessage.cpp
+    socketwrapper.cpp
 HEADERS += bitmask.h \
     clientaction.h \
     commclient.h \
@@ -14,5 +14,5 @@ HEADERS += bitmask.h \
     tcpclient.h \
     tcpconnection.h \
     servermessage.h \
-    chatmessage.h
+    socketwrapper.h
 LIBS += 

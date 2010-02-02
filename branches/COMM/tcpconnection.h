@@ -16,6 +16,7 @@ public:
 private:
     TCPConnection();
     struct sock_addr sa;
+
 };
 
 #endif // TCPCONNECTION_H

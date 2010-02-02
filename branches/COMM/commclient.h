@@ -29,6 +29,7 @@
 
 #include "updateobject.h"
 #include "clientaction.h"
+#include "servermessage.h"
 
 using std::string;
 using std::queue;
@@ -73,8 +74,8 @@ private:
     ~CommClient();
 
     queue<UpdateObject> updates_;
-    queue<string> chatMsgs_;
-    queue<string> serverMsgs_;
+    queue<ServerMessage> chatMsgs_;
+    queue<ServerMessage> serverMsgs_;
     bool isConnected_;
 };
 
