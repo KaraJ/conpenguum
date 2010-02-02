@@ -33,8 +33,8 @@
   [http://conpenguum.googlecode.com/files/Animation-STD.pdf STD]<br>
   [http://conpenguum.googlecode.com/files/Animation_DesignClassV3.pdf DCDv3]<br>
   [http://conpenguum.googlecode.com/files/AnimationPseudoCodeV2.pdf PseudoCode]<br>
-  [http://conpenguum.googlecode.com/files/AnimationSTD.pdf STDv2]
-
+  [http://conpenguum.googlecode.com/files/AnimationSTD.pdf STDv2] <br />
+  [http://conpenguum.googlecode.com/files/AnimationSrcV1.zip Animation Class Src]<br />
  === GUI ===
   [http://conpenguum.googlecode.com/files/GUI-SD.pdf GUI-SD]<br>
   [http://conpenguum.googlecode.com/files/GUI-STD.pdf GUI-STD]<br>
