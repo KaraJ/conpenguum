@@ -21,7 +21,7 @@
 #define FRAME_HH
 
 #include <list>
-#include "newtObjects.hh"
+#include "newtObjects.h"
 class frame{
 public:
     std::list<ship> listShip;

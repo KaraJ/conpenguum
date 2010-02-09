@@ -3,9 +3,7 @@
 
 #include <list>
 
-#include "dummy.h"
-
-class Tile: public Object {
+/*class Tile: public Object {
 protected:
     bool isWall;
     std::list<int> ships;
@@ -31,6 +29,6 @@ public:
     void remove_ship(Ship ship);
     void moved(Ship ship);
     void moved(Shot shot);
-};
+};*/
 
 #endif
