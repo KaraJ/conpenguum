@@ -12,6 +12,8 @@ Kara, Aaron, Ben, Stevan
 
 [http://code.google.com/p/conpenguum/wiki/Status_2009_01_31_Comm 2010-01-31]
 
+[http://code.google.com/p/conpenguum/wiki/Comm_StatusReport4 2010-01-07]
+
 ==Engine==
 Brad, Erick, Jeff, John, Renz
 
