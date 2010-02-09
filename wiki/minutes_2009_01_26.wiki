@@ -13,7 +13,7 @@ Minutes for January 26, 2010
 
 ALL DEFINITIONS IN HEADER FILES!!!
 {{{
-Class foo {
+Class Foo {
 
 private:
     int foo;
