@@ -2,8 +2,11 @@
 #include <iostream>
 #include <pthread.h>
 #include <sstream>
+#include <time.h>
+using namespace std;
 
 int TCPServer::numConnected = 0;
+long TCPServer::numMsgs = 0;
 
 TCPServer::TCPServer(int port)
 {
@@ -28,9 +31,42 @@ TCPServer::TCPServer(int port)
     std::cout << "Server set up successfully.\n";
 }
 
+void* StatsThread(void*)
+{
+    time_t start = time(NULL);
+    static long lastMsgs = 0;    
+    while (1)
+    {
+        int msgs = (TCPServer::numMsgs - lastMsgs) / 5;
+        lastMsgs = TCPServer::numMsgs;
+        printf("Conn: %d Msgs: %d (", TCPServer::numConnected, TCPServer::numMsgs);
+        cout << msgs << "/s) ";
+        int secs = (time(NULL) - start), min = 0, hour = 0;
+        cout << "Elapsed: ";
+        if (secs >= 60)
+        {
+            min = secs / 60;
+            secs %= 60;
+        }
+        if (min >= 60)
+        {
+            hour = min / 60;
+            min %= 60;
+        }
+        if (hour)
+            cout << hour << " hrs ";
+        if (min)
+            cout << min << " mins ";
+        cout << secs << " secs" << endl;
+        sleep(5);
+    }
+
+    return NULL;
+}
+
 void* ConnectThread(void *ptr)
 {
-    char buffer[BUFFSIZE];
+    char buffer[BUFFSIZE] = {0};
     int received = -1;
     int sock = *((int*) ptr);
 
@@ -40,23 +76,33 @@ void* ConnectThread(void *ptr)
     {
         TCPServer::Die("Failed to receive initial bytes from client");
     }
-    printf("[%d]Received: %s\n", sock, buffer);
+    Message msg(buffer);
+    TCPServer::numMsgs++;
+    //printf("-[%d]Received Message-\n", sock);
+    //cout << msg << endl;
     /* Send bytes and check for more incoming data in loop */
     while (received > 0)
     {
         /* Send back received data */
-        if (send(sock, buffer, received, 0) != received)
+
+        if (send(sock, msg.Serialize(), received, 0) != received)
         {
             TCPServer::Die("Failed to send bytes to client");
         }
-        printf("Sock: %d\n", sock);
+        //printf("Sock: %d\n", sock);
         memset(buffer, 0, BUFFSIZE);
         /* Check for more data */
-        if ((received = recv(sock, buffer, BUFFSIZE, 0)) < 0)
+        if ((received = recv(sock, buffer, BUFFSIZE, 0)) < 0)        
         {
-            TCPServer::Die("Failed to receive additional bytes from client");
+            //TCPServer::Die("Failed to receive additional bytes from client");
+            cout << "Failed to receive additional bytes from client" << endl;
+            break;
         }
-        printf("[%d]Received: %s\n", sock, buffer);
+
+        msg = Message(buffer);
+        TCPServer::numMsgs++;
+        //printf("-[%d]Received Message-\n", sock);
+        //cout << msg << endl;
         fflush(stdout);
     }
     fprintf(stdout, "Client disconnected[Socket: %d, Connected: %d]\n",
@@ -77,6 +123,8 @@ void TCPServer::Run()
         Die("Failed to listen on server socket");
     }
     std::cout << "Listening for connections.\n";
+    pthread_t sthread;
+    pthread_create(&sthread, NULL, StatsThread, NULL);
 
     /* Run until cancelled */
     if (fork() == 0)
@@ -84,9 +132,9 @@ void TCPServer::Run()
         char input[100];
         int id, type;
         while (scanf("%d %d %s", &id, &type, input))
-        {            
+        {
             std::string text(input);
-            Message m(id, (MessageType)type, text);
+            Message m(id, (MessageType) type, text);
             SendMesssage(m);
         }
     }
@@ -102,7 +150,7 @@ void TCPServer::Run()
             fprintf(stdout, "Client connected[Socket: %d, Connected: %d]: %s\n",
                     clientsock, (numConnected + 1), inet_ntoa(echoclient.sin_addr));
             sockets.insert(std::pair<int, int*>(clientsock, &clientsock));
-            printf("sock: %d\n", sockets.size());
+            //printf("sock: %d\n", (int) sockets.size());
             pthread_t thread;
             pthread_create(&thread, NULL, ConnectThread, &clientsock);
         }
@@ -110,6 +158,7 @@ void TCPServer::Run()
 }
 
 //work in progress, ignore for now
+
 void TCPServer::SendMesssage(Message msg)
 {
 #if 0

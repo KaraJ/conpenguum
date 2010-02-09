@@ -32,11 +32,13 @@ public:
 private:
     static void Die(std::string mess) { perror(mess.c_str()); exit(1); }
     friend void* ConnectThread(void*);
+    friend void* StatsThread(void*);
 
 private:
     int serversock;
     struct sockaddr_in echoserver;
     static int numConnected;
+    static long numMsgs;
     std::map<int, int*> sockets;
 };
 

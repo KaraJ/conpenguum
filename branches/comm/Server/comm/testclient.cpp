@@ -8,6 +8,7 @@
 #include <netinet/in.h>
 #include <pthread.h>
 #include <iostream>
+#include "message.h"
 
 #define _REENTRANT
 #define DCE_COMPAT
@@ -58,13 +59,15 @@ int main(int argc, char *argv[])
     }
     /* Send the word to the server */
     pthread_create(&listen, NULL, listenThread, (void*) (&sock));   
-    while (getline(cin, input))
-    {
-        echolen = input.length();
-        if (send(sock, input.c_str(), echolen, 0) != echolen)
-        {
+    //while (getline(cin, input))
+    for (int i = 0; i < 1000*8; i++)
+    {        
+        //Message msg(1, MT_LOGIN, input);
+        Message msg(i + 1, MT_LOGIN, words[(i % 8)]);
+        echolen = msg.GetLength();
+        if (send(sock, msg.Serialize(), echolen, 0) != echolen)        
             Die("Mismatch in number of sent bytes");
-        }
+        usleep(100000);
     }
     close(sock);
     exit(0);
@@ -76,7 +79,7 @@ void *listenThread(void *ptr)
 {
     int *sock = (int*) ptr;
     int received = 0;
-    char buffer[BUFFSIZE];
+    char buffer[BUFFSIZE] = {0};
     
     do
     {
@@ -86,8 +89,9 @@ void *listenThread(void *ptr)
             Die("Failed to receive bytes from server");
         }
         received += bytes;
-        buffer[bytes] = '\0'; /* Assure null terminated string */
-        printf("Echo: %s\n", buffer);
+        //buffer[bytes] = '\0'; /* Assure null terminated string */
+        Message msg(buffer);
+        //cout << "Echo" << endl << msg << endl << "----------" << endl;
         memset(buffer, 0, BUFFSIZE);        
         fflush(stdout);
     }while (received > 0);    
