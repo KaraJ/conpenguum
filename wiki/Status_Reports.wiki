@@ -12,7 +12,7 @@ Kara, Aaron, Ben, Stevan
 
 [http://code.google.com/p/conpenguum/wiki/Status_2009_01_31_Comm 2010-01-31]
 
-[http://code.google.com/p/conpenguum/wiki/Comm_StatusReport4 2010-01-07]
+[http://code.google.com/p/conpenguum/wiki/Comm_StatusReport4 2010-02-07]
 
 ==Engine==
 Brad, Erick, Jeff, John, Renz
@@ -23,6 +23,8 @@ Brad, Erick, Jeff, John, Renz
 
 [http://conpenguum.googlecode.com/files/Week3.pdf 2010-01-31]
 
+[http://conpenguum.googlecode.com/files/Engine_StatusReport4.pdf 2010-02-07]
+
 ==Gameplay==
 Matt, Doug, Ash, Cody, John
 
@@ -32,6 +34,8 @@ Matt, Doug, Ash, Cody, John
 
 [http://conpenguum.googlecode.com/files/status%20report31_1_2010.docx 2010-01-31]
 
+[http://conpenguum.googlecode.com/files/Gameplay_StatusReport4.docx 2010-02-07]
+
 ==Graphics==
 Jordan, Carson, James, Ben, Daraius
 
@@ -40,6 +44,8 @@ Jordan, Carson, James, Ben, Daraius
 [http://conpenguum.googlecode.com/files/Graphics_StatusReport2.doc 2010-01-24]
 
 [http://conpenguum.googlecode.com/files/Graphics_StatusReport3.pdf 2010-01-31]
+
+[http://conpenguum.googlecode.com/files/Graphics_StatusReport4.pdf 2010-02-07]
 
 ==Overall==
 [http://conpenguum.googlecode.com/files/Status%20report%20%231.doc Status Report #1]
