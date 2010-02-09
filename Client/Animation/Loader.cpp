@@ -32,7 +32,9 @@ Loader::Loader()
 -----------------------------------------------------------------------------------------------*/
 Animation Loader::getAnimation(AnimationType type)
 {
+    Animation a;
 	/* will be used to build animations, this call will be the starting sequence */
+    return a;
 }
 
 

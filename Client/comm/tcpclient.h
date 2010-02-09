@@ -4,7 +4,7 @@
 //This class to hold application specific logic for the TCP connection client
 
 #include <string>
-#include "servermessage.h"
+#include "../../Core/comm/data/servermessage.h"
 
     /*
      Get host by name

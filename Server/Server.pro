@@ -1,5 +1,10 @@
 CONFIG = qt
-SOURCES += main.cpp \
-           map.cpp
+SOURCES += map.cpp \
+    frame.cpp \
+    main.cpp
 HEADERS += map.h \
-           dummy.h
+    dummy.h \
+    frame.h \
+    newtObjects.h \
+    frame.h \
+    main.h
