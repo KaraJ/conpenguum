@@ -3,9 +3,9 @@
 
 #include <list>
 
-#include "dummy.h"
+#include "newtObjects.hh"
 
-class Tile: public Object {
+class Tile {
 protected:
     bool isWall;
     std::list<int> ships;
@@ -15,7 +15,7 @@ public:
     bool is_wall();
     int numShips();
     int numShots;
-    bool overlap(Object object);
+    bool overlap(NewtObject object);
     void addShip(Ship ship);
     void addShot(Shot shot);
     void delShip(Ship ship);
@@ -27,7 +27,7 @@ protected:
     Tile map[];
 public:
     Map(int x, int y);
-    void add_ship(Player player);
+    void add_ship();
     void remove_ship(Ship ship);
     void moved(Ship ship);
     void moved(Shot shot);
