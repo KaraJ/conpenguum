@@ -1,120 +1,129 @@
 #include "tcpserver.h"
-#include <assert.h>
+#include <iostream>
+#include <pthread.h>
+#include <sstream>
 
-int TCPServer::connections = 0;
+int TCPServer::numConnected = 0;
 
-TCPServer::TCPServer(int _maxClients, int _timeOut)
-    : maxClients(_maxClients), timeOut(_timeOut)
+TCPServer::TCPServer(int port)
 {
-    qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
 
-    assert(maxClients > 0);
-    assert(timeout > 0);
-    port = qrand() % 7000 + 1000;
-}
-
-TCPServer::TCPServer()
-    : maxClients(10), timeOut(60000)
-{
-}
-
-void TCPServer::run()
-{
-    /*
-      serverSocket = CreateSocket
-
-      Set up address structure
-
-      Bind Address to socket
-
-      Listen for connections
-
-      While server is running
-
-            newSocket = accept(new connection)
-
-            pthread_t newThread
-
-            pthread_create(newThread, NULL, ClientConnectThread, (void *)newSocket)
-
-      //end while
-
-      */
-}
-
-void* TCPServer::ClientConnectThread(void *ptr)
-{
-    int *socket = (int *)ptr;
-
-    /* Initiate connection with client
-
-       if connected >= maxClients
-            send some error message
-            exit
-
-       connected++;
-
-       get map info from engine / gameplay
-
-       send map info to client
-
-       get player / score info from engine / gameplay
-
-       send player info
-
-       wait for ack
-
-       add player to queue of updating players
-
-       while true
-
-            if msg to send from server
-                bytes = data.serialize()
-                send bytes
-
-            else if data read from client
-                if msg = logout
-                    alert engine / gameplay
-                    break
-
-                if msg = chat
-                    send to engine / gameplay
-
-        //end while
-        connected--;
-       */
-}
-
-bool TCPServer::HasMessages()
-{
-    bool msg = false;
-    //Critical section
-    msg = (cMsgList.size() > 0 || sMsgList.size() > 0);
-    //end critical section
-    return msg;
-}
-
-Message TCPServer::GetMessage()
-{
-    if (!HasMessages())
-        return NULL;
-    //critical section
-    if (sMsgList.size() > 0)
+    /* Create the TCP socket */
+    if ((serversock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0)
     {
-        Message next = sMsgList.front();
-        sMsgList.pop();
-        //end crit section
-        return next;
+        Die("Failed to create socket");
     }
-    Message next = cMsgList.front();
-    sMsgList.pop();
-    //end crit section
-    return next;
+    /* Construct the server sockaddr_in structure */
+    memset(&echoserver, 0, sizeof (echoserver)); /* Clear struct */
+    echoserver.sin_family = AF_INET; /* Internet/IP */
+    echoserver.sin_addr.s_addr = htonl(INADDR_ANY); /* Incoming addr */
+    echoserver.sin_port = htons(port); /* server port */
+
+    /* Bind the server socket */
+    if (bind(serversock, (struct sockaddr *) & echoserver,
+            sizeof (echoserver)) < 0)
+    {
+        Die("Failed to bind the server socket");
+    }
+    std::cout << "Server set up successfully.\n";
 }
 
-void TCPServer::SendMessage(Message msg)
+void* ConnectThread(void *ptr)
 {
-    //Match client id to thread somehow - probably magic
+    char buffer[BUFFSIZE];
+    int received = -1;
+    int sock = *((int*) ptr);
 
-    //pass byte array from msg.Serialize()
+    TCPServer::numConnected++;
+    /* Receive message */
+    if ((received = recv(sock, buffer, BUFFSIZE, 0)) < 0)
+    {
+        TCPServer::Die("Failed to receive initial bytes from client");
+    }
+    printf("[%d]Received: %s\n", sock, buffer);
+    /* Send bytes and check for more incoming data in loop */
+    while (received > 0)
+    {
+        /* Send back received data */
+        if (send(sock, buffer, received, 0) != received)
+        {
+            TCPServer::Die("Failed to send bytes to client");
+        }
+        printf("Sock: %d\n", sock);
+        memset(buffer, 0, BUFFSIZE);
+        /* Check for more data */
+        if ((received = recv(sock, buffer, BUFFSIZE, 0)) < 0)
+        {
+            TCPServer::Die("Failed to receive additional bytes from client");
+        }
+        printf("[%d]Received: %s\n", sock, buffer);
+        fflush(stdout);
+    }
+    fprintf(stdout, "Client disconnected[Socket: %d, Connected: %d]\n",
+            sock, (TCPServer::numConnected - 1));
+    close(sock);
+    TCPServer::numConnected--;
+    return NULL;
+}
+
+void TCPServer::Run()
+{
+    int clientsock;
+    struct sockaddr_in echoclient;
+
+    /* Listen on the server socket */
+    if (listen(serversock, MAXPENDING) < 0)
+    {
+        Die("Failed to listen on server socket");
+    }
+    std::cout << "Listening for connections.\n";
+
+    /* Run until cancelled */
+    if (fork() == 0)
+    {
+        char input[100];
+        int id, type;
+        while (scanf("%d %d %s", &id, &type, input))
+        {            
+            std::string text(input);
+            Message m(id, (MessageType)type, text);
+            SendMesssage(m);
+        }
+    }
+    else
+    {
+        while (1)
+        {
+            unsigned int clientlen = sizeof (echoclient);
+            /* Wait for client connection */
+            if ((clientsock = accept(serversock, (struct sockaddr *) & echoclient, &clientlen)) < 0)
+                Die("Failed to accept client connection");
+
+            fprintf(stdout, "Client connected[Socket: %d, Connected: %d]: %s\n",
+                    clientsock, (numConnected + 1), inet_ntoa(echoclient.sin_addr));
+            sockets.insert(std::pair<int, int*>(clientsock, &clientsock));
+            printf("sock: %d\n", sockets.size());
+            pthread_t thread;
+            pthread_create(&thread, NULL, ConnectThread, &clientsock);
+        }
+    }
+}
+
+//work in progress, ignore for now
+void TCPServer::SendMesssage(Message msg)
+{
+#if 0
+    std::vector<BYTE> bData = msg.Serialize();
+    int sent;
+    char data[BUFFSIZE];
+    for (size_t i = 0; i < bData.size(); i++)
+        data[i] = bData[i];
+    printf("ID: %d\n", sockets.size());
+    // %d\n", (int)send(*sockets[msg.GetID()], data, BUFFSIZE, 0));
+    /*if ((sent = send(*sockets[msg.GetID()], data, BUFFSIZE, 0)) <= 0)
+    {
+        printf("Sent: %d\n", sent);
+        Die("Failed to send bytes to client");
+    } */
+#endif
 }
