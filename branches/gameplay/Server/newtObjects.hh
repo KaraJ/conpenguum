@@ -4,9 +4,9 @@
 --
 --  PROGRAM:        Compenguum
 --
---  CLASSES:        newtObject
---                  ship : newtObject
---                  shot : newtObject
+--  CLASSES:        NewtObject
+--                  Ship : NewtObject
+--                  Shot : NewtObject
 --
 --  DATE:           January 27, 2010
 --
@@ -26,7 +26,7 @@
 
 /*----------------------------------------------------------------------------
 --
---  CLASSE:         newtObject
+--  CLASSE:         NewtObject
 --
 --  DATE:           January 27, 2010
 --
@@ -39,7 +39,7 @@
 --  NOTES:          Newtonian objects. The basic moving object class.
 --
 ----------------------------------------------------------------------------*/
-class newtObject{
+class NewtObject{
 public:
     QPoint position;
     QPoint vector;
@@ -48,8 +48,8 @@ private:
     // frame counter
     // next ID to be used
 public:
-    newtObject(): position(0,0), vector(0,0), id(0){}
-    newtObject(int pX, int pY, int vX, int vY, int ID): position(pX, pY),
+    NewtObject(): position(0,0), vector(0,0), id(0){}
+    NewtObject(int pX, int pY, int vX, int vY, int ID): position(pX, pY),
         vector(vX ,vY), id(ID){}
     QPoint getPosition(){ return position; }
     QPoint getVector(){ return vector; }
@@ -59,7 +59,7 @@ private:
 
 /*----------------------------------------------------------------------------
 --
---  CLASSE:         ship
+--  CLASSE:         Ship
 --
 --  DATE:           January 27, 2010
 --
@@ -73,19 +73,19 @@ private:
 --                  controlled ship.
 --
 ----------------------------------------------------------------------------*/
-class ship : public newtObject {
+class Ship : public NewtObject {
 private:
     int rotation;
 public:
-    ship(): rotation(0) {}
-    ship(int pX, int pY, int vX, int vY, int ID):
-        newtObject(pX, pY, vX, vY, ID){}
+    Ship(): rotation(0) {}
+    Ship(int pX, int pY, int vX, int vY, int ID):
+        NewtObject(pX, pY, vX, vY, ID){}
     int getRot(){ return rotation; }
 };
 
 /*----------------------------------------------------------------------------
 --
---  CLASSE:         shot
+--  CLASSE:         Shot
 --
 --  DATE:           January 27, 2010
 --
@@ -98,7 +98,7 @@ public:
 --  NOTES:          The basis of the shots that players shoot.
 --
 ----------------------------------------------------------------------------*/
-class shot: public newtObject {
+class Shot: public NewtObject {
     //
 };
 

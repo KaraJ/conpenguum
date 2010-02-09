@@ -44,7 +44,7 @@ void frame::tick(void){
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void frame::addShip(ship newShip){
+void frame::addShip(Ship newShip){
     // adds a ship to the ship list
     listShip.push_back(newShip);
 }
@@ -67,7 +67,7 @@ void frame::addShip(ship newShip){
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void frame::spawnShot(shot newShot){
+void frame::spawnShot(Shot newShot){
     // adds a shot to the shot list
     listShot.push_back(newShot);
 }
@@ -91,7 +91,7 @@ void frame::spawnShot(shot newShot){
 --
 ------------------------------------------------------------------------------*/
 void frame::updateShips(void){
-    list<ship>::iterator it;
+    list<Ship>::iterator it;
     for(it = listShip.begin(); it != listShip.end(); ++it){
         (*it).position += (*it).vector;
     }
@@ -116,7 +116,7 @@ void frame::updateShips(void){
 --
 ------------------------------------------------------------------------------*/
 void frame::updateShots(void){
-    list<shot>::iterator it;
+    list<Shot>::iterator it;
     for(it = listShot.begin(); it != listShot.end(); ++it){
         (*it).position += (*it).vector;
     }
@@ -143,7 +143,7 @@ void frame::updateShots(void){
 --
 ------------------------------------------------------------------------------*/
 void frame::printShips(void){
-    list<ship>::iterator it;
+    list<Ship>::iterator it;
     for(it = listShip.begin(); it != listShip.end(); ++it){
         cout << (*it).id << ": " << (*it).position.x()
             << ',' <<  (*it).position.y() << endl;
