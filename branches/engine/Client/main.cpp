@@ -8,10 +8,9 @@ int main(int argc, char * argv[]){
 
     /* insert main gfx window initilization here, which extends from BaseWindow */
     //GameWindow mainWin = new GameWindow();
-    QMainWindow mainWin;
+    BaseWindow mainWin;
 
-    mainWin.setWindowTitle("test");
-    mainWin.setFixedSize(800, 600);
+    mainWin.setWindowTitle("Game Window");
 
     mainWin.show();
     return app.exec();
