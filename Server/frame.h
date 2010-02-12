@@ -17,20 +17,20 @@
 --  NOTES:          basics, rest to be stubbed in
 --
 ----------------------------------------------------------------------------*/
-#ifndef FRAME_HH
-#define FRAME_HH
+#ifndef FRAME_H
+#define FRAME_H
 
 #include <list>
 #include "newtObjects.h"
 class frame{
 public:
-    std::list<ship> listShip;
-    std::list<shot> listShot;
+    std::list<Ship> listShip;
+    std::list<Shot> listShot;
     // map
 public:
     void tick();
-    void addShip(ship newShip);
-    void spawnShot(shot newShot);
+    void addShip(Ship newShip);
+    void spawnShot(Shot newShot);
     void fragShip(int shipID);
     void destroyShot(int shotID);
     void updateShips();
@@ -38,4 +38,4 @@ public:
     // for testing
     void printShips();
 };
-#endif // FRAME_HH
+#endif // FRAME_H
