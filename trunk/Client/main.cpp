@@ -1,6 +1,20 @@
 #include "main.h"
 
-int main()
+int main(int argc, char* argv[])
 {
-    return 0;
+    QApplication app(argc, argv);
+
+    // insert CommClient initilization 
+    //CommClient cc = new CommClient();
+    
+    // insert main gfx window initilization here, which extends from BaseWindow 
+    
+    //GameWindow mainWin = new GameWindow();
+    BaseWindow mainWin;
+    
+    mainWin.setWindowTitle("Game Window");
+    
+    mainWin.show();
+    return app.exec();
 }
+
