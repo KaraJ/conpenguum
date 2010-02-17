@@ -1,6 +1,6 @@
 #include <iostream> // only used for testing
-#include "frame.hh"
-#include "newtObjects.hh"
+#include "frame.h"
+#include "newtObjects.h"
 using namespace std;
 
 /*-----------------------------------------------------------------------------

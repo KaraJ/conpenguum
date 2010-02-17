@@ -2,8 +2,7 @@
 #define _MAP_H
 
 #include <list>
-
-#include "newtObjects.hh"
+#include "newtObjects.h"
 
 class Tile {
 protected:
@@ -27,7 +26,7 @@ protected:
     Tile map[];
 public:
     Map(int x, int y);
-    void add_ship();
+    void add_ship(/*Player player*/);
     void remove_ship(Ship ship);
     void moved(Ship ship);
     void moved(Shot shot);
