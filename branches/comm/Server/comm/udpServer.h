@@ -4,7 +4,7 @@
 #include <cstring>
 #include <netinet/in.h>
 #include "comm/socketwrapper.h"
-#include "comm/data/globals.h"
+#include "comm/globals.h"
 
 class UDPServer
 {

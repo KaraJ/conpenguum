@@ -30,7 +30,10 @@
 #ifndef CLIENTACTION_H
 #define CLIENTACTION_H
 
+#define BYTE unsigned char
+
 #include "bitmask.h"
+#include <vector>
 
 //TODO: Make an enum for type
 
@@ -61,6 +64,7 @@ public:
     inline bool isAccelerating() { return ClientAction::mask_.Test(AC_FIREING); }
     inline int getClientID() { return clientID_; }
     inline int getType() { return type_; }
+    bool serialize(char* buffer, size_t buffSize);
 private:
     ActionBitmask mask_;
     int clientID_;

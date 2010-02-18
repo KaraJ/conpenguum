@@ -26,8 +26,10 @@
 <option id="gnu.cpp.compiler.exe.debug.option.debugging.level.214543340" name="Debug Level" superClass="gnu.cpp.compiler.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 <option id="gnu.cpp.compiler.option.include.paths.1946544895" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 <listOptionValue builtIn="false" value="/usr/include/qt4/QtCore"/>
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Core}&quot;"/>
 <listOptionValue builtIn="false" value="/usr/include/qt4/Qt"/>
 <listOptionValue builtIn="false" value="/usr/include/qt4/QtGui"/>
+<listOptionValue builtIn="false" value="/usr/include/qt4"/>
 </option>
 <option id="gnu.cpp.compiler.option.warnings.pedantic.1900704685" name="Pedantic (-pedantic)" superClass="gnu.cpp.compiler.option.warnings.pedantic" value="true" valueType="boolean"/>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1014570968" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
@@ -41,9 +43,11 @@
 <tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.888860069" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
 <option id="gnu.cpp.link.option.libs.826201770" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 <listOptionValue builtIn="false" value="SDL"/>
+<listOptionValue builtIn="false" value="QtGui"/>
 <listOptionValue builtIn="false" value="Core"/>
+<listOptionValue builtIn="false" value="QtCore"/>
 </option>
-<option id="gnu.cpp.link.option.paths.1789441916" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+<option id="gnu.cpp.link.option.paths.1789441916" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 <listOptionValue builtIn="false" value="&quot;${workspace_loc:/Core/Debug}&quot;"/>
 </option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.930013009" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">

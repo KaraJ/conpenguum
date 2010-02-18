@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <vector>
-#define BYTE unsigned char
 
 enum MessageType {
     MT_LOGIN = 1,

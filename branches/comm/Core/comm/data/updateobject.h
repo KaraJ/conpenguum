@@ -2,23 +2,27 @@
 #define UPDATEOBJECT_H
 
 #include "clientaction.h"
+#include <cstring>
+#include <QPoint>
+#include <vector>
+
+#define BYTE unsigned char //TODO: Move to shared space (also declared in message.h and clientaction.h)
 
 class UpdateObject
 {
 public:
-    UpdateObject(int clientID, int type) : rotation_(0), posX_(0), posY_(0), actions_(ClientAction(clientID, type)) {}
+    UpdateObject(int clientID, int type) : rotation_(0), pos_(), actions_(ClientAction(clientID, type)) {}
 
     inline int getRotation() const { return rotation_; }
-    inline int getPosX() const { return posX_; }
-    inline int getPosY() const { return posY_; }
+    inline QPoint getPos() const { return pos_; }
     inline ClientAction getActions() { return actions_; }
 
     inline void setRotation(int rot) { rotation_ = rot; }
-    inline void setPosition(int x, int y) { posX_ = x; posY_ = y; }
+    inline void setPosition(QPoint p) { pos_ = p; }
+    bool serialize(char* buffer, size_t buffSize);
 private:
     int rotation_;
-    int posX_;
-    int posY_;
+    QPoint pos_;
     ClientAction actions_;
 };
 
