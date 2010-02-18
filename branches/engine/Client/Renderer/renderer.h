@@ -5,7 +5,7 @@
 #include <QGLFramebufferObject>
 //#include <QGLFramebufferObjectFormat>
 
-    class Renderer : public QGLWidget
+class Renderer : public QGLWidget
 {
 private:
     QPoint anchor;
