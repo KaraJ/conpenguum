@@ -4,7 +4,6 @@ SOURCES += map.cpp \
     main.cpp \
     ship.cpp \
     shot.cpp \
-    comm/tcpserver.cpp \
     comm/commserver.cpp \
     comm/udpServer.cpp
 HEADERS += map.h \
