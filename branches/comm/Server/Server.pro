@@ -5,7 +5,6 @@ SOURCES += map.cpp \
     ship.cpp \
     shot.cpp \
     comm/tcpserver.cpp \
-    comm/server.cpp \
     comm/commserver.cpp
 HEADERS += map.h \
     frame.h \
