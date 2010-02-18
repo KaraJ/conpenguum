@@ -75,3 +75,23 @@ void SocketWrapper::Write(int fd, const void *vptr, size_t n)
         ptr   += nwritten;
     }
 }
+
+ssize_t Recvfrom(int fd, const void* buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t addrlen)
+{
+	ssize_t retval;
+	if((retval = recvfrom(fd, buff, nbytes, flags, from, addrlen)) < 0)
+	{
+		cerr << "recvfrom error" << endl;
+	}
+	return retval;
+}
+ssize_t Sendto	(int fd, const void*buff, size_t nbytes, int flags, const struct sockaddr *to, socklen_t addrlen)
+{
+	ssize_t retval;
+	if((retval = sendto(fd, buff, nbytes, flags, to, addrlen)) == -1)
+	{
+		cerr << "sendto error" << endl;
+	}
+	return retval;
+}
+
