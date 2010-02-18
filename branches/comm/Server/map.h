@@ -23,7 +23,7 @@ public:
 
 class Map {
 protected:
-    Tile map[];
+    Tile map[1];
 public:
     Map(int x, int y);
     void add_ship(/*Player player*/);

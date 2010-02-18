@@ -3,8 +3,8 @@
 
 #include <cstring>
 #include <netinet/in.h>
-#include "../../Core/comm/socketwrapper.h"
-#include "../../Core/comm/data/globals.h"
+#include "comm/socketwrapper.h"
+#include "comm/data/globals.h"
 
 class UDPServer
 {
