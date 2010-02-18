@@ -22,7 +22,16 @@
  --
  -- REVISIONS:	(Date, Description, Author)
  --
- --		Feb 11, 2010 - Updated the class interface - Erick Ribeiro
+ --		Feb 11, 2010 - Erick Ribeiro
+ --		Updated the class interface
+ --
+ --		Feb 18, 2010 - Erick Ribeiro
+ --		Renamed method update() to timerEvent() because QWidget (super class)
+ --		already has an update() method which is used for a different purpose.
+ --
+ --		Feb 18, 2010 - Erick Ribeiro
+ --		Added the Q_OBJECT macro so we can define our own signals and slots,
+ --		such as the timerEvent() slot.
  --
  -- NOTES:
  -- This class extends the QTMainWindow class, adding keyboard input handling
@@ -35,6 +44,11 @@
 
 class BaseWindow : public QMainWindow
 {
+	// This macro must be present to
+	// activate signals/slots.
+	// Do not change.
+	Q_OBJECT
+
     private:
         QTimer timer;
 
@@ -43,7 +57,9 @@ class BaseWindow : public QMainWindow
 
     private:
         void keyPressEvent (QKeyEvent * event);
-        void update();
+
+	public slots:
+        void timerEvent();
 };
 
 #endif // BASEWINDOW_H

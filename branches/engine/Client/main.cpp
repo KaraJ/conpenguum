@@ -1,20 +1,15 @@
-#include "main.h"
+#include "BaseWindow.h"
 
 int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
-
-    // insert CommClient initilization 
-    //CommClient cc = new CommClient();
-    
-    // insert main gfx window initilization here, which extends from BaseWindow 
-    
-    //GameWindow mainWin = new GameWindow();
     BaseWindow mainWin;
     
     mainWin.setWindowTitle("Game Window");
-    
     mainWin.show();
+
+	QTimer::singleShot(1000, &mainWin, SLOT(myTimeEvent()));
+
     return app.exec();
 }
 

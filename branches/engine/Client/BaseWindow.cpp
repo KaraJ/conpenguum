@@ -8,6 +8,11 @@
  --
  -- PROGRAMMER: Erick Ribeiro
  --
+ -- REVISIONS:
+ --
+ --		Feb 18, 2010 - Erick Ribeiro
+ --		Set up a QTimer object to call timerEvent() every interval.
+ --
  -- NOTES:
  -- This is the main constructor of the BaseWindow class. It initializes
  -- the QTimer object used for timing and instantiates/retrieves the instance of
@@ -15,10 +20,10 @@
  --
  -----------------------------------------------------------------------------*/
 
-BaseWindow::BaseWindow()
+BaseWindow::BaseWindow() : timer(this)
 {
-	// @todo Get CommClient instance here.
-	// @todo Set up a QTimer object to call update() 60 times/second.
+	connect(&timer, SIGNAL(timeout()), this, SLOT(timerEvent()));
+	timer.start(17); // Just over 60 times/second.
 }
 
 void BaseWindow::keyPressEvent (QKeyEvent * event)
@@ -26,7 +31,7 @@ void BaseWindow::keyPressEvent (QKeyEvent * event)
 	// @todo Keyboard handling here.
 }
 
-void BaseWindow::update()
+void BaseWindow::timerEvent()
 {
 	// @todo Call render().
 }
