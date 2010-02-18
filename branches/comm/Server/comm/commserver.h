@@ -26,6 +26,7 @@
 #include "../../Core/comm/data/clientaction.h"
 #include "../../Core/comm/data/updateobject.h"
 #include "../../Core/comm/data/servermessage.h"
+#include "udpServer.h"
 
 class CommServer
 {
@@ -46,6 +47,7 @@ private:
 
     std::queue<ClientAction> actions_;
     std::queue<ServerMessage> serverMsgs_;
+    UDPServer udpServer_;
 };
 
 #endif
