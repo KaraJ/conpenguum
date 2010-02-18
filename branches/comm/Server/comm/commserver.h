@@ -32,22 +32,12 @@ class CommServer
 public:
     static CommServer* Instance();
 
-    inline bool hasNextClientAction() { return !actions_.empty(); }
-    inline std::string nexthasNextClientAction()
-    {
-        ClientAction action = actions_.front();
-        actions_.pop();
-        return "";
-    }
-    inline bool hasNextServerMessage() { return !serverMsgs_.empty(); }
-    inline ServerMessage nextServerMessage()
-    {
-        ServerMessage serverMsg = serverMsgs_.front();
-        serverMsgs_.pop();
-        return serverMsg;
-    }
-    void sendUpdate(const UpdateObject update);
-    void sendServerMsg(const std::string msg);
+    bool hasNextClientAction();
+    std::string nextClientAction();
+    bool hasNextServerMessage();
+    ServerMessage nextServerMessage();
+    void sendUpdate(const UpdateObject update, const int* clientIDs, int numClients);
+    void sendServerMsg(const std::string msg, const int* clientIDs, int numClients);
 private:
     CommServer() {}
     CommServer(const CommServer& cpy);
