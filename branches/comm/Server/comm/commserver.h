@@ -23,9 +23,9 @@
 
 #include <string>
 #include <queue>
-#include "clientaction.h"
-#include "updateobject.h"
-#include "servermessage.h"
+#include "../../Core/comm/data/clientaction.h"
+#include "../../Core/comm/data/updateobject.h"
+#include "../../Core/comm/data/servermessage.h"
 
 class CommServer
 {

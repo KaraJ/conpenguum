@@ -15,9 +15,9 @@ public:
     static int  Accept  (int fd, struct sockaddr *sa, socklen_t *salenptr);
     static void Connect (int fd, const struct sockaddr *sa, socklen_t salen);
     static void Listen  (int fd, int backlog);
-    static void Write   (int fd, const void *vptr, size_t n);
-    static void Recvfrom(int fd, const void* buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t addrlen);
-    static void Sendto	(int fd, const void*buff, size_t nbytes, int flags, const struct sockaddr *to, socklen_t addrlen);
+    static void Write   (int fd, const void* vptr, size_t n);
+    static void Recvfrom(int fd, void* buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t addrlen);
+    static void Sendto	(int fd, const void* buff, size_t nbytes, int flags, const struct sockaddr *to, socklen_t addrlen);
 
 private:
     SocketWrapper() {}

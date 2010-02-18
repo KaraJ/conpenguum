@@ -76,10 +76,10 @@ void SocketWrapper::Write(int fd, const void *vptr, size_t n)
     }
 }
 
-ssize_t Recvfrom(int fd, const void* buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t addrlen)
+ssize_t Recvfrom(int fd, void* buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t addrlen)
 {
 	ssize_t retval;
-	if((retval = recvfrom(fd, buff, nbytes, flags, from, addrlen)) < 0)
+	if((retval = recvfrom(fd, (void*)buff, nbytes, flags, from, &addrlen)) < 0)
 	{
 		cerr << "recvfrom error" << endl;
 	}
