@@ -21,26 +21,24 @@ public:
     : clientID(targetID), mType(type), mText(text) 
     {
     }
-    Message(std::vector<BYTE> data)
+    Message(char data[])
     {
         size_t i;        
         clientID = (int)data[0];
         mType = (MessageType)data[1];
-        for (i = 0; i < data.size() - 2; i++)
-            mText += (char)data[i + 2];
+        for (i = 0; i < strlen(data) - 2; i++)		
+            mText += (char)data[i + 2];		
     }
-    std::vector<BYTE> Serialize()
+    void Serialize(char *data)
     {
         size_t i;
-        std::vector<BYTE> data(mText.length() + 2);
         data[0] = (BYTE)clientID;
-        data[1] = (BYTE)mType;
+        data[1] = (BYTE)mType;		
         for (i = 0; i < mText.length(); i++)
             data[i + 2] = mText[i];
-
-        return data;
     }
     int GetID() { return clientID; }
+	int GetSize() { return mText.size() + 2; }
     MessageType GetType() { return mType; }
     std::string GetText() { return mText; }
     friend inline std::ostream& operator<<(std::ostream&, const Message&);
