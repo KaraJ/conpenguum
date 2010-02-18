@@ -76,7 +76,7 @@ void SocketWrapper::Write(int fd, const void *vptr, size_t n)
     }
 }
 
-ssize_t Recvfrom(int fd, void* buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t addrlen)
+ssize_t SocketWrapper::Recvfrom(int fd, void* buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t addrlen)
 {
 	ssize_t retval;
 	if((retval = recvfrom(fd, (void*)buff, nbytes, flags, from, &addrlen)) < 0)
@@ -85,7 +85,7 @@ ssize_t Recvfrom(int fd, void* buff, size_t nbytes, int flags, struct sockaddr *
 	}
 	return retval;
 }
-ssize_t Sendto	(int fd, const void*buff, size_t nbytes, int flags, const struct sockaddr *to, socklen_t addrlen)
+ssize_t SocketWrapper::Sendto(int fd, const void* buff, size_t nbytes, int flags, const struct sockaddr *to, socklen_t addrlen)
 {
 	ssize_t retval;
 	if((retval = sendto(fd, buff, nbytes, flags, to, addrlen)) == -1)
