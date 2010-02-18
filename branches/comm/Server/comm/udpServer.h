@@ -2,7 +2,9 @@
 #define UDPSERVER_H
 
 #include <cstring>
-#include <sys/socket.h>
+#include <netinet/in.h>
+#include "../../Core/comm/socketwrapper.h"
+#include "../../Core/comm/data/globals.h"
 
 class UDPServer
 {
