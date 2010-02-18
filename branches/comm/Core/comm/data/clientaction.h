@@ -39,7 +39,7 @@ enum ActionFlags
     AC_FIREING  = 0x01,
     AC_TURNLEFT = 0x02,
     AC_TURNRIGHT  = 0x04,
-    AC_ACCELERATING = 0x08,
+    AC_ACCELERATING = 0x08
 };
 
 typedef Bitmask<unsigned, ActionFlags> ActionBitmask;

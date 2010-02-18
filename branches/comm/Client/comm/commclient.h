@@ -27,9 +27,9 @@
 #include <string>
 #include <queue>
 
-#include "../../Core/comm/data/updateobject.h"
-#include "../../Core/comm/data/clientaction.h"
-#include "../../Core/comm/data/servermessage.h"
+#include "comm/data/updateobject.h"
+#include "comm/data/clientaction.h"
+#include "comm/data/servermessage.h"
 
 using std::string;
 using std::queue;
