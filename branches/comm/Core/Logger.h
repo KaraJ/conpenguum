@@ -3,12 +3,13 @@
 
 #include <fstream>
 #include <stdlib.h>
+#include <time.h>
 
 class Logger
 {
 public:
-	static void LogNQuit(char* errorMsg);
-	static void LogNContinue(char* errorMsg);
+	static void LogNQuit(const char* errorMsg);
+	static void LogNContinue(const char* errorMsg);
 };
 
 #endif /* LOGGER_H_ */

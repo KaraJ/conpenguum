@@ -2,10 +2,9 @@
 #define SOCKETWRAPPER_H
 
 /* Wrappers for common Socket operations. Leaving as static methods */
-#include <iostream>
 #include <sys/socket.h>
-#include <stdlib.h>
 #include <errno.h>
+#include "../Logger.h"
 
 class SocketWrapper
 {
