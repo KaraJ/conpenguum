@@ -26,7 +26,7 @@ class Bitmask
 {
 public:
 
-    Bitmask() {}
+    Bitmask() { Bitfield = 0; }
     Bitmask(Holder mask) : Bitmask(mask) {}
 
     // Sets all bitmask bits which are set in "flags"
@@ -58,6 +58,11 @@ public:
     inline Holder getBitField()
     {
         return Bitfield;
+    }
+
+    inline void setBitField(Holder bitfield)
+    {
+        Bitfield = bitfield;
     }
 
 protected:

@@ -32,8 +32,9 @@
 
 #define BYTE unsigned char
 
+#include "../globals.h"
 #include "bitmask.h"
-#include <vector>
+#include <cstring>
 
 //TODO: Make an enum for type
 
@@ -50,7 +51,9 @@ typedef Bitmask<unsigned, ActionFlags> ActionBitmask;
 class ClientAction
 {
 public:
-    ClientAction(int clientID, int type) : clientID_(clientID), type_(type) {}
+    ClientAction() {}
+    ClientAction(int clientID) : clientID_(clientID) {}
+    ClientAction(BYTE* buffer, size_t buffSize);
 
     inline void clear() { ClientAction::mask_.Clear((ActionFlags)(AC_ACCELERATING | AC_FIREING | AC_TURNLEFT | AC_TURNRIGHT)); }
     inline void setFiring() { ClientAction::mask_.Set(AC_FIREING); }
@@ -63,12 +66,10 @@ public:
     inline bool isTurningLeft() { return ClientAction::mask_.Test(AC_FIREING); }
     inline bool isAccelerating() { return ClientAction::mask_.Test(AC_FIREING); }
     inline int getClientID() { return clientID_; }
-    inline int getType() { return type_; }
-    bool serialize(char* buffer, size_t buffSize);
+    void serialize(BYTE** buffer, size_t& buffSize);
 private:
     ActionBitmask mask_;
     int clientID_;
-    int type_;
 };
 
 #endif
