@@ -20,6 +20,15 @@
 
 using namespace std;
 
+CommServer* CommServer::Instance()
+{
+    static CommServer* instance_;
+	if(!instance_)
+		instance_ = new CommServer();
+
+	return instance_;
+}
+
 /*----------------------------------------------------------------------------------------------------------
  -- FUNCTION: sendUpdate
  --
@@ -32,7 +41,9 @@ using namespace std;
  ----------------------------------------------------------------------------------------------------------*/
 void CommServer::sendUpdate(const UpdateObject update, const int* clientIDs, int numClients)
 {
-
+	//translate client IDs to sockaddr
+	//convert UpdateOjbect to bytes
+	//udpServer_.sendMessage(to, data, len);
 }
 
 /*----------------------------------------------------------------------------------------------------------
