@@ -143,12 +143,14 @@ void CommClient::sendServerMsg(const string msg)
  -- INTERFACE:
  --  ClientAction action:    the action to send to the server (should send one every frame
  ----------------------------------------------------------------------------------------------------------*/
-void CommClient::sendAction(const ClientAction action)
+void CommClient::sendAction(ClientAction action)
 {
+    BYTE* buffer = 0;
+    size_t buflen;
     if (isConnected_)
     {
-        //@todo serialize and send ClientAction
-        //udpClient_->sendMessage(data, len);
+        action.serialize(&buffer, buflen);
+        udpClient_->sendMessage(buffer, buflen);
     }
     else
     {
