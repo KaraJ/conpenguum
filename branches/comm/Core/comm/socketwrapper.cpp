@@ -34,7 +34,7 @@ void SocketWrapper::Connect(int fd, const struct sockaddr *sa, socklen_t salen)
         Logger::LogNQuit("Connect error.");
 }
 
-void SocketWrapper::SocketWrapper::Listen(int fd, int backlog)
+void SocketWrapper::Listen(int fd, int backlog)
 {
     char *ptr;
 
@@ -46,42 +46,34 @@ void SocketWrapper::SocketWrapper::Listen(int fd, int backlog)
         Logger::LogNQuit("Listen error.");
 }
 
-void SocketWrapper::Write(int fd, const void *vptr, size_t n)
+void SocketWrapper::Write(int sock, const void *buff, size_t n)
 {
-    size_t nleft;
+    size_t nleft = n;
     ssize_t nwritten;
-    const char *ptr;
 
-    ptr = (char*) vptr;
-    nleft = n;
     while (nleft > 0)
     {
-        if ( (nwritten = write(fd, ptr, nleft)) <= 0)
-        {
-            /*if (nwritten < 0 && errno == EINTR)
-                nwritten = 0; /* and call write() again
-            else*/
+        if ( (nwritten = write(sock, buff, nleft)) <= 0)
             Logger::LogNQuit("Write error");
-        }
 
         nleft -= nwritten;
-        ptr   += nwritten;
+        buff  += nwritten;
     }
 }
 
-int SocketWrapper::Read(int fd, void *vptr, size_t n)
+void SocketWrapper::Read(int sock, void *buff, size_t size)
 {
+	size_t  nleft = size;
 	ssize_t nread;
 
-	if ( (nread = read(fd, vptr, n)) <= 0)
+	while (nleft > 0)
 	{
-		/*if (nwritten < 0 && errno == EINTR)
-			nwritten = 0; /* and call write() again
-		else*/
-        Logger::LogNQuit("Read error");
-	}
+		if ( (nread = read(sock, buff, nleft)) <= 0)
+			Logger::LogNQuit("Read error");
 
-	return nread;
+		nleft -= nread;
+		buff  += nread;
+	}
 }
 
 ssize_t SocketWrapper::Recvfrom(int fd, void* buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t* addrlen)
