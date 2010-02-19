@@ -4,57 +4,84 @@ using namespace std;
 
 TCPClient::TCPClient()
 {
-    /*
-     Get host by name
+	/*
+	 END CONNECT PHASE
 
-     Check hostent h_addrtype for AF_INET(ipv6)
+	 While (!done)
 
-     Convert IP for debugging info (inet_ntop)
+	 Read Message/Write (Threaded, Async, or MP?)
 
-     Create Socket (socket(PF_INET, SOCK_STREAM, IPPROTO_IP)
+	 If logout
 
-     Set port (sockaddr.sin_port = htons(port)
+	 SendServMsg(LOG_OUT)
 
-     Copy h_addrlist[x] to sockaddr struct, where x is desired host IP
+	 GOTO EXIT
 
-     Set sockaddr.sin_family to AF_INET
+	 If Shutdown
 
-     Connect! (connect(int sock, sa, sizeof(sa))
+	 GOTO EXIT
 
-     END CONNECT PHASE
+	 If EOF
 
-     Read Client ID
+	 Notify Game lost connection
 
-     Read Scoreboard / Player names
+	 GOTO EXIT
 
-     While (!done)
+	 EXIT PHASE
 
-       Read Message/Write (Threaded, Async, or MP?)
+	 close(socket)
 
-       If logout
-
-         SendServMsg(LOG_OUT)
-
-         GOTO EXIT
-
-       If Shutdown
-
-         GOTO EXIT
-
-       If EOF
-
-         Notify Game lost connection
-
-         GOTO EXIT
-
-      EXIT PHASE
-
-      close(socket)
-
-      */
+	 */
 }
 
-int TCPClient::Login(string ip, int port)
+void TCPClient::Connect(string& ip)
 {
-    return 0;
+	struct addrinfo  hints;
+    struct addrinfo  *servList, *p;
+    int gaiErr;
+
+	bzero(&hints, sizeof(hints));
+	hints.ai_family   = AF_INET;
+	hints.ai_socktype = SOCK_STREAM;
+	hints.ai_protocol = IPPROTO_TCP;
+
+	gaiErr = getaddrinfo(ip.c_str(), TCP_PORT, &hints, &servList);
+
+	if (servList != 0)
+		Logger::LogNQuit(gai_strerror(gaiErr));
+
+	for (p = servList; p != NULL; p = p->ai_next)
+	{
+		tcpSocket = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
+		if (tcpSocket == -1)
+			continue;
+
+		if (connect(tcpSocket, p->ai_addr, p->ai_addrlen) != -1)
+			break; /* Success */
+
+		close(tcpSocket);
+	}
+
+	if (p == NULL)
+		Logger::LogNQuit("Unable to connect to server.");
+
+	freeaddrinfo(servList);
+}
+
+int TCPClient::Login(string playerName)
+{
+	ServerMessage loginMsg;
+
+	loginMsg.SetClientID(0);
+	loginMsg.SetMsgType(ServerMessage::MT_LOGIN);
+	loginMsg.SetData(playerName);
+
+	TCPConnection::WriteMessage(tcpSocket, loginMsg);
+
+	return 0;
+}
+
+TCPClient::~TCPClient()
+{
+	shutdown(tcpSocket, SHUT_RDWR);
 }

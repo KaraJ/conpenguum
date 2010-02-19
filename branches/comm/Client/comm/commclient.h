@@ -24,15 +24,15 @@
 #ifndef COMMCLIENT_H
 #define COMMCLIENT_H
 
+//System Includes
 #include <string>
 #include <queue>
 
+//User Includes
+#include "tcpclient.h"
 #include "comm/data/updateobject.h"
 #include "comm/data/clientaction.h"
 #include "comm/data/servermessage.h"
-
-using std::string;
-using std::queue;
 
 class CommClient
 {
@@ -41,30 +41,15 @@ public:
 
     inline bool isConnected() { return isConnected_; }
     inline bool hasNextUpdate() { return !updates_.empty(); }
-    inline UpdateObject nextUpdate()
-    {
-        UpdateObject update = updates_.front();
-        updates_.pop();
-        return update;
-    }
+    inline UpdateObject nextUpdate();
     inline bool hasNextChatMessage() { return !chatMsgs_.empty(); }
-    inline ServerMessage nextChatMessage()
-    {
-        ServerMessage chatMsg = chatMsgs_.front();
-        chatMsgs_.pop();
-        return chatMsg;
-    }
+    inline ServerMessage nextChatMessage();
     inline bool hasNextServerMessage() { return !serverMsgs_.empty(); }
-    inline ServerMessage nextServerMessage()
-    {
-        ServerMessage serverMsg = serverMsgs_.front();
-        serverMsgs_.pop();
-        return serverMsg;
-    }
-    int connect(const string name, const string address);
+    inline ServerMessage nextServerMessage();
+    int connect(const std::string playerName, const std::string address);
     void disconnect();
-    void sendChat(const string msg, int id);
-    void sendServerMsg(const string msg);
+    void sendChat(const std::string msg, int id);
+    void sendServerMsg(const std::string msg);
     void sendAction(const ClientAction action);
 
 private:
@@ -73,10 +58,11 @@ private:
     CommClient& operator=(const CommClient& cc);
     ~CommClient();
 
-    queue<UpdateObject> updates_;
-    queue<ServerMessage> chatMsgs_;
-    queue<ServerMessage> serverMsgs_;
+    std::queue<UpdateObject> updates_;
+    std::queue<ServerMessage> chatMsgs_;
+    std::queue<ServerMessage> serverMsgs_;
     bool isConnected_;
+    TCPClient* tcpClient;
 };
 
 #endif

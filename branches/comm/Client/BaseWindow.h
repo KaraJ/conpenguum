@@ -42,7 +42,7 @@ class BaseWindow : public QMainWindow
         BaseWindow();
 
     private:
-        void keyPressEvent (QKeyEvent * event);
+        void keyPressEvent (QKeyEvent* event);
         void update();
 };
 

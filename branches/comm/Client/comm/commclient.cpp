@@ -18,8 +18,9 @@
 --
 --  NOTES: Singleton - retrieve reference through CommClient::Instance()
 ----------------------------------------------------------------------------------------------------------*/
-
 #include "commclient.h"
+
+using namespace std;
 
 CommClient* CommClient::Instance()
 {
@@ -43,9 +44,32 @@ CommClient* CommClient::Instance()
 --         If that name is in use: -2
 --         If other network error: -3
 ----------------------------------------------------------------------------------------------------------*/
-int connect(const string name, const string address)
+int CommClient::connect(const string playerName, const string address)
 {
-    return -1;
+	tcpClient = new TCPClient();
+
+	return -1;
+}
+
+UpdateObject CommClient::nextUpdate()
+{
+    UpdateObject update = updates_.front();
+    updates_.pop();
+    return update;
+}
+
+ServerMessage CommClient::nextChatMessage()
+{
+    ServerMessage chatMsg = chatMsgs_.front();
+    chatMsgs_.pop();
+    return chatMsg;
+}
+
+ServerMessage CommClient::nextServerMessage()
+{
+    ServerMessage serverMsg = serverMsgs_.front();
+    serverMsgs_.pop();
+    return serverMsg;
 }
 
 /*----------------------------------------------------------------------------------------------------------
@@ -55,9 +79,9 @@ int connect(const string name, const string address)
 --
 -- NOTES: Informs the server of disconnection, then disconnects from the server gracefully.
 ----------------------------------------------------------------------------------------------------------*/
-void disconnect()
+void CommClient::disconnect()
 {
-
+	delete tcpClient;
 }
 
 /*----------------------------------------------------------------------------------------------------------
@@ -69,7 +93,7 @@ void disconnect()
 --  string msg:     the message to send
 --  int toClientID: the clientID (or teamID, in a team match) to send to
 ----------------------------------------------------------------------------------------------------------*/
-void sendChat(const string msg, int id)
+void CommClient::sendChat(const string msg, int id)
 {
 
 }
@@ -82,7 +106,7 @@ void sendChat(const string msg, int id)
 -- INTERFACE:
 --  string msg:     the message to send to send to the server
 ----------------------------------------------------------------------------------------------------------*/
-void sendServerMsg(const string msg)
+void CommClient::sendServerMsg(const string msg)
 {
 
 }
@@ -95,7 +119,7 @@ void sendServerMsg(const string msg)
 -- INTERFACE:
 --  ClientAction action:    the action to send to the server (should send one every frame
 ----------------------------------------------------------------------------------------------------------*/
-void sendAction(const ClientAction action)
+void CommClient::sendAction(const ClientAction action)
 {
 
 }
