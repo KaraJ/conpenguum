@@ -35,8 +35,10 @@
 #include "../globals.h"
 #include "bitmask.h"
 #include <cstring>
+#include <iostream>
 
 //TODO: Make an enum for type
+//TODO: add declerating? (ask game-play team)
 
 enum ActionFlags
 {
@@ -67,6 +69,7 @@ public:
     inline bool isAccelerating() { return ClientAction::mask_.Test(AC_FIREING); }
     inline int getClientID() { return clientID_; }
     void serialize(BYTE** buffer, size_t& buffSize);
+    void print(std::ostream& out = std::cout);
 private:
     ActionBitmask mask_;
     int clientID_;

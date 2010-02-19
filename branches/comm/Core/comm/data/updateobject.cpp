@@ -25,6 +25,9 @@
 
 #include "updateobject.h"
 
+using std::ostream;
+using std::endl;
+
 UpdateObject::UpdateObject(BYTE* buffer, size_t buffSize)
 {
     memcpy(this, buffer, buffSize);
@@ -58,4 +61,10 @@ void UpdateObject::serialize(BYTE** buffer, size_t& buffSize)
 
      tmp = (BYTE)(rotation_ & 0x0000FFFF);
      (*buffer)[5] = tmp;*/
+}
+void UpdateObject::print(ostream& out)
+{
+    out << "Rotation: " << rotation_ << endl;
+    out << "Position: " << pos_.rx() << ", " << pos_.ry() << endl;
+    actions_.print(out);
 }

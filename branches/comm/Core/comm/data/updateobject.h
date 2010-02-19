@@ -5,6 +5,7 @@
 #include "../globals.h"
 #include <cstring>
 #include <QPoint>
+#include <iostream>
 
 #define BYTE unsigned char //TODO: Move to shared space (also declared in message.h and clientaction.h)
 
@@ -21,6 +22,7 @@ public:
     inline void setRotation(int rot) { rotation_ = rot; }
     inline void setPosition(const QPoint& p) { pos_ = p; }
     void serialize(BYTE** buffer, size_t& buffSize);
+    void print(std::ostream& out = std::cout);
 private:
     int rotation_;
     QPoint pos_;

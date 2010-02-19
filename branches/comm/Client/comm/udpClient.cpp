@@ -9,7 +9,7 @@
 --		char* addr:	the IP address of the server
 --
 ----------------------------------------------------------------------------------------------------------*/
-UDPClient::UDPClient(char* addr)
+UDPClient::UDPClient(const char* addr)
 {
     bzero(&servaddr, sizeof(servaddr));
     servaddr.sin_family = AF_INET;

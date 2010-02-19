@@ -23,6 +23,9 @@
 
 #include "clientaction.h"
 
+using std::ostream;
+using std::endl;
+
 ClientAction::ClientAction(BYTE* buffer, size_t buffSize)
 {
     memcpy(this, buffer, buffSize);
@@ -44,4 +47,13 @@ void ClientAction::serialize(BYTE** buffer, size_t& buffSize)
 
     tmp = mask_.getBitField() & 0x0F;
     (*buffer)[0] = (clientID_ << 4) | tmp;*/
+}
+void ClientAction::print(ostream& out)
+{
+    out << "Client ID:    " << clientID_ << endl;
+    out << "Firing:       " << isFiring() << endl;
+    out << "Left:         " << isTurningLeft() << endl;
+    out << "Right:        " << isTurningRight() << endl;
+    out << "Firing:       " << isFiring() << endl;
+    out << "Accelerating: " << isAccelerating() << endl;
 }

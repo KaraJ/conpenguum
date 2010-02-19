@@ -11,7 +11,7 @@
 class UDPClient
 {
 public:
-	UDPClient(char* addr);
+	UDPClient(const char* addr);
 	~UDPClient();
 	void recvMessage(void * buff);
 	void sendMessage(const void* data, size_t dataLen);
