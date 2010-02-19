@@ -5,6 +5,12 @@
 
 int main()
 {
+	//*******************
+	//Testing the UDP Server
+	UDPServer serv;
+	serv.EchoMessage();
+	//
+	//******************
     BYTE* buffer = 0;
     size_t numBytes;
 

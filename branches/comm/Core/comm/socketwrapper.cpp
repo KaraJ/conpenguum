@@ -84,11 +84,11 @@ int SocketWrapper::Read(int fd, void *vptr, size_t n)
 	return nread;
 }
 
-ssize_t SocketWrapper::Recvfrom(int fd, void* buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t addrlen)
+ssize_t SocketWrapper::Recvfrom(int fd, void* buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t* addrlen)
 {
 	ssize_t retval;
 
-	if((retval = recvfrom(fd, (void*)buff, nbytes, flags, from, &addrlen)) < 0)
+	if((retval = recvfrom(fd, (void*)buff, nbytes, flags, from, addrlen)) < 0)
         Logger::LogNQuit("Recvfrom error");
 
 	return retval;

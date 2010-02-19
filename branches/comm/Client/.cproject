@@ -31,7 +31,6 @@
 <listOptionValue builtIn="false" value="/usr/include/qt4/QtGui"/>
 <listOptionValue builtIn="false" value="/usr/include/GL"/>
 <listOptionValue builtIn="false" value="/usr/include/qt4/QtOpenGL"/>
-<listOptionValue builtIn="false" value="/usr/include/qt4"/>
 </option>
 <option id="gnu.cpp.compiler.option.warnings.pedantic.864476317" name="Pedantic (-pedantic)" superClass="gnu.cpp.compiler.option.warnings.pedantic" value="true" valueType="boolean"/>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1757741624" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
@@ -45,12 +44,16 @@
 <tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.1012823904" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
 <option id="gnu.cpp.link.option.libs.966150348" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 <listOptionValue builtIn="false" value="pthread"/>
+<listOptionValue builtIn="false" value="Core"/>
 <listOptionValue builtIn="false" value="QtOpenGL"/>
 <listOptionValue builtIn="false" value="GLU"/>
 <listOptionValue builtIn="false" value="GL"/>
 <listOptionValue builtIn="false" value="SDL"/>
 <listOptionValue builtIn="false" value="QtCore"/>
 <listOptionValue builtIn="false" value="QtGui"/>
+</option>
+<option id="gnu.cpp.link.option.paths.536440355" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Core/Debug}&quot;"/>
 </option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1915611967" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -68,7 +71,9 @@
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
+<buildTargets/>
+</storageModule>
 <storageModule moduleId="scannerConfiguration">
 <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 <profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
@@ -530,7 +535,9 @@
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
+<buildTargets/>
+</storageModule>
 <storageModule moduleId="scannerConfiguration">
 <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 <profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
