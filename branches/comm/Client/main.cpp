@@ -13,11 +13,11 @@ int main(int argc, char* argv[])
     //************
     //testing the server
     struct sockaddr_in serv;
-    char * data = "hello world";
+    char* data = "hello world";
     char out[1024];
 
     UDPClient cli(argv[1]);
-    cli.sendMessage(data, sizeof(data) +1);
+    cli.sendMessage(data, strlen(data));
     cli.recvMessage((void *)out);
     cout << out << endl;
     //end test code
