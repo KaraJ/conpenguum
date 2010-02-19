@@ -33,6 +33,7 @@
 #include "comm/data/updateobject.h"
 #include "comm/data/clientaction.h"
 #include "comm/data/servermessage.h"
+#include "udpClient.h"
 
 class CommClient
 {
@@ -58,11 +59,12 @@ private:
     CommClient& operator=(const CommClient& cc);
     ~CommClient();
 
+    UDPClient *udpClient_;
     std::queue<UpdateObject> updates_;
     std::queue<ServerMessage> chatMsgs_;
     std::queue<ServerMessage> serverMsgs_;
     bool isConnected_;
-    TCPClient* tcpClient;
+    TCPClient* tcpClient_;
 };
 
 #endif
