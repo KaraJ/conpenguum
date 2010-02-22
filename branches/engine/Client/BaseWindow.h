@@ -14,7 +14,8 @@
  --
  --		[Constructor] BaseWindow (void)
  --		void keyPressEvent (QKeyEvent * event)
- --		void update ()
+ --		void timerEvent ()
+ --		virtual void render ()
  --
  -- DESIGNER: Erick Ribeiro
  --
@@ -32,6 +33,11 @@
  --		Feb 18, 2010 - Erick Ribeiro
  --		Added the Q_OBJECT macro so we can define our own signals and slots,
  --		such as the timerEvent() slot.
+ --
+ --		Feb 22, 2010 - Erick Ribeiro
+ --		Added the virtual method render(), which should be implemented by
+ --		any subclasses. We use a timer mechanism to automatically call render()
+ --		during every frame.
  --
  -- NOTES:
  -- This class extends the QTMainWindow class, adding keyboard input handling
@@ -54,12 +60,13 @@ class BaseWindow : public QMainWindow
 
     public:
         BaseWindow();
-
-    private:
-        void keyPressEvent (QKeyEvent * event);
+		virtual void render();
 
 	public slots:
         void timerEvent();
+
+	private:
+		void keyPressEvent (QKeyEvent * event);
 };
 
 #endif // BASEWINDOW_H
