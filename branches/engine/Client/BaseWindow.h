@@ -6,6 +6,9 @@
 #include <QKeyEvent>
 #include <QTimer>
 
+// Default frame rate is 60 frames/second.
+#define DEFAULT_FRAME_RATE 60
+
 /*------------------------------------------------------------------------------
  --
  -- CLASS: BaseWindow
@@ -15,6 +18,9 @@
  --		[Constructor] BaseWindow (void)
  --		void keyPressEvent (QKeyEvent * event)
  --		void timerEvent ()
+ --		void startRendering()
+ --		void stopRendering()
+ --		void setFrameRate(int rate)
  --		virtual void render ()
  --
  -- DESIGNER: Erick Ribeiro
@@ -22,9 +28,6 @@
  -- PROGRAMMER: Engine Team
  --
  -- REVISIONS:	(Date, Description, Author)
- --
- --		Feb 11, 2010 - Erick Ribeiro
- --		Updated the class interface
  --
  --		Feb 18, 2010 - Erick Ribeiro
  --		Renamed method update() to timerEvent() because QWidget (super class)
@@ -37,14 +40,18 @@
  --		Feb 22, 2010 - Erick Ribeiro
  --		Added the virtual method render(), which should be implemented by
  --		any subclasses. We use a timer mechanism to automatically call render()
- --		during every frame.
+ --		for every frame.
+ --
+ --		Feb 22, 2010 - Erick Ribeiro
+ --		Added methods startRendering(), stopRendering() and setFrameRate() to
+ --		offer more control over when and how often render() should be called.
  --
  -- NOTES:
  -- This class extends the QTMainWindow class, adding keyboard input handling
- -- and timing logic.
+ -- and frame rate logic.
  --
- -- The Graphics Team should extend this class and override the render() method,
- -- which gets called every frame, in order to implement the drawing logic.
+ -- The Graphics Team should extend this class, override the render() method and
+ -- call startRendering() so that render() will be called for every frame.
  --
  -----------------------------------------------------------------------------*/
 
@@ -56,17 +63,21 @@ class BaseWindow : public QMainWindow
 	Q_OBJECT
 
     private:
-        QTimer timer;
+	QTimer timer;
+	int frameRate;
 
     public:
-        BaseWindow();
-		virtual void render();
+	BaseWindow ();
+	void startRendering ();
+	void stopRendering ();
+	void setFrameRate (int rate);
+	virtual void render ();
 
 	public slots:
-        void timerEvent();
+	void timerEvent();
 
 	private:
-		void keyPressEvent (QKeyEvent * event);
+	void keyPressEvent (QKeyEvent * event);
 };
 
 #endif // BASEWINDOW_H
