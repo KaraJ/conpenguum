@@ -1,4 +1,6 @@
 #include "BaseWindow.h"
+#include "renderer.h"
+#include "commclient.h"
 
 /*------------------------------------------------------------------------------
  --
@@ -7,7 +9,7 @@
  -- DESIGNER: Erick Ribeiro
  --
  -- PROGRAMMER: Erick Ribeiro
- --
+ -- Updated: John Kuo (Feb)
  -- REVISIONS:
  --
  --		Feb 18, 2010 - Erick Ribeiro
@@ -33,5 +35,7 @@ void BaseWindow::keyPressEvent (QKeyEvent * event)
 
 void BaseWindow::timerEvent()
 {
+	Renderer render(this);
+	render.Render();
 	// @todo Call render().
 }
