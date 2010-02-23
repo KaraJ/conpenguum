@@ -5,4 +5,5 @@ SOURCES += Animation/Loader.cpp \
 HEADERS += Animation/Loader.h \
     Animation/Image.h \
     Animation/Animation.h \
-    Renderer/renderer.h
+    Renderer/renderer.h \
+    Renderer/rendererDefines.h
