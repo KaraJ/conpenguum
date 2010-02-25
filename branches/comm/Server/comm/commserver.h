@@ -29,6 +29,8 @@
 #include "TCPServer.h"
 #include "udpServer.h"
 
+class UDPServer;
+
 class CommServer
 {
 public:
@@ -36,22 +38,24 @@ public:
 
     void init();
     bool hasNextClientAction();
-    std::string nextClientAction();
+    ClientAction nextClientAction();
     bool hasNextServerMessage();
     ServerMessage nextServerMessage();
     void sendUpdate(const UpdateObject update, const int* clientIDs, int numClients);
     void sendServerMsg(const std::string msg, const int* clientIDs, int numClients);
 
 private:
-    CommServer() {}
+    CommServer();
     CommServer(const CommServer& cpy);
     CommServer& operator=(const CommServer& cc);
     ~CommServer();
+    static void* readThreadFunc(void* args);
 
     std::queue<ClientAction> actions_;
     std::queue<ServerMessage> serverMsgs_;
-    TCPServer *tcpServer_;
-    UDPServer udpServer_;
+    TCPServer* tcpServer_;
+    UDPServer* udpServer_;
+    pthread_t readThread_;
 };
 
 #endif

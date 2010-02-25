@@ -4,35 +4,26 @@
 #include "comm/data/updateobject.h"
 
 void SerializeTest();
-void UDPServerTest();
 
 int main()
 {
-    //UDPServerTest();
-	SerializeTest();
+    SerializeTest();
     return 0;
-}
-
-void UDPServerTest()
-{
-    UDPServer serv;
-    serv.EchoMessage();
 }
 
 void SerializeTest()
 {
     BYTE* buffer = 0;
-        size_t numBytes;
 
-        ClientAction a(31);
+    ClientAction a(31);
     a.setTurningLeft();
     a.setAccelerating();
     a.setFiring();
     a.setTurningRight();
 
-    a.serialize(&buffer, numBytes);
+    a.serialize(&buffer);
 
-    ClientAction b(buffer, numBytes);
+    ClientAction b(buffer);
     delete buffer;
 
     buffer = 0;
@@ -44,8 +35,8 @@ void SerializeTest()
     u.getActions().setAccelerating();
     u.getActions().setTurningRight();
 
-    u.serialize(&buffer, numBytes);
+    u.serialize(&buffer);
 
-    UpdateObject w(buffer, numBytes);
+    UpdateObject w(buffer);
     delete buffer;
 }

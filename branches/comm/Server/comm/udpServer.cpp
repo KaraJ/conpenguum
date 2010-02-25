@@ -42,6 +42,7 @@ UDPServer::UDPServer()
 
     SocketWrapper::Bind(this->sockfd_, (struct sockaddr *)&servaddr, sizeof(sockaddr_in));
 }
+
 /*----------------------------------------------------------------------------------------------------------
 -- FUNCTION: sendMessage
 --
@@ -62,26 +63,22 @@ void UDPServer::sendMessage(struct sockaddr* to, const void* data, size_t dataLe
 }
 
 /*----------------------------------------------------------------------------------------------------------
--- FUNCTION: EchoMessage
+-- FUNCTION: recvMessage
 --
--- DATE: 2010-02-18
+-- DATE: 2010-02-25
 --
 -- INTERFACE:
+--      BYTE** buffer:      Should be null when passed in. Will be filled with the incoming data.
+--      size_t* bufSize:    The amount of data in buffer.
 --
 -- RETURN: void
 --
--- NOTES: Used for testing to read a message and send it back to the client.
+-- NOTES:
 ----------------------------------------------------------------------------------------------------------*/
-void UDPServer::EchoMessage()
+ssize_t UDPServer::recvMessage(BYTE** buffer)
 {
-	size_t n;
-	struct sockaddr_in cliaddr;
-	socklen_t len = sizeof(sockaddr_in);
-	BYTE *message = (BYTE*)malloc(sizeof(BYTE) * 1024);
-	UpdateObject update(0, 0);
-	update.setRotation(5);
-
-	n = SocketWrapper::Recvfrom(this->sockfd_, message, 1024, 0, (struct sockaddr*)&cliaddr, &len);
-	update.serialize(&message, n);
-	SocketWrapper::Sendto(this->sockfd_, message, n, 0, (struct sockaddr*)&cliaddr, len);
+    sockaddr_in from;
+    socklen_t socklen;
+    (*buffer) = (BYTE*)malloc(UDP_MAXMSG * sizeof(BYTE));
+    return SocketWrapper::Recvfrom(this->sockfd_, *buffer, UDP_MAXMSG, NULL, (sockaddr*)&from, &socklen);
 }

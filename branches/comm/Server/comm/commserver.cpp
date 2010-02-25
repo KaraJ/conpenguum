@@ -35,6 +35,18 @@ void CommServer::init()
 	tcpServer_->Init(buff);
 }
 
+CommServer::CommServer()
+{
+    udpServer_ = new UDPServer();
+    pthread_create(&readThread_, NULL, CommServer::readThreadFunc, NULL);
+}
+
+CommServer::~CommServer()
+{
+    delete tcpServer_;
+    delete udpServer_;
+}
+
 /*----------------------------------------------------------------------------------------------------------
  -- FUNCTION: sendUpdate
  --
@@ -72,11 +84,11 @@ bool CommServer::hasNextClientAction()
     return !actions_.empty();
 }
 
-std::string CommServer::nextClientAction()
+ClientAction CommServer::nextClientAction()
 {
     ClientAction action = actions_.front();
     actions_.pop();
-    return "";
+    return action;
 }
 
 bool CommServer::hasNextServerMessage()
@@ -89,4 +101,17 @@ ServerMessage CommServer::nextServerMessage()
     ServerMessage serverMsg = serverMsgs_.front();
     serverMsgs_.pop();
     return serverMsg;
+}
+
+void* CommServer::readThreadFunc(void* args)
+{
+    BYTE* buffer;
+    ssize_t size = CommServer::Instance()->udpServer_->recvMessage(&buffer);
+    //if (size == ClientAction::serializeSize && CRC::CheckCRC(buffer, ClientAction::serializeSize))
+    {
+        ClientAction action(buffer);
+        CommServer::Instance()->actions_.push(action);
+    }
+    //else
+        //Logger::LogNContinue("Bad CRC received");
 }
