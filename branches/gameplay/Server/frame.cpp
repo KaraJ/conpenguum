@@ -18,7 +18,9 @@ using namespace std;
 --
 --  DATE:       January 27, 2010
 --
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+--  REVISIONS:  v0.2 - Calls updateShots and udateShips before incrementing the
+--                     frame counter.
+--              v0.1 - pinch of  code, mostly comments.
 --
 --  DESIGNER:   Gameplay/Physics Team
 --
@@ -90,7 +92,8 @@ void Frame::spawnShot(Shot newShot){
 --
 --  DATE:       January 27, 2010
 --
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+--  REVISIONS:  v0.2 - Untested collision.
+--              v0.1 - pinch of  code, mostly comments.
 --
 --  DESIGNER:   Gameplay/Physics Team
 --
@@ -106,7 +109,33 @@ void Frame::spawnShot(Shot newShot){
 void Frame::updateShips(void){
     list<Ship>::iterator it;
     for(it = listShip.begin(); it != listShip.end(); ++it){
-        (*it).position += (*it).vector;
+        // move the ship in the x axis
+        (*it).position.setX((*it).vector.x());
+        // if moving into a new tile
+        if(map.tile((*it).position).isWall()){
+            if((*it).vector.x() > 0){
+                (*it).position.setX((*it).position.x() - (((*it).position.x()
+                    + (*it).vector.x()) % TILE_SIZE));
+            }
+            else{
+                (*it).position.setX((*it).position.x() + (((*it).position.x()
+                    + (*it).vector.x()) % TILE_SIZE));
+            }
+        }
+        // move the ship in the y axis
+        (*it).position.setY((*it).vector.y());
+        // if moving into a new tile
+        if(map.tile((*it).position).isWall()){
+            if((*it).vector.y() > 0){
+                (*it).position.setY((*it).position.y() - (((*it).position.y()
+                    + (*it).vector.y()) % TILE_SIZE));
+            }
+            else{
+                (*it).position.setX((*it).position.x() + (((*it).position.x()
+                    + (*it).vector.x()) % TILE_SIZE));
+            }
+        }
+        (*it).executeActionMask();
     }
 }
 

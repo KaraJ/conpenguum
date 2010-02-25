@@ -24,12 +24,16 @@ class Ship : public NewtObject
 private:
 public:
     int rotation;
+    /*
+    bit mask for the player actions
+    */
 private:
 public:
     Ship(): rotation(0) {} // FOR TESTING ONLY
     Ship(int pX, int pY, int vX, int vY, int ID):
         NewtObject(pX, pY, vX, vY, ID){}
     int getRot(){ return rotation; }
+    void executeActionMask(); // updates the ship based on the current action mask
 };
 
 #endif // SHIP_H
