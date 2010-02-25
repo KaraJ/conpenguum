@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <pthread.h>
+#include <queue>
 
 //User Includes
 #include "comm/globals.h"
@@ -20,6 +21,7 @@ public:
     TCPClient();
     ~TCPClient();
     bool Connect(const std::string& ip);
+    void StartRdThread(std::queue<ServerMessage> *msgBuff) { msgBuff_ = msgBuff; }
     ServerMessage Login(std::string playerName);
     bool IsConnected();
     bool Logout();
@@ -27,6 +29,7 @@ public:
 private:
     bool connected;
     int  tcpSocket;
+    std::queue<ServerMessage> *msgBuff_;
 };
 
 #endif // TCPCLIENT_H
