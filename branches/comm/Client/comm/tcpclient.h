@@ -8,6 +8,7 @@
 #include <sys/socket.h>
 #include <pthread.h>
 #include <queue>
+#include <semaphore.h>
 
 //User Includes
 #include "comm/globals.h"
@@ -19,7 +20,7 @@ class TCPClient
 {
 public:
     bool Connect(const std::string& ip);
-    void StartRdThread(std::queue<ServerMessage> *msgBuff, );
+    void StartRdThread(std::queue<ServerMessage> *msgBuff, sem_t *semSM);
     ServerMessage Login(std::string playerName);
     bool IsConnected();
     void Logout();

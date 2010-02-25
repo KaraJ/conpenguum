@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void TCPClient::StartRdThread(std::queue<ServerMessage> *msgBuff)
+void TCPClient::StartRdThread(std::queue<ServerMessage> *msgBuff, sem_t *semSM)
 {
 	msgBuff_ = msgBuff;
 }

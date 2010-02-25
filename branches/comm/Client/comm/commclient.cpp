@@ -52,7 +52,7 @@ int CommClient::connect(const string name, const string address)
         tcpClient_ = new TCPClient();
         if (!tcpClient_->Connect(address))
         	return -1;
-        tcpClient_->StartRdThread(&serverMsgs_);
+        tcpClient_->StartRdThread(&serverMsgs_, &semSM_);
         udpClient_ = new UDPClient(address.c_str());
         isConnected_ = true;
     }
