@@ -38,7 +38,7 @@
 #include <iostream>
 
 //TODO: Make an enum for type
-//TODO: add declerating? (ask game-play team)
+//TODO: add decelerating? (ask game-play team)
 
 enum ActionFlags
 {
@@ -54,19 +54,23 @@ class ClientAction
 {
 public:
     ClientAction() {}
-    ClientAction(int clientID) : clientID_(clientID) {}
+    ClientAction(int clientID) : clientID_(clientID)
+    {
+        if (clientID > 31)
+            throw "ClientID must be between 0 and 31 (inclusive)";
+    }
     ClientAction(BYTE* buffer, size_t buffSize);
 
-    inline void clear() { ClientAction::mask_.Clear((ActionFlags)(AC_ACCELERATING | AC_FIREING | AC_TURNLEFT | AC_TURNRIGHT)); }
-    inline void setFiring() { ClientAction::mask_.Set(AC_FIREING); }
-    inline void setTurningLeft() { ClientAction::mask_.Set(AC_TURNLEFT); }
-    inline void setTurningRight()  { ClientAction::mask_.Set(AC_TURNRIGHT); }
-    inline void setAccelerating()  { ClientAction::mask_.Set(AC_ACCELERATING); }
+    inline void clear() { mask_.Clear((ActionFlags)(AC_ACCELERATING | AC_FIREING | AC_TURNLEFT | AC_TURNRIGHT)); }
+    inline void setFiring() { mask_.Set(AC_FIREING); }
+    inline void setTurningLeft() { mask_.Set(AC_TURNLEFT); }
+    inline void setTurningRight()  { mask_.Set(AC_TURNRIGHT); }
+    inline void setAccelerating()  { mask_.Set(AC_ACCELERATING); }
 
-    inline bool isFiring() { return ClientAction::mask_.Test(AC_FIREING); }
-    inline bool isTurningRight() { return ClientAction::mask_.Test(AC_FIREING); }
-    inline bool isTurningLeft() { return ClientAction::mask_.Test(AC_FIREING); }
-    inline bool isAccelerating() { return ClientAction::mask_.Test(AC_FIREING); }
+    inline bool isFiring() { return mask_.Test(AC_FIREING); }
+    inline bool isTurningLeft() { return mask_.Test(AC_TURNLEFT); }
+    inline bool isTurningRight() { return mask_.Test(AC_TURNRIGHT); }
+    inline bool isAccelerating() { return mask_.Test(AC_ACCELERATING); }
     inline int getClientID() { return clientID_; }
     void serialize(BYTE** buffer, size_t& buffSize);
     void print(std::ostream& out = std::cout);

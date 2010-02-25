@@ -3,19 +3,32 @@
 #include "comm/data/clientaction.h"
 #include "comm/data/updateobject.h"
 
+void SerializeTest();
+void UDPServerTest();
+
 int main()
 {
-	//*******************
-	//Testing the UDP Server
-	UDPServer serv;
-	serv.EchoMessage();
-	//
-	//******************
-    BYTE* buffer = 0;
-    size_t numBytes;
+    //UDPServerTest();
+	SerializeTest();
+    return 0;
+}
 
-    ClientAction a(0);
+void UDPServerTest()
+{
+    UDPServer serv;
+    serv.EchoMessage();
+}
+
+void SerializeTest()
+{
+    BYTE* buffer = 0;
+        size_t numBytes;
+
+        ClientAction a(31);
     a.setTurningLeft();
+    a.setAccelerating();
+    a.setFiring();
+    a.setTurningRight();
 
     a.serialize(&buffer, numBytes);
 
@@ -24,15 +37,15 @@ int main()
 
     buffer = 0;
 
-    UpdateObject u(20);
-    u.setPosition(QPoint(2, 2));
-    u.setRotation(2);
-    u.getActions().setFiring();
+    UpdateObject u(4);
+    u.setPosition(QPoint(2345, 1432));
+    u.setRotation(23);
+    u.getActions().setTurningLeft();
+    u.getActions().setAccelerating();
+    u.getActions().setTurningRight();
 
     u.serialize(&buffer, numBytes);
 
     UpdateObject w(buffer, numBytes);
     delete buffer;
-
-    return 0;
 }

@@ -7,8 +7,6 @@
 #include <QPoint>
 #include <iostream>
 
-#define BYTE unsigned char //TODO: Move to shared space (also declared in message.h and clientaction.h)
-
 class UpdateObject
 {
 public:
@@ -17,7 +15,7 @@ public:
 
     inline int getRotation() const { return rotation_; }
     inline QPoint getPos() const { return pos_; }
-    inline ClientAction getActions() { return actions_; }
+    inline ClientAction& getActions() { return actions_; }
 
     inline void setRotation(int rot) { rotation_ = rot; }
     inline void setPosition(const QPoint& p) { pos_ = p; }
