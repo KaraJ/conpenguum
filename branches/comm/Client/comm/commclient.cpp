@@ -55,6 +55,10 @@ int CommClient::connect(const string name, const string address)
     }
     return -1;
 }
+void CommClient::addUpdate(UpdateObject update)
+{
+	updates_.push(update);
+}
 UpdateObject CommClient::nextUpdate()
 {
     UpdateObject update = updates_.front();

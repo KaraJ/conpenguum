@@ -81,7 +81,12 @@ ssize_t SocketWrapper::Recvfrom(int fd, void* buff, size_t nbytes, int flags, st
 	ssize_t retval;
 
 	if((retval = recvfrom(fd, (void*)buff, nbytes, flags, from, addrlen)) < 0)
-        Logger::LogNQuit("Recvfrom error");
+	{
+		if(errno == EBADF)
+			Logger::LogNContinue("Recvfrom Bad Descriptor");
+		else
+			Logger::LogNQuit("Recvfrom error");
+	}
 
 	return retval;
 }

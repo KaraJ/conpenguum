@@ -3,10 +3,13 @@
 
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include "../../Core/comm/socketwrapper.h"
-#include "../../Core/comm/globals.h"
+#include "comm/socketwrapper.h"
+#include "comm/globals.h"
+#include "comm/data/updateobject.h"
+#include "commclient.h"
 #include <strings.h>
 #include <arpa/inet.h>
+#include <pthread.h>
 
 class UDPClient
 {
@@ -18,6 +21,9 @@ public:
 private:
 	int sockfd_;
 	struct sockaddr_in servaddr;
+	pthread_t readThread;
 };
+void* ReadThread(void* args);
+
 
 #endif

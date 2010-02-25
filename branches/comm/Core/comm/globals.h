@@ -3,6 +3,7 @@
 
 #define BYTE unsigned char
 #define UDP_PORT 9000
+#define MAXUDP 100
 
 //TCP Definitions
 #define TCP_PORT "9001"

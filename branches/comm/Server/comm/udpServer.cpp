@@ -73,11 +73,14 @@ void UDPServer::sendMessage(struct sockaddr* to, const void* data, size_t dataLe
 ----------------------------------------------------------------------------------------------------------*/
 void UDPServer::EchoMessage()
 {
-	int n;
+	size_t n;
 	struct sockaddr_in cliaddr;
 	socklen_t len = sizeof(sockaddr_in);
-	char message[1024];
+	BYTE *message = (BYTE*)malloc(sizeof(BYTE) * 1024);
+	UpdateObject update(0, 0);
+	update.setRotation(5);
 
 	n = SocketWrapper::Recvfrom(this->sockfd_, message, 1024, 0, (struct sockaddr*)&cliaddr, &len);
+	update.serialize(&message, n);
 	SocketWrapper::Sendto(this->sockfd_, message, n, 0, (struct sockaddr*)&cliaddr, len);
 }

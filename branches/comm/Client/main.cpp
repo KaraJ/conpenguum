@@ -12,14 +12,19 @@ int main(int argc, char* argv[])
 
     //************
     //testing the server
-    struct sockaddr_in serv;
-    char* data = "hello world";
-    char out[1024];
+    ClientAction action;
+    action.setAccelerating();
+    action.setTurningLeft();
 
-    UDPClient cli(argv[1]);
-    cli.sendMessage(data, strlen(data));
-    cli.recvMessage((void *)out);
-    cout << out << endl;
+    CommClient * cli = CommClient::Instance();
+    cli->connect("kara", "127.0.0.1");
+    cli->sendAction(action);
+    cout << "waiting" << endl;
+    while(!cli->hasNextUpdate())
+    {}
+    	cout << "got object" << endl;
+    	cli->nextUpdate().print();
+
     //end test code
     //****************
 

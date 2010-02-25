@@ -6,6 +6,7 @@
 
 #include "comm/socketwrapper.h"
 #include "comm/globals.h"
+#include "comm/data/updateobject.h"
 
 class UDPServer
 {

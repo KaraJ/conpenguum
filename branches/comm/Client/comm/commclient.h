@@ -35,6 +35,8 @@
 #include "comm/data/servermessage.h"
 #include "udpClient.h"
 
+class UDPClient;
+
 class CommClient
 {
 public:
@@ -42,11 +44,12 @@ public:
 
     inline bool isConnected() { return isConnected_; }
     inline bool hasNextUpdate() { return !updates_.empty(); }
-    inline UpdateObject nextUpdate();
+    UpdateObject nextUpdate();
+    void addUpdate(UpdateObject update);
     inline bool hasNextChatMessage() { return !chatMsgs_.empty(); }
-    inline ServerMessage nextChatMessage();
+    ServerMessage nextChatMessage();
     inline bool hasNextServerMessage() { return !serverMsgs_.empty(); }
-    inline ServerMessage nextServerMessage();
+    ServerMessage nextServerMessage();
     int connect(const std::string playerName, const std::string address);
     void disconnect();
     void sendChat(const std::string msg, int id);
