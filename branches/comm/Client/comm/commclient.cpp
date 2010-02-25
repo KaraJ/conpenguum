@@ -156,11 +156,10 @@ bool CommClient::hasNextServerMessage()
 void CommClient::sendAction(ClientAction action)
 {
     BYTE* buffer = 0;
-    size_t buflen;
     if (isConnected_)
     {
-        action.serialize(&buffer, buflen);
-        udpClient_->sendMessage(buffer, buflen);
+        action.serialize(&buffer);
+        udpClient_->sendMessage(buffer, ClientAction::serializeSize);
     }
     else
     {
