@@ -23,6 +23,12 @@
 
 using namespace std;
 
+CommClient::CommClient()
+{
+	sem_init(&semSM_, 0, 1);
+	tcpClient_ = new TCPClient();
+}
+
 CommClient* CommClient::Instance()
 {
     static CommClient* instance_;
@@ -49,10 +55,10 @@ int CommClient::connect(const string name, const string address)
 {
     if (!isConnected_)
     {
-        tcpClient_ = new TCPClient();
         if (!tcpClient_->Connect(address))
         	return -1;
         serverMsgs_.push(tcpClient_->Login(name));
+        clientID_ = serverMsgs_.front().GetClientID();
         tcpClient_->StartRdThread(&serverMsgs_, &semSM_);
         servAddr.sin_family = AF_INET;
         servAddr.sin_port = htons(UDP_PORT);

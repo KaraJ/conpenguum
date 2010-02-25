@@ -56,7 +56,7 @@ public:
     void sendAction(const ClientAction action);
 
 private:
-    CommClient() { sem_init(&semSM_, 0, 1); }
+    CommClient();
     CommClient(const CommClient& cpy);
     CommClient& operator=(const CommClient& cc);
     ~CommClient();
@@ -67,6 +67,7 @@ private:
     std::queue<ServerMessage> serverMsgs_;
     sem_t semSM_;
     bool isConnected_;
+    size_t clientID_;
     TCPClient* tcpClient_;
 };
 

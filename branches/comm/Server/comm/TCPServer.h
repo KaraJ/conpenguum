@@ -3,6 +3,7 @@
 
 //System Includes
 #include <netinet/in.h>
+#include <sstream>
 
 //User Includes
 #include "comm/socketwrapper.h"
@@ -11,9 +12,10 @@
 class TCPServer
 {
 public:
-	void Init(std::string& ip);
-	TCPServer() { }
-	~TCPServer() { }
+	void Init(const std::string port);
+
+private:
+	int tcpSocket_;
 };
 
 #endif /* TCPSERVER_H_ */

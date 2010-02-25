@@ -19,6 +19,11 @@
 
 using namespace std;
 
+CommServer::CommServer()
+{
+	tcpServer_ = new TCPServer();
+}
+
 CommServer* CommServer::Instance()
 {
     static CommServer* instance_;
@@ -30,14 +35,12 @@ CommServer* CommServer::Instance()
 
 void CommServer::init()
 {
-	tcpServer_ = new TCPServer();
-	string buff = TCP_PORT;
-	tcpServer_->Init(buff);
+	tcpServer_->Init(TCP_PORT);
 }
 
 CommServer::CommServer()
 {
-    udpServer_ = new UDPConnection();
+    udpServer_ = new UDPServer();
     pthread_create(&readThread_, NULL, CommServer::readThreadFunc, NULL);
 }
 

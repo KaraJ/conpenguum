@@ -12,9 +12,9 @@ int SocketWrapper::Socket(int family, int type, int protocol)
     return (n);
 }
 
-void SocketWrapper::Bind(int fd, const struct sockaddr *sa, socklen_t salen)
+void SocketWrapper::Bind(int fd, const struct sockaddr_in *sa, socklen_t salen)
 {
-    if (bind(fd, sa, salen) < 0)
+    if (bind(fd, (sockaddr*)sa, salen) < 0)
         Logger::LogNQuit("Bind error.");
 }
 
@@ -42,20 +42,15 @@ bool SocketWrapper::Connect(int fd, const struct sockaddr_in *sa, socklen_t sale
 
 void SocketWrapper::Listen(int fd, int backlog)
 {
-    char *ptr;
-
-    /* can override 2nd argument with environment variable */
-    if ( (ptr = getenv("LISTENQ")) != NULL)
-        backlog = atoi(ptr);
-
     if (listen(fd, backlog) < 0)
         Logger::LogNQuit("Listen error.");
 }
 
-void SocketWrapper::Write(int sock, const void *buff, size_t n)
+void SocketWrapper::Write(int sock, const void *vptr, size_t n)
 {
     size_t nleft = n;
     ssize_t nwritten;
+    char* buff = (char*) vptr;
 
     while (nleft > 0)
     {
@@ -67,10 +62,11 @@ void SocketWrapper::Write(int sock, const void *buff, size_t n)
     }
 }
 
-void SocketWrapper::Read(int sock, void *buff, size_t size)
+void SocketWrapper::Read(int sock, void *vptr, size_t size)
 {
 	size_t  nleft = size;
 	ssize_t nread;
+	char* buff = (char*) vptr;
 
 	while (nleft > 0)
 	{

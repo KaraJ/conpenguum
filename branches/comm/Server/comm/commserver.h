@@ -27,9 +27,9 @@
 #include "comm/data/updateobject.h"
 #include "comm/data/servermessage.h"
 #include "TCPServer.h"
-#include "udpConnection.h"
+#include "udpServer.h"
 
-class UDPConnection;
+class UDPServer;
 
 class CommServer
 {
@@ -54,7 +54,7 @@ private:
     std::queue<ClientAction> actions_;
     std::queue<ServerMessage> serverMsgs_;
     TCPServer* tcpServer_;
-    UDPConnection* udpServer_;
+    UDPServer* udpServer_;
     pthread_t readThread_;
 };
 
