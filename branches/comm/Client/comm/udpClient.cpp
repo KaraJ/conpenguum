@@ -57,9 +57,13 @@ void* ReadThread(void* args)
 --
 -- NOTES: Error handling is done in Sendto
 ----------------------------------------------------------------------------------------------------------*/
-void UDPClient::sendMessage(const void* data, size_t dataLen)
+void UDPClient::sendMessage(const BYTE* data, size_t dataLen)
 {
-	SocketWrapper::Sendto(this->sockfd_, data, dataLen, 0, (struct sockaddr*)&servaddr, sizeof(struct sockaddr));
+	BYTE* buffer = (BYTE*)malloc(sizeof(BYTE) * (dataLen + 1));
+	memcpy(buffer, data, dataLen);
+	buffer[dataLen] = CRC::makeCRC(data, dataLen);
+	SocketWrapper::Sendto(this->sockfd_, buffer, dataLen+1, 0, (struct sockaddr*)&servaddr, sizeof(struct sockaddr));
+	free(buffer);
 }
 
 /*----------------------------------------------------------------------------------------------------------
@@ -74,7 +78,7 @@ void UDPClient::sendMessage(const void* data, size_t dataLen)
 --
 -- NOTES: Used for debugging, receiving will be in a separate thread later.
 ----------------------------------------------------------------------------------------------------------*/
-void UDPClient::recvMessage(void * buff)
+void UDPClient::recvMessage(BYTE * buff)
 {
 	int n;
 	n = SocketWrapper::Recvfrom(this->sockfd_, buff, 1024, 0, 0, 0);

@@ -7,6 +7,7 @@
 #include "comm/globals.h"
 #include "comm/data/updateobject.h"
 #include "commclient.h"
+#include "comm/data/crc.h"
 #include <strings.h>
 #include <arpa/inet.h>
 #include <pthread.h>
@@ -16,8 +17,8 @@ class UDPClient
 public:
 	UDPClient(const char* addr);
 	~UDPClient();
-	void recvMessage(void * buff);
-	void sendMessage(const void* data, size_t dataLen);
+	void recvMessage(BYTE* buff);
+	void sendMessage(const BYTE* data, size_t dataLen);
 private:
 	int sockfd_;
 	struct sockaddr_in servaddr;
