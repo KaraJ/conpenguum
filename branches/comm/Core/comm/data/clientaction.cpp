@@ -26,22 +26,18 @@
 using std::ostream;
 using std::endl;
 
-ClientAction::ClientAction(BYTE* buffer, size_t buffSize)
+ClientAction::ClientAction(BYTE* buffer)
 {
-    if (buffSize != 2)
-        throw "buffSize must equal 2!";
-
     clientID_ = buffer[0] >> 3;
     BYTE tmp = ((buffer[0] << 1) & 0x0F) | (buffer[1] >> 7);
     mask_.setBitField(tmp);
 }
 
-void ClientAction::serialize(BYTE** buffer, size_t& buffSize)
+void ClientAction::serialize(BYTE** buffer)
 {
     BYTE tmp;
-    buffSize = 2;
-    (*buffer) = new BYTE[buffSize];
-    memset((*buffer), 0, buffSize);
+    (*buffer) = new BYTE[serializeSize];
+    memset((*buffer), 0, serializeSize);
 
     tmp = mask_.getBitField() & 0x0F;
     (*buffer)[0] = clientID_ << 3;

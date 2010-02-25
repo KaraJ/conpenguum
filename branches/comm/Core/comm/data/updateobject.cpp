@@ -37,14 +37,11 @@
 using std::ostream;
 using std::endl;
 
-UpdateObject::UpdateObject(BYTE* buffer, size_t buffSize)
+UpdateObject::UpdateObject(BYTE* buffer)
 {
-    if (buffSize != 6)
-           throw "buffSize must equal 6!";
-
     int x = 0, y = 0;
 
-    actions_ = ClientAction(buffer, 2);
+    actions_ = ClientAction(buffer);
     rotation_ = (size_t)(buffer[1] & 0x7F);
     x = buffer[2] << 8;
     x |= buffer[3];
@@ -54,17 +51,15 @@ UpdateObject::UpdateObject(BYTE* buffer, size_t buffSize)
     pos_.setY(y);
 }
 
-void UpdateObject::serialize(BYTE** buffer, size_t& buffSize)
+void UpdateObject::serialize(BYTE** buffer)
 {
      BYTE tmp;
-     buffSize = 6;
-     (*buffer) = new BYTE[buffSize];
-     memset((*buffer), 0, buffSize);
+     (*buffer) = new BYTE[serializeSize];
+     memset((*buffer), 0, serializeSize);
 
      BYTE* pActionBytes = 0;
-     size_t numActionBytes;
-     actions_.serialize(&pActionBytes, numActionBytes);
-     memcpy((*buffer), pActionBytes, numActionBytes);
+     actions_.serialize(&pActionBytes);
+     memcpy((*buffer), pActionBytes, ClientAction::serializeSize);
 
      tmp = (BYTE)(rotation_ & 0x00007FFF);
      (*buffer)[1] |= tmp;

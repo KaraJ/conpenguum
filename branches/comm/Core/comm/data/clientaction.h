@@ -53,13 +53,15 @@ typedef Bitmask<unsigned, ActionFlags> ActionBitmask;
 class ClientAction
 {
 public:
+    static const int serializeSize = 2;
+
     ClientAction() {}
     ClientAction(int clientID) : clientID_(clientID)
     {
         if (clientID > 31)
             throw "ClientID must be between 0 and 31 (inclusive)";
     }
-    ClientAction(BYTE* buffer, size_t buffSize);
+    ClientAction(BYTE* buffer);
 
     inline void clear() { mask_.Clear((ActionFlags)(AC_ACCELERATING | AC_FIREING | AC_TURNLEFT | AC_TURNRIGHT)); }
     inline void setFiring() { mask_.Set(AC_FIREING); }
@@ -72,7 +74,7 @@ public:
     inline bool isTurningRight() { return mask_.Test(AC_TURNRIGHT); }
     inline bool isAccelerating() { return mask_.Test(AC_ACCELERATING); }
     inline int getClientID() { return clientID_; }
-    void serialize(BYTE** buffer, size_t& buffSize);
+    void serialize(BYTE** buffer);
     void print(std::ostream& out = std::cout);
 private:
     ActionBitmask mask_;
