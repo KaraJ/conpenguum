@@ -1,6 +1,16 @@
 #include <iostream> // only used for testing
 #include "frame.h"
 #include "newtObjects.h"
+#include "map.h"
+#include "physics.h"
+
+#define VELOCITY_THRUST 1   // the velocity of a new thrust vector.
+#define VELOCITY_SHOT   3   // the velocity of a shot.
+#define VELOCITY_MAX    2   // the max velocity of a ship.
+#define ROTATION_RATE   2   // how many degrees a ship rotates in a frame.
+#define SHIPRADIUS      25  // the radius of a ships "tile".
+#define SHIP_HIT_DIST   625 // 25^2, the distance at which ships are hit.
+#define TILE_SIZE       25  // the size of a side of a tile.
 using namespace std;
 
 /*-----------------------------------------------------------------------------
@@ -21,9 +31,10 @@ using namespace std;
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void frame::tick(void){
+void Frame::tick(void){
     updateShots();
     updateShips();
+    ++frameTimer;
 }
 
 /*-----------------------------------------------------------------------------
@@ -44,7 +55,7 @@ void frame::tick(void){
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void frame::addShip(Ship newShip){
+void Frame::addShip(Ship newShip){
     // adds a ship to the ship list
     listShip.push_back(newShip);
 }
@@ -63,11 +74,13 @@ void frame::addShip(Ship newShip){
 --  INTERFACE:  spawnShot(shot newShot)
 --
 --  NOTES:      Adds a shot to the shot list. Useful for when players shoot.
+--              TASK: spawnShot should take the ship firing and spawn a shot
+--                    according to the ships data, like rotation and type.
 --
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void frame::spawnShot(Shot newShot){
+void Frame::spawnShot(Shot newShot){
     // adds a shot to the shot list
     listShot.push_back(newShot);
 }
@@ -90,7 +103,7 @@ void frame::spawnShot(Shot newShot){
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void frame::updateShips(void){
+void Frame::updateShips(void){
     list<Ship>::iterator it;
     for(it = listShip.begin(); it != listShip.end(); ++it){
         (*it).position += (*it).vector;
@@ -110,15 +123,30 @@ void frame::updateShips(void){
 --
 --  INTERFACE:  updateShots(void)
 --
---  NOTES:      Updates all shots positions using their vectors.
+--  NOTES:      Updates all shots positions using their vectors. This is done in
+--              frame because it has access to the Map and the Shot which both
+--              need to be updated.
 --
---  RETURNS:
+--  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void frame::updateShots(void){
+void Frame::updateShots(void){
     list<Shot>::iterator it;
     for(it = listShot.begin(); it != listShot.end(); ++it){
         (*it).position += (*it).vector;
+        if(map.tile((*it).position).isWall()){
+            listShot.erase(it);
+        }
+        // checking collision with every ship. TASK!
+        list<Ship>::iterator ships;
+        for(ships = listShip.begin(); ships != listShip.end(); ++ships){
+            if(dist2Points((*it).position, (*ships).position) < SHIP_HIT_DIST){
+                // destroy shot
+                listShot.erase(it);
+                // destroy ship
+                listShip.erase(ships);
+            }
+        }
     }
 }
 
@@ -142,10 +170,109 @@ void frame::updateShots(void){
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void frame::printShips(void){
+void Frame::printShips(void){
     list<Ship>::iterator it;
     for(it = listShip.begin(); it != listShip.end(); ++it){
         cout << (*it).id << ": " << (*it).position.x()
             << ',' <<  (*it).position.y() << endl;
     }
+}
+
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   updateShips
+--
+--  DATE:       February 17, 2010
+--
+--  REVISIONS:  v0.1 - For testing only
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  updateShips(bool thrustF,bool thrustR, bool rotL,
+--                  bool rotR, bool fire)
+--
+--  NOTES:      Updates all ships positions using their vectors. Than moves all
+--              ships using the same user input data.
+--
+--  RETURNS:    void
+--
+------------------------------------------------------------------------------*/
+void Frame::updateShips(bool thrustF,bool thrustR,
+        bool rotL, bool rotR, bool fire){
+    list<Ship>::iterator it;
+    for(it = listShip.begin(); it != listShip.end(); ++it){
+        // move the ship in the x axis
+        (*it).position.setX((*it).vector.x());
+        // if moving into a new tile
+        if(map.tile((*it).position).isWall()){
+            if((*it).vector.x() > 0){
+                (*it).position.setX((*it).position.x() - (((*it).position.x()
+                    + (*it).vector.x()) % TILE_SIZE));
+            }
+            else{
+                (*it).position.setX((*it).position.x() + (((*it).position.x()
+                    + (*it).vector.x()) % TILE_SIZE));
+            }
+        }
+        // move the ship in the y axis
+        (*it).position.setY((*it).vector.y());
+        // if moving into a new tile
+        if(map.tile((*it).position).isWall()){
+            if((*it).vector.y() > 0){
+                (*it).position.setY((*it).position.y() - (((*it).position.y()
+                    + (*it).vector.y()) % TILE_SIZE));
+            }
+            else{
+                (*it).position.setX((*it).position.x() + (((*it).position.x()
+                    + (*it).vector.x()) % TILE_SIZE));
+            }
+        }
+        if(thrustF){
+            // thrust forward
+            (*it).vector += rotVelToVec((*it).rotation, VELOCITY_THRUST);
+        }
+        if(thrustR){
+            // thrust reverse
+            (*it).vector += rotVelToVec((*it).rotation, VELOCITY_THRUST);
+        }
+        if(rotL){
+            (*it).rotation -= ROTATION_RATE;
+        }
+        if(rotR){
+            (*it).rotation += ROTATION_RATE;
+        }
+        if(fire){
+            QPoint spawnVec, shotVec;
+            spawnVec = rotVelToVec((*it).rotation, SHIPRADIUS);
+            shotVec =  rotVelToVec((*it).rotation, VELOCITY_SHOT);
+            Shot shot((*it).position.x() + spawnVec.x(), (*it).position.y()
+                + spawnVec.y(), shotVec.x(), shotVec.y(), (*it).id);
+            spawnShot(shot);
+        }
+    }     
+}
+
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   dist2Points
+--
+--  DATE:       February 19, 2010
+--
+--  REVISIONS:  v0.1 - For testing only
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  dist2Points(QPoint point1, QPoint point2)
+--
+--  NOTES:      Given two points, returns the squared distance between them. For
+--              testing only.
+--
+--  RETURNS:    Int value of the distance
+--
+------------------------------------------------------------------------------*/
+int Frame::dist2Points(QPoint point1, QPoint point2){
+    return (point1.x()-point2.x())*(point1.x()-point2.x()) +
+            (point1.y()-point2.y())*(point1.y()-point2.y());
 }
