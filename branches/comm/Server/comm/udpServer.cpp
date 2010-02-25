@@ -60,6 +60,7 @@ void UDPServer::sendMessage(struct sockaddr* to, const void* data, size_t dataLe
 {
 	SocketWrapper::Sendto(this->sockfd_, data, dataLen, 0, to, sizeof(struct sockaddr));
 }
+
 /*----------------------------------------------------------------------------------------------------------
 -- FUNCTION: EchoMessage
 --
