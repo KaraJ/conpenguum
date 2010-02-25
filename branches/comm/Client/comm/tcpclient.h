@@ -18,13 +18,11 @@
 class TCPClient
 {
 public:
-    TCPClient();
-    ~TCPClient();
     bool Connect(const std::string& ip);
-    void StartRdThread(std::queue<ServerMessage> *msgBuff) { msgBuff_ = msgBuff; }
+    void StartRdThread(std::queue<ServerMessage> *msgBuff, );
     ServerMessage Login(std::string playerName);
     bool IsConnected();
-    bool Logout();
+    void Logout();
 
 private:
     bool connected;

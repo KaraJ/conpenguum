@@ -2,7 +2,10 @@
 
 using namespace std;
 
-TCPClient::TCPClient() { }
+void TCPClient::StartRdThread(std::queue<ServerMessage> *msgBuff)
+{
+	msgBuff_ = msgBuff;
+}
 
 bool TCPClient::Connect(const string& ip)
 {
@@ -57,7 +60,7 @@ ServerMessage TCPClient::Login(string playerName)
 	return msgBuff;
 }
 
-TCPClient::~TCPClient()
+void TCPClient::Logout()
 {
 	shutdown(tcpSocket, SHUT_RDWR);
 	close(tcpSocket);

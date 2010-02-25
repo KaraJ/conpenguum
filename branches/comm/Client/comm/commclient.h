@@ -27,6 +27,7 @@
 //System Includes
 #include <string>
 #include <queue>
+#include <semaphore.h>
 
 //User Includes
 #include "tcpclient.h"
@@ -46,9 +47,7 @@ public:
     inline bool hasNextUpdate() { return !updates_.empty(); }
     UpdateObject nextUpdate();
     void addUpdate(UpdateObject update);
-    inline bool hasNextChatMessage() { return !chatMsgs_.empty(); }
-    ServerMessage nextChatMessage();
-    inline bool hasNextServerMessage() { return !serverMsgs_.empty(); }
+    inline bool hasNextServerMessage();
     ServerMessage nextServerMessage();
     int connect(const std::string playerName, const std::string address);
     void disconnect();
@@ -57,15 +56,15 @@ public:
     void sendAction(const ClientAction action);
 
 private:
-    CommClient() {}
+    CommClient() { sem_init(&semSM_, 0, 1); }
     CommClient(const CommClient& cpy);
     CommClient& operator=(const CommClient& cc);
     ~CommClient();
 
     UDPClient *udpClient_;
     std::queue<UpdateObject> updates_;
-    std::queue<ServerMessage> chatMsgs_;
     std::queue<ServerMessage> serverMsgs_;
+    sem_t semSM_;
     bool isConnected_;
     TCPClient* tcpClient_;
 };

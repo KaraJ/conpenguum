@@ -50,12 +50,13 @@ int CommClient::connect(const string name, const string address)
     if (!isConnected_)
     {
         tcpClient_ = new TCPClient();
-        if (tcpClient_->Connect(address))
-        	tcpClient_->StartRdThread(&serverMsgs_);
+        if (!tcpClient_->Connect(address))
+        	return -1;
+        tcpClient_->StartRdThread(&serverMsgs_);
         udpClient_ = new UDPClient(address.c_str());
         isConnected_ = true;
     }
-    return -1;
+    return 0;
 }
 
 void CommClient::addUpdate(UpdateObject update)
@@ -68,13 +69,6 @@ UpdateObject CommClient::nextUpdate()
     UpdateObject update = updates_.front();
     updates_.pop();
     return update;
-}
-
-ServerMessage CommClient::nextChatMessage()
-{
-    ServerMessage chatMsg = chatMsgs_.front();
-    chatMsgs_.pop();
-    return chatMsg;
 }
 
 ServerMessage CommClient::nextServerMessage()
@@ -144,6 +138,14 @@ void CommClient::sendServerMsg(const string msg)
     }
 }
 
+bool CommClient::hasNextServerMessage()
+{
+	bool result;
+	sem_wait(&semSM_);
+	result = !serverMsgs_.empty();
+	sem_post(&semSM_);
+	return result;
+}
 /*----------------------------------------------------------------------------------------------------------
  -- FUNCTION: sendAction
  --
