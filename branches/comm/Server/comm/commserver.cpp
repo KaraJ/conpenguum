@@ -37,7 +37,7 @@ void CommServer::init()
 
 CommServer::CommServer()
 {
-    udpServer_ = new UDPServer();
+    udpServer_ = new UDPConnection();
     pthread_create(&readThread_, NULL, CommServer::readThreadFunc, NULL);
 }
 

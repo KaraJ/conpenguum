@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------
---  SOURCE FILE: udpServer.cpp
+--  SOURCE FILE: udpConnection.cpp
 --
 --  PROGRAM: TuxSpace
 --
@@ -17,10 +17,10 @@
 --  NOTES:
 ----------------------------------------------------------------------------------------------------------*/
 
-#include "udpServer.h"
+#include "udpConnection.h"
 
 /*----------------------------------------------------------------------------------------------------------
--- FUNCTION: UDPServer
+-- FUNCTION: UDPConnection
 --
 -- DATE: 2010-02-18
 --
@@ -28,7 +28,7 @@
 --
 -- RETURN:
 ----------------------------------------------------------------------------------------------------------*/
-UDPServer::UDPServer()
+UDPConnection::UDPConnection()
 {
     struct sockaddr_in servaddr;
 
@@ -57,7 +57,7 @@ UDPServer::UDPServer()
 --
 -- NOTES: The error handling is done in the Sendto function.
 ----------------------------------------------------------------------------------------------------------*/
-void UDPServer::sendMessage(struct sockaddr* to, const void* data, size_t dataLen)
+void UDPConnection::sendMessage(struct sockaddr* to, const void* data, size_t dataLen)
 {
 	SocketWrapper::Sendto(this->sockfd_, data, dataLen, 0, to, sizeof(struct sockaddr));
 }
@@ -75,7 +75,7 @@ void UDPServer::sendMessage(struct sockaddr* to, const void* data, size_t dataLe
 --
 -- NOTES:
 ----------------------------------------------------------------------------------------------------------*/
-ssize_t UDPServer::recvMessage(BYTE** buffer)
+ssize_t UDPConnection::recvMessage(BYTE** buffer)
 {
     sockaddr_in from;
     socklen_t socklen;

@@ -54,7 +54,11 @@ int CommClient::connect(const string name, const string address)
         	return -1;
         serverMsgs_.push(tcpClient_->Login(name));
         tcpClient_->StartRdThread(&serverMsgs_, &semSM_);
-        udpClient_ = new UDPClient(address.c_str());
+        servAddr.sin_family = AF_INET;
+        servAddr.sin_port = htons(UDP_PORT);
+        if (inet_pton(AF_INET, address.c_str(), &servAddr.sin_addr) != 1)
+            Logger::LogNQuit("Error connection client - bad IP");
+        udpConnection_ = new UDPConnection();
         isConnected_ = true;
     }
     return 0;
@@ -93,31 +97,10 @@ void CommClient::disconnect()
     if (isConnected_)
     {
         delete tcpClient_;
-        delete udpClient_;
+        delete udpConnection_;
         tcpClient_ = 0;
-        udpClient_ = 0;
+        udpConnection_ = 0;
         isConnected_ = false;
-    }
-}
-
-/*----------------------------------------------------------------------------------------------------------
- -- FUNCTION: sendChat
- --
- -- DATE: 2010-01-23
- --
- -- INTERFACE:
- --  string msg:     the message to send
- --  int toClientID: the clientID (or teamID, in a team match) to send to
- ----------------------------------------------------------------------------------------------------------*/
-void CommClient::sendChat(const string msg, int id)
-{
-    if (isConnected_)
-    {
-        //@todo send chat messages
-    }
-    else
-    {
-        //@todo throw exception
     }
 }
 
@@ -159,7 +142,7 @@ void CommClient::sendAction(ClientAction action)
     if (isConnected_)
     {
         action.serialize(&buffer);
-        udpClient_->sendMessage(buffer, ClientAction::serializeSize);
+        udpConnection_->sendMessage((sockaddr*)&this->servAddr, buffer, ClientAction::serializeSize);
     }
     else
     {

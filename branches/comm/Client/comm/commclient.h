@@ -28,15 +28,16 @@
 #include <string>
 #include <queue>
 #include <semaphore.h>
+#include <arpa/inet.h>
 
 //User Includes
 #include "tcpclient.h"
 #include "comm/data/updateobject.h"
 #include "comm/data/clientaction.h"
 #include "comm/data/servermessage.h"
-#include "udpClient.h"
+#include "comm/udpConnection.h"
 
-class UDPClient;
+class UDPConnection;
 
 class CommClient
 {
@@ -51,7 +52,6 @@ public:
     ServerMessage nextServerMessage();
     int connect(const std::string playerName, const std::string address);
     void disconnect();
-    void sendChat(const std::string msg, int id);
     void sendServerMsg(const std::string msg) throw (std::string);
     void sendAction(const ClientAction action);
 
@@ -61,7 +61,8 @@ private:
     CommClient& operator=(const CommClient& cc);
     ~CommClient();
 
-    UDPClient *udpClient_;
+    UDPConnection *udpConnection_;
+    struct sockaddr_in servAddr;
     std::queue<UpdateObject> updates_;
     std::queue<ServerMessage> serverMsgs_;
     sem_t semSM_;
