@@ -48,7 +48,7 @@ void UDPClient::sendMessage(const void* data, size_t dataLen)
 --
 -- RETURN: void
 --
--- NOTES: Used for debugging, receiving will be in a seperate thead later.
+-- NOTES: Used for debugging, receiving will be in a separate thread later.
 ----------------------------------------------------------------------------------------------------------*/
 void UDPClient::recvMessage(void * buff)
 {
