@@ -17,18 +17,21 @@ public:
 	    	MT_CHAT     = 6
 	    };
 
-	void Serialize(char *data);
+	size_t Serialize(char *data);
     ServerMessage() { }
-    int  GetClientID() { return clientID; }
-    void SetClientID(int id) { clientID = id; }
+    size_t  GetClientID() { return clientID; }
+    void SetClientID(size_t id) { clientID = id; }
     int  GetMsgType() { return msgType; }
     void SetMsgType(MessageType type) { msgType = type;}
+    void SetMsgLen(size_t length) { msgLen = length; }
+    size_t GetMsgLen() { return msgLen; }
     std::string GetData() { return msgData; }
-    void SetData(std::string data) { msgData = data.substr(0, BUFFSIZ); }
+    void SetData(std::string data);
     size_t GetDataLen() { return msgData.length(); }
 
 private:
-    int clientID;
+    size_t clientID;
+    size_t msgLen;
     MessageType msgType;
     std::string msgData;
 };

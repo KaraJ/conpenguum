@@ -50,6 +50,8 @@ int CommClient::connect(const string name, const string address)
     if (!isConnected_)
     {
         tcpClient_ = new TCPClient();
+        if (tcpClient_->Connect(address))
+        	tcpClient_->StardRdThread();
         udpClient_ = new UDPClient(address.c_str());
         isConnected_ = true;
     }

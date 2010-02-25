@@ -6,6 +6,7 @@
 #include <strings.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <pthread.h>
 
 //User Includes
 #include "comm/globals.h"
@@ -18,8 +19,8 @@ class TCPClient
 public:
     TCPClient();
     ~TCPClient();
-    void Connect(std::string& ip);
-    int Login(std::string playerName);
+    bool Connect(const std::string& ip);
+    ServerMessage Login(std::string playerName);
     bool IsConnected();
     bool Logout();
 

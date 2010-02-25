@@ -2,41 +2,14 @@
 
 using namespace std;
 
-/*   TODO:
-
-	 While (!done)
-
-	 Read Message/Write (Threaded, Async, or MP?)
-
-	 If logout
-
-	 SendServMsg(LOG_OUT)
-
-	 GOTO EXIT
-
-	 If Shutdown
-
-	 GOTO EXIT
-
-	 If EOF
-
-	 Notify Game lost connection
-
-	 GOTO EXIT
-
-	 EXIT PHASE
-
-	 close(socket)
-
-	 */
-
 TCPClient::TCPClient() { }
 
-void TCPClient::Connect(string& ip)
+bool TCPClient::Connect(const string& ip)
 {
 	struct addrinfo  hints;
     struct addrinfo  *servList, *p;
     int gaiErr;
+    bool result = false;
 
 	bzero(&hints, sizeof(hints));
 	hints.ai_family   = AF_INET;
@@ -45,41 +18,47 @@ void TCPClient::Connect(string& ip)
 
 	gaiErr = getaddrinfo(ip.c_str(), TCP_PORT, &hints, &servList);
 
-	if (servList != 0)
+	if (servList == 0)
 		Logger::LogNQuit(gai_strerror(gaiErr));
 
 	for (p = servList; p != NULL; p = p->ai_next)
 	{
-		tcpSocket = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
-		if (tcpSocket == -1)
-			continue;
+		tcpSocket = SocketWrapper::Socket(p->ai_family, p->ai_socktype, p->ai_protocol);
 
-		if (connect(tcpSocket, p->ai_addr, p->ai_addrlen) != -1)
+		if (SocketWrapper::Connect(tcpSocket, (sockaddr_in*)p->ai_addr, p->ai_addrlen) != -1)
+		{
+			result = true;
 			break; /* Success */
+		}
+
 
 		close(tcpSocket);
 	}
 
 	if (p == NULL)
-		Logger::LogNQuit("Unable to connect to server.");
+		Logger::LogNContinue("TCPClient: Unable to connect to server.");
 
 	freeaddrinfo(servList);
+
+	return result;
 }
 
-int TCPClient::Login(string playerName)
+ServerMessage TCPClient::Login(string playerName)
 {
-	ServerMessage loginMsg;
+	ServerMessage msgBuff;
 
-	loginMsg.SetClientID(0);
-	loginMsg.SetMsgType(ServerMessage::MT_LOGIN);
-	loginMsg.SetData(playerName);
+	msgBuff.SetClientID(0);
+	msgBuff.SetMsgType(ServerMessage::MT_LOGIN);
+	msgBuff.SetData(playerName);
 
-	TCPConnection::WriteMessage(tcpSocket, loginMsg);
+	TCPConnection::WriteMessage(tcpSocket, msgBuff); //Send login message to server
+	TCPConnection::ReadMessage(tcpSocket, msgBuff); //Get init message from server
 
-	return 0;
+	return msgBuff;
 }
 
 TCPClient::~TCPClient()
 {
 	shutdown(tcpSocket, SHUT_RDWR);
+	close(tcpSocket);
 }

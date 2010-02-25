@@ -3,7 +3,10 @@
 
 /* Wrappers for common Socket operations. Leaving as static methods */
 #include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 #include <errno.h>
+#include "globals.h"
 #include "../Logger.h"
 
 class SocketWrapper
@@ -12,7 +15,7 @@ public:
     static int  	Socket  (int family, int type, int protocol);
     static void 	Bind    (int fd, const struct sockaddr *sa, socklen_t salen);
     static int  	Accept  (int fd, struct sockaddr *sa, socklen_t *salenptr);
-    static void 	Connect (int fd, const struct sockaddr *sa, socklen_t salen);
+    static bool 	Connect (int fd, const struct sockaddr_in *sa, socklen_t salen);
     static void 	Listen  (int fd, int backlog);
     static void    Write    (int sock, const void *buff, size_t n);
     static void    Read    (int sock, void *buff, size_t size);

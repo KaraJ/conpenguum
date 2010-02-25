@@ -28,10 +28,16 @@ int SocketWrapper::Accept(int fd, struct sockaddr *sa, socklen_t *salenptr)
     return(n);
 }
 
-void SocketWrapper::Connect(int fd, const struct sockaddr *sa, socklen_t salen)
+bool SocketWrapper::Connect(int fd, const struct sockaddr_in *sa, socklen_t salen)
 {
-    if (connect(fd, sa, salen) < 0)
-        Logger::LogNQuit("Connect error.");
+    if (connect(fd, (sockaddr*)sa, salen) < 0)
+    {
+    	string buff = "Connect: Unable to connect to ";
+    	buff += inet_ntoa(sa->sin_addr);
+        Logger::LogNContinue("Connect: ");
+        return false;
+    }
+    return true;
 }
 
 void SocketWrapper::Listen(int fd, int backlog)

@@ -1,12 +1,21 @@
 #include "servermessage.h"
 
-void ServerMessage::Serialize(char *data)
+size_t ServerMessage::Serialize(char *data)
 {
 	size_t i;
 
 	data[0] = (BYTE) clientID;
-	data[1] = (BYTE) msgType;
+	data[1] = (BYTE) msgLen;
+	data[2] = (BYTE) msgType;
 
-	for (i = 0; i < msgData.length(); ++i)
-		data[i + 2] = msgData[i];
+	for (i = 0; i < msgData.length() + 1; ++i)
+		data[i + 3] = msgData[i];
+
+	return i;
+}
+
+void ServerMessage::SetData(std::string data)
+{
+	msgData = data.substr(0, BUFFSIZ);
+	msgLen = data.length() + 1;
 }
