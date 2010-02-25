@@ -52,7 +52,7 @@ public:
     int connect(const std::string playerName, const std::string address);
     void disconnect();
     void sendChat(const std::string msg, int id);
-    void sendServerMsg(const std::string msg);
+    void sendServerMsg(const std::string msg) throw (std::string);
     void sendAction(const ClientAction action);
 
 private:

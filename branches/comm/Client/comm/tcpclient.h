@@ -22,13 +22,19 @@ public:
     bool Connect(const std::string& ip);
     void StartRdThread(std::queue<ServerMessage> *msgBuff, sem_t *semSM);
     ServerMessage Login(std::string playerName);
+    void SendMessage(std::string message);
     bool IsConnected();
     void Logout();
 
 private:
-    bool connected;
+    static void* TCPReadThread(void*);
+
+    static bool connected_;
+    static std::queue<ServerMessage> *msgBuff_;
+    static sem_t *semSM_;
+
     int  tcpSocket;
-    std::queue<ServerMessage> *msgBuff_;
+    pthread_t rThread_;
 };
 
 #endif // TCPCLIENT_H

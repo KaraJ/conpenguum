@@ -52,6 +52,7 @@ int CommClient::connect(const string name, const string address)
         tcpClient_ = new TCPClient();
         if (!tcpClient_->Connect(address))
         	return -1;
+        serverMsgs_.push(tcpClient_->Login(name));
         tcpClient_->StartRdThread(&serverMsgs_, &semSM_);
         udpClient_ = new UDPClient(address.c_str());
         isConnected_ = true;
@@ -73,8 +74,10 @@ UpdateObject CommClient::nextUpdate()
 
 ServerMessage CommClient::nextServerMessage()
 {
+	sem_wait(&semSM_);
     ServerMessage serverMsg = serverMsgs_.front();
     serverMsgs_.pop();
+    sem_post(&semSM_);
     return serverMsg;
 }
 
@@ -126,16 +129,12 @@ void CommClient::sendChat(const string msg, int id)
  -- INTERFACE:
  --  string msg:     the message to send to send to the server
  ----------------------------------------------------------------------------------------------------------*/
-void CommClient::sendServerMsg(const string msg)
+void CommClient::sendServerMsg(const string msg) throw (string)
 {
     if (isConnected_)
-    {
-        //@todo send server message
-    }
+    	tcpClient_->SendMessage(msg);
     else
-    {
-        //@todo throw exception
-    }
+        throw "CommClient::Not Connected";
 }
 
 bool CommClient::hasNextServerMessage()

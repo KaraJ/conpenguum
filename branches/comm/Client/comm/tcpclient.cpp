@@ -1,10 +1,43 @@
 #include "tcpclient.h"
 
+//Storage for class variables
+std::queue<ServerMessage> *TCPClient::msgBuff_;
+sem_t *TCPClient::semSM_;
+bool TCPClient::connected_;
+
 using namespace std;
+
+void TCPClient::SendMessage(string message)
+{
+	ServerMessage msgBuff;
+	msgBuff.SetClientID(0);
+	msgBuff.SetMsgType(ServerMessage::MT_CHAT);
+}
+
+void* TCPClient::TCPReadThread(void* param)
+{
+	int socket = *((int*)param);
+	ServerMessage msgBuff;
+
+	while (TCPClient::connected_)
+	{
+		TCPConnection::ReadMessage(socket, msgBuff);
+		sem_wait(semSM_);
+		msgBuff_->push(msgBuff);
+		sem_post(semSM_);
+	}
+
+	return 0;
+}
 
 void TCPClient::StartRdThread(std::queue<ServerMessage> *msgBuff, sem_t *semSM)
 {
-	msgBuff_ = msgBuff;
+	TCPClient::msgBuff_ = msgBuff;
+	TCPClient::semSM_ = semSM;
+	pthread_attr_t attr;
+	pthread_attr_init(&attr);
+	if (pthread_create(&rThread_, &attr, TCPClient::TCPReadThread, &tcpSocket))
+		Logger::LogNQuit("TCPClient: Unable to start read thread.");
 }
 
 bool TCPClient::Connect(const string& ip)
@@ -33,7 +66,6 @@ bool TCPClient::Connect(const string& ip)
 			result = true;
 			break; /* Success */
 		}
-
 
 		close(tcpSocket);
 	}
