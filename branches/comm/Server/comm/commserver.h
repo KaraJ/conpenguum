@@ -23,9 +23,9 @@
 
 #include <string>
 #include <queue>
-#include "../../Core/comm/data/clientaction.h"
-#include "../../Core/comm/data/updateobject.h"
-#include "../../Core/comm/data/servermessage.h"
+#include "comm/data/clientaction.h"
+#include "comm/data/updateobject.h"
+#include "comm/data/servermessage.h"
 #include "udpServer.h"
 
 class CommServer
@@ -33,12 +33,14 @@ class CommServer
 public:
     static CommServer* Instance();
 
+    void init();
     bool hasNextClientAction();
     std::string nextClientAction();
     bool hasNextServerMessage();
     ServerMessage nextServerMessage();
     void sendUpdate(const UpdateObject update, const int* clientIDs, int numClients);
     void sendServerMsg(const std::string msg, const int* clientIDs, int numClients);
+
 private:
     CommServer() {}
     CommServer(const CommServer& cpy);
@@ -47,6 +49,7 @@ private:
 
     std::queue<ClientAction> actions_;
     std::queue<ServerMessage> serverMsgs_;
+    TCPServer *tcpServer_;
     UDPServer udpServer_;
 };
 

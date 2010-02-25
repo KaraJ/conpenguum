@@ -2,10 +2,7 @@
 
 using namespace std;
 
-TCPClient::TCPClient()
-{
-	/*
-	 END CONNECT PHASE
+/*   TODO:
 
 	 While (!done)
 
@@ -32,7 +29,8 @@ TCPClient::TCPClient()
 	 close(socket)
 
 	 */
-}
+
+TCPClient::TCPClient() { }
 
 void TCPClient::Connect(string& ip)
 {

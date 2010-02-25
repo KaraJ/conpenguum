@@ -29,6 +29,12 @@ CommServer* CommServer::Instance()
 	return instance_;
 }
 
+void init()
+{
+	tcpServer_ = new TCPServer();
+	tcpServer_.init(TCP_PORT);
+}
+
 /*----------------------------------------------------------------------------------------------------------
  -- FUNCTION: sendUpdate
  --

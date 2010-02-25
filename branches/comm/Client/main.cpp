@@ -6,7 +6,7 @@ int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
 
-    // insert CommClient initilization 
+    // insert CommClient initialization
     //CommClient cc = new CommClient();
     
 
