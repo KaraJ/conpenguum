@@ -13,7 +13,6 @@ bool connected;
 ----------------------------------------------------------------------------------------------------------*/
 UDPClient::UDPClient(const char* addr)
 {
-
     bzero(&servaddr, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
     servaddr.sin_port = htons(UDP_PORT);
@@ -29,15 +28,15 @@ UDPClient::UDPClient(const char* addr)
 void* ReadThread(void* args)
 {
 	int* sockfd = (int*)args;
-	BYTE buffer[MAXUDP];
+	BYTE buffer[UDP_MAXMSG];
 	UpdateObject* update;
 	int numRead;
 	while(1)
 	{
-		numRead = SocketWrapper::Recvfrom(*sockfd, buffer, MAXUDP, 0, 0, 0);
+		numRead = SocketWrapper::Recvfrom(*sockfd, buffer, UDP_MAXMSG, 0, 0, 0);
 		if(numRead == -1)
 			break;
-		update = new UpdateObject(buffer, numRead);
+		update = new UpdateObject(buffer);
 		CommClient::Instance()->addUpdate(*update);
 	}
 
