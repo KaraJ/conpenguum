@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void TCPServer::init(string ip)
+void TCPServer::Init(string& ip)
 {
 
 }

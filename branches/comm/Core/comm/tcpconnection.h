@@ -6,10 +6,7 @@
 //User Includes
 #include "data/servermessage.h"
 #include "socketwrapper.h"
-
-//User Definitions
-#define BUFFSIZ 1024
-#define INTSIZ  4
+#include "globals.h"
 
 class TCPConnection
 {

@@ -15,7 +15,6 @@
  --
  --  NOTES: Singleton - retrieve reference through CommServer::Instance()
  ----------------------------------------------------------------------------------------------------------*/
-
 #include "commserver.h"
 
 using namespace std;
@@ -29,10 +28,11 @@ CommServer* CommServer::Instance()
 	return instance_;
 }
 
-void init()
+void CommServer::init()
 {
 	tcpServer_ = new TCPServer();
-	tcpServer_.init(TCP_PORT);
+	string buff = TCP_PORT;
+	tcpServer_->Init(buff);
 }
 
 /*----------------------------------------------------------------------------------------------------------

@@ -2,6 +2,7 @@
 #define SERVERMESSAGE_H
 
 #include <string>
+#include "../globals.h"
 
 class ServerMessage
 {
@@ -16,26 +17,20 @@ public:
 	    	MT_CHAT     = 6
 	    };
 
+	void Serialize(char *data);
     ServerMessage() { }
     int  GetClientID() { return clientID; }
     void SetClientID(int id) { clientID = id; }
     int  GetMsgType() { return msgType; }
     void SetMsgType(MessageType type) { msgType = type;}
     std::string GetData() { return msgData; }
-    void SetData(std::string data) { msgData = data; }
+    void SetData(std::string data) { msgData = data.substr(0, BUFFSIZ); }
     size_t GetDataLen() { return msgData.length(); }
-    friend inline std::ostream& operator<<(std::ostream&, const Message&);
 
 private:
     int clientID;
     MessageType msgType;
     std::string msgData;
 };
-
-std::ostream& operator<<(std::ostream& os, const ServerMessage& msg)
-{
-    return os << "Target: " << msg.clientID << "\nType: " << msg.msgType
-            << "\nText: '" << msg.msgData << "'";
-}
 
 #endif // SERVERMESSAGE_H

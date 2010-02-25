@@ -26,6 +26,7 @@
 #include "comm/data/clientaction.h"
 #include "comm/data/updateobject.h"
 #include "comm/data/servermessage.h"
+#include "TCPServer.h"
 #include "udpServer.h"
 
 class CommServer
