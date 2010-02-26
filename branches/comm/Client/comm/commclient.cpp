@@ -31,7 +31,7 @@ CommClient::CommClient()
 
 CommClient* CommClient::Instance()
 {
-    static CommClient* instance_;
+    static CommClient* instance_ =0;
     if (!instance_)
         instance_ = new CommClient();
     return instance_;
