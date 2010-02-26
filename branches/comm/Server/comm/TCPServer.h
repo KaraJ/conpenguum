@@ -8,6 +8,7 @@
 #include <semaphore.h>
 #include <strings.h>
 #include <pthread.h>
+#include <map>
 
 //User Includes
 #include "comm/data/servermessage.h"
@@ -20,7 +21,7 @@ class TCPServer
 public:
 	TCPServer();
 	void Init(const std::string port);
-	void StartReadThread(std::queue<ServerMessage> *serverMsgs, std::queue<in_addr> *clients, sem_t *semSM);
+	void StartReadThread(std::queue<ServerMessage> *serverMsgs, std::map<int,in_addr> *clients, sem_t *semSM);
 	static void* ReadThread(void*);
 
 private:
@@ -28,7 +29,7 @@ private:
 	static int clients_[32];
 	static sem_t *semSM_;
 	static std::queue<ServerMessage> *msgBuff_;
-	static std::queue<in_addr> *clientVec_;
+	static std::map<int,in_addr> *clientMap_;
 	pthread_t rThread_;
 
 };

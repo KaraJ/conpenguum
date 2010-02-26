@@ -5,7 +5,7 @@ using namespace std;
 int TCPServer::clients_[32];
 sem_t *TCPServer::semSM_;
 queue<ServerMessage> *TCPServer::msgBuff_;
-queue<in_addr> *TCPServer::clientVec_;
+map<int,in_addr> *TCPServer::clientMap_;
 
 TCPServer::TCPServer()
 {
@@ -31,11 +31,11 @@ void TCPServer::Init(const string port)
 	SocketWrapper::Bind(listenSocket_, &sa_, sizeof(sa_));
 }
 
-void TCPServer::StartReadThread(queue<ServerMessage> *serverMsgs, queue<in_addr> *clients, sem_t *semSM)
+void TCPServer::StartReadThread(queue<ServerMessage> *serverMsgs, map<int,in_addr> *clients, sem_t *semSM)
 {
 	TCPServer::msgBuff_ = serverMsgs;
 	TCPServer::semSM_ = semSM;
-	TCPServer::clientVec_ = clients;
+	TCPServer::clientMap_ = clients;
 
 	pthread_attr_t attr;
 	pthread_attr_init(&attr);
@@ -65,11 +65,11 @@ void* TCPServer::ReadThread(void* vptr)
 		if (FD_ISSET(sock, &currSet))
 		{
 			client = SocketWrapper::Accept(sock, &sa, &size);
-			clientVec_->push(sa.sin_addr);
 			for (int i = 0; i < 32; ++i)
 			{
 				if (clients_[i] == 0)
 				{
+					clientMap_->insert(pair<int, in_addr>(i,sa.sin_addr));
 					clients_[i] = client;
 					if (i > maxClient)
 						maxClient = i;
