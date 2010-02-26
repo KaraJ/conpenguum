@@ -23,6 +23,7 @@ CommServer::CommServer()
 {
 	tcpServer_ = new TCPServer();
 	udpConnection_ = new UDPConnection();
+	sem_init(&semSM_, 0, 1);
     pthread_create(&readThread_, NULL, CommServer::readThreadFunc, NULL);
 }
 
@@ -38,6 +39,7 @@ CommServer* CommServer::Instance()
 void CommServer::init()
 {
 	tcpServer_->Init(TCP_PORT);
+	tcpServer_->StartListenThread();
 }
 
 CommServer::~CommServer()
@@ -92,13 +94,20 @@ ClientAction CommServer::nextClientAction()
 
 bool CommServer::hasNextServerMessage()
 {
-    return !serverMsgs_.empty();
+	bool result;
+	sem_wait(&semSM_);
+    result = !serverMsgs_.empty();
+    sem_post(&semSM_);
+    return result;
 }
 
 ServerMessage CommServer::nextServerMessage()
 {
-    ServerMessage serverMsg = serverMsgs_.front();
+	ServerMessage serverMsg;
+	sem_wait(&semSM_);
+    serverMsg = serverMsgs_.front();
     serverMsgs_.pop();
+    sem_post(&semSM_);
     return serverMsg;
 }
 

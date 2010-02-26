@@ -18,3 +18,23 @@ void TCPServer::Init(const string port)
 
 	SocketWrapper::Bind(tcpSocket_, &sa_, sizeof(sa_));
 }
+
+void TCPServer::StartListenThread()
+{
+	this->StartReadThread();
+}
+
+void TCPServer::StartReadThread()
+{
+
+}
+
+void* TCPServer::ListenThread(void*)
+{
+	return 0;
+}
+
+void* TCPServer::ReadThread(void*)
+{
+	return 0;
+}

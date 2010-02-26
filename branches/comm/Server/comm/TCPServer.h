@@ -13,6 +13,10 @@ class TCPServer
 {
 public:
 	void Init(const std::string port);
+	void StartListenThread();
+	void StartReadThread();
+	static void* ListenThread(void*);
+	static void* ReadThread(void*);
 
 private:
 	int tcpSocket_;

@@ -27,7 +27,7 @@ public:
     void Logout();
 
 private:
-    static void* TCPReadThread(void*);
+    static void* ReadThread(void*);
 
     static bool connected_;
     static std::queue<ServerMessage> *msgBuff_;

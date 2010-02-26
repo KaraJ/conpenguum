@@ -23,6 +23,8 @@
 
 #include <string>
 #include <queue>
+#include <semaphore.h>
+
 #include "comm/data/clientaction.h"
 #include "comm/data/updateobject.h"
 #include "comm/data/servermessage.h"
@@ -57,6 +59,8 @@ private:
     TCPServer* tcpServer_;
     UDPConnection* udpConnection_;
     pthread_t readThread_;
+    std::queue<sockaddr_in> clients_;
+    sem_t semSM_;
 };
 
 #endif

@@ -14,7 +14,7 @@ void TCPClient::SendMessage(string message)
 	msgBuff.SetMsgType(ServerMessage::MT_CHAT);
 }
 
-void* TCPClient::TCPReadThread(void* param)
+void* TCPClient::ReadThread(void* param)
 {
 	int socket = *((int*)param);
 	ServerMessage msgBuff;
@@ -36,7 +36,7 @@ void TCPClient::StartRdThread(std::queue<ServerMessage> *msgBuff, sem_t *semSM)
 	TCPClient::semSM_ = semSM;
 	pthread_attr_t attr;
 	pthread_attr_init(&attr);
-	if (pthread_create(&rThread_, &attr, TCPClient::TCPReadThread, &tcpSocket))
+	if (pthread_create(&rThread_, &attr, TCPClient::ReadThread, &tcpSocket))
 		Logger::LogNQuit("TCPClient: Unable to start read thread.");
 }
 
