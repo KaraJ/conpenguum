@@ -29,7 +29,7 @@ CommServer::CommServer()
 
 CommServer* CommServer::Instance()
 {
-    static CommServer* instance_;
+    static CommServer* instance_ = 0;
 	if(!instance_)
 		instance_ = new CommServer();
 
@@ -46,6 +46,7 @@ CommServer::~CommServer()
 {
     delete tcpServer_;
     delete udpConnection_;
+    pthread_join(readThread_, NULL);
 }
 
 /*----------------------------------------------------------------------------------------------------------
@@ -113,15 +114,20 @@ ServerMessage CommServer::nextServerMessage()
 
 void* CommServer::readThreadFunc(void* args)
 {
-    BYTE* buffer;
-    ssize_t size = CommServer::Instance()->udpConnection_->recvMessage(&buffer);
-    if (size == ClientAction::serializeSize)
-    {
-        ClientAction action(buffer);
-        CommServer::Instance()->actions_.push(action);
-    }
-    else
-        Logger::LogNContinue("Bad packet size received");
+	while (true)
+	{
+		BYTE* buffer;
+		ssize_t size = CommServer::Instance()->udpConnection_->recvMessage(&buffer);
+		if (size == -1)
+			break;
+		else if (size == ClientAction::serializeSize)
+		{
+			ClientAction action(buffer);
+			CommServer::Instance()->actions_.push(action);
+		}
+		else
+			Logger::LogNContinue("Bad packet size received");
+	}
 
     return 0;
 }

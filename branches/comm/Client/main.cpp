@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 
     //************
     //testing the server
-    ClientAction action;
+    ClientAction action(2);
     action.setAccelerating();
     action.setTurningLeft();
 

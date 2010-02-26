@@ -55,7 +55,6 @@ class ClientAction
 public:
     static const int serializeSize = 2;
 
-    ClientAction() {}
     ClientAction(int clientID) : clientID_(clientID)
     {
         if (clientID > 31)

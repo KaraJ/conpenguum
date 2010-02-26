@@ -37,7 +37,7 @@
 using std::ostream;
 using std::endl;
 
-UpdateObject::UpdateObject(BYTE* buffer)
+UpdateObject::UpdateObject(BYTE* buffer) : actions_(0)
 {
     int x = 0, y = 0;
 

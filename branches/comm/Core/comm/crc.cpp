@@ -22,7 +22,7 @@ BYTE CRC::genCrc8(BYTE inCrc, BYTE inData)
 
 BYTE CRC::makeCRC(const BYTE* data, size_t size)
 {
-	BYTE* buff = (BYTE*)malloc(sizeof(BYTE) * (size + 5));
+	BYTE* buff = (BYTE*)malloc(sizeof(BYTE) * (size));
 
 	for (size_t i = 0; i < size; ++i)
 		buff[i] = data[i];
@@ -39,7 +39,7 @@ BYTE CRC::makeCRC(const BYTE* data, size_t size)
 
 bool CRC::checkCRC(const BYTE * data, size_t size)
 {
-	BYTE* buff = (BYTE*)malloc(sizeof(BYTE) * (size + 5));
+	BYTE* buff = (BYTE*)malloc(sizeof(BYTE) * (size));
 
 	for (size_t i = 0; i < size; ++i)
 		buff[i] = data[i];

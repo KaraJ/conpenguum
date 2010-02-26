@@ -43,6 +43,11 @@ UDPConnection::UDPConnection()
     SocketWrapper::Bind(this->sockfd_, &servaddr, sizeof(sockaddr_in));
 }
 
+UDPConnection::~UDPConnection()
+{
+	close(sockfd_);
+}
+
 /*----------------------------------------------------------------------------------------------------------
 -- FUNCTION: sendMessage
 --
@@ -74,7 +79,7 @@ void UDPConnection::sendMessage(struct sockaddr* to, const void* data, size_t da
 --      BYTE** buffer:      Should be null when passed in. Will be filled with the incoming data.
 --      size_t* bufSize:    The amount of data in buffer.
 --
--- RETURN: void
+-- RETURN: -1 on error. -2 on bad CRC
 --
 -- NOTES:
 ----------------------------------------------------------------------------------------------------------*/
@@ -84,5 +89,8 @@ ssize_t UDPConnection::recvMessage(BYTE** buffer)
     socklen_t socklen;
     (*buffer) = (BYTE*)malloc(UDP_MAXMSG * sizeof(BYTE));
     ssize_t len = SocketWrapper::Recvfrom(this->sockfd_, *buffer, UDP_MAXMSG, NULL, (sockaddr*)&from, &socklen);
-    CRC::checkCRC((*buffer), len);
+    if (len == -1)
+    	return -1;
+    if (!CRC::checkCRC((*buffer), len))
+    	return -2;
 }
