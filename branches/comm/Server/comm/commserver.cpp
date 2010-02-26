@@ -65,8 +65,12 @@ void CommServer::sendUpdate(const UpdateObject& update, vector<int> clientIDs)
     update.serialize(&buffer);
 	for (size_t i = 0; i < clientIDs.size(); i++)
 	{
-	    //sockaddr to = clientIDs[i];
-	    //udpConnection_->sendMessage(&to, buffer, UpdateObject::serializeSize);
+	    sockaddr_in to;
+	    bzero(&to, sizeof(to));
+	    to.sin_addr = clients_[clientIDs[i]];
+	    to.sin_family = AF_INET;
+	    to.sin_port = htons(UDP_PORT);
+	    udpConnection_->sendMessage((sockaddr*)&to, buffer, UpdateObject::serializeSize);
 	}
 }
 
