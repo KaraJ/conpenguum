@@ -8,14 +8,21 @@ int main(int argc, char* argv[])
 
     CommClient *cc = CommClient::Instance();
 
+    cout << "connecting" << endl;
     cc->connect("kara", "192.168.0.12");
-
+    cout << "sending" << endl;
     ClientAction a(2);
     a.setAccelerating();
     a.setTurningRight();
     a.setTurningLeft();
 
     cc->sendAction(a);
+    cout << "waiting" << endl;
+    while(1)
+    {
+    	if(cc->hasNextUpdate())
+    		cc->nextUpdate().print();
+    }
 
 
 
