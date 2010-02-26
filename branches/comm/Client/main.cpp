@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
     cout << "connecting" << endl;
     cc->connect("kara", "192.168.0.12");
     cout << "sending" << endl;
-    ClientAction a(2);
+    ClientAction a(0);
     a.setAccelerating();
     a.setTurningRight();
     a.setTurningLeft();
