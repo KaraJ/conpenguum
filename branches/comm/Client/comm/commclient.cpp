@@ -55,11 +55,13 @@ int CommClient::connect(const string name, const string address)
 {
     if (!isConnected_)
     {
+    	/*
         if (!tcpClient_->Connect(address))
         	return -1;
         serverMsgs_.push(tcpClient_->Login(name));
         clientID_ = serverMsgs_.front().GetClientID();
         tcpClient_->StartRdThread(&serverMsgs_, &semSM_);
+        */
         servAddr.sin_family = AF_INET;
         servAddr.sin_port = htons(UDP_PORT);
         if (inet_pton(AF_INET, address.c_str(), &servAddr.sin_addr) != 1)

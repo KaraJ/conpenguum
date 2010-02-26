@@ -6,27 +6,16 @@ int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
 
-    // insert CommClient initialization
-    //CommClient cc = new CommClient();
-    
+    CommClient *cc = CommClient::Instance();
 
-    //************
-    //testing the server
-    ClientAction action(2);
-    action.setAccelerating();
-    action.setTurningLeft();
+    cc->connect("kara", "192.168.0.12");
 
-    CommClient * cli = CommClient::Instance();
-    cli->connect("kara", "127.0.0.1");
-    cli->sendAction(action);
-    cout << "waiting" << endl;
-    while(!cli->hasNextUpdate())
-    {}
-    	cout << "got object" << endl;
-    	cli->nextUpdate().print();
+    ClientAction a(2);
+    a.setAccelerating();
+    a.setTurningRight();
 
-    //end test code
-    //****************
+    cc->sendAction(a);
+
 
 
     // insert main gfx window initilization here, which extends from BaseWindow 
