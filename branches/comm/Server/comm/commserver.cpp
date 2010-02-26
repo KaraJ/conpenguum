@@ -113,4 +113,6 @@ void* CommServer::readThreadFunc(void* args)
     }
     else
         Logger::LogNContinue("Bad packet size received");
+
+    return 0;
 }
