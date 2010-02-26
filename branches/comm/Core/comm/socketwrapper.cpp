@@ -18,11 +18,11 @@ void SocketWrapper::Bind(int fd, const struct sockaddr_in *sa, socklen_t salen)
         Logger::LogNQuit("Bind error.");
 }
 
-int SocketWrapper::Accept(int fd, struct sockaddr *sa, socklen_t *salenptr)
+int SocketWrapper::Accept(int fd, sockaddr_in *sa, socklen_t *salenptr)
 {
     int n;
 
-    if ( (n = accept(fd, sa, salenptr)) < 0)
+    if ( (n = accept(fd, (sockaddr*)sa, salenptr)) < 0)
         Logger::LogNQuit("Accept error.");
 
     return(n);

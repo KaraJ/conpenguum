@@ -59,7 +59,7 @@ private:
     TCPServer* tcpServer_;
     UDPConnection* udpConnection_;
     pthread_t readThread_;
-    std::queue<sockaddr_in> clients_;
+    std::queue<in_addr> clients_;
     sem_t semSM_;
 };
 

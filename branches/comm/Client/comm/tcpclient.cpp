@@ -1,11 +1,11 @@
 #include "tcpclient.h"
 
+using namespace std;
+
 //Storage for class variables
-std::queue<ServerMessage> *TCPClient::msgBuff_;
+queue<ServerMessage> *TCPClient::msgBuff_;
 sem_t *TCPClient::semSM_;
 bool TCPClient::connected_;
-
-using namespace std;
 
 void TCPClient::SendMessage(string message)
 {

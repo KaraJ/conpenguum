@@ -4,22 +4,33 @@
 //System Includes
 #include <netinet/in.h>
 #include <sstream>
+#include <queue>
+#include <semaphore.h>
+#include <strings.h>
+#include <pthread.h>
 
 //User Includes
+#include "comm/data/servermessage.h"
 #include "comm/socketwrapper.h"
 #include "comm/globals.h"
+#include "comm/tcpconnection.h"
 
 class TCPServer
 {
 public:
+	TCPServer();
 	void Init(const std::string port);
-	void StartListenThread();
-	void StartReadThread();
-	static void* ListenThread(void*);
+	void StartReadThread(std::queue<ServerMessage> *serverMsgs, std::queue<in_addr> *clients, sem_t *semSM);
 	static void* ReadThread(void*);
 
 private:
-	int tcpSocket_;
+	int listenSocket_;
+	static int clients_[32];
+	static sem_t *semSM_;
+	static std::queue<ServerMessage> *msgBuff_;
+	static std::queue<in_addr> *clientVec_;
+	pthread_t rThread_;
+
 };
 
 #endif /* TCPSERVER_H_ */
