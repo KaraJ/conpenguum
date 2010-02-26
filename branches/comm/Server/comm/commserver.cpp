@@ -59,7 +59,7 @@ CommServer::~CommServer()
  --  int* clientIDs:         a pointer to an array of clientID's to send the update to
  --  int numClients:         the number of clients in clientIDs
  ----------------------------------------------------------------------------------------------------------*/
-void CommServer::sendUpdate(const UpdateObject& update, vector<int> clientIDs)
+void CommServer::sendUpdate(const UpdateObject& update, const vector<int>& clientIDs)
 {
     BYTE* buffer;
     update.serialize(&buffer);
@@ -84,7 +84,7 @@ void CommServer::sendUpdate(const UpdateObject& update, vector<int> clientIDs)
  --  int* clientIDs: a pointer to an array of clientID's to send the message to. Use null to send to all.
  --  int numClients: the number of clients in clientIDs. If clientIDs = null, this is ignored.
  ----------------------------------------------------------------------------------------------------------*/
-void CommServer::sendServerMsg(const ServerMessage& sm, const vector<int> clients)
+void CommServer::sendServerMsg(const ServerMessage& sm, const vector<int>& clients)
 {
 	/*for (int i = 0; i < numClients; ++i)
 	{

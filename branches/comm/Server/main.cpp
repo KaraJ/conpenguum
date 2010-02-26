@@ -18,6 +18,13 @@ void UDPTest() {
 		if (CommServer::Instance()->hasNextClientAction()) {
 			ClientAction a = CommServer::Instance()->nextClientAction();
 			a.print();
+			UpdateObject o(a.getClientID());
+			o.setPosition(QPoint(5,5));
+			o.setRotation(10);
+			o.getActions().setFiring();
+			std::vector<int> ids;
+			ids.push_back(a.getClientID());
+			CommServer::Instance()->sendUpdate(o, ids);
 		}
 	}
 }
