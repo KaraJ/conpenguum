@@ -12,9 +12,7 @@ BYTE CRC::genCrc8(BYTE inCrc, BYTE inData)
 	for (size_t i = 0; i < 8; i++ ) 
 	{
 		if ((data & 0x8000) != 0 )
-		{
 			data = data ^ POLYNOMIAL;
-		}
 		data = data << 1;
 	}
 	return (BYTE) (data >> 8);
@@ -29,10 +27,8 @@ BYTE CRC::makeCRC(const BYTE* data, size_t size)
 
 	BYTE crc = 0;
 
-	for (size_t i = 0; i < size + 4; ++i)
-	{
-		crc = genCrc8( crc, buff[i]);
-	}
+	for (size_t i = 0; i < size; ++i)
+		crc = genCrc8(crc, buff[i]);
 
 	return crc;
 }
