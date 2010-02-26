@@ -13,6 +13,7 @@ int main(int argc, char* argv[])
     ClientAction a(2);
     a.setAccelerating();
     a.setTurningRight();
+    a.setTurningLeft();
 
     cc->sendAction(a);
 
