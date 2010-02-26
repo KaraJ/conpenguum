@@ -7,6 +7,7 @@
 #include "socketwrapper.h"
 #include "globals.h"
 #include "data/updateobject.h"
+#include "crc.h"
 
 class UDPConnection
 {
