@@ -22,6 +22,8 @@ using namespace std;
 CommServer::CommServer()
 {
 	tcpServer_ = new TCPServer();
+	udpConnection_ = new UDPConnection();
+    pthread_create(&readThread_, NULL, CommServer::readThreadFunc, NULL);
 }
 
 CommServer* CommServer::Instance()
@@ -38,16 +40,10 @@ void CommServer::init()
 	tcpServer_->Init(TCP_PORT);
 }
 
-CommServer::CommServer()
-{
-    udpServer_ = new UDPServer();
-    pthread_create(&readThread_, NULL, CommServer::readThreadFunc, NULL);
-}
-
 CommServer::~CommServer()
 {
     delete tcpServer_;
-    delete udpServer_;
+    delete udpConnection_;
 }
 
 /*----------------------------------------------------------------------------------------------------------
@@ -109,12 +105,12 @@ ServerMessage CommServer::nextServerMessage()
 void* CommServer::readThreadFunc(void* args)
 {
     BYTE* buffer;
-    ssize_t size = CommServer::Instance()->udpServer_->recvMessage(&buffer);
-    //if (size == ClientAction::serializeSize && CRC::CheckCRC(buffer, ClientAction::serializeSize))
+    ssize_t size = CommServer::Instance()->udpConnection_->recvMessage(&buffer);
+    if (size == ClientAction::serializeSize)
     {
         ClientAction action(buffer);
         CommServer::Instance()->actions_.push(action);
     }
-    //else
-        //Logger::LogNContinue("Bad CRC received");
+    else
+        Logger::LogNContinue("Bad packet size received");
 }

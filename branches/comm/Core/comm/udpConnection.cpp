@@ -40,7 +40,7 @@ UDPConnection::UDPConnection()
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
     servaddr.sin_port = htons(UDP_PORT);
 
-    SocketWrapper::Bind(this->sockfd_, (struct sockaddr *)&servaddr, sizeof(sockaddr_in));
+    SocketWrapper::Bind(this->sockfd_, &servaddr, sizeof(sockaddr_in));
 }
 
 /*----------------------------------------------------------------------------------------------------------

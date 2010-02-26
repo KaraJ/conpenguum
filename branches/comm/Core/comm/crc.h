@@ -1,7 +1,7 @@
 #ifndef CRC_H
 #define CRC_H
 
-#include "../globals.h"
+#include "globals.h"
 #include <sys/types.h>
 #include <stdlib.h>
 
