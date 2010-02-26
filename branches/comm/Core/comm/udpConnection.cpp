@@ -59,7 +59,10 @@ UDPConnection::UDPConnection()
 ----------------------------------------------------------------------------------------------------------*/
 void UDPConnection::sendMessage(struct sockaddr* to, const void* data, size_t dataLen)
 {
-	SocketWrapper::Sendto(this->sockfd_, data, dataLen, 0, to, sizeof(struct sockaddr));
+	BYTE* buffer = (BYTE*)malloc(sizeof(BYTE) * (dataLen + 1));
+	memcpy(buffer, data, dataLen);
+	buffer[dataLen] = CRC::makeCRC(data, dataLen);
+	SocketWrapper::Sendto(this->sockfd_, buffer, dataLen + 1, 0, to, sizeof(struct sockaddr));
 }
 
 /*----------------------------------------------------------------------------------------------------------
