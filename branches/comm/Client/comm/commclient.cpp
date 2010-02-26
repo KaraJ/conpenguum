@@ -70,11 +70,6 @@ int CommClient::connect(const string name, const string address)
     return 0;
 }
 
-void CommClient::addUpdate(UpdateObject update)
-{
-	updates_.push(update);
-}
-
 UpdateObject CommClient::nextUpdate()
 {
     UpdateObject update = updates_.front();
@@ -154,4 +149,19 @@ void CommClient::sendAction(ClientAction action)
     {
         //@todo throw exception
     }
+}
+
+void* CommClient::readThreadFunc(void* args)
+{
+    BYTE* buffer;
+    ssize_t size = CommClient::Instance()->udpConnection_->recvMessage(&buffer);
+    if (size == UpdateObject::serializeSize)
+    {
+        UpdateObject update(buffer);
+        CommClient::Instance()->updates_.push(update);
+    }
+    else
+        Logger::LogNContinue("Bad packet size received");
+
+    return 0;
 }

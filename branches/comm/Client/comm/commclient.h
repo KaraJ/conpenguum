@@ -47,19 +47,20 @@ public:
     inline bool isConnected() { return isConnected_; }
     inline bool hasNextUpdate() { return !updates_.empty(); }
     UpdateObject nextUpdate();
-    void addUpdate(UpdateObject update);
     inline bool hasNextServerMessage();
     ServerMessage nextServerMessage();
     int connect(const std::string playerName, const std::string address);
     void disconnect();
     void sendServerMsg(const std::string msg) throw (std::string);
     void sendAction(const ClientAction action);
+    static void* readThreadFunc(void* args);
 
 private:
     CommClient();
     CommClient(const CommClient& cpy);
     CommClient& operator=(const CommClient& cc);
     ~CommClient();
+    pthread_t readThread_;
 
     UDPConnection *udpConnection_;
     struct sockaddr_in servAddr;
