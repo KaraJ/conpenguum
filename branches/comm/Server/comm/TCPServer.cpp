@@ -64,6 +64,7 @@ void* TCPServer::ReadThread(void* vptr)
 
 		if (FD_ISSET(sock, &currSet))
 		{
+			size = sizeof(sa);
 			client = SocketWrapper::Accept(sock, &sa, &size);
 			for (int i = 0; i < 32; ++i)
 			{

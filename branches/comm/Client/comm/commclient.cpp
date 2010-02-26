@@ -68,6 +68,7 @@ int CommClient::connect(const string name, const string address)
             Logger::LogNQuit("Error connection client - bad IP");
         udpConnection_ = new UDPConnection();
         isConnected_ = true;
+        pthread_create(&readThread_, NULL, CommClient::readThreadFunc, NULL);
     }
     return 0;
 }
