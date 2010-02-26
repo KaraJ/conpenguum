@@ -55,7 +55,7 @@ public:
         return ((Bitfield & flags) == flags);
     }
 
-    inline Holder getBitField()
+    inline Holder getBitField()  const
     {
         return Bitfield;
     }

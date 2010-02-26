@@ -59,11 +59,15 @@ CommServer::~CommServer()
  --  int* clientIDs:         a pointer to an array of clientID's to send the update to
  --  int numClients:         the number of clients in clientIDs
  ----------------------------------------------------------------------------------------------------------*/
-void CommServer::sendUpdate(const UpdateObject update, const int* clientIDs, int numClients)
+void CommServer::sendUpdate(const UpdateObject& update, vector<int> clientIDs)
 {
-	//translate client IDs to sockaddr
-	//convert UpdateOjbect to bytes
-	//udpServer_.sendMessage(to, data, len);
+    BYTE* buffer;
+    update.serialize(&buffer);
+	for (size_t i = 0; i < clientIDs.size(); i++)
+	{
+	    //sockaddr to = clientIDs[i];
+	    //udpConnection_->sendMessage(&to, buffer, UpdateObject::serializeSize);
+	}
 }
 
 /*----------------------------------------------------------------------------------------------------------

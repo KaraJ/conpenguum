@@ -51,7 +51,7 @@ UpdateObject::UpdateObject(BYTE* buffer) : actions_(0)
     pos_.setY(y);
 }
 
-void UpdateObject::serialize(BYTE** buffer)
+void UpdateObject::serialize(BYTE** buffer) const
 {
      BYTE tmp;
      (*buffer) = new BYTE[serializeSize];

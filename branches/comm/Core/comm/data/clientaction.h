@@ -68,12 +68,12 @@ public:
     inline void setTurningRight()  { mask_.Set(AC_TURNRIGHT); }
     inline void setAccelerating()  { mask_.Set(AC_ACCELERATING); }
 
-    inline bool isFiring() { return mask_.Test(AC_FIREING); }
-    inline bool isTurningLeft() { return mask_.Test(AC_TURNLEFT); }
-    inline bool isTurningRight() { return mask_.Test(AC_TURNRIGHT); }
-    inline bool isAccelerating() { return mask_.Test(AC_ACCELERATING); }
-    inline int getClientID() { return clientID_; }
-    void serialize(BYTE** buffer);
+    inline bool isFiring() const { return mask_.Test(AC_FIREING); }
+    inline bool isTurningLeft() const { return mask_.Test(AC_TURNLEFT); }
+    inline bool isTurningRight() const { return mask_.Test(AC_TURNRIGHT); }
+    inline bool isAccelerating() const { return mask_.Test(AC_ACCELERATING); }
+    inline int getClientID() const { return clientID_; }
+    void serialize(BYTE** buffer) const;
     void print(std::ostream& out = std::cout);
 private:
     ActionBitmask mask_;

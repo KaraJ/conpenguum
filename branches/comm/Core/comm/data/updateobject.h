@@ -21,7 +21,7 @@ public:
 
     inline void setRotation(int rot) { rotation_ = rot; }
     inline void setPosition(const QPoint& p) { pos_ = p; }
-    void serialize(BYTE** buffer);
+    void serialize(BYTE** buffer) const;
     void print(std::ostream& out = std::cout);
 private:
     int rotation_;

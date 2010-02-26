@@ -24,6 +24,7 @@
 #include <string>
 #include <queue>
 #include <semaphore.h>
+#include <vector>
 
 #include "comm/data/clientaction.h"
 #include "comm/data/updateobject.h"
@@ -44,7 +45,7 @@ public:
     ClientAction nextClientAction();
     bool hasNextServerMessage();
     ServerMessage nextServerMessage();
-    void sendUpdate(const UpdateObject update, const int* clientIDs, int numClients);
+    void sendUpdate(const UpdateObject& update, std::vector<int> clientIDs);
     void sendServerMsg(const std::string msg, const int* clientIDs, int numClients);
 
 private:

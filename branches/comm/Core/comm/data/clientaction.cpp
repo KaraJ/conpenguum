@@ -33,7 +33,7 @@ ClientAction::ClientAction(BYTE* buffer)
     mask_.setBitField(tmp);
 }
 
-void ClientAction::serialize(BYTE** buffer)
+void ClientAction::serialize(BYTE** buffer) const
 {
     BYTE tmp;
     (*buffer) = new BYTE[serializeSize];
