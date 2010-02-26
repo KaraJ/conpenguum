@@ -93,4 +93,5 @@ ssize_t UDPConnection::recvMessage(BYTE** buffer)
     	return -1;
     if (!CRC::checkCRC((*buffer), len))
     	return -2;
+    return len;
 }

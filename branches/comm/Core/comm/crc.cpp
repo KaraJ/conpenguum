@@ -47,9 +47,7 @@ bool CRC::checkCRC(const BYTE * data, size_t size)
 	BYTE crc = 0;
 
 	for (size_t i = 0; i < size; ++i)
-	{
 		crc = genCrc8(crc, buff[i]);
-	}
 
 	return crc == 0;
 }
