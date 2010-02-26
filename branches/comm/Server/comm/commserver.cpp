@@ -39,7 +39,7 @@ CommServer* CommServer::Instance()
 void CommServer::init()
 {
 	tcpServer_->Init(TCP_PORT);
-	tcpServer_->StartListenThread();
+	tcpServer_->StartReadThread(&serverMsgs_, &clients_, &semSM_);
 }
 
 CommServer::~CommServer()
