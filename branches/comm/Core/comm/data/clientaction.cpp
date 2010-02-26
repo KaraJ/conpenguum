@@ -51,6 +51,5 @@ void ClientAction::print(ostream& out)
     out << "Firing:       " << isFiring() << endl;
     out << "Left:         " << isTurningLeft() << endl;
     out << "Right:        " << isTurningRight() << endl;
-    out << "Firing:       " << isFiring() << endl;
     out << "Accelerating: " << isAccelerating() << endl;
 }
