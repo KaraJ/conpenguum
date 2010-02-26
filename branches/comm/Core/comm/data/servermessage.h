@@ -16,6 +16,7 @@ public:
 	    	MT_INIT     = 5, /* Initial message holding ScoreBoard and ClientID to Player Name mapping */
 	    	MT_CHAT     = 6
 	    };
+    static const int SM_HEADERSIZE = 3;
 
 	size_t Serialize(char *data);
     ServerMessage() { }
