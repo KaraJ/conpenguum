@@ -24,7 +24,6 @@ CommServer::CommServer()
 	tcpServer_ = new TCPServer();
 	udpConnection_ = new UDPConnection();
 	sem_init(&semSM_, 0, 1);
-    pthread_create(&readThread_, NULL, CommServer::readThreadFunc, NULL);
 }
 
 CommServer* CommServer::Instance()
@@ -40,6 +39,7 @@ void CommServer::init()
 {
 	tcpServer_->Init(TCP_PORT);
 	tcpServer_->StartReadThread(&serverMsgs_, &clients_, &semSM_);
+	pthread_create(&readThread_, NULL, CommServer::readThreadFunc, NULL);
 }
 
 CommServer::~CommServer()

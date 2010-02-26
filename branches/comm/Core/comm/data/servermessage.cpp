@@ -17,5 +17,5 @@ size_t ServerMessage::Serialize(char *data)
 void ServerMessage::SetData(std::string data)
 {
 	msgData = data.substr(0, BUFFSIZ);
-	msgLen = data.length() + 1;
+	msgLen = data.length() + 4;
 }

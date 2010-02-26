@@ -73,6 +73,11 @@ void* TCPServer::ReadThread(void* vptr)
 					clients_[i] = client;
 					if (i > maxClient)
 						maxClient = i;
+					ServerMessage m;
+					m.SetClientID(i);
+					m.SetMsgType(ServerMessage::MT_INIT);
+					m.SetData("");
+					TCPConnection::WriteMessage(client, m);
 					break;
 				}
 			}

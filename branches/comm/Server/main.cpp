@@ -14,6 +14,7 @@ int main() {
 }
 
 void UDPTest() {
+	CommServer::Instance()->init();
 	while (true) {
 		if (CommServer::Instance()->hasNextClientAction()) {
 			ClientAction a = CommServer::Instance()->nextClientAction();
