@@ -77,7 +77,7 @@ void* TCPServer::ReadThread(void* vptr)
 					ServerMessage m;
 					m.SetClientID(i);
 					m.SetMsgType(ServerMessage::MT_INIT);
-					m.SetData("");
+					m.SetData("");;
 					TCPConnection::WriteMessage(client, m);
 					break;
 				}
