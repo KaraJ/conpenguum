@@ -60,5 +60,8 @@
  [http://code.google.com/p/conpenguum/wiki/minutes_2009_01_26 minutes_2010_01_26]<br>
  [http://code.google.com/p/conpenguum/wiki/minutes_2009_02_02 minutes_2010_02_02]
 
+== Tools ==
+
+[http://conpenguum.googlecode.com/files/setup_demo.sh Eclipse project setup]
 == Edit this page ==
  [http://code.google.com/p/conpenguum/w/edit/index]
