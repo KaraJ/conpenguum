@@ -4,8 +4,6 @@
 //System Includes will go here
 
 //User Includes will go here
-#include "BaseWindow.h"
-#include "comm/commclient.h"
-#include <iostream>
+#include "GUI/panel.h"
 
 #endif // MAIN_H

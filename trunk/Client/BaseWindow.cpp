@@ -17,6 +17,12 @@
 
 BaseWindow::BaseWindow()
 {
+    Q_INIT_RESOURCE(menuitems);
+
+   Panel *panel = new Panel();
+    panel->setFocus();
+    panel->show();
+
 	// @todo Get CommClient instance here.
 	// @todo Set up a QTimer object to call update() 60 times/second.
 }

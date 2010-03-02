@@ -1,11 +1,13 @@
-#include "Image.h"
-using namespace std;
+#ifndef IMAGE_H
+#define IMAGE_H
+#include <string>
 /*----------------------------------------------------------------------------------------------
--- FUNCTION NAME: Image
+-- CLASSNAME: Image
 --
--- PURPOSE: constructor.
+-- PURPOSE: used to retain a animation still image. Texture x and y offsets will be used to 
+--          capture animation still. We will need to determine image sizes.
 --
--- DESIGNER: Jordan 
+-- DESIGNER: Jordan
 --
 -- PROGRAMMER: Jordan
 --
@@ -13,9 +15,14 @@ using namespace std;
 --
 -- REVISIONS: None
 -----------------------------------------------------------------------------------------------*/
-Image::Image(int xOff, int yOff, string texturePath)
+class Image
 {
-	xOffSet_ = xOff; 
-	yOffSet_ = yOff; 
-	texturePath_ = texturePath; 
-} 
+public:
+    explicit Image(int, int, std::string);
+private:
+	/* Need to have a way of actually storing the image within this image object. 
+		   will allow us to manipulate the offsets of texture image. */
+    int xOffSet_, yOffSet_; 
+    std::string texturePath_;	
+};
+#endif
