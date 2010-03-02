@@ -46,7 +46,6 @@ public:
     QPoint vector;
     int id;
 private:
-    // frame counter
     // next ID to be used
 public:
     NewtObject(): position(0,0), vector(0,0), id(0){}
@@ -57,53 +56,4 @@ public:
     int getID(){ return id; }
 private:
 };
-
-/*----------------------------------------------------------------------------
---
---  CLASSE:         ship
---
---  DATE:           January 27, 2010
---
---  REVISIONS:      v0.1 - basics, rest to be stubbed in
---
---  DESIGNER:       Gameplay/Physics Team
---
---  PROGREMMER:     Gameplay/Physics Team
---
---  NOTES:          A newtObject with rotation. The basis of a player
---                  controlled ship.
---
-----------------------------------------------------------------------------*/
-class Ship : public NewtObject
-{
-private:
-    int rotation;
-public:
-    Ship(): rotation(0) {}
-    Ship(int pX, int pY, int vX, int vY, int ID):
-        NewtObject(pX, pY, vX, vY, ID){}
-    int getRot(){ return rotation; }
-};
-
-/*----------------------------------------------------------------------------
---
---  CLASSE:         shot
---
---  DATE:           January 27, 2010
---
---  REVISIONS:      v0.1 - basics, rest to be stubbed in
---
---  DESIGNER:       Gameplay/Physics Team
---
---  PROGREMMER:     Gameplay/Physics Team
---
---  NOTES:          The basis of the shots that players shoot.
---
-----------------------------------------------------------------------------*/
-class Shot: public NewtObject
-{
-    //
-};
-
-
 #endif // NEWTOBJCECTS_HH
