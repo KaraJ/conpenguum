@@ -2,6 +2,6 @@
 #define MAIN_H
 
 #include "comm/udpConnection.h"
-#include "../Core/comm/globals.h"
+#include "comm/globals.h"
 
 #endif // MAIN_H
