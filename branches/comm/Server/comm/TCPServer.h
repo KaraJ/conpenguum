@@ -22,11 +22,13 @@ public:
 	TCPServer();
 	void Init(const std::string port);
 	void StartReadThread(std::queue<ServerMessage> *serverMsgs, std::map<int,in_addr> *clients, sem_t *semSM);
+	void SendMessage(ServerMessage msg);
+	void SendMessageToAll(ServerMessage msg);
 	static void* ReadThread(void*);
 
 private:
 	int listenSocket_;
-	static int clients_[32];
+	static int clients_[MAX_CONN];
 	static sem_t *semSM_;
 	static std::queue<ServerMessage> *msgBuff_;
 	static std::map<int,in_addr> *clientMap_;

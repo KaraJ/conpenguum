@@ -2,14 +2,14 @@
 
 using namespace std;
 
-int TCPServer::clients_[32];
+int TCPServer::clients_[MAX_CONN];
 sem_t *TCPServer::semSM_;
 queue<ServerMessage> *TCPServer::msgBuff_;
 map<int,in_addr> *TCPServer::clientMap_;
 
 TCPServer::TCPServer()
 {
-	bzero(clients_, 32 * sizeof(int));
+	bzero(clients_, MAX_CONN * sizeof(int));
 }
 
 void TCPServer::Init(const string port)
@@ -68,7 +68,7 @@ void* TCPServer::ReadThread(void* vptr)
 			size = sizeof(sa);
 			client = SocketWrapper::Accept(sock, &sa, &size);
 			isFull = true;
-			for (int i = 0; i < 32; ++i)
+			for (int i = 0; i < MAX_CONN; ++i)
 			{
 				if (clients_[i] == 0)
 				{
@@ -92,7 +92,7 @@ void* TCPServer::ReadThread(void* vptr)
 			if (--ready == 0)
 				continue;
 		}
-		for (int i = 0; i < 32; ++i)
+		for (int i = 0; i < MAX_CONN; ++i)
 		{
 			if ((client = clients_[i]) == 0)
 				continue;
@@ -110,4 +110,21 @@ void* TCPServer::ReadThread(void* vptr)
 	}
 
 	return 0;
+}
+
+void TCPServer::SendMessage(ServerMessage msg)
+{
+	TCPConnection::WriteMessage(msg.GetClientID(), msg);
+}
+
+void TCPServer::SendMessageToAll(ServerMessage msg)
+{
+	for (int i = 0; i < MAX_CONN; ++i)
+	{
+		if (clients_[i] != 0)
+		{
+			msg.SetClientID(clients_[i]);
+			TCPConnection::WriteMessage(msg.GetClientID(), msg);
+		}
+	}
 }
