@@ -1,5 +1,4 @@
 TEMPLATE = app
-
 SOURCES += Animation/Loader.cpp \
     Animation/Image.cpp \
     Animation/Animation.cpp \
@@ -8,7 +7,6 @@ SOURCES += Animation/Loader.cpp \
     main.cpp \
     Renderer/renderer.cpp \
     BaseWindow.cpp
-		
 HEADERS += Animation/Loader.h \
     Animation/Image.h \
     Animation/Animation.h \
@@ -17,6 +15,4 @@ HEADERS += Animation/Loader.h \
     main.h \
     Renderer/renderer.h \
     BaseWindow.h
-
 QT += opengl
-

@@ -23,39 +23,46 @@
 
 #include <string>
 #include <queue>
-#include "clientaction.h"
-#include "updateobject.h"
-#include "servermessage.h"
+#include <map>
+#include <semaphore.h>
+#include <vector>
+
+#include "comm/data/clientaction.h"
+#include "comm/data/updateobject.h"
+#include "comm/data/servermessage.h"
+#include "TCPServer.h"
+#include "comm/udpConnection.h"
+#include "comm/crc.h"
+
+class UDPConnection;
 
 class CommServer
 {
 public:
     static CommServer* Instance();
 
-    inline bool hasNextClientAction() { return !actions_.empty(); }
-    inline std::string nexthasNextClientAction()
-    {
-        ClientAction action = actions_.front();
-        actions_.pop();
-        return "";
-    }
-    inline bool hasNextServerMessage() { return !serverMsgs_.empty(); }
-    inline ServerMessage nextServerMessage()
-    {
-        ServerMessage serverMsg = serverMsgs_.front();
-        serverMsgs_.pop();
-        return serverMsg;
-    }
-    void sendUpdate(const UpdateObject update);
-    void sendServerMsg(const std::string msg);
+    void init();
+    bool hasNextClientAction();
+    ClientAction nextClientAction();
+    bool hasNextServerMessage();
+    ServerMessage nextServerMessage();
+    void sendServerMsg(const ServerMessage& msg, const std::vector<int>& clients);
+    void sendUpdate(const UpdateObject& update, const std::vector<int>& clientIDs);
+
 private:
-    CommServer() {}
+    CommServer();
     CommServer(const CommServer& cpy);
     CommServer& operator=(const CommServer& cc);
     ~CommServer();
+    static void* readThreadFunc(void* args);
 
     std::queue<ClientAction> actions_;
     std::queue<ServerMessage> serverMsgs_;
+    TCPServer* tcpServer_;
+    UDPConnection* udpConnection_;
+    pthread_t readThread_;
+    std::map<int,in_addr> clients_;
+    sem_t semSM_;
 };
 
 #endif

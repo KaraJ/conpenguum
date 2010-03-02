@@ -9,7 +9,9 @@ HEADERS += comm/socketwrapper.h \
     comm/data/clientaction.h \
     comm/data/message.h \
     comm/data/servermessage.h \
-    comm/data/updateobject.h
-TARGET   = core
+    comm/data/updateobject.h \
+    comm/data/globals.h
+TARGET = core
 TEMPLATE = lib
-CONFIG	 = staticlib warn_on
+CONFIG = staticlib \
+    warn_on

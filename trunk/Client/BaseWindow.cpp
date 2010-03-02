@@ -21,7 +21,7 @@ BaseWindow::BaseWindow()
 	// @todo Set up a QTimer object to call update() 60 times/second.
 }
 
-void BaseWindow::keyPressEvent (QKeyEvent * event)
+void BaseWindow::keyPressEvent (QKeyEvent *event)
 {
 	// @todo Keyboard handling here.
 }

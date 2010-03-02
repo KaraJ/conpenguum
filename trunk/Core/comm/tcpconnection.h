@@ -1,23 +1,21 @@
 #ifndef TCPCONNECTION_H
 #define TCPCONNECTION_H
 
-//This class to hold low-level protocol specific functionality
-#include <string>
-#include	<netinet/in.h>	/* sockaddr_in{} and other Internet defns */
+//System Includes
+
+//User Includes
+#include "data/servermessage.h"
+#include "socketwrapper.h"
+#include "globals.h"
 
 class TCPConnection
 {
 public:
-    TCPConnection GetInstance();
-    std::string HostToIp();
-    bool Connect();
-    bool Close();
-    bool ReadMessage();
-    bool WriteMessage();
+    static void ReadMessage(int sock, ServerMessage& sm);
+    static void WriteMessage(int sock, ServerMessage& sm);
 
 private:
-    TCPConnection();
-    struct sockaddr sa;
+    TCPConnection() {}
 
 };
 

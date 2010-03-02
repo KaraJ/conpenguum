@@ -2,6 +2,9 @@
 //#include "rendererDefines.h"
 #include <QtGlobal>
 #include <QPainter>
+#include <QColor>
+#include <QWidget>
+#include <QGLWidget>
 
 Renderer::Renderer(QWidget *parent) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent)
 {        

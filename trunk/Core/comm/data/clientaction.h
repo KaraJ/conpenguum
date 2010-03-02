@@ -30,16 +30,22 @@
 #ifndef CLIENTACTION_H
 #define CLIENTACTION_H
 
+#define BYTE unsigned char
+
+#include "../globals.h"
 #include "bitmask.h"
+#include <cstring>
+#include <iostream>
 
 //TODO: Make an enum for type
+//TODO: add decelerating? (ask game-play team)
 
 enum ActionFlags
 {
     AC_FIREING  = 0x01,
     AC_TURNLEFT = 0x02,
     AC_TURNRIGHT  = 0x04,
-    AC_ACCELERATING = 0x08,
+    AC_ACCELERATING = 0x08
 };
 
 typedef Bitmask<unsigned, ActionFlags> ActionBitmask;
@@ -47,24 +53,31 @@ typedef Bitmask<unsigned, ActionFlags> ActionBitmask;
 class ClientAction
 {
 public:
-    ClientAction(int clientID, int type) : clientID_(clientID), type_(type) {}
+    static const int serializeSize = 2;
 
-    inline void clear() { ClientAction::mask_.Clear((ActionFlags)(AC_ACCELERATING | AC_FIREING | AC_TURNLEFT | AC_TURNRIGHT)); }
-    inline void setFiring() { ClientAction::mask_.Set(AC_FIREING); }
-    inline void setTurningLeft() { ClientAction::mask_.Set(AC_TURNLEFT); }
-    inline void setTurningRight()  { ClientAction::mask_.Set(AC_TURNRIGHT); }
-    inline void setAccelerating()  { ClientAction::mask_.Set(AC_ACCELERATING); }
+    ClientAction(int clientID) : clientID_(clientID)
+    {
+        if (clientID > 31)
+            throw "ClientID must be between 0 and 31 (inclusive)";
+    }
+    ClientAction(BYTE* buffer);
 
-    inline bool isFiring() { return ClientAction::mask_.Test(AC_FIREING); }
-    inline bool isTurningRight() { return ClientAction::mask_.Test(AC_FIREING); }
-    inline bool isTurningLeft() { return ClientAction::mask_.Test(AC_FIREING); }
-    inline bool isAccelerating() { return ClientAction::mask_.Test(AC_FIREING); }
-    inline int getClientID() { return clientID_; }
-    inline int getType() { return type_; }
+    inline void clear() { mask_.Clear((ActionFlags)(AC_ACCELERATING | AC_FIREING | AC_TURNLEFT | AC_TURNRIGHT)); }
+    inline void setFiring() { mask_.Set(AC_FIREING); }
+    inline void setTurningLeft() { mask_.Set(AC_TURNLEFT); }
+    inline void setTurningRight()  { mask_.Set(AC_TURNRIGHT); }
+    inline void setAccelerating()  { mask_.Set(AC_ACCELERATING); }
+
+    inline bool isFiring() const { return mask_.Test(AC_FIREING); }
+    inline bool isTurningLeft() const { return mask_.Test(AC_TURNLEFT); }
+    inline bool isTurningRight() const { return mask_.Test(AC_TURNRIGHT); }
+    inline bool isAccelerating() const { return mask_.Test(AC_ACCELERATING); }
+    inline int getClientID() const { return clientID_; }
+    void serialize(BYTE** buffer) const;
+    void print(std::ostream& out = std::cout);
 private:
     ActionBitmask mask_;
     int clientID_;
-    int type_;
 };
 
 #endif
