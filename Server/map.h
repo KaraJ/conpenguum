@@ -12,8 +12,8 @@ protected:
 public:
     Tile(int x, int y);
     bool is_wall();
-    int numShips();
-    int numShots;
+    int  numShips();
+    int  numShots;
     bool overlap(NewtObject object);
     void addShip(Ship ship);
     void addShot(Shot shot);
@@ -23,7 +23,7 @@ public:
 
 class Map {
 protected:
-    Tile map[];
+    Tile map[1];
 public:
     Map(int x, int y);
     void add_ship(/*Player player*/);

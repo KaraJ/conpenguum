@@ -2,23 +2,30 @@
 #define UPDATEOBJECT_H
 
 #include "clientaction.h"
+#include "../globals.h"
+#include <cstring>
+#include <QPoint>
+#include <iostream>
 
 class UpdateObject
 {
 public:
-    UpdateObject(int clientID, int type) : rotation_(0), posX_(0), posY_(0), actions_(ClientAction(clientID, type)) {}
+    static const int serializeSize = 6;
+
+    UpdateObject(int clientID) : rotation_(0), pos_(), actions_(ClientAction(clientID)) {}
+    UpdateObject(BYTE* buffer);
 
     inline int getRotation() const { return rotation_; }
-    inline int getPosX() const { return posX_; }
-    inline int getPosY() const { return posY_; }
-    inline ClientAction getActions() { return actions_; }
+    inline QPoint getPos() const { return pos_; }
+    inline ClientAction& getActions() { return actions_; }
 
     inline void setRotation(int rot) { rotation_ = rot; }
-    inline void setPosition(int x, int y) { posX_ = x; posY_ = y; }
+    inline void setPosition(const QPoint& p) { pos_ = p; }
+    void serialize(BYTE** buffer) const;
+    void print(std::ostream& out = std::cout);
 private:
     int rotation_;
-    int posX_;
-    int posY_;
+    QPoint pos_;
     ClientAction actions_;
 };
 

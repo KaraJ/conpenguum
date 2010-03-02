@@ -7,71 +7,99 @@ int SocketWrapper::Socket(int family, int type, int protocol)
     int n;
 
     if ( (n = socket(family, type, protocol)) < 0)
-        cerr << "socket error" << endl;
+        Logger::LogNQuit("Socket error.");
 
     return (n);
 }
 
-void SocketWrapper::Bind(int fd, const struct sockaddr *sa, socklen_t salen)
+void SocketWrapper::Bind(int fd, const struct sockaddr_in *sa, socklen_t salen)
 {
-    if (bind(fd, sa, salen) < 0)
-        cerr << "bind error" << endl;
+    if (bind(fd, (sockaddr*)sa, salen) < 0)
+        Logger::LogNQuit("Bind error.");
 }
 
-int SocketWrapper::Accept(int fd, struct sockaddr *sa, socklen_t *salenptr)
+int SocketWrapper::Accept(int fd, sockaddr_in *sa, socklen_t *salenptr)
 {
     int n;
 
-    while (1)
-    {
-        if ( (n = accept(fd, sa, salenptr)) < 0)
-        {
-            if (errno == ECONNABORTED)
-                continue;
-            cerr << "accept error" << endl;
-            break;
-        }
-    }
+    if ( (n = accept(fd, (sockaddr*)sa, salenptr)) < 0)
+        Logger::LogNQuit("Accept error.");
+
     return(n);
 }
 
-void SocketWrapper::Connect(int fd, const struct sockaddr *sa, socklen_t salen)
+bool SocketWrapper::Connect(int fd, const struct sockaddr_in *sa, socklen_t salen)
 {
-    if (connect(fd, sa, salen) < 0)
-        cerr << "connect error" << endl;
+    if (connect(fd, (sockaddr*)sa, salen) < 0)
+    {
+    	string buff = "Connect: Unable to connect to ";
+    	buff += inet_ntoa(sa->sin_addr);
+        Logger::LogNContinue("Connect: ");
+        return false;
+    }
+    return true;
 }
 
-void SocketWrapper::SocketWrapper::Listen(int fd, int backlog)
+void SocketWrapper::Listen(int fd, int backlog)
 {
-    char *ptr;
-
-    /* can override 2nd argument with environment variable */
-    if ( (ptr = getenv("LISTENQ")) != NULL)
-        backlog = atoi(ptr);
-
     if (listen(fd, backlog) < 0)
-        cerr << "listen error" << endl;
+        Logger::LogNQuit("Listen error.");
 }
 
-void SocketWrapper::Write(int fd, const void *vptr, size_t n)
+void SocketWrapper::Write(int sock, const void *vptr, size_t n)
 {
-    size_t nleft;
+    size_t nleft = n;
     ssize_t nwritten;
-    const char *ptr;
+    char* buff = (char*) vptr;
 
-    ptr = (char*) vptr;
-    nleft = n;
     while (nleft > 0)
     {
-        if ( (nwritten = write(fd, ptr, nleft)) <= 0)
-        {
-            if (nwritten < 0 && errno == EINTR)
-                nwritten = 0; /* and call write() again */
-            else
-                cerr << "write error" << endl; /* error */
-        }
+        if ( (nwritten = write(sock, buff, nleft)) <= 0)
+            Logger::LogNQuit("Write error");
 
         nleft -= nwritten;
-        ptr   += nwritten;
+        buff  += nwritten;
     }
 }
+
+void SocketWrapper::Read(int sock, void *vptr, size_t size)
+{
+	size_t  nleft = size;
+	ssize_t nread;
+	char* buff = (char*) vptr;
+
+	while (nleft > 0)
+	{
+		if ( (nread = read(sock, buff, nleft)) <= 0)
+			Logger::LogNQuit("Read error");
+
+		nleft -= nread;
+		buff  += nread;
+	}
+}
+
+ssize_t SocketWrapper::Recvfrom(int fd, void* buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t* addrlen)
+{
+	ssize_t retval;
+
+	if((retval = recvfrom(fd, (void*)buff, nbytes, flags, from, addrlen)) < 0)
+	{
+		if(errno == EBADF)
+			Logger::LogNContinue("Recvfrom Bad Descriptor");
+		else
+			Logger::LogNQuit("Recvfrom error");
+	}
+
+	return retval;
+}
+
+ssize_t SocketWrapper::Sendto(int fd, const void* buff, size_t nbytes, int flags, const struct sockaddr *to, socklen_t addrlen)
+{
+	ssize_t retval;
+
+	if((retval = sendto(fd, buff, nbytes, flags, to, addrlen)) == -1)
+        Logger::LogNQuit("Sendto error");
+
+	return retval;
+}
+

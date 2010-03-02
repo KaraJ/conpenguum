@@ -24,15 +24,20 @@
 #ifndef COMMCLIENT_H
 #define COMMCLIENT_H
 
+//System Includes
 #include <string>
 #include <queue>
+#include <semaphore.h>
+#include <arpa/inet.h>
 
-#include "../../Core/comm/data/updateobject.h"
-#include "../../Core/comm/data/clientaction.h"
-#include "../../Core/comm/data/servermessage.h"
+//User Includes
+#include "tcpclient.h"
+#include "comm/data/updateobject.h"
+#include "comm/data/clientaction.h"
+#include "comm/data/servermessage.h"
+#include "comm/udpConnection.h"
 
-using std::string;
-using std::queue;
+class UDPConnection;
 
 class CommClient
 {
@@ -41,42 +46,30 @@ public:
 
     inline bool isConnected() { return isConnected_; }
     inline bool hasNextUpdate() { return !updates_.empty(); }
-    inline UpdateObject nextUpdate()
-    {
-        UpdateObject update = updates_.front();
-        updates_.pop();
-        return update;
-    }
-    inline bool hasNextChatMessage() { return !chatMsgs_.empty(); }
-    inline ServerMessage nextChatMessage()
-    {
-        ServerMessage chatMsg = chatMsgs_.front();
-        chatMsgs_.pop();
-        return chatMsg;
-    }
-    inline bool hasNextServerMessage() { return !serverMsgs_.empty(); }
-    inline ServerMessage nextServerMessage()
-    {
-        ServerMessage serverMsg = serverMsgs_.front();
-        serverMsgs_.pop();
-        return serverMsg;
-    }
-    int connect(const string name, const string address);
+    UpdateObject nextUpdate();
+    inline bool hasNextServerMessage();
+    ServerMessage nextServerMessage();
+    int connect(const std::string playerName, const std::string address);
     void disconnect();
-    void sendChat(const string msg, int id);
-    void sendServerMsg(const string msg);
+    void sendServerMsg(const std::string msg) throw (std::string);
     void sendAction(const ClientAction action);
+    static void* readThreadFunc(void* args);
 
 private:
-    CommClient() {}
+    CommClient();
     CommClient(const CommClient& cpy);
     CommClient& operator=(const CommClient& cc);
     ~CommClient();
+    pthread_t readThread_;
 
-    queue<UpdateObject> updates_;
-    queue<ServerMessage> chatMsgs_;
-    queue<ServerMessage> serverMsgs_;
+    UDPConnection *udpConnection_;
+    struct sockaddr_in servAddr;
+    std::queue<UpdateObject> updates_;
+    std::queue<ServerMessage> serverMsgs_;
+    sem_t semSM_;
     bool isConnected_;
+    size_t clientID_;
+    TCPClient* tcpClient_;
 };
 
 #endif
