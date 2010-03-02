@@ -6,6 +6,9 @@
 #include <QKeyEvent>
 #include <QTimer>
 
+//User includes
+#include "GUI/panel.h"
+
 /*------------------------------------------------------------------------------
  --
  -- CLASS: BaseWindow
@@ -35,15 +38,16 @@
 
 class BaseWindow : public QMainWindow
 {
-    private:
-        QTimer timer;
+private:
+    QTimer timer;
 
-    public:
-        BaseWindow();
+public:
+    BaseWindow();
 
-    private:
-        void keyPressEvent (QKeyEvent* event);
-        void update();
+private:
+    Panel* panel_;
+    void keyPressEvent (QKeyEvent* event);
+    void update();
 };
 
 #endif // BASEWINDOW_H
