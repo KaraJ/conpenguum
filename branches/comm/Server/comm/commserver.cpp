@@ -80,17 +80,35 @@ void CommServer::sendUpdate(const UpdateObject& update, const vector<int>& clien
  -- DATE: 2010-01-23
  --
  -- INTERFACE:
- --  string msg:     the message to send
- --  int* clientIDs: a pointer to an array of clientID's to send the message to. Use null to send to all.
- --  int numClients: the number of clients in clientIDs. If clientIDs = null, this is ignored.
+ --	 ServerMessage sm: Message to send to client(s)
+ --  const vector<int> &clients: A reference to a vector of integers containing the client ids
+ --			to send to - if empty, send to all clients
  ----------------------------------------------------------------------------------------------------------*/
-void CommServer::sendServerMsg(const ServerMessage& sm, const vector<int>& clients)
-{
-	/*for (int i = 0; i < numClients; ++i)
-	{
-		sm.SetClientID(clientID[i]);
 
-	}*/
+void CommServer::sendServerMsg(ServerMessage sm, const vector<int> &clients)
+{
+	if (clients.empty())
+		tcpServer_->SendMessageToAll(sm);
+
+	for (vector<int>::const_iterator it = clients.begin(); it != clients.end(); ++it)
+	{
+		sm.SetClientID(*it);
+		tcpServer_->SendMessage(sm);
+	}
+}
+
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: sendServerMsg
+ --
+ -- DATE: 2010-03-02
+ --
+ -- INTERFACE:
+ --	 ServerMessage sm: Message to send to client
+ ----------------------------------------------------------------------------------------------------------*/
+
+void CommServer::sendServerMsg(ServerMessage sm)
+{
+	tcpServer_->SendMessage(sm);
 }
 
 bool CommServer::hasNextClientAction()
@@ -118,10 +136,10 @@ ServerMessage CommServer::nextServerMessage()
 {
 	ServerMessage serverMsg;
 	sem_wait(&semSM_);
-    serverMsg = serverMsgs_.front();
-    serverMsgs_.pop();
-    sem_post(&semSM_);
-    return serverMsg;
+	serverMsg = serverMsgs_.front();
+	serverMsgs_.pop();
+	sem_post(&semSM_);
+	return serverMsg;
 }
 
 void* CommServer::readThreadFunc(void* args)
