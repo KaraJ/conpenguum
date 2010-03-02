@@ -51,6 +51,7 @@ void* TCPServer::ReadThread(void* vptr)
 	uint size;
 	fd_set currSet, clientSet;
 	ServerMessage msgBuff;
+	bool isFull;
 
 	SocketWrapper::Listen(sock, 5);
 
@@ -66,6 +67,7 @@ void* TCPServer::ReadThread(void* vptr)
 		{
 			size = sizeof(sa);
 			client = SocketWrapper::Accept(sock, &sa, &size);
+			isFull = true;
 			for (int i = 0; i < 32; ++i)
 			{
 				if (clients_[i] == 0)
@@ -74,13 +76,16 @@ void* TCPServer::ReadThread(void* vptr)
 					clients_[i] = client;
 					if (i > maxClient)
 						maxClient = i;
-					ServerMessage m;
-					m.SetClientID(i);
-					m.SetMsgType(ServerMessage::MT_INIT);
-					m.SetData("");
-					TCPConnection::WriteMessage(client, m);
+					isFull = false;
 					break;
 				}
+			}
+			if (isFull)
+			{
+				ServerMessage m;
+				m.SetMsgType(ServerMessage::MT_FULL);
+				m.SetData("");
+				TCPConnection::WriteMessage(client, m);
 			}
 			FD_SET(client, &clientSet);
 
@@ -94,6 +99,9 @@ void* TCPServer::ReadThread(void* vptr)
 			if (FD_ISSET(client, &currSet))
 			{
 				TCPConnection::ReadMessage(client, msgBuff);
+				//If login msg, client doesnt know own id yet - add it
+				if (msgBuff.GetMsgType() == ServerMessage::MT_LOGIN)
+					msgBuff.SetClientID(i);
 				sem_wait(semSM_);
 				msgBuff_->push(msgBuff);
 				sem_post(semSM_);
