@@ -11,4 +11,6 @@
 #define TCP_MAXMSG (BUFFSIZ+3)
 #define DEFSRV		"127.0.0.1"
 
+#define MAX_CONN	32
+
 #endif
