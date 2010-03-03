@@ -6,8 +6,6 @@ SOURCES += main.cpp \
     shot.cpp \
     physics.cpp
 HEADERS += map.h \
-    newtObjects.hh \
-    frame.hh \
     ship.h \
     shot.h \
     frame.h \

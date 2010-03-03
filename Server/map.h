@@ -10,6 +10,9 @@
 #include "shot.h"
 #include "ship.h"
 
+#define MAX_MAP_HEIGHT 1024
+#define MAX_MAP_WIDTH 102
+
 class Tile {
 private:
     bool wall, fixed, x, y;
@@ -21,28 +24,28 @@ public:
     int numShips();
     int numShots;
     bool overlap(NewtObject object);
-    void addShip(Ship ship);
-    void addShot(Shot shot);
-    void delShip(Ship ship);
-    void delShot(Shot shot);
+    void add(Ship ship);
+    void add(Shot shot);
+    void remove(Ship ship);
+    void remove(Shot shot);
 };
 
 class Map {
 private:
-    Tile map[];
+    Tile tiles[MAX_MAP_WIDTH][MAX_MAP_HEIGHT];
     int  width;    // map width in tiles
     int  height;   // map height in tiles
     int  tileSize; // length of tile edge in pixels
+    Tile tile(QPoint position);
 public:
     Map(int x, int y);
-    void addShip(Ship ship);
-    void removeShip(Ship ship);
-    void addShot(Shot shot);
-    void removeShot(Shot shot);
-    void move(Ship ship);
-    void move(Shot shot);
+    void add(Ship ship);
+    void add(Shot shot);
+    void remove(Ship ship);
+    void remove(Shot shot);
+    void move(Ship ship, QPoint old_position);
+    void move(Shot shot, QPoint old_position);
     int tileContents(QPoint pos);
-    Tile tile(QPoint position);
 };
 
 #endif
