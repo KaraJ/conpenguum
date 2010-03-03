@@ -23,7 +23,6 @@
 
 class SplashItem : public QGraphicsWidget
 {
-    Q_OBJECT
 public:
     SplashItem(QGraphicsItem *parent = 0);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);

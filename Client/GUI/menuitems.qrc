@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/">
+    <qresource prefix="/GUI">
         <file>images/stars.gif</file>
         <file>images/quit.png</file>
         <file>images/settings.png</file>

@@ -17,7 +17,6 @@
 
 BaseWindow::BaseWindow()
 {
-    Q_INIT_RESOURCE(menuitems);
 
    Panel *panel = new Panel();
     panel->setFocus();

@@ -4,6 +4,6 @@
 //System Includes will go here
 
 //User Includes will go here
-#include "GUI/panel.h"
+#include "BaseWindow.h"
 
 #endif // MAIN_H

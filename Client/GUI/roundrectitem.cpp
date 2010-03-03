@@ -44,7 +44,7 @@ RoundRectItem::RoundRectItem(const QRectF &rect, const QBrush &brush, QWidget *e
     }
 }
 
-void RoundRectItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+void RoundRectItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *qw)
 {
     QTransform x = painter->worldTransform();
 
@@ -90,6 +90,10 @@ void RoundRectItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *, Q
         painter->scale(1.95, 1.95);
         painter->drawPixmap(-pix.width() / 2, -pix.height() / 2, pix);;
     }
+}
+
+void RoundRectItem::activated()
+{
 }
 
 QRectF RoundRectItem::boundingRect() const
