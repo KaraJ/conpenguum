@@ -1,10 +1,9 @@
 #include "main.h"
 
-using namespace std;
-
 int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
+    QResource::registerResource("GUI/menuitems.rcc");
 
     // insert main gfx window initilization here, which extends from BaseWindow 
     

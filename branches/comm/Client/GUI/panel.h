@@ -17,21 +17,18 @@
 --
 ----------------------------------------------------------------------------*/
 
-#include <QtGui>
-#ifndef QT_NO_OPENGL
-#include <QtOpenGL>
 #include <QtGui/qgraphicsview.h>
 
 QT_BEGIN_NAMESPACE
 class QTimeLine;
 class Ui_BackSide;
-QT_END_NAMESPACE;
+QT_END_NAMESPACE
 
 class RoundRectItem;
 
 class Panel : public QGraphicsView
 {
-Q_OBJECT
+//Q_OBJECT
 
 private:
     QPointF posForLocation(int x, int y) const;

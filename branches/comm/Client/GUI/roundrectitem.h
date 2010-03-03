@@ -24,11 +24,11 @@
 
 QT_BEGIN_NAMESPACE
 class QGraphicsProxyWidget;
-QT_END_NAMESPACE;
+QT_END_NAMESPACE
 
 class RoundRectItem : public QObject, public QGraphicsRectItem
 {
-    Q_OBJECT
+//Q_OBJECT
 public:
     RoundRectItem(const QRectF &rect, const QBrush &brush, QWidget *embeddedWidget = 0);
 
