@@ -94,6 +94,17 @@ void* TCPServer::ReadThread(void* vptr)
 			if (FD_ISSET(client, &currSet))
 			{
 				TCPConnection::ReadMessage(client, msgBuff);
+				switch (msgBuff.GetMsgType())
+				{
+				case ServerMessage::MT_LOGIN: //If login msg, client doesnt know own id yet - add it
+					msgBuff.SetClientID(i);
+					break;
+				case ServerMessage::MT_LOGOUT:
+					clients_[i] = 0;
+					if (i == maxClient)
+						maxClient--;
+					break;
+				}
 				sem_wait(semSM_);
 				msgBuff_->push(msgBuff);
 				sem_post(semSM_);
