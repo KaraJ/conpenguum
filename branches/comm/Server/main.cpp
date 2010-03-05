@@ -8,8 +8,8 @@ void SerializeTest();
 void UDPTest();
 
 int main() {
-	//SerializeTest();
-	UDPTest();
+	SerializeTest();
+	//UDPTest();
 	return 0;
 }
 
@@ -19,12 +19,12 @@ void UDPTest() {
 		if (CommServer::Instance()->hasNextClientAction()) {
 			ClientAction a = CommServer::Instance()->nextClientAction();
 			a.print();
-			UpdateObject o(a.getClientID());
+			UpdateObject o(a.getObjectID());
 			o.setPosition(QPoint(5,5));
 			o.setRotation(10);
 			o.getActions().setFiring();
 			std::vector<int> ids;
-			ids.push_back(a.getClientID());
+			ids.push_back(a.getObjectID());
 			CommServer::Instance()->sendUpdate(o, ids);
 		}
 	}
@@ -39,7 +39,7 @@ void SerializeTest() {
 	a.setFiring();
 	a.setTurningRight();
 
-	a.serialize(&buffer);
+	a.serialise(&buffer);
 
 	ClientAction b(buffer);
 	delete buffer;
@@ -53,7 +53,7 @@ void SerializeTest() {
 	u.getActions().setAccelerating();
 	u.getActions().setTurningRight();
 
-	u.serialize(&buffer);
+	u.serialise(&buffer);
 
 	UpdateObject w(buffer);
 	delete buffer;

@@ -145,8 +145,8 @@ void CommClient::sendAction(ClientAction action)
     BYTE* buffer = 0;
     if (isConnected_)
     {
-        action.serialize(&buffer);
-        udpConnection_->sendMessage((sockaddr*)&this->servAddr, buffer, ClientAction::serializeSize);
+        action.serialise(&buffer);
+        udpConnection_->sendMessage((sockaddr*)&this->servAddr, buffer, ClientAction::serialiseSize);
     }
     else
     {

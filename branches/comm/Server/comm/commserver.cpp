@@ -62,7 +62,7 @@ CommServer::~CommServer()
 void CommServer::sendUpdate(const UpdateObject& update, const vector<int>& clientIDs)
 {
     BYTE* buffer;
-    update.serialize(&buffer);
+    update.serialise(&buffer);
 	for (size_t i = 0; i < clientIDs.size(); i++)
 	{
 	    sockaddr_in to;
@@ -132,7 +132,7 @@ void* CommServer::readThreadFunc(void* args)
 		ssize_t size = CommServer::Instance()->udpConnection_->recvMessage(&buffer);
 		if (size == -1)
 			break;
-		else if (size == ClientAction::serializeSize)
+		else if (size == ClientAction::serialiseSize)
 		{
 			ClientAction action(buffer);
 			CommServer::Instance()->actions_.push(action);
