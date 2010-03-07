@@ -30,7 +30,7 @@ using std::endl;
 --
 --  RETURNS: new ClientAction
 ----------------------------------------------------------------------------------------------------------*/
-ClientAction::ClientAction(int objectID) : objID_(objID)
+ClientAction::ClientAction(int objectID) : objID_(objectID)
 {
 
 }
