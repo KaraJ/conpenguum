@@ -10,7 +10,9 @@ HEADERS += Roundrectitem.h \
     Animation/Loader.h \
     Animation/Image.h \
     Animation/Animation.h \
-    main.h
+    main.h \
+    BaseWindow.h \
+    GameObject.h
 SOURCES += Roundrectitem.cpp \
     Panel.cpp \
     Splashitem.cpp \
@@ -20,7 +22,8 @@ SOURCES += Roundrectitem.cpp \
     Animation/Loader.cpp \
     Animation/Image.cpp \
     Animation/Animation.cpp \
-    main.cpp
+    main.cpp \
+    BaseWindow.cpp
 FORMS += backside.ui
 contains(QT_CONFIG, opengl):QT += opengl
 RESOURCES += menuitems.qrc
