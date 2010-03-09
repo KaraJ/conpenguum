@@ -38,6 +38,8 @@ Matt, Doug, Ash, Cody, John
 
 [http://conpenguum.googlecode.com/files/Gameplay_StatusReport4.docx 2010-02-07]
 
+[http://conpenguum.googlecode.com/files/Gameplay_StatusReport5.doc 2010-03-07]
+
 ==Graphics==
 Jordan, Carson, James, Ben, Daraius
 
@@ -54,6 +56,8 @@ Jordan, Carson, James, Ben, Daraius
 [http://conpenguum.googlecode.com/files/Graphics_StatusReport6.pdf 2010-02-21]
 
 [http://conpenguum.googlecode.com/files/Graphics_StatusReport7.pdf 2010-02-28]
+
+[http://conpenguum.googlecode.com/files/Graphics_StatusReport8.pdf 2010-03-07]
 
 ==Overall==
 [http://conpenguum.googlecode.com/files/Status%20report%20%231.doc Status Report #1]
