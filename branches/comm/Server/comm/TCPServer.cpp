@@ -2,14 +2,14 @@
 
 using namespace std;
 
-int TCPServer::clients_[32];
+int TCPServer::clients_[MAX_CLIENTS];
 sem_t *TCPServer::semSM_;
 queue<ServerMessage> *TCPServer::msgBuff_;
 map<int,in_addr> *TCPServer::clientMap_;
 
 TCPServer::TCPServer()
 {
-	bzero(clients_, 32 * sizeof(int));
+	bzero(clients_, MAX_CLIENTS * sizeof(int));
 }
 
 void TCPServer::Init(const string port)
@@ -21,8 +21,7 @@ void TCPServer::Init(const string port)
 
 	setsockopt(listenSocket_, SOL_SOCKET, SO_REUSEADDR, &tmp, sizeof(tmp));
 
-	sockaddr_in sa_ =
-	{ 0 };
+	sockaddr_in sa_ = { 0 };
 	iss >> tmp;
 	sa_.sin_family = AF_INET;
 	sa_.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -51,6 +50,7 @@ void* TCPServer::ReadThread(void* vptr)
 	uint size;
 	fd_set currSet, clientSet;
 	ServerMessage msgBuff;
+	bool isFull;
 
 	SocketWrapper::Listen(sock, 5);
 
@@ -66,7 +66,8 @@ void* TCPServer::ReadThread(void* vptr)
 		{
 			size = sizeof(sa);
 			client = SocketWrapper::Accept(sock, &sa, &size);
-			for (int i = 0; i < 32; ++i)
+			isFull = true;
+			for (int i = 0; i < MAX_CLIENTS; ++i)
 			{
 				if (clients_[i] == 0)
 				{
@@ -74,15 +75,24 @@ void* TCPServer::ReadThread(void* vptr)
 					clients_[i] = client;
 					if (i > maxClient)
 						maxClient = i;
+					isFull = false;
 					break;
 				}
 			}
-			FD_SET(client, &clientSet);
+			if (isFull)
+			{
+				ServerMessage m;
+				m.SetMsgType(ServerMessage::MT_FULL);
+				m.SetData("");
+				TCPConnection::WriteMessage(client, m);
+			}
+			else
+				FD_SET(client, &clientSet);
 
 			if (--ready == 0)
 				continue;
 		}
-		for (int i = 0; i < 32; ++i)
+		for (int i = 0; i < MAX_CLIENTS; ++i)
 		{
 			if ((client = clients_[i]) == 0)
 				continue;
@@ -117,7 +127,7 @@ void TCPServer::SendMessage(ServerMessage msg)
 
 void TCPServer::SendMessageToAll(ServerMessage msg)
 {
-	for (int i = 0; i < 32; ++i)
+	for (int i = 0; i < MAX_CLIENTS; ++i)
 	{
 		msg.SetClientID(clients_[i]);
 		TCPConnection::WriteMessage(msg.GetClientID(), msg);
