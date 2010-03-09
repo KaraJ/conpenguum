@@ -3,6 +3,9 @@
 
  [http://conpenguum.googlecode.com/files/Spec.docx Spec_Document]
 
+== Current Schedule ==
+ [http://conpenguum.googlecode.com/files/schedule.xlsx Schedule]
+
 == Comm ==
 
  [http://conpenguum.googlecode.com/files/Communications_Interface.doc Comm_Interface]<br>
