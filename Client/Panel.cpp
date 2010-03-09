@@ -29,7 +29,7 @@
 #include "Panel.h"
 #include "Roundrectitem.h"
 #include "Splashitem.h"
-#include "../ui_backside.h"
+#include "ui_backside.h"
 #include <math.h>
 
 /*--------------------------------------------------------------------------------------
