@@ -11,10 +11,10 @@
 #include <semaphore.h>
 
 //User Includes
-#include "comm/globals.h"
-#include "comm/data/servermessage.h"
-#include "Logger.h"
-#include "comm/tcpconnection.h"
+#include "../Core/comm/globals.h"
+#include "../Core/comm/data/servermessage.h"
+#include "../Core/Logger.h"
+#include "../Core/comm/tcpconnection.h"
 
 class TCPClient
 {

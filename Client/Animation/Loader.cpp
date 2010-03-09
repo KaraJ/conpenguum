@@ -5,7 +5,7 @@ using namespace std;
 --
 -- PURPOSE: constructor.
 --
--- DESIGNER: Jordan 
+-- DESIGNER: Jordan
 --
 -- PROGRAMMER: Jordan
 --
@@ -22,7 +22,7 @@ Loader::Loader()
 --
 -- PURPOSE: returns animation object based on type request.
 --
--- DESIGNER: Jordan 
+-- DESIGNER: Jordan
 --
 -- PROGRAMMER: Jordan
 --
@@ -36,5 +36,3 @@ Animation Loader::getAnimation(AnimationType type)
 	/* will be used to build animations, this call will be the starting sequence */
     return a;
 }
-
-

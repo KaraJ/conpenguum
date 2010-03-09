@@ -5,7 +5,7 @@ using namespace std;
 --
 -- PURPOSE: Constructor.
 --
--- DESIGNER: Jordan 
+-- DESIGNER: Jordan
 --
 -- PROGRAMMER: Jordan
 --
@@ -22,7 +22,7 @@ Animation::Animation()
 --
 -- PURPOSE: sets the XOffSet, will go into the Image class.
 --
--- DESIGNER: Jordan 
+-- DESIGNER: Jordan
 --
 -- PROGRAMMER: Jordan
 --
@@ -39,7 +39,7 @@ void Animation::setXOffSet(int xOffSet)
 --
 -- PURPOSE: sets the yOffSet, will go into the Image class.
 --
--- DESIGNER: Jordan 
+-- DESIGNER: Jordan
 --
 -- PROGRAMMER: Jordan
 --
@@ -56,7 +56,7 @@ void Animation::setYOffSet(int yOffSet)
 --
 -- PURPOSE: sets the location of the texture file.
 --
--- DESIGNER: Jordan 
+-- DESIGNER: Jordan
 --
 -- PROGRAMMER: Jordan
 --
@@ -73,7 +73,7 @@ void Animation::setFileLocation(string location)
 --
 -- PURPOSE: builds vector of images used in animations.
 --
--- DESIGNER: Jordan 
+-- DESIGNER: Jordan
 --
 -- PROGRAMMER: Jordan
 --
@@ -83,8 +83,8 @@ void Animation::setFileLocation(string location)
 -----------------------------------------------------------------------------------------------*/
 vector<Image> Animation::buildAnimationVector(AnimationType type)
 {
-	/* VECTOR will be of images(class to be implemented), which will be stored within the animation. vector 
-	will have to be added to animation class. for each animation type this 
+	/* VECTOR will be of images(class to be implemented), which will be stored within the animation. vector
+	will have to be added to animation class. for each animation type this
 	function will build the actual offset and return the vector for the animation.*/
 }
 /*----------------------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ vector<Image> Animation::buildAnimationVector(AnimationType type)
 -- PURPOSE: loads an image based on the type of animation. We need to figure out how to handle
 --          the iteration through images and offset.
 --
--- DESIGNER: Jordan 
+-- DESIGNER: Jordan
 --
 -- PROGRAMMER: Jordan
 --
@@ -108,3 +108,4 @@ string Animation::loadAnimationImages(AnimationType type)
 		Images will be stored in a vector in the build animation vector. We will return images from this function.
 	*/
 }
+

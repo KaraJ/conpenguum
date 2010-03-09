@@ -14,7 +14,7 @@ enum AnimationType
 -- PURPOSE: used to retain vector of animation snap shots. Also retains related speed of animation
 --          as well as type.
 --
--- DESIGNER: Jordan 
+-- DESIGNER: Jordan
 --
 -- PROGRAMMER: Jordan
 --
@@ -24,7 +24,7 @@ enum AnimationType
 -----------------------------------------------------------------------------------------------*/
 class Animation
 {
-	public: 
+	public:
 		Animation();/*implemented in .cpp file*/
 		~Animation(){}/*destructor*/
 		int getXOffSet(){return xOffSet_;}
@@ -35,9 +35,9 @@ class Animation
 		void setXOffSet(int xOffSet); /*implemented in .cpp file*/
 		void setYOffSet(int yOffSet); /*implemented in .cpp file*/
 		void setFileLocation(std::string location); /*implemented in .cpp file*/
-		
+
 	private:
-		std::string fileLocation_; 
+		std::string fileLocation_;
 		std::vector<Image> images_; /* stores vector of images */
 		int xOffSet_, yOffSet_;
 		int animationSpeed; /* will be used to control the speed of the animation based on type. */
@@ -45,3 +45,4 @@ class Animation
 };
 
 #endif
+
