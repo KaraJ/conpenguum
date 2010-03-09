@@ -1,17 +1,20 @@
 CONFIG = qt
 SOURCES += map.cpp \
+	physics.cpp \
     frame.cpp \
     main.cpp \
     ship.cpp \
     shot.cpp \
-    comm/commserver.cpp \
-    comm/udpServer.cpp
+	comm/TCPServer.cpp \
+    comm/commserver.cpp
 HEADERS += map.h \
+	physics.h \
     frame.h \
     newtObjects.h \
     main.h \
     ship.h \
     shot.h \
-    comm/message.h \
-    comm/commserver.h \
-    comm/udpServer.h
+	comm/TCPServer.h \
+    comm/commserver.h
+LIBS += -lCore -L../Core/Debug
+QT += gui core
