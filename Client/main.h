@@ -4,4 +4,4 @@
 #include <QtOpenGL>
 #endif
 
-#include "GUI/Panel.h"
+#include "Panel.h"

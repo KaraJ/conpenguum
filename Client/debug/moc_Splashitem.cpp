@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Splashitem.h'
 **
-** Created: Tue Mar 9 10:50:27 2010
+** Created: Tue Mar 9 11:18:25 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
 **
 ** WARNING! All changes made in this file will be lost!
