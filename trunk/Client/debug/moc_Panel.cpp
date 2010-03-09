@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Panel.h'
 **
-** Created: Tue Mar 9 10:41:27 2010
+** Created: Tue Mar 9 11:18:24 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../GUI/Panel.h"
+#include "../Panel.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'Panel.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 62

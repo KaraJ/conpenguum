@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Roundrectitem.h'
 **
-** Created: Tue Mar 9 10:41:25 2010
+** Created: Tue Mar 9 11:18:22 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../GUI/Roundrectitem.h"
+#include "../Roundrectitem.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'Roundrectitem.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 62
