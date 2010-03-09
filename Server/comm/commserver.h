@@ -27,12 +27,12 @@
 #include <semaphore.h>
 #include <vector>
 
-#include "comm/data/clientaction.h"
-#include "comm/data/updateobject.h"
-#include "comm/data/servermessage.h"
+#include "../../Core/comm/data/clientaction.h"
+#include "../../Core/comm/data/updateobject.h"
+#include "../../Core/comm/data/servermessage.h"
 #include "TCPServer.h"
-#include "comm/udpConnection.h"
-#include "comm/crc.h"
+#include "../Core/comm/udpConnection.h"
+#include "../../Core/comm/crc.h"
 
 class UDPConnection;
 

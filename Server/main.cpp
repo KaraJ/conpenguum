@@ -1,7 +1,7 @@
 #include "main.h"
 
-#include "comm/data/clientaction.h"
-#include "comm/data/updateobject.h"
+#include "../Core/comm/data/clientaction.h"
+#include "../Core/comm/data/updateobject.h"
 #include "comm/commserver.h"
 
 void SerializeTest();
