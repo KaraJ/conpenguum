@@ -1,17 +1,24 @@
 SOURCES += comm/socketwrapper.cpp \
     comm/tcpconnection.cpp \
-    comm/data/bitmask.cpp \
-    comm/data/message.cpp \
-    comm/data/servermessage.cpp
+    comm/data/servermessage.cpp \
+    Logger.cpp \
+    comm/crc.cpp \
+    comm/udpConnection.cpp \
+    comm/data/clientaction.cpp \
+    comm/data/updateobject.cpp
 HEADERS += comm/socketwrapper.h \
     comm/tcpconnection.h \
-    comm/data/bitmask.h \
+    comm/crc.h \
+    comm/udpConnection.h \
     comm/data/clientaction.h \
-    comm/data/message.h \
     comm/data/servermessage.h \
     comm/data/updateobject.h \
-    comm/data/globals.h
-TARGET = core
+    comm/globals.h \
+    Logger.h \
+    comm/data/bitmask.h
+TARGET = Debug/Core
 TEMPLATE = lib
 CONFIG = staticlib \
-    warn_on
+    warn_on \
+    qt
+QT += core
