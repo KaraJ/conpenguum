@@ -46,7 +46,8 @@ public:
     ClientAction nextClientAction();
     bool hasNextServerMessage();
     ServerMessage nextServerMessage();
-    void sendServerMsg(const ServerMessage& msg, const std::vector<int>& clients);
+    void sendServerMsg(ServerMessage msg, const std::vector<int>& clients);
+    void sendServerMsg(const ServerMessage& msg);
     void sendUpdate(const UpdateObject& update, const std::vector<int>& clientIDs);
 
 private:

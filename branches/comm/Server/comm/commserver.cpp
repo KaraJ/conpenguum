@@ -78,19 +78,35 @@ void CommServer::sendUpdate(const UpdateObject& update, const vector<int>& clien
  -- FUNCTION: sendServerMsg
  --
  -- DATE: 2010-01-23
+ -- UPDATE: 2010-03-08
  --
  -- INTERFACE:
- --  string msg:     the message to send
- --  int* clientIDs: a pointer to an array of clientID's to send the message to. Use null to send to all.
- --  int numClients: the number of clients in clientIDs. If clientIDs = null, this is ignored.
+ --  ServerMessage sm: Message to send to clients
+ --  const vector<int>& clients: Reference to vector of client ids to send message to - if NULL then
+ --								 send to all clients
  ----------------------------------------------------------------------------------------------------------*/
-void CommServer::sendServerMsg(const ServerMessage& sm, const vector<int>& clients)
+void CommServer::sendServerMsg(ServerMessage sm, const vector<int>& clients)
 {
-	/*for (int i = 0; i < numClients; ++i)
-	{
-		sm.SetClientID(clientID[i]);
+	if (clients.size() == 0)
+		tcpServer_->SendMessageToAll(sm);
 
-	}*/
+	for (size_t i = 0; i < clients.size(); ++i)
+	{
+		sm.SetClientID(clients[i]);
+		tcpServer_->SendMessage(sm);
+	}
+}
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: sendServerMsg
+ --
+ -- DATE: 2010-03-08
+ --
+ -- INTERFACE:
+ --  ServerMessage sm: Message to send to client
+ ----------------------------------------------------------------------------------------------------------*/
+void CommServer::sendServerMsg(const ServerMessage& sm)
+{
+	tcpServer_->SendMessage(sm);
 }
 
 bool CommServer::hasNextClientAction()
