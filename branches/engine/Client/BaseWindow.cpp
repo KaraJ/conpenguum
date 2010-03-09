@@ -20,9 +20,20 @@
  -- the QTimer object used for timing.
  --
  -----------------------------------------------------------------------------*/
+<<<<<<< .working
 BaseWindow::BaseWindow() : timer(this), frameRate(DEFAULT_FRAME_RATE)
 {
 	connect(&timer, SIGNAL(timeout()), this, SLOT(timerEvent()));
+=======
+BaseWindow::BaseWindow() : timer(this), frameRate(DEFAULT_FRAME_RATE)
+{
+
+   Panel *panel = new Panel();
+    panel->setFocus();
+    panel->show();
+
+	connect(&timer, SIGNAL(timeout()), this, SLOT(timerEvent()));
+>>>>>>> .merge-right.r269
 }
 
 /*------------------------------------------------------------------------------

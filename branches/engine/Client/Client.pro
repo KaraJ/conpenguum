@@ -7,6 +7,7 @@ TARGET =
 DEPENDPATH += . Animation comm Renderer
 INCLUDEPATH += . Animation comm Renderer
 
+<<<<<<< .working
 # Input
 HEADERS += BaseWindow.h \
            Animation/Animation.h \
@@ -30,4 +31,28 @@ SOURCES += BaseWindow.cpp \
            ../Core/comm/data/bitmask.cpp \
            ../Core/comm/data/servermessage.cpp
 
+=======
+# Input
+HEADERS += BaseWindow.h \
+           Animation/Animation.h \
+           Animation/Image.h \
+           Animation/Loader.h \
+           comm/commclient.h \
+           comm/tcpclient.h \
+           Renderer/renderer.h \
+           ../Core/comm/data/updateobject.h \
+           ../Core/comm/data/clientaction.h \
+           ../Core/comm/data/bitmask.h \
+           ../Core/comm/data/servermessage.h
+SOURCES += BaseWindow.cpp \
+           main.cpp \
+           Animation/Animation.cpp \
+           Animation/Image.cpp \
+           Animation/Loader.cpp \
+           comm/commclient.cpp \
+           comm/tcpclient.cpp \
+           Renderer/renderer.cpp \
+           ../Core/comm/data/bitmask.cpp \
+           ../Core/comm/data/servermessage.cpp
+>>>>>>> .merge-right.r269
 QT += opengl
