@@ -74,11 +74,6 @@ void* TCPServer::ReadThread(void* vptr)
 					clients_[i] = client;
 					if (i > maxClient)
 						maxClient = i;
-					ServerMessage m;
-					m.SetClientID(i);
-					m.SetMsgType(ServerMessage::MT_INIT);
-					m.SetData("");
-					TCPConnection::WriteMessage(client, m);
 					break;
 				}
 			}
@@ -113,4 +108,18 @@ void* TCPServer::ReadThread(void* vptr)
 	}
 
 	return 0;
+}
+
+void TCPServer::SendMessage(ServerMessage msg)
+{
+	TCPConnection::WriteMessage(msg.GetClientID(), msg);
+}
+
+void TCPServer::SendMessageToAll(ServerMessage msg)
+{
+	for (int i = 0; i < 32; ++i)
+	{
+		msg.SetClientID(clients_[i]);
+		TCPConnection::WriteMessage(msg.GetClientID(), msg);
+	}
 }
