@@ -6,8 +6,8 @@
 #include <QKeyEvent>
 #include <QTimer>
 
-//User includes
-#include "GUI/panel.h"
+// Default frame rate is 60 frames/second.
+#define DEFAULT_FRAME_RATE 60
 
 /*------------------------------------------------------------------------------
  --
@@ -17,7 +17,11 @@
  --
  --		[Constructor] BaseWindow (void)
  --		void keyPressEvent (QKeyEvent * event)
- --		void update ()
+ --		void timerEvent ()
+ --		void startRendering()
+ --		void stopRendering()
+ --		void setFrameRate(int rate)
+ --		virtual void render ()
  --
  -- DESIGNER: Erick Ribeiro
  --
@@ -25,29 +29,55 @@
  --
  -- REVISIONS:	(Date, Description, Author)
  --
- --		Feb 11, 2010 - Updated the class interface - Erick Ribeiro
+ --		Feb 18, 2010 - Erick Ribeiro
+ --		Renamed method update() to timerEvent() because QWidget (super class)
+ --		already has an update() method which is used for a different purpose.
+ --
+ --		Feb 18, 2010 - Erick Ribeiro
+ --		Added the Q_OBJECT macro so we can define our own signals and slots,
+ --		such as the timerEvent() slot.
+ --
+ --		Feb 22, 2010 - Erick Ribeiro
+ --		Added the virtual method render(), which should be implemented by
+ --		any subclasses. We use a timer mechanism to automatically call render()
+ --		for every frame.
+ --
+ --		Feb 22, 2010 - Erick Ribeiro
+ --		Added methods startRendering(), stopRendering() and setFrameRate() to
+ --		offer more control over when and how often render() should be called.
  --
  -- NOTES:
  -- This class extends the QTMainWindow class, adding keyboard input handling
- -- and timing logic.
+ -- and frame rate logic.
  --
- -- The Graphics Team should extend this class and override the render() method,
- -- which gets called every frame, in order to implement the drawing logic.
+ -- The Graphics Team should extend this class, override the render() method and
+ -- call startRendering() so that render() will be called for every frame.
  --
  -----------------------------------------------------------------------------*/
 
 class BaseWindow : public QMainWindow
 {
-private:
-    QTimer timer;
+	// This macro must be present to
+	// activate signals/slots.
+	// Do not change.
+	Q_OBJECT
 
-public:
-    BaseWindow();
+    private:
+	QTimer timer;
+	int frameRate;
 
-private:
-    Panel* panel_;
-    void keyPressEvent (QKeyEvent* event);
-    void update();
+    public:
+	BaseWindow ();
+	void startRendering ();
+	void stopRendering ();
+	void setFrameRate (int rate);
+	virtual void render ();
+
+	public slots:
+	void timerEvent();
+
+	private:
+	void keyPressEvent (QKeyEvent * event);
 };
 
 #endif // BASEWINDOW_H
