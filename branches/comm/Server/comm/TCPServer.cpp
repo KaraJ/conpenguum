@@ -76,6 +76,13 @@ void* TCPServer::ReadThread(void* vptr)
 					if (i > maxClient)
 						maxClient = i;
 					isFull = false;
+
+					//TODO: Delete this
+					msgBuff.SetClientID(i);
+					msgBuff.SetData("");
+					msgBuff.SetMsgType(ServerMessage::MT_INIT);
+
+
 					break;
 				}
 			}
