@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = Client
-QT += core \   gui
+QT += core    gui
 HEADERS += Roundrectitem.h \
     Panel.h \
     Splashitem.h \
