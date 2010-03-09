@@ -49,6 +49,7 @@ public:
     void sendServerMsg(ServerMessage msg, const std::vector<int>& clients);
     void sendServerMsg(const ServerMessage& msg);
     void sendUpdate(const UpdateObject& update, const std::vector<int>& clientIDs);
+    void sendUpdateToAll(const UpdateObject& update);
 
 private:
     CommServer();

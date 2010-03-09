@@ -21,25 +21,25 @@ using namespace std;
 
 CommServer::CommServer()
 {
-	tcpServer_ = new TCPServer();
-	udpConnection_ = new UDPConnection();
-	sem_init(&semSM_, 0, 1);
+    tcpServer_ = new TCPServer();
+    udpConnection_ = new UDPConnection();
+    sem_init(&semSM_, 0, 1);
 }
 
 CommServer* CommServer::Instance()
 {
     static CommServer* instance_ = 0;
-	if(!instance_)
-		instance_ = new CommServer();
+    if (!instance_)
+        instance_ = new CommServer();
 
-	return instance_;
+    return instance_;
 }
 
 void CommServer::init()
 {
-	tcpServer_->Init(TCP_PORT);
-	tcpServer_->StartReadThread(&serverMsgs_, &clients_, &semSM_);
-	pthread_create(&readThread_, NULL, CommServer::readThreadFunc, NULL);
+    tcpServer_->Init(TCP_PORT);
+    tcpServer_->StartReadThread(&serverMsgs_, &clients_, &semSM_);
+    pthread_create(&readThread_, NULL, CommServer::readThreadFunc, NULL);
 }
 
 CommServer::~CommServer()
@@ -63,15 +63,40 @@ void CommServer::sendUpdate(const UpdateObject& update, const vector<int>& clien
 {
     BYTE* buffer;
     update.serialise(&buffer);
-	for (size_t i = 0; i < clientIDs.size(); i++)
-	{
-	    sockaddr_in to;
-	    bzero(&to, sizeof(to));
-	    to.sin_addr = clients_[clientIDs[i]];
-	    to.sin_family = AF_INET;
-	    to.sin_port = htons(UDP_PORT);
-	    udpConnection_->sendMessage((sockaddr*)&to, buffer, UpdateObject::serializeSize);
-	}
+    for (size_t i = 0; i < clientIDs.size(); i++)
+    {
+        sockaddr_in to;
+        bzero(&to, sizeof(to));
+        to.sin_addr = clients_[clientIDs[i]];
+        to.sin_family = AF_INET;
+        to.sin_port = htons(UDP_PORT);
+        udpConnection_->sendMessage((sockaddr*) &to, buffer, UpdateObject::serializeSize);
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: sendUpdateToAll
+ --
+ -- DATE: 2010-03-09
+ --
+ -- INTERFACE:
+ --  sendUpdateToAll(const UpdateObject& update)
+ --     update: The update object to send to every connected client
+ ----------------------------------------------------------------------------------------------------------*/
+void CommServer::sendUpdateToAll(const UpdateObject& update)
+{
+    BYTE* buffer;
+    update.serialise(&buffer);
+
+    for (map<int, in_addr>::const_iterator it = clients_.begin(); it != clients_.end(); ++it)
+    {
+        sockaddr_in to;
+        bzero(&to, sizeof(to));
+        to.sin_addr = it->second;
+        to.sin_family = AF_INET;
+        to.sin_port = htons(UDP_PORT);
+        udpConnection_->sendMessage((sockaddr*) &to, buffer, UpdateObject::serializeSize);
+    }
 }
 
 /*----------------------------------------------------------------------------------------------------------
@@ -87,15 +112,16 @@ void CommServer::sendUpdate(const UpdateObject& update, const vector<int>& clien
  ----------------------------------------------------------------------------------------------------------*/
 void CommServer::sendServerMsg(ServerMessage sm, const vector<int>& clients)
 {
-	if (clients.size() == 0)
-		tcpServer_->SendMessageToAll(sm);
+    if (clients.size() == 0)
+        tcpServer_->SendMessageToAll(sm);
 
-	for (size_t i = 0; i < clients.size(); ++i)
-	{
-		sm.SetClientID(clients[i]);
-		tcpServer_->SendMessage(sm);
-	}
+    for (size_t i = 0; i < clients.size(); ++i)
+    {
+        sm.SetClientID(clients[i]);
+        tcpServer_->SendMessage(sm);
+    }
 }
+
 /*----------------------------------------------------------------------------------------------------------
  -- FUNCTION: sendServerMsg
  --
@@ -106,7 +132,7 @@ void CommServer::sendServerMsg(ServerMessage sm, const vector<int>& clients)
  ----------------------------------------------------------------------------------------------------------*/
 void CommServer::sendServerMsg(const ServerMessage& sm)
 {
-	tcpServer_->SendMessage(sm);
+    tcpServer_->SendMessage(sm);
 }
 
 bool CommServer::hasNextClientAction()
@@ -123,8 +149,8 @@ ClientAction CommServer::nextClientAction()
 
 bool CommServer::hasNextServerMessage()
 {
-	bool result;
-	sem_wait(&semSM_);
+    bool result;
+    sem_wait(&semSM_);
     result = !serverMsgs_.empty();
     sem_post(&semSM_);
     return result;
@@ -132,8 +158,8 @@ bool CommServer::hasNextServerMessage()
 
 ServerMessage CommServer::nextServerMessage()
 {
-	ServerMessage serverMsg;
-	sem_wait(&semSM_);
+    ServerMessage serverMsg;
+    sem_wait(&semSM_);
     serverMsg = serverMsgs_.front();
     serverMsgs_.pop();
     sem_post(&semSM_);
@@ -142,20 +168,20 @@ ServerMessage CommServer::nextServerMessage()
 
 void* CommServer::readThreadFunc(void* args)
 {
-	while (true)
-	{
-		BYTE* buffer;
-		ssize_t size = CommServer::Instance()->udpConnection_->recvMessage(&buffer);
-		if (size == -1)
-			break;
-		else if (size == ClientAction::serialiseSize)
-		{
-			ClientAction action(buffer);
-			CommServer::Instance()->actions_.push(action);
-		}
-		else
-			Logger::LogNContinue("Bad packet size received");
-	}
+    while (true)
+    {
+        BYTE* buffer;
+        ssize_t size = CommServer::Instance()->udpConnection_->recvMessage(&buffer);
+        if (size == -1)
+            break;
+        else if (size == ClientAction::serialiseSize)
+        {
+            ClientAction action(buffer);
+            CommServer::Instance()->actions_.push(action);
+        }
+        else
+            Logger::LogNContinue("Bad packet size received");
+    }
 
     return 0;
 }

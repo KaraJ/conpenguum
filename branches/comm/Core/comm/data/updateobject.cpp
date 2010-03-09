@@ -21,6 +21,20 @@ using std::ostream;
 using std::endl;
 
 /*----------------------------------------------------------------------------------------------------------
+--  FUNCTION: UpdateObject(ClientAction& a)
+--
+--  INTERFACE:
+--      UpdateObject(ClientAction& a)
+--          a:  The client action
+--
+--  RETURNS: new UpdateObject
+----------------------------------------------------------------------------------------------------------*/
+UpdateObject::UpdateObject(ClientAction& a) : rotation_(0), pos_(), actions_(a)
+{
+
+}
+
+/*----------------------------------------------------------------------------------------------------------
 --  FUNCTION: UpdateObject(int objID)
 --
 --  INTERFACE:

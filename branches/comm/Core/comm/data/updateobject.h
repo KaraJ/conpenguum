@@ -13,6 +13,7 @@ public:
     static const int serializeSize = 6;
 
     UpdateObject(int objID);
+    UpdateObject(ClientAction& a);
     UpdateObject(BYTE* buffer);
 
     inline int getRotation() const { return rotation_; }
