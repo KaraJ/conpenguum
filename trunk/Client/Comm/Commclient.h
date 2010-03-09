@@ -31,11 +31,11 @@
 #include <arpa/inet.h>
 
 //User Includes
-#include "tcpclient.h"
-#include "comm/data/updateobject.h"
-#include "comm/data/clientaction.h"
-#include "comm/data/servermessage.h"
-#include "comm/udpConnection.h"
+#include "Tcpclient.h"
+#include "../Core/comm/data/updateobject.h"
+#include "../Core/comm/data/clientaction.h"
+#include "../Core/comm/data/servermessage.h"
+#include "../Core/comm/udpConnection.h"
 
 class UDPConnection;
 

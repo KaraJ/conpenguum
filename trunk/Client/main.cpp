@@ -1,13 +1,13 @@
-#include "BaseWindow.h"
+#include "main.h"
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    BaseWindow mainWin;
+    Q_INIT_RESOURCE(menuitems);
 
-    mainWin.setWindowTitle("Game Window");
-    mainWin.show();
+    Panel *panel = new Panel();
+    panel->setFocus();
+    panel->show();
 
     return app.exec();
 }
-

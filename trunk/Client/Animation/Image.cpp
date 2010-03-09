@@ -4,7 +4,7 @@
 /*----------------------------------------------------------------------------------------------
 -- CLASSNAME: Image
 --
--- PURPOSE: used to retain a animation still image. Texture x and y offsets will be used to 
+-- PURPOSE: used to retain a animation still image. Texture x and y offsets will be used to
 --          capture animation still. We will need to determine image sizes.
 --
 -- DESIGNER: Jordan
@@ -20,9 +20,9 @@ class Image
 public:
     explicit Image(int, int, std::string);
 private:
-	/* Need to have a way of actually storing the image within this image object. 
+	/* Need to have a way of actually storing the image within this image object.
 		   will allow us to manipulate the offsets of texture image. */
-    int xOffSet_, yOffSet_; 
-    std::string texturePath_;	
+    int xOffSet_, yOffSet_;
+    std::string texturePath_;
 };
 #endif
