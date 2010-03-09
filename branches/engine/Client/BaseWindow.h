@@ -5,6 +5,9 @@
 #include <QMainWindow>
 #include <QKeyEvent>
 #include <QTimer>
+#include <Map>
+#include "GameObject.h"
+#include "Animation/Animation.h"
 
 // Default frame rate is 60 frames/second.
 #define DEFAULT_FRAME_RATE 60
@@ -63,21 +66,24 @@ class BaseWindow : public QMainWindow
 	Q_OBJECT
 
     private:
-	QTimer timer;
-	int frameRate;
+		int frameRate;
+		QTimer timer;
+		std::map<int, GameObject> gameState;
+		std::map<int, Animation> * animationMap;
 
     public:
-	BaseWindow ();
-	void startRendering ();
-	void stopRendering ();
-	void setFrameRate (int rate);
-	virtual void render ();
+		BaseWindow ();
+		void startRendering ();
+		void stopRendering ();
+		void setFrameRate (int rate);
+		void keyPressEvent (QKeyEvent * event);
+		virtual void render ();
 
 	public slots:
-	void timerEvent();
+		void timerEvent();
 
 	private:
-	void keyPressEvent (QKeyEvent * event);
+		void updateGameState();
 };
 
 #endif // BASEWINDOW_H

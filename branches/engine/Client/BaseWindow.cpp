@@ -1,6 +1,5 @@
 #include "BaseWindow.h"
-#include "renderer.h"
-#include "commclient.h"
+#include "Comm/commclient.h"
 
 /*------------------------------------------------------------------------------
  --
@@ -31,9 +30,14 @@ BaseWindow::BaseWindow() : timer(this), frameRate(DEFAULT_FRAME_RATE)
  --
  -- DESIGNER: Erick Ribeiro
  --
- -- PROGRAMMER:
+ -- PROGRAMMER: Brad Paugh
  --
  -- REVISIONS:
+ --
+ --             Mar 4, 2010 - Brad Paugh
+ --             Added Key press handling to the method. Currently commented out
+ --              as we need more info on how the CommClient will be instantiated
+ --              and how we get the clientID to instantiate ClientAction.
  --
  -- NOTES:
  -- This method handles keyboard input. It's responsibility is to translate key
@@ -43,7 +47,26 @@ BaseWindow::BaseWindow() : timer(this), frameRate(DEFAULT_FRAME_RATE)
  -----------------------------------------------------------------------------*/
 void BaseWindow::keyPressEvent (QKeyEvent * event)
 {
-	// @todo Keyboard handling here.
+	
+	/*ClientAction* ca = new ClientAction(clientID);
+	 
+	 switch (event->key())
+	 {
+	 case Qt::Key_Left:
+	 ca.setTurningLeft();
+	 break;
+	 case Qt::Key_Right:
+	 ca.setTurningRight();
+	 break;
+	 case Qt::Key_Up:
+	 ca.setAccelerating();
+	 break;
+	 case Qt::Key_Control:
+	 ca.setFiring();
+	 break;
+	 }
+	 //this would be the instance of CommClient (will be instantiated elsewhere)
+	 theClient.sendAction(ca);*/
 }
 
 /*------------------------------------------------------------------------------
@@ -69,6 +92,7 @@ void BaseWindow::keyPressEvent (QKeyEvent * event)
  -----------------------------------------------------------------------------*/
 void BaseWindow::timerEvent()
 {
+	updateGameState();
 	render();
 }
 
@@ -133,6 +157,31 @@ void BaseWindow::setFrameRate (int rate)
 {
 	frameRate = rate;
 	timer.setInterval(1000/rate);
+}
+
+/*------------------------------------------------------------------------------
+ --
+ -- METHOD: BaseWindow::updateGameState()
+ --
+ -- DESIGNER: Erick Ribeiro & John Kuo
+ --
+ -- PROGRAMMER: Erick Ribeiro & John Kuo
+ --
+ -- REVISIONS:
+ --
+ -- NOTES:
+ -- This method updates the game state.
+ --
+ -----------------------------------------------------------------------------*/
+void BaseWindow::updateGameState ()
+{
+//	CommClient * comm = CommClient::Instance();
+//
+//	while (comm->hasNextUpdate())
+//	{
+//		UpdateObject update = comm->nextUpdate();
+//		int objectId = update.getActions().getClientID();
+//	}
 }
 
 /*------------------------------------------------------------------------------
