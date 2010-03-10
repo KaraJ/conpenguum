@@ -5,9 +5,12 @@
 #include <QMainWindow>
 #include <QKeyEvent>
 #include <QTimer>
-#include <Map>
+#include <map>
+#include <string>
 #include "GameObject.h"
 #include "Animation/Animation.h"
+#include "Comm/Commclient.h"
+#include "../Core/comm/data/clientaction.h"
 
 // Default frame rate is 60 frames/second.
 #define DEFAULT_FRAME_RATE 60
@@ -70,6 +73,9 @@ class BaseWindow : public QMainWindow
 		QTimer timer;
 		std::map<int, GameObject> gameState;
 		std::map<int, Animation> * animationMap;
+		bool chatting;
+		std::string chatString;
+		CommClient::CommClient* theClient;
 
     public:
 		BaseWindow ();
@@ -78,12 +84,15 @@ class BaseWindow : public QMainWindow
 		void setFrameRate (int rate);
 		void keyPressEvent (QKeyEvent * event);
 		virtual void render ();
+		std::string getChatString();
 
 	public slots:
 		void timerEvent();
 
 	private:
 		void updateGameState();
+		int handleChat(int key);
+		void toggleChat();
 };
 
 #endif // BASEWINDOW_H

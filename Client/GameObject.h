@@ -1,4 +1,4 @@
-#include <QPoint.h>
+#include <QPoint>
 #include "Animation/Image.h"
 
 struct GameObject
