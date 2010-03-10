@@ -1,5 +1,8 @@
 #include "TCPServer.h"
 
+//TODO: delete this
+#include "commserver.h"
+
 using namespace std;
 
 int TCPServer::clients_[MAX_CLIENTS];
@@ -74,13 +77,9 @@ void* TCPServer::ReadThread(void* vptr)
 					clientMap_->insert(pair<int, in_addr>(i,sa.sin_addr));
 					clients_[i] = client;
 					if (i > maxClient)
-						maxClient = i;
+						maxClient = client;
 					isFull = false;
 
-					//TODO: Delete this
-					msgBuff.SetClientID(i);
-					msgBuff.SetData("");
-					msgBuff.SetMsgType(ServerMessage::MT_INIT);
 
 
 					break;
@@ -110,6 +109,11 @@ void* TCPServer::ReadThread(void* vptr)
 				{
 				case ServerMessage::MT_LOGIN: //If login msg, client doesnt know own id yet - add it
 					msgBuff.SetClientID(i);
+					//TODO: Delete this
+					msgBuff.SetData("");
+					msgBuff.SetMsgType(ServerMessage::MT_INIT);
+					CommServer::Instance()->sendServerMsg(msgBuff);
+
 					break;
 				case ServerMessage::MT_LOGOUT:
 					clients_[i] = 0;
@@ -129,7 +133,7 @@ void* TCPServer::ReadThread(void* vptr)
 
 void TCPServer::SendMessage(ServerMessage msg)
 {
-	TCPConnection::WriteMessage(msg.GetClientID(), msg);
+	TCPConnection::WriteMessage(clients_[msg.GetClientID()], msg);
 }
 
 void TCPServer::SendMessageToAll(ServerMessage msg)
