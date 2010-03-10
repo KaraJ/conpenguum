@@ -68,16 +68,31 @@ void SerializeTest()
 
 void StressTest()
 {
+	int actionsRx = 0;
+	int updatesPushed = 0;
+	int oldARx = -1;
+	int oldUP = -1;
     CommServer::Instance()->init();
     while (true)
     {
         if (CommServer::Instance()->hasNextClientAction())
         {
+        	actionsRx++;
             ClientAction a = CommServer::Instance()->nextClientAction();
             UpdateObject o(a);
             std::vector<int> ids;
             ids.push_back(a.getObjectID());
             CommServer::Instance()->sendUpdateToAll(o);
+            updatesPushed++;
+        }
+        else
+        {
+        	if (actionsRx != oldARx || updatesPushed != oldUP)
+        	{
+        		printf("CA Rx: %d\nUO Tx: %d\n", actionsRx, updatesPushed);
+        		oldARx = actionsRx;
+        		oldUP = updatesPushed;
+        	}
         }
     }
 }

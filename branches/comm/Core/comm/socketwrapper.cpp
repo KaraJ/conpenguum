@@ -62,6 +62,7 @@ void SocketWrapper::Write(int sock, const void *vptr, size_t n)
     }
 }
 
+//TODO: Check all calls to this to make sure they're checking the return values
 bool SocketWrapper::Read(int sock, void *vptr, size_t size)
 {
 	size_t  nleft = size;
@@ -70,7 +71,7 @@ bool SocketWrapper::Read(int sock, void *vptr, size_t size)
 
 	while (nleft > 0)
 	{
-		if ( (nread = read(sock, buff, nleft)) < 0) //TODO: If nread == 0 then a client has disconnected - do any cleanup needed.
+		if ( (nread = read(sock, buff, nleft)) < 0)
 			Logger::LogNQuit("Read error");
 		if (nread == 0)
 			return false;
