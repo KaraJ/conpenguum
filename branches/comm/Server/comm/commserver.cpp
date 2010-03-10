@@ -168,7 +168,7 @@ ServerMessage CommServer::nextServerMessage()
 
 void* CommServer::readThreadFunc(void* args)
 {
-    while (true)
+    while (true) //TODO: Exit on disconnect
     {
         BYTE* buffer;
         ssize_t size = CommServer::Instance()->udpConnection_->recvMessage(&buffer);
