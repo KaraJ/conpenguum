@@ -49,7 +49,7 @@ Tile Map::tile(QPoint position) {
 void Map::move(Ship *ship, QPoint old_position, QPoint new_position, int size) {
 }
 
-void Map::move(Ship *shot, QPoint old_position, QPoint new_position) {
+void Map::move(Shot *shot, QPoint old_position, QPoint new_position) {
 }
 
 void Map::add(Ship *ship) {}

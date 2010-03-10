@@ -43,7 +43,7 @@ public:
     void remove(Ship *ship);
     void remove(Shot *shot);
     void move(Ship *ship, QPoint old_position, QPoint new_position, int size);
-    void move(Ship *shot, QPoint old_position, QPoint new_position);
+    void move(Shot *shot, QPoint old_position, QPoint new_position);
     int isWall(QPoint);
     int canMove(QPoint old_position, bool vertical, int size, int distance);
 };
