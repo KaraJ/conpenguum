@@ -11,6 +11,7 @@
 #include "Animation/Animation.h"
 #include "Comm/Commclient.h"
 #include "../Core/comm/data/clientaction.h"
+#include "../Core/comm/data/servermessage.h"
 
 // Default frame rate is 60 frames/second.
 #define DEFAULT_FRAME_RATE 60
@@ -76,6 +77,7 @@ class BaseWindow : public QMainWindow
 		bool chatting;
 		std::string chatString;
 		CommClient::CommClient* theClient;
+		size_t clientID;
 
     public:
 		BaseWindow ();
@@ -85,6 +87,8 @@ class BaseWindow : public QMainWindow
 		void keyPressEvent (QKeyEvent * event);
 		virtual void render ();
 		std::string getChatString();
+		void Start();
+		void getServerMessage();
 
 	public slots:
 		void timerEvent();
