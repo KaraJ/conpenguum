@@ -21,12 +21,14 @@ int main(int argc, char* argv[]) {
 	double totaltime = 0;
 	int numsent = 0;
 	int numRecv = 0;
+	int numLost = 0;
 	clock_t time;
 	CommClient* client;
 	client = CommClient::Instance();
 	id = client->connect(argv[1], argv[2]);
 	int max = atoi(argv[3]);
-	for (int i = 0; i < max; i++) {
+	for (int i = 0; i < max; i++)
+	{
 		ClientAction action(0);
 		switch (rand() % 5) {
 		case 0:
@@ -48,16 +50,28 @@ int main(int argc, char* argv[]) {
 		time = clock();
 		client->sendAction(action);
 		numsent++;
-		while (client->hasNextUpdate()) {
-			numRecv++;
-			UpdateObject update = client->nextUpdate();
-			if (update.getActions().getObjectID() == id)
+		while(1)
+		{
+			if(((clock() - time)/CLOCKS_PER_SEC) > 5)
 			{
-				totaltime += clock() - time / CLOCKS_PER_SEC;
+				numLost++;
+				break;
+			}
+			if (client->hasNextUpdate())
+			{
+				numRecv++;
+				UpdateObject update = client->nextUpdate();
+				if (update.getActions().getObjectID() == id)
+				{
+					totaltime += (clock() - time);
+					break;
+				}
 			}
 		}
 	}
-	printf("Avg round trip time: %f\nTotal Received: %d", totaltime / numsent, numRecv);
+	printf("Avg round trip time: %f\n", totaltime / numsent / CLOCKS_PER_SEC);
+	printf("Total Lost: %d", numLost);
+	fflush(stdout);
 
 	return app.exec();
 }

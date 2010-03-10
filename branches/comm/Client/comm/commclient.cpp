@@ -27,6 +27,7 @@ CommClient::CommClient()
 {
 	sem_init(&semSM_, 0, 1);
 	tcpClient_ = new TCPClient();
+	isConnected_ = false;
 }
 
 CommClient* CommClient::Instance()
@@ -157,14 +158,17 @@ void CommClient::sendAction(ClientAction action)
 void* CommClient::readThreadFunc(void* args)
 {
     BYTE* buffer;
-    ssize_t size = CommClient::Instance()->udpConnection_->recvMessage(&buffer);
-    if (size == UpdateObject::serializeSize)
+    while(CommClient::Instance()->isConnected())
     {
-        UpdateObject update(buffer);
-        CommClient::Instance()->updates_.push(update);
+		ssize_t size = CommClient::Instance()->udpConnection_->recvMessage(&buffer);
+		if (size == UpdateObject::serializeSize)
+		{
+			UpdateObject update(buffer);
+			CommClient::Instance()->updates_.push(update);
+		}
+		else
+			Logger::LogNContinue("Bad packet size received");
     }
-    else
-        Logger::LogNContinue("Bad packet size received");
 
     return 0;
 }
