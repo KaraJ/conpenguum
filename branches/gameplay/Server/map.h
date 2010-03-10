@@ -19,7 +19,6 @@ private:
     std::list<int> ships;
     std::list<Shot> shots;
 public:
-    Tile(int x, int y);
     bool isWall(){return wall;}
     int numShips();
     int numShots;
@@ -38,14 +37,15 @@ private:
     int  tileSize; // length of tile edge in pixels
     Tile tile(QPoint position);
 public:
-    Map(int x, int y);
-    void add(Ship ship);
-    void add(Shot shot);
-    void remove(Ship ship);
-    void remove(Shot shot);
-    void move(Ship ship, QPoint old_position);
-    void move(Shot shot, QPoint old_position);
-    int tileContents(QPoint pos);
+    Map(QString filename);
+    void add(Ship *ship);
+    void add(Shot *shot);
+    void remove(Ship *ship);
+    void remove(Shot *shot);
+    void move(Ship *ship, QPoint old_position, QPoint new_position, int size);
+    void move(Ship *shot, QPoint old_position, QPoint new_position);
+    int isWall(QPoint);
+    int canMove(QPoint old_position, bool vertical, int size, int distance);
 };
 
 #endif
