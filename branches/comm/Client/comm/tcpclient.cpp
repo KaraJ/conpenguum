@@ -64,6 +64,7 @@ bool TCPClient::Connect(const string& ip)
 		if (SocketWrapper::Connect(tcpSocket, (sockaddr_in*)p->ai_addr, p->ai_addrlen) != -1)
 		{
 			result = true;
+			connected_ = true;
 			break; /* Success */
 		}
 
@@ -94,6 +95,12 @@ ServerMessage TCPClient::Login(string playerName)
 
 void TCPClient::Logout()
 {
+	connected_ = false;
 	shutdown(tcpSocket, SHUT_RDWR);
 	close(tcpSocket);
+}
+
+bool TCPClient::IsConnected()
+{
+	return connected_;
 }

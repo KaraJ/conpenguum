@@ -58,7 +58,6 @@ int CommClient::connect(const string name, const string address)
 
         if (!tcpClient_->Connect(address))
         	return -1;
-        isConnected_ = true;
         serverMsgs_.push(tcpClient_->Login(name));
         clientID_ = serverMsgs_.front().GetClientID();
         tcpClient_->StartRdThread(&serverMsgs_, &semSM_);
@@ -68,6 +67,7 @@ int CommClient::connect(const string name, const string address)
         if (inet_pton(AF_INET, address.c_str(), &servAddr.sin_addr) != 1)
             Logger::LogNQuit("Error connection client - bad IP");
         udpConnection_ = new UDPConnection();
+        isConnected_ = true;
         pthread_create(&readThread_, NULL, CommClient::readThreadFunc, NULL);
     }
     return 0;
