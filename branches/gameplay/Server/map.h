@@ -16,35 +16,36 @@
 class Tile {
 private:
     bool wall, fixed, x, y;
-    std::list<int> ships;
-    std::list<Shot> shots;
+    std::list<Ship*> ships;
+    std::list<Shot*> shots;
 public:
-    bool isWall(){return wall;}
+    bool isWall();
     int numShips();
-    int numShots;
-    bool overlap(NewtObject object);
-    void add(Ship ship);
-    void add(Shot shot);
-    void remove(Ship ship);
-    void remove(Shot shot);
-};
-
-class Map {
-private:
-    Tile tiles[MAX_MAP_WIDTH][MAX_MAP_HEIGHT];
-    int  width;    // map width in tiles
-    int  height;   // map height in tiles
-    int  tileSize; // length of tile edge in pixels
-    Tile tile(QPoint position);
-public:
-    Map(QString filename);
+    int numShots();
     void add(Ship *ship);
     void add(Shot *shot);
     void remove(Ship *ship);
     void remove(Shot *shot);
+};
+
+class Map {
+private :
+    Tile tiles[MAX_MAP_WIDTH][MAX_MAP_HEIGHT];
+    int  width;    // map width in tiles
+    int  height;   // map height in tiles
+    int  tileSize; // length of tile edge in pixels
+    Tile tile(QPoint position); // get by position
+    Tile tile(int x, int y);    // get by grid coord
+public:
+    Map(QString filename);
+    void add(Ship *ship, QPoint location, int size);
+    void add(Shot *shot, QPoint location);
+    void remove(Ship *ship, QPoint location, int size);
+    void remove(Shot *shot, QPoint location);
     void move(Ship *ship, QPoint old_position, QPoint new_position, int size);
     void move(Shot *shot, QPoint old_position, QPoint new_position);
-    int isWall(QPoint);
+    bool isWall(QPoint);    // by location
+    bool isWall(int x, int y);  // by grid
     int canMove(QPoint old_position, bool vertical, int size, int distance);
 };
 
