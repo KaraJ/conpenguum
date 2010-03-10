@@ -18,7 +18,7 @@ public:
     static bool 	Connect (int fd, const struct sockaddr_in *sa, socklen_t salen);
     static void 	Listen  (int fd, int backlog);
     static void    Write    (int sock, const void *vptr, size_t n);
-    static void    Read    (int sock, void *vptr, size_t size);
+    static bool    Read    (int sock, void *vptr, size_t size);
     static ssize_t 	Recvfrom(int fd, void* buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t* addrlen);
     static ssize_t 	Sendto	 (int fd, const void* buff, size_t nbytes, int flags, const struct sockaddr *to, socklen_t addrlen);
 

@@ -62,7 +62,7 @@ void SocketWrapper::Write(int sock, const void *vptr, size_t n)
     }
 }
 
-void SocketWrapper::Read(int sock, void *vptr, size_t size)
+bool SocketWrapper::Read(int sock, void *vptr, size_t size)
 {
 	size_t  nleft = size;
 	ssize_t nread;
@@ -72,10 +72,13 @@ void SocketWrapper::Read(int sock, void *vptr, size_t size)
 	{
 		if ( (nread = read(sock, buff, nleft)) < 0) //TODO: If nread == 0 then a client has disconnected - do any cleanup needed.
 			Logger::LogNQuit("Read error");
+		if (nread == 0)
+			return false;
 
 		nleft -= nread;
 		buff  += nread;
 	}
+	return true;
 }
 
 ssize_t SocketWrapper::Recvfrom(int fd, void* buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t* addrlen)
