@@ -76,7 +76,7 @@ void* TCPServer::ReadThread(void* vptr)
 				{
 					clientMap_->insert(pair<int, in_addr>(i,sa.sin_addr));
 					clients_[i] = client;
-					if (i > maxClient)
+					if (client > maxClient)
 						maxClient = client;
 					isFull = false;
 

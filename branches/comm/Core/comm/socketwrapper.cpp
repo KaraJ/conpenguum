@@ -70,7 +70,7 @@ void SocketWrapper::Read(int sock, void *vptr, size_t size)
 
 	while (nleft > 0)
 	{
-		if ( (nread = read(sock, buff, nleft)) <= 0)
+		if ( (nread = read(sock, buff, nleft)) < 0) //TODO: If nread == 0 then a client has disconnected - do any cleanup needed.
 			Logger::LogNQuit("Read error");
 
 		nleft -= nread;
