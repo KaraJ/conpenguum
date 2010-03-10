@@ -6,6 +6,7 @@ SOURCES += main.cpp \
     shot.cpp \
     physics.cpp
 HEADERS += map.h \
+    general.h \
     ship.h \
     shot.h \
     frame.h \

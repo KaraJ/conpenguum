@@ -106,14 +106,14 @@ void Frame::spawnShot(Shot newShot){
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Frame::updateShips(void){
+void Frame::updateShips(void){/*
     list<Ship>::iterator it;
     for(it = listShip.begin(); it != listShip.end(); ++it){
         // move the ship in the x axis
         (*it).position.setX((*it).vector.x());
         // if moving into a new tile
-        if(map.tile((*it).position).isWall()){
-            if((*it).vector.x() > 0){
+        if(map.isWall(it->position)) {
+            if(it->vector.x() > 0){
                 (*it).position.setX((*it).position.x() - (((*it).position.x()
                     + (*it).vector.x()) % TILE_SIZE));
             }
@@ -137,6 +137,7 @@ void Frame::updateShips(void){
         }
         (*it).executeActionMask();
     }
+    */
 }
 
 /*-----------------------------------------------------------------------------
@@ -159,7 +160,7 @@ void Frame::updateShips(void){
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Frame::updateShots(void){
+void Frame::updateShots(void){/*
     list<Shot>::iterator it;
     for(it = listShot.begin(); it != listShot.end(); ++it){
         (*it).position += (*it).vector;
@@ -177,6 +178,7 @@ void Frame::updateShots(void){
             }
         }
     }
+    */
 }
 
 /*-----------------------------------------------------------------------------
@@ -229,7 +231,7 @@ void Frame::printShips(void){
 ------------------------------------------------------------------------------*/
 void Frame::updateShips(bool thrustF,bool thrustR,
         bool rotL, bool rotR, bool fire){
-    list<Ship>::iterator it;
+/*    list<Ship>::iterator it;
     for(it = listShip.begin(); it != listShip.end(); ++it){
         // move the ship in the x axis
         (*it).position.setX((*it).vector.x());
@@ -279,7 +281,8 @@ void Frame::updateShips(bool thrustF,bool thrustR,
                 + spawnVec.y(), shotVec.x(), shotVec.y(), (*it).id);
             spawnShot(shot);
         }
-    }     
+    }
+    */
 }
 
 /*-----------------------------------------------------------------------------
