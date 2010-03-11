@@ -95,6 +95,12 @@ ServerMessage TCPClient::Login(string playerName)
 
 void TCPClient::Logout()
 {
+	ServerMessage msgBuff;
+
+	msgBuff.SetMsgType(ServerMessage::MT_LOGOUT); //Send logout to server
+	msgBuff.SetMsgData("");
+	TCPConnection::WriteMessage(tcpSocket, msgBuff);
+
 	connected_ = false;
 	shutdown(tcpSocket, SHUT_RDWR);
 	close(tcpSocket);
