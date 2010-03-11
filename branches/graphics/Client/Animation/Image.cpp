@@ -1,21 +1,27 @@
 #include "Image.h"
-using namespace std;
-/*----------------------------------------------------------------------------------------------
--- FUNCTION NAME: Image
+
+/*------------------------------------------------------------------------
+-- FUNCTION NAME: Image() - constructor.
 --
--- PURPOSE: constructor.
+-- FUNCTION PURPOSE: initializes image offsets and state data.
 --
--- DESIGNER: Jordan 
+-- DESIGNER: Jordan Lewis
 --
--- PROGRAMMER: Jordan
+-- PROGRAMMER: Jordan Lewis
 --
--- DATE: Jan. 31st, 2010
---
--- REVISIONS: None
------------------------------------------------------------------------------------------------*/
-Image::Image(int xOff, int yOff, string texturePath)
+-- DATE: March. 2nd, 2010
+-------------------------------------------------------------------------*/
+Image::Image()
 {
-	xOffSet_ = xOff; 
-	yOffSet_ = yOff; 
-	texturePath_ = texturePath; 
-} 
+    leftOffSet_ = 0.0f;
+    rightOffSet_ = 0.0f;
+    topOffSet_ = 0.0f;
+    bottomOffSet_ = 0.0f;
+    width_ =  0.0f;
+    height_ =  0.0f;
+}
+void Image::setDescription(std::string desc)
+{
+
+}
+

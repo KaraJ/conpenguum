@@ -1,9 +1,7 @@
-#ifndef MAIN_H
-#define MAIN_H
+#include <QtGui>
+#include <QApplication>
+#ifndef QT_NO_OPENGL
+#include <QtOpenGL>
+#endif
 
-//System Includes will go here
-
-//User Includes will go here
-#include "BaseWindow.h"
-
-#endif // MAIN_H
+#include "Panel.h"

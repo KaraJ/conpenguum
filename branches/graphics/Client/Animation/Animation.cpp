@@ -1,110 +1,63 @@
 #include "Animation.h"
+#include "qtxmlparse.h"
 using namespace std;
-/*----------------------------------------------------------------------------------------------
--- FUNCTION NAME: Animation
+/*------------------------------------------------------------------------
+-- FUNCTION NAME: getAnimationMap()
 --
--- PURPOSE: Constructor.
+-- FUNCTION PURPOSE: Static method to generate animation map.
 --
--- DESIGNER: Jordan 
+-- RETURN VALUE: Map of animations (map<int, Animation> where int is the enum
+--               for animation type found in AnimationEnum)
 --
--- PROGRAMMER: Jordan
+-- DESIGNER: Jordan Lewis
 --
--- DATE: Jan. 31st, 2010
+-- PROGRAMMER: Jordan Lewis
 --
--- REVISIONS: None
------------------------------------------------------------------------------------------------*/
-Animation::Animation()
+-- DATE: March. 2nd, 2010
+-------------------------------------------------------------------------*/
+map<int, Animation> Animation::getAnimationMap()
 {
-/* do nothing yet */
+    map<int, Animation> animations;
+    Animation animation;
+    vector<Image> animationExplosion, animationShip;
+    Image readImage;
+    int mapSize = -1;
+    int imagesCount = -1;
+    AnimationType type = Explosion;
+    string typeStr;
+    string xmlFile("./explosion.xml");
+    QtXmlParse *xmlParse = new QtXmlParse();
+    animationExplosion = xmlParse->ReadAnimationVector(type, xmlFile); // loading all Explostion animations.
+    imagesCount = animationExplosion.size();
+    animation.setAnimationImages(animationExplosion);
+    animations.insert(std::pair<int, Animation>((int)type, animation));
+
+    mapSize = (int)animations.size();
+
+    return (animations);
 }
-/*----------------------------------------------------------------------------------------------
--- FUNCTION NAME: setXOffSet
+/*------------------------------------------------------------------------
+-- FUNCTION NAME: Animation()
 --
--- PURPOSE: sets the XOffSet, will go into the Image class.
+-- FUNCTION PURPOSE: Copy constructor for loading into map.
 --
--- DESIGNER: Jordan 
+-- RETURN VALUE: Nothing.
 --
--- PROGRAMMER: Jordan
+-- DESIGNER: Jordan Lewis
 --
--- DATE: Jan. 31st, 2010
+-- PROGRAMMER: Jordan Lewis
 --
--- REVISIONS: None
------------------------------------------------------------------------------------------------*/
-void Animation::setXOffSet(int xOffSet)
+-- DATE: March. 2nd, 2010
+-------------------------------------------------------------------------*/
+Animation::Animation(const Animation &a)
 {
-	xOffSet_ = xOffSet;
-}
-/*----------------------------------------------------------------------------------------------
--- FUNCTION NAME: setYOffSet
---
--- PURPOSE: sets the yOffSet, will go into the Image class.
---
--- DESIGNER: Jordan 
---
--- PROGRAMMER: Jordan
---
--- DATE: Jan. 31st, 2010
---
--- REVISIONS: None
------------------------------------------------------------------------------------------------*/
-void Animation::setYOffSet(int yOffSet)
-{
-	yOffSet_ = yOffSet;
-}
-/*----------------------------------------------------------------------------------------------
--- FUNCTION NAME: setFileLocation
---
--- PURPOSE: sets the location of the texture file.
---
--- DESIGNER: Jordan 
---
--- PROGRAMMER: Jordan
---
--- DATE: Jan. 31st, 2010
---
--- REVISIONS: None
------------------------------------------------------------------------------------------------*/
-void Animation::setFileLocation(string location)
-{
-	fileLocation_ = location;
-}
-/*----------------------------------------------------------------------------------------------
--- FUNCTION NAME: buildAnimationVector
---
--- PURPOSE: builds vector of images used in animations.
---
--- DESIGNER: Jordan 
---
--- PROGRAMMER: Jordan
---
--- DATE: Jan. 31st, 2010
---
--- REVISIONS: None
------------------------------------------------------------------------------------------------*/
-vector<Image> Animation::buildAnimationVector(AnimationType type)
-{
-	/* VECTOR will be of images(class to be implemented), which will be stored within the animation. vector 
-	will have to be added to animation class. for each animation type this 
-	function will build the actual offset and return the vector for the animation.*/
-}
-/*----------------------------------------------------------------------------------------------
--- FUNCTION NAME: loadAnimationImages
---
--- PURPOSE: loads an image based on the type of animation. We need to figure out how to handle
---          the iteration through images and offset.
---
--- DESIGNER: Jordan 
---
--- PROGRAMMER: Jordan
---
--- DATE: Jan. 31st, 2010
---
--- REVISIONS: None
------------------------------------------------------------------------------------------------*/
-string Animation::loadAnimationImages(AnimationType type)
-{
-	/*
-		will be used to Create Image objects. Images objects based on type. Offsets will be stored within image.
-		Images will be stored in a vector in the build animation vector. We will return images from this function.
-	*/
+    images_ = a.images_;
+    numFrames_ = a.numFrames_;
+    imagesWide_ = a.imagesWide_;
+    imagesTall_ = a.imagesTall_;
+   //images_ = a.getAnimationImages();
+   //numFrames_ = a.getNumFrames();
+   //imagesWide_ = a.getImagesWide();
+   //imagesTall_ = a.getImagesTall();
+
 }

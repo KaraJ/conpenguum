@@ -9,7 +9,7 @@
 --
 -- PURPOSE: used to load animations for later release to gameplay.
 --
--- DESIGNER: Jordan 
+-- DESIGNER: Jordan
 --
 -- PROGRAMMER: Jordan
 --
@@ -22,7 +22,7 @@ class Loader
 	public:
 		Loader(); /* defined in .cpp */
 		Animation getAnimation(AnimationType type);
-	private: 
+	private:
 		Animation anim_[NUMBER_OF_ANIMATIONS];
 		std::map<std::string, std::string> textureStorage_; /* will later map animation name to Animation object*/
 };
