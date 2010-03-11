@@ -62,12 +62,14 @@ void Map::move(Ship *ship, QPoint old_position, QPoint new_position, int size) {
     int yt2 = (new_position.y() + size) / tileSize;
     for (int x=MIN(xl1, xl2); x <= MAX(xr1, xr2); ++x) {
         for (int y=MIN(yb1, yb2); y <= MAX(yt1, yt2); ++y) {
-            if (x >= xl1 && x <= xr1 && y >= yb1 && y <= yt1) {
-                if (x < xl2 && x > xr2 && y < yb2 && y > yt2) {
+            if (x < xl1 || x > xr1 || y < yb1 || y > yt1) { // if not in old_position
+                if (x <= xl2 && x >= xr2 && y >= yb1 && y <= yt1) { // if in new position
+                    tile(x, y).add(ship);
+                }
+            } else {    // is in old position!
+                if (x < xl2 || x > xr2 || y < yb2 || y > yt2) { // if not in new position
                     tile(x, y).remove(ship);
                 }
-            } else {
-                tile(x, y).add(ship);
             }
         }
     }
