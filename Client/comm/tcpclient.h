@@ -1,70 +1,40 @@
 #ifndef TCPCLIENT_H
 #define TCPCLIENT_H
 
-//This class to hold application specific logic for the TCP connection client
+//System Includes
+#include <netdb.h>
+#include <strings.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <pthread.h>
+#include <queue>
+#include <semaphore.h>
 
-#include <string>
-#include "../../Core/comm/data/servermessage.h"
-
-    /*
-     Get host by name
-
-     Check hostent h_addrtype for AF_INET(ipv6)
-
-     Convert IP for debugging info (inet_ntop)
-
-     Create Socket (socket(PF_INET, SOCK_STREAM, IPPROTO_IP)
-
-     Set port (sockaddr.sin_port = htons(port)
-
-     Copy h_addrlist[x] to sockaddr struct, where x is desired host IP
-
-     Set sockaddr.sin_family to AF_INET
-
-     Connect! (connect(int sock, sa, sizeof(sa))
-
-     END CONNECT PHASE
-
-     Read Client ID
-
-     Read Scoreboard / Player names
-
-     While (!done)
-
-       Read Message/Write (Threaded, Async, or MP?)
-
-       If logout
-
-         SendServMsg(LOG_OUT)
-
-         GOTO EXIT
-
-       If Shutdown
-
-         GOTO EXIT
-
-       If EOF
-
-         Notify Game lost connection
-
-         GOTO EXIT
-
-      EXIT PHASE
-
-      close(socket)
-
-      */
+//User Includes
+#include "../Core/comm/globals.h"
+#include "../Core/comm/data/servermessage.h"
+#include "../Core/Logger.h"
+#include "../Core/comm/tcpconnection.h"
 
 class TCPClient
 {
 public:
-    TCPClient();
-    int Login(std::string ip, int port);
+    bool Connect(const std::string& ip);
+    void StartRdThread(std::queue<ServerMessage> *msgBuff, sem_t *semSM);
+    ServerMessage Login(std::string playerName);
+    void SendMessage(std::string message);
     bool IsConnected();
-    bool Logout();
+    void Logout();
 
 private:
-    bool connected;
+    static void* ReadThread(void*);
+
+    static bool connected_;
+    static std::queue<ServerMessage> *msgBuff_;
+    static sem_t *semSM_;
+
+    int  tcpSocket;
+    pthread_t rThread_;
 };
 
 #endif // TCPCLIENT_H
