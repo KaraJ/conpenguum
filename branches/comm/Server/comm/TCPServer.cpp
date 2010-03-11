@@ -117,8 +117,9 @@ void* TCPServer::ReadThread(void* vptr)
 					break;
 				case ServerMessage::MT_LOGOUT:
 					clients_[i] = 0;
-					if (i == maxClient)
+					if (clients_[i] == maxClient)
 						maxClient--;
+					clientMap_->erase(i);
 					break;
 				}
 				sem_wait(semSM_);
