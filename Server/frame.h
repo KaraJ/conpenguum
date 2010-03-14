@@ -40,8 +40,9 @@ public:
 public:
     void tick();
     void addShip(Ship newShip);
-    void spawnShot(Shot newShot);
+    void addShot(Shot newShot);
     void fragShip(int shipID);
+    void spawnShip(int shotID);
     void destroyShot(int shotID);
     void updateShips();
     void updateShots();
