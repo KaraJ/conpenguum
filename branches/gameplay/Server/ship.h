@@ -19,11 +19,14 @@
 --                  controlled ship.
 --
 ----------------------------------------------------------------------------*/
+#include "clientaction.h"
+
 class Ship : public NewtObject
 {
 private:
 public:
     int rotation;
+
     /*
     bit mask for the player actions
     */
