@@ -79,9 +79,6 @@ void* TCPServer::ReadThread(void* vptr)
 					if (client > maxClient)
 						maxClient = client;
 					isFull = false;
-
-
-
 					break;
 				}
 			}
@@ -120,11 +117,14 @@ void* TCPServer::ReadThread(void* vptr)
 					if (clients_[i] == maxClient)
 						maxClient--;
 					clientMap_->erase(i);
+					close(client);
+					FD_CLR(client, &clientSet);
 					break;
 				}
 				sem_wait(semSM_);
 				msgBuff_->push(msgBuff);
 				sem_post(semSM_);
+				FD_CLR(client, &clientSet);
 			}
 		}
 	}
