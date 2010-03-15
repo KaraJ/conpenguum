@@ -65,6 +65,7 @@ private:
     pthread_t readThread_;
     std::map<int,in_addr> clients_;
     sem_t semSM_;
+    sem_t semUDP_;
 };
 
 #endif

@@ -137,13 +137,18 @@ void CommServer::sendServerMsg(const ServerMessage& sm)
 
 bool CommServer::hasNextClientAction()
 {
-    return !actions_.empty();
+    sem_wait(&semUDP_);
+    bool empty = actions_.empty();
+    sem_post(&semUDP_);
+    return !empty;
 }
 
 ClientAction CommServer::nextClientAction()
 {
+    sem_wait(&semUDP_);
     ClientAction action = actions_.front();
     actions_.pop();
+    sem_post(&semUDP_);
     return action;
 }
 
@@ -177,7 +182,9 @@ void* CommServer::readThreadFunc(void* args)
         else if (size == ClientAction::serialiseSize)
         {
             ClientAction action(buffer);
+            sem_wait(&CommServer::Instance()->semUDP_);
             CommServer::Instance()->actions_.push(action);
+            sem_post(&CommServer::Instance()->semUDP_);
         }
         else
             Logger::LogNContinue("Bad packet size received");

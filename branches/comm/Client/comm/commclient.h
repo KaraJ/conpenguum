@@ -67,6 +67,7 @@ private:
     std::queue<UpdateObject> updates_;
     std::queue<ServerMessage> serverMsgs_;
     sem_t semSM_;
+    sem_t semUDP_;
     bool isConnected_;
     size_t clientID_;
     TCPClient* tcpClient_;

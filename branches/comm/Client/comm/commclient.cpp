@@ -26,6 +26,7 @@ using namespace std;
 CommClient::CommClient()
 {
 	sem_init(&semSM_, 0, 1);
+	sem_init(&semUDP_, 0, 1);
 	tcpClient_ = new TCPClient();
 	isConnected_ = false;
 }
@@ -76,8 +77,10 @@ int CommClient::connect(const string name, const string address)
 
 UpdateObject CommClient::nextUpdate()
 {
+    sem_wait(&semUDP_);
     UpdateObject update = updates_.front();
     updates_.pop();
+    sem_post(&semUDP_);
     return update;
 }
 
@@ -151,7 +154,7 @@ void CommClient::sendAction(ClientAction action)
     }
     else
     {
-        //@todo throw exception
+        //TODO: throw exception
     }
 }
 
@@ -164,7 +167,9 @@ void* CommClient::readThreadFunc(void* args)
 		if (size == UpdateObject::serializeSize)
 		{
 			UpdateObject update(buffer);
+			sem_wait(&CommClient::Instance()->semUDP_);
 			CommClient::Instance()->updates_.push(update);
+			sem_post(&CommClient::Instance()->semUDP_);
 		}
 		else
 			Logger::LogNContinue("Bad packet size received");
