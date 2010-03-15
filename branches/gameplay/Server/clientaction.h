@@ -32,7 +32,7 @@
 
 #define BYTE unsigned char
 
-#include "../globals.h"
+#include "globals.h"
 #include "bitmask.h"
 #include <cstring>
 #include <iostream>

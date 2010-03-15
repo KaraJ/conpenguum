@@ -42,8 +42,8 @@
 class NewtObject
 {
 public:
-    QPoint position;
-    QPoint vector;
+  QPoint position;
+  QPoint vector;
     int id;
 private:
     // next ID to be used

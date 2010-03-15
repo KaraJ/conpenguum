@@ -173,3 +173,25 @@ int Tile::numShips() {
 int Tile::numShots() {
     return shots.size();
 }
+
+Map::Map(){
+    for(int i = 0; i < 20; i++){
+        for(int j = 0; j < 20; j++){
+            if(i == 0 || i == 19){
+                tiles[i][j].setWall();
+            }
+            if(j == 0 || j == 19){
+                tiles[i][j].setWall();
+            }
+        }
+    }
+}
+
+void Map::drawMap(){
+    for(int i = 0; i < 20; i++){
+        for(int j = 0; j < 20; j++){
+            std::cout << (tiles[i][j].isWall()?"X":".");
+        }
+        std::cout << std::endl;
+    }
+}
