@@ -51,21 +51,23 @@ void* TCPServer::ReadThread(void* vptr)
 	sockaddr_in sa;
 	int client, ready, maxClient = sock;
 	uint size;
-	fd_set currSet, clientSet;
+	fd_set clientSet;
 	ServerMessage msgBuff;
 	bool isFull;
 
 	SocketWrapper::Listen(sock, 5);
 
-	FD_ZERO(&clientSet);
-	FD_SET(sock, &clientSet);
-
 	while (true)
 	{
-		currSet = clientSet;
-		ready = select(maxClient + 1, &currSet, NULL, NULL, NULL);
+		FD_ZERO(&clientSet);
+		FD_SET(sock, &clientSet);
 
-		if (FD_ISSET(sock, &currSet))
+		for (size_t i = 0; i < MAX_CLIENTS; ++i)
+			FD_SET(clients_[i], &clientSet);
+
+		ready = select(maxClient + 1, &clientSet, NULL, NULL, NULL);
+
+		if (FD_ISSET(sock, &clientSet))
 		{
 			size = sizeof(sa);
 			client = SocketWrapper::Accept(sock, &sa, &size);
@@ -89,8 +91,6 @@ void* TCPServer::ReadThread(void* vptr)
 				m.SetData("");
 				TCPConnection::WriteMessage(client, m);
 			}
-			else
-				FD_SET(client, &clientSet);
 
 			if (--ready == 0)
 				continue;
@@ -99,7 +99,8 @@ void* TCPServer::ReadThread(void* vptr)
 		{
 			if ((client = clients_[i]) == 0)
 				continue;
-			if (FD_ISSET(client, &currSet))
+
+			if (FD_ISSET(client, &clientSet))
 			{
 				TCPConnection::ReadMessage(client, msgBuff);
 				switch (msgBuff.GetMsgType())
@@ -118,14 +119,15 @@ void* TCPServer::ReadThread(void* vptr)
 						maxClient--;
 					clientMap_->erase(i);
 					close(client);
-					FD_CLR(client, &clientSet);
 					break;
 				}
 				sem_wait(semSM_);
 				msgBuff_->push(msgBuff);
 				sem_post(semSM_);
-				FD_CLR(client, &clientSet);
 			}
+
+			if (--ready == 0)
+				continue;
 		}
 	}
 
