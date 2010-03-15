@@ -20,11 +20,13 @@
  -- the QTimer object used for timing.
  --
  -----------------------------------------------------------------------------*/
-BaseWindow::BaseWindow() : timer(this), frameRate(DEFAULT_FRAME_RATE)
+BaseWindow::BaseWindow() : timer(this), frameRate(DEFAULT_FRAME_RATE), gameState(32)
 {
 	connect(&timer, SIGNAL(timeout()), this, SLOT(timerEvent()));
 	chatting = false;
 	theClient = CommClient::Instance();
+
+	animationMap = Animation::getAnimationMap();
 }
 
 /*------------------------------------------------------------------------------
@@ -311,13 +313,43 @@ void BaseWindow::setFrameRate (int rate)
  -----------------------------------------------------------------------------*/
 void BaseWindow::updateGameState ()
 {
-//	CommClient * comm = CommClient::Instance();
-//
-//	while (comm->hasNextUpdate())
-//	{
-//		UpdateObject update = comm->nextUpdate();
-//		int objectId = update.getActions().getClientID();
-//	}
+
+	while (theClient->hasNextUpdate())
+	{
+		GameObject * gameObj;
+		UpdateObject updateObj = theClient->nextUpdate();
+		int objectId = updateObj.getActions().getClientID();
+
+		if (objectId <= 31)
+		{
+			gameObj = &gameState.at(objectId);
+		}
+		else
+		{
+			gameObj = new GameObject;
+			gameObj->animeIndex = 0;
+			gameState.push_back(*gameObj);
+		}
+
+		gameObj->objectId = objectId;
+		gameObj->position = updateObj.getPos();
+		gameObj->angle = updateObj.getRotation();		
+	}
+
+	for (int i = 32; i < gameState.size(); i++)
+	{
+		GameObject& animatedObj = gameState.at(i);
+		std::vector<Image> images = animationMap[animatedObj.objectId].getAnimationImages();
+
+		if (animatedObj.objectId == 32) // Bullets
+			continue;
+
+		if (animatedObj.animeIndex < images.size())
+		{			
+			animatedObj.animeImage = &images[animatedObj.animeIndex];
+			animatedObj.animeIndex++;
+		}
+	}
 }
 
 /*------------------------------------------------------------------------------

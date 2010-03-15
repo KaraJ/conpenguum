@@ -72,8 +72,8 @@ class BaseWindow : public QMainWindow
     private:
 		int frameRate;
 		QTimer timer;
-		std::map<int, GameObject> gameState;
-		std::map<int, Animation> * animationMap;
+		std::vector<GameObject> gameState;
+		std::map<int, Animation> animationMap;
 		bool chatting;
 		std::string chatString;
 		CommClient::CommClient* theClient;

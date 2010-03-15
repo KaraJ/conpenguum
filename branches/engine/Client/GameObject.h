@@ -6,5 +6,6 @@ struct GameObject
 	int objectId;
 	int angle;
 	QPoint position;
-	Image * vector; 
+	Image * animeImage;
+	int animeIndex;
 };

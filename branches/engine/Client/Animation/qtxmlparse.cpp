@@ -1,5 +1,5 @@
 #include "qtxmlparse.h"
-#include <Qt/qiodevice.h>
+#include <qiodevice.h>
 #include <qdatastream.h>
 #define EXPLOSION 0
 #define EXHAUST 1
