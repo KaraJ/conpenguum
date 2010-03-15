@@ -22,6 +22,7 @@
 #ifndef FRAME_H
 #define FRAME_H
 
+#include <QString>
 #include <list>
 #include "newtObjects.h"
 #include "shot.h"
@@ -38,9 +39,12 @@ public:
     std::list<Ship> listShip; // list of all ships(players) in the game.
     std::list<Shot> listShot; // list of all active shots in the game.
 public:
+    Frame(QString filename): map(filename){};
+    Frame(){};
     void tick();
     void addShip(Ship newShip);
     void addShot(Shot newShot);
+    std::list<Ship>::iterator getShip(int shipID);
     void fragShip(int shipID);
     void spawnShip(int shotID);
     void destroyShot(int shotID);
@@ -50,5 +54,6 @@ public:
     void printShips();
     int dist2Points(QPoint point1, QPoint point2);
     void updateShips(bool thrustF,bool thrustR, bool rotL, bool rotR, bool fire);
+    void drawMap(){map.drawMap();}
 };
 #endif // FRAME_H

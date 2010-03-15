@@ -82,9 +82,61 @@ void Frame::addShip(Ship newShip){
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Frame::spawnShot(Shot newShot){
+void Frame::addShot(Shot newShot){
     // adds a shot to the shot list
     listShot.push_back(newShot);
+}
+
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   getShip
+--
+--  DATE:       March 14, 2010
+--
+--  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  Ship getShip(int shipID)
+--
+--  NOTES:      returns the ship with the ID equal to shipID.
+--
+--  RETURNS:    Ship
+--
+------------------------------------------------------------------------------*/
+list<Ship>::iterator Frame::getShip(int shipID){
+    list<Ship>::iterator it;
+    for(it = listShip.begin(); it != listShip.end(); ++it){
+        if(it->id == shipID){
+            return it;
+        }
+    }
+}
+
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   spawnShip
+--
+--  DATE:       March 14, 2010
+--
+--  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  spawnShip(int shipID)
+--
+--  NOTES:      Makes a ship active. Is will be spawned at a valid spawn point
+--              and able to make actions as well as be destroyed.
+--
+--  RETURNS:    void
+--
+------------------------------------------------------------------------------*/
+void Frame::spawnShip(int shipID){
+    QPoint spawnPoint(10,10); // map function to return a safe spawn point
+    getShip(shipID)->active = true;
+    getShip(shipID)->position = spawnPoint;
 }
 
 /*-----------------------------------------------------------------------------
@@ -106,38 +158,11 @@ void Frame::spawnShot(Shot newShot){
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Frame::updateShips(void){/*
+void Frame::updateShips(void){
     list<Ship>::iterator it;
     for(it = listShip.begin(); it != listShip.end(); ++it){
-        // move the ship in the x axis
-        (*it).position.setX((*it).vector.x());
-        // if moving into a new tile
-        if(map.isWall(it->position)) {
-            if(it->vector.x() > 0){
-                (*it).position.setX((*it).position.x() - (((*it).position.x()
-                    + (*it).vector.x()) % TILE_SIZE));
-            }
-            else{
-                (*it).position.setX((*it).position.x() + (((*it).position.x()
-                    + (*it).vector.x()) % TILE_SIZE));
-            }
-        }
-        // move the ship in the y axis
-        (*it).position.setY((*it).vector.y());
-        // if moving into a new tile
-        if(map.tile((*it).position).isWall()){
-            if((*it).vector.y() > 0){
-                (*it).position.setY((*it).position.y() - (((*it).position.y()
-                    + (*it).vector.y()) % TILE_SIZE));
-            }
-            else{
-                (*it).position.setX((*it).position.x() + (((*it).position.x()
-                    + (*it).vector.x()) % TILE_SIZE));
-            }
-        }
-        (*it).executeActionMask();
+
     }
-    */
 }
 
 /*-----------------------------------------------------------------------------
@@ -160,25 +185,11 @@ void Frame::updateShips(void){/*
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Frame::updateShots(void){/*
+void Frame::updateShots(void){
     list<Shot>::iterator it;
     for(it = listShot.begin(); it != listShot.end(); ++it){
-        (*it).position += (*it).vector;
-        if(map.tile((*it).position).isWall()){
-            listShot.erase(it);
-        }
-        // checking collision with every ship. TASK!
-        list<Ship>::iterator ships;
-        for(ships = listShip.begin(); ships != listShip.end(); ++ships){
-            if(dist2Points((*it).position, (*ships).position) < SHIP_HIT_DIST){
-                // destroy shot
-                listShot.erase(it);
-                // destroy ship
-                listShip.erase(ships);
-            }
-        }
+
     }
-    */
 }
 
 /*-----------------------------------------------------------------------------
@@ -205,7 +216,7 @@ void Frame::printShips(void){
     list<Ship>::iterator it;
     for(it = listShip.begin(); it != listShip.end(); ++it){
         cout << (*it).id << ": " << (*it).position.x()
-            << ',' <<  (*it).position.y() << endl;
+            << ',' <<  (*it).position.y() << (it->active?" alive":" dead") << endl;
     }
 }
 

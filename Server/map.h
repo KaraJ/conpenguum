@@ -26,6 +26,7 @@ public:
     void add(Shot *shot);
     void remove(Ship *ship);
     void remove(Shot *shot);
+    void setWall(){wall = true;}
 };
 
 class Map {
@@ -47,6 +48,8 @@ public:
     bool isWall(QPoint);    // by location
     bool isWall(int x, int y);  // by grid
     int canMove(QPoint old_position, bool vertical, int size, int distance);
+    Map(); // for testing, so damn ugly
+    void drawMap(); // testing again, going to make me throw up
 };
 
 #endif

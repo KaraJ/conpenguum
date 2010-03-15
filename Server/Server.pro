@@ -4,12 +4,13 @@ SOURCES += main.cpp \
     frame.cpp \
     ship.cpp \
     shot.cpp \
-    physics.cpp
+    physics.cpp \
+    clientaction.cpp
 HEADERS += map.h \
     general.h \
     ship.h \
     shot.h \
     frame.h \
     newtObjects.h \
-    physics.h
-
+    physics.h \
+    clientaction.h
