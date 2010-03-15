@@ -4,11 +4,12 @@
 #include "map.h"
 #include "physics.h"
 
-#define VELOCITY_THRUST 1   // the velocity of a new thrust vector.
+#define VELOCITY_THRUST 2   // the velocity of a new thrust vector.
 #define VELOCITY_SHOT   3   // the velocity of a shot.
 #define VELOCITY_MAX    2   // the max velocity of a ship.
 #define ROTATION_RATE   2   // how many degrees a ship rotates in a frame.
 #define SHIPRADIUS      25  // the radius of a ships "tile".
+#define SHIPSIZE        SHIPRADIUS*2
 #define SHIP_HIT_DIST   625 // 25^2, the distance at which ships are hit.
 #define TILE_SIZE       25  // the size of a side of a tile.
 using namespace std;
@@ -134,7 +135,7 @@ list<Ship>::iterator Frame::getShip(int shipID){
 --
 ------------------------------------------------------------------------------*/
 void Frame::spawnShip(int shipID){
-    QPoint spawnPoint(10,10); // map function to return a safe spawn point
+    QPoint spawnPoint(100,100); // map function to return a safe spawn point
     getShip(shipID)->active = true;
     getShip(shipID)->position = spawnPoint;
 }
@@ -160,8 +161,36 @@ void Frame::spawnShip(int shipID){
 ------------------------------------------------------------------------------*/
 void Frame::updateShips(void){
     list<Ship>::iterator it;
+    int dist;
     for(it = listShip.begin(); it != listShip.end(); ++it){
+        if(!(it->active)){
+            continue;
+        }
+        dist = map.canMove(it->position, false, SHIPSIZE, it->vector.x());
+        cout << dist  << " " << it->vector.x() << endl;
 
+        if(it->actionMask.isAccelerating()){
+            // thrust forward
+            it->vector += rotVelToVec(it->rotation, VELOCITY_THRUST);
+        }
+        if(it->actionMask.isDecelerating()){
+            // thrust reverse
+            it->vector -= rotVelToVec(it->rotation, -VELOCITY_THRUST);
+        }
+        if(it->actionMask.isTurningRight()){
+            it->rotation += ROTATION_RATE;
+        }
+        if(it->actionMask.isTurningLeft()){
+            it->rotation += ROTATION_RATE;
+        }
+        if(it->actionMask.isFiring()){
+            QPoint spawnVec, shotVec;
+            spawnVec = rotVelToVec((*it).rotation, SHIPRADIUS);
+            shotVec =  rotVelToVec((*it).rotation, VELOCITY_SHOT);
+            Shot shot((*it).position.x() + spawnVec.x(), (*it).position.y()
+                + spawnVec.y(), shotVec.x(), shotVec.y(), (*it).id);
+            addShot(shot);
+        }
     }
 }
 
@@ -215,8 +244,10 @@ void Frame::updateShots(void){
 void Frame::printShips(void){
     list<Ship>::iterator it;
     for(it = listShip.begin(); it != listShip.end(); ++it){
-        cout << (*it).id << ": " << (*it).position.x()
-            << ',' <<  (*it).position.y() << (it->active?" alive":" dead") << endl;
+        cout << (*it).id << ": P" << (*it).position.x()
+            << ',' <<  (*it).position.y() << " V" <<(*it).vector.x()
+            << ',' <<  (*it).vector.y() <<(it->active?" a":" d") <<
+             " r" << it->rotation << endl;
     }
 }
 
