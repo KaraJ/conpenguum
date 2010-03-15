@@ -40,7 +40,7 @@ public:
     std::list<Shot> listShot; // list of all active shots in the game.
 public:
     Frame(QString filename): map(filename){};
-    Frame(){};
+    Frame(): frameTimer(0){};
     void tick();
     void addShip(Ship newShip);
     void addShot(Shot newShot);
@@ -55,5 +55,6 @@ public:
     int dist2Points(QPoint point1, QPoint point2);
     void updateShips(bool thrustF,bool thrustR, bool rotL, bool rotR, bool fire);
     void drawMap(){map.drawMap();}
+    int testCanMove(QPoint p, bool v, int s, int d){return map.canMove(p,v,s,d);}
 };
 #endif // FRAME_H
