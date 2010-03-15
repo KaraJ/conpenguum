@@ -14,16 +14,16 @@ using namespace std;
 --
 -- DATE: March. 2nd, 2010
 -------------------------------------------------------------------------*/
-int main()
-{
-    int mapSize, imagesCount;
-    map<int, Animation> animations; // map to hold animations.
-    animations = Animation::getAnimationMap(); /* static call to create animation instance map.
-                                                  right now only loads explosion.*/
-    // confirmation of map loading.
-    mapSize = animations.size();
-    Animation anime = animations.find(0)->second;
-    imagesCount = anime.getAnimationImages().size();
-
-    return 1;
-}
+//int main()
+//{
+//    int mapSize, imagesCount;
+//    map<int, Animation> animations; // map to hold animations.
+//    animations = Animation::getAnimationMap(); /* static call to create animation instance map.
+//                                                  right now only loads explosion.*/
+//    // confirmation of map loading.
+//    mapSize = animations.size();
+//    Animation anime = animations.find(0)->second;
+//    imagesCount = anime.getAnimationImages().size();
+//
+//    return 1;
+//}
