@@ -98,7 +98,7 @@ void TCPClient::Logout()
 	ServerMessage msgBuff;
 
 	msgBuff.SetMsgType(ServerMessage::MT_LOGOUT); //Send logout to server
-	msgBuff.SetMsgData("");
+	msgBuff.SetData("");
 	TCPConnection::WriteMessage(tcpSocket, msgBuff);
 
 	connected_ = false;
