@@ -39,8 +39,7 @@ public:
     std::list<Ship> listShip; // list of all ships(players) in the game.
     std::list<Shot> listShot; // list of all active shots in the game.
 public:
-    Frame(QString filename): map(filename){};
-    Frame(): frameTimer(0){};
+    Frame(QString filename): frameTimer(0), map(filename){};
     void tick();
     void addShip(Ship newShip);
     void addShot(Shot newShot);

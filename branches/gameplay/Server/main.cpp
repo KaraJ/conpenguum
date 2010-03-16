@@ -6,13 +6,12 @@
 
 using namespace std;
 int main() {
-    Map("map.xml");
-    Frame frame;
+
+    Frame frame("map.xml");
     Ship ship(0,0,4,3,101);
 
     frame.addShip(ship);
     frame.spawnShip(101);
-    frame.drawMap();
     frame.printShips();
     frame.tick();
     frame.getShip(101)->actionMask.setAccelerating();
@@ -27,9 +26,5 @@ int main() {
     frame.printShips();
     frame.tick();
     frame.printShips();
-
-    QPoint vector(4,4);
-    int i = frame.testCanMove(vector, false, 50, 50);
-    cout << i << endl;
     return 0;
 }
