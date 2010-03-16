@@ -107,10 +107,6 @@ void* TCPServer::ReadThread(void* vptr)
 					{
 					case ServerMessage::MT_LOGIN: //If login msg, client doesnt know own id yet - add it
 						msgBuff.SetClientID(i);
-						//TODO: Delete this
-						msgBuff.SetMsgType(ServerMessage::MT_INIT);
-						CommServer::Instance()->sendServerMsg(msgBuff);
-
 						break;
 					}
 					sem_wait(semSM_);

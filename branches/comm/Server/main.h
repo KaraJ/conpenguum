@@ -4,4 +4,4 @@
 #include "comm/udpConnection.h"
 #include "comm/globals.h"
 
-#endif // MAIN_H
+#endif
