@@ -101,28 +101,41 @@ void* TCPServer::ReadThread(void* vptr)
 
 			if (FD_ISSET(clientSocket, &currSet))
 			{
-				TCPConnection::ReadMessage(clientSocket, msgBuff);
-				switch (msgBuff.GetMsgType())
+				if (TCPConnection::ReadMessage(clientSocket, msgBuff))
 				{
-				case ServerMessage::MT_LOGIN: //If login msg, client doesnt know own id yet - add it
+					switch (msgBuff.GetMsgType())
+					{
+					case ServerMessage::MT_LOGIN: //If login msg, client doesnt know own id yet - add it
+						msgBuff.SetClientID(clientSocket);
+						//TODO: Delete this
+						msgBuff.SetMsgType(ServerMessage::MT_INIT);
+						CommServer::Instance()->sendServerMsg(msgBuff);
+
+						break;
+					}
+					sem_wait(semSM_);
+					msgBuff_->push(msgBuff);
+					sem_post(semSM_);
+				}
+				else
+				{
 					msgBuff.SetClientID(i);
-					//TODO: Delete this
 					msgBuff.SetData("");
-					msgBuff.SetMsgType(ServerMessage::MT_INIT);
-					CommServer::Instance()->sendServerMsg(msgBuff);
-					break;
-				case ServerMessage::MT_LOGOUT:
+					msgBuff.SetMsgType(ServerMessage::MT_LOGOUT);
+					sem_wait(semSM_);
+					msgBuff_->push(msgBuff);
+					sem_post(semSM_);
+					FD_CLR(clientSocket, &allSet);
 					clientSockets_[i] = 0;
 					if (clientSockets_[i] == maxClientSocket)
 						maxClientSocket--;
 					clientAddressMap_->erase(i);
 					close(clientSocket);
-					break;
 				}
-				sem_wait(semSM_);
-				msgBuff_->push(msgBuff);
-				sem_post(semSM_);
 			}
+
+			if (--ready == 0)
+				continue;
 		}
 	}
 
