@@ -166,6 +166,8 @@ void Frame::updateShips(void){
         if(!(it->active)){
             continue;
         }
+        // set new action mask
+        // HERE
         dist = map.canMove(it->position, false, SHIPSIZE, it->vector.x());
         cout << dist  << " " << it->vector.x() << endl;
 
