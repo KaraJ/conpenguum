@@ -122,15 +122,17 @@ bool Map::isWall(int x, int y) {
 }
 
 int Map::canMove(QPoint position, bool vertical, int size, int distance) {
-    int begin = (vertical ? position.y() : position.x()) / tileSize;
-    int stop = ((vertical ? position.y() : position.x()) + distance) / tileSize;
-    int start = (vertical ? position.x() : position.y()) / tileSize;
-    int end = ((vertical ? position.x() : position.y()) + size) / tileSize;
+    // movement
+    int begin = MAX(0, MIN((vertical ? height : width), (vertical ? position.y() : position.x()) / tileSize));
+    int stop = MAX(0, MIN((vertical ? height : width), ((vertical ? position.y() : position.x()) + distance) / tileSize));
+    // line segment
+    int start = MAX(0, MIN((vertical ? width : height), (vertical ? position.x() : position.y()) / tileSize));
+    int end = MAX(0, MIN((vertical ? width : height), ((vertical ? position.x() : position.y()) + size) / tileSize));
     if (distance > 0) {
         for (int i=begin; i <= stop; ++i) {
             for (int j=start; j <= end; ++j) {
                 if ((!vertical && isWall(i, j)) || (vertical && isWall(j, i))) {
-                    return i - start;
+                    return i - start - 1;
                 }
             }
         }
@@ -138,7 +140,7 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance) {
         for (int i=begin; i >= stop; --i) {
             for (int j=start; j >= end; --j) {
                 if ((!vertical && isWall(i, j)) || (vertical && isWall(j, i))) {
-                    return i - start;
+                    return i - start -1;
                 }
             }
         }
