@@ -15,6 +15,10 @@
  --		Mar 09, 2010 - Brad Paugh
  --		Added init of chatting variable and retreival of CommClient instance.
  --
+ --		Mar 15, 2010 - Brad Paugh
+ --		Added instantiation of renderer into the constructor, we may not want
+ --		to keep it this way, will have to discuss with other members of the project.
+ --
  -- NOTES:
  -- This is the main constructor of the BaseWindow class. It initializes
  -- the QTimer object used for timing.
@@ -25,6 +29,11 @@ BaseWindow::BaseWindow() : timer(this), frameRate(DEFAULT_FRAME_RATE), gameState
 	connect(&timer, SIGNAL(timeout()), this, SLOT(timerEvent()));
 	chatting = false;
 	theClient = CommClient::Instance();
+	
+	/*this may be temporary*/
+	window.setFixedSize(1024, 768);
+	ren = new Renderer(&window);
+	window.show();
 
 	animationMap = Animation::getAnimationMap();
 }
@@ -52,7 +61,7 @@ BaseWindow::BaseWindow() : timer(this), frameRate(DEFAULT_FRAME_RATE), gameState
 void BaseWindow::Start()
 {
 	theClient->connect("Player", "127.0.0.1");
-	//probably need to start rendering here
+	startRendering();
 }
 
 /*------------------------------------------------------------------------------
@@ -231,7 +240,7 @@ void BaseWindow::timerEvent()
 {
 	getServerMessage();
 	updateGameState();
-	render();
+	ren->Render();
 }
 
 /*------------------------------------------------------------------------------
