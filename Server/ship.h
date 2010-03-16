@@ -21,6 +21,13 @@
 ----------------------------------------------------------------------------*/
 #include "clientaction.h"
 
+struct UpdateObject
+{
+    int rotation_;
+    QPoint pos_;
+    int id;
+};
+
 class Ship : public NewtObject
 {
 private:
@@ -34,6 +41,7 @@ public:
         NewtObject(pX, pY, vX, vY, ID), rotation(0), actionMask(ID), active(false){}
     int getRot(){ return rotation; }
     void applyActionMask(); // updates the ship based on the current action mask
+    UpdateObject makeUpdateObject();
 };
 
 #endif // SHIP_H
