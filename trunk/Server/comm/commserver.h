@@ -46,8 +46,10 @@ public:
     ClientAction nextClientAction();
     bool hasNextServerMessage();
     ServerMessage nextServerMessage();
-    void sendServerMsg(const ServerMessage& msg, const std::vector<int>& clients);
+    void sendServerMsg(ServerMessage msg, const std::vector<int>& clients);
+    void sendServerMsg(const ServerMessage& msg);
     void sendUpdate(const UpdateObject& update, const std::vector<int>& clientIDs);
+    void sendUpdateToAll(const UpdateObject& update);
 
 private:
     CommServer();
@@ -63,6 +65,7 @@ private:
     pthread_t readThread_;
     std::map<int,in_addr> clients_;
     sem_t semSM_;
+    sem_t semUDP_;
 };
 
 #endif

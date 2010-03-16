@@ -11,7 +11,7 @@
 class TCPConnection
 {
 public:
-    static void ReadMessage(int sock, ServerMessage& sm);
+    static bool ReadMessage(int sock, ServerMessage& sm);
     static void WriteMessage(int sock, ServerMessage& sm);
 
 private:

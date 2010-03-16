@@ -8,10 +8,10 @@ size_t ServerMessage::Serialize(char *data)
 	data[1] = (BYTE) msgLen;
 	data[2] = (BYTE) msgType;
 
-	for (i = 0; i < msgData.length() + 1; ++i)
+	for (i = 0; i < msgData.length(); ++i)
 		data[i + SM_HEADERSIZE] = msgData[i];
 
-	i += SM_HEADERSIZE + 1;
+	i += SM_HEADERSIZE;
 	data[i] = 0;
 
 	return i;
@@ -20,5 +20,5 @@ size_t ServerMessage::Serialize(char *data)
 void ServerMessage::SetData(std::string data)
 {
 	msgData = data.substr(0, BUFFSIZ);
-	msgLen = data.length() + SM_HEADERSIZE + 1;
+	msgLen = msgData.length() + SM_HEADERSIZE;
 }

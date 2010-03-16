@@ -2,15 +2,19 @@
 
 using namespace std;
 
-void TCPConnection::ReadMessage(int sock, ServerMessage& sm)
+bool TCPConnection::ReadMessage(int sock, ServerMessage& sm)
 {
 	char buff[TCP_MAXMSG];
-	SocketWrapper::Read(sock, buff, ServerMessage::SM_HEADERSIZE); //Read clientID, msgLen, msgType
-	sm.SetClientID(buff[0]);
-	sm.SetMsgLen(buff[1]);
-	sm.SetMsgType((ServerMessage::MessageType) buff[2]);
-	SocketWrapper::Read(sock, buff, sm.GetMsgLen() - ServerMessage::SM_HEADERSIZE);
-	sm.SetData(buff);
+	if (SocketWrapper::Read(sock, buff, ServerMessage::SM_HEADERSIZE)) //Read clientID, msgLen, msgType
+	{
+		sm.SetClientID(buff[0]);
+		sm.SetMsgLen(buff[1]);
+		sm.SetMsgType((ServerMessage::MessageType) buff[2]);
+		SocketWrapper::Read(sock, buff, sm.GetMsgLen() - ServerMessage::SM_HEADERSIZE);
+		sm.SetData(buff);
+		return true;
+	}
+	return false;
 }
 
 void TCPConnection::WriteMessage(int sock, ServerMessage& sm)

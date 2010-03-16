@@ -327,7 +327,7 @@ void BaseWindow::updateGameState ()
 	{
 		GameObject * gameObj;
 		UpdateObject updateObj = theClient->nextUpdate();
-		int objectId = updateObj.getActions().getClientID();
+		int objectId = updateObj.getActions().getObjectID();
 
 		if (objectId <= 31)
 		{
