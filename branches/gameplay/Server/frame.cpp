@@ -185,9 +185,9 @@ void Frame::updateShips(void){
         }
         if(it->actionMask.isFiring()){
             QPoint spawnVec, shotVec;
-            spawnVec = rotVelToVec((*it).rotation, SHIPRADIUS);
-            shotVec =  rotVelToVec((*it).rotation, VELOCITY_SHOT);
-            Shot shot((*it).position.x() + spawnVec.x(), (*it).position.y()
+            spawnVec = rotVelToVec(it->rotation, SHIPRADIUS);
+            shotVec =  rotVelToVec(it->rotation, VELOCITY_SHOT);
+            Shot shot(it->position.x() + spawnVec.x(), it->position.y()
                 + spawnVec.y(), shotVec.x(), shotVec.y(), (*it).id);
             addShot(shot);
         }
@@ -217,7 +217,7 @@ void Frame::updateShips(void){
 void Frame::updateShots(void){
     list<Shot>::iterator it;
     for(it = listShot.begin(); it != listShot.end(); ++it){
-
+        // add shot vec to pos
     }
 }
 
@@ -249,82 +249,6 @@ void Frame::printShips(void){
             << ',' <<  (*it).vector.y() <<(it->active?" a":" d") <<
              " r" << it->rotation << endl;
     }
-}
-
-/*-----------------------------------------------------------------------------
---  FUNCTION:   updateShips
---
---  DATE:       February 17, 2010
---
---  REVISIONS:  v0.1 - For testing only
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  updateShips(bool thrustF,bool thrustR, bool rotL,
---                  bool rotR, bool fire)
---
---  NOTES:      Updates all ships positions using their vectors. Than moves all
---              ships using the same user input data.
---
---  RETURNS:    void
---
-------------------------------------------------------------------------------*/
-void Frame::updateShips(bool thrustF,bool thrustR,
-        bool rotL, bool rotR, bool fire){
-/*    list<Ship>::iterator it;
-    for(it = listShip.begin(); it != listShip.end(); ++it){
-        // move the ship in the x axis
-        (*it).position.setX((*it).vector.x());
-        // if moving into a new tile
-        if(map.tile((*it).position).isWall()){
-            if((*it).vector.x() > 0){
-                (*it).position.setX((*it).position.x() - (((*it).position.x()
-                    + (*it).vector.x()) % TILE_SIZE));
-            }
-            else{
-                (*it).position.setX((*it).position.x() + (((*it).position.x()
-                    + (*it).vector.x()) % TILE_SIZE));
-            }
-        }
-        // move the ship in the y axis
-        (*it).position.setY((*it).vector.y());
-        // if moving into a new tile
-        if(map.tile((*it).position).isWall()){
-            if((*it).vector.y() > 0){
-                (*it).position.setY((*it).position.y() - (((*it).position.y()
-                    + (*it).vector.y()) % TILE_SIZE));
-            }
-            else{
-                (*it).position.setX((*it).position.x() + (((*it).position.x()
-                    + (*it).vector.x()) % TILE_SIZE));
-            }
-        }
-        if(thrustF){
-            // thrust forward
-            (*it).vector += rotVelToVec((*it).rotation, VELOCITY_THRUST);
-        }
-        if(thrustR){
-            // thrust reverse
-            (*it).vector += rotVelToVec((*it).rotation, VELOCITY_THRUST);
-        }
-        if(rotL){
-            (*it).rotation -= ROTATION_RATE;
-        }
-        if(rotR){
-            (*it).rotation += ROTATION_RATE;
-        }
-        if(fire){
-            QPoint spawnVec, shotVec;
-            spawnVec = rotVelToVec((*it).rotation, SHIPRADIUS);
-            shotVec =  rotVelToVec((*it).rotation, VELOCITY_SHOT);
-            Shot shot((*it).position.x() + spawnVec.x(), (*it).position.y()
-                + spawnVec.y(), shotVec.x(), shotVec.y(), (*it).id);
-            spawnShot(shot);
-        }
-    }
-    */
 }
 
 /*-----------------------------------------------------------------------------
