@@ -26,6 +26,7 @@ public:
     void add(Shot *shot);
     void remove(Ship *ship);
     void remove(Shot *shot);
+    //test only
     void setWall(){wall = true;}
 };
 
