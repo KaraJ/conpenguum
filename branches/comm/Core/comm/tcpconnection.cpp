@@ -1,10 +1,12 @@
 #include "tcpconnection.h"
+#include <string.h>
 
 using namespace std;
 
 bool TCPConnection::ReadMessage(int sock, ServerMessage& sm)
 {
 	char buff[TCP_MAXMSG];
+	memset(buff, 0, TCP_MAXMSG);
 	if (SocketWrapper::Read(sock, buff, ServerMessage::SM_HEADERSIZE)) //Read clientID, msgLen, msgType
 	{
 		sm.SetClientID(buff[0]);
@@ -20,6 +22,7 @@ bool TCPConnection::ReadMessage(int sock, ServerMessage& sm)
 void TCPConnection::WriteMessage(int sock, ServerMessage& sm)
 {
 	char buff[TCP_MAXMSG];
+	memset(buff, 0, TCP_MAXMSG);
 	size_t siz = sm.Serialize(buff);
 	SocketWrapper::Write(sock, buff, siz);
 }
