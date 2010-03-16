@@ -33,7 +33,7 @@ public:
     Ship(int pX, int pY, int vX, int vY, int ID):
         NewtObject(pX, pY, vX, vY, ID), rotation(0), actionMask(ID), active(false){}
     int getRot(){ return rotation; }
-    void executeActionMask(); // updates the ship based on the current action mask
+    void applyActionMask(); // updates the ship based on the current action mask
 };
 
 #endif // SHIP_H
