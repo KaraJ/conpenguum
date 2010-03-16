@@ -19,6 +19,7 @@ private:
     std::list<Ship*> ships;
     std::list<Shot*> shots;
 public:
+    Tile(int x, int y, bool wall);
     bool isWall();
     int numShips();
     int numShots();
@@ -32,12 +33,13 @@ public:
 
 class Map {
 private :
-    Tile tiles[MAX_MAP_WIDTH][MAX_MAP_HEIGHT];
+    Tile *tiles[MAX_MAP_WIDTH][MAX_MAP_HEIGHT];
     int  width;    // map width in tiles
     int  height;   // map height in tiles
     int  tileSize; // length of tile edge in pixels
-    Tile tile(QPoint position); // get by position
-    Tile tile(int x, int y);    // get by grid coord
+    Tile *tile(QPoint position); // get by position
+    Tile *tile(int x, int y);    // get by grid coord
+    void add(Tile *tile, int x, int y);
 public:
     Map(QString filename);
     void add(Ship *ship, QPoint location, int size);

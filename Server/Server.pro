@@ -14,3 +14,4 @@ HEADERS += map.h \
     newtObjects.h \
     physics.h \
     clientaction.h
+QT += xml
