@@ -28,7 +28,7 @@ int main() {
     frame.printShips();
 
     QPoint vector(4,4);
-    int i = frame.testCanMove(vector, false, 10, 1);
+    int i = frame.testCanMove(vector, false, 50, 50);
     cout << i << endl;
     return 0;
 }

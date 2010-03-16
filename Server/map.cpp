@@ -176,13 +176,13 @@ int Tile::numShots() {
 
 // for quick testing
 Map::Map(){
-    for(int i = 0; i < 100; i++){
-        for(int j = 0; j < 100; j++){
+    for(int i = 0; i < 20; i++){
+        for(int j = 0; j < 20; j++){
             if(i == 0 || i == 19){
-                //tiles[i][j].setWall();
+                tiles[i][j].setWall();
             }
             if(j == 0 || j == 19){
-                //tiles[i][j].setWall();
+                tiles[i][j].setWall();
             }
         }
     }
