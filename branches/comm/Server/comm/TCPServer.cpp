@@ -5,14 +5,14 @@
 
 using namespace std;
 
-int TCPServer::clients_[MAX_CLIENTS];
+int TCPServer::clientSockets_[MAX_CLIENTS];
 sem_t *TCPServer::semSM_;
 queue<ServerMessage> *TCPServer::msgBuff_;
-map<int,in_addr> *TCPServer::clientMap_;
+map<int,in_addr> *TCPServer::clientAddressMap_;
 
 TCPServer::TCPServer()
 {
-	bzero(clients_, MAX_CLIENTS * sizeof(int));
+	bzero(clientSockets_, MAX_CLIENTS * sizeof(int));
 }
 
 void TCPServer::Init(const string port)
@@ -37,7 +37,7 @@ void TCPServer::StartReadThread(queue<ServerMessage> *serverMsgs, map<int,in_add
 {
 	TCPServer::msgBuff_ = serverMsgs;
 	TCPServer::semSM_ = semSM;
-	TCPServer::clientMap_ = clients;
+	TCPServer::clientAddressMap_ = clients;
 
 	pthread_attr_t attr;
 	pthread_attr_init(&attr);
@@ -47,39 +47,38 @@ void TCPServer::StartReadThread(queue<ServerMessage> *serverMsgs, map<int,in_add
 
 void* TCPServer::ReadThread(void* vptr)
 {
-	int sock = *(int*) vptr;
+	int listenSocket = *(int*) vptr;
 	sockaddr_in sa;
-	int client, ready, maxClient = sock;
+	int clientSocket, ready, maxClientSocket = listenSocket;
 	uint size;
-	fd_set clientSet;
+	fd_set currSet, allSet;
 	ServerMessage msgBuff;
 	bool isFull;
 
-	SocketWrapper::Listen(sock, 5);
+	FD_ZERO(&allSet);
+	FD_SET(listenSocket, &allSet);
+	SocketWrapper::Listen(listenSocket, 5);
 
 	while (true)
 	{
-		FD_ZERO(&clientSet);
-		FD_SET(sock, &clientSet);
+		currSet = allSet;
 
-		for (size_t i = 0; i < MAX_CLIENTS; ++i)
-			FD_SET(clients_[i], &clientSet);
+		ready = select(maxClientSocket + 1, &currSet, NULL, NULL, NULL);
 
-		ready = select(maxClient + 1, &clientSet, NULL, NULL, NULL);
-
-		if (FD_ISSET(sock, &clientSet))
+		if (FD_ISSET(listenSocket, &currSet))
 		{
 			size = sizeof(sa);
-			client = SocketWrapper::Accept(sock, &sa, &size);
+			clientSocket = SocketWrapper::Accept(listenSocket, &sa, &size);
 			isFull = true;
 			for (int i = 0; i < MAX_CLIENTS; ++i)
 			{
-				if (clients_[i] == 0)
+				if (clientSockets_[i] == 0)
 				{
-					clientMap_->insert(pair<int, in_addr>(i,sa.sin_addr));
-					clients_[i] = client;
-					if (client > maxClient)
-						maxClient = client;
+					clientAddressMap_->insert(pair<int, in_addr>(i,sa.sin_addr));
+					clientSockets_[i] = clientSocket;
+					if (clientSocket > maxClientSocket)
+						maxClientSocket = clientSocket;
+					FD_SET(clientSocket, &allSet);
 					isFull = false;
 					break;
 				}
@@ -89,7 +88,7 @@ void* TCPServer::ReadThread(void* vptr)
 				ServerMessage m;
 				m.SetMsgType(ServerMessage::MT_FULL);
 				m.SetData("");
-				TCPConnection::WriteMessage(client, m);
+				TCPConnection::WriteMessage(clientSocket, m);
 			}
 
 			if (--ready == 0)
@@ -97,12 +96,12 @@ void* TCPServer::ReadThread(void* vptr)
 		}
 		for (int i = 0; i < MAX_CLIENTS; ++i)
 		{
-			if ((client = clients_[i]) == 0)
+			if ((clientSocket = clientSockets_[i]) == 0)
 				continue;
 
-			if (FD_ISSET(client, &clientSet))
+			if (FD_ISSET(clientSocket, &currSet))
 			{
-				TCPConnection::ReadMessage(client, msgBuff);
+				TCPConnection::ReadMessage(clientSocket, msgBuff);
 				switch (msgBuff.GetMsgType())
 				{
 				case ServerMessage::MT_LOGIN: //If login msg, client doesnt know own id yet - add it
@@ -111,23 +110,19 @@ void* TCPServer::ReadThread(void* vptr)
 					msgBuff.SetData("");
 					msgBuff.SetMsgType(ServerMessage::MT_INIT);
 					CommServer::Instance()->sendServerMsg(msgBuff);
-
 					break;
 				case ServerMessage::MT_LOGOUT:
-					clients_[i] = 0;
-					if (clients_[i] == maxClient)
-						maxClient--;
-					clientMap_->erase(i);
-					close(client);
+					clientSockets_[i] = 0;
+					if (clientSockets_[i] == maxClientSocket)
+						maxClientSocket--;
+					clientAddressMap_->erase(i);
+					close(clientSocket);
 					break;
 				}
 				sem_wait(semSM_);
 				msgBuff_->push(msgBuff);
 				sem_post(semSM_);
 			}
-
-			if (--ready == 0)
-				continue;
 		}
 	}
 
@@ -136,14 +131,14 @@ void* TCPServer::ReadThread(void* vptr)
 
 void TCPServer::SendMessage(ServerMessage msg)
 {
-	TCPConnection::WriteMessage(clients_[msg.GetClientID()], msg);
+	TCPConnection::WriteMessage(clientSockets_[msg.GetClientID()], msg);
 }
 
 void TCPServer::SendMessageToAll(ServerMessage msg)
 {
 	for (int i = 0; i < MAX_CLIENTS; ++i)
 	{
-		msg.SetClientID(clients_[i]);
+		msg.SetClientID(clientSockets_[i]);
 		TCPConnection::WriteMessage(msg.GetClientID(), msg);
 	}
 }

@@ -28,10 +28,10 @@ public:
 
 private:
 	int listenSocket_;
-	static int clients_[MAX_CLIENTS];
+	static int clientSockets_[MAX_CLIENTS];
 	static sem_t *semSM_;
 	static std::queue<ServerMessage> *msgBuff_;
-	static std::map<int,in_addr> *clientMap_;
+	static std::map<int,in_addr> *clientAddressMap_;
 	pthread_t rThread_;
 
 };
