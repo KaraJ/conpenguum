@@ -86,7 +86,6 @@ ServerMessage TCPClient::Login(string playerName)
 	msgBuff.SetClientID(0);
 	msgBuff.SetMsgType(ServerMessage::MT_LOGIN);
 	msgBuff.SetData(playerName);
-	printf("ID: %d\nType: %d\nMsg: %s\n", msgBuff.GetClientID(), msgBuff.GetMsgType(), msgBuff.GetData().c_str());
 
 	TCPConnection::WriteMessage(tcpSocket, msgBuff); //Send login message to server
 	TCPConnection::ReadMessage(tcpSocket, msgBuff); //Get init message from server
