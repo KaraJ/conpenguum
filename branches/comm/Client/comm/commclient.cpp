@@ -123,7 +123,7 @@ void CommClient::disconnect()
 void CommClient::sendServerMsg(const string msg) throw (string)
 {
     if (isConnected_)
-    	tcpClient_->SendMessage(msg);
+    	tcpClient_->SendMessage(msg, clientID_);
     else
         throw "CommClient::Not Connected";
 }

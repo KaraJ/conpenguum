@@ -22,7 +22,7 @@ public:
     bool Connect(const std::string& ip);
     void StartRdThread(std::queue<ServerMessage> *msgBuff, sem_t *semSM);
     ServerMessage Login(std::string playerName);
-    void SendMessage(std::string message);
+    void SendMessage(std::string message, int clientId);
     bool IsConnected();
     void Logout();
 

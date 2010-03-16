@@ -7,11 +7,13 @@ queue<ServerMessage> *TCPClient::msgBuff_;
 sem_t *TCPClient::semSM_;
 bool TCPClient::connected_;
 
-void TCPClient::SendMessage(string message)
+void TCPClient::SendMessage(string message, int clientId)
 {
 	ServerMessage msgBuff;
-	msgBuff.SetClientID(0);
+	msgBuff.SetClientID(clientId);
 	msgBuff.SetMsgType(ServerMessage::MT_CHAT);
+	msgBuff.SetData(message);
+	TCPConnection::WriteMessage(tcpSocket, msgBuff);
 }
 
 void* TCPClient::ReadThread(void* param)
