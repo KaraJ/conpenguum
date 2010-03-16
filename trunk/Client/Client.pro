@@ -1,14 +1,14 @@
 TEMPLATE = app
 TARGET = Client
-QT += core    gui
+QT += core gui xml
 HEADERS += Roundrectitem.h \
     Panel.h \
     Splashitem.h \
     Comm/Tcpclient.h \
     Comm/Commclient.h \
     Renderer/Renderer.h \
-    Animation/Loader.h \
     Animation/Image.h \
+    Animation/qtxmlparse.h \
     Animation/Animation.h \
     main.h
 SOURCES += Roundrectitem.cpp \
@@ -17,8 +17,8 @@ SOURCES += Roundrectitem.cpp \
     Comm/Tcpclient.cpp \
     Comm/Commclient.cpp \
     Renderer/Renderer.cpp \
-    Animation/Loader.cpp \
     Animation/Image.cpp \
+    Animation/qtxmlparse.cpp \
     Animation/Animation.cpp \
     main.cpp
 FORMS += backside.ui
