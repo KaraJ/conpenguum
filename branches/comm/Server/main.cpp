@@ -79,7 +79,7 @@ void StressTest() {
 		while (CommServer::Instance()->hasNextServerMessage())
 		{
 			ServerMessage sm = CommServer::Instance()->nextServerMessage();
-			printf("SM: %s\n", sm.GetData().c_str());
+			printf("SM: [type=%d data=%s]\n", sm.GetMsgType(), sm.GetData().c_str());
 			if (sm.GetMsgType() == ServerMessage::MT_LOGIN)
 			{
 				sm.SetMsgType(ServerMessage::MT_INIT);
