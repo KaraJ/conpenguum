@@ -37,47 +37,43 @@
 #include <cstring>
 #include <iostream>
 
-//TODO: Make an enum for type
-//TODO: add decelerating? (ask game-play team)
-
 enum ActionFlags
 {
     AC_FIREING  = 0x01,
     AC_TURNLEFT = 0x02,
     AC_TURNRIGHT  = 0x04,
-    AC_ACCELERATING = 0x08
+    AC_ACCELERATING = 0x08,
+    AC_DECCELERATING = 0x16
 };
 
-typedef Bitmask<unsigned, ActionFlags> ActionBitmask;
+typedef Bitmask<unsigned int, ActionFlags> ActionBitmask;
 
 class ClientAction
 {
 public:
-    static const int serializeSize = 2;
+    static const int serialiseSize = 2;
 
-    ClientAction(int clientID) : clientID_(clientID)
-    {
-        if (clientID > 31)
-            throw "ClientID must be between 0 and 31 (inclusive)";
-    }
+    ClientAction(int objID);
     ClientAction(BYTE* buffer);
 
-    inline void clear() { mask_.Clear((ActionFlags)(AC_ACCELERATING | AC_FIREING | AC_TURNLEFT | AC_TURNRIGHT)); }
+    inline void clear() { mask_.Clear((ActionFlags)(AC_ACCELERATING | AC_FIREING | AC_TURNLEFT | AC_TURNRIGHT | AC_DECCELERATING)); }
     inline void setFiring() { mask_.Set(AC_FIREING); }
     inline void setTurningLeft() { mask_.Set(AC_TURNLEFT); }
     inline void setTurningRight()  { mask_.Set(AC_TURNRIGHT); }
     inline void setAccelerating()  { mask_.Set(AC_ACCELERATING); }
+    inline void setDecelerating() { mask_.Set(AC_DECCELERATING); }
 
     inline bool isFiring() const { return mask_.Test(AC_FIREING); }
     inline bool isTurningLeft() const { return mask_.Test(AC_TURNLEFT); }
     inline bool isTurningRight() const { return mask_.Test(AC_TURNRIGHT); }
     inline bool isAccelerating() const { return mask_.Test(AC_ACCELERATING); }
-    inline int getClientID() const { return clientID_; }
-    void serialize(BYTE** buffer) const;
+    inline bool isDecelerating() const { return mask_.Test(AC_DECCELERATING); }
+    inline int getObjectID() const { return objID_; }
+    void serialise(BYTE** buffer) const;
     void print(std::ostream& out = std::cout);
 private:
     ActionBitmask mask_;
-    int clientID_;
+    unsigned short objID_;
 };
 
 #endif

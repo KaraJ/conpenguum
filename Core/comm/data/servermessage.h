@@ -14,7 +14,8 @@ public:
 	    	MT_DEATH    = 3, /* Begins with comma separated explosion location */
 	    	MT_SHUTDOWN = 4, /* Server going down */
 	    	MT_INIT     = 5, /* Initial message holding ScoreBoard and ClientID to Player Name mapping */
-	    	MT_CHAT     = 6
+	    	MT_CHAT     = 6,
+	    	MT_FULL		= 7
 	    };
     static const int SM_HEADERSIZE = 3;
 

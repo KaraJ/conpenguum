@@ -62,7 +62,8 @@ void SocketWrapper::Write(int sock, const void *vptr, size_t n)
     }
 }
 
-void SocketWrapper::Read(int sock, void *vptr, size_t size)
+//TODO: Check all calls to this to make sure they're checking the return values
+bool SocketWrapper::Read(int sock, void *vptr, size_t size)
 {
 	size_t  nleft = size;
 	ssize_t nread;
@@ -70,12 +71,15 @@ void SocketWrapper::Read(int sock, void *vptr, size_t size)
 
 	while (nleft > 0)
 	{
-		if ( (nread = read(sock, buff, nleft)) <= 0)
+		if ( (nread = read(sock, buff, nleft)) < 0)
 			Logger::LogNQuit("Read error");
+		if (nread == 0)
+			return false;
 
 		nleft -= nread;
 		buff  += nread;
 	}
+	return true;
 }
 
 ssize_t SocketWrapper::Recvfrom(int fd, void* buff, size_t nbytes, int flags, struct sockaddr *from, socklen_t* addrlen)

@@ -40,6 +40,7 @@ UDPConnection::UDPConnection()
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
     servaddr.sin_port = htons(UDP_PORT);
 
+    //TODO: Comment this out and see what happens
     SocketWrapper::Bind(this->sockfd_, &servaddr, sizeof(sockaddr_in));
 }
 
