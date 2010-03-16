@@ -106,7 +106,7 @@ void* TCPServer::ReadThread(void* vptr)
 					switch (msgBuff.GetMsgType())
 					{
 					case ServerMessage::MT_LOGIN: //If login msg, client doesnt know own id yet - add it
-						msgBuff.SetClientID(clientSocket);
+						msgBuff.SetClientID(i);
 						//TODO: Delete this
 						msgBuff.SetMsgType(ServerMessage::MT_INIT);
 						CommServer::Instance()->sendServerMsg(msgBuff);
