@@ -31,6 +31,7 @@
 #include "Splashitem.h"
 #include "ui_backside.h"
 #include <math.h>
+#include "BaseWindow.h"
 
 /*--------------------------------------------------------------------------------------
 --  Function: Panel
@@ -342,8 +343,12 @@ void Panel::flip()
         {
         // play
         case 0:
-            // engineStart();
+	{
+            BaseWindow* bw = new BaseWindow();
+	    bw -> Start();
+	    this->hide();
             return;
+	}
 
         // settings
         case 1:

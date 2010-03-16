@@ -4,6 +4,7 @@ QT += core gui xml
 HEADERS += Roundrectitem.h \
     Panel.h \
     Splashitem.h \
+	BaseWindow.h \
     Comm/Tcpclient.h \
     Comm/Commclient.h \
     Renderer/Renderer.h \
@@ -14,6 +15,7 @@ HEADERS += Roundrectitem.h \
 SOURCES += Roundrectitem.cpp \
     Panel.cpp \
     Splashitem.cpp \
+	BaseWindow.cpp \
     Comm/Tcpclient.cpp \
     Comm/Commclient.cpp \
     Renderer/Renderer.cpp \

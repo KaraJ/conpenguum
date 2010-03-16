@@ -47,7 +47,7 @@ public:
     inline bool isConnected() { return isConnected_; }
     inline bool hasNextUpdate() { return !updates_.empty(); }
     UpdateObject nextUpdate();
-    inline bool hasNextServerMessage();
+    bool hasNextServerMessage();
     ServerMessage nextServerMessage();
     int connect(const std::string playerName, const std::string address);
     void disconnect();
