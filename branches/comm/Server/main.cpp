@@ -70,8 +70,8 @@ void StressTest()
 {
 	int actionsRx = 0;
 	int updatesPushed = 0;
-	int oldARx = -1;
-	int oldUP = -1;
+	int oldARx = 0;
+	int oldUP = 0;
     CommServer::Instance()->init();
     while (true)
     {

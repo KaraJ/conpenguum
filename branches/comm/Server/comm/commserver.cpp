@@ -24,6 +24,7 @@ CommServer::CommServer()
     tcpServer_ = new TCPServer();
     udpConnection_ = new UDPConnection();
     sem_init(&semSM_, 0, 1);
+    sem_init(&semUDP_, 0, 1);
 }
 
 CommServer* CommServer::Instance()
@@ -173,7 +174,7 @@ ServerMessage CommServer::nextServerMessage()
 
 void* CommServer::readThreadFunc(void* args)
 {
-    while (true) //TODO: Exit on disconnect
+    while (true)
     {
         BYTE* buffer;
         ssize_t size = CommServer::Instance()->udpConnection_->recvMessage(&buffer);
