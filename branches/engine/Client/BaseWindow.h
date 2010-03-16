@@ -7,11 +7,13 @@
 #include <QTimer>
 #include <map>
 #include <string>
+#include <iostream>
 #include "GameObject.h"
 #include "Animation/Animation.h"
 #include "Comm/Commclient.h"
 #include "../Core/comm/data/clientaction.h"
 #include "../Core/comm/data/servermessage.h"
+#include "Renderer/Renderer.h"
 
 // Default frame rate is 60 frames/second.
 #define DEFAULT_FRAME_RATE 60
@@ -78,6 +80,8 @@ class BaseWindow : public QMainWindow
 		std::string chatString;
 		CommClient::CommClient* theClient;
 		size_t clientID;
+		Renderer* ren;
+		QWidget window;
 
     public:
 		BaseWindow ();
