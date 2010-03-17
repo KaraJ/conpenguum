@@ -5,6 +5,7 @@
 #include <QDomDocument>
 #include <QFile>
 #include <iostream>
+#include "stdlib.h"
 
 using namespace std;
 
@@ -13,41 +14,35 @@ Map::Map(QString filename):height(0), width(0), tileSize(1) {
     int x, y;
     bool wall;
     QFile file(filename);
-    int e = 0;
-    cout << e++ << endl;
-
-    // set all tiles to NULL
-    for (int i=0; i < MAX_MAP_WIDTH; ++i) {
-        cout << e++ << endl;
-        for (int j=0; j < MAX_MAP_HEIGHT; ++i) {
-            cout << e++ << ": " << i << ":" << j << endl;
-            ensure(i, j);
-        }
-    }
-    cout << e++ << endl;
 
     if (!file.open(QIODevice::ReadOnly)) {
         cerr << "Cannot open file" << endl;
         return;
     }
-    cout << e++ << endl;
     if (!doc.setContent(&file)) {
         cerr << "Unusable file" << endl;
         file.close();
         return;
     }
-    cout << e++ << endl;
     file.close();
     QDomElement map_e = doc.documentElement();
     if (map_e.tagName() != "map") {
         cerr << "Not a map element" << endl;
         return;
     }
-    cout << e++ << endl;
     width = map_e.attribute("width", "0").toInt();
     height = map_e.attribute("height", "0").toInt();
     tileSize = map_e.attribute("tileWidth", "1").toInt();
-    cout << "Map size set to " << width << "x" << height << " @ " << tileSize << endl;
+
+    // create tiles array
+    cout << "Generating empty map " << width << "x" << height << " @ " << tileSize << endl;
+    tiles = (Tile***)malloc(sizeof(Tile**) * width);
+    for (int x=0; x < width; ++x) {
+        tiles[x] = (Tile**)malloc(sizeof(Tile*) * height);
+        for (int y=0; y < height; ++y) {
+            tiles[x][y] = NULL;
+        }
+    }
     QDomNode tile_n = map_e.firstChild();
     while (!tile_n.isNull()) {
         QDomElement tile_e = tile_n.toElement();
@@ -71,7 +66,7 @@ Map::Map(QString filename):height(0), width(0), tileSize(1) {
             x = tile_e.attribute("x", "0").toInt();
             y = tile_e.attribute("y", "0").toInt();
             wall = (property_e.attribute("hit", "") != "space");
-            cout << "Found Tile(" << x << ", " << y << ", " << (wall ? "true" : "false") << ");" << endl;
+            cout << "Creating Map Tile(" << x << ", " << y << ", " << (wall ? "true" : "false") << ");" << endl;
             if (tile(x, y) == NULL) {
                 tiles[x][y] = new Tile(x, y, wall);
             }
@@ -101,7 +96,6 @@ Map::Map(QString filename):height(0), width(0), tileSize(1) {
 ------------------------------------------------------------------------------*/
 
 Tile *Map::tile(int x, int y) {
-    cout << "t1" << endl;
     return tiles[x][y];
 }
 
@@ -213,11 +207,11 @@ bool Map::isWall(int x, int y) {
 
 int Map::canMove(QPoint position, bool vertical, int size, int distance) {
     // movement
-    int begin = MAX(0, MIN((vertical ? height : width), C2G(vertical ? position.y() : position.x())));
-    int stop = MAX(0, MIN((vertical ? height : width), C2G((vertical ? position.y() : position.x()) + distance)));
+    int begin = MAX(0, MIN((vertical ? height : width)-1, C2G(vertical ? position.y() : position.x())));
+    int stop = MAX(0, MIN((vertical ? height : width)-1, C2G((vertical ? position.y() : position.x()) + distance)));
     // line segment
-    int start = MAX(0, MIN((vertical ? width : height), C2G(vertical ? position.x() : position.y())));
-    int end = MAX(0, MIN((vertical ? width : height), C2G((vertical ? position.x() : position.y()) + size)));
+    int start = MAX(0, MIN((vertical ? width : height)-1, C2G(vertical ? position.x() : position.y())));
+    int end = MAX(0, MIN((vertical ? width : height)-1, C2G((vertical ? position.x() : position.y()) + size)));
     if (distance > 0) {
         for (int i=begin; i <= stop; ++i) {
             for (int j=start; j <= end; ++j) {
@@ -238,11 +232,8 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance) {
 }
 
 void Map::ensure(int x, int y) {
-    cout << "a" << endl;
     if (tile(x, y) == NULL) {
-        cout << "b" << endl;
         tiles[x][y] = new Tile(x, y);
-        cout << "c" << endl;
     }
 }
 
