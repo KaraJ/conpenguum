@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'backside.ui'
 **
-** Created: Tue Mar 9 10:32:47 2010
-**      by: Qt User Interface Compiler version 4.6.2
+** Created: Sat Feb 20 17:02:02 2010
+**      by: Qt User Interface Compiler version 4.6.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/

@@ -1,24 +1,29 @@
 TEMPLATE = app
 TARGET = Client
-QT += core gui xml
-HEADERS += Roundrectitem.h \
-    Panel.h \
-    Splashitem.h \
-	BaseWindow.h \
+QT += core \
+    gui \
+    xml
+HEADERS += panel.h \
+    roundrectitem.h \
+    splashitem.h \
+    Renderer/renderer.h \
+    Animation.h \
+    Image.h \
+    Loader.h \
+    BaseWindow.h \
     Comm/Tcpclient.h \
     Comm/Commclient.h \
-    Renderer/Renderer.h \
     Animation/Image.h \
     Animation/qtxmlparse.h \
     Animation/Animation.h \
     main.h
-SOURCES += Roundrectitem.cpp \
-    Panel.cpp \
-    Splashitem.cpp \
-	BaseWindow.cpp \
+SOURCES += panel.cpp \
+    roundrectitem.cpp \
+    splashitem.cpp \
+    Renderer/renderer.cpp \
+    BaseWindow.cpp \
     Comm/Tcpclient.cpp \
     Comm/Commclient.cpp \
-    Renderer/Renderer.cpp \
     Animation/Image.cpp \
     Animation/qtxmlparse.cpp \
     Animation/Animation.cpp \
