@@ -6,7 +6,6 @@
 
 using namespace std;
 int main() {
-
     Frame frame("map.xml");
     Ship ship(0,0,4,3,101);
 

@@ -1,6 +1,3 @@
-// EDITED VERSION OF WHAT DOUG PROVIDED. ONLY FOR USE IN TESTING THE BULLETS
-// IN THE v0.2 BUILD. DO NOT PUT IN THE TRUNK EVER!
-
 #ifndef _MAP_H
 #define _MAP_H
 
@@ -9,9 +6,6 @@
 #include "newtObjects.h"
 #include "shot.h"
 #include "ship.h"
-
-#define MAX_MAP_HEIGHT 1024
-#define MAX_MAP_WIDTH 102
 
 #define C2G(coord) coord / tileSize
 
@@ -37,7 +31,7 @@ public:
 
 class Map {
 private :
-    Tile *tiles[MAX_MAP_WIDTH][MAX_MAP_HEIGHT];
+    Tile ***tiles;
     int  width;    // map width in tiles
     int  height;   // map height in tiles
     int  tileSize; // length of tile edge in pixels
