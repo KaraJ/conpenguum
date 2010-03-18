@@ -11,10 +11,10 @@
 #include <map>
 
 //User Includes
-#include "comm/data/servermessage.h"
-#include "comm/socketwrapper.h"
-#include "comm/globals.h"
-#include "comm/tcpconnection.h"
+#include "../../Core/comm/data/servermessage.h"
+#include "../../Core/comm/socketwrapper.h"
+#include "../../Core/comm/globals.h"
+#include "../../Core/comm/tcpconnection.h"
 
 class TCPServer
 {
