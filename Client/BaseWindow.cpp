@@ -327,7 +327,7 @@ void BaseWindow::updateGameState ()
 	{
 		GameObject * gameObj;
 		UpdateObject updateObj = theClient->nextUpdate();
-		int objectId = updateObj.getActions().getClientID();
+		int objectId = updateObj.getActions().getObjectID();
 
 		if (objectId <= 31)
 		{
@@ -379,16 +379,18 @@ void BaseWindow::updateGameState ()
  -----------------------------------------------------------------------------*/
 void BaseWindow::getServerMessage()
 {
+	std::cout << "getservermessage " << std::endl;
 	while (theClient->hasNextServerMessage())
 	{
 		ServerMessage sm = theClient->nextServerMessage();
 		//init msg
-		if (sm.GetMsgType() == 5)
+		if (sm.GetMsgType() == ServerMessage::MT_INIT)
 		{
 			clientID = sm.GetClientID();
+			std::cout << "MT_INIT RECEIVED: ID: " << clientID << std::endl;
 		}
 		//chat msg
-		else if (sm.GetMsgType() == 6)
+		else if (sm.GetMsgType() == ServerMessage::MT_CHAT)
 		{
 			//handle chat message
 		}
