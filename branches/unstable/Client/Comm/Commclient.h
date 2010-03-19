@@ -42,35 +42,40 @@ class UDPConnection;
 class CommClient
 {
 public:
+	//get the commclient and connect or disconnect
     static CommClient* Instance();
-
     inline bool isConnected() { return isConnected_; }
+    int connect(const std::string playerName, const std::string address);
+    void disconnect();
+
+    //access incoming updates and server messages
     bool hasNextUpdate();
     UpdateObject nextUpdate();
     bool hasNextServerMessage();
     ServerMessage nextServerMessage();
-    int connect(const std::string playerName, const std::string address);
-    void disconnect();
+
+    //send outgoing actions and server messages
     void sendServerMsg(const std::string msg) throw (std::string);
     void sendAction(const ClientAction action);
-    static void* readThreadFunc(void* args);
-
 private:
+    //private constructors
     CommClient();
     CommClient(const CommClient& cpy);
     CommClient& operator=(const CommClient& cc);
     ~CommClient();
-    pthread_t readThread_;
 
     UDPConnection *udpConnection_;
+    TCPClient* tcpClient_;
+    bool isConnected_;
     struct sockaddr_in servAddr;
     std::queue<UpdateObject> updates_;
     std::queue<ServerMessage> serverMsgs_;
     sem_t semTCP_;
     sem_t semUDP_;
-    bool isConnected_;
-    size_t clientID_;
-    TCPClient* tcpClient_;
+
+    //UDP read thread
+    pthread_t readThread_;
+    static void* readThreadUDP(void* args);
 };
 
 #endif
