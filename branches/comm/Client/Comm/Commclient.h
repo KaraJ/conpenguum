@@ -45,7 +45,7 @@ public:
     static CommClient* Instance();
 
     inline bool isConnected() { return isConnected_; }
-    inline bool hasNextUpdate() { return !updates_.empty(); }
+    bool hasNextUpdate();
     UpdateObject nextUpdate();
     bool hasNextServerMessage();
     ServerMessage nextServerMessage();
@@ -67,6 +67,7 @@ private:
     std::queue<UpdateObject> updates_;
     std::queue<ServerMessage> serverMsgs_;
     sem_t semSM_;
+    sem_t semUP_;
     bool isConnected_;
     size_t clientID_;
     TCPClient* tcpClient_;

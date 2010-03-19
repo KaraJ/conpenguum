@@ -23,9 +23,10 @@
 
 using namespace std;
 
-CommClient::CommClient()
+CommClient::CommClient():isConnected_(false)
 {
 	sem_init(&semSM_, 0, 1);
+	sem_init(&semUP_, 0, 1);
 	tcpClient_ = new TCPClient();
 }
 
@@ -75,8 +76,10 @@ int CommClient::connect(const string name, const string address)
 
 UpdateObject CommClient::nextUpdate()
 {
+	sem_wait(&semUP_);
     UpdateObject update = updates_.front();
     updates_.pop();
+    sem_post(&semUP_);
     return update;
 }
 
@@ -123,7 +126,14 @@ void CommClient::sendServerMsg(const string msg) throw (string)
     else
         throw "CommClient::Not Connected";
 }
-
+bool CommClient::hasNextUpdate()
+{
+	bool result;
+	sem_wait(&semUP_);
+	result = !updates_.empty();
+	sem_post(&semUP_);
+	return result;
+}
 bool CommClient::hasNextServerMessage()
 {
 	bool result;
