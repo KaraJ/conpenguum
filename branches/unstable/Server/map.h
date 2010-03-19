@@ -29,7 +29,7 @@ public:
 
 class Map {
 private:
-    Tile map[];
+    Tile map[1024];
     int  width;    // map width in tiles
     int  height;   // map height in tiles
     int  tileSize; // length of tile edge in pixels
