@@ -171,7 +171,9 @@ void* CommClient::readThreadFunc(void* args)
     if (size == UpdateObject::serializeSize)
     {
         UpdateObject update(buffer);
+        sem_wait(ComClient::Instance()->semUP_);
         CommClient::Instance()->updates_.push(update);
+        sem_post(ComClient::Instance()->semUP_);
     }
     else
         Logger::LogNContinue("Bad packet size received");
