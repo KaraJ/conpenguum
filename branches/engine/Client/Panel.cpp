@@ -345,8 +345,8 @@ void Panel::flip()
         case 0:
 	{
             BaseWindow* bw = new BaseWindow();
-	    bw -> Start();
 	    this->hide();
+	    bw -> Start();
             return;
 	}
 
