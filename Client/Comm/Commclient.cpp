@@ -4,13 +4,8 @@
  --  PROGRAM: TuxSpace
  --
  --  METHODS:
- --      bool connect(const string name, const string address)
- --      void disconnect()
- --      void sendChat(const string msg, int toClientID)
- --      void sendServerMsg(const string msg)
- --      void sendAction(const ClientAction action)
  --
- --  PROGRAMMER: Ben Barbour
+ --  PROGRAMMERS: Ben Barbour, Kara Martens
  --
  --  REVISIONS (date and description):
  --
@@ -23,6 +18,13 @@
 
 using namespace std;
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommClient::CommClient
+ --
+ -- DATE: 2010-01-23
+ --
+ -- NOTES: Private constructor that should only be called once.
+ ----------------------------------------------------------------------------------------------------------*/
 CommClient::CommClient():isConnected_(false)
 {
 	sem_init(&semTCP_, 0, 1);
@@ -30,6 +32,13 @@ CommClient::CommClient():isConnected_(false)
 	tcpClient_ = new TCPClient();
 }
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommClient::Instance
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: A pointer to the CommClient Singleton.
+ ----------------------------------------------------------------------------------------------------------*/
 CommClient* CommClient::Instance()
 {
     static CommClient* instance_ =0;
@@ -39,7 +48,7 @@ CommClient* CommClient::Instance()
 }
 
 /*----------------------------------------------------------------------------------------------------------
- -- FUNCTION: connect
+ -- FUNCTION: CommClient::connect
  --
  -- DATE: 2010-01-23
  --
@@ -47,7 +56,7 @@ CommClient* CommClient::Instance()
  --  string name:    the player name
  --  string address: the address of the server, in dotted decimal format
  --
- -- RETURN: If connection was successful: your clientID (always > 0).
+ -- RETURN: If connection was successful: your clientID (always >= 0).
  --         If server could not be found: -1
  --         If that name is in use: -2
  --         If other network error: -3
@@ -60,7 +69,7 @@ int CommClient::connect(const string name, const string address)
         if (!tcpClient_->Connect(address))
         	return -1;
         serverMsgs_.push(tcpClient_->Login(name));
-        clientID_ = serverMsgs_.front().GetClientID();
+        serverMsgs_.front().GetClientID();
         tcpClient_->StartRdThread(&serverMsgs_, &semTCP_);
 
         servAddr.sin_family = AF_INET;
@@ -69,11 +78,19 @@ int CommClient::connect(const string name, const string address)
             Logger::LogNQuit("Error connection client - bad IP");
         udpConnection_ = new UDPConnection();
         isConnected_ = true;
-        pthread_create(&readThread_, NULL, CommClient::readThreadFunc, NULL);
+        pthread_create(&readThread_, NULL, CommClient::readThreadUDP, NULL);
     }
     return 0;
 }
-
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommClient::nextUpdate
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: the update object the front of the queue
+ --
+ -- NOTES: Always call CommClient::hasNextUpdate before calling this function.
+ ----------------------------------------------------------------------------------------------------------*/
 UpdateObject CommClient::nextUpdate()
 {
 	sem_wait(&semUDP_);
@@ -82,7 +99,15 @@ UpdateObject CommClient::nextUpdate()
     sem_post(&semUDP_);
     return update;
 }
-
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommClient::nextServerMessage
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: the ServerMessage at the front of the queue
+ --
+ -- NOTES: Always call CommClient::hasNextServerMessage before calling this function.
+ ----------------------------------------------------------------------------------------------------------*/
 ServerMessage CommClient::nextServerMessage()
 {
 	sem_wait(&semTCP_);
@@ -93,7 +118,7 @@ ServerMessage CommClient::nextServerMessage()
 }
 
 /*----------------------------------------------------------------------------------------------------------
- -- FUNCTION: disconnect
+ -- FUNCTION: CommClient::disconnect
  --
  -- DATE: 2010-01-23
  --
@@ -109,10 +134,14 @@ void CommClient::disconnect()
         udpConnection_ = 0;
         isConnected_ = false;
     }
+    else
+    {
+    	Logger::LogNContinue("CommClient::disconnect - Already disconnected");
+    }
 }
 
 /*----------------------------------------------------------------------------------------------------------
- -- FUNCTION: sendServerMsg
+ -- FUNCTION: CommClient::sendServerMsg
  --
  -- DATE: 2010-01-23
  --
@@ -124,8 +153,15 @@ void CommClient::sendServerMsg(const string msg) throw (string)
     if (isConnected_)
     	tcpClient_->SendMessage(msg);
     else
-        throw "CommClient::Not Connected";
+        Logger::LogNContinue("CommClient::sendServerMsg - Not connected");
 }
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommClient::hasNextUpdate
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: if there is another update available in the queue
+ ----------------------------------------------------------------------------------------------------------*/
 bool CommClient::hasNextUpdate()
 {
 	bool result;
@@ -134,6 +170,14 @@ bool CommClient::hasNextUpdate()
 	sem_post(&semUDP_);
 	return result;
 }
+
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommClient::hasNextServerMessage
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: is there is another server message available in the queue
+ ----------------------------------------------------------------------------------------------------------*/
 bool CommClient::hasNextServerMessage()
 {
 	bool result;
@@ -143,12 +187,12 @@ bool CommClient::hasNextServerMessage()
 	return result;
 }
 /*----------------------------------------------------------------------------------------------------------
- -- FUNCTION: sendAction
+ -- FUNCTION: CommClient::sendAction
  --
  -- DATE: 2010-01-23
  --
  -- INTERFACE:
- --  ClientAction action:    the action to send to the server (should send one every frame
+ --  ClientAction action:    the action to send to the server (should send one every frame)
  ----------------------------------------------------------------------------------------------------------*/
 void CommClient::sendAction(ClientAction action)
 {
@@ -160,11 +204,20 @@ void CommClient::sendAction(ClientAction action)
     }
     else
     {
-        //@todo throw exception
+        Logger::LogNContinue("CommClient::sendAction - Could Not Send ClientAction");
     }
 }
-
-void* CommClient::readThreadFunc(void* args)
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommClient::readThreadUDP
+ --
+ -- DATE: 2010-01-23
+ --
+ -- INTERFACE:
+ --		void* args: is ignored, should be NULL
+ --
+ -- RETURN: NULL
+ ----------------------------------------------------------------------------------------------------------*/
+void* CommClient::readThreadUDP(void* args)
 {
     BYTE* buffer;
     ssize_t size = CommClient::Instance()->udpConnection_->recvMessage(&buffer);
@@ -176,7 +229,9 @@ void* CommClient::readThreadFunc(void* args)
         sem_post(&CommClient::Instance()->semUDP_);
     }
     else
+    {
         Logger::LogNContinue("Bad packet size received");
+    }
 
     return 0;
 }
