@@ -49,14 +49,20 @@ void ServerEngine::RunServer()
 			ServerMessage sm = server->nextServerMessage();
 			
 			//user has logged in, add client id to ID vector
-			if (sm.GetMsgType() == 1)
+			if (sm.GetMsgType() == ServerMessage::MT_LOGIN)
 			{
+				cout << "client logged in" << endl;
 				ids.push_back(sm.GetClientID());
+				ServerMessage init;
+				init.SetMsgType(ServerMessage::MT_INIT);
+				init.SetClientID(sm.GetClientID());
+				server->sendServerMsg(init);
+				cout << "message sent to client" << endl;
 				/*check if we need to send the init message
 					or if its sent automatically on connect*/
 			}
 			//user has logged out, remove client id from vector
-			if (sm.GetMsgType() == 2)
+			if (sm.GetMsgType() == ServerMessage::MT_CHAT)
 			{
 				size_t id = sm.GetClientID();
 				vector<int>::iterator it;
@@ -78,9 +84,9 @@ void ServerEngine::RunServer()
 		if (server -> hasNextClientAction())
 		{
 			ClientAction ca = server->nextClientAction();
-			UpdateObject uo(ca.getClientID());
+			//UpdateObject uo(ca.getClientID());
 			//gameplay updates updateObject here
-			server -> sendUpdate(uo, ids);
+			//server -> sendUpdate(uo, ids);
 		}
 	}
 }
