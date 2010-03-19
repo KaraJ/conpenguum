@@ -28,3 +28,4 @@ contains(QT_CONFIG, opengl):QT += opengl
 RESOURCES += menuitems.qrc
 LIBS += -lCore \
     -L../Core/Debug
+ OBJECTS_DIR = bin	
