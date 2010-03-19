@@ -1,15 +1,18 @@
 #include "TCPServer.h"
 
+//TODO: delete this
+#include "commserver.h"
+
 using namespace std;
 
-int TCPServer::clients_[32];
+int TCPServer::clientSockets_[MAX_CLIENTS];
 sem_t *TCPServer::semSM_;
 queue<ServerMessage> *TCPServer::msgBuff_;
-map<int,in_addr> *TCPServer::clientMap_;
+map<int,in_addr> *TCPServer::clientAddressMap_;
 
 TCPServer::TCPServer()
 {
-	bzero(clients_, 32 * sizeof(int));
+	bzero(clientSockets_, MAX_CLIENTS * sizeof(int));
 }
 
 void TCPServer::Init(const string port)
@@ -21,8 +24,7 @@ void TCPServer::Init(const string port)
 
 	setsockopt(listenSocket_, SOL_SOCKET, SO_REUSEADDR, &tmp, sizeof(tmp));
 
-	sockaddr_in sa_ =
-	{ 0 };
+	sockaddr_in sa_ = { 0 };
 	iss >> tmp;
 	sa_.sin_family = AF_INET;
 	sa_.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -35,7 +37,7 @@ void TCPServer::StartReadThread(queue<ServerMessage> *serverMsgs, map<int,in_add
 {
 	TCPServer::msgBuff_ = serverMsgs;
 	TCPServer::semSM_ = semSM;
-	TCPServer::clientMap_ = clients;
+	TCPServer::clientAddressMap_ = clients;
 
 	pthread_attr_t attr;
 	pthread_attr_init(&attr);
@@ -45,72 +47,107 @@ void TCPServer::StartReadThread(queue<ServerMessage> *serverMsgs, map<int,in_add
 
 void* TCPServer::ReadThread(void* vptr)
 {
-	int sock = *(int*) vptr;
+	int listenSocket = *(int*) vptr;
 	sockaddr_in sa;
-	int client, ready, maxClient = sock;
+	int clientSocket, ready, maxClientSocket = listenSocket;
 	uint size;
-	fd_set currSet, clientSet;
+	fd_set currSet, allSet;
 	ServerMessage msgBuff;
+	bool isFull;
 
-	SocketWrapper::Listen(sock, 5);
-
-	FD_ZERO(&clientSet);
-	FD_SET(sock, &clientSet);
+	FD_ZERO(&allSet);
+	FD_SET(listenSocket, &allSet);
+	SocketWrapper::Listen(listenSocket, 5);
 
 	while (true)
 	{
-		currSet = clientSet;
-		ready = select(maxClient + 1, &currSet, NULL, NULL, NULL);
+		currSet = allSet;
 
-		if (FD_ISSET(sock, &currSet))
+		ready = select(maxClientSocket + 1, &currSet, NULL, NULL, NULL);
+
+		if (FD_ISSET(listenSocket, &currSet))
 		{
 			size = sizeof(sa);
-			client = SocketWrapper::Accept(sock, &sa, &size);
-			for (int i = 0; i < 32; ++i)
+			clientSocket = SocketWrapper::Accept(listenSocket, &sa, &size);
+			isFull = true;
+			for (int i = 0; i < MAX_CLIENTS; ++i)
 			{
-				if (clients_[i] == 0)
+				if (clientSockets_[i] == 0)
 				{
-					clientMap_->insert(pair<int, in_addr>(i,sa.sin_addr));
-					clients_[i] = client;
-					if (i > maxClient)
-						maxClient = i;
-					ServerMessage m;
-					m.SetClientID(i);
-					m.SetMsgType(ServerMessage::MT_INIT);
-					m.SetData("");
-					TCPConnection::WriteMessage(client, m);
+					clientAddressMap_->insert(pair<int, in_addr>(i,sa.sin_addr));
+					clientSockets_[i] = clientSocket;
+					if (clientSocket > maxClientSocket)
+						maxClientSocket = clientSocket;
+					FD_SET(clientSocket, &allSet);
+					isFull = false;
 					break;
 				}
 			}
-			FD_SET(client, &clientSet);
+			if (isFull)
+			{
+				ServerMessage m;
+				m.SetMsgType(ServerMessage::MT_FULL);
+				m.SetData("");
+				TCPConnection::WriteMessage(clientSocket, m);
+			}
 
 			if (--ready == 0)
 				continue;
 		}
-		for (int i = 0; i < 32; ++i)
+		for (int i = 0; i < MAX_CLIENTS; ++i)
 		{
-			if ((client = clients_[i]) == 0)
+			if ((clientSocket = clientSockets_[i]) == 0)
 				continue;
-			if (FD_ISSET(client, &currSet))
+
+			if (FD_ISSET(clientSocket, &currSet))
 			{
-				TCPConnection::ReadMessage(client, msgBuff);
-				switch (msgBuff.GetMsgType())
+				if (TCPConnection::ReadMessage(clientSocket, msgBuff))
 				{
-				case ServerMessage::MT_LOGIN: //If login msg, client doesnt know own id yet - add it
-					msgBuff.SetClientID(i);
-					break;
-				case ServerMessage::MT_LOGOUT:
-					clients_[i] = 0;
-					if (i == maxClient)
-						maxClient--;
-					break;
+					switch (msgBuff.GetMsgType())
+					{
+					case ServerMessage::MT_LOGIN: //If login msg, client doesnt know own id yet - add it
+						msgBuff.SetClientID(i);
+						break;
+					}
+					sem_wait(semSM_);
+					msgBuff_->push(msgBuff);
+					sem_post(semSM_);
 				}
-				sem_wait(semSM_);
-				msgBuff_->push(msgBuff);
-				sem_post(semSM_);
+				else
+				{
+					msgBuff.SetClientID(i);
+					msgBuff.SetData("");
+					msgBuff.SetMsgType(ServerMessage::MT_LOGOUT);
+					sem_wait(semSM_);
+					msgBuff_->push(msgBuff);
+					sem_post(semSM_);
+					FD_CLR(clientSocket, &allSet);
+					clientSockets_[i] = 0;
+					if (clientSockets_[i] == maxClientSocket)
+						maxClientSocket--;
+					clientAddressMap_->erase(i);
+					close(clientSocket);
+				}
 			}
+
+			if (--ready == 0)
+				continue;
 		}
 	}
 
 	return 0;
+}
+
+void TCPServer::SendMessage(ServerMessage msg)
+{
+	TCPConnection::WriteMessage(clientSockets_[msg.GetClientID()], msg);
+}
+
+void TCPServer::SendMessageToAll(ServerMessage msg)
+{
+	for (int i = 0; i < MAX_CLIENTS; ++i)
+	{
+		msg.SetClientID(clientSockets_[i]);
+		TCPConnection::WriteMessage(msg.GetClientID(), msg);
+	}
 }
