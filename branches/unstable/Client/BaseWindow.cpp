@@ -383,12 +383,13 @@ void BaseWindow::getServerMessage()
 	{
 		ServerMessage sm = theClient->nextServerMessage();
 		//init msg
-		if (sm.GetMsgType() == 5)
+		if (sm.GetMsgType() == ServerMessage::MT_INIT)
 		{
 			clientID = sm.GetClientID();
+			std::cout << "MT_INIT RECEIVED: ID: " << clientID << endl;
 		}
 		//chat msg
-		else if (sm.GetMsgType() == 6)
+		else if (sm.GetMsgType() == ServerMessage::MT_CHAT)
 		{
 			//handle chat message
 		}
