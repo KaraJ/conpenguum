@@ -147,7 +147,10 @@ void TCPServer::SendMessageToAll(ServerMessage msg)
 {
 	for (int i = 0; i < MAX_CLIENTS; ++i)
 	{
-		msg.SetClientID(clientSockets_[i]);
-		TCPConnection::WriteMessage(msg.GetClientID(), msg);
+		if (clientSockets_[i])
+		{
+			msg.SetClientID(clientSockets_[i]);
+			TCPConnection::WriteMessage(msg.GetClientID(), msg);
+		}
 	}
 }

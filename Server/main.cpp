@@ -4,33 +4,60 @@
 #include "../Core/comm/data/updateobject.h"
 #include "comm/commserver.h"
 #include "../Core/comm/data/servermessage.h"
+#include <vector>
 
 void SerializeTest();
 void UDPTest();
 void StressTest();
+void TCPTest();
 
-int main() {
-	//SerializeTest();
-	//UDPTest();
-	StressTest();
-	return 0;
+int main()
+{
+    //SerializeTest();
+    //UDPTest();
+    //StressTest();
+	TCPTest();
+    return 0;
 }
 
-void UDPTest() {
+void TCPTest()
+{
 	CommServer::Instance()->init();
-	while (true) {
-		if (CommServer::Instance()->hasNextClientAction()) {
-			ClientAction a = CommServer::Instance()->nextClientAction();
-			a.print();
-			UpdateObject o(a.getObjectID());
-			o.setPosition(QPoint(5, 5));
-			o.setRotation(10);
-			o.getActions().setFiring();
-			std::vector<int> ids;
-			ids.push_back(a.getObjectID());
-			CommServer::Instance()->sendUpdate(o, ids);
+	while (true)
+	{
+		if (CommServer::Instance()->hasNextServerMessage())
+		{
+			ServerMessage m = CommServer::Instance()->nextServerMessage();
+			printf("ID: %d\nType: %d\nMsg: -->%s<--\n", m.GetClientID(), m.GetMsgType(), m.GetData().c_str());
+			if (m.GetMsgType() == ServerMessage::MT_CHAT)
+				CommServer::Instance()->sendServerMsg(m, std::vector<int>());
+			if (m.GetMsgType() == ServerMessage::MT_LOGIN)
+			{
+				m.SetMsgType(ServerMessage::MT_INIT);
+				CommServer::Instance()->sendServerMsg(m);
+			}
 		}
 	}
+}
+
+void UDPTest()
+{
+    CommServer::Instance()->init();
+    while (true)
+    {
+        if (CommServer::Instance()->hasNextClientAction())
+        {
+            ClientAction a = CommServer::Instance()->nextClientAction();
+            a.print();
+            UpdateObject o(a.getObjectID());
+            o.setPosition(QPoint(5, 5));
+            o.setRotation(10);
+            o.getActions().setFiring();
+            std::vector<int> ids;
+            ids.push_back(a.getObjectID());
+            CommServer::Instance()->sendUpdate(o, ids);
+        }
+    }
 }
 
 void SerializeTest() {
