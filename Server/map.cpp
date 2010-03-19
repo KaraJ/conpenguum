@@ -20,7 +20,7 @@
 --
 ------------------------------------------------------------------------------*/
 Tile Map::tile(QPoint position){
-    int tileX, tileY, pos;
+    int tileX, tileY = 0, pos;
     tileX = position.x() % 25;
     tileX = position.y() % 25;
     if(tileX > width || tileY > height){
