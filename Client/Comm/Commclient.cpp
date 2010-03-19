@@ -23,9 +23,10 @@
 
 using namespace std;
 
-CommClient::CommClient()
+CommClient::CommClient():isConnected_(false)
 {
-	sem_init(&semSM_, 0, 1);
+	sem_init(&semTCP_, 0, 1);
+	sem_init(&semUDP_, 0, 1);
 	tcpClient_ = new TCPClient();
 }
 
@@ -60,7 +61,7 @@ int CommClient::connect(const string name, const string address)
         	return -1;
         serverMsgs_.push(tcpClient_->Login(name));
         clientID_ = serverMsgs_.front().GetClientID();
-        tcpClient_->StartRdThread(&serverMsgs_, &semSM_);
+        tcpClient_->StartRdThread(&serverMsgs_, &semTCP_);
 
         servAddr.sin_family = AF_INET;
         servAddr.sin_port = htons(UDP_PORT);
@@ -75,17 +76,19 @@ int CommClient::connect(const string name, const string address)
 
 UpdateObject CommClient::nextUpdate()
 {
+	sem_wait(&semUDP_);
     UpdateObject update = updates_.front();
     updates_.pop();
+    sem_post(&semUDP_);
     return update;
 }
 
 ServerMessage CommClient::nextServerMessage()
 {
-	sem_wait(&semSM_);
+	sem_wait(&semTCP_);
     ServerMessage serverMsg = serverMsgs_.front();
     serverMsgs_.pop();
-    sem_post(&semSM_);
+    sem_post(&semTCP_);
     return serverMsg;
 }
 
@@ -123,13 +126,20 @@ void CommClient::sendServerMsg(const string msg) throw (string)
     else
         throw "CommClient::Not Connected";
 }
-
+bool CommClient::hasNextUpdate()
+{
+	bool result;
+	sem_wait(&semUDP_);
+	result = !updates_.empty();
+	sem_post(&semUDP_);
+	return result;
+}
 bool CommClient::hasNextServerMessage()
 {
 	bool result;
-	sem_wait(&semSM_);
+	sem_wait(&semTCP_);
 	result = !serverMsgs_.empty();
-	sem_post(&semSM_);
+	sem_post(&semTCP_);
 	return result;
 }
 /*----------------------------------------------------------------------------------------------------------
@@ -161,7 +171,9 @@ void* CommClient::readThreadFunc(void* args)
     if (size == UpdateObject::serializeSize)
     {
         UpdateObject update(buffer);
+        sem_wait(&CommClient::Instance()->semUDP_);
         CommClient::Instance()->updates_.push(update);
+        sem_post(&CommClient::Instance()->semUDP_);
     }
     else
         Logger::LogNContinue("Bad packet size received");
