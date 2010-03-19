@@ -6,6 +6,7 @@ TEMPLATE = app
 TARGET = 
 DEPENDPATH += . comm
 INCLUDEPATH += . comm
+OBJECTS_DIR = bin
 
 # Input
 HEADERS += frame.h \

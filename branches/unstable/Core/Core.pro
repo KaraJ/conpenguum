@@ -22,3 +22,4 @@ CONFIG = staticlib \
     warn_on \
     qt
 QT += core
+OBJECTS_DIR = bin
