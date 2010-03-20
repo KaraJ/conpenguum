@@ -65,10 +65,11 @@ int CommClient::connect(const string name, const string address, const string po
 {
     if (!isConnected_)
     {
+    	int id;
         if (!tcpClient_->Connect(address, port))
         	return -1;
         serverMsgs_.push(tcpClient_->Login(name));
-        serverMsgs_.front().GetClientID();
+        id = serverMsgs_.front().GetClientID();
         tcpClient_->StartRdThread(&serverMsgs_, &semTCP_);
 
         servAddr.sin_family = AF_INET;
@@ -78,8 +79,9 @@ int CommClient::connect(const string name, const string address, const string po
         udpConnection_ = new UDPConnection(UDP_PORT_CLI);
         isConnected_ = true;
         pthread_create(&readThread_, NULL, CommClient::readThreadUDP, NULL);
+        return id;
     }
-    return 0;
+    return -1;
 }
 /*----------------------------------------------------------------------------------------------------------
  -- FUNCTION: CommClient::nextUpdate
