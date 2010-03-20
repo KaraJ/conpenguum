@@ -12,7 +12,7 @@
 class UDPConnection
 {
 public:
-    UDPConnection();
+    UDPConnection(int port);
     ~UDPConnection();
     void sendMessage(struct sockaddr* to, const void* data, size_t dataLen);
     ssize_t recvMessage(BYTE** buffer);

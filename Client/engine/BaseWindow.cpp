@@ -70,9 +70,11 @@ void BaseWindow::Start()
 
 	if (cp.Parse("client.conf", params) && params.find("username") != params.end()
 			                            && params.find("server_ip") != params.end()
-			                            && params.find("tcp_port") != params.end())
+			                            && params.find("tcp_port") != params.end()
+			                            && params.find("udp_port") != params.end()
+			                            && atoi(params["udp_port"].c_str()) > 0)
 	{
-		clientID = theClient->connect(params["username"], params["server_ip"], params["tcp_port"]);
+		clientID = theClient->connect(params["username"], params["server_ip"], params["tcp_port"], atoi(params["udp_port"].c_str()));
 		startRendering();
 	}
 	else

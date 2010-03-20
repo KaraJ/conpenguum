@@ -28,7 +28,7 @@
 --
 -- RETURN:
 ----------------------------------------------------------------------------------------------------------*/
-UDPConnection::UDPConnection()
+UDPConnection::UDPConnection(int port)
 {
     struct sockaddr_in servaddr;
 
@@ -38,7 +38,7 @@ UDPConnection::UDPConnection()
     bzero(&servaddr, sizeof(struct sockaddr_in));
     servaddr.sin_family = AF_INET;
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    servaddr.sin_port = htons(UDP_PORT);
+    servaddr.sin_port = htons(port);
     
     //We can remove this if we used different ports for client and server
     SocketWrapper::Bind(this->sockfd_, &servaddr, sizeof(sockaddr_in));
