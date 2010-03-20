@@ -1,13 +1,7 @@
 # DO NOT USE QMAKE TO AUTOGEN THESE, IT DOESN'T WORK
 
-TEMPLATE = lib
-CONFIG = staticlib \
-    warn_on \
-    qt
 QT += core xml
-TARGET = Debug/Core
 
-# Input
 HEADERS += Logger.h \
 		   ConfigParser.h \
            comm/crc.h \
@@ -33,3 +27,6 @@ SOURCES += Logger.cpp \
            comm/data/servermessage.cpp \
            comm/data/updateobject.cpp
 RESOURCES += sharedResources.qrc
+TEMPLATE = lib
+TARGET = debug/Core
+CONFIG = qt warn_on debug staticlib
