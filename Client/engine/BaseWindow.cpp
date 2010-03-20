@@ -72,7 +72,7 @@ void BaseWindow::Start()
 			                            && params.find("server_ip") != params.end()
 			                            && params.find("tcp_port") != params.end())
 	{
-		theClient->connect(params["username"], params["server_ip"], params["tcp_port"]);
+		clientID = theClient->connect(params["username"], params["server_ip"], params["tcp_port"]);
 		startRendering();
 	}
 	else
