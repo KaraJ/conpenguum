@@ -3,7 +3,7 @@
 #include <QtXml>
 
 //initialize singleton pointer
-ResourceManager::resourceManager = NULL;
+ResourceManager* ResourceManager::resourceManager = NULL;
 
 ResourceManager::ResourceManager()
 {
@@ -18,7 +18,7 @@ ResourceManager::~ResourceManager()
     }
 }
 
-ResourceManager::GetInstance()
+ResourceManager* ResourceManager::GetInstance()
 {
     if(!resourceManager)
         resourceManager = new ResourceManager();
