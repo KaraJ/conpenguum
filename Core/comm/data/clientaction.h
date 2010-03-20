@@ -58,10 +58,15 @@ public:
 
     inline void clear() { mask_.Clear((ActionFlags)(AC_FIREING | AC_TURNLEFT | AC_TURNRIGHT | AC_ACCELERATING | AC_DECCELERATING)); }
     inline void setFiring() { mask_.Set(AC_FIREING); }
+    inline void unsetFiring() { mask_.Clear(AC_FIREING); }
     inline void setTurningLeft() { mask_.Set(AC_TURNLEFT); }
+    inline void unsetTuringLeft() { mask_.Clear(AC_TURNLEFT); }
     inline void setTurningRight()  { mask_.Set(AC_TURNRIGHT); }
+    inline void unsetTurningRight()  { mask_.Clear(AC_TURNRIGHT); }
     inline void setAccelerating()  { mask_.Set(AC_ACCELERATING); }
+    inline void unsetAccelerating()  { mask_.Clear(AC_ACCELERATING); }
     inline void setDecelerating() { mask_.Set(AC_DECCELERATING); }
+    inline void unsetDecelerating() { mask_.Clear(AC_DECCELERATING); }
 
     inline bool isFiring() const { return mask_.Test(AC_FIREING); }
     inline bool isTurningLeft() const { return mask_.Test(AC_TURNLEFT); }
