@@ -6,13 +6,7 @@ TARGET = Server
 QT += gui core xml
 
 # Input
-HEADERS += frame.h \
-           map.h \
-           newtObjects.h \
-           physics.h \
-           ship.h \
-           shot.h \
-           comm/commserver.h \
+HEADERS += comm/commserver.h \
            comm/TCPServer.h \
            engine/ServerEngine.h \
            ../Core/comm/data/clientaction.h \
@@ -25,12 +19,7 @@ HEADERS += frame.h \
            ../Core/comm/tcpconnection.h \
            ../Core/comm/udpConnection.h \
            ../Core/comm/crc.h
-SOURCES += frame.cpp \
-           map.cpp \
-           physics.cpp \
-           ship.cpp \
-           shot.cpp \
-           comm/commserver.cpp \
+SOURCES += comm/commserver.cpp \
            comm/TCPServer.cpp \
            engine/main.cpp \
            engine/ServerEngine.cpp \
