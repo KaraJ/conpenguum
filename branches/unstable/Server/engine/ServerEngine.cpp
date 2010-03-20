@@ -1,5 +1,10 @@
 #include "ServerEngine.h"
 
+#include "../../Core/comm/data/clientaction.h"
+#include "../../Core/comm/data/servermessage.h"
+#include "../../Core/comm/data/updateobject.h"
+#include "../../Core/ConfigParser.h"
+
 using namespace std;
 
 /*------------------------------------------------------------------------------
@@ -18,8 +23,16 @@ using namespace std;
  -----------------------------------------------------------------------------*/
 ServerEngine::ServerEngine()
 {
-	server = CommServer::Instance();
-	server -> init();
+	ConfigParser cp;
+	map<string, string> params;
+
+	if (cp.Parse("server.conf", params) && params.find("tcp_port") != params.end())
+	{
+		server = CommServer::Instance();
+		server -> init(params["tcp_port"]);
+	}
+	else
+		cerr << "Invalid configuration file." << endl;
 }
 
 /*------------------------------------------------------------------------------
@@ -65,7 +78,7 @@ void ServerEngine::RunServer()
 			if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)
 			{
 				cout << "client logged out" << endl;
-				int id = sm.GetClientID();
+				size_t id = sm.GetClientID();
 				vector<int>::iterator it;
 				//iterate over all vectors and find the ID to delete
 				for (it = ids.begin(); it != ids.end(); it++)
@@ -83,7 +96,7 @@ void ServerEngine::RunServer()
 				server->sendServerMsg(sm, ids);
 			}
 		}
-		if (server->hasNextClientAction())
+		if (server -> hasNextClientAction())
 		{
 			ClientAction ca = server->nextClientAction();
 			cout << "Received client action" << endl;
