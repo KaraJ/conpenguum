@@ -36,6 +36,7 @@
 #include "../Core/comm/data/clientaction.h"
 #include "../Core/comm/data/servermessage.h"
 #include "../Core/comm/udpConnection.h"
+#include "../Core/Logger.h"
 
 class UDPConnection;
 
