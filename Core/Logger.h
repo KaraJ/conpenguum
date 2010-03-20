@@ -12,4 +12,4 @@ public:
 	static void LogNContinue(const char* errorMsg);
 };
 
-#endif /* LOGGER_H_ */
+#endif

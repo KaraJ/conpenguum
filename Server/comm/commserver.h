@@ -1,27 +1,6 @@
-/*----------------------------------------------------------------------------------------------------------
---  SOURCE FILE: commserver.h
---
---  PROGRAM: TuxSpace
---
---  METHODS:
---      inline bool hasNextClientAction() { return !actions_.empty(); }
---      inline string nexthasNextClientAction()
---      inline bool hasNextServerMessage() { return !serverMsgs_.empty(); }
---      inline string nextServerMessage()
---
---  PROGRAMMER: Ben Barbour
---
---  REVISIONS (date and description):
---
---  DATE: 2010-01-23
---
---  NOTES: Singleton - retrieve reference through CommServer::Instance()
-----------------------------------------------------------------------------------------------------------*/
-
 #ifndef COMMSERVER_H
 #define COMMSERVER_H
 
-#include <string>
 #include <queue>
 #include <map>
 #include <semaphore.h>
@@ -39,13 +18,19 @@ class UDPConnection;
 class CommServer
 {
 public:
+	//get the instance of the CommServer
     static CommServer* Instance();
 
+    //start the server
     void init();
+
+    //read the queues
     bool hasNextClientAction();
     ClientAction nextClientAction();
     bool hasNextServerMessage();
     ServerMessage nextServerMessage();
+
+    //send messages or updates
     void sendServerMsg(ServerMessage msg, const std::vector<int>& clients);
     void sendServerMsg(const ServerMessage& msg);
     void sendUpdate(const UpdateObject& update, const std::vector<int>& clientIDs);
@@ -56,7 +41,7 @@ private:
     CommServer(const CommServer& cpy);
     CommServer& operator=(const CommServer& cc);
     ~CommServer();
-    static void* readThreadFunc(void* args);
+    static void* readThreadUDP(void* args);
 
     std::queue<ClientAction> actions_;
     std::queue<ServerMessage> serverMsgs_;
