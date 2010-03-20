@@ -35,8 +35,6 @@ Map::Map(QString filename):height(0), width(0), tileSize(1) {
     tileSize = map_e.attribute("tileWidth", "1").toInt();
 
     // create tiles array
-    // Can test shit with this thing spamming.
-    //cout << "Generating empty map " << width << "x" << height << " @ " << tileSize << endl;
     tiles = (Tile***)malloc(sizeof(Tile**) * width);
     for (int x=0; x < width; ++x) {
         tiles[x] = (Tile**)malloc(sizeof(Tile*) * height);
@@ -67,8 +65,6 @@ Map::Map(QString filename):height(0), width(0), tileSize(1) {
             x = tile_e.attribute("x", "0").toInt();
             y = tile_e.attribute("y", "0").toInt();
             wall = (property_e.attribute("hit", "") != "space");
-            // Can test shit with this thing spamming.
-            //cout << "Creating Map Tile(" << x << ", " << y << ", " << (wall ? "true" : "false") << ");" << endl;
             if (tile(x, y) == NULL) {
                 tiles[x][y] = new Tile(x, y, wall);
             }
