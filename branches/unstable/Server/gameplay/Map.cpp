@@ -204,12 +204,23 @@ bool Map::isWall(int x, int y) {
 }
 
 int Map::canMove(QPoint position, bool vertical, int size, int distance) {
-    // movement
-    int begin = MAX(0, MIN((vertical ? height : width)-1, C2G(vertical ? position.y() : position.x())));
-    int stop = MAX(0, MIN((vertical ? height : width)-1, C2G((vertical ? position.y() : position.x()) + distance)));
     // line segment
-    int start = MAX(0, MIN((vertical ? width : height)-1, C2G(vertical ? position.x() : position.y())));
-    int end = MAX(0, MIN((vertical ? width : height)-1, C2G((vertical ? position.x() : position.y()) + size)));
+    int start = C2G(vertical ? position.x() : position.y());
+    int end = C2G((vertical ? position.x() : position.y()) + size);
+    // movement
+    int begin = C2G(vertical ? position.y() : position.x());
+    int stop = C2G((vertical ? position.y() : position.x()) + distance);
+    // sanity checks:
+    if (start < 0 || end < 0 || begin < 0 || stop < 0) {
+        return -1;
+    }
+    if (vertical && (start > width || end > width || begin > height || stop > height)) {
+        return -1;
+    }
+    if (!vertical && (start > height || end > height || begin > width || stop > width)) {
+        return -1;
+    }
+    // calculation
     if (distance > 0) {
         for (int i=begin; i <= stop; ++i) {
             for (int j=start; j <= end; ++j) {
