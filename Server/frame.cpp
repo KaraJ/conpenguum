@@ -3,6 +3,7 @@
 #include "newtObjects.h"
 #include "map.h"
 #include "physics.h"
+#include "clientaction.h"
 
 #define VELOCITY_THRUST 2   // the velocity of a new thrust vector.
 #define VELOCITY_SHOT   3   // the velocity of a shot.
@@ -135,9 +136,10 @@ list<Ship>::iterator Frame::getShip(int shipID){
 --
 ------------------------------------------------------------------------------*/
 void Frame::spawnShip(int shipID){
+    list<Ship>::iterator ship = getShip(shipID);
     QPoint spawnPoint(100,100); // map function to return a safe spawn point
-    getShip(shipID)->active = true;
-    getShip(shipID)->position = spawnPoint;
+    ship->active = true;
+    ship->position = spawnPoint;
 }
 
 /*-----------------------------------------------------------------------------
@@ -169,7 +171,9 @@ void Frame::updateShips(void){
         // set new action mask
         // HERE
         dist = map.canMove(it->position, false, SHIPSIZE, it->vector.x());
-        cout << dist  << " " << it->vector.x() << endl;
+        it->position.setX(it->position.x() + dist);
+        dist = map.canMove(it->position, true, SHIPSIZE, it->vector.y());
+        it->position.setX(it->position.y() + dist);
 
         if(it->actionMask.isAccelerating()){
             // thrust forward
@@ -180,9 +184,11 @@ void Frame::updateShips(void){
             it->vector -= rotVelToVec(it->rotation, -VELOCITY_THRUST);
         }
         if(it->actionMask.isTurningRight()){
+            // turn right
             it->rotation += ROTATION_RATE;
         }
         if(it->actionMask.isTurningLeft()){
+            // turn left
             it->rotation += ROTATION_RATE;
         }
         if(it->actionMask.isFiring()){

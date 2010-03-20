@@ -2,6 +2,7 @@
 #define SHIP_H
 
 #include "newtObjects.h"
+#include "clientaction.h"
 
 /*----------------------------------------------------------------------------
 --
@@ -19,29 +20,21 @@
 --                  controlled ship.
 --
 ----------------------------------------------------------------------------*/
-#include "clientaction.h"
-
-struct UpdateObject
-{
-    int rotation_;
-    QPoint pos_;
-    int id;
-};
 
 class Ship : public NewtObject
 {
 private:
+	static int currID;
 public:
     int rotation;
     ClientAction actionMask;
     bool active;
 private:
+	int nextID(){return currID++;}
 public:
-    Ship(int pX, int pY, int vX, int vY, int ID):
-    NewtObject(pX, pY, vX, vY, ID), rotation(0), actionMask(ID), active(false){}
+    Ship():NewtObject(0, 0, 0, 0, nextID()), rotation(0), actionMask(id), active(false){}
     int getRot(){ return rotation; }
     void applyActionMask(ClientAction newMask); // updates the ship based on the current action mask
-    UpdateObject makeUpdateObject(UpdateObject uo);
 };
 
 #endif // SHIP_H

@@ -31,11 +31,12 @@
 class Frame{
 private:
     int frameTimer;  // used to determine the lifetime of objects.
-    Map map;         // map used to determine ship/wall collisions as well as
+    //Map map;         // map used to determine ship/wall collisions as well as
                      // limit the number of comparisons needed for ship/shot
                      // collisions by keeping track of what objects occupy
                      // each tile.
 public:
+    Map map; 
     std::list<Ship> listShip; // list of all ships(players) in the game.
     std::list<Shot> listShot; // list of all active shots in the game.
 public:
@@ -44,16 +45,13 @@ public:
     void addShip(Ship newShip);
     void addShot(Shot newShot);
     std::list<Ship>::iterator getShip(int shipID);
-    void fragShip(int shipID);
-    void spawnShip(int shotID);
+    void fragShip(Ship ship);
+    void spawnShip(int shipID);
     void destroyShot(int shotID);
     void updateShips();
     void updateShots();
     // for testing
     void printShips();
     int dist2Points(QPoint point1, QPoint point2);
-    void updateShips(bool thrustF,bool thrustR, bool rotL, bool rotR, bool fire);
-    void drawMap(){map.drawMap();}
-    int testCanMove(QPoint p, bool v, int s, int d){return map.canMove(p,v,s,d);}
 };
 #endif // FRAME_H
