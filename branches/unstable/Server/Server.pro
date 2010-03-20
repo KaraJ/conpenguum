@@ -6,6 +6,7 @@ TEMPLATE = app
 TARGET = 
 DEPENDPATH += . comm engine
 INCLUDEPATH += . comm engine
+QT += xml
 
 # Input
 HEADERS += frame.h \
