@@ -5,7 +5,7 @@
 #include "Image.h"
 #include <vector>
 #include <qfile.h>
-#include <qdom.h>
+#include <QtXml>
 #include <stdio.h>
 #include <stdlib.h>
 #include <map>

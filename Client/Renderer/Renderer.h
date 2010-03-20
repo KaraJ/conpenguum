@@ -40,7 +40,7 @@ private:
     RenderObject renderList[MAXRENDERCOUNT];
     int renderCount;
     //GLuint textures[3];
-    map<std::string, GLuint> textures;
+    std::map<std::string, GLuint> textures;
 
 //funcs
 public:
