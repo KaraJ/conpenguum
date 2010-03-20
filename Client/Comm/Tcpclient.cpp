@@ -74,6 +74,7 @@ bool TCPClient::Connect(const string& ip, const string& port)
 	if (p == NULL)
 		Logger::LogNContinue("TCPClient: Unable to connect to server.");
 
+	connected_ = true;
 	freeaddrinfo(servList);
 
 	return result;
