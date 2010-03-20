@@ -4,7 +4,8 @@ QT += core gui xml
 TEMPLATE = app
 TARGET = Client
 
-HEADERS += Animation/Animation.h \
+HEADERS += ../Core/comm/globals.h \
+    Animation/Animation.h \
     Animation/AnimationEnum.h \
     Animation/Image.h \
     Animation/qtxmlparse.h \
@@ -33,7 +34,5 @@ RESOURCES += menuitems.qrc
 FORMS += backside.ui
 contains(QT_CONFIG, opengl):QT += opengl
 LIBS += -lCore \
-    -L../Core/Debug
-
-
-
+    -L../Core/debug
+    
