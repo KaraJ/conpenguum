@@ -56,6 +56,7 @@ void ServerEngine::RunServer()
 				ServerMessage init;
 				init.SetMsgType(ServerMessage::MT_INIT);
 				init.SetClientID(sm.GetClientID());
+				init.SetData("");
 				server->sendServerMsg(init);
 				/*check if we need to send the init message
 					or if its sent automatically on connect*/
