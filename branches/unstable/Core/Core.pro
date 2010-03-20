@@ -23,3 +23,5 @@ CONFIG = staticlib \
     qt
 QT += core
 OBJECTS_DIR = bin
+QT += xml
+RESOURCES += sharedResources.qrc
