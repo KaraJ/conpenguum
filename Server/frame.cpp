@@ -3,8 +3,8 @@
 #include "newtObjects.h"
 #include "map.h"
 #include "physics.h"
-#include "clientaction.h"
-#include "updateobject.h"
+#include "../../Core/comm/data/clientaction.h"
+#include "../.../Core/comm/data/updateobject.h"
 
 #define VELOCITY_THRUST 2   // the velocity of a new thrust vector.
 #define VELOCITY_SHOT   3   // the velocity of a shot.
