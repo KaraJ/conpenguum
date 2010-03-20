@@ -19,6 +19,7 @@ HEADERS += ../Core/comm/globals.h \
     engine/Panel.h \
     engine/Roundrectitem.h \
     engine/Splashitem.h \
+    engine/ipbox.h \
     Renderer/Renderer.h
 SOURCES += Animation/Animation.cpp \
     Animation/Image.cpp \
@@ -30,9 +31,11 @@ SOURCES += Animation/Animation.cpp \
     engine/Panel.cpp \
     engine/Roundrectitem.cpp \
     engine/Splashitem.cpp \
+    engine/ipbox.cpp \
     Renderer/Renderer.cpp
 RESOURCES += menuitems.qrc
-FORMS += backside.ui
+FORMS += backside.ui \
+	ipbox.ui
 contains(QT_CONFIG, opengl):QT += opengl
 LIBS += -lCore \
     -L../Core/Debug
