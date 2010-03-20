@@ -227,7 +227,7 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance) {
             }
         }
     }
-    return 0;
+    return distance;
 }
 
 void Map::ensure(int x, int y) {
