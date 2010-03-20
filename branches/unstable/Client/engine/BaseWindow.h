@@ -81,7 +81,6 @@ class BaseWindow : public QMainWindow
 		CommClient::CommClient* theClient;
 		size_t clientID;
 		Renderer* ren;
-		QWidget window;
 
     public:
 		BaseWindow ();

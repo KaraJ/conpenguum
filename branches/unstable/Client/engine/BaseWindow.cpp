@@ -1,4 +1,7 @@
 #include "BaseWindow.h"
+
+using namespace std;
+
 /*------------------------------------------------------------------------------
  --
  -- CONSTRUCTOR: BaseWindow::BaseWindow()
@@ -31,9 +34,9 @@ BaseWindow::BaseWindow() : timer(this), frameRate(DEFAULT_FRAME_RATE), gameState
 	theClient = CommClient::Instance();
 	
 	/*this may be temporary*/
-	window.setFixedSize(1024, 768);
-	ren = new Renderer(&window);
-	window.show();
+	this->setFixedSize(1024, 768);
+	ren = new Renderer(this);
+	this->show();
 
 	animationMap = Animation::getAnimationMap();
 }
@@ -60,7 +63,7 @@ BaseWindow::BaseWindow() : timer(this), frameRate(DEFAULT_FRAME_RATE), gameState
  -----------------------------------------------------------------------------*/
 void BaseWindow::Start()
 {
-	theClient->connect("Player", "192.168.0.16");
+	theClient->connect("Player", "192.168.1.140");
 	startRendering();
 }
 
@@ -107,15 +110,19 @@ void BaseWindow::keyPressEvent (QKeyEvent * event)
 		switch (event->key())
 		{
 			case Qt::Key_Left:
+				cout << "LEFT KEY PRESSED" << endl;
 				ca->setTurningLeft();
 				break;
 			case Qt::Key_Right:
+				cout << "RIGHT KEY PRESSED" << endl;
 				ca->setTurningRight();
 				break;
 			case Qt::Key_Up:
+				cout << "UP KEY PRESSED" << endl;
 				ca->setAccelerating();
 				break;
 			case Qt::Key_Control:
+				cout << "CTRL KEY PRESSED" << endl;
 				ca->setFiring();
 				break;
 			case Qt::Key_Enter:
