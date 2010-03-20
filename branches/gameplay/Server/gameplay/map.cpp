@@ -9,7 +9,7 @@
 
 using namespace std;
 
-Map::Map(QString filename):height(0), width(0), tileSize(1) {
+Map::Map(QString filename):width(0), height(0), tileSize(1) {
     QDomDocument doc;
     int x, y;
     bool wall;
@@ -227,6 +227,7 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance) {
             }
         }
     }
+    return 0;
 }
 
 void Map::ensure(int x, int y) {
@@ -246,12 +247,12 @@ void Map::clean(int x, int y) {
         return;
     }
     delete tile(x, y);
-    tiles[x][y] == NULL;
+    tiles[x][y] = NULL;
 }
 
-Tile::Tile(int new_x, int new_y): x(new_x), y(new_y), wall(false) {}
+Tile::Tile(int new_x, int new_y):wall(false), x(new_x), y(new_y) {}
 
-Tile::Tile(int new_x, int new_y, bool new_wall): x(new_x), y(new_y), wall(new_wall) {}
+Tile::Tile(int new_x, int new_y, bool new_wall): wall(new_wall), x(new_x), y(new_y) {}
 
 
 bool Tile::isWall() {

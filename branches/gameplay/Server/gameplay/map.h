@@ -11,7 +11,9 @@
 
 class Tile {
 private:
-    bool wall, fixed, x, y;
+    bool wall;
+    bool x;
+    bool y;
     std::list<Ship*> ships;
     std::list<Shot*> shots;
 public:
