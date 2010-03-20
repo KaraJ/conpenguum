@@ -49,6 +49,7 @@ public:
     void addShip(Ship newShip);
     void addShot(Shot newShot);
     std::list<Ship>::iterator getShip(int shipID);
+	void updateClientActions(std::list <UpdateObject*>);
     void fragShip(Ship ship);
     void spawnShip(int shipID);
     void destroyShot(int shotID);
