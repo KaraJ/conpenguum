@@ -112,25 +112,28 @@ void BaseWindow::keyPressEvent (QKeyEvent * event)
 			case Qt::Key_Left:
 				cout << "LEFT KEY PRESSED" << endl;
 				ca->setTurningLeft();
+				theClient->sendAction(*ca);
 				break;
 			case Qt::Key_Right:
 				cout << "RIGHT KEY PRESSED" << endl;
 				ca->setTurningRight();
+				theClient->sendAction(*ca);
 				break;
 			case Qt::Key_Up:
 				cout << "UP KEY PRESSED" << endl;
 				ca->setAccelerating();
+				theClient->sendAction(*ca);
 				break;
 			case Qt::Key_Control:
 				cout << "CTRL KEY PRESSED" << endl;
 				ca->setFiring();
+				theClient->sendAction(*ca);
 				break;
 			case Qt::Key_Enter:
 				toggleChat();
 				break;
 		}
 	}
-	theClient->sendAction(*ca);
 }
 
 /*------------------------------------------------------------------------------
