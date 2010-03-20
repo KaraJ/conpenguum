@@ -62,8 +62,9 @@ void ServerEngine::RunServer()
 					or if its sent automatically on connect*/
 			}
 			//user has logged out, remove client id from vector
-			if (sm.GetMsgType() == ServerMessage::MT_CHAT)
+			if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)
 			{
+				cout << "client logged out" << endl;
 				size_t id = sm.GetClientID();
 				vector<int>::iterator it;
 				//iterate over all vectors and find the ID to delete
@@ -76,14 +77,16 @@ void ServerEngine::RunServer()
 				}
 			}
 			//receive chat message.. send to all clients
-			if (sm.GetMsgType() == 6)
+			if (sm.GetMsgType() == ServerMessage::MT_CHAT)
 			{
+				cout << "Received chat msg: " << sm.GetData() << endl;
 				server->sendServerMsg(sm, ids);
 			}
 		}
 		if (server -> hasNextClientAction())
 		{
 			ClientAction ca = server->nextClientAction();
+			cout << "Received client action" << endl;
 			//UpdateObject uo(ca.getClientID());
 			//gameplay updates updateObject here
 			//server -> sendUpdate(uo, ids);
