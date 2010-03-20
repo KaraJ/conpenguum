@@ -30,6 +30,7 @@
 <listOptionValue builtIn="false" value="/usr/include/qt4/Qt"/>
 <listOptionValue builtIn="false" value="/usr/include/qt4/QtGui"/>
 <listOptionValue builtIn="false" value="/usr/include/qt4"/>
+<listOptionValue builtIn="false" value="/usr/include/qt4/QtXml"/>
 </option>
 <option id="gnu.cpp.compiler.option.warnings.pedantic.1900704685" name="Pedantic (-pedantic)" superClass="gnu.cpp.compiler.option.warnings.pedantic" value="true" valueType="boolean"/>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1014570968" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
@@ -503,6 +504,9 @@
 <tool id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.1701346156" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.release">
 <option id="gnu.cpp.compiler.exe.release.option.optimization.level.652063290" name="Optimization Level" superClass="gnu.cpp.compiler.exe.release.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
 <option id="gnu.cpp.compiler.exe.release.option.debugging.level.822515241" name="Debug Level" superClass="gnu.cpp.compiler.exe.release.option.debugging.level" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
+<option id="gnu.cpp.compiler.option.include.paths.1535360321" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+<listOptionValue builtIn="false" value="/usr/include/qt4/QtXml"/>
+</option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.216874975" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 </tool>
 <tool id="cdt.managedbuild.tool.gnu.c.compiler.exe.release.1970152713" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.release">

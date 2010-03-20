@@ -40,7 +40,7 @@ using namespace std;
 CommServer::CommServer()
 {
     tcpServer_ = new TCPServer();
-    udpConnection_ = new UDPConnection();
+    udpConnection_ = new UDPConnection(UDP_PORT);
     sem_init(&semSM_, 0, 1);
     sem_init(&semUDP_, 0, 1);
 }

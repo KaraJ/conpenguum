@@ -61,21 +61,21 @@ CommClient* CommClient::Instance()
  --         If that name is in use: -2
  --         If other network error: -3
  ----------------------------------------------------------------------------------------------------------*/
-int CommClient::connect(const string name, const string address, const string port)
+int CommClient::connect(const string name, const string address, const string TCPport, const int UDPport)
 {
     if (!isConnected_)
     {
-        if (!tcpClient_->Connect(address, port))
+        if (!tcpClient_->Connect(address, TCPport))
         	return -1;
         serverMsgs_.push(tcpClient_->Login(name));
         serverMsgs_.front().GetClientID();
         tcpClient_->StartRdThread(&serverMsgs_, &semTCP_);
 
         servAddr.sin_family = AF_INET;
-        servAddr.sin_port = htons(UDP_PORT);
+        servAddr.sin_port = htons(UDPport);
         if (inet_pton(AF_INET, address.c_str(), &servAddr.sin_addr) != 1)
             Logger::LogNQuit("Error connection client - bad IP");
-        udpConnection_ = new UDPConnection();
+        udpConnection_ = new UDPConnection(UDPport);
         isConnected_ = true;
         pthread_create(&readThread_, NULL, CommClient::readThreadUDP, NULL);
     }
@@ -218,19 +218,24 @@ void CommClient::sendAction(ClientAction action)
  ----------------------------------------------------------------------------------------------------------*/
 void* CommClient::readThreadUDP(void* args)
 {
-    BYTE* buffer;
-    ssize_t size = CommClient::Instance()->udpConnection_->recvMessage(&buffer);
-    if (size == UpdateObject::serializeSize)
-    {
-        UpdateObject update(buffer);
-        sem_wait(&CommClient::Instance()->semUDP_);
-        CommClient::Instance()->updates_.push(update);
-        sem_post(&CommClient::Instance()->semUDP_);
-    }
-    else
-    {
-        Logger::LogNContinue("Bad packet size received");
-    }
+	while(true)
+	{
+		BYTE* buffer;
+		ssize_t size = CommClient::Instance()->udpConnection_->recvMessage(&buffer);
+		if(size < 0)
+			break;
+		if (size == UpdateObject::serializeSize)
+		{
+			UpdateObject update(buffer);
+			sem_wait(&CommClient::Instance()->semUDP_);
+			CommClient::Instance()->updates_.push(update);
+			sem_post(&CommClient::Instance()->semUDP_);
+		}
+		else
+		{
+			Logger::LogNContinue("Bad packet size received");
+		}
+	}
 
     return 0;
 }
