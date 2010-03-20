@@ -65,7 +65,7 @@ void ServerEngine::RunServer()
 			if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)
 			{
 				cout << "client logged out" << endl;
-				size_t id = sm.GetClientID();
+				int id = sm.GetClientID();
 				vector<int>::iterator it;
 				//iterate over all vectors and find the ID to delete
 				for (it = ids.begin(); it != ids.end(); it++)
@@ -83,10 +83,12 @@ void ServerEngine::RunServer()
 				server->sendServerMsg(sm, ids);
 			}
 		}
-		if (server -> hasNextClientAction())
+		if (server->hasNextClientAction())
 		{
 			ClientAction ca = server->nextClientAction();
 			cout << "Received client action" << endl;
+			ca.print();
+			cout.flush();
 			//UpdateObject uo(ca.getClientID());
 			//gameplay updates updateObject here
 			//server -> sendUpdate(uo, ids);
