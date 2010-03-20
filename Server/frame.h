@@ -28,6 +28,8 @@
 #include "shot.h"
 #include "ship.h"
 #include "map.h"
+#include "updateobject.h"
+
 class Frame{
 private:
     int frameTimer;  // used to determine the lifetime of objects.
@@ -50,6 +52,7 @@ public:
     void destroyShot(int shotID);
     void updateShips();
     void updateShots();
+    std::list<UpdateObject*> ListShip2listUpdateObject();
     // for testing
     void printShips();
     int dist2Points(QPoint point1, QPoint point2);
