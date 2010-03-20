@@ -10,7 +10,7 @@
  --      void Bitmask::TestAllFlags(FlagEnum flags) const
  --
  --  REVISIONS (date and description):
- --      2010-02-18 (Ben): Added getBitField method and constructor for serialisation
+ --      2010-02-18 (Ben): Added getBitField method and constructor for serialization
  --
  --  DATE: 2010-01-23
  --

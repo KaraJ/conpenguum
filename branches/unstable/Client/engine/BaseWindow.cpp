@@ -18,7 +18,7 @@ using namespace std;
  --		Set up a QTimer object to call timerEvent() every interval.
  --
  --		Mar 09, 2010 - Brad Paugh
- --		Added init of chatting variable and retreival of CommClient instance.
+ --		Added init of chatting variable and retrieval of CommClient instance.
  --
  --		Mar 15, 2010 - Brad Paugh
  --		Added instantiation of renderer into the constructor, we may not want
@@ -45,7 +45,7 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this), gameState
 
 /*------------------------------------------------------------------------------
  --
- -- CONSTRUCTOR: BaseWindow::BaseWindow()
+ -- CONSTRUCTOR: BaseWindow::start()
  --
  -- DESIGNER: Brad Paugh
  --
@@ -65,6 +65,8 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this), gameState
  -----------------------------------------------------------------------------*/
 void BaseWindow::Start()
 {
+	theClient->connect("Player", "192.168.0.12");
+	startRendering();
 	ConfigParser cp;
 	map<string, string> params;
 
@@ -113,8 +115,6 @@ void BaseWindow::keyPressEvent (QKeyEvent * event)
 	get server message of type 5(MT_INIT) and GetClientID() from that message*/
 	
     ClientAction* ca = new ClientAction(clientID);
-    ca->clear();
-
 	if (chatting)
 	{
 		handleChat(event->key());
@@ -218,11 +218,7 @@ int BaseWindow::handleChat(int key)
  -----------------------------------------------------------------------------*/
 void BaseWindow::toggleChat()
 {
-	//chatting is global
-	if (chatting)
-		chatting = false;
-	else
-		chatting = true;
+	chatting = !chatting;
 }
 
 /*------------------------------------------------------------------------------
