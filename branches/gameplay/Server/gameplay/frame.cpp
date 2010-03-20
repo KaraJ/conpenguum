@@ -279,6 +279,9 @@ int Frame::dist2Points(QPoint point1, QPoint point2){
             (point1.y()-point2.y())*(point1.y()-point2.y());
 }
 
+/**
+NEEDS COMMENTS
+**/
 list<UpdateObject*> Frame::ListShip2listUpdateObject(){
     list<Ship>::iterator it;
     list<UpdateObject*> udList;
@@ -292,4 +295,17 @@ list<UpdateObject*> Frame::ListShip2listUpdateObject(){
     }
 
     return udList;
+}
+
+/**
+NEEDS COMMENTS
+**/
+void updateClientActions(list <UpdateObject*> updateObjectList){
+	list<Ship>::iterator shipIt;
+	list<UpdateObject*>::iterator udIt;	
+	
+	for(udIt = updateObjectList.begin(); udIt != updateObjectList.end(); ++udIt){
+		getShip(udIt->actions_.getObjectID()).applyActionMask(udIt->action_);
+	}
+	
 }
