@@ -1,7 +1,9 @@
+# DO NOT USE QMAKE TO AUTOGEN THESE, IT DOESN'T WORK
+
 QT += core gui xml
 TEMPLATE = app
 TARGET = Client
-# Input
+
 HEADERS += Animation/Animation.h \
     Animation/AnimationEnum.h \
     Animation/Image.h \
