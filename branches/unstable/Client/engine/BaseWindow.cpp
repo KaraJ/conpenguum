@@ -63,7 +63,7 @@ BaseWindow::BaseWindow() : timer(this), frameRate(DEFAULT_FRAME_RATE), gameState
  -----------------------------------------------------------------------------*/
 void BaseWindow::Start()
 {
-	theClient->connect("Player", "127.0.0.1");
+	theClient->connect("Player", "192.168.0.11");
 	startRendering();
 }
 
@@ -119,7 +119,6 @@ void BaseWindow::keyPressEvent (QKeyEvent * event)
 				cout << "RIGHT KEY PRESSED" << endl;
 				ca->setTurningRight();
 				theClient->sendAction(*ca);
-				ca->print();
 				break;
 			case Qt::Key_Up:
 				cout << "UP KEY PRESSED" << endl;
