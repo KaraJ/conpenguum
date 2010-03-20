@@ -72,7 +72,12 @@ void BaseWindow::Start()
 			                            && params.find("server_ip") != params.end()
 			                            && params.find("tcp_port") != params.end())
 	{
-		clientID = theClient->connect(params["username"], params["server_ip"], params["tcp_port"]);
+		int ret;
+		if((ret = theClient->connect(params["username"], params["server_ip"], params["tcp_port"])) < 0)
+		{
+			Logger::LogNQuit("BaseWindow::Start - Error Connecting to the server");
+		}
+		clientID = ret;
 		clientAction = new ClientAction(clientID);
 		startRendering();
 	}
