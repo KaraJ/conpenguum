@@ -7,12 +7,13 @@
 #include <cmath>
 #include <vector>
 #include <cassert>
+#include "../../Core/resourceMgr/resourceEnums.h"
 
 using namespace std;
 
 Renderer::Renderer(QWidget *parent) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent)
 {
-
+    resourceManager = ResourceManager::GetInstance();
 }
 
 void Renderer::buildRenderList(vector<UpdateObject> objectlist)
@@ -26,7 +27,12 @@ void Renderer::buildRenderList(vector<UpdateObject> objectlist)
     xOffset = SCRCENTREW - objectlist[0].getPos().x();
     yOffset = SCRCENTREH - objectlist[0].getPos().y();
 
-    renderList[0].texture = textures[0];
+    //sample code for getting a texture from resource manager
+    //you need to know the type of the resource you are getting, so you can
+    //properly cast to the correct struct type
+    //textures[(ShipDefinition*)resourceManager->GetResource(SHIP, WARBIRD)->texture]
+    //hardcoding in values for now
+    renderList[0].texture = textures["ships.bmp"];
     renderList[0].x = objectlist[0].getPos().x() + xOffset;
     renderList[0].y = objectlist[0].getPos().y() + yOffset;
     renderList[0].rotation = objectlist[0].getRotation() * 2;
@@ -41,7 +47,7 @@ void Renderer::buildRenderList(vector<UpdateObject> objectlist)
     {
         if(objectlist[i].getRotation() == -1)
         {
-            renderList[i].texture = textures[1];
+            renderList[i].texture = textures["bullets.bmnp"];
             renderList[i].texOffsetY = 0;
             renderList[i].objectHeight = 1 / 10.0;
             renderList[i].objectWidth = 1 / 4.0;
@@ -51,7 +57,7 @@ void Renderer::buildRenderList(vector<UpdateObject> objectlist)
         }
         else if(objectlist[i].getRotation() == -2)
         {
-            renderList[i].texture = textures[2];
+            renderList[i].texture = textures["bg01.bmp"];
             renderList[i].texOffsetY = 0;
             renderList[i].objectHeight = 1;
             renderList[i].objectWidth = 1;
@@ -61,7 +67,7 @@ void Renderer::buildRenderList(vector<UpdateObject> objectlist)
         }
         else
         {
-            renderList[i].texture = textures[0];
+            renderList[i].texture = textures["ships.bmp"];
             renderList[i].texOffsetY = 3 / 32.0;
             renderList[i].objectHeight = 1 / 32.0;
             renderList[i].objectWidth = 1 / 10.0;
@@ -86,9 +92,19 @@ void Renderer::Initialize()
     glShadeModel(GL_FLAT);
     glEnable(GL_DEPTH_TEST);
 
-    textures[0] = bindTexture(QPixmap(QString(":/textures/ships.bmp"),"BMP"), GL_TEXTURE_2D);
-    textures[1] = bindTexture(QPixmap(QString(":/textures/bullets.bmp"),"BMP"), GL_TEXTURE_2D); //10 high 4 wide;
-    textures[2] = bindTexture(QPixmap(QString(":/textures/bg01.bmp"),"BMP"), GL_TEXTURE_2D);
+    QDir dir(":/textures/");
+    QFileInfoList list = dir.entryInfoList();
+    for(int i = 0; i < list.size(); i++)
+    {
+        QFileInfo fileInfo = list.at(i);
+        QString str = fileInfo.fileName();
+        GLuint texture = bindTexture(QPixmap(str, "BMP"), GL_TEXTURE_2D);
+        textures.insert(std::pair<std::string, GLuint>(str.toStdString(), texture));
+    }
+
+//    textures[0] = bindTexture(QPixmap(QString(":/textures/ships.bmp"),"BMP"), GL_TEXTURE_2D);
+//    textures[1] = bindTexture(QPixmap(QString(":/textures/bullets.bmp"),"BMP"), GL_TEXTURE_2D); //10 high 4 wide;
+//    textures[2] = bindTexture(QPixmap(QString(":/textures/bg01.bmp"),"BMP"), GL_TEXTURE_2D);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
