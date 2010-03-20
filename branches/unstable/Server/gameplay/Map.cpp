@@ -32,7 +32,7 @@ Map::Map(QString filename):width(0), height(0), tileSize(1) {
     }
     width = map_e.attribute("width", "0").toInt();
     height = map_e.attribute("height", "0").toInt();
-    tileSize = map_e.attribute("tileWidth", "1").toInt();
+    tileSize = map_e.attribute("tileSize", "1").toInt();
 
     // create tiles array
     tiles = (Tile***)malloc(sizeof(Tile**) * width);
@@ -212,12 +212,15 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance) {
     int stop = C2G((vertical ? position.y() : position.x()) + distance);
     // sanity checks:
     if (start < 0 || end < 0 || begin < 0 || stop < 0) {
+        cerr << "value below 0" << endl;
         return -1;
     }
     if (vertical && (start > width || end > width || begin > height || stop > height)) {
+        cerr << "vertical value " << start << 'x' << end << ',' << begin << 'x' << stop << " above " << width << 'x' << height << endl;
         return -1;
     }
     if (!vertical && (start > height || end > height || begin > width || stop > width)) {
+        cerr << "horizontal " << start << 'x' << end << ',' << begin << 'x' << stop << " value above " << width << 'x' << height << endl;
         return -1;
     }
     // calculation
