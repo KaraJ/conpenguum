@@ -60,7 +60,7 @@ BaseWindow::BaseWindow() : timer(this), frameRate(DEFAULT_FRAME_RATE), gameState
  -----------------------------------------------------------------------------*/
 void BaseWindow::Start()
 {
-	theClient->connect("Player", "192.168.0.16");
+	theClient->connect("Player", "192.168.0.17");
 	startRendering();
 }
 

@@ -72,7 +72,10 @@ bool SocketWrapper::Read(int sock, void *vptr, size_t size)
 	while (nleft > 0)
 	{
 		if ( (nread = read(sock, buff, nleft)) < 0)
+		{
+			perror("read()");
 			Logger::LogNQuit("Read error");
+		}
 		if (nread == 0)
 			return false;
 

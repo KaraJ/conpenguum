@@ -64,12 +64,12 @@ void ServerEngine::RunServer()
 			//user has logged out, remove client id from vector
 			if (sm.GetMsgType() == ServerMessage::MT_CHAT)
 			{
-				size_t id = sm.GetClientID();
+				int id = sm.GetClientID();
 				vector<int>::iterator it;
 				//iterate over all vectors and find the ID to delete
 				for (it = ids.begin(); it != ids.end(); it++)
 				{
-					if (id == *it)
+					if (id == (*it))
 					{
 						ids.erase(it);
 					}
