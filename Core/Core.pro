@@ -9,6 +9,7 @@ TARGET = Debug/Core
 
 # Input
 HEADERS += Logger.h \
+		   ConfigParser.h \
            comm/crc.h \
            comm/globals.h \
            comm/socketwrapper.h \
@@ -22,6 +23,7 @@ HEADERS += Logger.h \
            comm/data/servermessage.h \
            comm/data/updateobject.h
 SOURCES += Logger.cpp \
+		   ConfigParser.cpp \
            comm/crc.cpp \
            comm/socketwrapper.cpp \
            comm/tcpconnection.cpp \
