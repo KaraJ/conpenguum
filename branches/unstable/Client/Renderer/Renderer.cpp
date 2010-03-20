@@ -45,8 +45,8 @@ void Renderer::buildRenderList(vector<UpdateObject> objectlist)
 
     for(i = 1; i < objectlist.size(); i++)
     {
-        if(objectlist[i].getRotation() == -1)
-        {
+        if(objectlist[i].getObjectId() == 32) //TODO: Hard coded for testing, BULLET
+        	{
             renderList[i].texture = textures["bullets.bmnp"];
             renderList[i].texOffsetY = 0;
             renderList[i].objectHeight = 1 / 10.0;
@@ -55,7 +55,7 @@ void Renderer::buildRenderList(vector<UpdateObject> objectlist)
             renderList[i].objectHeightPx=16;
             renderList[i].objectWidthPx=16;
         }
-        else if(objectlist[i].getRotation() == -2)
+        else if(objectlist[i].getObjectId() == 33) //TODO: Hard coded for testing, WALL
         {
             renderList[i].texture = textures["bg01.bmp"];
             renderList[i].texOffsetY = 0;
