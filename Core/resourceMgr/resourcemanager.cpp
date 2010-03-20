@@ -2,6 +2,9 @@
 #include "resourceEnums.h"
 #include <QtXml>
 
+//initialize singleton pointer
+ResourceManager::resourceManager = NULL;
+
 ResourceManager::ResourceManager()
 {
 
@@ -13,6 +16,13 @@ ResourceManager::~ResourceManager()
     {
         delete it->second;
     }
+}
+
+ResourceManager::GetInstance()
+{
+    if(!resourceManager)
+        resourceManager = new ResourceManager();
+    return resourceManager;
 }
 
 ResourceDefinition* ResourceManager::GetResource(int ResourceType, int ResourceName)
