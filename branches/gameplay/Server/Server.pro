@@ -5,7 +5,8 @@ SOURCES += main.cpp \
     ship.cpp \
     shot.cpp \
     physics.cpp \
-    clientaction.cpp
+    clientaction.cpp \
+    updateobject.cpp
 HEADERS += map.h \
     general.h \
     ship.h \
@@ -13,5 +14,7 @@ HEADERS += map.h \
     frame.h \
     newtObjects.h \
     physics.h \
-    clientaction.h
+    clientaction.h \
+    updateobject.h
+    
 QT += xml

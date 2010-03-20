@@ -4,6 +4,7 @@
 #include "map.h"
 #include "physics.h"
 #include "clientaction.h"
+#include "updateobject.h"
 
 #define VELOCITY_THRUST 2   // the velocity of a new thrust vector.
 #define VELOCITY_SHOT   3   // the velocity of a shot.
@@ -281,4 +282,19 @@ void Frame::printShips(void){
 int Frame::dist2Points(QPoint point1, QPoint point2){
     return (point1.x()-point2.x())*(point1.x()-point2.x()) +
             (point1.y()-point2.y())*(point1.y()-point2.y());
+}
+
+list<UpdateObject*> Frame::ListShip2listUpdateObject(){
+	list<Ship>::iterator it;
+	list<UpdateObject*> udList;	
+	UpdateObject *uo = new UpdateObject(32);
+	
+	for(it = listShip.begin(); it != listShip.end(); ++it){
+		uo = new UpdateObject(it->actionMask);
+		uo->setRotation(it->rotation);
+		uo->setPosition(it->position);
+		udList.push_back(uo);
+	}
+	
+	return udList;	
 }
