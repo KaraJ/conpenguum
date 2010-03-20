@@ -110,6 +110,8 @@ list<Ship>::iterator Frame::getShip(int shipID){
             return it;
         }
     }
+	return it;
+	//BAD
 }
 
 /*-----------------------------------------------------------------------------
@@ -300,12 +302,12 @@ list<UpdateObject*> Frame::ListShip2listUpdateObject(){
 /**
 NEEDS COMMENTS
 **/
-void updateClientActions(list <UpdateObject*> updateObjectList){
+void Frame::updateClientActions(list <UpdateObject*> updateObjectList){
 	list<Ship>::iterator shipIt;
 	list<UpdateObject*>::iterator udIt;	
 	
 	for(udIt = updateObjectList.begin(); udIt != updateObjectList.end(); ++udIt){
-		getShip(udIt->actions_.getObjectID()).applyActionMask(udIt->action_);
-	}
-	
+		getShip((*udIt)->getActions().getObjectID())->applyActionMask((*udIt)->getActions());
+
+	}	
 }
