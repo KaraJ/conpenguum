@@ -398,3 +398,27 @@ QPointF Panel::posForLocation(int x, int y) const
     return QPointF(x * 65, y * 65)
         - QPointF((width - 1) * -10, (height - 1) * -10);
 }
+
+/*--------------------------------------------------------------------------------------
+--  Function: closeEvent
+--
+--  DATE: Mar 20, 2010
+--
+--  DESIGNER: Daraius Dastoor
+--
+--  PROGRAMMER REVISIONS: Daraius Dastoor & Ben Learn
+--
+--  INTERFACE: void Panel::closeEvent(QCloseEvent * e)
+--      e - the event to close!
+--
+--  RETURNS: Naw
+--
+--  Notes:
+--      To override the "X" button close event.
+--------------------------------------------------------------------------------------*/
+void Panel::closeEvent(QCloseEvent * e)
+{
+	this->destroy(true, false);
+	exit(0);
+	return;
+}
