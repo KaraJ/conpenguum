@@ -1,23 +1,26 @@
 #ifndef SERVERMESSAGE_H
 #define SERVERMESSAGE_H
 
+//System Includes
 #include <string>
-#include "../globals.h"
 
 class ServerMessage
 {
 public:
+	typedef unsigned char uint8;
 	enum MessageType
 	    {
 	    	MT_LOGIN    = 1,
-	    	MT_LOGOUT   = 2,
-	    	MT_DEATH    = 3, /* Begins with comma separated explosion location */
-	    	MT_SHUTDOWN = 4, /* Server going down */
-	    	MT_INIT     = 5, /* Initial message holding ScoreBoard and ClientID to Player Name mapping */
-	    	MT_CHAT     = 6,
-	    	MT_FULL		= 7
+	    	MT_DEATH    = 2, // Begins with comma separated explosion location
+	    	MT_SHUTDOWN = 3, // Server going down
+	    	MT_INIT     = 4, // Initial message holding ScoreBoard and ClientID to Player Name mapping
+	    	MT_CHAT     = 5, // Basic chat message
+	    	MT_LOGOUT	= 6, // Logout (not actually sent, created on disconnect)
+	    	MT_FULL		= 7  // Server full
 	    };
-    static const int SM_HEADERSIZE = 3;
+    static const int SM_HEADERSIZE = 3;								//Header size
+	static const int SM_MAX_DATA = 1024;							//Maximum Data portion size
+	static const int SM_MAX_SIZ = (SM_MAX_DATA +  SM_HEADERSIZE);	//Maximum Total ServerMessage size
 
 	size_t Serialize(char *data);
     ServerMessage() { }

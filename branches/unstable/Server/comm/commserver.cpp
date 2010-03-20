@@ -28,8 +28,7 @@
  ----------------------------------------------------------------------------------------------------------*/
 #include "commserver.h"
 
-using std::vector;
-using std::map;
+using namespace std;
 
 /*----------------------------------------------------------------------------------------------------------
  -- FUNCTION: CommServer::hasNextClientAction
@@ -69,9 +68,9 @@ CommServer* CommServer::Instance()
  --
  -- NOTES: Should be called to start the server.
  ----------------------------------------------------------------------------------------------------------*/
-void CommServer::init()
+void CommServer::init(const string &port)
 {
-    tcpServer_->Init(TCP_PORT);
+    tcpServer_->Init(port);
     tcpServer_->StartReadThread(&serverMsgs_, &clients_, &semSM_);
     pthread_create(&readThread_, NULL, CommServer::readThreadUDP, NULL);
 }

@@ -5,8 +5,8 @@ using namespace std;
 
 bool TCPConnection::ReadMessage(int sock, ServerMessage& sm)
 {
-	char buff[TCP_MAXMSG];
-	memset(buff, 0, TCP_MAXMSG);
+	char buff[ServerMessage::SM_MAX_SIZ];
+	memset(buff, 0, ServerMessage::SM_MAX_SIZ);
 	if (SocketWrapper::Read(sock, buff, ServerMessage::SM_HEADERSIZE)) //Read clientID, msgLen, msgType
 	{
 		sm.SetClientID(buff[0]);
@@ -21,8 +21,8 @@ bool TCPConnection::ReadMessage(int sock, ServerMessage& sm)
 
 void TCPConnection::WriteMessage(int sock, ServerMessage& sm)
 {
-	char buff[TCP_MAXMSG];
-	memset(buff, 0, TCP_MAXMSG);
+	char buff[ServerMessage::SM_MAX_SIZ];
+	memset(buff, 0, ServerMessage::SM_MAX_SIZ);
 	size_t siz = sm.Serialize(buff);
 	SocketWrapper::Write(sock, buff, siz);
 }

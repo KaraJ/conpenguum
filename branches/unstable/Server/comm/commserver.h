@@ -22,7 +22,7 @@ public:
     static CommServer* Instance();
 
     //start the server
-    void init();
+    void init(const std::string &port);
 
     //read the queues
     bool hasNextClientAction();
