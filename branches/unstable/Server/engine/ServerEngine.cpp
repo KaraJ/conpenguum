@@ -86,6 +86,7 @@ void ServerEngine::RunServer()
 					if (id == *it)
 					{
 						ids.erase(it);
+						break; // added to avoid segfault
 					}
 				}
 			}
