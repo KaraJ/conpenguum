@@ -46,7 +46,7 @@ public:
 	//get the commclient and connect or disconnect
     static CommClient* Instance();
     inline bool isConnected() { return isConnected_; }
-    int connect(const std::string playerName, const std::string address);
+    int connect(const std::string playerName, const std::string address, const std::string port);
     void disconnect();
 
     //access incoming updates and server messages

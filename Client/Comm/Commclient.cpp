@@ -61,12 +61,12 @@ CommClient* CommClient::Instance()
  --         If that name is in use: -2
  --         If other network error: -3
  ----------------------------------------------------------------------------------------------------------*/
-int CommClient::connect(const string name, const string address)
+int CommClient::connect(const string name, const string address, const string port)
 {
     if (!isConnected_)
     {
 
-        if (!tcpClient_->Connect(address))
+        if (!tcpClient_->Connect(address, port))
         	return -1;
         serverMsgs_.push(tcpClient_->Login(name));
         serverMsgs_.front().GetClientID();

@@ -19,7 +19,7 @@
 class TCPClient
 {
 public:
-    bool Connect(const std::string& ip);
+    bool Connect(const std::string& ip, const std::string& port);
     void StartRdThread(std::queue<ServerMessage> *msgBuff, sem_t *semSM);
     ServerMessage Login(std::string playerName);
     void SendMessage(std::string message);

@@ -6,5 +6,4 @@ int main()
 {
 	ServerEngine* se = new ServerEngine();
 	se->RunServer();
-	return 0;
 }

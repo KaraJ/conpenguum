@@ -40,7 +40,7 @@ void TCPClient::StartRdThread(std::queue<ServerMessage> *msgBuff, sem_t *semSM)
 		Logger::LogNQuit("TCPClient: Unable to start read thread.");
 }
 
-bool TCPClient::Connect(const string& ip)
+bool TCPClient::Connect(const string& ip, const string& port)
 {
 	struct addrinfo  hints;
     struct addrinfo  *servList, *p;
@@ -52,7 +52,7 @@ bool TCPClient::Connect(const string& ip)
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_protocol = IPPROTO_TCP;
 
-	gaiErr = getaddrinfo(ip.c_str(), TCP_PORT, &hints, &servList);
+	gaiErr = getaddrinfo(ip.c_str(), port.c_str(), &hints, &servList);
 
 	if (servList == 0)
 		Logger::LogNQuit(gai_strerror(gaiErr));

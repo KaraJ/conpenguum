@@ -2,9 +2,6 @@
 #include <vector>
 #include "../comm/commserver.h"
 #include "../../Core/comm/globals.h"
-#include "../../Core/comm/data/clientaction.h"
-#include "../../Core/comm/data/servermessage.h"
-#include "../../Core/comm/data/updateobject.h"
 
 /*------------------------------------------------------------------------------
  --

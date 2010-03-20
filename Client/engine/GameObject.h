@@ -7,5 +7,5 @@ struct GameObject
 	int angle;
 	QPoint position;
 	Image * animeImage;
-	int animeIndex;
+	size_t animeIndex;
 };
