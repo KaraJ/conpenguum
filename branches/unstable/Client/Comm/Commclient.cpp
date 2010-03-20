@@ -61,21 +61,21 @@ CommClient* CommClient::Instance()
  --         If that name is in use: -2
  --         If other network error: -3
  ----------------------------------------------------------------------------------------------------------*/
-int CommClient::connect(const string name, const string address, const string TCPport, const int UDPport)
+int CommClient::connect(const string name, const string address, const string port)
 {
     if (!isConnected_)
     {
-        if (!tcpClient_->Connect(address, TCPport))
+        if (!tcpClient_->Connect(address, port))
         	return -1;
         serverMsgs_.push(tcpClient_->Login(name));
         serverMsgs_.front().GetClientID();
         tcpClient_->StartRdThread(&serverMsgs_, &semTCP_);
 
         servAddr.sin_family = AF_INET;
-        servAddr.sin_port = htons(UDPport);
+        servAddr.sin_port = htons(UDP_PORT_SERV);
         if (inet_pton(AF_INET, address.c_str(), &servAddr.sin_addr) != 1)
             Logger::LogNQuit("Error connection client - bad IP");
-        udpConnection_ = new UDPConnection(UDPport);
+        udpConnection_ = new UDPConnection(UDP_PORT_CLI);
         isConnected_ = true;
         pthread_create(&readThread_, NULL, CommClient::readThreadUDP, NULL);
     }

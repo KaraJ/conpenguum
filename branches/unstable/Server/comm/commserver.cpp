@@ -40,7 +40,7 @@ using namespace std;
 CommServer::CommServer()
 {
     tcpServer_ = new TCPServer();
-    udpConnection_ = new UDPConnection(UDP_PORT);
+    udpConnection_ = new UDPConnection(UDP_PORT_SERV);
     sem_init(&semSM_, 0, 1);
     sem_init(&semUDP_, 0, 1);
 }
@@ -107,7 +107,7 @@ void CommServer::sendUpdate(const UpdateObject& update, const vector<int>& clien
         bzero(&to, sizeof(to));
         to.sin_addr = clients_[clientIDs[i]];
         to.sin_family = AF_INET;
-        to.sin_port = htons(UDP_PORT);
+        to.sin_port = htons(UDP_PORT_CLI);
         udpConnection_->sendMessage((sockaddr*) &to, buffer, UpdateObject::serializeSize);
     }
 }
@@ -132,7 +132,7 @@ void CommServer::sendUpdateToAll(const UpdateObject& update)
         bzero(&to, sizeof(to));
         to.sin_addr = it->second;
         to.sin_family = AF_INET;
-        to.sin_port = htons(UDP_PORT);
+        to.sin_port = htons(UDP_PORT_CLI);
         udpConnection_->sendMessage((sockaddr*) &to, buffer, UpdateObject::serializeSize);
     }
 }

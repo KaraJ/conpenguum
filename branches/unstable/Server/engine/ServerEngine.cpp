@@ -96,7 +96,7 @@ void ServerEngine::RunServer()
 				server->sendServerMsg(sm, ids);
 			}
 		}
-		if (server -> hasNextClientAction())
+		if (server->hasNextClientAction())
 		{
 			ClientAction ca = server->nextClientAction();
 			cout << "Received client action" << endl;
