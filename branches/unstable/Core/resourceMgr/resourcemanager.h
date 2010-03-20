@@ -9,8 +9,10 @@ class ResourceManager
 private:
     MD5 md5;
     std::map<int, ResourceDefinition*> resourceMap;
-public:
+    ResourceManager resourceManager;
     ResourceManager();
+public:
+    static ResourceManager *GetInstance();
     ~ResourceManager();
     ResourceDefinition* GetResource(int ResourceType, int ResourceName);
 };
