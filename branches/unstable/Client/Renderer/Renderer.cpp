@@ -86,16 +86,6 @@ void Renderer::Initialize()
     glShadeModel(GL_FLAT);
     glEnable(GL_DEPTH_TEST);
 
-//    QDir dir(":/textures/");
-//    QFileInfoList list = dir.entryInfoList();
-//    for(int i = 0; i < list.size(); i++)
-//    {
-//        QFileInfo fileInfo = list.at(i);
-//        QString str = fileInfo.fileName();
-//        const char *buf = str.toStdString().c_str();
-//        int foo = 5;
-//    }
-
     textures[0] = bindTexture(QPixmap(QString(":/textures/ships.bmp"),"BMP"), GL_TEXTURE_2D);
     textures[1] = bindTexture(QPixmap(QString(":/textures/bullets.bmp"),"BMP"), GL_TEXTURE_2D); //10 high 4 wide;
     textures[2] = bindTexture(QPixmap(QString(":/textures/bg01.bmp"),"BMP"), GL_TEXTURE_2D);
