@@ -70,4 +70,5 @@ private Q_SLOTS:
     void updateSelectionStep(qreal val);
     void updateFlipStep(qreal val);
     void flip();
+    void closeEvent(QCloseEvent * e);
 };
