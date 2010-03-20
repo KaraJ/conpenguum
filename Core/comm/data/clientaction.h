@@ -56,7 +56,7 @@ public:
     ClientAction(int objID);
     ClientAction(BYTE* buffer);
 
-    inline void clear() { mask_.Clear((ActionFlags)(AC_ACCELERATING | AC_FIREING | AC_TURNLEFT | AC_TURNRIGHT | AC_DECCELERATING)); }
+    inline void clear() { mask_.Clear((ActionFlags)(AC_FIREING | AC_TURNLEFT | AC_TURNRIGHT | AC_ACCELERATING | AC_DECCELERATING)); }
     inline void setFiring() { mask_.Set(AC_FIREING); }
     inline void setTurningLeft() { mask_.Set(AC_TURNLEFT); }
     inline void setTurningRight()  { mask_.Set(AC_TURNRIGHT); }
