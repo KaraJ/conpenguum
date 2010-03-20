@@ -4,8 +4,19 @@
  --  PROGRAM: TuxSpace
  --
  --  METHODS:
- --      void sendUpdate(const UpdateObject update);
- --      void sendServerMsg(const string msg);
+ --		CommServer::CommServer()
+ --		CommServer* CommServer::Instance()
+ --		void CommServer::init()
+ --		CommServer::~CommServer()
+ --		void CommServer::sendUpdate(const UpdateObject& update, const vector<int>& clientIDs)
+ --		void CommServer::sendUpdateToAll(const UpdateObject& update)
+ --		void CommServer::sendServerMsg(ServerMessage sm, const vector<int>& clients)
+ --		void CommServer::sendServerMsg(const ServerMessage& sm)
+ --		bool CommServer::hasNextClientAction()
+ --		ClientAction CommServer::nextClientAction()
+ --		bool CommServer::hasNextServerMessage()
+ --		ServerMessage CommServer::nextServerMessage()
+ --		void* CommServer::readThreadUDP(void* args)
  --
  --  PROGRAMMER: Ben Barbour
  --
@@ -17,8 +28,16 @@
  ----------------------------------------------------------------------------------------------------------*/
 #include "commserver.h"
 
-using namespace std;
+using std::vector;
+using std::map;
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommServer::hasNextClientAction
+ --
+ -- DATE: 2010-01-23
+ --
+ -- NOTES: Private constructor for the CommServer. Should only be called the first time Instance is called.
+ ----------------------------------------------------------------------------------------------------------*/
 CommServer::CommServer()
 {
     tcpServer_ = new TCPServer();
@@ -27,6 +46,13 @@ CommServer::CommServer()
     sem_init(&semUDP_, 0, 1);
 }
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommServer::Instance
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: The CommServer singleton.
+ ----------------------------------------------------------------------------------------------------------*/
 CommServer* CommServer::Instance()
 {
     static CommServer* instance_ = 0;
@@ -36,13 +62,25 @@ CommServer* CommServer::Instance()
     return instance_;
 }
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommServer::init
+ --
+ -- DATE: 2010-01-23
+ --
+ -- NOTES: Should be called to start the server.
+ ----------------------------------------------------------------------------------------------------------*/
 void CommServer::init()
 {
     tcpServer_->Init(TCP_PORT);
     tcpServer_->StartReadThread(&serverMsgs_, &clients_, &semSM_);
-    pthread_create(&readThread_, NULL, CommServer::readThreadFunc, NULL);
+    pthread_create(&readThread_, NULL, CommServer::readThreadUDP, NULL);
 }
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommServer::~CommServer
+ --
+ -- DATE: 2010-01-23
+ ----------------------------------------------------------------------------------------------------------*/
 CommServer::~CommServer()
 {
     delete tcpServer_;
@@ -51,7 +89,7 @@ CommServer::~CommServer()
 }
 
 /*----------------------------------------------------------------------------------------------------------
- -- FUNCTION: sendUpdate
+ -- FUNCTION: CommServer::sendUpdate
  --
  -- DATE: 2010-01-23
  --
@@ -76,7 +114,7 @@ void CommServer::sendUpdate(const UpdateObject& update, const vector<int>& clien
 }
 
 /*----------------------------------------------------------------------------------------------------------
- -- FUNCTION: sendUpdateToAll
+ -- FUNCTION: CommServer::sendUpdateToAll
  --
  -- DATE: 2010-03-09
  --
@@ -101,7 +139,7 @@ void CommServer::sendUpdateToAll(const UpdateObject& update)
 }
 
 /*----------------------------------------------------------------------------------------------------------
- -- FUNCTION: sendServerMsg
+ -- FUNCTION: CommServer::sendServerMsg
  --
  -- DATE: 2010-01-23
  -- UPDATE: 2010-03-08
@@ -124,7 +162,7 @@ void CommServer::sendServerMsg(ServerMessage sm, const vector<int>& clients)
 }
 
 /*----------------------------------------------------------------------------------------------------------
- -- FUNCTION: sendServerMsg
+ -- FUNCTION: CommServer::sendServerMsg
  --
  -- DATE: 2010-03-08
  --
@@ -136,6 +174,13 @@ void CommServer::sendServerMsg(const ServerMessage& sm)
     tcpServer_->SendMessage(sm);
 }
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommServer::hasNextClientAction
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: If there is a ClientAction in the queue.
+ ----------------------------------------------------------------------------------------------------------*/
 bool CommServer::hasNextClientAction()
 {
     sem_wait(&semUDP_);
@@ -144,6 +189,13 @@ bool CommServer::hasNextClientAction()
     return !empty;
 }
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommServer::nextClientAction
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: The client action in the front of the queue.
+ ----------------------------------------------------------------------------------------------------------*/
 ClientAction CommServer::nextClientAction()
 {
     sem_wait(&semUDP_);
@@ -153,6 +205,13 @@ ClientAction CommServer::nextClientAction()
     return action;
 }
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommServer::hasNextServerMessage
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: If there is a ServerMessage in the queue.
+ ----------------------------------------------------------------------------------------------------------*/
 bool CommServer::hasNextServerMessage()
 {
     bool result;
@@ -162,6 +221,13 @@ bool CommServer::hasNextServerMessage()
     return result;
 }
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommServer::nextServerMessage
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: The ServerMessage in the front of the queue.
+ ----------------------------------------------------------------------------------------------------------*/
 ServerMessage CommServer::nextServerMessage()
 {
     ServerMessage serverMsg;
@@ -172,7 +238,19 @@ ServerMessage CommServer::nextServerMessage()
     return serverMsg;
 }
 
-void* CommServer::readThreadFunc(void* args)
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: CommServer::readThreadUDP
+ --
+ -- DATE: 2010-01-23
+ --
+ -- INTERFACE:
+ --		void* args: NULL
+ --
+ --	RETURN: NULL
+ --
+ -- NOTES: The read thread for the UDP Server.
+ ----------------------------------------------------------------------------------------------------------*/
+void* CommServer::readThreadUDP(void* args)
 {
     while (true)
     {
@@ -188,7 +266,9 @@ void* CommServer::readThreadFunc(void* args)
             sem_post(&CommServer::Instance()->semUDP_);
         }
         else
+        {
             Logger::LogNContinue("Bad packet size received");
+        }
     }
 
     return 0;
