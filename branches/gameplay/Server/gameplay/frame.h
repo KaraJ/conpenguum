@@ -24,11 +24,13 @@
 
 #include <QString>
 #include <list>
-#include "newtObjects.h"
 #include "shot.h"
 #include "ship.h"
+#include "newtObjects.h"
 #include "map.h"
-#include "updateobject.h"
+#include "physics.h"
+#include "../../Core/comm/data/clientaction.h"
+#include "../../Core/comm/data/updateobject.h"
 
 class Frame{
 private:
@@ -38,7 +40,7 @@ private:
                      // collisions by keeping track of what objects occupy
                      // each tile.
 public:
-    Map map; 
+    Map map;
     std::list<Ship> listShip; // list of all ships(players) in the game.
     std::list<Shot> listShot; // list of all active shots in the game.
 public:
