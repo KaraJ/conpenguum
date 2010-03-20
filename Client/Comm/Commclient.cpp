@@ -65,7 +65,6 @@ int CommClient::connect(const string name, const string address, const string po
 {
     if (!isConnected_)
     {
-
         if (!tcpClient_->Connect(address, port))
         	return -1;
         serverMsgs_.push(tcpClient_->Login(name));
