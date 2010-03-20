@@ -225,7 +225,7 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance) {
         for (int i=begin; i <= stop; ++i) {
             for (int j=start; j <= end; ++j) {
                 if ((!vertical && isWall(i, j)) || (vertical && isWall(j, i))) {
-                    return i - start - 1;
+                    return MAX(i - start - 1, -(i - start - 1));
                 }
             }
         }
@@ -233,12 +233,12 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance) {
         for (int i=begin; i >= stop; --i) {
             for (int j=start; j >= end; --j) {
                 if ((!vertical && isWall(i, j)) || (vertical && isWall(j, i))) {
-                    return i - start -1;
+                    return max(i - start -1, -(i - start -1));
                 }
             }
         }
     }
-    return distance;
+    return MAX(distance, -distance);
 }
 
 void Map::ensure(int x, int y) {
