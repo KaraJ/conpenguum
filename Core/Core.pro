@@ -1,8 +1,6 @@
 # DO NOT USE QMAKE TO AUTOGEN THESE, IT DOESN'T WORK
 
 QT += core xml
-TARGET = Debug/Core
-OBJECTS_DIR = obj
 
 HEADERS += Logger.h \
 		   ConfigParser.h \
@@ -30,5 +28,6 @@ SOURCES += Logger.cpp \
            comm/data/updateobject.cpp
 RESOURCES += sharedResources.qrc
 TEMPLATE = lib
-TARGET = debug/Core
+TARGET = Debug/Core
+OBJECTS_DIR = obj
 CONFIG = qt warn_on debug staticlib
