@@ -4,6 +4,8 @@
 #include <vector>
 #include <QGLWidget>
 #include "../../Core/comm/data/updateobject.h"
+#include <map>
+#include "../../Core/resourceMgr/resourcemanager.h"
 
 //PI macros
 #define PI              3.14159265358979323846
@@ -34,9 +36,11 @@ class Renderer : public QGLWidget
 {
 //vars
 private:
+    ResourceManager* resourceManager;
     RenderObject renderList[MAXRENDERCOUNT];
     int renderCount;
-    GLuint textures[3];
+    //GLuint textures[3];
+    map<std::string, GLuint> textures;
 
 //funcs
 public:
