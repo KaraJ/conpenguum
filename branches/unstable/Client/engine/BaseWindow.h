@@ -81,6 +81,7 @@ class BaseWindow : public QMainWindow
 		CommClient::CommClient* theClient;
 		size_t clientID;
 		Renderer* ren;
+		ClientAction* clientAction;
 
     public:
 		BaseWindow ();
@@ -88,6 +89,7 @@ class BaseWindow : public QMainWindow
 		void stopRendering ();
 		void setFrameRate (int rate);
 		void keyPressEvent (QKeyEvent * event);
+		void keyReleaseEvent (QKeyEvent * event);
 		virtual void render ();
 		std::string getChatString();
 		void Start();

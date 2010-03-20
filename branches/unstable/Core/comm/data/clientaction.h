@@ -60,7 +60,7 @@ public:
     inline void setFiring() { mask_.Set(AC_FIREING); }
     inline void unsetFiring() { mask_.Clear(AC_FIREING); }
     inline void setTurningLeft() { mask_.Set(AC_TURNLEFT); }
-    inline void unsetTuringLeft() { mask_.Clear(AC_TURNLEFT); }
+    inline void unsetTurningLeft() { mask_.Clear(AC_TURNLEFT); }
     inline void setTurningRight()  { mask_.Set(AC_TURNRIGHT); }
     inline void unsetTurningRight()  { mask_.Clear(AC_TURNRIGHT); }
     inline void setAccelerating()  { mask_.Set(AC_ACCELERATING); }
