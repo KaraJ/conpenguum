@@ -65,7 +65,6 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this), gameState
  -----------------------------------------------------------------------------*/
 void BaseWindow::Start()
 {
-	theClient->connect("Player", "192.168.0.12");
 	startRendering();
 	ConfigParser cp;
 	map<string, string> params;
