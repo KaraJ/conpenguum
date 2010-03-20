@@ -3,7 +3,7 @@
 #include "physics.h"
 #include "frame.h"
 #include "ship.h"
-#include "clientaction.h"
+#include "../../Core/comm/data.clientaction.h"
 
 using namespace std;
 int main() {

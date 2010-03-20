@@ -2,7 +2,7 @@
 #define SHIP_H
 
 #include "newtObjects.h"
-#include "clientaction.h"
+#include "../../Core/comm/data/clientaction.h"
 
 /*----------------------------------------------------------------------------
 --
