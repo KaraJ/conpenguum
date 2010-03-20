@@ -7,7 +7,7 @@
 #include "Shot.h"
 #include "Ship.h"
 
-#define C2G(coord) coord / tileSize
+#define C2G(coord) ((coord) / tileSize)
 
 class Tile {
 private:
