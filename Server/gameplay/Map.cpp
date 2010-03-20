@@ -208,21 +208,22 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance) {
     int start = C2G(vertical ? position.x() : position.y());
     int end = C2G((vertical ? position.x() : position.y()) + size);
     // movement
-    int begin = C2G(vertical ? position.y() : position.x());
-    int stop = C2G((vertical ? position.y() : position.x()) + distance);
+    int begin = C2G((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0));
+    int stop = C2G((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0) + distance);
     // sanity checks:
-    if (start < 0 || end < 0 || begin < 0 || stop < 0) {
-        cerr << "value below 0" << endl;
+    if (start < 0 || end < 0 || begin < 0) {
+        cerr << "value " << start << 'x' << end << ',' << begin << 'x' << stop << " below 0" << endl;
         return -1;
     }
-    if (vertical && (start > width || end > width || begin > height || stop > height)) {
+    if (vertical && (start > width || end > width || begin > height)) {
         cerr << "vertical value " << start << 'x' << end << ',' << begin << 'x' << stop << " above " << width << 'x' << height << endl;
         return -1;
     }
-    if (!vertical && (start > height || end > height || begin > width || stop > width)) {
+    if (!vertical && (start > height || end > height || begin > width)) {
         cerr << "horizontal " << start << 'x' << end << ',' << begin << 'x' << stop << " value above " << width << 'x' << height << endl;
         return -1;
     }
+    cout << "values: " << start << 'x' << end << ',' << begin << 'x' << stop << endl;
     // calculation
     if (distance > 0) {
         for (int i=begin; i <= stop; ++i) {
@@ -236,12 +237,12 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance) {
         for (int i=begin; i >= stop; --i) {
             for (int j=start; j >= end; --j) {
                 if ((!vertical && isWall(i, j)) || (vertical && isWall(j, i))) {
-                    return max(i - start -1, -(i - start -1));
+                    return MAX(i - start -1, -(i - start -1));
                 }
             }
         }
     }
-    return MAX(distance, -distance);
+    return MAX(stop - start - 1, -(stop - start - 1));
 }
 
 void Map::ensure(int x, int y) {
