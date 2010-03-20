@@ -1,5 +1,7 @@
 #include "BaseWindow.h"
 
+#include "../../Core/ConfigParser.h"
+
 using namespace std;
 
 /*------------------------------------------------------------------------------
@@ -27,7 +29,7 @@ using namespace std;
  -- the QTimer object used for timing.
  --
  -----------------------------------------------------------------------------*/
-BaseWindow::BaseWindow() : timer(this), frameRate(DEFAULT_FRAME_RATE), gameState(32)
+BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this), gameState(32)
 {
 	connect(&timer, SIGNAL(timeout()), this, SLOT(timerEvent()));
 	chatting = false;
@@ -63,8 +65,19 @@ BaseWindow::BaseWindow() : timer(this), frameRate(DEFAULT_FRAME_RATE), gameState
  -----------------------------------------------------------------------------*/
 void BaseWindow::Start()
 {
-	theClient->connect("Player", "192.168.0.11");
-	startRendering();
+	ConfigParser cp;
+	map<string, string> params;
+
+	if (cp.Parse("client.conf", params) && params.find("username") != params.end()
+			                            && params.find("server_ip") != params.end()
+			                            && params.find("tcp_port") != params.end())
+	{
+		theClient->connect(params["username"], params["server_ip"], params["tcp_port"]);
+		startRendering();
+	}
+	else
+		cerr << "Invalid configuration file." << endl;
+
 }
 
 /*------------------------------------------------------------------------------
@@ -361,9 +374,9 @@ void BaseWindow::updateGameState ()
 		gameObj->angle = updateObj.getRotation();		
 	}
 
-	for (int i = 32; i < gameState.size(); i++)
+	for (size_t i = 32; i < gameState.size(); i++)
 	{
-		GameObject& animatedObj = gameState.at(i);
+		GameObject &animatedObj = gameState.at(i);
 		std::vector<Image> images = animationMap[animatedObj.objectId].getAnimationImages();
 
 		if (animatedObj.objectId == 32) // Bullets
