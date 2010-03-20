@@ -30,7 +30,7 @@ ResourceDefinition* ResourceManager::GetResource(int ResourceType, int ResourceN
     int key = (ResourceType<<16) + ResourceName;
 
     //check if we've already loaded this resource
-    if(resourceMap.find(key))
+    if(resourceMap.find(key) != resourceMap.end())
         return resourceMap[key];
 
     switch(ResourceType)
@@ -40,10 +40,10 @@ ResourceDefinition* ResourceManager::GetResource(int ResourceType, int ResourceN
             QDomDocument doc("ships");
             QFile file(":/resources/ships.xml");
             if (!file.open(QIODevice::ReadOnly))
-                return;
+                return NULL;
             if (!doc.setContent(&file)) {
                 file.close();
-                return;
+                return NULL;
             }
             file.close();
             ShipDefinition *rd = new ShipDefinition();
@@ -66,27 +66,27 @@ ResourceDefinition* ResourceManager::GetResource(int ResourceType, int ResourceN
                 }
                 QDomElement data = ship.firstChildElement();
                 rd->velocity_thrust = data.text().toInt();
-                data = data.nextSibling();
+                data = data.nextSibling().toElement();
                 rd->velocity_shot = data.text().toInt();
-                data = data.nextSibling();
+                data = data.nextSibling().toElement();
                 rd->velocity_max = data.text().toInt();
-                data = data.nextSibling();
+                data = data.nextSibling().toElement();
                 rd->rotation_rate = data.text().toInt();
-                data = data.nextSibling();
+                data = data.nextSibling().toElement();
                 rd->ship_hit_dist = data.text().toInt();
-                data = data.nextSibling();
+                data = data.nextSibling().toElement();
                 rd->texture = data.text().toStdString();
-                data = data.nextSibling();
+                data = data.nextSibling().toElement();
                 rd->texture_xoffset = data.text().toFloat();
-                data = data.nextSibling();
+                data = data.nextSibling().toElement();
                 rd->texture_yoffset = data.text().toFloat();
-                data = data.nextSibling();
+                data = data.nextSibling().toElement();
                 rd->texture_width = data.text().toFloat();
-                data = data.nextSibling();
+                data = data.nextSibling().toElement();
                 rd->texture_height = data.text().toFloat();
-                data = data.nextSibling();
+                data = data.nextSibling().toElement();
                 rd->object_width = data.text().toInt();
-                data = data.nextSibling();
+                data = data.nextSibling().toElement();
                 rd->object_height = data.text().toInt();
 
                 break;
@@ -95,13 +95,14 @@ ResourceDefinition* ResourceManager::GetResource(int ResourceType, int ResourceN
             return rd;
         }
     case SHOT:
+        {
         QDomDocument doc("shots");
         QFile file(":/resources/shots.xml");
         if (!file.open(QIODevice::ReadOnly))
-            return;
+            return NULL;
         if (!doc.setContent(&file)) {
             file.close();
-            return;
+            return NULL;
         }
         file.close();
         ShotDefinition *rd = new ShotDefinition();
@@ -124,24 +125,24 @@ ResourceDefinition* ResourceManager::GetResource(int ResourceType, int ResourceN
             }
             QDomElement data = shot.firstChildElement();
             rd->texture = data.text().toStdString();
-            data = data.nextSibling();
+            data = data.nextSibling().toElement();
             rd->texture_xoffset = data.text().toFloat();
-            data = data.nextSibling();
+            data = data.nextSibling().toElement();
             rd->texture_yoffset = data.text().toFloat();
-            data = data.nextSibling();
+            data = data.nextSibling().toElement();
             rd->texture_width = data.text().toFloat();
-            data = data.nextSibling();
+            data = data.nextSibling().toElement();
             rd->texture_height = data.text().toFloat();
-            data = data.nextSibling();
+            data = data.nextSibling().toElement();
             rd->object_width = data.text().toInt();
-            data = data.nextSibling();
+            data = data.nextSibling().toElement();
             rd->object_height = data.text().toInt();
 
             break;
         }
         resourceMap.insert(std::pair<int,ResourceDefinition*>(key,rd));
         return rd;
-    }
+        }
     default:
         return NULL;
     }
