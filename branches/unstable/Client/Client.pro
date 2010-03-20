@@ -1,6 +1,7 @@
 # DO NOT USE QMAKE TO AUTOGEN THESE, IT DOESN'T WORK
 
 QT += core gui xml
+OBJECTS_DIR = obj
 TEMPLATE = app
 TARGET = Client
 
@@ -34,5 +35,7 @@ RESOURCES += menuitems.qrc
 FORMS += backside.ui
 contains(QT_CONFIG, opengl):QT += opengl
 LIBS += -lCore \
-    -L../Core/debug
-    
+    -L../Core/Debug
+
+
+

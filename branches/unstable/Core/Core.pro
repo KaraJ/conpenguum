@@ -1,6 +1,8 @@
 # DO NOT USE QMAKE TO AUTOGEN THESE, IT DOESN'T WORK
 
 QT += core xml
+TARGET = Debug/Core
+OBJECTS_DIR = obj
 
 HEADERS += Logger.h \
 		   ConfigParser.h \

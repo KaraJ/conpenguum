@@ -4,6 +4,7 @@ CONFIG = qt
 TEMPLATE = app
 TARGET = Server
 QT += gui core xml
+OBJECTS_DIR = obj
 
 # Input
 HEADERS += gameplay/Frame.h \
