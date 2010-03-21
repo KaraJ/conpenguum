@@ -73,7 +73,7 @@ void BaseWindow::Start()
 	//TODO: need to make the ipbox "capture" the thread so that we can only continue execution AFTER you have clicked ok on the dialog.
 	ipbox->show();
 
-	cerr << "name: " << w->name.toStdString().c_str() << " ip: " << w->ip.toStdString().c_str() << " port: " << w->port.toStdString().c_str() << endl;
+	cerr << "name: " << ipbox->name.toStdString().c_str() << " ip: " << ipbox->ip.toStdString().c_str() << " port: " << ipbox->port.toStdString().c_str() << endl;
 
 	if (cp.Parse("client.conf", params) && params.find("username") != params.end()
 			                            && params.find("server_ip") != params.end()
