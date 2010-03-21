@@ -40,12 +40,16 @@ private:
     RenderObject renderList[MAXRENDERCOUNT];
     int renderCount;
     //GLuint textures[3];
-    std::map<std::string, GLuint> textures;
+    //std::map<std::string, GLuint> textures;
+    std::map<std::string, ResourceDefinition*> textures;
+
+
 
 //funcs
 public:
     Renderer(QWidget *parent);
     void Initialize();
+    void LoadTextures(); // ** JL ADDED TO LOAD TEXTURE MAP **/
     void Render();
     void buildRenderList(std::vector<UpdateObject> objectlist);
 
