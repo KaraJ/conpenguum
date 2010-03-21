@@ -46,7 +46,7 @@ void SocketWrapper::Listen(int fd, int backlog)
         Logger::LogNQuit("Listen error.");
 }
 
-void SocketWrapper::Write(int sock, const void *vptr, size_t n)
+bool SocketWrapper::Write(int sock, const void *vptr, size_t n)
 {
     size_t nleft = n;
     ssize_t nwritten;
@@ -55,11 +55,15 @@ void SocketWrapper::Write(int sock, const void *vptr, size_t n)
     while (nleft > 0)
     {
         if ( (nwritten = write(sock, buff, nleft)) <= 0)
-            Logger::LogNQuit("Write error");
+		{
+        	Logger::LogNContinue("Write error");
+        	return false;
+		}
 
         nleft -= nwritten;
         buff  += nwritten;
     }
+    return true;
 }
 
 //TODO: Check all calls to this to make sure they're checking the return values
