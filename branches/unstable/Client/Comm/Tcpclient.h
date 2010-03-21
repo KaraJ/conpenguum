@@ -25,6 +25,7 @@ public:
     void SendMessage(std::string message);
     bool IsConnected();
     void Logout();
+    void setClientId(int id) { clientId_ = id; }
 
 private:
     static void* ReadThread(void*);
@@ -34,6 +35,7 @@ private:
     static sem_t *semSM_;
 
     int  tcpSocket;
+    int clientId_;
     pthread_t rThread_;
 };
 
