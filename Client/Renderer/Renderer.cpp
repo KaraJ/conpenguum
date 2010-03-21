@@ -13,7 +13,7 @@ using namespace std;
 Renderer::Renderer(QWidget *parent) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent)
 {
     resourceManager = ResourceManager::GetInstance();
-    Initialize();
+    //Initialize();
 }
 
 void Renderer::LoadTextures()
