@@ -6,6 +6,8 @@
 using namespace std;
 
 int TCPServer::clientSockets_[MAX_CLIENTS];
+int TCPServer::maxClientSocket_ = 0;
+fd_set TCPServer::allSet_;
 sem_t *TCPServer::semSM_;
 queue<ServerMessage> *TCPServer::msgBuff_;
 map<int,in_addr> *TCPServer::clientAddressMap_;
@@ -49,21 +51,25 @@ void* TCPServer::ReadThread(void* vptr)
 {
 	int listenSocket = *(int*) vptr;
 	sockaddr_in sa;
-	int clientSocket, ready, maxClientSocket = listenSocket;
+	int clientSocket, ready;
 	uint size;
-	fd_set currSet, allSet;
+	fd_set currSet;
 	ServerMessage msgBuff;
 	bool isFull;
 
-	FD_ZERO(&allSet);
-	FD_SET(listenSocket, &allSet);
+	FD_ZERO(&allSet_);
+	FD_SET(listenSocket, &allSet_);
 	SocketWrapper::Listen(listenSocket, 5);
+	maxClientSocket_ = listenSocket;
+
+	for (int i = 0; i < MAX_CLIENTS; i++)
+		clientSockets_[i] = 0;
 
 	while (true)
 	{
-		currSet = allSet;
+		currSet = allSet_;
 
-		ready = select(maxClientSocket + 1, &currSet, NULL, NULL, NULL);
+		ready = select(maxClientSocket_ + 1, &currSet, NULL, NULL, NULL);
 
 		if (FD_ISSET(listenSocket, &currSet))
 		{
@@ -76,9 +82,9 @@ void* TCPServer::ReadThread(void* vptr)
 				{
 					clientAddressMap_->insert(pair<int, in_addr>(i,sa.sin_addr));
 					clientSockets_[i] = clientSocket;
-					if (clientSocket > maxClientSocket)
-						maxClientSocket = clientSocket;
-					FD_SET(clientSocket, &allSet);
+					if (clientSocket > maxClientSocket_)
+						maxClientSocket_ = clientSocket;
+					FD_SET(clientSocket, &allSet_);
 					isFull = false;
 					break;
 				}
@@ -86,8 +92,8 @@ void* TCPServer::ReadThread(void* vptr)
 			if (isFull)
 			{
 				ServerMessage m;
-				m.SetMsgType(ServerMessage::MT_FULL);
 				m.SetData("");
+				m.SetMsgType(ServerMessage::MT_FULL);
 				TCPConnection::WriteMessage(clientSocket, m);
 			}
 
@@ -113,34 +119,37 @@ void* TCPServer::ReadThread(void* vptr)
 					msgBuff_->push(msgBuff);
 					sem_post(semSM_);
 				}
-				else
-				{
-					msgBuff.SetClientID(i);
-					msgBuff.SetData("");
-					msgBuff.SetMsgType(ServerMessage::MT_LOGOUT);
-					sem_wait(semSM_);
-					msgBuff_->push(msgBuff);
-					sem_post(semSM_);
-					FD_CLR(clientSocket, &allSet);
-					clientSockets_[i] = 0;
-					if (clientSockets_[i] == maxClientSocket)
-						maxClientSocket--;
-					clientAddressMap_->erase(i);
-					close(clientSocket);
-				}
+				else //Read failed on client socket, DC
+					ClientDC(i, clientSocket);
 			}
-
 			if (--ready == 0)
 				continue;
 		}
 	}
-
 	return 0;
+}
+
+void TCPServer::ClientDC(int clientId, int clientSocket)
+{
+	ServerMessage msgBuff;
+	msgBuff.SetClientID(clientId);
+	msgBuff.SetData("");
+	msgBuff.SetMsgType(ServerMessage::MT_LOGOUT);
+	sem_wait(semSM_);
+	msgBuff_->push(msgBuff);
+	sem_post(semSM_);
+	FD_CLR(clientSocket, &allSet_);
+	clientSockets_[clientId] = 0;
+	if (clientSocket == maxClientSocket_)
+		maxClientSocket_--;
+	clientAddressMap_->erase(clientId);
+	close(clientSocket);
 }
 
 void TCPServer::SendMessage(ServerMessage msg)
 {
-	TCPConnection::WriteMessage(clientSockets_[msg.GetClientID()], msg);
+	if (!TCPConnection::WriteMessage(clientSockets_[msg.GetClientID()], msg))
+		ClientDC(msg.GetClientID(), clientSockets_[msg.GetClientID()]);
 }
 
 void TCPServer::SendMessageToAll(ServerMessage msg)
@@ -150,7 +159,8 @@ void TCPServer::SendMessageToAll(ServerMessage msg)
 		if (clientSockets_[i])
 		{
 			msg.SetClientID(clientSockets_[i]);
-			TCPConnection::WriteMessage(msg.GetClientID(), msg);
+			if (!TCPConnection::WriteMessage(msg.GetClientID(), msg))
+				ClientDC(i, clientSockets_[i]);
 		}
 	}
 }

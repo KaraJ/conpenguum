@@ -27,7 +27,12 @@ public:
 	static void* ReadThread(void*);
 
 private:
+	static void ClientDC(int, int);
+
+private:
 	int listenSocket_;
+	static fd_set allSet_;
+	static int maxClientSocket_;
 	static int clientSockets_[MAX_CLIENTS];
 	static sem_t *semSM_;
 	static std::queue<ServerMessage> *msgBuff_;
