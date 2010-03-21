@@ -9,8 +9,15 @@
 #define SHIPSIZE        SHIPRADIUS*2
 #define SHIP_HIT_DIST   625 // 25^2, the distance at which ships are hit.
 #define TILE_SIZE       25  // the size of a side of a tile.
+
 using namespace std;
 
+
+Frame::Frame(QString filename): frameTimer(0), map(filename)
+{
+	for (size_t i = 0; i < MAX_CLIENTS; ++i)
+		listShip[i] = 0;
+}
 /*-----------------------------------------------------------------------------
 --  FUNCTION:   tick
 --
@@ -55,9 +62,10 @@ void Frame::tick(void){
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Frame::addShip(Ship newShip){
+void Frame::addShip(size_t clientID)
+{
     // adds a ship to the ship list
-    listShip.push_back(newShip);
+	listShip[clientID] = new Ship(clientID);
 }
 
 /*-----------------------------------------------------------------------------
@@ -103,15 +111,28 @@ void Frame::addShot(Shot newShot){
 --  RETURNS:    Ship
 --
 ------------------------------------------------------------------------------*/
-list<Ship>::iterator Frame::getShip(int shipID){
-    list<Ship>::iterator it;
-    for(it = listShip.begin(); it != listShip.end(); ++it){
-        if(it->id == shipID){
-            return it;
+Ship* Frame::getShip(size_t shipID)
+{
+    for(size_t i = 0; i < MAX_CLIENTS; ++i)
+    {
+        if(listShip[i] != 0 && listShip[i]->getID() == shipID)
+            return listShip[i];
+    }
+
+    return 0;
+}
+
+void Frame::removeShip(size_t clientID)
+{
+    for(size_t i = 0; i < MAX_CLIENTS; ++i)
+    {
+        if(listShip[i] != 0 && listShip[i]->getID() == clientID)
+        {
+        	delete listShip[i];
+        	listShip[i] = 0;
+            return;
         }
     }
-	return it;
-	//BAD
 }
 
 /*-----------------------------------------------------------------------------
@@ -133,8 +154,9 @@ list<Ship>::iterator Frame::getShip(int shipID){
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Frame::spawnShip(int shipID){
-    list<Ship>::iterator ship = getShip(shipID);
+void Frame::spawnShip(size_t shipID)
+{
+    Ship *ship = getShip(shipID);
     QPoint spawnPoint(100,100); // map function to return a safe spawn point
     ship->active = true;
     ship->position = spawnPoint;
@@ -159,43 +181,42 @@ void Frame::spawnShip(int shipID){
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Frame::updateShips(void){
-    list<Ship>::iterator it;
+void Frame::updateShips(void)
+{
     int dist;
-    for(it = listShip.begin(); it != listShip.end(); ++it){
-        if(!(it->active)){
-            continue;
-        }
-        // set new action mask
-        // HERE
-        dist = map.canMove(it->position, false, SHIPSIZE, it->vector.x());
-        it->position.setX(it->position.x() + dist);
-        dist = map.canMove(it->position, true, SHIPSIZE, it->vector.y());
-        it->position.setX(it->position.y() + dist);
+    for(size_t i = 0; i < MAX_CLIENTS; ++i)
+    {
+        if(listShip[i] == 0 && listShip[i]->active)
+        {
+			// set new action mask
+			// HERE
+			dist = map.canMove(listShip[i]->position, false, SHIPSIZE, listShip[i]->vector.x());
+			listShip[i]->position.setX(listShip[i]->position.x() + dist);
+			dist = map.canMove(listShip[i]->position, true, SHIPSIZE, listShip[i]->vector.y());
+			listShip[i]->position.setX(listShip[i]->position.y() + dist);
 
-        if(it->actionMask.isAccelerating()){
-            // thrust forward
-            it->vector += rotVelToVec(it->rotation, VELOCITY_THRUST);
-        }
-        if(it->actionMask.isDecelerating()){
-            // thrust reverse
-            it->vector -= rotVelToVec(it->rotation, -VELOCITY_THRUST);
-        }
-        if(it->actionMask.isTurningRight()){
-            // turn right
-            it->rotation += ROTATION_RATE;
-        }
-        if(it->actionMask.isTurningLeft()){
-            // turn left
-            it->rotation += ROTATION_RATE;
-        }
-        if(it->actionMask.isFiring()){
-            QPoint spawnVec, shotVec;
-            spawnVec = rotVelToVec(it->rotation, SHIPRADIUS);
-            shotVec =  rotVelToVec(it->rotation, VELOCITY_SHOT);
-            Shot shot(it->position.x() + spawnVec.x(), it->position.y()
-                + spawnVec.y(), shotVec.x(), shotVec.y(), (*it).id);
-            addShot(shot);
+			if(listShip[i]->actionMask.isAccelerating()) // thrust forward
+				listShip[i]->vector += rotVelToVec(listShip[i]->rotation, VELOCITY_THRUST);
+
+			if(listShip[i]->actionMask.isDecelerating()) // thrust reverse
+				listShip[i]->vector -= rotVelToVec(listShip[i]->rotation, -VELOCITY_THRUST);
+
+			if(listShip[i]->actionMask.isTurningRight()) // turn right
+				listShip[i]->rotation += ROTATION_RATE;
+
+			if(listShip[i]->actionMask.isTurningLeft())
+			{
+				// turn left
+				listShip[i]->rotation += ROTATION_RATE;
+			}
+			if(listShip[i]->actionMask.isFiring()){
+				QPoint spawnVec, shotVec;
+				spawnVec = rotVelToVec(listShip[i]->rotation, SHIPRADIUS);
+				shotVec =  rotVelToVec(listShip[i]->rotation, VELOCITY_SHOT);
+				Shot shot(listShip[i]->position.x() + spawnVec.x(), listShip[i]->position.y()
+					+ spawnVec.y(), shotVec.x(), shotVec.y(), listShip[i]->getID());
+				addShot(shot);
+			}
         }
     }
 }
@@ -220,7 +241,8 @@ void Frame::updateShips(void){
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Frame::updateShots(void){
+void Frame::updateShots(void)
+{
     list<Shot>::iterator it;
     for(it = listShot.begin(); it != listShot.end(); ++it){
         // add shot vec to pos
@@ -247,15 +269,16 @@ void Frame::updateShots(void){
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Frame::printShips(void){
-    list<Ship>::iterator it;
-    for(it = listShip.begin(); it != listShip.end(); ++it){
-        cout << (*it).id << ": P" << (*it).position.x()
-            << ',' <<  (*it).position.y() << " V" <<(*it).vector.x()
-            << ',' <<  (*it).vector.y() <<(it->active?" a":" d") <<
-             " r" << it->rotation << endl;
-    }
-}
+//void Frame::printShips(void)
+//{
+//    list<Ship>::iterator it;
+//    for(it = listShip.begin(); it != listShip.end(); ++it){
+//        cout << (*it).id << ": P" << (*it).position.x()
+//            << ',' <<  (*it).position.y() << " V" <<(*it).vector.x()
+//            << ',' <<  (*it).vector.y() <<(it->active?" a":" d") <<
+//             " r" << it->rotation << endl;
+//    }
+//}
 
 /*-----------------------------------------------------------------------------
 --  FUNCTION:   dist2Points
@@ -276,7 +299,8 @@ void Frame::printShips(void){
 --  RETURNS:    Int value of the distance
 --
 ------------------------------------------------------------------------------*/
-int Frame::dist2Points(QPoint point1, QPoint point2){
+int Frame::dist2Points(QPoint point1, QPoint point2)
+{
     return (point1.x()-point2.x())*(point1.x()-point2.x()) +
             (point1.y()-point2.y())*(point1.y()-point2.y());
 }
@@ -284,17 +308,20 @@ int Frame::dist2Points(QPoint point1, QPoint point2){
 /**
 NEEDS COMMENTS
 **/
-list<UpdateObject*> Frame::ListShip2listUpdateObject(){
-    list<Ship>::iterator it;
-    list<UpdateObject*> udList;
-    UpdateObject *uo = new UpdateObject(32);
+vector<UpdateObject> Frame::ListShip2listUpdateObject()
+{
+    vector<UpdateObject> udList;
 
-    for(it = listShip.begin(); it != listShip.end(); ++it){
-        uo = new UpdateObject(it->actionMask);
-        uo->setRotation(it->rotation);
-        uo->setPosition(it->position);
-        udList.push_back(uo);
-    }
+    for (size_t i = 0; i < MAX_CLIENTS; ++i)
+    {
+		if (listShip[i] != 0)
+		{
+			UpdateObject uo(listShip[i]->actionMask);
+			uo.setRotation(listShip[i]->rotation);
+			uo.setPosition(listShip[i]->position);
+			udList.push_back(uo);
+		}
+	}
 
     return udList;
 }
@@ -302,12 +329,8 @@ list<UpdateObject*> Frame::ListShip2listUpdateObject(){
 /**
 NEEDS COMMENTS
 **/
-void Frame::updateClientActions(list <UpdateObject*> updateObjectList){
-	list<Ship>::iterator shipIt;
-	list<UpdateObject*>::iterator udIt;
-
-	for(udIt = updateObjectList.begin(); udIt != updateObjectList.end(); ++udIt){
-		getShip((*udIt)->getActions().getObjectID())->applyActionMask((*udIt)->getActions());
-
-	}
+void Frame::updateClientActions(vector<ClientAction> clientActions)
+{
+	for (size_t i = 0; i < clientActions.size(); ++i)
+		listShip[i]->applyActionMask(clientActions[i]);
 }

@@ -23,16 +23,12 @@
 
 class Ship : public NewtObject
 {
-private:
-	static int currID;
 public:
     int rotation;
     ClientAction actionMask;
     bool active;
-private:
-	int nextID(){return currID++;}
 public:
-    Ship():NewtObject(0, 0, 0, 0, nextID()), rotation(0), actionMask(id), active(false){}
+    Ship(size_t clientID):NewtObject(0, 0, 0, 0, clientID), rotation(0), actionMask(clientID), active(false){}
     int getRot(){ return rotation; }
     void applyActionMask(ClientAction newMask); // updates the ship based on the current action mask
 };

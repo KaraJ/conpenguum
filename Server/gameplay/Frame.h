@@ -24,6 +24,9 @@
 
 #include <QString>
 #include <list>
+#include <vector>
+
+#include "../../Core/comm/globals.h"
 #include "Shot.h"
 #include "Ship.h"
 #include "NewtObjects.h"
@@ -42,23 +45,24 @@ private:
                      // each tile.
 public:
     Map map;
-    std::list<Ship> listShip; // list of all ships(players) in the game.
+    Ship *listShip[MAX_CLIENTS]; // list of all ships(players) in the game.
     std::list<Shot> listShot; // list of all active shots in the game.
 public:
-    Frame(QString filename): frameTimer(0), map(filename){};
+    Frame(QString filename);
     void tick();
-    void addShip(Ship newShip);
-    void addShot(Shot newShot);
-    std::list<Ship>::iterator getShip(int shipID);
-	void updateClientActions(std::list <UpdateObject*>);
+    void addShip(size_t clientID);
+	void updateClientActions(std::vector <ClientAction>);
+    void spawnShip(size_t shipID);
+    void removeShip(size_t clientID);
+    std::vector<UpdateObject> ListShip2listUpdateObject();
+
+private:
+    int dist2Points(QPoint point1, QPoint point2);
     void fragShip(Ship ship);
-    void spawnShip(int shipID);
-    void destroyShot(int shotID);
+    void addShot(Shot newShot);
+    Ship* getShip(size_t shipID);
     void updateShips();
     void updateShots();
-    std::list<UpdateObject*> ListShip2listUpdateObject();
-    // for testing
-    void printShips();
-    int dist2Points(QPoint point1, QPoint point2);
+    void destroyShot(size_t shotID);
 };
 #endif // FRAME_H
