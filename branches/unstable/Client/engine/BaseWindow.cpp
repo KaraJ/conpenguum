@@ -1,6 +1,7 @@
 #include "BaseWindow.h"
 
 #include "../../Core/ConfigParser.h"
+#include "ipbox.h"
 
 using namespace std;
 
@@ -67,6 +68,12 @@ void BaseWindow::Start()
 {
 	ConfigParser cp;
 	map<string, string> params;
+
+	IpBox *ipbox = new IpBox(this);
+	//TODO: need to make the ipbox "capture" the thread so that we can only continue execution AFTER you have clicked ok on the dialog.
+	ipbox->show();
+
+	cerr << "name: " << w->name.toStdString().c_str() << " ip: " << w->ip.toStdString().c_str() << " port: " << w->port.toStdString().c_str() << endl;
 
 	if (cp.Parse("client.conf", params) && params.find("username") != params.end()
 			                            && params.find("server_ip") != params.end()
