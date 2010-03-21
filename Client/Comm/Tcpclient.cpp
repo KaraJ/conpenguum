@@ -10,9 +10,10 @@ bool TCPClient::connected_;
 void TCPClient::SendMessage(string message)
 {
 	ServerMessage msgBuff;
-	msgBuff.SetClientID(0); //TODO: Why is this hard coded?
+	msgBuff.SetClientID(clientId_); //TODO: Why is this hard coded?
 	msgBuff.SetData(message);
 	msgBuff.SetMsgType(ServerMessage::MT_CHAT);
+	TCPConnection::WriteMessage(tcpSocket, msgBuff);
 }
 
 void* TCPClient::ReadThread(void* param)
