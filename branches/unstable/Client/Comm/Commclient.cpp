@@ -70,7 +70,7 @@ int CommClient::connect(const string name, const string address, const string po
         	return -1;
         serverMsgs_.push(tcpClient_->Login(name));
         id = serverMsgs_.front().GetClientID();
-        tcpClient_->setClientId(id;
+        tcpClient_->setClientId(id);
         tcpClient_->StartRdThread(&serverMsgs_, &semTCP_);
 
         servAddr.sin_family = AF_INET;
