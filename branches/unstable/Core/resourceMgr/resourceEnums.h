@@ -4,23 +4,23 @@
 enum RESOURCETYPES
 {
     SHIP = 0,
-    SHOT,
+    SHOT = 1,
 
-    NUMRESOURCETYPES
+    NUMRESOURCETYPES = 2
 };
 
 enum SHIPTYPES
 {
     WARBIRD = 0,
 
-    NUMSHIPS
+    NUMSHIPS = 1 // Added JL
 };
 
 enum SHOTTYPES
 {
     BASIC = 0,
 
-    NUMSHOTS
+    NUMSHOTS = 1 // Added JL
 };
 
 
