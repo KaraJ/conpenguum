@@ -44,16 +44,15 @@ class NewtObject
 public:
   QPoint position;
   QPoint vector;
-  int id;
+  size_t id;
 private:
     // next ID to be used
 public:
-    NewtObject(): position(0,0), vector(0,0), id(0){}
-    NewtObject(int pX, int pY, int vX, int vY, int ID): position(pX, pY),
+    NewtObject(int pX, int pY, int vX, int vY, size_t ID): position(pX, pY),
         vector(vX ,vY), id(ID){}
     QPoint getPosition(){ return position; }
     QPoint getVector(){ return vector; }
-    int getID(){ return id; }
+    size_t getID(){ return id; }
 private:
 };
 #endif // NEWTOBJCECTS_H

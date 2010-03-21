@@ -148,11 +148,8 @@ void CommServer::sendUpdateToAll(const UpdateObject& update)
  --  const vector<int>& clients: Reference to vector of client ids to send message to - if NULL then
  --								 send to all clients
  ----------------------------------------------------------------------------------------------------------*/
-void CommServer::sendServerMsg(ServerMessage sm, const vector<int>& clients)
+void CommServer::sendServerMsg(ServerMessage sm, const vector<size_t>& clients)
 {
-    if (clients.size() == 0)
-        tcpServer_->SendMessageToAll(sm);
-
     for (size_t i = 0; i < clients.size(); ++i)
     {
         sm.SetClientID(clients[i]);

@@ -28,11 +28,17 @@ ServerEngine::ServerEngine()
 
 	if (cp.Parse("server.conf", params) && params.find("tcp_port") != params.end())
 	{
-		server = CommServer::Instance();
-		server -> init(params["tcp_port"]);
+		commServer = CommServer::Instance();
+		commServer -> init(params["tcp_port"]);
 	}
 	else
 		cerr << "Invalid configuration file." << endl;
+
+	gameState = new Frame("gameplay/map.xml");
+
+	timer = new QTimer(this);
+	connect(timer, SIGNAL(timeout()), this, SLOT(timeout()));
+	timer->start(30);
 }
 
 /*------------------------------------------------------------------------------
@@ -50,62 +56,53 @@ ServerEngine::ServerEngine()
  -- Messages and actions that come from clients.
  --
  -----------------------------------------------------------------------------*/
-void ServerEngine::RunServer()
+void ServerEngine::timeout()
 {
-	while(1)
+	vector<ClientAction> caBuff;
+	vector<UpdateObject> uoBuff;
+
+	while (commServer->hasNextServerMessage()) //Handle all control messages
 	{
-		/*todo: this is currently polling, very inefficient,
-			consult with the comm team to figure out
-			how this should be implemented.*/
-		if (server -> hasNextServerMessage())
+		ServerMessage sm = commServer->nextServerMessage();
+
+		//user has logged in, add client id to ID vector
+		if (sm.GetMsgType() == ServerMessage::MT_LOGIN)
 		{
-			ServerMessage sm = server->nextServerMessage();
-			
-			//user has logged in, add client id to ID vector
-			if (sm.GetMsgType() == ServerMessage::MT_LOGIN)
-			{
-				cout << "client logged in" << endl;
-				ids.push_back(sm.GetClientID());
-				ServerMessage init;
-				init.SetMsgType(ServerMessage::MT_INIT);
-				init.SetClientID(sm.GetClientID());
-				init.SetData("");
-				server->sendServerMsg(init);
-				/*check if we need to send the init message
-					or if its sent automatically on connect*/
-			}
-			//user has logged out, remove client id from vector
-			if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)
-			{
-				cout << "client logged out" << endl;
-				size_t id = sm.GetClientID();
-				vector<int>::iterator it;
-				//iterate over all vectors and find the ID to delete
-				for (it = ids.begin(); it != ids.end(); it++)
-				{
-					if (id == *it)
-					{
-						ids.erase(it);
-						break; // added to avoid segfault
-					}
-				}
-			}
-			//receive chat message.. send to all clients
-			if (sm.GetMsgType() == ServerMessage::MT_CHAT)
-			{
-				cout << "Received chat msg: " << sm.GetData() << endl;
-				server->sendServerMsg(sm, ids);
-			}
+			cout << "client logged in" << endl;
+			gameState->addShip(sm.GetClientID());
+			gameState->spawnShip(sm.GetClientID());
+			sm.SetMsgType(ServerMessage::MT_INIT); //TODO:Get score from gameplay
+			sm.SetData("");
+			commServer->sendServerMsg(sm);
 		}
-		if (server->hasNextClientAction())
+		if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)
 		{
-			ClientAction ca = server->nextClientAction();
-			cout << "Received client action" << endl;
-			ca.print();
-			cout.flush();
-			//UpdateObject uo(ca.getClientID());
-			//gameplay updates updateObject here
-			//server -> sendUpdate(uo, ids);
+			cout << "client logged out" << endl;
+			gameState->removeShip(sm.GetClientID());
+		}
+		//receive chat message.. send to all clients
+		if (sm.GetMsgType() == ServerMessage::MT_CHAT)
+		{
+			cout << "Received chat msg: " << sm.GetData() << endl;
+			commServer->sendServerMsg(sm);
 		}
 	}
+
+	while (commServer->hasNextClientAction()) //Grab all client actions
+	{
+		ClientAction ca = commServer->nextClientAction();
+		cout << "Received client action" << endl;
+		ca.print();
+		cout.flush();
+		caBuff.push_back(ca);
+	}
+
+	if (caBuff.size() > 0) //If anyone did anything...
+		gameState->updateClientActions(caBuff);
+
+	gameState->tick();
+	uoBuff = gameState->ListShip2listUpdateObject();
+
+	for (size_t i = 0; i < uoBuff.size(); ++i)
+		commServer->sendUpdateToAll(uoBuff[i]);
 }

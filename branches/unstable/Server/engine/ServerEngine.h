@@ -1,8 +1,3 @@
-#include <iostream>
-#include <vector>
-#include "../comm/commserver.h"
-#include "../../Core/comm/globals.h"
-
 /*------------------------------------------------------------------------------
  --
  -- CLASS: BaseWindow
@@ -24,13 +19,27 @@
  --
  -----------------------------------------------------------------------------*/
 
-class ServerEngine
+//System Include
+#include <QObject>
+#include <QTimer>
+#include <vector>
+
+//User Include
+#include "../gameplay/Frame.h"
+#include "../comm/commserver.h"
+#include "../../Core/comm/globals.h"
+
+class ServerEngine : public QObject
 {
-	private:
-		CommServer::CommServer* server;
-		std::vector<int> ids;
-	
-	public:
-		ServerEngine();
-		void RunServer();
+	Q_OBJECT
+private:
+	QTimer *timer;
+	CommServer::CommServer* commServer;
+	Frame *gameState;
+
+private slots:
+	void timeout();
+
+public:
+	ServerEngine();
 };
