@@ -27,8 +27,6 @@ public:
     void remove(Ship *ship);
     void remove(Shot *shot);
     bool empty();
-    //test only
-    void setWall(){wall = true;}
 };
 
 class Map {
