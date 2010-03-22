@@ -186,7 +186,7 @@ void Frame::updateShips(void)
     int dist;
     for(size_t i = 0; i < MAX_CLIENTS; ++i)
     {
-        if(listShip[i] == 0 && listShip[i]->active)
+        if(listShip[i] != 0 && listShip[i]->active)
         {
 			// set new action mask
 			// HERE

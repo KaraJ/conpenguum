@@ -88,7 +88,7 @@ void UDPConnection::sendMessage(struct sockaddr* to, const void* data, size_t da
 ssize_t UDPConnection::recvMessage(BYTE** buffer)
 {
     sockaddr_in from;
-    socklen_t socklen;
+    socklen_t socklen = sizeof(from);
     (*buffer) = (BYTE*)malloc(UDP_MAXMSG * sizeof(BYTE));
     ssize_t len = SocketWrapper::Recvfrom(this->sockfd_, *buffer, UDP_MAXMSG, NULL, (sockaddr*)&from, &socklen);
     if (len == -1)
