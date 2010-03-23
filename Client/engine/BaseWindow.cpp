@@ -1,8 +1,5 @@
 #include "BaseWindow.h"
 
-#include "../../Core/ConfigParser.h"
-#include "ipbox.h"
-
 using namespace std;
 
 /*------------------------------------------------------------------------------
@@ -64,33 +61,17 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
  -- to start the game.
  --
  -----------------------------------------------------------------------------*/
-void BaseWindow::Start()
+void BaseWindow::Start(string alias, string ip, string prt)
 {
-	ConfigParser cp;
-	map<string, string> params;
-
-	IpBox *ipbox = new IpBox(this);
-	//TODO: need to make the ipbox "capture" the thread so that we can only continue execution AFTER you have clicked ok on the dialog.
-	ipbox->show();
-
-	cerr << "name: " << ipbox->name.toStdString().c_str() << " ip: " << ipbox->ip.toStdString().c_str() << " port: " << ipbox->port.toStdString().c_str() << endl;
-
-	if (cp.Parse("client.conf", params) && params.find("username") != params.end()
-			                            && params.find("server_ip") != params.end()
-			                            && params.find("tcp_port") != params.end())
+	int ret;
+	if((ret = theClient->connect(alias, ip, prt)) < 0)
 	{
-		int ret;
-		if((ret = theClient->connect(params["username"], params["server_ip"], params["tcp_port"])) < 0)
-		{
-			Logger::LogNQuit("BaseWindow::Start - Error Connecting to the server");
-		}
-		clientID = ret;
-		clientAction = new ClientAction(clientID);
-		startRendering();
+		Logger::LogNQuit("BaseWindow::Start - Error Connecting to the server");
 	}
-	else
-		cerr << "Invalid configuration file." << endl;
 
+	clientID = ret;
+	clientAction = new ClientAction(clientID);
+	startRendering();
 }
 
 /*------------------------------------------------------------------------------
