@@ -176,11 +176,10 @@ class MapWidget(QtGui.QWidget):
         filename = QtGui.QFileDialog.getSaveFileName(self, 'Save File', '~/')
         f = open(filename, 'w')
         f.write("<?xml version='1.0' encoding='UTF-8'?>\n")
-        f.write("<map height='%d' width='%d' tile_height='%d' tile_width='%d'>\n" % (
+        f.write("<map height='%d' width='%d' tileSize='%d'>\n" % (
             self.height,
             self.width,
-            10,
-            10
+            25
         ))
         for row in self.map:
             for tile in row:
