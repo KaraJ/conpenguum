@@ -14,6 +14,7 @@
 #include "../../Core/comm/data/clientaction.h"
 #include "../../Core/comm/data/servermessage.h"
 #include "../Renderer/Renderer.h"
+using namespace std;
 
 // Default frame rate is 30 frames/second.
 #define DEFAULT_FRAME_RATE 30
@@ -74,11 +75,11 @@ class BaseWindow : public QMainWindow
     private:
 		int frameRate;
 		QTimer timer;
-                //std::vector<GameObject> gameState;
-                std::vector<UpdateObject> gameState;
-		std::map<int, Animation> animationMap;
+                //vector<GameObject> gameState;
+                vector<UpdateObject> gameState;
+		map<int, Animation> animationMap;
 		bool chatting;
-		std::string chatString;
+		string chatString;
 		CommClient::CommClient* theClient;
 		size_t clientID;
 		Renderer* ren;
@@ -92,8 +93,8 @@ class BaseWindow : public QMainWindow
 		void keyPressEvent (QKeyEvent * event);
 		void keyReleaseEvent (QKeyEvent * event);
 		virtual void render ();
-		std::string getChatString();
-		void Start();
+		string getChatString();
+		void Start(const string alias, const string ip, const string prt);
 		void getServerMessage();
 
 	public slots:
