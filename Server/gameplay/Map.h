@@ -2,6 +2,7 @@
 #define _MAP_H
 
 #include <QPoint>
+#include <list>
 #include "NewtObjects.h"
 #include "Shot.h"
 #include "Ship.h"
@@ -28,6 +29,8 @@ public:
     void move(Ship *ship, QPoint old_position, QPoint new_position, int size);
     void move(Shot *shot, QPoint old_position, QPoint new_position);
     int canMove(QPoint old_position, bool vertical, int size, int distance);
+    std::list<Ship*> ships(QPoint, int width=1024, int height=768);
+    std::list<Shot*> shots(QPoint, int width=1024, int height=768);
     void drawMap();
 };
 
