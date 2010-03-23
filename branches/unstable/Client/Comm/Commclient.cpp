@@ -130,11 +130,12 @@ void CommClient::disconnect()
 {
     if (isConnected_)
     {
+    	tcpClient_->Logout();
+    	isConnected_ = false;
         delete tcpClient_;
         delete udpConnection_;
         tcpClient_ = 0;
         udpConnection_ = 0;
-        isConnected_ = false;
     }
     else
     {
@@ -198,16 +199,16 @@ bool CommClient::hasNextServerMessage()
  ----------------------------------------------------------------------------------------------------------*/
 void CommClient::sendAction(ClientAction action)
 {
-    BYTE* buffer = 0;
-    if (isConnected_)
-    {
-        action.serialise(&buffer);
-        udpConnection_->sendMessage((sockaddr*)&this->servAddr, buffer, ClientAction::serialiseSize);
-    }
-    else
-    {
-        Logger::LogNContinue("CommClient::sendAction - Could Not Send ClientAction");
-    }
+	BYTE* buffer = 0;
+	if (isConnected_)
+	{
+		action.serialise(&buffer);
+		udpConnection_->sendMessage((sockaddr*)&this->servAddr, buffer, ClientAction::serialiseSize);
+	}
+	else
+	{
+		Logger::LogNContinue("CommClient::sendAction - Could Not Send ClientAction");
+	}
 }
 /*----------------------------------------------------------------------------------------------------------
  -- FUNCTION: CommClient::readThreadUDP
