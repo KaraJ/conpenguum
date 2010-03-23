@@ -190,10 +190,11 @@ void Frame::updateShips(void)
         {
 			// set new action mask
 			// HERE
+
 			dist = map.canMove(listShip[i]->position, false, SHIPSIZE, listShip[i]->vector.x());
 			listShip[i]->position.setX(listShip[i]->position.x() + dist);
 			dist = map.canMove(listShip[i]->position, true, SHIPSIZE, listShip[i]->vector.y());
-			listShip[i]->position.setX(listShip[i]->position.y() + dist);
+			listShip[i]->position.setY(listShip[i]->position.y() + dist);
 
 			if(listShip[i]->actionMask.isAccelerating()) // thrust forward
 				listShip[i]->vector += rotVelToVec(listShip[i]->rotation, VELOCITY_THRUST);
@@ -320,6 +321,7 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
 			uo.setRotation(listShip[i]->rotation);
 			uo.setPosition(listShip[i]->position);
 			udList.push_back(uo);
+			uo.print();
 		}
 	}
 
