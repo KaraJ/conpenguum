@@ -18,6 +18,7 @@
 ----------------------------------------------------------------------------*/
 
 #include <QtGui/qgraphicsview.h>
+#include <string>
 
 QT_BEGIN_NAMESPACE
 class QTimeLine;
