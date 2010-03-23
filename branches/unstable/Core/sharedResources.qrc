@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/objects">
-        <file>resources/ships.xml</file>
-        <file>resources/shots.xml</file>
-    </qresource>
-</RCC>
