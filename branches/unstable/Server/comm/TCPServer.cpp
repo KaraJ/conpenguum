@@ -26,7 +26,8 @@ void TCPServer::Init(const string port)
 
 	setsockopt(listenSocket_, SOL_SOCKET, SO_REUSEADDR, &tmp, sizeof(tmp));
 
-	sockaddr_in sa_ = { 0 };
+	sockaddr_in sa_;
+	bzero(&sa_, sizeof(sockaddr_in));
 	iss >> tmp;
 	sa_.sin_family = AF_INET;
 	sa_.sin_addr.s_addr = htonl(INADDR_ANY);
