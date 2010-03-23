@@ -9,6 +9,7 @@ OBJECTS_DIR = obj
 # Input
 HEADERS += gameplay/Frame.h \
            gameplay/Map.h \
+           gameplay/Tile.h \
            gameplay/NewtObjects.h \
            gameplay/Physics.h \
            gameplay/Ship.h \
@@ -29,6 +30,7 @@ HEADERS += gameplay/Frame.h \
            ../Core/comm/crc.h
 SOURCES += gameplay/Frame.cpp \
            gameplay/Map.cpp \
+           gameplay/Tile.cpp \
            gameplay/Physics.cpp \
            gameplay/Ship.cpp \
            gameplay/Shot.cpp \
