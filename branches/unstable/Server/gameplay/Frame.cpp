@@ -332,5 +332,5 @@ NEEDS COMMENTS
 void Frame::updateClientActions(vector<ClientAction> clientActions)
 {
 	for (size_t i = 0; i < clientActions.size(); ++i)
-		listShip[i]->applyActionMask(clientActions[i]);
+		listShip[clientActions[i].getObjectID()]->applyActionMask(clientActions[i]);
 }
