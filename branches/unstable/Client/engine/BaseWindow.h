@@ -56,6 +56,9 @@ using namespace std;
  --		Added methods startRendering(), stopRendering() and setFrameRate() to
  --		offer more control over when and how often render() should be called.
  --
+ --		Mar 23, 2010 Daraius Dastoor
+ --		Removed std:: BaseWindow is now using namespace std and changed CTOR
+ --
  -- NOTES:
  -- This class extends the QTMainWindow class, adding keyboard input handling
  -- and frame rate logic.
