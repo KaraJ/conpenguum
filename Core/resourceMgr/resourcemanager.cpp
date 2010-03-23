@@ -1,6 +1,7 @@
 #include "resourcemanager.h"
 #include "resourceEnums.h"
 #include <QtXml>
+#include <QMessageBox>
 
 //initialize singleton pointer
 ResourceManager* ResourceManager::resourceManager = NULL;
@@ -8,6 +9,7 @@ ResourceManager* ResourceManager::resourceManager = NULL;
 ResourceManager::ResourceManager()
 {
 
+    Q_INIT_RESOURCE(sharedResources);
 }
 
 ResourceManager::~ResourceManager()
@@ -38,11 +40,18 @@ ResourceDefinition* ResourceManager::GetResource(int ResourceType, int ResourceN
     case SHIP:
         {
             QDomDocument doc("ships");
-            QFile file(":/resources/ships.xml");
+            QFile file(":/objects/ships.xml");
             if (!file.open(QIODevice::ReadOnly))
                 return NULL;
-            if (!doc.setContent(&file)) {
+
+            QString err;
+            int errLine;
+            int errCol;
+            if (!doc.setContent(&file, &err, &errLine, &errCol)) {
                 file.close();
+                QMessageBox msg;
+                msg.setText(QString("Error Msg: %1 Line: %2 Col: %3").arg(err).arg(errLine).arg(errCol));
+                msg.exec();
                 return NULL;
             }
             file.close();
@@ -97,7 +106,7 @@ ResourceDefinition* ResourceManager::GetResource(int ResourceType, int ResourceN
     case SHOT:
         {
         QDomDocument doc("shots");
-        QFile file(":/resources/shots.xml");
+        QFile file(":/objects/resources/shots.xml");
         if (!file.open(QIODevice::ReadOnly))
             return NULL;
         if (!doc.setContent(&file)) {
