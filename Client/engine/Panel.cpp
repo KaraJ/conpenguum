@@ -32,7 +32,10 @@
 #include "ui_backside.h"
 #include <math.h>
 #include "BaseWindow.h"
-
+#include "../../Core/ConfigParser.h"
+#include "ipbox.h"
+#include <map>
+using namespace std;
 /*--------------------------------------------------------------------------------------
 --  Function: Panel
 --
@@ -343,12 +346,32 @@ void Panel::flip()
         {
         // play
         case 0:
-	{
-            BaseWindow* bw = new BaseWindow();
-	    bw -> Start();
-	    this->hide();
-            return;
-	}
+        {
+			BaseWindow* bw = new BaseWindow();
+			ConfigParser cp;
+			map<string, string> params;
+			IpBox *ipbox;
+
+			if (cp.Parse("client.conf", params)
+					&& params.find("username") != params.end()
+					&& params.find("server_ip") != params.end()
+					&& params.find("tcp_port") != params.end())
+			{
+
+				ipbox = new IpBox(this, params["username"], params["server_ip"], params["tcp_port"]);
+				ipbox->exec();
+
+				cerr << "\nname: " << ipbox->getName() << "\nip: " << ipbox->getIp() << "\nport: " << ipbox->getPort() << endl;
+
+				bw->Start(ipbox->getName(), ipbox->getIp(), ipbox->getPort());
+
+				this->hide();
+			}
+			else
+				cerr << "Invalid configuration file." << endl;
+
+			return;
+		}
 
         // settings
         case 1:
