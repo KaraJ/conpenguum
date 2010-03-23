@@ -4,20 +4,20 @@
 #include <QMainWindow>
 #include <QDomDocument>
 #include <string>
-#include <list>
+#include <vector>
 #include "tile.h"
 
 using namespace std;
 
 typedef struct {
-    string name;
-    string hit;
+    QString name;
+    QString hit;
 } PhysicsType;
 
 typedef struct {
-    string name;
-    string src;
-    string filename;
+    QString name;
+    QString src;
+    QString filename;
     int x;
     int y;
     int fileWidth;
@@ -40,8 +40,8 @@ protected:
 private:
     Ui::MainWindow *ui;
     Tile **tiles;
-    list<PhysicsType*> physicsTypes;
-    list<GraphicsType*> graphicsTypes;
+    vector<PhysicsType*> physicsTypes;
+    vector<GraphicsType*> graphicsTypes;
     void getTileTypes();
 public slots:
     void refreshMap();
