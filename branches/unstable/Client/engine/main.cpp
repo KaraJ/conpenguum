@@ -1,13 +1,28 @@
 #include "main.h"
-#include <time.h>
-#include <stdio.h>
-#include <stdlib.h>
+
+//TODO: Delete this
+#include "../../Core/comm/data/updateobject.h"
 
 #if 1
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     Q_INIT_RESOURCE(menuitems);
+
+/*    UpdateObject update(23);
+    QPoint pos(42321, 123);
+    update.setPosition(pos);
+    update.setRotation(94);
+    update.getActions().setAccelerating();
+    update.getActions().setDecelerating();
+    update.getActions().setFiring();
+    update.getActions().setTurningLeft();
+    update.getActions().setTurningRight();
+    update.print();
+    BYTE* buff;
+    update.serialise(&buff);
+    UpdateObject update2(buff);
+    update2.print();*/
 
     Panel *panel = new Panel();
     panel->setFocus();
