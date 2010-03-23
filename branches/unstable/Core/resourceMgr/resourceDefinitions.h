@@ -2,10 +2,13 @@
 #define RESOURCEDEFINITIONS_H
 #include <string>
 
-
 struct ResourceDefinition
 {
     int id;
+};
+
+struct TexturedResourceDefinition : public ResourceDefinition
+{
     std::string texture;
     float texture_xoffset; // moved these up since they are saved in both JL.
     float texture_yoffset;
@@ -16,7 +19,7 @@ struct ResourceDefinition
     int object_height;
 };
 
-struct ShipDefinition : public ResourceDefinition
+struct ShipDefinition : public TexturedResourceDefinition
 {
     int velocity_thrust;
     int velocity_shot;
@@ -26,7 +29,7 @@ struct ShipDefinition : public ResourceDefinition
 
 };
 
-struct ShotDefinition : public ResourceDefinition
+struct ShotDefinition : public TexturedResourceDefinition
 {
 };
 

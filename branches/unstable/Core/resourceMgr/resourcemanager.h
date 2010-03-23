@@ -2,9 +2,11 @@
 #define RESOURCEMANAGER_H
 #include "resourceDefinitions.h"
 #include <map>
+#include <QObject>
 
-class ResourceManager
+class ResourceManager : public QObject
 {
+    Q_OBJECT
 private:
     std::map<int, ResourceDefinition*> resourceMap;
     static ResourceManager* resourceManager;
