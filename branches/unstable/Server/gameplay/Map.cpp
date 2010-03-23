@@ -31,7 +31,6 @@ using namespace std;
 Map::Map(QString filename):width(0), height(0), tileSize(1) {
     QDomDocument doc;
     int x, y;
-    bool wall;
     QFile file(filename);
 
     if (!file.open(QIODevice::ReadOnly)) {
