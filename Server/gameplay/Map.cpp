@@ -61,35 +61,19 @@ Map::Map(QString filename):width(0), height(0), tileSize(1) {
             tiles[x][y] = NULL;
         }
     }
-    QDomNode tile_n = map_e.firstChild();
-    while (!tile_n.isNull()) {
-        QDomElement tile_e = tile_n.toElement();
-        if (tile_e.isNull()) {
-            continue;
-        }
-        if (tile_e.tagName() != "tile") {
-            continue;
-        }
-        QDomNode property_n = tile_e.firstChild();
-        while (!property_n.isNull()) {
-            QDomElement property_e = property_n.toElement();
-            if (property_e.isNull()) {
-                property_n = property_n.nextSibling();
-                continue;
-            }
-            if (property_e.tagName() != "physics") {
-                property_n = property_n.nextSibling();
-                continue;
-            }
+
+    QDomNodeList tile_l = map_e.elementsByTagName("tile");
+    for (int ti=0; ti < tile_l.count(); ++ti) {
+        QDomElement tile_e = tile_l.item(ti).toElement();
+        QDomNodeList physics_l = tile_e.elementsByTagName("physics");
+        for (int pi=0; pi < physics_l.count(); ++pi) {
+            QDomElement physics_e = physics_l.item(pi).toElement();
             x = tile_e.attribute("x", "0").toInt();
             y = tile_e.attribute("y", "0").toInt();
-            wall = (property_e.attribute("hit", "") != "space");
             if (tile(x, y) == NULL) {
-                tiles[x][y] = new Tile(x, y, wall);
+                tiles[x][y] = new Tile(x, y, true);
             }
-            property_n = property_n.nextSibling();
         }
-        tile_n = tile_n.nextSibling();
     }
 }
 
