@@ -30,7 +30,7 @@ using namespace std;
  -- the QTimer object used for timing.
  --
  -----------------------------------------------------------------------------*/
-BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this), gameState(32)
+BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
 {
 	connect(&timer, SIGNAL(timeout()), this, SLOT(timerEvent()));
 	chatting = false;
@@ -38,7 +38,7 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this), gameState
 	
 	/*this may be temporary*/
 	this->setFixedSize(1024, 768);
-	ren = new Renderer(this);
+        ren = new Renderer(this, gameState);
 	this->show();
 
 	animationMap = Animation::getAnimationMap();
@@ -376,9 +376,9 @@ void BaseWindow::updateGameState ()
 
 	while (theClient->hasNextUpdate())
 	{
-		GameObject * gameObj;
+                //GameObject * gameObj;
 		UpdateObject updateObj = theClient->nextUpdate();
-		int objectId = updateObj.getActions().getObjectID();
+                /*int objectId = updateObj.getActions().getObjectID();
 
 		if (objectId <= 31)
 		{
@@ -387,15 +387,16 @@ void BaseWindow::updateGameState ()
 		else
 		{
 			gameObj = new GameObject;
-			gameObj->animeIndex = 0;
-			gameState.push_back(*gameObj);
-		}
+                        gameObj->animeIndex = 0;*/
+                        //gameState.push_back(*gameObj);
+                        gameState.push_back(updateObj);
+                /*}
 
 		gameObj->objectId = objectId;
 		gameObj->position = updateObj.getPos();
-		gameObj->angle = updateObj.getRotation();		
+                gameObj->angle = updateObj.getRotation();*/
 	}
-
+/*
 	for (size_t i = 32; i < gameState.size(); i++)
 	{
 		GameObject &animatedObj = gameState.at(i);
@@ -409,7 +410,7 @@ void BaseWindow::updateGameState ()
 			animatedObj.animeImage = &images[animatedObj.animeIndex];
 			animatedObj.animeIndex++;
 		}
-	}
+        }*/
 }
 
 /*------------------------------------------------------------------------------

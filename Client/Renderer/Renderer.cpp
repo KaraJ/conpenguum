@@ -11,14 +11,14 @@
 
 using namespace std;
 
-Renderer::Renderer(QWidget *parent) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent)
+Renderer::Renderer(QWidget *parent,std::vector<UpdateObject> &gameSt) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt)
 {
     resourceManager = ResourceManager::GetInstance();
     Initialize();
     this->resize(SCREENWIDTH,SCREENHEIGHT);
 }
 
-void Renderer::buildRenderList(vector<UpdateObject> objectlist)
+void Renderer::buildRenderList()
 {
     //if we have more than 40k render objects, we're fucked.
     assert(MAXRENDERCOUNT > objectlist.size()/*+map objects*/);
@@ -129,6 +129,7 @@ void Renderer::resizeGL(int w, int h)
 
 void Renderer::Render()
 {
+    buildRenderList();
     //clear the screen
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_TEXTURE_2D);
