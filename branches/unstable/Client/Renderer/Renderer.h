@@ -7,6 +7,7 @@
 #include <map>
 #include "../../Core/resourceMgr/resourcemanager.h"
 
+
 //PI macros
 #define PI              3.14159265358979323846
 #define TWOPI           (2.0 * PI)
@@ -41,13 +42,13 @@ private:
     int renderCount;
     //GLuint textures[3];
     std::map<std::string, GLuint> textures;
-
+    std::vector<UpdateObject> &objectlist;
 //funcs
 public:
-    Renderer(QWidget *parent);
+    Renderer(QWidget *parent, std::vector<UpdateObject> &gameSt);
     void Initialize();
     void Render();
-    void buildRenderList(std::vector<UpdateObject> objectlist);
+    void buildRenderList();
 
 private:
     void resizeGL(int w, int h);
