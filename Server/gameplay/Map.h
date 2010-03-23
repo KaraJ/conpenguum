@@ -1,33 +1,13 @@
 #ifndef _MAP_H
 #define _MAP_H
 
-#include <list>
 #include <QPoint>
 #include "NewtObjects.h"
 #include "Shot.h"
 #include "Ship.h"
+#include "Tile.h"
 
 #define C2G(coord) ((coord) / tileSize)
-
-class Tile {
-private:
-    bool wall;
-    bool x;
-    bool y;
-    std::list<Ship*> ships;
-    std::list<Shot*> shots;
-public:
-    Tile(int x, int y);
-    Tile(int x, int y, bool wall);
-    bool isWall();
-    int numShips();
-    int numShots();
-    void add(Ship *ship);
-    void add(Shot *shot);
-    void remove(Ship *ship);
-    void remove(Shot *shot);
-    bool empty();
-};
 
 class Map {
 private :
