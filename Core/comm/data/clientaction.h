@@ -75,7 +75,7 @@ public:
     inline bool isDecelerating() const { return mask_.Test(AC_DECCELERATING); }
     inline int getObjectID() const { return objID_; }
     void serialise(BYTE** buffer) const;
-    void print(std::ostream& out = std::cout);
+    void print(std::ostream& out = std::cout) const;
 private:
     ActionBitmask mask_;
     unsigned short objID_;

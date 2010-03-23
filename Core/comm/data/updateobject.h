@@ -10,7 +10,7 @@
 class UpdateObject
 {
 public:
-    static const int serializeSize = 6;
+    static const int serializeSize = 7;
 
     UpdateObject(int objID);
     UpdateObject(ClientAction& a);
@@ -24,7 +24,7 @@ public:
     inline void setRotation(int rot) { rotation_ = rot; }
     inline void setPosition(const QPoint& p) { pos_ = p; }
     void serialise(BYTE** buffer) const;
-    void print(std::ostream& out = std::cout);
+    void print(std::ostream& out = std::cout) const;
 private:
     int rotation_;
     QPoint pos_;
