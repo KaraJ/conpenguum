@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>432</width>
+    <width>514</width>
     <height>346</height>
    </rect>
   </property>
@@ -66,11 +66,6 @@
               <string>space</string>
              </property>
             </item>
-            <item>
-             <property name="text">
-              <string>wall</string>
-             </property>
-            </item>
            </widget>
           </item>
           <item row="2" column="1">
@@ -78,21 +73,6 @@
             <item>
              <property name="text">
               <string>space</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>straight wall</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>corner</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>intersection</string>
              </property>
             </item>
            </widget>
@@ -266,7 +246,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>432</width>
+     <width>514</width>
      <height>25</height>
     </rect>
    </property>

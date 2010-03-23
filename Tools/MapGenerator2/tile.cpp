@@ -76,23 +76,14 @@ int Tile::getY() {
     return y;
 }
 
-QDomElement Tile::xml(QDomDocument &doc) {
-    QDomElement tileElement = doc.createElement("tile");
-    tileElement.setAttribute("x", x);
-    tileElement.setAttribute("y", y);
+int Tile::getPhysics() {
+    return physics;
+}
 
-    if (physics > 0) {
-        QDomElement physicsElement = doc.createElement("physics");
-        physicsElement.setAttribute("hit", "bounce");
-        tileElement.appendChild(physicsElement);
-    }
+int Tile::getGraphics() {
+    return graphics;
+}
 
-    if (graphics > 0) {
-        QDomElement graphicsElement = doc.createElement("graphics");
-        graphicsElement.setAttribute("source", "global");
-        graphicsElement.setAttribute("filename", "map_textures.bmp");
-        tileElement.appendChild(graphicsElement);
-    }
-
-    return tileElement;
+int Tile::getRotation() {
+    return rotation;
 }

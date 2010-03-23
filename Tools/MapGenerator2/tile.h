@@ -21,8 +21,10 @@ public:
     Tile(int, int);
     int getX();
     int getY();
+    int getPhysics();
+    int getGraphics();
+    int getRotation();
     bool exists();
-    QDomElement xml(QDomDocument &doc);
 signals:
 
 public slots:
