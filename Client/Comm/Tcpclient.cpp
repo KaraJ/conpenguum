@@ -20,7 +20,6 @@ void* TCPClient::ReadThread(void* param)
 {
 	int socket = *((int*)param);
 	ServerMessage msgBuff;
-
 	while (TCPClient::connected_)
 	{
 		TCPConnection::ReadMessage(socket, msgBuff);
@@ -28,7 +27,6 @@ void* TCPClient::ReadThread(void* param)
 		msgBuff_->push(msgBuff);
 		sem_post(semSM_);
 	}
-
 	return 0;
 }
 
@@ -97,6 +95,7 @@ ServerMessage TCPClient::Login(string playerName)
 
 void TCPClient::Logout()
 {
+	connected_ = false;
 	shutdown(tcpSocket, SHUT_RDWR);
 	close(tcpSocket);
 }
