@@ -29,6 +29,6 @@ RESOURCES += resources/sharedResources.qrc
 TEMPLATE = lib
 TARGET = Debug/Core
 OBJECTS_DIR = obj
-CONFIG += staticlib
+CONFIG += qt staticlib debug warn_on
 OTHER_FILES += resources/ships.xml \
     resources/shots.xml

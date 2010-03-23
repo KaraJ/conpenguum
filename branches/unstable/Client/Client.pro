@@ -39,6 +39,4 @@ FORMS += backside.ui \
 contains(QT_CONFIG, opengl):QT += opengl
 LIBS += -lCore \
     -L../Core/Debug
-
-
-
+CONFIG += qt debug warn_on
