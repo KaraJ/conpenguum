@@ -15,8 +15,8 @@
 #include "../../Core/comm/data/servermessage.h"
 #include "../Renderer/Renderer.h"
 
-// Default frame rate is 60 frames/second.
-#define DEFAULT_FRAME_RATE 60
+// Default frame rate is 30 frames/second.
+#define DEFAULT_FRAME_RATE 30
 
 /*------------------------------------------------------------------------------
  --
