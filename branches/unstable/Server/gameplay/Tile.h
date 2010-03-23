@@ -23,6 +23,8 @@ public:
     void add(Shot *shot);
     void remove(Ship *ship);
     void remove(Shot *shot);
+    std::list<Ship*> getShips();
+    std::list<Shot*> getShots();
     bool empty();
 };
 

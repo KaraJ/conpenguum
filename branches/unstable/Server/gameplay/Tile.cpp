@@ -230,3 +230,47 @@ int Tile::numShots() {
 bool Tile::empty() {
     return (!isWall() && numShots() == 0 && numShips() == 0);
 }
+
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   Tile::getShips
+--
+--  DATE:       January 27, 2010
+--
+--  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  std::list<Ship*> Tile::getShips()
+--
+--  NOTES:      Gets all the ship objects.
+--
+--  RETURNS:    std::list of Ship pointers.
+--
+------------------------------------------------------------------------------*/
+std::list<Ship*> Tile::getShips() {
+    return ships;
+}
+
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   Tile::getShots
+--
+--  DATE:       January 27, 2010
+--
+--  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  std::list<Shot*> Tile::getShots()
+--
+--  NOTES:      Gets all the shot objects.
+--
+--  RETURNS:    std::list of Shot pointers.
+--
+------------------------------------------------------------------------------*/
+std::list<Shot*> Tile::getShots() {
+    return shots;
+}

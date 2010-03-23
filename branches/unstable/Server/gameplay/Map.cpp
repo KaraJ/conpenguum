@@ -459,7 +459,7 @@ void Map::clean(int x, int y) {
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Tile::drawMap
+--  FUNCTION:   Map::drawMap
 --
 --  DATE:       January 27, 2010
 --
@@ -485,3 +485,82 @@ void Map::drawMap(){
     }
 }
 
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   Map::ships
+--
+--  DATE:       January 27, 2010
+--
+--  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  std::list<Ship*> Map::ships(QPoint center, int width=1024, int height=768)
+--              center : center of the viewport
+--              width : width of the viewport
+--              height : height of the viewport
+--
+--  NOTES:      Returns all ships in a given viewport.
+--              The viewport will have a margin of 50% of every side (quadrupaling total viewport area)
+--
+--  RETURNS:    void.
+--
+------------------------------------------------------------------------------*/
+std::list<Ship*> Map::ships(QPoint center, int width, int height) {
+    std::list<Ship*> list, list2;
+    int left   = MAX(0       , C2G(center.x() - width));
+    int right  = MIN(width-1 , C2G(center.x() + width));
+    int bottom = MAX(0       , C2G(center.y() - width));
+    int top    = MIN(height-1, C2G(center.x() + width));
+    for (int x=left; x <= right; ++x) {
+        for (int y=bottom; y <= top; ++x) {
+            list2 = tile(x, y)->getShips();
+            list.sort();
+            list2.sort();
+            list.merge(list2);
+        }
+    }
+    list.unique();
+    return list;
+}
+
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   Map::shots
+--
+--  DATE:       January 27, 2010
+--
+--  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  std::list<Shot*> Map::shots(QPoint center, int width=1024, int height=768)
+--              center : center of the viewport
+--              width : width of the viewport
+--              height : height of the viewport
+--
+--  NOTES:      Returns all shots in a given viewport.
+--              The viewport will have a margin of 50% of every side (quadrupaling total viewport area)
+--
+--  RETURNS:    void.
+--
+------------------------------------------------------------------------------*/
+std::list<Shot*> Map::shots(QPoint center, int width, int height) {
+    std::list<Shot*> list, list2;
+    int left   = MAX(0       , C2G(center.x() - width));
+    int right  = MIN(width-1 , C2G(center.x() + width));
+    int bottom = MAX(0       , C2G(center.y() - width));
+    int top    = MIN(height-1, C2G(center.x() + width));
+    for (int x=left; x <= right; ++x) {
+        for (int y=bottom; y <= top; ++x) {
+            list2 = tile(x, y)->getShots();
+            list.sort();
+            list2.sort();
+            list.merge(list2);
+        }
+    }
+    list.unique();
+    return list;
+}
