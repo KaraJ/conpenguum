@@ -77,7 +77,7 @@ void ClientAction::serialise(BYTE** buffer) const
     (*buffer)[1] = mask_.getBitField();
 }
 
-void ClientAction::print(ostream& out)
+void ClientAction::print(ostream& out) const
 {
     out << "Object ID:    " << objID_ << endl;
     out << "Firing:       " << isFiring() << endl;

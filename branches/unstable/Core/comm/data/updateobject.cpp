@@ -117,9 +117,9 @@ void UpdateObject::serialise(BYTE** buffer) const
      (*buffer)[6] = (BYTE)(rotation_ & 0x0000FFFF);
 }
 
-void UpdateObject::print(ostream& out)
+void UpdateObject::print(ostream& out) const
 {
     out << "Rotation: " << rotation_ << endl;
-    out << "Position: " << pos_.rx() << ", " << pos_.ry() << endl;
+    out << "Position: " << pos_.x() << ", " << pos_.y() << endl;
     actions_.print(out);
 }
