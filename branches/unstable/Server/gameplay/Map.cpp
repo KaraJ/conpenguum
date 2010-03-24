@@ -355,6 +355,7 @@ bool Map::isWall(int x, int y) {
 --
 ------------------------------------------------------------------------------*/
 int Map::canMove(QPoint position, bool vertical, int size, int distance) {
+
     // line segment
     int start = C2G(vertical ? position.x() : position.y());
     int end = C2G((vertical ? position.x() : position.y()) + size);
@@ -380,20 +381,24 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance) {
         for (int i=begin; i <= stop; ++i) {
             for (int j=start; j <= end; ++j) {
                 if ((!vertical && isWall(i, j)) || (vertical && isWall(j, i))) {
-                    return MAX(i - start - 1, -(i - start - 1));
+                    //return MAX(i - start - 1, -(i - start - 1));
+                    return 0;
                 }
             }
         }
     } else {
+    	return 0;
         for (int i=begin; i >= stop; --i) {
             for (int j=start; j >= end; --j) {
                 if ((!vertical && isWall(i, j)) || (vertical && isWall(j, i))) {
-                    return MAX(i - start -1, -(i - start -1));
+                    //return MAX(i - start -1, -(i - start -1));
+                	return 0;
                 }
             }
         }
     }
-    return MAX(stop - start - 1, -(stop - start - 1));
+    //return MAX(stop - start - 1, -(stop - start - 1));
+    return distance;
 }
 
 /*-----------------------------------------------------------------------------

@@ -1,5 +1,6 @@
 #include <iostream> // only used for testing
 #include "Frame.h"
+#include "general.h"
 
 #define VELOCITY_THRUST 2   // the velocity of a new thrust vector.
 #define VELOCITY_SHOT   3   // the velocity of a shot.
@@ -200,7 +201,13 @@ void Frame::updateShips(void)
 				listShip[i]->vector += rotVelToVec(listShip[i]->rotation, VELOCITY_THRUST);
 
 			if(listShip[i]->actionMask.isDecelerating()) // thrust reverse
-				listShip[i]->vector -= rotVelToVec(listShip[i]->rotation, -VELOCITY_THRUST);
+			{
+				// '-=' on a negative vector was causing more acceleration - changed to +=
+				listShip[i]->vector += rotVelToVec(listShip[i]->rotation, -VELOCITY_THRUST);
+				// Vector bottoms out at (0, 0)
+				listShip[i]->vector.setX(MAX(0, listShip[i]->vector.x()));
+				listShip[i]->vector.setY(MAX(0, listShip[i]->vector.y()));
+			}
 
 			if(listShip[i]->actionMask.isTurningRight()) // turn right
 				listShip[i]->rotation += ROTATION_RATE;
