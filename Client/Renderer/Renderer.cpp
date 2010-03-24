@@ -184,12 +184,7 @@ void Renderer::Render()
 			transUndo(2,1) = quad(0,1);
 
 			cTrans = cTrans * rot;
-			cTrans(2,0) = renderList[i].x;
-			cTrans(2,1) = renderList[i].y;
-
-			cTrans = cTrans * rot;
 			cTrans = cTrans * transUndo;
-
 			quad = quad * cTrans;
         }
 
