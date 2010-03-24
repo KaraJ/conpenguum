@@ -221,14 +221,14 @@ void Frame::updateShips(void)
 			
 			if(listShip[i]->actionMask.isTurningRight()) // turn right
 			{
-				listShip[i]->rotation = (listShip[i]->rotation + ROTATION_RATE) % 180;
+				listShip[i]->rotation -= ROTATION_RATE;
+				if (listShip[i]->rotation < 0)
+					listShip[i]->rotation = 180 + listShip[i]->rotation;
 			}
 
 			if(listShip[i]->actionMask.isTurningLeft()) // turn left
 			{
-				listShip[i]->rotation -= ROTATION_RATE;
-				if (listShip[i]->rotation < 0)
-					listShip[i]->rotation = 180 + listShip[i]->rotation;
+				listShip[i]->rotation = (listShip[i]->rotation + ROTATION_RATE) % 180;
 			}
 			/*if(listShip[i]->actionMask.isFiring())
 			  {

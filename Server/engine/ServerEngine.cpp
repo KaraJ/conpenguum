@@ -38,7 +38,7 @@ ServerEngine::ServerEngine()
 
 	timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(timeout()));
-	timer->start(30);
+	timer->start(33);
 }
 
 /*------------------------------------------------------------------------------
