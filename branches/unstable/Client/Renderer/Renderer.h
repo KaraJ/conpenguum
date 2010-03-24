@@ -31,8 +31,8 @@ struct RenderObject
     GLuint texture;
     float texOffsetX, texOffsetY;
     float objectWidth, objectHeight;
-    char rotation;
-    char objectWidthPx, objectHeightPx;
+    int rotation;
+    int objectWidthPx, objectHeightPx;
 };
 
 class Renderer : public QGLWidget

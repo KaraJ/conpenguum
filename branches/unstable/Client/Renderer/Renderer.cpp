@@ -54,7 +54,7 @@ void Renderer::buildRenderList()
     for(i = 1; i < objectlist.size(); i++)
     {
         if(objectlist[i].getObjectId() == 32) //TODO: Hard coded for testing, BULLET
-                {
+		{
             renderList[i].texture = textures["bullets.bmnp"];
             renderList[i].texOffsetY = 0;
             renderList[i].objectHeight = 1 / 10.0;
@@ -83,6 +83,7 @@ void Renderer::buildRenderList()
             renderList[i].objectHeightPx = 50;
             renderList[i].objectWidthPx = 50;
         }
+        cout << "RenderObject " << i << ": " << (int)renderList[i].rotation << endl;
 
         renderList[i].texOffsetX = 0;
         renderList[i].x = SCRCENTREW + (objectlist[i].getPos().x() - xOffset);
