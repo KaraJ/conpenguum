@@ -347,7 +347,6 @@ void Panel::flip()
         // play
         case 0:
         {
-			BaseWindow* bw = new BaseWindow();
 			ConfigParser cp;
 			map<string, string> params;
 			IpBox *ipbox;
@@ -362,7 +361,7 @@ void Panel::flip()
 				ipbox->exec();
 
 				cerr << "\nname: " << ipbox->getName() << "\nip: " << ipbox->getIp() << "\nport: " << ipbox->getPort() << endl;
-
+				BaseWindow* bw = new BaseWindow();
 				bw->Start(ipbox->getName(), ipbox->getIp(), ipbox->getPort());
 
 				this->hide();
