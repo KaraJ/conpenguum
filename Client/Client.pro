@@ -1,10 +1,10 @@
 # DO NOT USE QMAKE TO AUTOGEN THESE, IT DOESN'T WORK
-
-QT += core gui xml
+QT += core \
+    gui \
+    xml
 OBJECTS_DIR = obj
 TEMPLATE = app
 TARGET = Client
-
 HEADERS += ../Core/comm/globals.h \
     Animation/Animation.h \
     Animation/AnimationEnum.h \
@@ -33,10 +33,13 @@ SOURCES += Animation/Animation.cpp \
     engine/Splashitem.cpp \
     engine/ipbox.cpp \
     Renderer/Renderer.cpp
-RESOURCES += menuitems.qrc
+RESOURCES += Renderer/textures.qrc \
+    menuitems.qrc
 FORMS += backside.ui \
-	ipbox.ui
+    ipbox.ui
 contains(QT_CONFIG, opengl):QT += opengl
 LIBS += -lCore \
     -L../Core/Debug
-CONFIG += qt debug warn_on
+CONFIG += qt \
+    debug \
+    warn_on
