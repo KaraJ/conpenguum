@@ -1,3 +1,4 @@
+#include "Physics.h"
 #include <QPoint>
 #include <math.h>
 #include <QVector2D>
