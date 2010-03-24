@@ -51,10 +51,11 @@ public:
     Frame(QString filename);
     void tick();
     void addShip(size_t clientID);
-	void updateClientActions(std::vector <ClientAction>);
+    void updateClientActions(std::vector <ClientAction>);
     void spawnShip(size_t shipID);
     void removeShip(size_t clientID);
     std::vector<UpdateObject> ListShip2listUpdateObject();
+    void printShips(void);
 
 private:
     int dist2Points(QPoint point1, QPoint point2);
