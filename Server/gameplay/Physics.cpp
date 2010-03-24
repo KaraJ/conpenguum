@@ -28,8 +28,8 @@ QPoint rotVelToVec(int rot, int velocity)
     //correcting the function here and removing the magic number
     double radians = DEGTORAD(rot);
     int x, y;
-    y = sin(radians) * velocity/10;
-    x = cos(radians) * velocity/10;
+    y = sin(radians) * velocity;
+    x = cos(radians) * velocity;
     vector.setX(x);
     vector.setY(y);
     return vector;
