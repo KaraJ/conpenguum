@@ -1,6 +1,6 @@
 # DO NOT USE QMAKE TO AUTOGEN THESE, IT DOESN'T WORK
 
-CONFIG = qt debug warn_on
+CONFIG += qt debug warn_on
 TEMPLATE = app
 TARGET = Server
 QT += gui core xml
