@@ -204,39 +204,43 @@ void Frame::updateShips(void)
                 dist = map.canMove(listShip[i]->position, true, SHIPSIZE, listShip[i]->vector.y());
                 listShip[i]->position.setY(listShip[i]->position.y() + dist);
             }
-		QPoint newVector;
-		if(listShip[i]->actionMask.isAccelerating()) // thrust forward
-			newVector = listShip[i]->vector + rotVelToVec(listShip[i]->rotation, VELOCITY_THRUST);
+			
+			QPoint newVector;
+			if(listShip[i]->actionMask.isAccelerating()) // thrust forward
+				newVector = listShip[i]->vector + rotVelToVec(listShip[i]->rotation * 2, VELOCITY_THRUST);
 
-		if(listShip[i]->actionMask.isDecelerating()) // thrust reverse
-		{
-			// '-=' on a negative vector was causing more acceleration - changed to +=
-			newVector = listShip[i]->vector + rotVelToVec(listShip[i]->rotation, -VELOCITY_THRUST);
-		}
+			if(listShip[i]->actionMask.isDecelerating()) // thrust reverse
+			{
+				// '-=' on a negative vector was causing more acceleration - changed to +=
+				newVector = listShip[i]->vector + rotVelToVec(listShip[i]->rotation * 2, -VELOCITY_THRUST);
+			}
 
-		if(VECTORMAGNITUDE(newVector) < VELOCITY_MAX)
-		{
-			listShip[i]->vector = newVector;
-		}
+			if(VECTORMAGNITUDE(newVector) < VELOCITY_MAX)
+			{
+				listShip[i]->vector = newVector;
+			}
+			
+			if(listShip[i]->actionMask.isTurningRight()) // turn right
+			{
+				listShip[i]->rotation = (listShip[i]->rotation + ROTATION_RATE) % 180;
+			}
 
-		if(listShip[i]->actionMask.isTurningRight()) // turn right
-			listShip[i]->rotation += ROTATION_RATE;
-
-		if(listShip[i]->actionMask.isTurningLeft())
-		{
-			// turn left
-			listShip[i]->rotation += ROTATION_RATE;
-		}
-		/*if(listShip[i]->actionMask.isFiring())
-		  {
-			QPoint spawnVec, shotVec;
-			spawnVec = rotVelToVec(listShip[i]->rotation, SHIPRADIUS);
-			shotVec =  rotVelToVec(listShip[i]->rotation, VELOCITY_SHOT);
-			Shot shot(listShip[i]->position.x() + spawnVec.x(), listShip[i]->position.y()
-				+ spawnVec.y(), shotVec.x(), shotVec.y(), listShip[i]->getID());
-			addShot(shot);
-		}*/
-	}
+			if(listShip[i]->actionMask.isTurningLeft()) // turn left
+			{
+				listShip[i]->rotation -= ROTATION_RATE;
+				if (listShip[i]->rotation < 0)
+					listShip[i]->rotation = 180 + listShip[i]->rotation;
+			}
+			/*if(listShip[i]->actionMask.isFiring())
+			  {
+				QPoint spawnVec, shotVec;
+				spawnVec = rotVelToVec(listShip[i]->rotation, SHIPRADIUS);
+				shotVec =  rotVelToVec(listShip[i]->rotation, VELOCITY_SHOT);
+				Shot shot(listShip[i]->position.x() + spawnVec.x(), listShip[i]->position.y()
+					+ spawnVec.y(), shotVec.x(), shotVec.y(), listShip[i]->getID());
+				addShot(shot);
+			}*/
+        }
     }
 }
 
