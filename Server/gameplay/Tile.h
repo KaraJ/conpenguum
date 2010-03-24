@@ -14,6 +14,7 @@ private:
     std::list<Ship*> ships;
     std::list<Shot*> shots;
 public:
+    Tile();
     Tile(int x, int y);
     Tile(int x, int y, bool wall);
     bool isWall();

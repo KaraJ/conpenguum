@@ -1,6 +1,7 @@
 #include "general.h"
 #include "Tile.h"
 
+Tile::Tile():wall(false), x(0), y(0) {}
 /*-----------------------------------------------------------------------------
 --  FUNCTION:   Tile::Tile
 --
