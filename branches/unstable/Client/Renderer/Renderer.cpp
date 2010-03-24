@@ -106,15 +106,10 @@ void Renderer::Initialize()
     for(int i = 0; i < list.size(); i++)
     {
         QFileInfo fileInfo = list.at(i);
-        string str = fileInfo.filePath().toStdString();
-        GLuint texture = bindTexture(QPixmap(tr(str.c_str()), "BMP"), GL_TEXTURE_2D, GL_RGBA,
+        GLuint texture = bindTexture(QPixmap(fileInfo.filePath(), "BMP"), GL_TEXTURE_2D, GL_RGBA,
                 QGLContext::LinearFilteringBindOption | QGLContext::InvertedYBindOption);
         textures.insert(std::pair<std::string, GLuint>(fileInfo.fileName().toStdString(), texture));
     }
-
-//    textures[0] = bindTexture(QPixmap(QString(":/textures/ships.bmp"),"BMP"), GL_TEXTURE_2D);
-//    textures[1] = bindTexture(QPixmap(QString(":/textures/bullets.bmp"),"BMP"), GL_TEXTURE_2D); //10 high 4 wide;
-//    textures[2] = bindTexture(QPixmap(QString(":/textures/bg01.bmp"),"BMP"), GL_TEXTURE_2D);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -166,10 +161,13 @@ void Renderer::Render()
 
 		if(renderList[i].rotation > 0)//skip all this if the object is rotationless or at 0;
 		{
+			int centerx = (quad(0,0) + quad(2,0)) / 2;
+			int centery = (quad(0,1) + quad(2,1)) / 2;
+
 			//set up translation to origin
 			QMatrix3x3 cTrans;
-			cTrans(2,0) = -quad(0,0);
-			cTrans(2,1) = -quad(0,1);
+			cTrans(2,0) = -centerx;
+			cTrans(2,1) = -centery;
 
 			//setup the rotation matrix
 			QMatrix3x3 rot;
@@ -180,8 +178,8 @@ void Renderer::Render()
 
 			//set up translation to initial point
 			QMatrix3x3 transUndo;
-			transUndo(2,0) = quad(0,0);
-			transUndo(2,1) = quad(0,1);
+			transUndo(2,0) = centerx;
+			transUndo(2,1) = centery;
 
 			cTrans = cTrans * rot;
 			cTrans = cTrans * transUndo;
