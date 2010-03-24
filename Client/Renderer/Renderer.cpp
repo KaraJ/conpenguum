@@ -14,6 +14,12 @@ using namespace std;
 
 Renderer::Renderer(QWidget *parent,std::vector<UpdateObject> &gameSt) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt)
 {
+    const char *glVersion = (const char*)glGetString(GL_VERSION);
+    //will just give us the GL version #...set a break point here if you
+    //you want the full string
+    glVersion[3]=0;
+    double glVer = atof(glVersion);
+    assert(glVer < 1.1);
     resourceManager = ResourceManager::GetInstance();
     Initialize();
     this->resize(SCREENWIDTH,SCREENHEIGHT);
