@@ -8,6 +8,7 @@
 #include <vector>
 #include <cassert>
 #include "../../Core/resourceMgr/resourceEnums.h"
+#include <string>
 
 using namespace std;
 
@@ -100,9 +101,10 @@ void Renderer::Initialize()
     for(int i = 0; i < list.size(); i++)
     {
         QFileInfo fileInfo = list.at(i);
-        QString str = fileInfo.fileName();
-        GLuint texture = bindTexture(QPixmap(str, "BMP"), GL_TEXTURE_2D);
-        textures.insert(std::pair<std::string, GLuint>(str.toStdString(), texture));
+        string str = fileInfo.filePath().toStdString();
+        GLuint texture = bindTexture(QPixmap(tr(str.c_str()), "BMP"), GL_TEXTURE_2D, GL_RGBA,
+                QGLContext::LinearFilteringBindOption | QGLContext::InvertedYBindOption);
+        textures.insert(std::pair<std::string, GLuint>(fileInfo.fileName().toStdString(), texture));
     }
 
 //    textures[0] = bindTexture(QPixmap(QString(":/textures/ships.bmp"),"BMP"), GL_TEXTURE_2D);
@@ -147,26 +149,26 @@ void Renderer::Render()
         quad(0,1) = renderList[i].y;
         quad(0,2) = 1;
         //bottom right
-                quad(1,0) = renderList[i].objectWidthPx + renderList[i].x;
-                quad(1,1) = renderList[i].y;
-                quad(1,2) = 1;
-                //top right
-                quad(2,0) = renderList[i].objectWidthPx + renderList[i].x;
-                quad(2,1) = renderList[i].objectHeightPx + renderList[i].y;
-                quad(2,2) = 1;
-                //top left
-                quad(3,0) = renderList[i].x;
-                quad(3,1) = renderList[i].objectHeightPx + renderList[i].y;
+        quad(1,0) = renderList[i].objectWidthPx + renderList[i].x;
+        quad(1,1) = renderList[i].y;
+        quad(1,2) = 1;
+        //top right
+        quad(2,0) = renderList[i].objectWidthPx + renderList[i].x;
+        quad(2,1) = renderList[i].objectHeightPx + renderList[i].y;
+        quad(2,2) = 1;
+        //top left
+        quad(3,0) = renderList[i].x;
+        quad(3,1) = renderList[i].objectHeightPx + renderList[i].y;
                 quad(3,2) = 1;
         if(renderList[i].rotation > 0)//skip all this if the object is rotationless or at 0;
         {
             //set up translation to origin
-                QMatrix3x3 translate;
-                translate(2,0) = -renderList[i].x;
-                translate(2,1) = -renderList[i].y;
+            QMatrix3x3 translate;
+            translate(2,0) = -renderList[i].x;
+            translate(2,1) = -renderList[i].y;
 
             //setup the rotation matrix
-                QMatrix3x3 rot;
+            QMatrix3x3 rot;
             rot(0,0) = cos(DEGTORAD(renderList[i].rotation));
             rot(0,1) = sin(DEGTORAD(renderList[i].rotation));
             rot(1,0) = -sin(DEGTORAD(renderList[i].rotation));
