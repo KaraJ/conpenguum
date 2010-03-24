@@ -8,7 +8,6 @@
 #include <vector>
 #include <cassert>
 #include "../../Core/resourceMgr/resourceEnums.h"
-#include <string>
 
 using namespace std;
 
