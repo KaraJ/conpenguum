@@ -17,9 +17,8 @@ Renderer::Renderer(QWidget *parent,std::vector<UpdateObject> &gameSt) : QGLWidge
     const char *glVersion = (const char*)glGetString(GL_VERSION);
     //will just give us the GL version #...set a break point here if you
     //you want the full string
-    glVersion[3]=0;
     double glVer = atof(glVersion);
-    assert(glVer < 1.1);
+    assert(glVer > 1.1);
     resourceManager = ResourceManager::GetInstance();
     Initialize();
     this->resize(SCREENWIDTH,SCREENHEIGHT);
@@ -33,8 +32,8 @@ void Renderer::buildRenderList()
     size_t i, xOffset, yOffset;
 
     //grab the first render object, this should be the client's ship, and thus our center
-    xOffset = SCRCENTREW - objectlist[0].getPos().x();
-    yOffset = SCRCENTREH - objectlist[0].getPos().y();
+    xOffset = objectlist[0].getPos().x();
+    yOffset = objectlist[0].getPos().y();
 
     //sample code for getting a texture from resource manager
     //you need to know the type of the resource you are getting, so you can
@@ -43,8 +42,8 @@ void Renderer::buildRenderList()
     //hardcoding in values for now
 
     renderList[0].texture = textures["ships.bmp"];
-    renderList[0].x = objectlist[0].getPos().x() + xOffset;
-    renderList[0].y = objectlist[0].getPos().y() + yOffset;
+    renderList[0].x = SCRCENTREW;
+    renderList[0].y = SCRCENTREH;
     renderList[0].rotation = objectlist[0].getRotation() * 2;
     renderList[0].texOffsetX = 0;
     renderList[0].texOffsetY = 3 / 32.0;
@@ -67,7 +66,7 @@ void Renderer::buildRenderList()
         }
         else if(objectlist[i].getObjectId() == 33) //TODO: Hard coded for testing, WALL
         {
-            renderList[i].texture = textures["bg01.bmp"];
+            renderList[i].texture = textures["over1.bmp"];
             renderList[i].texOffsetY = 0;
             renderList[i].objectHeight = 1;
             renderList[i].objectWidth = 1;
@@ -87,8 +86,8 @@ void Renderer::buildRenderList()
         }
 
         renderList[i].texOffsetX = 0;
-        renderList[i].x = xOffset + objectlist[i].getPos().x();
-        renderList[i].y = yOffset + objectlist[i].getPos().y();
+        renderList[i].x = SCRCENTREW + (objectlist[i].getPos().x() - xOffset);
+        renderList[i].y = SCRCENTREH + (objectlist[i].getPos().y() - yOffset);
     }
     renderCount = i;
 }
@@ -143,9 +142,7 @@ void Renderer::Render()
     glEnable(GL_TEXTURE_2D);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 
-    //glBindTexture(GL_TEXTURE_2D, texName);
-
-    for(int i = 0; i < renderCount; i++)
+    for(int i = 0; i < renderCount; i++) //TODO: Something is wrong here.
     {
         QMatrix3x4 quad;
 
@@ -165,14 +162,18 @@ void Renderer::Render()
         //top left
         quad(3,0) = renderList[i].x;
         quad(3,1) = renderList[i].objectHeightPx + renderList[i].y;
-                quad(3,2) = 1;
+        quad(3,2) = 1;
         if(renderList[i].rotation > 0)//skip all this if the object is rotationless or at 0;
         {
             //set up translation to origin
             QMatrix3x3 translate;
             translate(2,0) = -renderList[i].x;
             translate(2,1) = -renderList[i].y;
+            QMatrix3x3 translate2;
+            translate(2,0) = renderList[i].x;
+            translate(2,1) = renderList[i].y;
 
+            translate = translate * translate2;
             //setup the rotation matrix
             QMatrix3x3 rot;
             rot(0,0) = cos(DEGTORAD(renderList[i].rotation));
