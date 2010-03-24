@@ -401,7 +401,7 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
     {
         for (int i = start; i <= end; ++i) //Check tiles along the way in +ve dir
         {
-            if (isWall(i, vertical ? xpos : ypos) || start + i > mapSize) //if we hit a wall or go out of bounds
+            if (isWall(i, vertical ? xpos : ypos) || start + i >= mapSize) //if we hit a wall or go out of bounds
                     return Tile2Pix(i - 1 - start); //distance = one before current - starting tile
         }
     }
@@ -409,7 +409,7 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
     {
         for (int i = start; i >= end; --i) //Check tiles along the way in -ve dir
         {
-            if (isWall(i, vertical ? xpos : ypos) || start - i < 0) //if we hit a wall or go out of bounds
+            if (isWall(i, vertical ? xpos : ypos) || start - i <= 0) //if we hit a wall or go out of bounds
                 return Tile2Pix(start - i + 1); //distance = starting tile - one before current
         }
     }
