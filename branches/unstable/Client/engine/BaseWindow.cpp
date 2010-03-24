@@ -354,11 +354,12 @@ void BaseWindow::setFrameRate (int rate)
  -----------------------------------------------------------------------------*/
 void BaseWindow::updateGameState ()
 {
-
+    gameState.clear();
 	while (theClient->hasNextUpdate())
 	{
                 //GameObject * gameObj;
 		UpdateObject updateObj = theClient->nextUpdate();
+		updateObj.print();
                 /*int objectId = updateObj.getActions().getObjectID();
 
 		if (objectId <= 31)
