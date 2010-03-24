@@ -70,7 +70,7 @@ UpdateObject::UpdateObject(BYTE* buffer) : actions_(0)
     y |= buffer[5];
     pos_.setX(x);
     pos_.setY(y);
-    rotation_ = (size_t)buffer[6];
+    rotation_ = buffer[6];
 }
 
 /*----------------------------------------------------------------------------------------------------------
@@ -114,7 +114,7 @@ void UpdateObject::serialise(BYTE** buffer) const
      (*buffer)[3] = (BYTE)(x & 0x000000FF);
      (*buffer)[4] = (BYTE)((y & 0x0000FF00) >> 8);
      (*buffer)[5] = (BYTE)(y & 0x000000FF);
-     (*buffer)[6] = (BYTE)(rotation_ & 0x0000FFFF);
+     (*buffer)[6] = (BYTE)(rotation_ & 0x000000FF);
 }
 
 void UpdateObject::print(ostream& out) const
