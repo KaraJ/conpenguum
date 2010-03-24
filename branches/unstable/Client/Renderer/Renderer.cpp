@@ -142,50 +142,55 @@ void Renderer::Render()
     glEnable(GL_TEXTURE_2D);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 
-    for(int i = 0; i < renderCount; i++) //TODO: Something is wrong here.
-    {
-        QMatrix3x4 quad;
+    for(int i = 0; i < renderCount; i++)
+	{
+		QMatrix3x4 quad;
 
-        //set the 4 points of the ship
-        //bottom left
-        quad(0,0) = renderList[i].x;
-        quad(0,1) = renderList[i].y;
-        quad(0,2) = 1;
-        //bottom right
-        quad(1,0) = renderList[i].objectWidthPx + renderList[i].x;
-        quad(1,1) = renderList[i].y;
-        quad(1,2) = 1;
-        //top right
-        quad(2,0) = renderList[i].objectWidthPx + renderList[i].x;
-        quad(2,1) = renderList[i].objectHeightPx + renderList[i].y;
-        quad(2,2) = 1;
-        //top left
-        quad(3,0) = renderList[i].x;
-        quad(3,1) = renderList[i].objectHeightPx + renderList[i].y;
-        quad(3,2) = 1;
-        if(renderList[i].rotation > 0)//skip all this if the object is rotationless or at 0;
-        {
-            //set up translation to origin
-            QMatrix3x3 translate;
-            translate(2,0) = -renderList[i].x;
-            translate(2,1) = -renderList[i].y;
-            QMatrix3x3 translate2;
-            translate(2,0) = renderList[i].x;
-            translate(2,1) = renderList[i].y;
+		//set the 4 points of the ship
+		//bottom left
+		quad(0,0) = renderList[i].x;
+		quad(0,1) = renderList[i].y;
+		quad(0,2) = 1;
+		//bottom right
+		quad(1,0) = renderList[i].objectWidthPx + renderList[i].x;
+		quad(1,1) = renderList[i].y;
+		quad(1,2) = 1;
+		//top right
+		quad(2,0) = renderList[i].objectWidthPx + renderList[i].x;
+		quad(2,1) = renderList[i].objectHeightPx + renderList[i].y;
+		quad(2,2) = 1;
+		//top left
+		quad(3,0) = renderList[i].x;
+		quad(3,1) = renderList[i].objectHeightPx + renderList[i].y;
+		quad(3,2) = 1;
 
-            translate = translate * translate2;
-            //setup the rotation matrix
-            QMatrix3x3 rot;
-            rot(0,0) = cos(DEGTORAD(renderList[i].rotation));
-            rot(0,1) = sin(DEGTORAD(renderList[i].rotation));
-            rot(1,0) = -sin(DEGTORAD(renderList[i].rotation));
-            rot(1,1) = cos(DEGTORAD(renderList[i].rotation));
+		if(renderList[i].rotation > 0)//skip all this if the object is rotationless or at 0;
+		{
+			//set up translation to origin
+			QMatrix3x3 cTrans;
+			cTrans(2,0) = -quad(0,0);
+			cTrans(2,1) = -quad(0,1);
 
-            translate = translate * rot;
-            translate(2,0) = renderList[i].x;
-            translate(2,1) = renderList[i].y;
+			//setup the rotation matrix
+			QMatrix3x3 rot;
+			rot(0,0) = cos(DEGTORAD(renderList[i].rotation));
+			rot(0,1) = sin(DEGTORAD(renderList[i].rotation));
+			rot(1,0) = -sin(DEGTORAD(renderList[i].rotation));
+			rot(1,1) = cos(DEGTORAD(renderList[i].rotation));
 
-            quad = quad * translate;
+			//set up translation to initial point
+			QMatrix3x3 transUndo;
+			transUndo(2,0) = quad(0,0);
+			transUndo(2,1) = quad(0,1);
+
+			cTrans = cTrans * rot;
+			cTrans(2,0) = renderList[i].x;
+			cTrans(2,1) = renderList[i].y;
+
+			cTrans = cTrans * rot;
+			cTrans = cTrans * transUndo;
+
+			quad = quad * cTrans;
         }
 
         glBindTexture(GL_TEXTURE_2D, renderList[i].texture);
