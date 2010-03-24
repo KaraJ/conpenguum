@@ -1,7 +1,7 @@
 #include "Physics.h"
 #include <QPoint>
 #include <math.h>
-#include "Physics.h"
+#include <QVector2D>
 
 /*-----------------------------------------------------------------------------
 --  FUNCTION:   rotVelToVec
@@ -19,7 +19,7 @@
 --  NOTES:      Takes a rotation value and a velocity and returns the correct
 --              vector. TASK: needs to be made more efficient.
 --
---  RETURNS:    Qpoint style vector
+--  RETURNS:    Qpoint style vector.
 --
 ------------------------------------------------------------------------------*/
 QPoint rotVelToVec(int rot, int velocity)
