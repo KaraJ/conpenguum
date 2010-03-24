@@ -4,7 +4,6 @@
 
 #define VELOCITY_THRUST 2   // the velocity of a new thrust vector.
 #define VELOCITY_SHOT   3   // the velocity of a shot.
-#define VELOCITY_MAX    2   // the max velocity of a ship.
 #define ROTATION_RATE   2   // how many degrees a ship rotates in a frame.
 #define SHIPRADIUS      25  // the radius of a ships "tile".
 #define SHIPSIZE        SHIPRADIUS*2
