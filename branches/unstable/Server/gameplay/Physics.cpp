@@ -1,6 +1,6 @@
 #include <QPoint>
 #include <math.h>
-
+#include <QVector2D>
 
 /*-----------------------------------------------------------------------------
 --  FUNCTION:   rotVelToVec
@@ -24,25 +24,11 @@
 QPoint rotVelToVec(int rot, int velocity)
 {
     QPoint vector;
+    //correcting the function here and removing the magic number
+    double radians = DEGTORAD(rot);
     int x, y;
-    double radians = (rot % 90) / 57.29578;
-    y = sin(radians) * velocity;
-    x = cos(radians) * velocity;
-    switch (rot / 90)
-    {
-    case 0:
-        break;
-    case 1:
-        y *= -1;
-        break;
-    case 2:
-        y *= -1;
-        x *= -1;
-        break;
-    case 3:
-        x *= -1;
-        break;
-    }
+    y = sin(radians) * velocity/10;
+    x = cos(radians) * velocity/10;
     vector.setX(x);
     vector.setY(y);
     return vector;
