@@ -28,7 +28,7 @@ using namespace std;
 --  RETURNS:    Map object (constructor).
 --
 ------------------------------------------------------------------------------*/
-Map::Map(QString filename) : mapSize(0), tileSize(1)
+Map::Map(QString filename) : width(0), height(0), tileSize(1)
 {
     QDomDocument doc;
     int x, y;
@@ -56,28 +56,22 @@ Map::Map(QString filename) : mapSize(0), tileSize(1)
         return;
     }
 
-    mapSize  = map_e.attribute("width", "0").toInt(); //Stick to square maps for now
-    //height = map_e.attribute("height", "0").toInt();
+    width  = map_e.attribute("width", "0").toInt(); //Rectangular maps work just fine thankyou!
+    height = map_e.attribute("height", "0").toInt();
     tileSize = map_e.attribute("tileSize", "1").toInt();
 
     // create tiles array
-    tiles = new Tile*[mapSize];
-    for(int i=0; i < mapSize; i++)
-        *(tiles + i) = new Tile[mapSize];
-
-
-    /*tiles = (Tile***) malloc(sizeof(Tile**) * mapSize); //This is fucking insane
-
-    for (int x = 0; x < mapSize; ++x)
+    tiles = new Tile**[width];
+    for(int x=0; x < width; ++x)
     {
-        tiles[x] = (Tile**) malloc(sizeof(Tile*) * mapSize);
-        for (int y = 0; y < mapSize; ++y)
+        tiles[x] = new Tile*[height];
+        for (int y=0; y < height; ++y)
         {
             tiles[x][y] = NULL;
         }
-    }*/
+    }
 
-    /*QDomNodeList tile_l = map_e.elementsByTagName("tile");
+    QDomNodeList tile_l = map_e.elementsByTagName("tile");
     for (int ti = 0; ti < tile_l.count(); ++ti)
     {
         QDomElement tile_e = tile_l.item(ti).toElement();
@@ -89,9 +83,11 @@ Map::Map(QString filename) : mapSize(0), tileSize(1)
             y = tile_e.attribute("y", "0").toInt();
 
             if (tile(x, y) == NULL)
+            {
                 tiles[x][y] = new Tile(x, y, true);
+            }
         }
-    }*/
+    }
 }
 
 /*-----------------------------------------------------------------------------
@@ -114,8 +110,9 @@ Map::Map(QString filename) : mapSize(0), tileSize(1)
 --  RETURNS:    Tile at the specified position.
 --
 ------------------------------------------------------------------------------*/
-Tile Map::tile(int x, int y)
+Tile *Map::tile(int x, int y)
 {
+    ensure(x, y);
     return tiles[x][y];
 }
 
@@ -141,8 +138,7 @@ Tile Map::tile(int x, int y)
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Map::move(Ship *ship, QPoint old_position, QPoint new_position, int size)
-{
+void Map::move(Ship *ship, QPoint old_position, QPoint new_position, int size) {
     int xl1 = Pix2Tile(old_position.x());
     int xr1 = Pix2Tile(old_position.x() + size);
     int xl2 = Pix2Tile(new_position.x());
@@ -160,14 +156,13 @@ void Map::move(Ship *ship, QPoint old_position, QPoint new_position, int size)
                 if (x <= xl2 && x >= xr2 && y >= yb1 && y <= yt1) // if in new position
                 {
                     ensure(x, y);
-                    tile(x, y).add(ship);
+                    tile(x, y)->add(ship);
                 }
-            }
-            else // is in old position!
+            } else // is in old position!
             {
                 if (x < xl2 || x > xr2 || y < yb2 || y > yt2) // if not in new position
                 {
-                    tile(x, y).remove(ship);
+                    tile(x, y)->remove(ship);
                     clean(x, y);
                 }
             }
@@ -197,14 +192,15 @@ void Map::move(Ship *ship, QPoint old_position, QPoint new_position, int size)
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Map::move(Shot *shot, QPoint old_position, QPoint new_position) {
+void Map::move(Shot *shot, QPoint old_position, QPoint new_position)
+{
     int old_x = Pix2Tile(old_position.x());
     int old_y = Pix2Tile(old_position.y());
     int new_x = Pix2Tile(new_position.x());
     int new_y = Pix2Tile(new_position.y());
     ensure(new_x, new_y);
-    tile(new_x, new_y).add(shot);
-    tile(old_x, old_y).remove(shot);
+    tile(new_x, new_y)->add(shot);
+    tile(old_x, old_y)->remove(shot);
     clean(old_x, old_y);
 }
 
@@ -240,7 +236,7 @@ void Map::add(Ship *ship, QPoint location, int size)
         for (int y = y1; y <= y2; ++y)
         {
             ensure(x, y);
-            tile(x, y).add(ship);
+            tile(x, y)->add(ship);
         }
     }
 }
@@ -270,7 +266,7 @@ void Map::add(Shot *shot, QPoint location)
     int x = Pix2Tile(location.x());
     int y = Pix2Tile(location.y());
     ensure(x, y);
-    tile(x, y).add(shot);
+    tile(x, y)->add(shot);
 }
 
 /*-----------------------------------------------------------------------------
@@ -304,7 +300,7 @@ void Map::remove(Ship *ship, QPoint location, int size)
     {
         for (int y = y1; y <= y2; ++y)
         {
-            tile(x, y).remove(ship);
+            tile(x, y)->remove(ship);
             clean(x, y);
         }
     }
@@ -331,10 +327,11 @@ void Map::remove(Ship *ship, QPoint location, int size)
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Map::remove(Shot *shot, QPoint location) {
+void Map::remove(Shot *shot, QPoint location)
+{
     int x = Pix2Tile(location.x());
     int y = Pix2Tile(location.y());
-    tile(x, y).remove(shot);
+    tile(x, y)->remove(shot);
     clean(x, y);
 }
 
@@ -358,10 +355,14 @@ void Map::remove(Shot *shot, QPoint location) {
 --  RETURNS:    true if the tile is a wall, else false.
 --
 ------------------------------------------------------------------------------*/
-bool Map::isWall(int x, int y) {
-    Tile atile = tile(x, y);
-
-    return atile.isWall();
+bool Map::isWall(int x, int y)
+{
+    Tile *atile = tile(x, y);
+    if (atile == NULL)
+    {
+        return false;
+    }
+    return atile->isWall();
 }
 
 /*-----------------------------------------------------------------------------
@@ -388,33 +389,40 @@ bool Map::isWall(int x, int y) {
 ------------------------------------------------------------------------------*/
 int Map::canMove(QPoint position, bool vertical, int size, int distance)
 {
-    int xpos  = Pix2Tile(position.x()), ypos = Pix2Tile(position.y());
-    int start = vertical ? ypos : xpos;   //Denotes object beginning tile
-    int end   = start + Pix2Tile(distance);                         //Denotes destination tile
+    // leading edge
+    int edgeBegin = Tile2Pix(vertical ? position.x() : position.y());
+    int edgeEnd = Tile2Pix((vertical ? position.x() : position.y()) + size);
+    // movement
+    int moveStart = Tile2Pix((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0));
+    int moveStop = Tile2Pix((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0) + distance);
 
-    if (vertical)
-        cout << "Moving from: " << start << "y to " << end << "y" << endl;
-    else
-        cout << "Moving from: " << start << "x to " << end << "x" << endl;
+    cout << "Moving a " << size << "px object at: " << position.x() << "x" << position.y() << (vertical ? "vertically" : "horizontally") << " by " << distance << " pixels" << endl;
 
-    if (distance > 0) //moving in +ve direction
-    {
-        for (int i = start; i <= end; ++i) //Check tiles along the way in +ve dir
-        {
-            if (isWall(i, vertical ? xpos : ypos) || start + i >= mapSize) //if we hit a wall or go out of bounds
-                    return Tile2Pix(i - 1 - start); //distance = one before current - starting tile
-        }
+    // check for invalid values (starting outside the map, etc):
+    if (edgeBegin < 0 || edgeEnd < 0 || moveStart < 0)
+        throw MapCanMoveException("value below zero", edgeBegin, edgeEnd, moveStart);
+    if (vertical && (edgeBegin > width || edgeEnd > width || moveStart > height))
+        throw MapCanMoveException("value past right side of map (x >= width)", edgeBegin, edgeEnd, moveStart);
+    if (!vertical && (edgeBegin > height || edgeEnd > height || moveStart > width))
+        throw MapCanMoveException("value above map (y >= height)", edgeBegin, edgeEnd, moveStart);
+
+    cout << "values: " << edgeBegin << 'x' << edgeEnd << ',' << moveStart << 'x' << moveStop << endl;
+
+    // calculation
+    if (distance > 0) { // moving in positive direction
+        for (int i=moveStart; i <= moveStop; ++i)
+            for (int j=edgeBegin; j <= edgeEnd; ++j)
+                if (i >= (vertical ? height : width) || (vertical && isWall(i, j)) || (!vertical && isWall(j, i)))  // detect collision
+                    return (i * tileSize) - (vertical ? position.y() : position.x());
     }
-    else //moving in -ve direction
+    else // moving in negative direction
     {
-        for (int i = start; i >= end; --i) //Check tiles along the way in -ve dir
-        {
-            if (isWall(i, vertical ? xpos : ypos) || start - i <= 0) //if we hit a wall or go out of bounds
-                return Tile2Pix(start - i + 1); //distance = starting tile - one before current
-        }
+        for (int i=moveStart; i >= moveStop; --i)
+            for (int j=edgeBegin; j >= edgeEnd; --j)
+                if (i < 0 || (vertical && isWall(i, j)) || (!vertical && isWall(j, i))) // detect collision
+                    return ((i+1) * tileSize) * (vertical ? position.y() : position.x());
     }
-
-    return distance; //No obstacles encountered
+    return distance;    // no collision detected, can move full distance
 }
 
 /*-----------------------------------------------------------------------------
@@ -437,10 +445,12 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
 --  RETURNS:    void.
 --
 ------------------------------------------------------------------------------*/
-void Map::ensure(int x, int y) {
-    /*if (tile(x, y) == NULL) {
+void Map::ensure(int x, int y)
+{
+    if (tiles[x][y] == NULL)
+    {
         tiles[x][y] = new Tile(x, y);
-    }*/
+    }
 }
 
 /*-----------------------------------------------------------------------------
@@ -464,15 +474,19 @@ void Map::ensure(int x, int y) {
 --  RETURNS:    void.
 --
 ------------------------------------------------------------------------------*/
-void Map::clean(int x, int y) {
-    /*Tile atile = tile(x, y);
-    if (!atile.empty())
+void Map::clean(int x, int y)
+{
+    Tile *atile = tile(x, y);
+    if (atile == NULL)
     {
-        // tile not emtpy, DO NOT CLEAN!
-        return;
+        return; // tile is gone, nothing to do.
+    }
+    if (!atile->empty())
+    {
+        return; // tile not emtpy, DO NOT CLEAN!
     }
     delete tiles[x][y];
-    tiles[x][y] = NULL;*/
+    tiles[x][y] = NULL;
 }
 
 /*-----------------------------------------------------------------------------
@@ -493,9 +507,12 @@ void Map::clean(int x, int y) {
 --  RETURNS:    void.
 --
 ------------------------------------------------------------------------------*/
-void Map::drawMap(){
-    for(int i = 0; i < 20; i++){
-        for(int j = 0; j < 20; j++){
+void Map::drawMap()
+{
+    for(int i = 0; i < 20; i++)
+    {
+        for(int j = 0; j < 20; j++)
+        {
             std::cout << (isWall(i, j)?"X":".");
         }
         std::cout << std::endl;
@@ -524,15 +541,18 @@ void Map::drawMap(){
 --  RETURNS:    void.
 --
 ------------------------------------------------------------------------------*/
-std::list<Ship*> Map::ships(QPoint center, int width, int height) {
+std::list<Ship*> Map::ships(QPoint center, int width, int height)
+{
     std::list<Ship*> list, list2;
     int left   = MAX(0       , Pix2Tile(center.x() - width));
     int right  = MIN(width-1 , Pix2Tile(center.x() + width));
     int bottom = MAX(0       , Pix2Tile(center.y() - width));
     int top    = MIN(height-1, Pix2Tile(center.x() + width));
-    for (int x=left; x <= right; ++x) {
-        for (int y=bottom; y <= top; ++x) {
-            list2 = tile(x, y).getShips();
+    for (int x=left; x <= right; ++x)
+    {
+        for (int y=bottom; y <= top; ++x)
+        {
+            list2 = tile(x, y)->getShips();
             list.sort();
             list2.sort();
             list.merge(list2);
@@ -564,15 +584,18 @@ std::list<Ship*> Map::ships(QPoint center, int width, int height) {
 --  RETURNS:    void.
 --
 ------------------------------------------------------------------------------*/
-std::list<Shot*> Map::shots(QPoint center, int width, int height) {
+std::list<Shot*> Map::shots(QPoint center, int width, int height)
+{
     std::list<Shot*> list, list2;
     int left   = MAX(0       , Pix2Tile(center.x() - width));
     int right  = MIN(width-1 , Pix2Tile(center.x() + width));
     int bottom = MAX(0       , Pix2Tile(center.y() - width));
     int top    = MIN(height-1, Pix2Tile(center.x() + width));
-    for (int x=left; x <= right; ++x) {
-        for (int y=bottom; y <= top; ++x) {
-            list2 = tile(x, y).getShots();
+    for (int x=left; x <= right; ++x)
+    {
+        for (int y=bottom; y <= top; ++x)
+        {
+            list2 = tile(x, y)->getShots();
             list.sort();
             list2.sort();
             list.merge(list2);
