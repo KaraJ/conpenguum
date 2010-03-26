@@ -390,13 +390,13 @@ bool Map::isWall(int x, int y)
 int Map::canMove(QPoint position, bool vertical, int size, int distance)
 {
     // leading edge
-    int edgeBegin = Tile2Pix(vertical ? position.x() : position.y());
-    int edgeEnd = Tile2Pix((vertical ? position.x() : position.y()) + size);
+    int edgeBegin = Pix2Tile(vertical ? position.x() : position.y());
+    int edgeEnd = Pix2Tile((vertical ? position.x() : position.y()) + size);
     // movement
-    int moveStart = Tile2Pix((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0));
-    int moveStop = Tile2Pix((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0) + distance);
+    int moveStart = Pix2Tile((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0));
+    int moveStop = Pix2Tile((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0) + distance);
 
-    cout << "Moving a " << size << "px object at: " << position.x() << "x" << position.y() << (vertical ? "vertically" : "horizontally") << " by " << distance << " pixels" << endl;
+    cout << "Moving a " << size << "px object at: " << position.x() << "x" << position.y() << (vertical ? " vertically" : " horizontally") << " by " << distance << " pixels" << endl;
 
     // check for invalid values (starting outside the map, etc):
     if (edgeBegin < 0 || edgeEnd < 0 || moveStart < 0)
@@ -413,14 +413,14 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
         for (int i=moveStart; i <= moveStop; ++i)
             for (int j=edgeBegin; j <= edgeEnd; ++j)
                 if (i >= (vertical ? height : width) || (vertical && isWall(i, j)) || (!vertical && isWall(j, i)))  // detect collision
-                    return (i * tileSize) - (vertical ? position.y() : position.x());
+                    return Tile2Pix(i) - (vertical ? position.y() : position.x());
     }
     else // moving in negative direction
     {
         for (int i=moveStart; i >= moveStop; --i)
             for (int j=edgeBegin; j >= edgeEnd; --j)
                 if (i < 0 || (vertical && isWall(i, j)) || (!vertical && isWall(j, i))) // detect collision
-                    return ((i+1) * tileSize) * (vertical ? position.y() : position.x());
+                    return Tile2Pix(i+1) - (vertical ? position.y() : position.x());
     }
     return distance;    // no collision detected, can move full distance
 }
