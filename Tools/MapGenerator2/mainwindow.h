@@ -40,6 +40,8 @@ protected:
 private:
     Ui::MainWindow *ui;
     Tile **tiles;
+    int width;
+    int height;
     vector<PhysicsType*> physicsTypes;
     vector<GraphicsType*> graphicsTypes;
     void getTileTypes();
