@@ -11,7 +11,7 @@
 #include <iostream>
 using namespace std;
 
-MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow), width(0), height(0), tiles(NULL) {
+MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow), width(0), height(0){
     ui->setupUi(this);
     getTileTypes();
 }
@@ -64,7 +64,7 @@ void MainWindow::getTileTypes() {
             pType = new PhysicsType;
             pType->hit  = pType_e.attribute("hit");
             pType->name = pType_e.attribute("name");
-            physicsTypes.push_back(pType);
+            Tile::physicsTypes.push_back(pType);
             ui->physics->addItem(pType->name, QVariant());
         }
     }
@@ -90,7 +90,7 @@ void MainWindow::getTileTypes() {
                     gType->name       = gType_e.attribute("name");
                     gType->x          = gType_e.attribute("x").toInt();
                     gType->y          = gType_e.attribute("y").toInt();
-                    graphicsTypes.push_back(gType);
+                    Tile::graphicsTypes.push_back(gType);
                     ui->graphics->addItem(gType->name, QVariant());
                 }
             }
@@ -99,27 +99,16 @@ void MainWindow::getTileTypes() {
 }
 
 void MainWindow::refreshMap() {
-    if (tiles != NULL) {
-        return;
-    }
     Tile *tile;
-    if (width > 0 && height > 0) {
-        for (int i=0; i < width*height; ++i) {
-            ui->map->removeWidget(tiles[i]);
-            delete(tiles[i]);
-        }
-        // TODO: free(tiles);
-    }
     int width = ui->grid_width->value();
     int height = ui->grid_height->value();
-    tiles = new Tile *[width*height];
     for (int x=0; x < width; ++x) {
-        for (int y=0; y < width; ++y) {
+        for (int y=0; y < height; ++y) {
             tile = new Tile(x, y);      // create new tile
-            tiles[(width*y)+x] = tile;  // store tile pointer for later
             ui->map->addWidget(tile, y, x); // grid's x,y coords are backwards and upside down, DO NOT CHANGE!!!
             connect(ui->reset, SIGNAL(clicked()), tile, SLOT(reset()));
             connect(ui->clear, SIGNAL(clicked()), tile, SLOT(clear()));
+            connect(this, SIGNAL(genXML(QDomDocument*,QDomElement*)), tile, SLOT(genXML(QDomDocument*,QDomElement*)));
             connect(this, SIGNAL(apply(int, int, int)), tile, SLOT(apply(int, int, int)));
         }
     }
@@ -132,50 +121,10 @@ void MainWindow::apply() {
 void MainWindow::save() {
     QDomDocument doc("Map");
     QDomElement map = doc.createElement("map");
-    stringstream sString;
     map.setAttribute("height", ui->grid_height->value());
     map.setAttribute("width", ui->grid_width->value());
     map.setAttribute("tileSize", ui->tile_size->value());
-    for (int i=0; i < (ui->grid_width->value() * ui->grid_height->value()); ++i) {
-        if (tiles[i]->exists()) {
-            QDomElement tile_e = doc.createElement("tile");
-            tile_e.setAttribute("x", tiles[i]->getX());
-            tile_e.setAttribute("y", tiles[i]->getY());
-
-            if (tiles[i]->getPhysics() > 0) {
-                QDomElement physics_e = doc.createElement("physics");
-                PhysicsType *pType = physicsTypes[tiles[i]->getPhysics()-1];
-                physics_e.setAttribute("hit", pType->hit);
-                tile_e.appendChild(physics_e);
-            }
-
-            if (tiles[i]->getGraphics() > 0) {
-                QDomElement graphics_e = doc.createElement("graphics");
-                GraphicsType *gType = graphicsTypes[tiles[i]->getGraphics()-1];
-                graphics_e.setAttribute("source", gType->src);
-                graphics_e.setAttribute("filename", gType->filename);
-                graphics_e.setAttribute("rotation", tiles[i]->getRotation());
-                // Bottom Left Horizontal
-                sString.str("");
-                sString << gType->x << "/" << gType->fileWidth;
-                graphics_e.setAttribute("blh", QString(sString.str().c_str()));
-                // Bottom Left Vertical
-                sString.str("");
-                sString << gType->y << "/" << gType->fileHeight;
-                graphics_e.setAttribute("blv", QString(sString.str().c_str()));
-                // Top Right Horizontal
-                sString.str("");
-                sString << gType->x+1 << "/" << gType->fileWidth;
-                graphics_e.setAttribute("trh", QString(sString.str().c_str()));
-                // Top Right Vertical
-                sString.str("");
-                sString << gType->y+1 << "/" << gType->fileHeight;
-                graphics_e.setAttribute("trv", QString(sString.str().c_str()));
-                tile_e.appendChild(graphics_e);
-            }
-            map.appendChild(tile_e);
-        }
-    }
+    emit genXML(&doc, &map);
     doc.appendChild(map);
     QFile file(QFileDialog::getSaveFileName(this, tr("Save Map File"), "./map.xml", tr("XML (*.xml)")));
 

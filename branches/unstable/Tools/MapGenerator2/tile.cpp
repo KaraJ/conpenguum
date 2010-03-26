@@ -4,7 +4,9 @@
 #include <qpalette.h>
 #include <iostream>
 #include <QDomDocument>
-using namespace std;
+
+std::vector<PhysicsType*> Tile::physicsTypes = std::vector<PhysicsType*>();
+std::vector<GraphicsType*> Tile::graphicsTypes = std::vector<GraphicsType*>();
 
 Tile::Tile(QWidget *parent): QPushButton(parent), x(0), y(0), physics(0), graphics(0) {
     init();
@@ -68,22 +70,44 @@ bool Tile::exists() {
     return (physics > 0 || graphics > 0);
 }
 
-int Tile::getX() {
-    return x;
-}
+void Tile::genXML(QDomDocument *doc, QDomElement *map) {
+    std::stringstream sString;
+    if (exists()) {
+        QDomElement tile_e = doc->createElement("tile");
+        tile_e.setAttribute("x", x);
+        tile_e.setAttribute("y", y);
 
-int Tile::getY() {
-    return y;
-}
+        if (physics > 0) {
+            QDomElement physics_e = doc->createElement("physics");
+            PhysicsType *pType = physicsTypes[physics-1];
+            physics_e.setAttribute("hit", pType->hit);
+            tile_e.appendChild(physics_e);
+        }
 
-int Tile::getPhysics() {
-    return physics;
-}
-
-int Tile::getGraphics() {
-    return graphics;
-}
-
-int Tile::getRotation() {
-    return rotation;
+        if (graphics > 0) {
+            QDomElement graphics_e = doc->createElement("graphics");
+            GraphicsType *gType = graphicsTypes[graphics-1];
+            graphics_e.setAttribute("source", gType->src);
+            graphics_e.setAttribute("filename", gType->filename);
+            graphics_e.setAttribute("rotation", rotation);
+            // Bottom Left Horizontal
+            sString.str("");
+            sString << gType->x << "/" << gType->fileWidth;
+            graphics_e.setAttribute("blh", QString(sString.str().c_str()));
+            // Bottom Left Vertical
+            sString.str("");
+            sString << gType->y << "/" << gType->fileHeight;
+            graphics_e.setAttribute("blv", QString(sString.str().c_str()));
+            // Top Right Horizontal
+            sString.str("");
+            sString << gType->x+1 << "/" << gType->fileWidth;
+            graphics_e.setAttribute("trh", QString(sString.str().c_str()));
+            // Top Right Vertical
+            sString.str("");
+            sString << gType->y+1 << "/" << gType->fileHeight;
+            graphics_e.setAttribute("trv", QString(sString.str().c_str()));
+            tile_e.appendChild(graphics_e);
+        }
+        map->appendChild(tile_e);
+    }
 }
