@@ -2,8 +2,25 @@
 #define TILE_H
 
 #include <QDomDocument>
+#include <QDomElement>
 #include <QPushButton>
 #include <sstream>
+#include <vector>
+
+typedef struct {
+    QString name;
+    QString hit;
+} PhysicsType;
+
+typedef struct {
+    QString name;
+    QString src;
+    QString filename;
+    int x;
+    int y;
+    int fileWidth;
+    int fileHeight;
+} GraphicsType;
 
 class Tile : public QPushButton
 {
@@ -16,15 +33,12 @@ private:
     int rotation;
     void apply();
     void init();
+    bool exists();
 public:
+    static std::vector<PhysicsType*> physicsTypes;
+    static std::vector<GraphicsType*> graphicsTypes;
     explicit Tile(QWidget *parent = 0);
     Tile(int, int);
-    int getX();
-    int getY();
-    int getPhysics();
-    int getGraphics();
-    int getRotation();
-    bool exists();
 signals:
 
 public slots:
@@ -34,6 +48,7 @@ public slots:
     void apply(int, int, int);
     void print();
     void clear();
+    void genXML(QDomDocument*, QDomElement*);
 };
 
 #endif // TILE_H

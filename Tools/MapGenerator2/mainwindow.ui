@@ -168,7 +168,7 @@
            <number>200</number>
           </property>
           <property name="value">
-           <number>50</number>
+           <number>20</number>
           </property>
          </widget>
         </item>
@@ -188,7 +188,7 @@
            <number>200</number>
           </property>
           <property name="value">
-           <number>50</number>
+           <number>10</number>
           </property>
          </widget>
         </item>

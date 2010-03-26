@@ -5,24 +5,8 @@
 #include <QDomDocument>
 #include <string>
 #include <vector>
+#include <list>
 #include "tile.h"
-
-using namespace std;
-
-typedef struct {
-    QString name;
-    QString hit;
-} PhysicsType;
-
-typedef struct {
-    QString name;
-    QString src;
-    QString filename;
-    int x;
-    int y;
-    int fileWidth;
-    int fileHeight;
-} GraphicsType;
 
 namespace Ui {
     class MainWindow;
@@ -39,11 +23,8 @@ protected:
 
 private:
     Ui::MainWindow *ui;
-    Tile **tiles;
     int width;
     int height;
-    vector<PhysicsType*> physicsTypes;
-    vector<GraphicsType*> graphicsTypes;
     void getTileTypes();
 public slots:
     void refreshMap();
@@ -51,6 +32,7 @@ public slots:
     void save();
 signals:
     void apply(int, int, int);
+    void genXML(QDomDocument*, QDomElement*);
 };
 
 #endif // MAINWINDOW_H
