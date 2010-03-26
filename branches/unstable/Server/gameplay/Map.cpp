@@ -400,11 +400,23 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
 
     // check for invalid values (starting outside the map, etc):
     if (edgeBegin < 0 || edgeEnd < 0 || moveStart < 0)
-        throw MapCanMoveException("value below zero", edgeBegin, edgeEnd, moveStart);
+    {
+        cerr << "value below zero: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
+        return 0;
+        //throw MapCanMoveException("value below zero", edgeBegin, edgeEnd, moveStart);
+    }
     if (vertical && (edgeBegin > width || edgeEnd > width || moveStart > height))
-        throw MapCanMoveException("value past right side of map (x >= width)", edgeBegin, edgeEnd, moveStart);
+    {
+        cerr << "value above width: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
+        return 0;
+        //throw MapCanMoveException("value past right side of map (x >= width)", edgeBegin, edgeEnd, moveStart);
+    }
     if (!vertical && (edgeBegin > height || edgeEnd > height || moveStart > width))
-        throw MapCanMoveException("value above map (y >= height)", edgeBegin, edgeEnd, moveStart);
+    {
+        cerr << "value above height: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
+        return 0;
+        //throw MapCanMoveException("value above map (y >= height)", edgeBegin, edgeEnd, moveStart);
+    }
 
     cout << "values: " << edgeBegin << 'x' << edgeEnd << ',' << moveStart << 'x' << moveStop << endl;
 
