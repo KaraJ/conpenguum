@@ -229,9 +229,9 @@
          </widget>
         </item>
         <item row="2" column="0" colspan="2">
-         <widget class="QPushButton" name="resize_button">
+         <widget class="QPushButton" name="generate">
           <property name="text">
-           <string>Resize</string>
+           <string>Generate</string>
           </property>
          </widget>
         </item>
@@ -286,14 +286,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>resize_button</sender>
+   <sender>generate</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>refreshMap()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>347</x>
-     <y>126</y>
+     <x>502</x>
+     <y>140</y>
     </hint>
     <hint type="destinationlabel">
      <x>363</x>
@@ -308,12 +308,28 @@
    <slot>save()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>249</x>
-     <y>299</y>
+     <x>349</x>
+     <y>311</y>
     </hint>
     <hint type="destinationlabel">
      <x>304</x>
      <y>306</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>generate</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>refreshMap()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>392</x>
+     <y>130</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>404</x>
+     <y>206</y>
     </hint>
    </hints>
   </connection>

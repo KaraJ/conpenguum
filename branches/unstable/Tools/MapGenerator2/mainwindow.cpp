@@ -11,13 +11,9 @@
 #include <iostream>
 using namespace std;
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
+MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow), width(0), height(0), tiles(NULL) {
     ui->setupUi(this);
     getTileTypes();
-    refreshMap();
 }
 
 MainWindow::~MainWindow()
@@ -103,21 +99,30 @@ void MainWindow::getTileTypes() {
 }
 
 void MainWindow::refreshMap() {
+    if (tiles != NULL) {
+        return;
+    }
     Tile *tile;
-    int num_x = ui->grid_width->value();
-    int num_y = ui->grid_height->value();
-    tiles = (Tile**)malloc(sizeof(Tile*) * num_x * num_y);
-    for (int x=0; x < num_x; ++x) {
-        for (int y=0; y < num_y; ++y) {
+    if (width > 0 && height > 0) {
+        for (int i=0; i < width*height; ++i) {
+            ui->map->removeWidget(tiles[i]);
+            delete(tiles[i]);
+        }
+        // TODO: free(tiles);
+    }
+    int width = ui->grid_width->value();
+    int height = ui->grid_height->value();
+    tiles = new Tile *[width*height];
+    for (int x=0; x < width; ++x) {
+        for (int y=0; y < width; ++y) {
             tile = new Tile(x, y);      // create new tile
-            tiles[(num_x*y)+x] = tile;  // store tile pointer for later
-            ui->map->addWidget(tile, y, x); // grid's x,y coords are backwards, DO NOT CHANGE!!!
+            tiles[(width*y)+x] = tile;  // store tile pointer for later
+            ui->map->addWidget(tile, y, x); // grid's x,y coords are backwards and upside down, DO NOT CHANGE!!!
             connect(ui->reset, SIGNAL(clicked()), tile, SLOT(reset()));
             connect(ui->clear, SIGNAL(clicked()), tile, SLOT(clear()));
             connect(this, SIGNAL(apply(int, int, int)), tile, SLOT(apply(int, int, int)));
         }
     }
-    // TODO: populate physics & graphics dropdowns
 }
 
 void MainWindow::apply() {
