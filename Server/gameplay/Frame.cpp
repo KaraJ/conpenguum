@@ -1,6 +1,8 @@
 #include <iostream> // only used for testing
 #include "Frame.h"
 #include "general.h"
+#include <cstdlib>
+
 
 #define VELOCITY_THRUST 2   // the velocity of a new thrust vector.
 #define VELOCITY_SHOT   3   // the velocity of a shot.
@@ -13,7 +15,7 @@
 using namespace std;
 
 
-Frame::Frame(QString filename): frameTimer(0), map(filename)
+Frame::Frame(QString filename): frameTimer(0), map(QString(filename))
 {
 	for (size_t i = 0; i < MAX_CLIENTS; ++i)
 		listShip[i] = 0;
@@ -160,6 +162,7 @@ void Frame::spawnShip(size_t shipID)
     QPoint spawnPoint(100,100); // map function to return a safe spawn point
     ship->active = true;
     ship->position = spawnPoint;
+    map.add(ship, ship->position, 50);
 }
 
 /*-----------------------------------------------------------------------------
@@ -184,16 +187,18 @@ void Frame::spawnShip(size_t shipID)
 void Frame::updateShips(void)
 {
     int dist;
+	QPoint oldPosition;
     for(size_t i = 0; i < MAX_CLIENTS; ++i)
     {
         if(listShip[i] != 0 && listShip[i]->active)
         {
-			// set new action mask
-			// HERE
-
+		oldPosition =  listShip[i]->position;
             if (listShip[i]->vector.x() != 0)
             {
                 dist = map.canMove(listShip[i]->position, false, SHIPSIZE, listShip[i]->vector.x());
+                if(abs(dist) < abs(listShip[i]->vector.x())){
+			listShip[i]->vector.setX(-(listShip[i]->vector.x()));
+                }
                 listShip[i]->position.setX(listShip[i]->position.x() + dist);
             }
 
@@ -201,8 +206,13 @@ void Frame::updateShips(void)
             if (listShip[i]->vector.y() != 0)
             {
                 dist = map.canMove(listShip[i]->position, true, SHIPSIZE, listShip[i]->vector.y());
+		if(abs(dist) < abs(listShip[i]->vector.y())){
+			listShip[i]->vector.setY(-(listShip[i]->vector.y()));
+                }
                 listShip[i]->position.setY(listShip[i]->position.y() + dist);
             }
+	
+		map.move(listShip[i], oldPosition, listShip[i]->position, 50);
 			
 			QPoint newVector;
 			if(listShip[i]->actionMask.isAccelerating()) // thrust forward
@@ -213,10 +223,11 @@ void Frame::updateShips(void)
 				// '-=' on a negative vector was causing more acceleration - changed to +=
 				newVector = listShip[i]->vector + rotVelToVec(listShip[i]->rotation * 2, -VELOCITY_THRUST);
 			}
-
+			if(listShip[i]->actionMask.isDecelerating() || listShip[i]->actionMask.isAccelerating()){
 			if(VECTORMAGNITUDE(newVector) < VELOCITY_MAX)
 			{
 				listShip[i]->vector = newVector;
+			}
 			}
 			
 			if(listShip[i]->actionMask.isTurningRight()) // turn right
