@@ -35,7 +35,7 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
 	
 	/*this may be temporary*/
 	this->setFixedSize(1024, 768);
-        ren = new Renderer(this, gameState);
+	ren = new Renderer(this, gameState);
 	this->show();
 
 	animationMap = Animation::getAnimationMap();
@@ -266,6 +266,7 @@ void BaseWindow::timerEvent()
 	theClient->sendAction(*clientAction);
 	getServerMessage();
 	updateGameState();
+	ren->buildRenderList(scrnCenter);
 	ren->Render();
 }
 
@@ -286,7 +287,8 @@ void BaseWindow::timerEvent()
  -----------------------------------------------------------------------------*/
 void BaseWindow::startRendering ()
 {
-	timer.start(1000/frameRate);
+	int time = 1000/frameRate;
+	timer.start(time);
 }
 
 /*------------------------------------------------------------------------------
@@ -351,8 +353,12 @@ void BaseWindow::updateGameState ()
     gameState.clear();
 	while (theClient->hasNextUpdate())
 	{
-                //GameObject * gameObj;
+		//GameObject * gameObj;
 		UpdateObject updateObj = theClient->nextUpdate();
+
+		if (updateObj.getObjectId() == clientAction->getObjectID()) //Update screen center location
+			scrnCenter = updateObj.getPos();
+
 		//updateObj.print();
                 /*int objectId = updateObj.getActions().getObjectID();
 
@@ -363,9 +369,9 @@ void BaseWindow::updateGameState ()
 		else
 		{
 			gameObj = new GameObject;
-                        gameObj->animeIndex = 0;*/
-                        //gameState.push_back(*gameObj);
-                        gameState.push_back(updateObj);
+			gameObj->animeIndex = 0;*/
+			//gameState.push_back(*gameObj);
+			gameState.push_back(updateObj);
                 /*}
 
 		gameObj->objectId = objectId;
@@ -424,29 +430,3 @@ void BaseWindow::getServerMessage()
 	}
 }
 
-
-
-/*------------------------------------------------------------------------------
- --
- -- METHOD: BaseWindow::render()
- --
- -- DESIGNER: Erick Ribeiro
- --
- -- PROGRAMMER: Erick Ribeiro
- --
- -- REVISIONS:
- --
- -- NOTES:
- -- This method is just an empty virtual method. It must be overriden by
- -- subclasses to implement the actual rendering functionality. This method is
- -- called automatically for every frame.
- --
- -----------------------------------------------------------------------------*/
-void BaseWindow::render ()
-{
-}
-
-void BaseWindow::closeEvent(QCloseEvent*)
-{
-	exit(0);
-}

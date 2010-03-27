@@ -78,13 +78,14 @@ class BaseWindow : public QMainWindow
     private:
 		int frameRate;
 		QTimer timer;
-                //vector<GameObject> gameState;
-                vector<UpdateObject> gameState;
+        //vector<GameObject> gameState;
+		vector<UpdateObject> gameState;
 		map<int, Animation> animationMap;
 		bool chatting;
 		string chatString;
 		CommClient::CommClient* theClient;
 		size_t clientID;
+		QPoint scrnCenter;
 		Renderer* ren;
 		ClientAction* clientAction;
 
@@ -95,7 +96,6 @@ class BaseWindow : public QMainWindow
 		void setFrameRate (int rate);
 		void keyPressEvent (QKeyEvent * event);
 		void keyReleaseEvent (QKeyEvent * event);
-		virtual void render ();
 		string getChatString();
 		void Start(int clientId);
 		void getServerMessage();
@@ -107,7 +107,6 @@ class BaseWindow : public QMainWindow
 		void updateGameState();
 		int handleChat(int key);
 		void toggleChat();
-		void closeEvent(QCloseEvent*);
 };
 
 #endif // BASEWINDOW_H
