@@ -1,6 +1,7 @@
 #include "ipbox.h"
 
-IpBox::IpBox(QWidget *parent, string alias, string addr, string prt) : QDialog(parent), ui(new Ui_IpBox), name(QString(alias.c_str())), ip(QString(addr.c_str())), port(QString(prt.c_str()))
+IpBox::IpBox(QWidget *parent, string alias, string addr, string prt)
+: QDialog(parent), ui(new Ui_IpBox), ip(QString(addr.c_str())), port(QString(prt.c_str())), name(QString(alias.c_str()))
 {
     ui->setupUi(this);
 
