@@ -107,6 +107,7 @@ class BaseWindow : public QMainWindow
 		void updateGameState();
 		int handleChat(int key);
 		void toggleChat();
+		void closeEvent(QCloseEvent*);
 };
 
 #endif // BASEWINDOW_H
