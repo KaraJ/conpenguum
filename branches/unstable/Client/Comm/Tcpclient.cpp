@@ -22,7 +22,15 @@ void* TCPClient::ReadThread(void* param)
 	ServerMessage msgBuff;
 	while (TCPClient::connected_)
 	{
-		TCPConnection::ReadMessage(socket, msgBuff);
+		if(!TCPConnection::ReadMessage(socket, msgBuff))
+		{
+			ServerMessage shutdown;
+			shutdown.SetMsgType(ServerMessage::MT_SHUTDOWN);
+			sem_wait(semSM_);
+			msgBuff_->push(shutdown);
+			sem_post(semSM_);
+			break;
+		}
 		sem_wait(semSM_);
 		msgBuff_->push(msgBuff);
 		sem_post(semSM_);

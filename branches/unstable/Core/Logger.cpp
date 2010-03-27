@@ -29,17 +29,13 @@ using std::endl;
  -- INTERFACE:
  --		const char* errorMsg:	Error Message to print before quitting.
  ----------------------------------------------------------------------------------------------------------*/
-void Logger::LogNQuit(const char* errorMsg)
+void Logger::LogNQuit(const char* errorMsg, bool popup, QWidget* parent)
 {
-	fstream logFile;
-	time_t currTime;
-
-	perror(errorMsg);
-
-	logFile.open("Server.log", ios::app | ios::out);
-	time(&currTime);
-	logFile << ctime(&currTime) << ": " << errorMsg << endl;
-	logFile.close();
+	LogNContinue(errorMsg);
+	if(popup && parent != NULL)
+	{
+		QMessageBox::warning(parent, "Tuxspace", errorMsg, QMessageBox::Ok, QMessageBox::Ok);
+	}
 	exit(1);
 }
 

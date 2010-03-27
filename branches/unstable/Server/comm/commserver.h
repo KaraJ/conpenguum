@@ -5,6 +5,7 @@
 #include <map>
 #include <semaphore.h>
 #include <vector>
+#include <signal.h>
 
 #include "../../Core/comm/data/clientaction.h"
 #include "../../Core/comm/data/updateobject.h"
@@ -35,12 +36,12 @@ public:
     void sendServerMsg(const ServerMessage& msg);
     void sendUpdate(const UpdateObject& update, const std::vector<int>& clientIDs);
     void sendUpdateToAll(const UpdateObject& update);
-
+    void Shutdown();
 private:
     CommServer();
+    ~CommServer();
     CommServer(const CommServer& cpy);
     CommServer& operator=(const CommServer& cc);
-    ~CommServer();
     static void* readThreadUDP(void* args);
 
     std::queue<ClientAction> actions_;
