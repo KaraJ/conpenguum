@@ -43,8 +43,6 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
     QFile q_File(file.c_str());
     QDomElement docElement;
     std::vector<Image> vec;
-    QXmlInputSource * src;
-    int offsetX, offsetY;
     std::string textur_Link, desc;
     Image img;
 
@@ -70,23 +68,13 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
     QString str;
     QDomElement element = node.toElement();
     QDomNode next;
+
     // getting path to texture.
     while(strcmp(node.nodeName().toStdString().c_str(), "link") != 0){node = node.nextSibling();}
     element = node.toElement();
     img.setLink(element.text().toStdString());
 
-    // if we are looking for ships iterate to the begining where direction can be captured.
-   /* if(animation == Ship)
-    {
-        // looking for frame portion
-        while(strcmp(node.nodeName().toStdString().c_str(), "frame") != 0){node = node.nextSibling();}
-        //node = node.firstChild();
-        next = node.nextSibling();
-        element = node.toElement();
-        node = element.firstChild();
-
-    }
-    */
+    // if we are looking for ships iterate to the beginning where direction can be captured.
     while(!node.isNull())
     {
         // might not need switch but have it in just incase an animation xml differs a bit, but it shouldnt.
@@ -135,49 +123,7 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
                 vec.push_back(img);
                 break;
             }
-        /*
-        case Exhaust:
-            {
-                break;
-            }
-        case Ship:
-            {
 
-                // skip to relevant info
-                while(strcmp(node.nodeName().toStdString().c_str(), "direction") != 0){node = node.nextSibling();}
-                next = node.nextSibling();
-                element = node.toElement();
-                node = element.firstChild();
-                //next = node.nextSibling().nextSibling(); // set for next iteration.
-                img.setDirection(atoi(element.attributes().namedItem("id").toElement().text().toStdString().c_str()));
-                //node = element.firstChild();
-                element = node.toElement();
-
-                // get image values.
-                while(strcmp(element.nodeName().toStdString().c_str(), "left") != 0){
-                    element = node.nextSiblingElement();
-                }
-                img.setLeftOffSet(atof(element.text().toStdString().c_str()));
-
-                // getting bottom offset.
-                while(strcmp(node.nodeName().toStdString().c_str(), "bottom") != 0){node = node.nextSibling();}
-                element = node.toElement();
-                img.setBottomOffSet(atof(element.text().toStdString().c_str()));
-
-                // getting right offset.
-                while(strcmp(node.nodeName().toStdString().c_str(), "right") != 0){node = node.nextSibling();}
-                element = node.toElement();
-                img.setRightOffSet(atof(element.text().toStdString().c_str()));
-
-                // getting top offset.
-                while(strcmp(node.nodeName().toStdString().c_str(), "top") != 0){node = node.nextSibling();}
-                element = node.toElement();
-                img.setTopOffSet(atof(element.text().toStdString().c_str()));
-
-                vec.push_back(img);
-                break;
-            }
-            */
         }
 
         node = next; // go to next frame package in XML.
