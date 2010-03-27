@@ -1,5 +1,5 @@
 #include "socketwrapper.h"
-
+#include <fcntl.h>
 using namespace std;
 
 int SocketWrapper::Socket(int family, int type, int protocol)
@@ -30,14 +30,32 @@ int SocketWrapper::Accept(int fd, sockaddr_in *sa, socklen_t *salenptr)
 
 bool SocketWrapper::Connect(int fd, const struct sockaddr_in *sa, socklen_t salen)
 {
-    if (connect(fd, (sockaddr*)sa, salen) < 0)
-    {
-    	string buff = "Connect: Unable to connect to ";
-    	buff += inet_ntoa(sa->sin_addr);
-        Logger::LogNContinue("Connect: ");
-        return false;
-    }
-    return true;
+	struct timeval tv;
+	fd_set connSet;
+	socklen_t tmp;
+	int err;
+	bool result;
+
+	ToggleNonBlock(fd, true);
+	if (connect(fd, (sockaddr*)sa, salen) != -1)
+	{
+		result = true;
+	}
+	else if (errno == EINPROGRESS) //Delayed connect
+	{
+		tv.tv_sec = 1;
+		tv.tv_usec = 0;
+		FD_ZERO(&connSet);
+		FD_SET(fd, &connSet);
+		if (select(fd + 1, NULL, &connSet, NULL, &tv) > 0) //Wait 5 seconds
+		{
+			tmp = sizeof(int);
+			getsockopt(fd, SOL_SOCKET, SO_ERROR, (void*)(&err), &tmp); //Check if we connected
+			result = !err;
+		}
+	}
+	ToggleNonBlock(fd, false);
+	return result;
 }
 
 void SocketWrapper::Listen(int fd, int backlog)
@@ -112,3 +130,19 @@ ssize_t SocketWrapper::Sendto(int fd, const void* buff, size_t nbytes, int flags
 	return retval;
 }
 
+void SocketWrapper::ToggleNonBlock(int fd, bool toggleOn)
+{
+	int ctls;
+	if (toggleOn)
+	{
+		ctls = fcntl(fd, F_GETFL, NULL); //Set socket non-blocking
+		ctls |= O_NONBLOCK;
+		ctls = fcntl(fd, F_SETFL, ctls);
+	}
+	else
+	{
+		ctls = fcntl(fd, F_GETFL, NULL); //Set to blocking
+		ctls &= (~O_NONBLOCK);
+		ctls = fcntl(fd, F_SETFL, ctls);
+	}
+}
