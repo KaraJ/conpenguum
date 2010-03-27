@@ -10,7 +10,7 @@
 class Logger
 {
 public:
-	static void LogNQuit(const char* errorMsg, bool popup = false, QWidget* parent = NULL);
+	static void LogNQuit(const char* errorMsg);
 	static void LogNContinue(const char* errorMsg);
 };
 
