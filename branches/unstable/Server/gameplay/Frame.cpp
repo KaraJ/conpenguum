@@ -200,6 +200,7 @@ void Frame::updateShips(void)
 			listShip[i]->vector.setX(-(listShip[i]->vector.x()));
                 }
                 listShip[i]->position.setX(listShip[i]->position.x() + dist);
+                cout << "X:" << oldPosition.x() << "->" <<  listShip[i]->position.x() << "|" << dist << endl;
             }
 
 
