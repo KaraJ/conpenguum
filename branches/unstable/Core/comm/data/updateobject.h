@@ -19,7 +19,7 @@ public:
     inline int getRotation() const { return rotation_; }
     inline QPoint getPos() const { return pos_; }
     inline ClientAction& getActions() { return actions_; }
-    inline unsigned short getObjectId() { return actions_.getObjectID(); }
+    inline unsigned short getObjectId() { return actions_.getObjectId(); }
 
     inline void setRotation(int rot) { rotation_ = rot; }
     inline void setPosition(const QPoint& p) { pos_ = p; }
