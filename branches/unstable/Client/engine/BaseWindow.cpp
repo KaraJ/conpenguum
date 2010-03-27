@@ -63,8 +63,7 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
  -----------------------------------------------------------------------------*/
 void BaseWindow::Start(int clientId)
 {
-	clientID = clientId;
-	clientAction = new ClientAction(clientID);
+	clientAction = new ClientAction(clientId);
 	startRendering();
 }
 
@@ -419,13 +418,12 @@ void BaseWindow::getServerMessage()
 		//init msg
 		if (sm.GetMsgType() == ServerMessage::MT_INIT)
 		{
-			clientID = sm.GetClientID();
-			std::cout << "MT_INIT RECEIVED: ID: " << clientID << endl;
+			cout << "MT_INIT RECEIVED: ID: " << clientAction->getObjectID() << endl; //TODO: Handle initial score
 		}
 		//chat msg
 		else if (sm.GetMsgType() == ServerMessage::MT_CHAT)
 		{
-			//handle chat message
+			;//handle chat message
 		}
 	}
 }

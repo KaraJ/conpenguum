@@ -84,7 +84,6 @@ class BaseWindow : public QMainWindow
 		bool chatting;
 		string chatString;
 		CommClient::CommClient* theClient;
-		size_t clientID;
 		QPoint scrnCenter;
 		Renderer* ren;
 		ClientAction* clientAction;
