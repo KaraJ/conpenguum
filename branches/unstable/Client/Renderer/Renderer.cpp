@@ -14,8 +14,6 @@ using namespace std;
 Renderer::Renderer(QWidget *parent,std::vector<UpdateObject> &gameSt) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt)
 {
     const char *glVersion = (const char*)glGetString(GL_VERSION);
-    //will just give us the GL version #...set a break point here if you
-    //you want the full string
     double glVer = atof(glVersion);
     assert(glVer > 1.1);
     resourceManager = ResourceManager::GetInstance();
@@ -55,9 +53,9 @@ void Renderer::buildRenderList(QPoint center)
         }
         else if(objectlist[i].getObjectId() == 33) //TODO: Hard coded for testing, WALL
         {
-            renderList[i].texture = textures["over1.bmp"];
-            renderList[i].texOffsetX = 0;
-            renderList[i].texOffsetY = 0;
+            renderList[i].texture = textures["tiles.bmp"];
+            renderList[i].texOffsetX = 18 / 19;
+            renderList[i].texOffsetY = 5 / 10;
             renderList[i].objectHeight = 1;
             renderList[i].objectWidth = 1;
             renderList[i].rotation = 0;
@@ -66,11 +64,11 @@ void Renderer::buildRenderList(QPoint center)
         }
         else
         {
-            renderList[i].texture = textures["ships.bmp"];
+            renderList[i].texture = textures["wbship.bmp"];
             renderList[i].texOffsetX = 0;
-            renderList[i].texOffsetY = 30 / 32.0;
-            renderList[i].objectHeight = 1 / 32.0;
-            renderList[i].objectWidth = 1 / 10.0;
+            renderList[i].texOffsetY = 0;
+            renderList[i].objectHeight = 1;
+            renderList[i].objectWidth = 1;
             renderList[i].rotation = objectlist[i].getRotation() * 2;
             renderList[i].objectHeightPx = 50;
             renderList[i].objectWidthPx = 50;
