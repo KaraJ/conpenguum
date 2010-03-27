@@ -290,8 +290,8 @@ void Frame::updateShots(void)
     	}
         it->position += it->vector;
         if(map.isWall(it->position)){
-        	listShot.erase(it);
         	map.remove(&(*it), it->position);
+		listShot.erase(it);
         }
         map.move(&(*it), oldPos, it->position);
     }
