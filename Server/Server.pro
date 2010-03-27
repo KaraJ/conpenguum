@@ -36,7 +36,7 @@ SOURCES += gameplay/Frame.cpp \
            gameplay/Shot.cpp \
            comm/commserver.cpp \
            comm/TCPServer.cpp \
-           gameplay/main.cpp \
+           engine/main.cpp \
            engine/ServerEngine.cpp \
            ../Core/comm/data/clientaction.cpp \
            ../Core/comm/data/updateobject.cpp \
