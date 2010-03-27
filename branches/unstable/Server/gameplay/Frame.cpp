@@ -287,13 +287,13 @@ void Frame::updateShots(void)
     	if(frameTimer == it->deathTime){
     		map.remove(&(*it), it->position);
 		listShot.erase(it);
-		return 0;
+		return;
     	}
         it->position += it->vector;
         if(map.isWall(it->position)){
         	map.remove(&(*it), it->position);
 		listShot.erase(it);
-		return 0;
+		return;
         }
         map.move(&(*it), oldPos, it->position);
     }
