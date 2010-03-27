@@ -402,12 +402,12 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
         cerr << "value below zero: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
         return 0;
     }
-    if (vertical && (edgeBegin > width || edgeEnd > width || moveStart > height))
+    if (vertical && (edgeBegin >= width || edgeEnd >= width || moveStart >= height))
     {
         cerr << "value above width: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
         return 0;
     }
-    if (!vertical && (edgeBegin > height || edgeEnd > height || moveStart > width))
+    if (!vertical && (edgeBegin >= height || edgeEnd >= height || moveStart >= width))
     {
         cerr << "value above height: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
         return 0;
