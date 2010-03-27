@@ -648,11 +648,50 @@ bool Map::isWall(QPoint location)
     return isWall(Pix2Tile(location.x()), Pix2Tile(location.y()));
 }
 
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   Map::hasShip
+--
+--  DATE:       January 27, 2010
+--
+--  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  bool hasShip(QPoint location)
+--              location : location to check for ships
+--
+--  NOTES:      checks if a location's tile contains a ship.
+--
+--  RETURNS:    true if the location's tile contains a ship, else false.
+--
+------------------------------------------------------------------------------*/
 bool Map::hasShip(QPoint location)
 {
     return hasShip(Pix2Tile(location.x()), Pix2Tile(location.y()));
 }
 
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   Map::hasShip
+--
+--  DATE:       January 27, 2010
+--
+--  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  bool hasShip(int x, int y)
+--              x : x co-ord of grid to check for ships
+--              y : y co-ord of grid to check for ships
+--
+--  NOTES:      checks if a tile contains a ship.
+--
+--  RETURNS:    true if the tile contains a ship, else false.
+--
+------------------------------------------------------------------------------*/
 bool Map::hasShip(int x, int y)
 {
     if (tiles[x][y] == NULL)
@@ -662,6 +701,25 @@ bool Map::hasShip(int x, int y)
     return (tile(x, y)->numShips() > 0);
 }
 
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   Map::ships
+--
+--  DATE:       January 27, 2010
+--
+--  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  bool ships(QPoint location)
+--              location : location who's tile we need the ships from
+--
+--  NOTES:      gets all the ships in a given tile.
+--
+--  RETURNS:    std::list of ship pointers.
+--
+------------------------------------------------------------------------------*/
 std::list<Ship*> Map::ships(QPoint location)
 {
     int x = Pix2Tile(location.x());
