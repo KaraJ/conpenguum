@@ -230,15 +230,15 @@ void Frame::updateShips(void)
 			{
 				listShip[i]->rotation = (listShip[i]->rotation + ROTATION_RATE) % 180;
 			}
-			/*if(listShip[i]->actionMask.isFiring())
-			  {
+			if(listShip[i]->actionMask.isFiring())
+			 {
 				QPoint spawnVec, shotVec;
 				spawnVec = rotVelToVec(listShip[i]->rotation, SHIPRADIUS);
 				shotVec =  rotVelToVec(listShip[i]->rotation, VELOCITY_SHOT);
 				Shot shot(listShip[i]->position.x() + spawnVec.x(), listShip[i]->position.y()
 					+ spawnVec.y(), shotVec.x(), shotVec.y(), listShip[i]->getID());
 				addShot(shot);
-			}*/
+			}
         }
     }
 }
@@ -295,10 +295,12 @@ void Frame::printShips(void)
 {
     int i;
     for(i = 0; i != 31; ++i){
-        cout << listShip[i]->id << ": P" << listShip[i]->position.x()
-            << ',' <<  listShip[i]->position.y() << " V" << listShip[i]->vector.x()
-            << ',' <<  listShip[i]->vector.y() <<(listShip[i]->active?" a":" d") <<
+		if(listShip[i] != NULL){		
+		    cout << listShip[i]->id << ": P" << listShip[i]->position.x()
+		        << ',' <<  listShip[i]->position.y() << " V" << listShip[i]->vector.x()
+		        << ',' <<  listShip[i]->vector.y() <<(listShip[i]->active?" a":" d") <<
             " r" << listShip[i]->rotation << endl;
+		}
     }
 }
 
@@ -357,3 +359,34 @@ void Frame::updateClientActions(vector<ClientAction> clientActions)
 	for (size_t i = 0; i < clientActions.size(); ++i)
 		listShip[clientActions[i].getObjectID()]->applyActionMask(clientActions[i]);
 }
+
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   printShots
+--
+--  DATE:       March 27, 2010
+--
+--  REVISIONS:  v0.1 - Ships can shoot now with proper bullet spawn position
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  printShots(void)
+--
+--  NOTES:      **FOR TESTING** Prints the positions of all the ships.
+--
+--  FORMAT:     "<id>: <x>,<y>"
+--
+--  RETURNS:    void
+--
+------------------------------------------------------------------------------*/
+void Frame::printShots(void)
+{
+    std::list<Shot>::iterator it;
+    for(it = listShot.begin(); it != listShot.end(); it++){		
+		    cout << "P" << it->position.x()
+		        << ',' <<  it->position.y() << " V" << it->vector.x()
+		        << ',' <<  it->vector.y() << endl;
+    }
+}
+
