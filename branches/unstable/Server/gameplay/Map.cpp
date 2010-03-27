@@ -82,7 +82,7 @@ Map::Map(QString filename) : width(0), height(0), tileSize(1)
             x = tile_e.attribute("x", "0").toInt();
             y = tile_e.attribute("y", "0").toInt();
 
-            if (tile(x, y) == NULL)
+            if (tiles[x][y] == NULL)
             {
                 tiles[x][y] = new Tile(x, y, true);
             }
@@ -357,12 +357,10 @@ void Map::remove(Shot *shot, QPoint location)
 ------------------------------------------------------------------------------*/
 bool Map::isWall(int x, int y)
 {
-    Tile *atile = tile(x, y);
-    if (atile == NULL)
-    {
+    if (tiles[x][y] == NULL) {
         return false;
     }
-    return atile->isWall();
+    return tiles[x][y]->isWall();
 }
 
 /*-----------------------------------------------------------------------------
@@ -396,43 +394,53 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
     int moveStart = Pix2Tile((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0));
     int moveStop = Pix2Tile((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0) + distance);
 
-    cout << "Moving a " << size << "px object at: " << position.x() << "x" << position.y() << (vertical ? " vertically" : " horizontally") << " by " << distance << " pixels" << endl;
+    // cout << "Moving a " << size << "px object at: " << position.x() << "x" << position.y() << (vertical ? " vertically" : " horizontally") << " by " << distance << " pixels" << endl;
 
     // check for invalid values (starting outside the map, etc):
     if (edgeBegin < 0 || edgeEnd < 0 || moveStart < 0)
     {
         cerr << "value below zero: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
         return 0;
-        //throw MapCanMoveException("value below zero", edgeBegin, edgeEnd, moveStart);
     }
     if (vertical && (edgeBegin > width || edgeEnd > width || moveStart > height))
     {
         cerr << "value above width: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
         return 0;
-        //throw MapCanMoveException("value past right side of map (x >= width)", edgeBegin, edgeEnd, moveStart);
     }
     if (!vertical && (edgeBegin > height || edgeEnd > height || moveStart > width))
     {
         cerr << "value above height: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
         return 0;
-        //throw MapCanMoveException("value above map (y >= height)", edgeBegin, edgeEnd, moveStart);
     }
 
-    cout << "values: " << edgeBegin << 'x' << edgeEnd << ',' << moveStart << 'x' << moveStop << endl;
+    // cout << "values: " << edgeBegin << 'x' << edgeEnd << ',' << moveStart << 'x' << moveStop << endl;
 
     // calculation
-    if (distance > 0) { // moving in positive direction
-        for (int i=moveStart; i <= moveStop; ++i)
-            for (int j=edgeBegin; j <= edgeEnd; ++j)
-                if (i >= (vertical ? height : width) || (!vertical && isWall(i, j)) || (vertical && isWall(j, i)))  // detect collision
-                    return Tile2Pix(i) - (vertical ? position.y() : position.x());
+    if (distance > 0) // moving in positive direction
+    {
+        for (int m=moveStart; m <= moveStop; ++m)
+        {
+            for (int l=edgeBegin; l <= edgeEnd; ++l)
+            {
+                if (m >= (vertical ? height : width) || (!vertical && isWall(m, l)) || (vertical && isWall(l, m)))  // detect collision
+                {
+                    return Tile2Pix(m) - (vertical ? position.y() : position.x());
+                }
+            }
+        }
     }
     else // moving in negative direction
     {
-        for (int i=moveStart; i >= moveStop; --i)
-            for (int j=edgeBegin; j >= edgeEnd; --j)
-                if (i < 0 || (!vertical && isWall(i, j)) || (vertical && isWall(j, i))) // detect collision
-                    return Tile2Pix(i+1) - (vertical ? position.y() : position.x());
+        for (int m=moveStart; m >= moveStop; --m)
+        {
+            for (int l=edgeBegin; l <= edgeEnd; ++l)
+            {
+                if (m < 0 || (!vertical && isWall(m, l)) || (vertical && isWall(l, m))) // detect collision
+                {
+                    return Tile2Pix(m+1) - (vertical ? position.y() : position.x());
+                }
+            }
+        }
     }
     return distance;    // no collision detected, can move full distance
 }
@@ -488,12 +496,11 @@ void Map::ensure(int x, int y)
 ------------------------------------------------------------------------------*/
 void Map::clean(int x, int y)
 {
-    Tile *atile = tile(x, y);
-    if (atile == NULL)
+    if (tiles[x][y] == NULL)
     {
         return; // tile is gone, nothing to do.
     }
-    if (!atile->empty())
+    if (tiles[x][y]->empty())
     {
         return; // tile not emtpy, DO NOT CLEAN!
     }
@@ -521,11 +528,11 @@ void Map::clean(int x, int y)
 ------------------------------------------------------------------------------*/
 void Map::drawMap()
 {
-    for(int i = 0; i < 20; i++)
+    for(int i = 0; i < width; i++)
     {
-        for(int j = 0; j < 20; j++)
+        for(int j = 0; j < height; j++)
         {
-            std::cout << (isWall(i, j)?"X":".");
+            std::cout << (isWall(i, j) ? "X" : "-");
         }
         std::cout << std::endl;
     }
