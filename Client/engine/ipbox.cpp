@@ -7,8 +7,7 @@ IpBox::IpBox(QWidget *parent, string alias, string addr, string prt) : QDialog(p
     ui->nameentry->setText(name);
     ui->ipentry->setText(ip);
     ui->portentry->setText(port);
-
-    //show();
+    ui->ipentry->setFocus();
 }
 
 void IpBox::on_okbutton_clicked()
