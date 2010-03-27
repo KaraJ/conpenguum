@@ -61,7 +61,7 @@ bool TCPClient::Connect(const string& ip, const string& port)
 	{
 		tcpSocket = SocketWrapper::Socket(p->ai_family, p->ai_socktype, p->ai_protocol);
 
-		if (SocketWrapper::Connect(tcpSocket, (sockaddr_in*)p->ai_addr, p->ai_addrlen) != -1)
+		if (SocketWrapper::Connect(tcpSocket, (sockaddr_in*)p->ai_addr, p->ai_addrlen))
 		{
 			result = true;
 			break; /* Success */
