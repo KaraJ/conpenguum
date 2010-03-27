@@ -451,3 +451,8 @@ void BaseWindow::getServerMessage()
 void BaseWindow::render ()
 {
 }
+
+void BaseWindow::closeEvent(QCloseEvent*)
+{
+	exit(0);
+}
