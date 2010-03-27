@@ -3,17 +3,16 @@
 #include "../ui_ipbox.h"
 #include <QDialog>
 #include <QString>
-using namespace std;
 
 class IpBox : public QDialog
 {
     Q_OBJECT
 
 public:
-    IpBox(QWidget *parent = 0, string alias = 0, string addr = 0, string prt = 0);
-    string getName();
-    string getIp();
-    string getPort();
+    IpBox(QWidget *parent = 0, std::string alias = 0, std::string addr = 0, std::string prt = 0);
+    std::string getName();
+    std::string getIp();
+    std::string getPort();
 
 private:
     Ui_IpBox *ui;

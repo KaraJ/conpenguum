@@ -24,6 +24,7 @@ public:
 
 private:
     SocketWrapper() {}
+    static void ToggleNonBlock(int fd, bool toggleOn);
 };
 
 #endif // SOCKETWRAPPER_H
