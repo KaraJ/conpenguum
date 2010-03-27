@@ -73,7 +73,7 @@ public:
     inline bool isTurningRight() const { return mask_.Test(AC_TURNRIGHT); }
     inline bool isAccelerating() const { return mask_.Test(AC_ACCELERATING); }
     inline bool isDecelerating() const { return mask_.Test(AC_DECCELERATING); }
-    inline int getObjectID() const { return objID_; }
+    inline int getObjectId() const { return objID_; }
     void serialise(BYTE** buffer) const;
     void print(std::ostream& out = std::cout) const;
 private:

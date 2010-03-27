@@ -354,11 +354,17 @@ void BaseWindow::updateGameState ()
 		//GameObject * gameObj;
 		UpdateObject updateObj = theClient->nextUpdate();
 
-		if (updateObj.getObjectId() == clientAction->getObjectID()) //Update screen center location
+		if (updateObj.getObjectId() == clientAction->getObjectId()) //Update screen center location
 			scrnCenter = updateObj.getPos();
 
+		for (vector<UpdateObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
+		{
+			if (it->getObjectId() == clientAction->getObjectId())
+				gameState.erase(it);
+		}
 		//updateObj.print();
                 /*int objectId = updateObj.getActions().getObjectID();
+
 
 		if (objectId <= 31)
 		{
@@ -376,6 +382,7 @@ void BaseWindow::updateGameState ()
 		gameObj->position = updateObj.getPos();
                 gameObj->angle = updateObj.getRotation();*/
 	}
+
 /*
 	for (size_t i = 32; i < gameState.size(); i++)
 	{
@@ -417,7 +424,7 @@ void BaseWindow::getServerMessage()
 		//init msg
 		if (sm.GetMsgType() == ServerMessage::MT_INIT)
 		{
-			cout << "MT_INIT RECEIVED: ID: " << clientAction->getObjectID() << endl; //TODO: Handle initial score
+			cout << "MT_INIT RECEIVED: ID: " << clientAction->getObjectId() << endl; //TODO: Handle initial score
 		}
 		//chat msg
 		else if (sm.GetMsgType() == ServerMessage::MT_CHAT)
