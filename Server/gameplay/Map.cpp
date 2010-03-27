@@ -636,6 +636,7 @@ std::list<Shot*> Map::shots(QPoint center, int width, int height)
 --  RETURNS:    true if the location is a wall, else false.
 --
 ------------------------------------------------------------------------------*/
-bool Map::isWall(QPoint location) {
+bool Map::isWall(QPoint location)
+{
     return isWall(Pix2Tile(location.x()), Pix2Tile(location.y()));
 }
