@@ -424,14 +424,14 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
     if (distance > 0) { // moving in positive direction
         for (int i=moveStart; i <= moveStop; ++i)
             for (int j=edgeBegin; j <= edgeEnd; ++j)
-                if (i >= (vertical ? height : width) || (vertical && isWall(i, j)) || (!vertical && isWall(j, i)))  // detect collision
+                if (i >= (vertical ? height : width) || (!vertical && isWall(i, j)) || (vertical && isWall(j, i)))  // detect collision
                     return Tile2Pix(i) - (vertical ? position.y() : position.x());
     }
     else // moving in negative direction
     {
         for (int i=moveStart; i >= moveStop; --i)
             for (int j=edgeBegin; j >= edgeEnd; --j)
-                if (i < 0 || (vertical && isWall(i, j)) || (!vertical && isWall(j, i))) // detect collision
+                if (i < 0 || (!vertical && isWall(i, j)) || (vertical && isWall(j, i))) // detect collision
                     return Tile2Pix(i+1) - (vertical ? position.y() : position.x());
     }
     return distance;    // no collision detected, can move full distance
