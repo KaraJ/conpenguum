@@ -616,3 +616,26 @@ std::list<Shot*> Map::shots(QPoint center, int width, int height)
     list.unique();
     return list;
 }
+
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   Map::isWall
+--
+--  DATE:       January 27, 2010
+--
+--  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  bool isWall(QPoint location)
+--              location : location to check for wall status
+--
+--  NOTES:      checks if a location is a wall.
+--
+--  RETURNS:    true if the location is a wall, else false.
+--
+------------------------------------------------------------------------------*/
+bool Map::isWall(QPoint location) {
+    return isWall(Pix2Tile(location.x()), Pix2Tile(location.y()));
+}
