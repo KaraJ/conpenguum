@@ -22,12 +22,12 @@ class Shot: public NewtObject
 {
 private:
     // int shotType;  // the type of shot
-    // int deathTime; // the frame time in which the shot dies
 public:
-
+    int deathTime; // the frame time in which the shot dies
 private:
 public:
-    Shot(int pX, int pY, int vX, int vY, int ID): NewtObject(pX, pY, vX, vY, ID){}
+    Shot(int pX, int pY, int vX, int vY, int ID, int death): 
+    	NewtObject(pX, pY, vX, vY, ID), deathTime(death){}
     void updateShotPos();
 };
 

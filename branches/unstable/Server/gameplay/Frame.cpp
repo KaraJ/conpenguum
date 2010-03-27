@@ -236,8 +236,9 @@ void Frame::updateShips(void)
 				spawnVec = rotVelToVec(listShip[i]->rotation, SHIPRADIUS);
 				shotVec =  rotVelToVec(listShip[i]->rotation, VELOCITY_SHOT);
 				Shot shot(listShip[i]->position.x() + spawnVec.x(), listShip[i]->position.y()
-					+ spawnVec.y(), shotVec.x(), shotVec.y(), listShip[i]->getID());
+					+ spawnVec.y(), shotVec.x(), shotVec.y(), listShip[i]->getID(), (frameTimer + 60));
 				addShot(shot);
+				map.add(&shot, shot.position);
 			}
         }
     }
@@ -249,6 +250,8 @@ void Frame::updateShips(void)
 --  DATE:       January 27, 2010
 --
 --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+--				v0.2 - added deathTimer for shots - March 27, 2010		
+--				v0.3 - added wall detection for shots - March 27, 2010	
 --
 --  DESIGNER:   Gameplay/Physics Team
 --
@@ -265,9 +268,20 @@ void Frame::updateShips(void)
 ------------------------------------------------------------------------------*/
 void Frame::updateShots(void)
 {
+	QPoint oldPos;
     list<Shot>::iterator it;
     for(it = listShot.begin(); it != listShot.end(); ++it){
-        // add shot vec to pos
+    	oldPos = it->position;
+    	if(frameTimer == it->deathTime){
+    		listShot.erase(it);
+    		map.remove(&(*it), it->position);
+    	}
+        it->position += it->vector;
+        if(map.isWall(it->position)){
+        	listShot.erase(it);
+        	map.remove(&(*it), it->position);
+        }
+        map.move(&(*it), oldPos, it->position);
     }
 }
 
