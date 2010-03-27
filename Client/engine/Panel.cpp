@@ -361,10 +361,17 @@ void Panel::flip()
 				ipbox->exec();
 
 				cerr << "\nname: " << ipbox->getName() << "\nip: " << ipbox->getIp() << "\nport: " << ipbox->getPort() << endl;
-				BaseWindow* bw = new BaseWindow();
-				bw->Start(ipbox->getName(), ipbox->getIp(), ipbox->getPort());
-
-				this->hide();
+				int clientId;
+				if ((clientId = CommClient::Instance()->connect(ipbox->getName(), ipbox->getIp(), ipbox->getPort())) < 0)
+				{
+					QMessageBox::warning(this, "Connection Error", "Cannot connect to server", 1, 0, 0);
+				}
+				else
+				{
+					BaseWindow* bw = new BaseWindow();
+					bw->Start(clientId);
+					this->hide();
+				}
 			}
 			else
 				cerr << "Invalid configuration file." << endl;

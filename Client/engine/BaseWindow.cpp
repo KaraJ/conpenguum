@@ -61,15 +61,9 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
  -- to start the game.
  --
  -----------------------------------------------------------------------------*/
-void BaseWindow::Start(string alias, string ip, string prt)
+void BaseWindow::Start(int clientId)
 {
-	int ret;
-	if((ret = theClient->connect(alias, ip, prt)) < 0)
-	{
-		Logger::LogNQuit("BaseWindow::Start - Error Connecting to the server");
-	}
-
-	clientID = ret;
+	clientID = clientId;
 	clientAction = new ClientAction(clientID);
 	startRendering();
 }

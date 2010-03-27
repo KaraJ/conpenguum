@@ -97,7 +97,7 @@ class BaseWindow : public QMainWindow
 		void keyReleaseEvent (QKeyEvent * event);
 		virtual void render ();
 		string getChatString();
-		void Start(const string alias, const string ip, const string prt);
+		void Start(int clientId);
 		void getServerMessage();
 
 	public slots:
