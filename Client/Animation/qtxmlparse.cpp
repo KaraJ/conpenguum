@@ -16,11 +16,18 @@
 -------------------------------------------------------------------------*/
 QtXmlParse::QtXmlParse()
 {
+    // does nothing at all.
 }
 /*------------------------------------------------------------------------
 -- FUNCTION NAME: ReadAnimationVector()
 --
 -- FUNCTION PURPOSE: reads animation vector from xml file..
+--
+-- INTERFACE: std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std::string file)
+--
+-- PARAM: AnimationType animation: animation enum describing type to build.
+--
+--        std::string file: path to xml file defining the animation.
 --
 -- RETURN VALUE: vector of animation images.
 --
@@ -69,7 +76,7 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
     img.setLink(element.text().toStdString());
 
     // if we are looking for ships iterate to the begining where direction can be captured.
-    if(animation == Ship)
+   /* if(animation == Ship)
     {
         // looking for frame portion
         while(strcmp(node.nodeName().toStdString().c_str(), "frame") != 0){node = node.nextSibling();}
@@ -79,10 +86,14 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
         node = element.firstChild();
 
     }
+    */
     while(!node.isNull())
     {
+        // might not need switch but have it in just incase an animation xml differs a bit, but it shouldnt.
         switch(animation)
         {
+        case Ship:
+        case Exhaust:
         case Explosion:
             {
                 // looking for frame portion
@@ -124,6 +135,7 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
                 vec.push_back(img);
                 break;
             }
+        /*
         case Exhaust:
             {
                 break;
@@ -165,6 +177,7 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
                 vec.push_back(img);
                 break;
             }
+            */
         }
 
         node = next; // go to next frame package in XML.
