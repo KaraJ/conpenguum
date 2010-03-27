@@ -7,6 +7,8 @@
 
 using namespace std;
 
+ServerEngine *ServerEngine::instance = 0;
+
 /*------------------------------------------------------------------------------
  --
  -- CONSTRUCTOR: ServerEngine::ServerEngine()
@@ -21,10 +23,18 @@ using namespace std;
  -- This constructor initializes the Comm Server
  --
  -----------------------------------------------------------------------------*/
-ServerEngine::ServerEngine()
+ServerEngine::ServerEngine() : commServer(0), gameState(0)
+{
+	timer = new QTimer(this);
+	connect(timer, SIGNAL(timeout()), this, SLOT(timeout()));
+}
+
+bool ServerEngine::Start()
 {
 	ConfigParser cp;
 	map<string, string> params;
+
+	signal(SIGINT, Shutdown);
 
 	if (cp.Parse("server.conf", params) && params.find("tcp_port") != params.end())
 	{
@@ -32,19 +42,16 @@ ServerEngine::ServerEngine()
 		commServer -> init(params["tcp_port"]);
 	}
 	else
+	{
 		cerr << "Invalid configuration file." << endl;
+		return false;
+	}
 
 	gameState = new Frame("gameplay/map.xml");
-
-	timer = new QTimer(this);
-	connect(timer, SIGNAL(timeout()), this, SLOT(timeout()));
 	timer->start(32);
+	return true;
 }
 
-ServerEngine::~ServerEngine()
-{
-	commServer->Shutdown();
-}
 /*------------------------------------------------------------------------------
  --
  -- CONSTRUCTOR: BaseWindow::BaseWindow()
@@ -111,3 +118,34 @@ void ServerEngine::timeout()
 		commServer->sendUpdateToAll(uoBuff[i]);
 }
 
+ServerEngine* ServerEngine::GetInstance()
+{
+    if (!instance)
+        instance = new ServerEngine();
+
+    return instance;
+}
+
+void ServerEngine::Shutdown(int code)
+{
+	if (instance->timer)
+	{
+		instance->timer->stop();
+		delete instance->timer;
+		instance->timer = 0;
+	}
+
+	if (instance->commServer)
+	{
+		instance->commServer->Shutdown();
+		instance->commServer = 0;
+	}
+
+	if (instance->gameState)
+	{
+		delete instance->gameState;
+		instance->gameState = 0;
+	}
+
+	exit(code);
+}

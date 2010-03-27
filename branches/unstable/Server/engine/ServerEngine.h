@@ -33,15 +33,20 @@
 class ServerEngine : public QObject
 {
 	Q_OBJECT
+
+public:
+	static ServerEngine* GetInstance();
+	bool Start();
+
 private:
+	ServerEngine();
+	static void Shutdown(int code);
+
+	QTimer *timer;
 	CommServer::CommServer* commServer;
 	Frame *gameState;
-	QTimer *timer;
+	static ServerEngine *instance;
 
 private slots:
 	void timeout();
-
-public:
-	ServerEngine();
-	~ServerEngine();
 };
