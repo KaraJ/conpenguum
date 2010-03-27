@@ -24,7 +24,7 @@ private:
     // int shotType;  // the type of shot
     // int deathTime; // the frame time in which the shot dies
 public:
-    QPoint position;
+
 private:
 public:
     Shot(int pX, int pY, int vX, int vY, int ID): NewtObject(pX, pY, vX, vY, ID){}

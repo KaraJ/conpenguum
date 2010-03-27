@@ -56,6 +56,7 @@ public:
     void removeShip(size_t clientID);
     std::vector<UpdateObject> ListShip2listUpdateObject();
     void printShips(void);
+    void printShots(void);
 
 private:
     int dist2Points(QPoint point1, QPoint point2);
