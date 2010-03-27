@@ -19,6 +19,7 @@
 
 #include <QtGui/qgraphicsview.h>
 #include <string>
+#include "../Comm/Commclient.h"
 
 QT_BEGIN_NAMESPACE
 class QTimeLine;
