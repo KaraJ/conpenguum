@@ -647,3 +647,28 @@ bool Map::isWall(QPoint location)
 {
     return isWall(Pix2Tile(location.x()), Pix2Tile(location.y()));
 }
+
+bool Map::hasShip(QPoint location)
+{
+    return hasShip(Pix2Tile(location.x()), Pix2Tile(location.y()));
+}
+
+bool Map::hasShip(int x, int y)
+{
+    if (tiles[x][y] == NULL)
+    {
+        return false;
+    }
+    return (tile(x, y)->numShips() > 0);
+}
+
+std::list<Ship*> Map::ships(QPoint location)
+{
+    int x = Pix2Tile(location.x());
+    int y = Pix2Tile(location.y());
+    if (!hasShip(x, y))
+    {
+        return std::list<Ship*>();
+    }
+    return tile(x, y)->getShips();
+}
