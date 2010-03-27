@@ -18,19 +18,29 @@ using namespace std;
 map<int, Animation> Animation::getAnimationMap()
 {
     map<int, Animation> animations;
-    Animation animation;
-    vector<Image> animationExplosion, animationShip;
+    Animation animationEx, animationExh;
+    vector<Image> animationExplosion, animationExhaust;
     Image readImage;
     int mapSize = -1;
+    QtXmlParse *xmlParse;
     int imagesCount = -1;
     AnimationType type = Explosion;
     string typeStr;
-    string xmlFile("./explosion.xml");
-    QtXmlParse *xmlParse = new QtXmlParse();
+
+    // get explosion animation
+    string xmlFile("../Client/Animation/explosion.xml"), xmlFileExh("../Client/Animation/exhaust.xml");
+    xmlParse = new QtXmlParse();
     animationExplosion = xmlParse->ReadAnimationVector(type, xmlFile); // loading all Explostion animations.
     imagesCount = animationExplosion.size();
-    animation.setAnimationImages(animationExplosion);
-    animations.insert(std::pair<int, Animation>((int)type, animation));
+    animationEx.setAnimationImages(animationExplosion);
+    animations.insert(std::pair<int, Animation>((int)type, animationEx));
+
+    // get trail animations.
+    type = Exhaust;
+    animationExhaust = xmlParse->ReadAnimationVector(type, xmlFileExh);
+    imagesCount = animationExhaust.size();
+    animationExh.setAnimationImages(animationExhaust);
+	animations.insert(std::pair<int, Animation>((int)type, animationExh));
 
     mapSize = (int)animations.size();
 
