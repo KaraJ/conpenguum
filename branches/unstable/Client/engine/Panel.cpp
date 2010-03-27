@@ -372,6 +372,7 @@ void Panel::flip()
 					bw->Start(clientId);
 					this->hide();
 				}
+				delete ipbox;
 			}
 			else
 				cerr << "Invalid configuration file." << endl;
