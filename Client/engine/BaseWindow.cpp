@@ -286,8 +286,7 @@ void BaseWindow::timerEvent()
  -----------------------------------------------------------------------------*/
 void BaseWindow::startRendering ()
 {
-	int time = 1000/frameRate;
-	timer.start(time);
+	timer.start(1000/frameRate);
 }
 
 /*------------------------------------------------------------------------------
