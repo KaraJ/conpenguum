@@ -424,7 +424,7 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
             {
                 if (m >= (vertical ? height : width) || (!vertical && isWall(m, l)) || (vertical && isWall(l, m)))  // detect collision
                 {
-                    return Tile2Pix(m) - (vertical ? position.y() : position.x());
+                    return Tile2Pix(m) - (vertical ? position.y() : position.x()) - size;
                 }
             }
         }
