@@ -34,8 +34,6 @@ Map::Map(QString filename) : width(0), height(0), tileSize(1)
     int x, y;
     QFile file(filename);
 
-	cout << "map con" << endl;
-
     if (!file.open(QIODevice::ReadOnly))
     {
         cerr << "Cannot open file" << endl;
@@ -84,11 +82,8 @@ Map::Map(QString filename) : width(0), height(0), tileSize(1)
             x = tile_e.attribute("x", "0").toInt();
             y = tile_e.attribute("y", "0").toInt();
 
-		cout << "found tile" << endl;
-
             if (tiles[x][y] == NULL)
             {
-		cout << "created tile" << endl;
                 tiles[x][y] = new Tile(x, y, true);
             }
         }
