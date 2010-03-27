@@ -42,7 +42,6 @@ private:
     ResourceManager* resourceManager;
     RenderObject renderList[MAXRENDERCOUNT];
     int renderCount;
-    //GLuint textures[3];
     std::map<std::string, GLuint> textures;
     std::vector<UpdateObject> &objectlist;
 //funcs
@@ -50,7 +49,7 @@ public:
     Renderer(QWidget *parent, std::vector<UpdateObject> &gameSt);
     void Initialize();
     void Render();
-    void buildRenderList();
+    void buildRenderList(QPoint center);
 
 private:
     void resizeGL(int w, int h);

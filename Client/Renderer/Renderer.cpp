@@ -23,7 +23,7 @@ Renderer::Renderer(QWidget *parent,std::vector<UpdateObject> &gameSt) : QGLWidge
     this->resize(SCREENWIDTH,SCREENHEIGHT);
 }
 
-void Renderer::buildRenderList()
+void Renderer::buildRenderList(QPoint center)
 {
     //if we have more than 40k render objects, we're fucked.
     assert(MAXRENDERCOUNT > objectlist.size()/*+map objects*/);
@@ -31,8 +31,8 @@ void Renderer::buildRenderList()
     size_t i, xOffset, yOffset;
 
     //grab the first render object, this should be the client's ship, and thus our center
-    xOffset = objectlist[0].getPos().x();
-    yOffset = objectlist[0].getPos().y();
+    xOffset = center.x();
+    yOffset = center.y();
 
     //sample code for getting a texture from resource manager
     //you need to know the type of the resource you are getting, so you can
@@ -40,22 +40,12 @@ void Renderer::buildRenderList()
     //textures[(ShipDefinition*)resourceManager->GetResource(SHIP, WARBIRD)->texture]
     //hardcoding in values for now
 
-    renderList[0].texture = textures["ships.bmp"];
-    renderList[0].x = SCRCENTREW;
-    renderList[0].y = SCRCENTREH;
-    renderList[0].rotation = objectlist[0].getRotation() * 2;
-    renderList[0].texOffsetX = 0;
-    renderList[0].texOffsetY = 3 / 32.0;
-    renderList[0].objectHeight = 1 / 32.0;
-    renderList[0].objectWidth = 1 / 10.0;
-    renderList[0].objectHeightPx = 50;
-    renderList[0].objectWidthPx = 50;
-
-    for(i = 1; i < objectlist.size(); i++)
+    for(i = 0; i < objectlist.size(); i++)
     {
         if(objectlist[i].getObjectId() == 32) //TODO: Hard coded for testing, BULLET
 		{
             renderList[i].texture = textures["bullets.bmnp"];
+            renderList[i].texOffsetX = 0;
             renderList[i].texOffsetY = 0;
             renderList[i].objectHeight = 1 / 10.0;
             renderList[i].objectWidth = 1 / 4.0;
@@ -66,6 +56,7 @@ void Renderer::buildRenderList()
         else if(objectlist[i].getObjectId() == 33) //TODO: Hard coded for testing, WALL
         {
             renderList[i].texture = textures["over1.bmp"];
+            renderList[i].texOffsetX = 0;
             renderList[i].texOffsetY = 0;
             renderList[i].objectHeight = 1;
             renderList[i].objectWidth = 1;
@@ -76,16 +67,15 @@ void Renderer::buildRenderList()
         else
         {
             renderList[i].texture = textures["ships.bmp"];
-            renderList[i].texOffsetY = 3 / 32.0;
+            renderList[i].texOffsetX = 0;
+            renderList[i].texOffsetY = 30 / 32.0;
             renderList[i].objectHeight = 1 / 32.0;
             renderList[i].objectWidth = 1 / 10.0;
             renderList[i].rotation = objectlist[i].getRotation() * 2;
             renderList[i].objectHeightPx = 50;
             renderList[i].objectWidthPx = 50;
         }
-        cout << "RenderObject " << i << ": " << (int)renderList[i].rotation << endl;
 
-        renderList[i].texOffsetX = 0;
         renderList[i].x = SCRCENTREW + (objectlist[i].getPos().x() - xOffset);
         renderList[i].y = SCRCENTREH + (objectlist[i].getPos().y() - yOffset);
     }
@@ -131,7 +121,6 @@ void Renderer::resizeGL(int w, int h)
 
 void Renderer::Render()
 {
-    buildRenderList();
     //clear the screen
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_TEXTURE_2D);
