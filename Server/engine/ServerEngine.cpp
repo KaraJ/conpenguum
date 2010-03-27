@@ -41,6 +41,10 @@ ServerEngine::ServerEngine()
 	timer->start(32);
 }
 
+ServerEngine::~ServerEngine()
+{
+	commServer->Shutdown();
+}
 /*------------------------------------------------------------------------------
  --
  -- CONSTRUCTOR: BaseWindow::BaseWindow()
@@ -106,3 +110,4 @@ void ServerEngine::timeout()
 	for (size_t i = 0; i < uoBuff.size(); ++i)
 		commServer->sendUpdateToAll(uoBuff[i]);
 }
+

@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QTimer>
 #include <vector>
+#include <signal.h>
 
 //User Include
 #include "../gameplay/Frame.h"
@@ -33,13 +34,14 @@ class ServerEngine : public QObject
 {
 	Q_OBJECT
 private:
-	QTimer *timer;
 	CommServer::CommServer* commServer;
 	Frame *gameState;
+	QTimer *timer;
 
 private slots:
 	void timeout();
 
 public:
 	ServerEngine();
+	~ServerEngine();
 };

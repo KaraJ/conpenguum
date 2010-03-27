@@ -422,8 +422,14 @@ void BaseWindow::getServerMessage()
 		//chat msg
 		else if (sm.GetMsgType() == ServerMessage::MT_CHAT)
 		{
-			;//handle chat message
+			//TODO:handle chat message
+		}
+		else if(sm.GetMsgType() == ServerMessage::MT_SHUTDOWN)
+		{
+			printf("shutdown");
+			QMessageBox::critical(this, tr("Tuxspace"), tr("Server Shutdown"), QMessageBox::Ok, QMessageBox::Ok);
+			// TODO: more graceful shutdown
+			exit(0);
 		}
 	}
 }
-

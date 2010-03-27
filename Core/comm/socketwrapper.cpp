@@ -78,7 +78,8 @@ bool SocketWrapper::Read(int sock, void *vptr, size_t size)
 		if ( (nread = read(sock, buff, nleft)) < 0)
 		{
 			perror("read()");
-			Logger::LogNQuit("Read error");
+			Logger::LogNContinue("Read error");
+			return false;
 		}
 		if (nread == 0)
 			return false;
@@ -95,10 +96,7 @@ ssize_t SocketWrapper::Recvfrom(int fd, void* buff, size_t nbytes, int flags, st
 
 	if((retval = recvfrom(fd, (void*)buff, nbytes, flags, from, addrlen)) < 0)
 	{
-		if(errno == EBADF)
-			Logger::LogNContinue("Recvfrom Bad Descriptor");
-		else
-			Logger::LogNQuit("Recvfrom error");
+		Logger::LogNContinue("Recvfrom error");
 	}
 
 	return retval;
@@ -109,7 +107,7 @@ ssize_t SocketWrapper::Sendto(int fd, const void* buff, size_t nbytes, int flags
 	ssize_t retval;
 
 	if((retval = sendto(fd, buff, nbytes, flags, to, addrlen)) == -1)
-        Logger::LogNQuit("Sendto error");
+        Logger::LogNContinue("Sendto error");
 
 	return retval;
 }

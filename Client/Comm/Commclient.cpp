@@ -227,7 +227,9 @@ void* CommClient::readThreadUDP(void* args)
 		BYTE* buffer;
 		ssize_t size = CommClient::Instance()->udpConnection_->recvMessage(&buffer);
 		if(size < 0)
+		{
 			break;
+		}
 		if (size == UpdateObject::serializeSize)
 		{
 			UpdateObject update(buffer);

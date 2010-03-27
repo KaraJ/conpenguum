@@ -76,15 +76,14 @@ void CommServer::init(const string &port)
 }
 
 /*----------------------------------------------------------------------------------------------------------
- -- FUNCTION: CommServer::~CommServer
+ -- FUNCTION: CommServer::Shutdown
  --
  -- DATE: 2010-01-23
  ----------------------------------------------------------------------------------------------------------*/
-CommServer::~CommServer()
+void CommServer::Shutdown()
 {
     delete tcpServer_;
     delete udpConnection_;
-    pthread_join(readThread_, NULL);
 }
 
 /*----------------------------------------------------------------------------------------------------------
@@ -253,7 +252,9 @@ void* CommServer::readThreadUDP(void* args)
         BYTE* buffer;
         ssize_t size = CommServer::Instance()->udpConnection_->recvMessage(&buffer);
         if (size == -1)
+        {
             break;
+        }
         else if (size == ClientAction::serialiseSize)
         {
             ClientAction action(buffer);
