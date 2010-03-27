@@ -55,6 +55,7 @@ public:
     std::list<Ship*> ships(QPoint, int width=1024, int height=768);
     std::list<Shot*> shots(QPoint, int width=1024, int height=768);
     void drawMap();
+    bool isWall(QPoint location);
 };
 
 #endif
