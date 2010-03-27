@@ -285,8 +285,9 @@ void Frame::updateShots(void)
     for(it = listShot.begin(); it != listShot.end(); ++it){
     	oldPos = it->position;
     	if(frameTimer == it->deathTime){
-    		listShot.erase(it);
+    		
     		map.remove(&(*it), it->position);
+		listShot.erase(it);
     	}
         it->position += it->vector;
         if(map.isWall(it->position)){
