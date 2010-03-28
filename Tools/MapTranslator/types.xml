@@ -1,17 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<types>
-    <physics>
-        <physics_type name="wall" hit="bounce" />
-        <physics_type name="mine" hit="die" />
-    </physics>
-    <graphics>
-        <src value="global">
-            <file filename="map_textures.bmp" width="19" height="10">
-                <graphics_type name="pipe" y="0" x="0" />
-                <graphics_type name="corner" y="0" x="1" />
-                <graphics_type name="intersection" y="0" x="1" />
-            </file>
-        </src>
-    </graphics>
-</types>
+<tileTypes>
+    <tileType name="tiles" width="19" height="10" physics="bounce" src="global" filename="tiles.bmp" />
+    <tileType name="mines" width="10" height="8" physics="die" src="global" filename="mines.bmp" />
+</tileTypes>
 
