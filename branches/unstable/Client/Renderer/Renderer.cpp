@@ -105,6 +105,9 @@ void Renderer::Initialize()
     for(int i = 0; i < list.size(); i++)
     {
         QFileInfo fileInfo = list.at(i);
+        QPixmap tex, pix(fileInfo.filePath(), "BMP");
+        pix.fill(Qt::transparent);
+        QBitmap bmp = pix.createMaskFromColor(QColor(0,0,0,1));
         GLuint texture = bindTexture(QPixmap(fileInfo.filePath(), "BMP"), GL_TEXTURE_2D, GL_RGBA, QGLContext::InvertedYBindOption);
         textures.insert(std::pair<std::string, GLuint>(fileInfo.fileName().toStdString(), texture));
     }
@@ -117,13 +120,8 @@ void Renderer::Initialize()
 
 void Renderer::resizeGL(int w, int h)
 {
-    glViewport(0,0, (GLsizei) w, (GLsizei) h);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(60.0, (GLfloat) w/(GLfloat) h, 1.0, 30.0);
+    glViewport(0, 0, (GLsizei) w, (GLsizei) h);
     glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glTranslatef(0.0f,0.0f,-3.6f);
     gluOrtho2D(0.0, (GLdouble)w, 0.0, (GLdouble) h);
 }
 
