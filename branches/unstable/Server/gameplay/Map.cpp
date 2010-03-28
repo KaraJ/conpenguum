@@ -394,7 +394,7 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
     int moveStart = Pix2Tile((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0));
     int moveStop = Pix2Tile((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0) + distance);
 
-    // cout << "Moving a " << size << "px object at: " << position.x() << "x" << position.y() << (vertical ? " vertically" : " horizontally") << " by " << distance << " pixels" << endl;
+    cout << "Moving a " << size << "px object at: " << position.x() << "x" << position.y() << (vertical ? " vertically" : " horizontally") << " by " << distance << " pixels" << endl;
 
     // check for invalid values (starting outside the map, etc):
     if (edgeBegin < 0 || edgeEnd < 0 || moveStart < 0)
@@ -404,16 +404,16 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
     }
     if (vertical && (edgeBegin >= width || edgeEnd >= width || moveStart >= height))
     {
-        cerr << "value above width: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
+        cerr << "value above width (" << width << "): edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
         return 0;
     }
     if (!vertical && (edgeBegin >= height || edgeEnd >= height || moveStart >= width))
     {
-        cerr << "value above height: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
+        cerr << "value above height (" << height << "): edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
         return 0;
     }
 
-    // cout << "values: " << edgeBegin << 'x' << edgeEnd << ',' << moveStart << 'x' << moveStop << endl;
+    cout << "values: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << ", moveStop=" << moveStop << endl;
 
     // calculation
     if (distance > 0) // moving in positive direction
@@ -424,7 +424,7 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
             {
                 if (m >= (vertical ? height : width) || (!vertical && isWall(m, l)) || (vertical && isWall(l, m)))  // detect collision
                 {
-                    return Tile2Pix(m) - moveStart;
+                    return Tile2Pix(m) - (vertical ? position.y() : position.x()) - size -1;
                 }
             }
         }
@@ -437,7 +437,7 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
             {
                 if (m < 0 || (!vertical && isWall(m, l)) || (vertical && isWall(l, m))) // detect collision
                 {
-                    return Tile2Pix(m+1) - moveStart;
+                    return Tile2Pix(m+1) - (vertical ? position.y() : position.x());
                 }
             }
         }
