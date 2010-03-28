@@ -4,7 +4,7 @@
 #include <vector>
 #include <QGLWidget>
 #include "../../Core/comm/data/updateobject.h"
-#include "../engine/GameObject.h"
+//#include "../engine/GameObject.h"
 #include <map>
 #include "../../Core/resourceMgr/resourcemanager.h"
 
@@ -44,10 +44,12 @@ private:
     RenderObject renderList[MAXRENDERCOUNT];
     int renderCount;
     std::map<std::string, GLuint> textures;
-    std::map<int, GameObject> &objectlist;
+    std::vector<UpdateObject> &objectlist;
+    //std::map<int, GameObject> &objectlist;
 //funcs
 public:
-    Renderer(QWidget *parent, std::map<int, GameObject> &gameSt);
+    Renderer(QWidget *parent, std::vector<UpdateObject> &gameSt);
+    //Renderer(QWidget *parent, std::map<int, GameObject> &gameSt);
     void Initialize();
     void Render();
     void buildRenderList(QPoint center);
