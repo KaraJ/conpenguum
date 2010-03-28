@@ -94,9 +94,8 @@ void Renderer::Initialize()
 {
     renderCount = 0;
     makeCurrent();
-    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClearColor(0.0, 0.0, 1.0, 0.0);
     glShadeModel(GL_FLAT);
-    //glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -105,10 +104,10 @@ void Renderer::Initialize()
     for(int i = 0; i < list.size(); i++)
     {
         QFileInfo fileInfo = list.at(i);
-        QPixmap tex, pix(fileInfo.filePath(), "BMP");
-        pix.fill(Qt::transparent);
-        QBitmap bmp = pix.createMaskFromColor(QColor(0,0,0,1));
-        GLuint texture = bindTexture(QPixmap(fileInfo.filePath(), "BMP"), GL_TEXTURE_2D, GL_RGBA, QGLContext::InvertedYBindOption);
+        QPixmap pix(fileInfo.filePath(), "BMP");
+        QBitmap bmp = pix.createMaskFromColor(QColor(0,0,0), Qt::MaskOutColor);
+        pix.setAlphaChannel(bmp);
+        GLuint texture = bindTexture(pix, GL_TEXTURE_2D, GL_RGBA, QGLContext::InvertedYBindOption);
         textures.insert(std::pair<std::string, GLuint>(fileInfo.fileName().toStdString(), texture));
     }
 
