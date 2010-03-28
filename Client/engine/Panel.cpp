@@ -371,9 +371,9 @@ void Panel::flip()
 				QObject::connect(thread, SIGNAL(errorConnect()), this, SLOT(errorConnect()));
 				QObject::connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
 
-				mbox.show();
 				delete ipbox;
 				thread->start();
+				mbox.show();
 			}
 			else
 				cerr << "Invalid configuration file." << endl;
