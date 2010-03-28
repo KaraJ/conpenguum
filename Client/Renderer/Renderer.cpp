@@ -87,7 +87,9 @@ void Renderer::Initialize()
     makeCurrent();
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glShadeModel(GL_FLAT);
-    glEnable(GL_DEPTH_TEST);
+    //glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_ONE, GL_ONE);
 
     QDir dir(":/textures/");
     QFileInfoList list = dir.entryInfoList();
@@ -114,7 +116,7 @@ void Renderer::resizeGL(int w, int h)
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glTranslatef(0.0f,0.0f,-3.6f);
-    gluOrtho2D(0.0, (GLdouble)w, 0.0, (GLdouble) h );
+    gluOrtho2D(0.0, (GLdouble)w, 0.0, (GLdouble) h);
 }
 
 void Renderer::Render()
