@@ -11,8 +11,8 @@
 
 using namespace std;
 
-//Renderer::Renderer(QWidget *parent,std::map<int, GameObject> &gameSt) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt)
-Renderer::Renderer(QWidget *parent,std::vector<UpdateObject> &gameSt) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt)
+Renderer::Renderer(QWidget *parent,std::map<int, GameObject> &gameSt) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt)
+//Renderer::Renderer(QWidget *parent,std::vector<UpdateObject> &gameSt) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt)
 {
     const char *glVersion = (const char*)glGetString(GL_VERSION);
     double glVer = atof(glVersion);
@@ -39,12 +39,12 @@ void Renderer::buildRenderList(QPoint center)
     //textures[(ShipDefinition*)resourceManager->GetResource(SHIP, WARBIRD)->texture]
     //hardcoding in values for now
 
-	//int i = 0;
-	//for(std::map<int, GameObject>::iterator it = objectlist.begin(); it < objectlist.end(); it++)
-    for(i = 0; i < objectlist.size(); i++)
+    i = 0;
+    for(std::map<int, GameObject>::iterator it = objectlist.begin(); it != objectlist.end(); it++)
+    //for(i = 0; i < objectlist.size(); i++)
     {
-    	//if(it->objectId == 32)
-        if(objectlist[i].getObjectId() == 32) //TODO: Hard coded for testing, BULLET
+        if(it->second.objectId == 32)
+        //if(objectlist[i].getObjectId() == 32) //TODO: Hard coded for testing, BULLET
 		{
             renderList[i].texture = textures["bullets.bmnp"];
             renderList[i].texOffsetX = 0;
@@ -55,8 +55,8 @@ void Renderer::buildRenderList(QPoint center)
             renderList[i].objectHeightPx=16;
             renderList[i].objectWidthPx=16;
         }
-        //else if(it->objectId == 33)
-        else if(objectlist[i].getObjectId() == 33) //TODO: Hard coded for testing, WALL
+        else if(it->second.objectId == 33)
+        //else if(objectlist[i].getObjectId() == 33) //TODO: Hard coded for testing, WALL
         {
             renderList[i].texture = textures["tiles.bmp"];
             renderList[i].texOffsetX = 18 / 19;
@@ -74,17 +74,17 @@ void Renderer::buildRenderList(QPoint center)
             renderList[i].texOffsetY = 0;
             renderList[i].objectHeight = 1;
             renderList[i].objectWidth = 1;
-            //renderList[i].rotation = it->angle * 2;
-            renderList[i].rotation = objectlist[i].getRotation() * 2;
+            renderList[i].rotation = it->second.angle * 2;
+            //renderList[i].rotation = objectlist[i].getRotation() * 2;
             renderList[i].objectHeightPx = 50;
             renderList[i].objectWidthPx = 50;
         }
 
-		//renderList[i].x = SCRCENTREW + (it->position.x() - xOffset);
-        //renderList[i].y = SCRCENTREH + (it->position.y() - yOffset);
-        //i++;
-        renderList[i].x = SCRCENTREW + (objectlist[i].getPos().x() - xOffset);
-        renderList[i].y = SCRCENTREH + (objectlist[i].getPos().y() - yOffset);
+        renderList[i].x = SCRCENTREW + (it->second.position.x() - xOffset);
+        renderList[i].y = SCRCENTREH + (it->second.position.y() - yOffset);
+        i++;
+        //renderList[i].x = SCRCENTREW + (objectlist[i].getPos().x() - xOffset);
+        //renderList[i].y = SCRCENTREH + (objectlist[i].getPos().y() - yOffset);
     }
     renderCount = i;
 }
@@ -193,20 +193,15 @@ void Renderer::Render()
     glFlush();
     glDisable(GL_TEXTURE_2D);
 
-    //TODO: This is the text rendering part, this should be moved out to it's own function
-    /*QPainter p(this); // used for text overlay
-    saveGLState();
-    // draw the overlayed text using QPainter
-    p.setPen(QColor(197, 197, 197, 157));
-    p.setBrush(QColor(197, 197, 197, 127));
-    p.drawRect(QRect(0, 0, width(), 50));
-    p.setPen(Qt::black);
-    p.setBrush(Qt::NoBrush);
-    const QString str1(tr("A simple OpenGL framebuffer object example."));
-    const QString str2(tr("Use the mouse wheel to zoom, press buttons and move mouse to rotate, double-click to flip."));
-    QFontMetrics fm(p.font());
-    p.drawText(width()/2 - fm.width(str1)/2, 20, str1);
-    p.drawText(width()/2 - fm.width(str2)/2, 20 + fm.lineSpacing(), str2);*/
+    //    glBindTexture(GL_TEXTURE_2D, textures["colors.bmp"]);
+    //    glBegin(GL_QUADS);
+    //        glTexCoord2f(0,14/40);      glVertex2f(-100,0);
+    //        glTexCoord2f(1/128,14/40);  glVertex2f(500, 0);
+    //        glTexCoord2f(1/128,15/40);  glVertex2f(500, 500);
+    //        glTexCoord2f(0,15/40);      glVertex2f(-100, 500);
+    //    glEnd();
+    //    glFlush();
+    //    glDisable(GL_TEXTURE_2D);
     updateGL();
 }
 
