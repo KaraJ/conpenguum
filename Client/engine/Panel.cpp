@@ -408,6 +408,7 @@ void Panel::flip()
 
 void Panel::serverConnect(int clientId)
 {
+	mbox.hide();
 	BaseWindow* bw = new BaseWindow();
 	bw->Start(clientId);
 	this->hide();
