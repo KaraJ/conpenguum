@@ -43,7 +43,7 @@ bool SocketWrapper::Connect(int fd, const struct sockaddr_in *sa, socklen_t sale
 	}
 	else if (errno == EINPROGRESS) //Delayed connect
 	{
-		tv.tv_sec = 1;
+		tv.tv_sec = 5;
 		tv.tv_usec = 0;
 		FD_ZERO(&connSet);
 		FD_SET(fd, &connSet);

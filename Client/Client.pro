@@ -5,7 +5,8 @@ QT += core \
 OBJECTS_DIR = obj
 TEMPLATE = app
 TARGET = Client
-HEADERS += ../Core/comm/globals.h \
+HEADERS += engine/connectthread.h \
+    ../Core/comm/globals.h \
     Animation/Animation.h \
     Animation/AnimationEnum.h \
     Animation/Image.h \
@@ -21,7 +22,8 @@ HEADERS += ../Core/comm/globals.h \
     engine/Splashitem.h \
     engine/ipbox.h \
     Renderer/Renderer.h
-SOURCES += Animation/Animation.cpp \
+SOURCES += engine/connectthread.cpp \
+    Animation/Animation.cpp \
     Animation/Image.cpp \
     Animation/qtxmlparse.cpp \
     Comm/Commclient.cpp \

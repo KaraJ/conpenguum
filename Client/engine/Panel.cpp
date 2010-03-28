@@ -34,6 +34,7 @@
 #include "BaseWindow.h"
 #include "../../Core/ConfigParser.h"
 #include "ipbox.h"
+#include "connectthread.h"
 #include <map>
 using namespace std;
 /*--------------------------------------------------------------------------------------
@@ -154,6 +155,10 @@ Panel::Panel() : selectedX(0), selectedY(0), width(1), height(3), flipped(false)
     splash->grabKeyboard();
 
     updateSelectionStep(0);
+
+    mbox.setWindowTitle("Connecting");
+	mbox.setText("Attempting to connect to server...");
+	mbox.setStandardButtons(0);
 
     //setWindowTitle(tr("Conpenguum Main Menu"));
 }
@@ -361,18 +366,14 @@ void Panel::flip()
 				ipbox->exec();
 
 				cerr << "\nname: " << ipbox->getName() << "\nip: " << ipbox->getIp() << "\nport: " << ipbox->getPort() << endl;
-				int clientId;
-				if ((clientId = CommClient::Instance()->connect(ipbox->getName(), ipbox->getIp(), ipbox->getPort())) < 0)
-				{
-					QMessageBox::warning(this, "Connection Error", "Cannot connect to server", 1, 0, 0);
-				}
-				else
-				{
-					BaseWindow* bw = new BaseWindow();
-					bw->Start(clientId);
-					this->hide();
-				}
+				ConnectThread *thread = new ConnectThread(ipbox->getName(), ipbox->getIp(), ipbox->getPort());
+				QObject::connect(thread, SIGNAL(serverConnect(int)), this, SLOT(serverConnect(int)));
+				QObject::connect(thread, SIGNAL(errorConnect()), this, SLOT(errorConnect()));
+				QObject::connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+
+				mbox.show();
 				delete ipbox;
+				thread->start();
 			}
 			else
 				cerr << "Invalid configuration file." << endl;
@@ -403,6 +404,19 @@ void Panel::flip()
         flipTimeLine->start();
         flipped = false;
     }
+}
+
+void Panel::serverConnect(int clientId)
+{
+	BaseWindow* bw = new BaseWindow();
+	bw->Start(clientId);
+	this->hide();
+}
+
+void Panel::errorConnect()
+{
+	mbox.hide();
+	QMessageBox::warning(this, "Connection Error", "Cannot connect to server", 1, 0, 0);
 }
 
 /*--------------------------------------------------------------------------------------
