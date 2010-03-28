@@ -105,7 +105,7 @@ void Renderer::Initialize()
     for(int i = 0; i < list.size(); i++)
     {
         QFileInfo fileInfo = list.at(i);
-        GLuint texture = bindTexture(QPixmap(fileInfo.filePath(), "BMP"), GL_TEXTURE_2D, GL_RGBA);
+        GLuint texture = bindTexture(QPixmap(fileInfo.filePath(), "BMP"), GL_TEXTURE_2D, GL_RGBA, QGLContext::InvertedYBindOption);
         textures.insert(std::pair<std::string, GLuint>(fileInfo.fileName().toStdString(), texture));
     }
 
