@@ -3,8 +3,8 @@
  <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16">
   <image source="../../../../../resources/textures/bounce.bmp"/>
  </tileset>
- <tileset firstgid="191" name="mines" tilewidth="25" tileheight="25">
-  <image source="../../../../../resources/textures/mines.bmp"/>
+ <tileset firstgid="191" name="bg01" tilewidth="25" tileheight="25">
+  <image source="../../../../../resources/textures/bg01.bmp"/>
  </tileset>
  <layer name="Layer 1" width="100" height="100">
   <data>

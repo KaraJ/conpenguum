@@ -67,8 +67,11 @@ int main(int argc, char *argv[])
                 tile.setAttribute("x", x);
                 tile.setAttribute("y", y);
                 // physics
-                QDomElement physics = doc.createElement("physics");
-                physics.setAttribute("hit", type->physics);
+                if (type->physics != "") {
+                    QDomElement physics = doc.createElement("physics");
+                    physics.setAttribute("hit", type->physics);
+                    tile.appendChild(physics);
+                }
                 // graphics
                 QDomElement graphics = doc.createElement("graphics");
                 graphics.setAttribute("src", type->src);
@@ -90,7 +93,6 @@ int main(int argc, char *argv[])
                 sString << ((gid-type->firstGid) % type->width) + 1 << "/" << type->height;
                 graphics.setAttribute("trv", QString(sString.str().c_str()));
                 // add to tile
-                tile.appendChild(physics);
                 tile.appendChild(graphics);
                 map.appendChild(tile);
             }
