@@ -6,12 +6,13 @@
 #include <QtOpenGL>
 #include <cmath>
 #include <vector>
+#include <map>
 #include <cassert>
 #include "../../Core/resourceMgr/resourceEnums.h"
 
 using namespace std;
 
-Renderer::Renderer(QWidget *parent,std::vector<UpdateObject> &gameSt) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt)
+Renderer::Renderer(QWidget *parent,std::map<int, GameObject> &gameSt) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt)
 {
     const char *glVersion = (const char*)glGetString(GL_VERSION);
     double glVer = atof(glVersion);
@@ -37,11 +38,11 @@ void Renderer::buildRenderList(QPoint center)
     //properly cast to the correct struct type
     //textures[(ShipDefinition*)resourceManager->GetResource(SHIP, WARBIRD)->texture]
     //hardcoding in values for now
-
-    for(i = 0; i < objectlist.size(); i++)
+    int i = 0;
+    for(std::map<int, GameObject>::iterator it = objectlist.begin(); it < objectlist.end(); it++)
     {
-        if(objectlist[i].getObjectId() == 32) //TODO: Hard coded for testing, BULLET
-		{
+        if(it->objectId == 32) //TODO: Hard coded for testing, BULLET
+        {
             renderList[i].texture = textures["bullets.bmnp"];
             renderList[i].texOffsetX = 0;
             renderList[i].texOffsetY = 0;
@@ -51,7 +52,7 @@ void Renderer::buildRenderList(QPoint center)
             renderList[i].objectHeightPx=16;
             renderList[i].objectWidthPx=16;
         }
-        else if(objectlist[i].getObjectId() == 33) //TODO: Hard coded for testing, WALL
+        else if(it->objectId == 33) //TODO: Hard coded for testing, WALL
         {
             renderList[i].texture = textures["tiles.bmp"];
             renderList[i].texOffsetX = 18 / 19;
@@ -69,13 +70,14 @@ void Renderer::buildRenderList(QPoint center)
             renderList[i].texOffsetY = 0;
             renderList[i].objectHeight = 1;
             renderList[i].objectWidth = 1;
-            renderList[i].rotation = objectlist[i].getRotation() * 2;
+            renderList[i].rotation = it->angle * 2;
             renderList[i].objectHeightPx = 50;
             renderList[i].objectWidthPx = 50;
         }
 
-        renderList[i].x = SCRCENTREW + (objectlist[i].getPos().x() - xOffset);
-        renderList[i].y = SCRCENTREH + (objectlist[i].getPos().y() - yOffset);
+        renderList[i].x = SCRCENTREW + (it->position.x() - xOffset);
+        renderList[i].y = SCRCENTREH + (it->position.y() - yOffset);
+        i++;
     }
     renderCount = i;
 }
