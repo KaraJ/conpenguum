@@ -2,5 +2,19 @@
 <tileTypes>
     <tileType name="tiles" width="19" height="10" physics="bounce" src="global" filename="tiles.bmp" />
     <tileType name="mines" width="10" height="8" physics="die" src="global" filename="mines.bmp" />
+    <tileType name="bg01" width="1" height="1" physics="" src="global" filename="bg01.bmp" />
+    <tileType name="bg02" width="1" height="1" physics="" src="global" filename="bg02.bmp" />
+    <tileType name="bg03" width="1" height="1" physics="" src="global" filename="bg03.bmp" />
+    <tileType name="bg04" width="1" height="1" physics="" src="global" filename="bg04.bmp" />
+    <tileType name="bg05" width="1" height="1" physics="" src="global" filename="bg05.bmp" />
+    <tileType name="bg06" width="1" height="1" physics="" src="global" filename="bg06.bmp" />
+    <tileType name="bg07" width="1" height="1" physics="" src="global" filename="bg07.bmp" />
+    <tileType name="bg08" width="1" height="1" physics="" src="global" filename="bg08.bmp" />
+    <tileType name="bg09" width="1" height="1" physics="" src="global" filename="bg09.bmp" />
+    <tileType name="bg10" width="1" height="1" physics="" src="global" filename="bg10.bmp" />
+    <tileType name="bg11" width="1" height="1" physics="" src="global" filename="bg11.bmp" />
+    <tileType name="bg12" width="1" height="1" physics="" src="global" filename="bg12.bmp" />
+    <tileType name="bg13" width="1" height="1" physics="" src="global" filename="bg13.bmp" />
+    <tileType name="bg14" width="1" height="1" physics="" src="global" filename="bg14.bmp" />
 </tileTypes>
 
