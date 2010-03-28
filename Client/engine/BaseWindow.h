@@ -79,7 +79,7 @@ class BaseWindow : public QMainWindow
 		int frameRate;
 		QTimer timer;
         //vector<GameObject> gameState;
-		vector<UpdateObject> gameState;
+                map<int, GameObject> gameState;
 		map<int, Animation> animationMap;
 		bool chatting;
 		string chatString;

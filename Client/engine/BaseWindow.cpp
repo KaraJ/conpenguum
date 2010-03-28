@@ -351,20 +351,26 @@ void BaseWindow::updateGameState ()
     gameState.clear();
 	while (theClient->hasNextUpdate())
 	{
-		//GameObject * gameObj;
+                GameObject * gameObj;
 		UpdateObject updateObj = theClient->nextUpdate();
 
-		if (updateObj.getObjectId() == clientAction->getObjectId()) //Update screen center location
-			scrnCenter = updateObj.getPos();
 
-		for (vector<UpdateObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
-		{
-			if (it->getObjectId() == updateObj.getObjectId())
-			{
-				gameState.erase(it);
-				break;
-			}
-		}
+                    for (map<int, GameObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
+                    {
+                            if (it->second.objectId == updateObj.getObjectId()){
+                                it->second.position = updateObj.getPos();
+                                scrnCenter = updateObj.getPos();
+                                it->second.currentAnime.getAnimationImages();
+
+
+                                //waiting for Animation to provide update frame method and getAni method
+                            }
+
+                                    //gameState.erase(it);
+
+                    }
+
+
 
 		//updateObj.print();
                 /*int objectId = updateObj.getActions().getObjectID();
@@ -379,7 +385,7 @@ void BaseWindow::updateGameState ()
 			gameObj = new GameObject;
 			gameObj->animeIndex = 0;*/
 			//gameState.push_back(*gameObj);
-			gameState.push_back(updateObj);
+                        //gameState.push_back(updateObj);
                 /*}
 
 		gameObj->objectId = objectId;
