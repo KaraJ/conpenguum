@@ -58,6 +58,7 @@ private:
     bool flipLeft;
 
     Ui_BackSide *ui;
+    QMessageBox mbox;
 
 public:
     Panel();
@@ -73,4 +74,6 @@ private Q_SLOTS:
     void updateFlipStep(qreal val);
     void flip();
     void closeEvent(QCloseEvent * e);
+    void serverConnect(int);
+    void errorConnect();
 };
