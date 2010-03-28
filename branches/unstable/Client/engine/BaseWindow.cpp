@@ -357,11 +357,12 @@ void BaseWindow::updateGameState ()
 		if (updateObj.getObjectId() == clientAction->getObjectId()) //Update screen center location
 			scrnCenter = updateObj.getPos();
 
-		for (vector<UpdateObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
+		/*for (vector<UpdateObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
 		{
-			if (it->getObjectId() == clientAction->getObjectId())
+			if (it->getObjectId() == updateObj.getObjectId())
 				gameState.erase(it);
-		}
+		}*/
+
 		//updateObj.print();
                 /*int objectId = updateObj.getActions().getObjectID();
 
