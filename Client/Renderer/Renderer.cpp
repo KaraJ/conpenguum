@@ -41,10 +41,8 @@ void Renderer::buildRenderList(QPoint center)
 
     i = 0;
     for(std::map<int, GameObject>::iterator it = objectlist.begin(); it != objectlist.end(); it++)
-    //for(i = 0; i < objectlist.size(); i++)
     {
-        if(it->second.objectId == 32)
-        //if(objectlist[i].getObjectId() == 32) //TODO: Hard coded for testing, BULLET
+        /*if(it->second.objectId == 32)
 		{
             renderList[i].texture = textures["bullets.bmnp"];
             renderList[i].texOffsetX = 0;
@@ -56,7 +54,6 @@ void Renderer::buildRenderList(QPoint center)
             renderList[i].objectWidthPx=16;
         }
         else if(it->second.objectId == 33)
-        //else if(objectlist[i].getObjectId() == 33) //TODO: Hard coded for testing, WALL
         {
             renderList[i].texture = textures["tiles.bmp"];
             renderList[i].texOffsetX = 18 / 19;
@@ -68,7 +65,7 @@ void Renderer::buildRenderList(QPoint center)
             renderList[i].objectWidthPx = 25;
         }
         else
-        {
+        {*/
             renderList[i].texture = textures["wbship.bmp"];
             renderList[i].texOffsetX = 0;
             renderList[i].texOffsetY = 0;
