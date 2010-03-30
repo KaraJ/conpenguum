@@ -29,6 +29,9 @@ using namespace std;
  -----------------------------------------------------------------------------*/
 BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
 {
+	for (size_t i = MAX_REAL_OBJECT; i < MAX_REAL_OBJECT + MAX_TRANSIENT_OBJECT; ++i)
+		freeIds.push(i);
+
 	connect(&timer, SIGNAL(timeout()), this, SLOT(timerEvent()));
 	chatting = false;
 	theClient = CommClient::Instance();
@@ -325,8 +328,17 @@ void BaseWindow::updateGameState ()
 		UpdateObject updateObj = theClient->nextUpdate();
 		int objId = updateObj.getObjectId();
 
-		//This would be where you check the clientaction contained in the updateObject to see if
-		//you need to spawn an animation
+		if (objId < 31 && updateObj.getActions().isAccelerating()) //for trails
+		{
+			GameObject animObj;
+			animObj.angle = 0;
+
+			animObj.objectId = freeIds.front();
+			freeIds.pop();
+			animObj.animeIndex = 0;
+			gameState[animObj.objectId] = animObj;
+		}
+
 		if (gameState.find(objId) != gameState.end()) //If it exists
 			gameState[objId].Update(updateObj);
 		else //Create GameObject
@@ -350,12 +362,12 @@ void BaseWindow::clearTransientObjects()
 {
 	for (map<int, GameObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
 	{
-		if (it->first < 65535)
+		if (it->first < MAX_REAL_OBJECT)
 			gameState.erase(it);
 
 		else
 		{
-			GameObject * animatedObj = &it->second;
+			GameObject *animatedObj = &it->second;
 			vector<Image>& images = animationMap[animatedObj->objectId].getAnimationImages();
 	
 			if (animatedObj->animeIndex < images.size())
