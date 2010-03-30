@@ -1,5 +1,6 @@
 #ifndef ANIMATION_H
 #define ANIMATION_H
+
 #include <vector>
 #include "Image.h"
 #include <map>
@@ -18,7 +19,6 @@
 class Animation
 {
 public:
-    int numFrames_, imagesWide_, imagesTall_;
     Animation()
     {
         numFrames_ = 0;
@@ -37,7 +37,8 @@ public:
     std::string soundFile;
     static std::map<int, Animation> getAnimationMap();
 private:
-   std::vector<Image> images_;
+    int numFrames_, imagesWide_, imagesTall_;
+    std::vector<Image> images_;
 
 };
 

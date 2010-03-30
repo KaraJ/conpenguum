@@ -1,5 +1,6 @@
 #include "Animation.h"
 #include "qtxmlparse.h"
+
 using namespace std;
 /*------------------------------------------------------------------------
 -- FUNCTION NAME: getAnimationMap()
@@ -71,5 +72,4 @@ Animation::Animation(const Animation &a)
    //numFrames_ = a.getNumFrames();
    //imagesWide_ = a.getImagesWide();
    //imagesTall_ = a.getImagesTall();
-
 }
