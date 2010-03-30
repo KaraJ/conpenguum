@@ -354,19 +354,11 @@ void BaseWindow::updateGameState ()
 	while (theClient->hasNextUpdate())
 	{
 		UpdateObject updateObj = theClient->nextUpdate();
-		gameObj = new GameObject();
-		gameObj.objectId = updateObj.getObjectId();
-						int angle;
-					        int animFrame;
-					        QString text;
-						QPoint position;
-						Image * animeImage;
-					        Animation currentAnime;
-						size_t animeIndex;
+		gameObj = new GameObject(updateObj);
 
 		for (map<int, GameObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
 		{
-				if (it->second.objectId == clientAction.getObjectId()) //Update position of our ship
+				if (it->second.objectId == clientAction->getObjectId()) //Update position of our ship
 				{
 					it->second.position = updateObj.getPos();
 					scrnCenter = updateObj.getPos();
@@ -377,10 +369,7 @@ void BaseWindow::updateGameState ()
 
 		if (updateObj.getObjectId() <= 31) //If ship
 		{
-
-			if (gameState[objectId] == gameState.end()) //Check if we have it in gameState
-
-
+				;
 		}
 		/*else
 		{
