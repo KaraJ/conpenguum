@@ -34,28 +34,31 @@ Map::Map(QString filename) : width(0), height(0), tileSize(1)
     int x, y;
     QFile file(filename);
 
+    // open file
     if (!file.open(QIODevice::ReadOnly))
     {
         cerr << "Cannot open file" << endl;
         return;
     }
 
+    // parse file
     if (!doc.setContent(&file))
     {
         cerr << "Unusable file" << endl;
         file.close();
         return;
     }
-
     file.close();
-    QDomElement map_e = doc.documentElement();
 
+    // check XML
+    QDomElement map_e = doc.documentElement();
     if (map_e.tagName() != "map")
     {
         cerr << "Not a map element" << endl;
         return;
     }
 
+    // read map data
     width  = map_e.attribute("width", "0").toInt(); //Rectangular maps work just fine thankyou!
     height = map_e.attribute("height", "0").toInt();
     tileSize = map_e.attribute("tileSize", "1").toInt();
@@ -71,23 +74,43 @@ Map::Map(QString filename) : width(0), height(0), tileSize(1)
         }
     }
 
+    // read tiles
     QDomNodeList tile_l = map_e.elementsByTagName("tile");
     for (int ti = 0; ti < tile_l.count(); ++ti)
     {
         QDomElement tile_e = tile_l.item(ti).toElement();
-        QDomNodeList physics_l = tile_e.elementsByTagName("physics");
-        for (int pi = 0; pi < physics_l.count(); ++pi)
-        {
-            QDomElement physics_e = physics_l.item(pi).toElement();
-            x = tile_e.attribute("x", "0").toInt();
-            y = tile_e.attribute("y", "0").toInt();
+        QDomElement physics_e = tile_e.elementsByTagName("physics").item(0).toElement();
+        x = tile_e.attribute("x", "0").toInt();
+        y = tile_e.attribute("y", "0").toInt();
 
-            if (tiles[x][y] == NULL)
-            {
-                tiles[x][y] = new Tile(x, y, true);
-            }
+        if (tiles[x][y] == NULL)
+        {
+            tiles[x][y] = new Tile(x, y, true);
+        }
+        else
+        {
+            std::cerr << "Warning: Found duplicate of tile " << x << "," << y << std::endl;
         }
     }
+
+    // read spawns
+    QDomNodeList spawn_l = map_e.elementsByTagName("spawn");
+    SpawnArea spawn;
+    for (int si=0; si < spawn_l.count(); ++si)
+    {
+        QDomElement spawn_e = spawn_l.item(si).toElement();
+        spawn.x = spawn_e.attribute("x").toInt();
+        spawn.y = spawn_e.attribute("y").toInt();
+        spawn.width = spawn_e.attribute("width").toInt();
+        spawn.height = spawn_e.attribute("height").toInt();
+        spawn.team = spawn_e.attribute("team").toInt();
+        spawns.push_back(spawn);
+        std::cout << "Found spawn for team " << spawn.team << " @ " << spawn.x << "," << spawn.y << " sized " << spawn.width << "x" << spawn.height << std::endl;
+    }
+
+    // seed rand(), used later in spawn selection
+    srand(time(NULL));
+
 }
 
 /*-----------------------------------------------------------------------------
@@ -729,4 +752,34 @@ std::list<Ship*> Map::ships(QPoint location)
         return std::list<Ship*>();
     }
     return tile(x, y)->getShips();
+}
+
+QPoint Map::getSpawn(int team, int size)
+{
+    // select random spawn area
+    int teamCount = 0;
+    SpawnArea teamSpawns[spawns.size()];
+    SpawnArea area;
+    for (size_t i=0; i < spawns.size(); ++i) {
+        area = spawns.at(i);
+        if (area.team == team && area.width >= size && area.height >= size) {
+            teamSpawns[teamCount++] = area;
+        }
+    }
+    if (teamCount == 0)
+    {
+        std::cerr << "ERROR: Could not locate a spawn for team " << team << ", spawning at 0,0" << std::endl;
+        return QPoint(0, 0);
+    }
+    area = teamSpawns[rand() % teamCount];
+
+    int x = area.x;
+    int y = area.y;
+    if (area.width > size)
+        x += rand() % (area.width - size);
+    if (area.height > size)
+        y += rand() % (area.height - size);
+
+    // select random spot IN spawn area
+    return QPoint(x, y);
 }
