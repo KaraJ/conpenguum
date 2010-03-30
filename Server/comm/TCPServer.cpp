@@ -1,9 +1,11 @@
 #include "TCPServer.h"
 
-//TODO: delete this
-#include "commserver.h"
 
-using namespace std;
+using std::string;
+using std::queue;
+using std::map;
+using std::istringstream;
+using std::pair;
 
 int TCPServer::clientSockets_[MAX_CLIENTS];
 int TCPServer::maxClientSocket_ = 0;

@@ -1,6 +1,7 @@
 #include "Tcpclient.h"
 
-using namespace std;
+using std::queue;
+using std::string;
 
 //Storage for class variables
 queue<ServerMessage> *TCPClient::msgBuff_;

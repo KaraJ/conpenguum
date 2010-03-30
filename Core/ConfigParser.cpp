@@ -17,7 +17,11 @@ NOTES:
 
 #include "ConfigParser.h"
 
-using namespace std;
+using std::map;
+using std::string;
+using std::ifstream;
+using std::istringstream;
+using std::pair;
 
 /*----------------------------------------------------------------------------------------
 FUNCTION: 	ConfigParser::Parse
