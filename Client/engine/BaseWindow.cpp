@@ -267,6 +267,7 @@ void BaseWindow::timerEvent()
 	updateGameState();
 	ren->buildRenderList(scrnCenter);
 	ren->Render();
+	//clearTransientObjects(); //TODO: Write this.
 }
 
 /*------------------------------------------------------------------------------
@@ -348,34 +349,40 @@ void BaseWindow::setFrameRate (int rate)
  -----------------------------------------------------------------------------*/
 void BaseWindow::updateGameState ()
 {
-    gameState.clear();
+	GameObject *gameObj;
+    //gameState.clear(); //Shouldn't need to clear gameState every frame anymore
 	while (theClient->hasNextUpdate())
 	{
-		GameObject *gameObj;
 		UpdateObject updateObj = theClient->nextUpdate();
+		gameObj = new GameObject();
+		gameObj.objectId = updateObj.getObjectId();
+						int angle;
+					        int animFrame;
+					        QString text;
+						QPoint position;
+						Image * animeImage;
+					        Animation currentAnime;
+						size_t animeIndex;
 
 		for (map<int, GameObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
 		{
-				if (it->second.objectId == updateObj.getObjectId())
+				if (it->second.objectId == clientAction.getObjectId()) //Update position of our ship
 				{
 					it->second.position = updateObj.getPos();
 					scrnCenter = updateObj.getPos();
-					it->second.currentAnime.getAnimationImages();
-
 					//waiting for Animation to provide update frame method and getAni method
+					//it->second.currentAnime.getAnimationImages();
 				}
-				//gameState.erase(it);
-
 		}
 
-	  /*updateObj.print();
-		int objectId = updateObj.getActions().getObjectID();
-
-		if (objectId <= 31)
+		if (updateObj.getObjectId() <= 31) //If ship
 		{
-			gameObj = &gameState.at(objectId);
+
+			if (gameState[objectId] == gameState.end()) //Check if we have it in gameState
+
+
 		}
-		else
+		/*else
 		{
 			gameObj = new GameObject;
 			gameObj->animeIndex = 0;

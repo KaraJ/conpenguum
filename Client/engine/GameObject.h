@@ -9,8 +9,15 @@
 
 //0 ~ 65536
 
-struct GameObject
+class GameObject
 {
+public:
+	int objectId;
+	int angle; //Rotation angle 0-179
+	QString text;  //Texture filename
+	QPoint position; //XY position
+	Animation currentAnime; //TODO: ?
+	size_t animeIndex; //Frame index
     inline GameObject(){};
     inline GameObject(UpdateObject &obj)
     {
