@@ -12,34 +12,27 @@
 class GameObject
 {
 public:
+    inline GameObject(){};
+    inline GameObject(UpdateObject &obj)
+    {
+        objectId = obj.getObjectId();
+        angle = obj.getRotation();
+        position = obj.getPos();
+    }
+
+    inline void Update(UpdateObject &obj)
+    {
+        objectId = obj.getObjectId();
+        angle = obj.getRotation();
+        position = obj.getPos();
+    }
+
 	int objectId;
 	int angle; //Rotation angle 0-179
 	QString text;  //Texture filename
 	QPoint position; //XY position
 	Animation currentAnime; //TODO: ?
 	size_t animeIndex; //Frame index
-    inline GameObject(){};
-    inline GameObject(UpdateObject &obj)
-    {
-        objectID = obj.getObjectId();
-        angle = obj.getRotation();
-        position = obj.getPos();
-    }
-    inline Update(UpdateObject &obj)
-    {
-        objectID = obj.getObjectId();
-        angle = obj.getRotation();
-        position = obj.getPos();
-    }
-
-    int objectId;
-    int angle;
-    int animFrame;
-    QString text;
-    QPoint position;
-    Image * animeImage;
-    Animation currentAnime;
-    size_t animeIndex;
 };
 
 #endif
