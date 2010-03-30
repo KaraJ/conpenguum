@@ -47,8 +47,9 @@ ClientAction::ClientAction(int objectID) : objID_(objectID)
 ----------------------------------------------------------------------------------------------------------*/
 ClientAction::ClientAction(BYTE* buffer)
 {
-    objID_ = buffer[0];
-    mask_.setBitField(buffer[1]);
+    objID_ = buffer[0] << 8;
+    objID_ |= buffer[1];
+    mask_.setBitField(buffer[2]);
 }
 
 /*----------------------------------------------------------------------------------------------------------
@@ -66,15 +67,18 @@ ClientAction::ClientAction(BYTE* buffer)
 --         0    1   2   3   4   5   6   7
 --  0      OID  OID OID OID OID OID OID OID
 --         8    9   10  11  12  13  14  15
---  1      BM   BM  BM  BM  BM  BM  BM  BM
+--  1      OID  OID OID OID OID OID OID OID
+--         16   17  18  19  20  21  22  23
+--  2      BM   BM  BM  BM  BM  BM  BM  BM
 ----------------------------------------------------------------------------------------------------------*/
 void ClientAction::serialise(BYTE** buffer) const
 {
     (*buffer) = new BYTE[serialiseSize];
     memset((*buffer), 0, serialiseSize);
 
-    (*buffer)[0] = objID_;
-    (*buffer)[1] = mask_.getBitField();
+    (*buffer)[0] = (BYTE)((objID_ & 0x0000FF00) >> 8);
+    (*buffer)[1] = (BYTE)(objID_ & 0x000000FF);
+    (*buffer)[2] = mask_.getBitField();
 }
 
 void ClientAction::print(ostream& out) const

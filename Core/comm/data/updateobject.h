@@ -10,7 +10,7 @@
 class UpdateObject
 {
 public:
-    static const int serializeSize = 7;
+    static const int serializeSize = 8;
 
     UpdateObject(int objID);
     UpdateObject(ClientAction& a);
