@@ -66,15 +66,14 @@ void Renderer::buildRenderList(QPoint center)
         }
         else
         {*/
-            renderList[i].texture = textures["wbship.bmp"];
-            renderList[i].texOffsetX = 0;
-            renderList[i].texOffsetY = 0;
-            renderList[i].objectHeight = 1;
-            renderList[i].objectWidth = 1;
-            renderList[i].rotation = it->second.angle * 2;
-            renderList[i].objectHeightPx = 40;
-            renderList[i].objectWidthPx = 40;
-        }
+		renderList[i].texture = textures["wbship.bmp"];
+		renderList[i].texOffsetX = 0;
+		renderList[i].texOffsetY = 0;
+		renderList[i].objectHeight = 1;
+		renderList[i].objectWidth = 1;
+		renderList[i].rotation = it->second.angle * 2;
+		renderList[i].objectHeightPx = 40;
+		renderList[i].objectWidthPx = 40;
 
         renderList[i].x = SCRCENTREW + (it->second.position.x() - xOffset);
         renderList[i].y = SCRCENTREH + (it->second.position.y() - yOffset);
