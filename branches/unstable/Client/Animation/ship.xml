@@ -1,5 +1,5 @@
 <image>
-	<link>/images/GrayShip.bmp</link>
+	<link>../Render/images/GrayShip.bmp</link>
 	<name>Ship</name>
 	<numberOfFrames>1</numberOfFrames>
 	<numberImagesWide>10</numberImagesWide>

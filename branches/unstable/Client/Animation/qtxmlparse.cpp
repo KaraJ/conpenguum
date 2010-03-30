@@ -74,6 +74,11 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
     element = node.toElement();
     img.setLink(element.text().toStdString());
 
+    // temporarily storing the sound to the image so it can roll up into animation.
+    while(strcmp(node.nodeName().toStdString().c_str(), "sound") != 0){node = node.nextSibling();}
+    element = node.toElement();
+    img.soundLink = element.text().toStdString();
+
     // if we are looking for ships iterate to the beginning where direction can be captured.
     while(!node.isNull())
     {

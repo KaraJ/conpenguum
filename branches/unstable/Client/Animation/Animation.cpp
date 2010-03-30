@@ -33,6 +33,7 @@ map<int, Animation> Animation::getAnimationMap()
     animationExplosion = xmlParse->ReadAnimationVector(type, xmlFile); // loading all Explostion animations.
     imagesCount = animationExplosion.size();
     animationEx.setAnimationImages(animationExplosion);
+    animationEx.soundFile = animationExplosion.front().soundLink; // link sound from animation.
     animations.insert(std::pair<int, Animation>((int)type, animationEx));
 
     // get trail animations.
@@ -40,6 +41,7 @@ map<int, Animation> Animation::getAnimationMap()
     animationExhaust = xmlParse->ReadAnimationVector(type, xmlFileExh);
     imagesCount = animationExhaust.size();
     animationExh.setAnimationImages(animationExhaust);
+    animationExh.soundFile = animationExhaust.front().soundLink; // link sound from animation.
 	animations.insert(std::pair<int, Animation>((int)type, animationExh));
 
     mapSize = (int)animations.size();

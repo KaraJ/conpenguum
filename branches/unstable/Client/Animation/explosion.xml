@@ -1,7 +1,8 @@
 <!-- animated image -->
 <image>
-	<link>/images/explode.bmp</link>
+	<link>../Render/images/explode.bmp</link>
 	<desc>explosion</desc>
+	<sound></sound>
 	<numberOfFrames>44</numberOfFrames>
 	<numberImagesWide>4</numberImagesWide>
 	<numberImagesTall>11</numberImagesTall>
