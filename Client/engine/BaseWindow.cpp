@@ -351,30 +351,25 @@ void BaseWindow::updateGameState ()
     gameState.clear();
 	while (theClient->hasNextUpdate())
 	{
-                GameObject * gameObj;
+		GameObject *gameObj;
 		UpdateObject updateObj = theClient->nextUpdate();
 
+		for (map<int, GameObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
+		{
+				if (it->second.objectId == updateObj.getObjectId())
+				{
+					it->second.position = updateObj.getPos();
+					scrnCenter = updateObj.getPos();
+					it->second.currentAnime.getAnimationImages();
 
-                    for (map<int, GameObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
-                    {
-                            if (it->second.objectId == updateObj.getObjectId()){
-                                it->second.position = updateObj.getPos();
-                                scrnCenter = updateObj.getPos();
-                                it->second.currentAnime.getAnimationImages();
+					//waiting for Animation to provide update frame method and getAni method
+				}
+				//gameState.erase(it);
 
+		}
 
-                                //waiting for Animation to provide update frame method and getAni method
-                            }
-
-                                    //gameState.erase(it);
-
-                    }
-
-
-
-		//updateObj.print();
-                /*int objectId = updateObj.getActions().getObjectID();
-
+	  /*updateObj.print();
+		int objectId = updateObj.getActions().getObjectID();
 
 		if (objectId <= 31)
 		{
@@ -383,17 +378,16 @@ void BaseWindow::updateGameState ()
 		else
 		{
 			gameObj = new GameObject;
-			gameObj->animeIndex = 0;*/
-			//gameState.push_back(*gameObj);
-                        //gameState.push_back(updateObj);
-                /*}
+			gameObj->animeIndex = 0;
+			gameState.push_back(*gameObj);
+            gameState.push_back(updateObj);
+        }
 
 		gameObj->objectId = objectId;
 		gameObj->position = updateObj.getPos();
-                gameObj->angle = updateObj.getRotation();*/
+		gameObj->angle = updateObj.getRotation();
 	}
 
-/*
 	for (size_t i = 32; i < gameState.size(); i++)
 	{
 		GameObject &animatedObj = gameState.at(i);
@@ -406,8 +400,8 @@ void BaseWindow::updateGameState ()
 		{			
 			animatedObj.animeImage = &images[animatedObj.animeIndex];
 			animatedObj.animeIndex++;
-		}
-        }*/
+		}*/
+	}
 }
 
 /*------------------------------------------------------------------------------
