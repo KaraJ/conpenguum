@@ -27,10 +27,13 @@ public:
     int rotation;
     ClientAction actionMask;
     bool active;
+    int currentShot;
+    int shotCooldown;
 public:
     Ship(size_t clientID):NewtObject(0, 0, 0, 0, clientID), rotation(0), actionMask(clientID), active(false){}
     int getRot(){ return rotation; }
     void applyActionMask(ClientAction newMask); // updates the ship based on the current action mask
+    int getNextShotID();
 };
 
 #endif // SHIP_H
