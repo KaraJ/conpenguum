@@ -32,7 +32,7 @@ public:
     int getNumFrames(){return numFrames_;}
     int getImagesWide(){return imagesWide_;}
     int getImagesTall(){return imagesTall_;}
-    std::vector<Image> &getAnimationImages(){return &images_;}
+    std::vector<Image> &getAnimationImages(){return images_;}
     Animation(const Animation& a);
     std::string soundFile;
     static std::map<int, Animation> getAnimationMap();
