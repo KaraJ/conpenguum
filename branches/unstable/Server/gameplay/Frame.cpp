@@ -85,7 +85,7 @@ void Frame::addShip(size_t clientID)
 --
 --  NOTES:      Adds a shot to the shot list. Useful for when players shoot.
 --              TASK: spawnShot should take the ship firing and spawn a shot
---                    according to the ships data, like rotation and type.
+--                    according to the ships data, like rotation and typesvn checkout
 --
 --  RETURNS:    void
 --
@@ -109,7 +109,6 @@ void Frame::addShot(Shot newShot){
 --  INTERFACE:  Ship getShip(int shipID)
 --
 --  NOTES:      returns the ship with the ID equal to shipID.
---
 --  RETURNS:    Ship
 --
 ------------------------------------------------------------------------------*/
@@ -140,7 +139,7 @@ void Frame::removeShip(size_t clientID)
 /*-----------------------------------------------------------------------------
 --  FUNCTION:   spawnShip
 --
---  DATE:       March 14, 2010
+--  DATE:       March 14, 2010svn checkout 
 --
 --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
 --
@@ -242,15 +241,21 @@ void Frame::updateShips(void)
 			{
 				listShip[i]->rotation = (listShip[i]->rotation + ROTATION_RATE) % 180;
 			}
-			if(listShip[i]->actionMask.isFiring())
-			 {
-				QPoint spawnVec, shotVec;
-				spawnVec = rotVelToVec(listShip[i]->rotation, SHIPRADIUS);
-				shotVec =  rotVelToVec(listShip[i]->rotation, VELOCITY_SHOT);
-				Shot shot(listShip[i]->position.x() + spawnVec.x(), listShip[i]->position.y()
-					+ spawnVec.y(), shotVec.x(), shotVec.y(), listShip[i]->getID(), (frameTimer + 60));
-				addShot(shot);
-				map.add(&shot, shot.position);
+			if(listShip[i]->shotCooldown > 0){
+				listShip[i]->shotCooldown--;
+                        }
+                        if(listShip[i]->shotCooldown == 0){
+				if(listShip[i]->actionMask.isFiring())
+				{
+					QPoint spawnVec, shotVec;
+					spawnVec = rotVelToVec(listShip[i]->rotation, SHIPRADIUS);
+					shotVec =  rotVelToVec(listShip[i]->rotation, VELOCITY_SHOT);
+					Shot shot(listShip[i]->position.x() + spawnVec.x(), listShip[i]->position.y()
+						+ spawnVec.y(), shotVec.x(), shotVec.y(), listShip[i]->getNextShotID(), (frameTimer + 60));
+					addShot(shot);
+					map.add(&shot, shot.position);
+					listShip[i]->shotCooldown = 30;
+				}
 			}
         }
     }
@@ -276,7 +281,6 @@ void Frame::updateShips(void)
 --              need to be updated.
 --
 --  RETURNS:    void
---
 ------------------------------------------------------------------------------*/
 void Frame::updateShots(void)
 {
@@ -358,8 +362,32 @@ int Frame::dist2Points(QPoint point1, QPoint point2)
 }
 
 /**
-NEEDS COMMENTS
+UpdateObject getObjectObservers(int objectID, list<int> observers){
+    UpdateObject uo;
+    
+    for(int i = 0; i < MAX_CLIENTS; ++i){
+        if(listShip[i] != 0){
+            if((listShip[i]->position.x()+562>objectId.pos.x && listShip[i]->position.x()-562<objectID.pos.x) && (listShip[i]->position.y()+434>objectId.pos.y && listShip[i]->position.y()-434<objectID.pos.y)){
+                observers.push_back(objectID);
+            }
+        }
+    }
+        
+}
+
+UpdateObject getShipObservers(int shipID, list<int> observers){
+    UpdateObject uo;
+    
+    for(int i = 0; i < MAX_CLIENTS; ++i){
+        if(listShip[i] != 0){
+            if((listShip[i]->position.x()+562>shipID.pos.x && listShip[i]->position.x()-562<shipID.pos.x) && (listShip[i]->position.y()+434>shipID.pos.y && listShip[i]->position.y()-434<objectID.pos.y)){
+                observers.push_back(objectID);
+            }
+        }
+    }
+}
 **/
+
 vector<UpdateObject> Frame::ListShip2listUpdateObject()
 {
     vector<UpdateObject> udList;
