@@ -1,6 +1,4 @@
 #include "socketwrapper.h"
-#include <fcntl.h>
-using namespace std;
 
 int SocketWrapper::Socket(int family, int type, int protocol)
 {
@@ -84,7 +82,6 @@ bool SocketWrapper::Write(int sock, const void *vptr, size_t n)
     return true;
 }
 
-//TODO: Check all calls to this to make sure they're checking the return values
 bool SocketWrapper::Read(int sock, void *vptr, size_t size)
 {
 	size_t  nleft = size;

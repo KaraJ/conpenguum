@@ -1,8 +1,13 @@
 #ifndef IPBOX_H
 #define IPBOX_H
-#include "../ui_ipbox.h"
 #include <QDialog>
 #include <QString>
+#include <QMessageBox>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+
+#include "../ui_ipbox.h"
 
 class IpBox : public QDialog
 {

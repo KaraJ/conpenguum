@@ -16,7 +16,7 @@
 
 #include "Commclient.h"
 
-using namespace std;
+using std::string;
 
 /*----------------------------------------------------------------------------------------------------------
  -- FUNCTION: CommClient::CommClient

@@ -1,7 +1,4 @@
 #include "tcpconnection.h"
-#include <string.h>
-
-using namespace std;
 
 bool TCPConnection::ReadMessage(int sock, ServerMessage& sm)
 {
@@ -12,7 +9,8 @@ bool TCPConnection::ReadMessage(int sock, ServerMessage& sm)
 		sm.SetClientID(buff[0]);
 		sm.SetMsgLen(buff[1]);
 		sm.SetMsgType((ServerMessage::MessageType) buff[2]);
-		SocketWrapper::Read(sock, buff, sm.GetMsgLen() - ServerMessage::SM_HEADERSIZE);
+		if(!SocketWrapper::Read(sock, buff, sm.GetMsgLen() - ServerMessage::SM_HEADERSIZE))
+			return false;
 		sm.SetData(buff);
 		return true;
 	}

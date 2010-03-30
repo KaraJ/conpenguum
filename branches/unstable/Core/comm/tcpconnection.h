@@ -2,6 +2,7 @@
 #define TCPCONNECTION_H
 
 //System Includes
+#include <string.h>
 
 //User Includes
 #include "data/servermessage.h"
