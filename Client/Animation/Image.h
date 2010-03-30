@@ -41,6 +41,7 @@ class Image
                 void setDirection(int dir){direction_ = dir;}
                 int getDirection(){return direction_;}
                 std::string getDescription(){return description_;}
+                std::string soundLink;
 
         private:
                 /* Need to have a way of actually storing the image within this image object.

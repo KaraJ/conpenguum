@@ -2,8 +2,9 @@
 <!-- 2 images tall -->
 
 <image>
-	<link>/images/exhaust.bmp</link>
+	<link>../Render/images/exhaust.bmp</link>
 	<desc>exhaust</desc>
+	<sound></sound>
 	<numberOfFrames>38</numberOfFrames>
 	<numberImagesWide>19</numberImagesWide>
 	<numberImagesTall>2</numberImagesTall>
