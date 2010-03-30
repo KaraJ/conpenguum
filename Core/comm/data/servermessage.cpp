@@ -1,5 +1,19 @@
 #include "servermessage.h"
 
+using std::string;
+
+/*----------------------------------------------------------------------------------------------------------
+-- FUNCTION: ServerMessage::Serialize
+--
+-- DATE: 2010-02-23
+--
+-- INTERFACE:
+--		char* data:	the data to save the ServerMessage into.
+--
+-- RETURN: The length of the  serialized data.
+--
+-- NOTES:
+----------------------------------------------------------------------------------------------------------*/
 size_t ServerMessage::Serialize(char *data)
 {
 	size_t i;
@@ -17,7 +31,19 @@ size_t ServerMessage::Serialize(char *data)
 	return i;
 }
 
-void ServerMessage::SetData(std::string data)
+/*----------------------------------------------------------------------------------------------------------
+-- FUNCTION: ServerMessage::SetData
+--
+-- DATE: 2010-02-23
+--
+-- INTERFACE:
+--	string data:	The data portion of the ServerMessage
+--
+-- RETURN:	void
+--
+-- NOTES:
+----------------------------------------------------------------------------------------------------------*/
+void ServerMessage::SetData(string data)
 {
 	msgData = data.substr(0, SM_MAX_DATA);
 	msgLen = msgData.length() + SM_HEADERSIZE;
