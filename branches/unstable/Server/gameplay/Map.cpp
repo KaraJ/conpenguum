@@ -105,7 +105,6 @@ Map::Map(QString filename) : width(0), height(0), tileSize(1)
         spawn.height = spawn_e.attribute("height").toInt();
         spawn.team = spawn_e.attribute("team").toInt();
         spawns.push_back(spawn);
-        std::cout << "Found spawn for team " << spawn.team << " @ " << spawn.x << "," << spawn.y << " sized " << spawn.width << "x" << spawn.height << std::endl;
     }
 
     // seed rand(), used later in spawn selection
