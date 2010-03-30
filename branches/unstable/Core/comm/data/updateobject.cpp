@@ -64,13 +64,13 @@ UpdateObject::UpdateObject(BYTE* buffer) : actions_(0)
     int x = 0, y = 0;
 
     actions_ = ClientAction(buffer);
-    x = buffer[2] << 8;
-    x |= buffer[3];
-    y = buffer[4] << 8;
-    y |= buffer[5];
+    x = buffer[3] << 8;
+    x |= buffer[4];
+    y = buffer[5] << 8;
+    y |= buffer[6];
     pos_.setX(x);
     pos_.setY(y);
-    rotation_ = buffer[6];
+    rotation_ = buffer[7];
 }
 
 /*----------------------------------------------------------------------------------------------------------
@@ -89,15 +89,17 @@ UpdateObject::UpdateObject(BYTE* buffer) : actions_(0)
 --         8   9   10  11  12  13  14  15
 --  1      CA  CA  CA  CA  CA  CA  CA  CA
 --         16  17  18  19  20  21  22  23
---  2      PX1 PX1 PX1 PX1 PX1 PX1 PX1 PX1
+--  2      CA  CA  CA  CA  CA  CA  CA  CA
 --         24  25  26  27  28  29  30  31
---  3      PX2 PX2 PX2 PX2 PX2 PX2 PX2 PX2
+--  3      PX1 PX1 PX1 PX1 PX1 PX1 PX1 PX1
 --         32  33  34  35  36  37  38  39
---  4      PY1 PY1 PY1 PY1 PY1 PY1 PY1 PY1
+--  4      PX2 PX2 PX2 PX2 PX2 PX2 PX2 PX2
 --         40  41  42  43  44  45  46  47
---  5      PY2 PY2 PY2 PY2 PY2 PY2 PY2 PY2
+--  5      PY1 PY1 PY1 PY1 PY1 PY1 PY1 PY1
 --         48  49  50  51  52  53  54  55
---  6      R   R   R   R   R   R   R   R
+--  6      PY2 PY2 PY2 PY2 PY2 PY2 PY2 PY2
+--         56  57  58  59  60  61  62  63
+--  7      R   R   R   R   R   R   R   R
 ----------------------------------------------------------------------------------------------------------*/
 void UpdateObject::serialise(BYTE** buffer) const
 {
@@ -110,11 +112,11 @@ void UpdateObject::serialise(BYTE** buffer) const
 
      size_t x = (size_t)pos_.x();
      size_t y = (size_t)pos_.y();
-     (*buffer)[2] = (BYTE)((x & 0x0000FF00) >> 8);
-     (*buffer)[3] = (BYTE)(x & 0x000000FF);
-     (*buffer)[4] = (BYTE)((y & 0x0000FF00) >> 8);
-     (*buffer)[5] = (BYTE)(y & 0x000000FF);
-     (*buffer)[6] = (BYTE)(rotation_ & 0x000000FF);
+     (*buffer)[3] = (BYTE)((x & 0x0000FF00) >> 8);
+     (*buffer)[4] = (BYTE)(x & 0x000000FF);
+     (*buffer)[5] = (BYTE)((y & 0x0000FF00) >> 8);
+     (*buffer)[6] = (BYTE)(y & 0x000000FF);
+     (*buffer)[7] = (BYTE)(rotation_ & 0x000000FF);
 }
 
 void UpdateObject::print(ostream& out) const

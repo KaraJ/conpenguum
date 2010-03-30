@@ -51,7 +51,7 @@ typedef Bitmask<unsigned int, ActionFlags> ActionBitmask;
 class ClientAction
 {
 public:
-    static const int serialiseSize = 2;
+    static const int serialiseSize = 3;
 
     ClientAction(int objID);
     ClientAction(BYTE* buffer);
@@ -78,7 +78,7 @@ public:
     void print(std::ostream& out = std::cout) const;
 private:
     ActionBitmask mask_;
-    unsigned short objID_;
+    int objID_;
 };
 
 #endif
