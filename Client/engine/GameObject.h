@@ -29,7 +29,8 @@ public:
 	int angle; //Rotation angle 0-179
 	QPoint position; //XY position
 	QString text;  //Texture filename
-	Animation currentAnime; //TODO: ?
+	Animation currentAnime;
+	Image * animeImage;
 	size_t animeIndex; //Frame index
 };
 
