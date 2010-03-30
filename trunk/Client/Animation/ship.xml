@@ -1,0 +1,290 @@
+<image>
+	<link>../Render/images/GrayShip.bmp</link>
+	<name>Ship</name>
+	<numberOfFrames>1</numberOfFrames>
+	<numberImagesWide>10</numberImagesWide>
+	<numberImagesTall>4</numberImagesTall>
+	<frame>
+		<desc>0 degrees</desc>
+		<direction id="0"> <!-- pointing straight up -->
+			<left>0</left>
+			<bottom>0.25</bottom>
+            <right>0.1</right>
+            <top>0</top>
+		</direction>
+		<desc>9 degrees</desc>
+		<direction id="9">
+			<left>0.1</left>
+			<bottom>0.25</bottom>
+            <right>0.2</right>
+            <top>0</top>
+		</direction>
+		<desc>18 degrees</desc>
+		<direction id="18">
+			<left>0.2</left>
+			<bottom>0.25</bottom>
+            <right>0.3</right>
+            <top>0</top>
+		</direction>
+		<desc>27 degrees</desc>
+		<direction id="27">
+			<left>0.3</left>
+			<bottom>0.25</bottom>
+            <right>0.2</right>
+            <top>0</top>
+		</direction>
+		<desc>36 degrees</desc>
+		<direction id="36">
+			<left>0.3</left>
+			<bottom>0.25</bottom>
+            <right>0.4</right>
+            <top>0</top>
+		</direction>
+		<desc>45 degrees</desc>
+		<direction id="45"> <!-- pointing top right -->
+			<left>0.4</left>
+			<bottom>0.25</bottom>
+            <right>0.5</right>
+            <top>0</top>
+		</direction>
+		<desc>54 degrees</desc>
+		<direction id="54">
+			<left>0.6</left>
+			<bottom>0.25</bottom>
+            <right>0.7</right>
+            <top>0</top>
+		</direction>
+		<desc>63 degrees</desc>
+		<direction id="63">
+			<left>0.7</left>
+			<bottom>0.25</bottom>
+            <right>0.8</right>
+            <top>0</top>
+		</direction>
+		<desc>Gray 72 degrees</desc>
+		<direction id="72">
+			<left>0.8</left>
+			<bottom>0.25</bottom>
+            <right>0.9</right>
+            <top>0</top>
+		</direction>
+		<desc>81 degrees</desc>
+		<direction id="81">
+			<left>0.9</left>
+			<bottom>0.25</bottom>
+            <right>1</right>
+            <top>0</top>
+		</direction>
+		<desc>90 degrees</desc>
+		<direction id="90"> <!-- pointing straight right -->
+			<left>0</left>
+			<bottom>0.5</bottom>
+            <right>0.1</right>
+            <top>0.25</top>>
+		</direction>
+		<desc>99 degrees</desc>
+		<direction id="99">
+			<left>0.1</left>
+			<bottom>0.5</bottom>
+            <right>0.2</right>
+            <top>0.25</top>
+		</direction>
+		<desc>108 degrees</desc>
+		<direction id="108">
+			<left>0.2</left>
+			<bottom>0.5</bottom>
+            <right>0.3</right>
+            <top>0.25</top>
+		</direction>
+		<desc>117 degrees</desc>
+		<direction id="117">
+			<left>0.3</left>
+			<bottom>0.5</bottom>
+            <right>0.4</right>
+            <top>0.25</top>
+		</direction>
+		<desc>126 degrees</desc>
+		<direction id="126">
+			<left>0.4</left>
+			<bottom>0.5</bottom>
+            <right>0.5</right>
+            <top>0.25</top>
+		</direction>
+		<desc>135 degrees</desc>
+		<direction id="135"> <!-- pointing bottom right -->
+			<left>0.5</left>
+			<bottom>0.5</bottom>
+            <right>0.6</right>
+            <top>0.25</top>
+		</direction>
+		<desc>144 degrees</desc>
+		<direction id="144">
+			<left>0.6</left>
+			<bottom>0.5</bottom>
+            <right>0.7</right>
+            <top>0.25</top>
+		</direction>
+		<desc>153 degrees</desc>
+		<direction id="153">
+			<left>0.7</left>
+			<bottom>0.5</bottom>
+            <right>0.8</right>
+            <top>0.25</top>
+		</direction>
+		<desc>162 degrees</desc>
+		<direction id="162">
+			<left>0.8</left>
+			<bottom>0.5</bottom>
+            <right>0.9</right>
+            <top>0.25</top>
+		</direction>
+		<desc>171 degrees</desc>
+		<direction id="171">
+			<left>0.9</left>
+			<bottom>0.5</bottom>
+            <right>1</right>
+            <top>0.25</top>
+		</direction>
+		<desc>180 degrees</desc>
+		<direction id="180"> <!-- pointing straight down -->
+			<left>0</left>
+			<bottom>0.75</bottom>
+            <right>0.1</right>
+            <top>0.5</top>
+		</direction>
+		<desc>189 degrees</desc>
+		<direction id="189">
+			<left>0.1</left>
+			<bottom>0.75</bottom>
+            <right>0.2</right>
+            <top>0.5</top>
+		</direction>
+		<desc>198 degrees</desc>
+		<direction id="198">
+			<left>0.2</left>
+			<bottom>0.75</bottom>
+            <right>0.3</right>
+            <top>0.5</top>
+		</direction>
+		<desc>207 degrees</desc>
+		<direction id="207">
+			<left>0.3</left>
+			<bottom>0.75</bottom>
+            <right>0.4</right>
+            <top>0.5</top>
+		</direction>
+		<desc>216 degrees</desc>
+		<direction id="216">
+			<left>0.4</left>
+			<bottom>0.75</bottom>
+            <right>0.5</right>
+            <top>0.5</top>
+		</direction>
+		<desc>225 degrees</desc>
+		<direction id="225">
+			<left>0.5</left>
+			<bottom>0.75</bottom>
+            <right>0.6</right>
+            <top>0.5</top>
+		</direction>
+		<desc>234 degrees</desc>
+		<direction id="234">
+			<left>0.6</left>
+			<bottom>0.75</bottom>
+            <right>0.7</right>
+            <top>0.5</top>
+		</direction>
+		<desc>243 degrees</desc>
+		<direction id="243">
+			<left>0.7</left>
+			<bottom>0.75</bottom>
+            <right>0.8</right>
+            <top>0.5</top>
+		</direction>
+		<desc>252 degrees</desc>
+		<direction id="252">
+			<left>0.8</left>
+			<bottom>0.75</bottom>
+            <right>0.9</right>
+            <top>0.5</top>
+		</direction>
+		<desc>261 degrees</desc>
+		<direction id="261">
+			<left>0.9</left>
+			<bottom>0.75</bottom>
+            <right>1</right>
+            <top>0.5</top>
+		</direction>
+		<desc>270 degrees</desc>
+		<direction id="270"> <!-- pointing straight left -->
+			<left>0</left>
+			<bottom>1</bottom>
+            <right>0.1</right>
+            <top>0.75</top>
+		</direction>
+		<desc>279 degrees</desc>
+		<direction id="279">
+			<left>0.1</left>
+			<bottom>1</bottom>
+            <right>0.2</right>
+            <top>0.75</top>
+		</direction>
+		<desc>288 degrees</desc>
+		<direction id="288">
+			<left>0.2</left>
+			<bottom>1</bottom>
+            <right>0.3</right>
+            <top>0.75</top>
+		</direction>
+		<desc>297 degrees</desc>
+		<direction id="297">
+			<left>0.3</left>
+			<bottom>1</bottom>
+            <right>0.4</right>
+            <top>0.75</top>
+		</direction>
+		<desc>306 degrees</desc>
+		<direction id="306">
+			<left>0.4</left>
+			<bottom>1</bottom>
+            <right>0.5</right>
+            <top>0.75</top>
+		</direction>
+		<desc>315 degrees</desc>
+		<direction id="315">
+			<left>0.5</left>
+			<bottom>1</bottom>
+            <right>0.6</right>
+            <top>0.75</top>
+		</direction>
+		<desc>324 degrees</desc>
+		<direction id="324">
+			<left>0.6</left>
+			<bottom>1</bottom>
+      <right>0.7</right>
+      <top>0.75</top>>
+		</direction>
+		<desc>333 degrees</desc>
+		<direction id="333">
+			<left>0.7</left>
+			<bottom>1</bottom>
+      <right>0.8</right>
+      <top>0.75</top>
+		</direction>
+		<desc>342 degrees</desc>
+		<direction id="342">
+			<left>0.8</left>
+			<bottom>1</bottom>
+      <right>0.9</right>
+      <top>0.75</top>
+		</direction>
+		<desc>351 degrees</desc>
+		<direction id="351">
+			<left>0.9</left>
+			<bottom>1</bottom>
+      <right>1</right>
+      <top>0.75</top>
+		</direction>
+	</frame>
+</image>
+
