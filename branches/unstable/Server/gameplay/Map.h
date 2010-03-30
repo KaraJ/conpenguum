@@ -3,6 +3,7 @@
 
 #include <QPoint>
 #include <list>
+#include <vector>
 #include <sstream>
 #include <string>
 #include <exception>
@@ -14,28 +15,20 @@
 #define Pix2Tile(coord) ((coord) / tileSize)
 #define Tile2Pix(tiles) ((tiles) * tileSize)
 
-class MapCanMoveException: public std::exception
+typedef struct
 {
-private:
-    std::string message;
-    int edgeBegin;
-    int edgeEnd;
-    int moveStart;
-public:
-    MapCanMoveException(std::string newMessage, int newEdgeBegin, int newEdgeEnd, int newMoveStart): message(newMessage), edgeBegin(newEdgeBegin), edgeEnd(newEdgeEnd), moveStart(newMoveStart) {}
-    ~MapCanMoveException() throw() {}
-    virtual const char* what() const throw()
-    {
-        std::stringstream e("Map::canMove exception: \"");
-        e << message << "\" with values: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart;
-        return e.str().c_str();
-    }
-};
+    int team;
+    int x;
+    int y;
+    int width;
+    int height;
+} SpawnArea;
 
 class Map
 {
 private :
     Tile ***tiles;
+    std::vector<SpawnArea> spawns;
     int  width;    // map width in tiles
     int  height;   // map height in tiles
     int  tileSize; // length of tile edge in pixels
@@ -59,6 +52,7 @@ public:
     bool hasShip(QPoint location);
     bool hasShip(int, int);
     std::list<Ship*> ships(QPoint location);
+    QPoint getSpawn(int team, int size);
 };
 
 #endif
