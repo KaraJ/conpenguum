@@ -76,8 +76,8 @@ void Renderer::buildRenderList(QPoint center)
             renderList[i].objectWidth = 1;
             renderList[i].rotation = it->second.angle * 2;
             //renderList[i].rotation = objectlist[i].getRotation() * 2;
-            renderList[i].objectHeightPx = 50;
-            renderList[i].objectWidthPx = 50;
+            renderList[i].objectHeightPx = 40;
+            renderList[i].objectWidthPx = 40;
         }
 
         renderList[i].x = SCRCENTREW + (it->second.position.x() - xOffset);
