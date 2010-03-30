@@ -391,7 +391,7 @@ UpdateObject getShipObservers(int shipID, list<int> observers){
 vector<UpdateObject> Frame::ListShip2listUpdateObject()
 {
     vector<UpdateObject> udList;
-
+    list<Shot>::iterator it;
     for (size_t i = 0; i < MAX_CLIENTS; ++i)
     {
 		if (listShip[i] != 0)
@@ -403,6 +403,14 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
 			uo.print();
 		}
 	}
+    
+    
+    for(it = listShot.begin(); it != listShot.end(); ++it){
+        UpdateObject uo(it->actionMask);
+		uo.setRotation(it->rotation);
+		uo.setPosition(it->position);
+		udList.push_back(uo);
+    }
 
     return udList;
 }
