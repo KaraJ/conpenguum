@@ -343,23 +343,7 @@ void BaseWindow::updateGameState ()
 		//waiting for Animation to provide update frame method and getAni method
 		//it->second.currentAnime.getAnimationImages();
 
-		/**/
-	}
-
-	for (map<int, GameObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
-	{
-		/*GameObject animatedObj = it->second;
-		vector<Image> images = animationMap[animatedObj.objectId].getAnimationImages();
-
-		if (animatedObj.objectId == 32) // Bullets
-			continue;
-
-		if (animatedObj.animeIndex < images.size())
-		{			
-			animatedObj.animeImage = &images[animatedObj.animeIndex];
-			animatedObj.animeIndex++;
-		}*/
-	}
+	}	
 }
 
 void BaseWindow::clearTransientObjects()
@@ -368,9 +352,21 @@ void BaseWindow::clearTransientObjects()
 	{
 		if (it->first < 65535)
 			gameState.erase(it);
+
 		else
-			;//Update frame of animation
+		{
+			GameObject * animatedObj = &it->second;
+			vector<Image>& images = animationMap[animatedObj.objectId].getAnimationImages();
+	
+			if (animatedObj->animeIndex < images.size())
+				animatedObj->animeImage = &images[animatedObj.animeIndex++];
+ 
+			else
+				gameState.erase(it);
+		}
 	}
+
+
 }
 
 /*------------------------------------------------------------------------------
