@@ -1,5 +1,7 @@
 #include "BaseWindow.h"
 
+#include "../Animation/AnimationEnum.h"
+
 using namespace std;
 
 /*------------------------------------------------------------------------------
@@ -29,7 +31,7 @@ using namespace std;
  -----------------------------------------------------------------------------*/
 BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
 {
-	for (size_t i = MAX_REAL_OBJECT; i < MAX_REAL_OBJECT + MAX_TRANSIENT_OBJECT; ++i)
+	for (size_t i = MAX_REAL_OBJECT + 1; i < MAX_REAL_OBJECT + MAX_TRANSIENT_OBJECT; ++i)
 		freeIds.push(i);
 
 	connect(&timer, SIGNAL(timeout()), this, SLOT(timerEvent()));
@@ -328,14 +330,17 @@ void BaseWindow::updateGameState ()
 		UpdateObject updateObj = theClient->nextUpdate();
 		int objId = updateObj.getObjectId();
 
-		if (objId < 31 && updateObj.getActions().isAccelerating()) //for trails
+		if (objId < 31 && updateObj.getActions().isAccelerating()) //for Exhaust trails
 		{
-			GameObject animObj;
-			animObj.angle = 0;
+			vector<Image>& images = animationMap[Exhaust].getAnimationImages();
+			GameObject animObj(updateObj);
 
 			animObj.objectId = freeIds.front();
 			freeIds.pop();
+			animObj.currentAnime = animationMap[Exhaust];
+			animObj.animeImage = &images[0];
 			animObj.animeIndex = 0;
+
 			gameState[animObj.objectId] = animObj;
 		}
 
@@ -351,10 +356,6 @@ void BaseWindow::updateGameState ()
 
 		if (objId == clientAction->getObjectId()) //Update position of our ship
 			scrnCenter = updateObj.getPos();
-
-		//waiting for Animation to provide update frame method and getAni method
-		//it->second.currentAnime.getAnimationImages();
-
 	}	
 }
 
@@ -368,7 +369,7 @@ void BaseWindow::clearTransientObjects()
 		else
 		{
 			GameObject *animatedObj = &it->second;
-			vector<Image>& images = animationMap[animatedObj->objectId].getAnimationImages();
+			vector<Image>& images = animationMap[Exhaust].getAnimationImages();
 	
 			if (animatedObj->animeIndex < images.size())
 				animatedObj->animeImage = &images[animatedObj->animeIndex++];
