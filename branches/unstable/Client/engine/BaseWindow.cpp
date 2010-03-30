@@ -356,10 +356,10 @@ void BaseWindow::clearTransientObjects()
 		else
 		{
 			GameObject * animatedObj = &it->second;
-			vector<Image>& images = animationMap[animatedObj.objectId].getAnimationImages();
+			vector<Image>& images = animationMap[animatedObj->objectId].getAnimationImages();
 	
 			if (animatedObj->animeIndex < images.size())
-				animatedObj->animeImage = &images[animatedObj.animeIndex++];
+				animatedObj->animeImage = &images[animatedObj->animeIndex++];
  
 			else
 				gameState.erase(it);
