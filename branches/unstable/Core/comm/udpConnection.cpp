@@ -4,9 +4,10 @@
 --  PROGRAM: TuxSpace
 --
 --  METHODS:
---		UDPServer()
---		sendMessage(struct sockaddr* to, const void* data, size_t dataLen)
---		EchoMessage()
+--		UDPConnection(int port)
+--		~UDPConnection()
+--		void sendMessage(struct sockaddr* to, const void* data, size_t dataLen)
+--		ssize_t recvMessage(BYTE** buffer)
 --
 --  PROGRAMMER: Kara Martens
 --
@@ -14,19 +15,19 @@
 --
 --  DATE: 2010-02-18
 --
---  NOTES:
+--  NOTES: UDPClient and UDPServer both have a UDPConnection for common functions.
 ----------------------------------------------------------------------------------------------------------*/
 
 #include "udpConnection.h"
 
 /*----------------------------------------------------------------------------------------------------------
--- FUNCTION: UDPConnection
+-- FUNCTION: UDPConnection::UDPConnection
 --
 -- DATE: 2010-02-18
 --
 -- INTERFACE:
+--		int port:	the UDP port
 --
--- RETURN:
 ----------------------------------------------------------------------------------------------------------*/
 UDPConnection::UDPConnection(int port)
 {
@@ -44,13 +45,20 @@ UDPConnection::UDPConnection(int port)
     SocketWrapper::Bind(this->sockfd_, &servaddr, sizeof(sockaddr_in));
 }
 
+/*----------------------------------------------------------------------------------------------------------
+-- FUNCTION: UDPConnection::~UDPConnection
+--
+-- DATE: 2010-02-18
+--
+-- NOTES: Close the socket when the object is deleted.
+----------------------------------------------------------------------------------------------------------*/
 UDPConnection::~UDPConnection()
 {
 	close(sockfd_);
 }
 
 /*----------------------------------------------------------------------------------------------------------
--- FUNCTION: sendMessage
+-- FUNCTION: UDPConnection::sendMessage
 --
 -- DATE: 2010-02-18
 --
@@ -73,7 +81,7 @@ void UDPConnection::sendMessage(struct sockaddr* to, const void* data, size_t da
 }
 
 /*----------------------------------------------------------------------------------------------------------
--- FUNCTION: recvMessage
+-- FUNCTION: UDPConnection::recvMessage
 --
 -- DATE: 2010-02-25
 --
