@@ -1,23 +1,28 @@
 #ifndef BASEWINDOW_H
 #define BASEWINDOW_H
 
+//System Includes
 #include <QtGui>
 #include <QMainWindow>
 #include <QKeyEvent>
 #include <QTimer>
+#include <iostream>
 #include <map>
 #include <string>
-#include <iostream>
+#include <queue>
+
+//User Includes
 #include "GameObject.h"
 #include "../Animation/Animation.h"
 #include "../Comm/Commclient.h"
 #include "../../Core/comm/data/clientaction.h"
 #include "../../Core/comm/data/servermessage.h"
 #include "../Renderer/Renderer.h"
-using namespace std;
 
 // Default frame rate is 30 frames/second.
 #define DEFAULT_FRAME_RATE 30
+#define MAX_REAL_OBJECT 32767
+#define MAX_TRANSIENT_OBJECT 32767
 
 /*------------------------------------------------------------------------------
  --
@@ -78,10 +83,11 @@ class BaseWindow : public QMainWindow
     private:
 		int frameRate;
 		QTimer timer;
-		map<int, GameObject> gameState;
-		map<int, Animation> animationMap;
+		std::map<int, GameObject> gameState;
+		std::map<int, Animation> animationMap;
+		std::queue<int> freeIds;
 		bool chatting;
-		string chatString;
+		std::string chatString;
 		CommClient::CommClient* theClient;
 		QPoint scrnCenter;
 		Renderer* ren;
@@ -94,7 +100,7 @@ class BaseWindow : public QMainWindow
 		void setFrameRate (int rate);
 		void keyPressEvent (QKeyEvent * event);
 		void keyReleaseEvent (QKeyEvent * event);
-		string getChatString();
+		std::string getChatString();
 		void Start(int clientId);
 		void getServerMessage();
 
