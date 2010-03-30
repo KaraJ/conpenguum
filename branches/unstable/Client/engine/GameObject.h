@@ -7,9 +7,7 @@
 #include "../Animation/Image.h"
 #include "../../Core/comm/data/updateobject.h"
 
-//0 ~ 65536
-
-class GameObject
+struct GameObject
 {
 public:
     inline GameObject(){};
@@ -27,10 +25,10 @@ public:
         position = obj.getPos();
     }
 
-	int objectId;
+	int objectId; //0 ~ 65535 Are real objects, 65537+ are transient objects
 	int angle; //Rotation angle 0-179
-	QString text;  //Texture filename
 	QPoint position; //XY position
+	QString text;  //Texture filename
 	Animation currentAnime; //TODO: ?
 	size_t animeIndex; //Frame index
 };

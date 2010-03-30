@@ -241,37 +241,6 @@ std::string BaseWindow::getChatString()
 
 /*------------------------------------------------------------------------------
  --
- -- METHOD: BaseWindow::timerEvent()
- --
- -- DESIGNER: Erick Ribeiro
- --
- -- PROGRAMMER:
- --
- -- REVISIONS:
- --
- --		Feb 22, 2010 - Erick Ribeiro
- --		Changed the way render() was being called. We don't need to create a
- --		renderer object. We just need to call render(), which will be
- --		implemented by the Graphics Team in a subclass of BaseWindow.
- --
- -- NOTES:
- -- This method is called by a QTimer object for every frame. It's
- -- responsibility is to determine if the game scene needs to be rendered, and
- -- if so, it calls render().
- --
- -----------------------------------------------------------------------------*/
-void BaseWindow::timerEvent()
-{
-	theClient->sendAction(*clientAction);
-	getServerMessage();
-	updateGameState();
-	ren->buildRenderList(scrnCenter);
-	ren->Render();
-	//clearTransientObjects(); //TODO: Write this.
-}
-
-/*------------------------------------------------------------------------------
- --
  -- METHOD: BaseWindow::startRendering()
  --
  -- DESIGNER: Erick Ribeiro
@@ -354,40 +323,33 @@ void BaseWindow::updateGameState ()
 	while (theClient->hasNextUpdate())
 	{
 		UpdateObject updateObj = theClient->nextUpdate();
-		gameObj = new GameObject(updateObj);
+		int objId = updateObj.getObjectId();
 
-		for (map<int, GameObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
+		//This would be where you check the clientaction contained in the updateObject to see if
+		//you need to spawn an animation
+		if (gameState.find(objId) != gameState.end()) //If it exists
+			gameState[objId].Update(updateObj);
+		else //Create GameObject
 		{
-				if (it->second.objectId == clientAction->getObjectId()) //Update position of our ship
-				{
-					it->second.position = updateObj.getPos();
-					scrnCenter = updateObj.getPos();
-					//waiting for Animation to provide update frame method and getAni method
-					//it->second.currentAnime.getAnimationImages();
-				}
-		}
-
-		if (updateObj.getObjectId() <= 31) //If ship
-		{
-				;
-		}
-		/*else
-		{
-			gameObj = new GameObject;
+			gameObj = new GameObject(updateObj);
 			gameObj->animeIndex = 0;
-			gameState.push_back(*gameObj);
-            gameState.push_back(updateObj);
-        }
+			gameObj->text = "wbship.bmp";
+			gameState[objId] = *gameObj;
+		}
 
-		gameObj->objectId = objectId;
-		gameObj->position = updateObj.getPos();
-		gameObj->angle = updateObj.getRotation();
+		if (objId == clientAction->getObjectId()) //Update position of our ship
+			scrnCenter = updateObj.getPos();
+
+		//waiting for Animation to provide update frame method and getAni method
+		//it->second.currentAnime.getAnimationImages();
+
+		/**/
 	}
 
-	for (size_t i = 32; i < gameState.size(); i++)
+	for (map<int, GameObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
 	{
-		GameObject &animatedObj = gameState.at(i);
-		std::vector<Image> images = animationMap[animatedObj.objectId].getAnimationImages();
+		/*GameObject animatedObj = it->second;
+		vector<Image> images = animationMap[animatedObj.objectId].getAnimationImages();
 
 		if (animatedObj.objectId == 32) // Bullets
 			continue;
@@ -398,6 +360,48 @@ void BaseWindow::updateGameState ()
 			animatedObj.animeIndex++;
 		}*/
 	}
+}
+
+void BaseWindow::clearTransientObjects()
+{
+	for (map<int, GameObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
+	{
+		if (it->first < 65535)
+			gameState.erase(it);
+		else
+			;//Update frame of animation
+	}
+}
+
+/*------------------------------------------------------------------------------
+ --
+ -- METHOD: BaseWindow::timerEvent()
+ --
+ -- DESIGNER: Erick Ribeiro
+ --
+ -- PROGRAMMER:
+ --
+ -- REVISIONS:
+ --
+ --		Feb 22, 2010 - Erick Ribeiro
+ --		Changed the way render() was being called. We don't need to create a
+ --		renderer object. We just need to call render(), which will be
+ --		implemented by the Graphics Team in a subclass of BaseWindow.
+ --
+ -- NOTES:
+ -- This method is called by a QTimer object for every frame. It's
+ -- responsibility is to determine if the game scene needs to be rendered, and
+ -- if so, it calls render().
+ --
+ -----------------------------------------------------------------------------*/
+void BaseWindow::timerEvent()
+{
+	theClient->sendAction(*clientAction);
+	getServerMessage();
+	updateGameState();
+	ren->buildRenderList(scrnCenter);
+	ren->Render();
+	clearTransientObjects();
 }
 
 /*------------------------------------------------------------------------------

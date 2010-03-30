@@ -78,8 +78,7 @@ class BaseWindow : public QMainWindow
     private:
 		int frameRate;
 		QTimer timer;
-        //vector<GameObject> gameState;
-                map<int, GameObject> gameState;
+		map<int, GameObject> gameState;
 		map<int, Animation> animationMap;
 		bool chatting;
 		string chatString;
@@ -104,6 +103,7 @@ class BaseWindow : public QMainWindow
 
 	private:
 		void updateGameState();
+		void clearTransientObjects();
 		int handleChat(int key);
 		void toggleChat();
 };
