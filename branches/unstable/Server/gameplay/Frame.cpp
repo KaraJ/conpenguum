@@ -286,19 +286,26 @@ void Frame::updateShots(void)
 {
 	QPoint oldPos;
     list<Shot>::iterator it;
-    for(it = listShot.begin(); it != listShot.end(); ++it){
+
+    for(it = listShot.begin(); it != listShot.end(); ++it)
+    {
     	oldPos = it->position;
-    	if(frameTimer == it->deathTime){
+    	if(frameTimer == it->deathTime)
+    	{
     		map.remove(&(*it), it->position);
-		listShot.erase(it);
-		return;
+    		listShot.erase(it);
+    		return;
     	}
-        it->position += it->vector;
-        if(map.isWall(it->position)){
+
+		it->position += it->vector;
+
+        if(map.isWall(it->position))
+        {
         	map.remove(&(*it), it->position);
-		listShot.erase(it);
-		return;
+        	listShot.erase(it);
+        	return;
         }
+
         map.move(&(*it), oldPos, it->position);
     }
 }
@@ -407,7 +414,6 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
     
     for(it = listShot.begin(); it != listShot.end(); ++it){
         UpdateObject uo(it->id);
-		uo.setRotation(-1);
 		uo.setPosition(it->position);
 		udList.push_back(uo);
     }

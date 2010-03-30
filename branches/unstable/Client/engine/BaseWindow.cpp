@@ -361,10 +361,12 @@ void BaseWindow::updateGameState ()
 
 void BaseWindow::clearTransientObjects()
 {
+	list<int> thingsToErase;
+
 	for (map<int, GameObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
 	{
 		if (it->first < MAX_REAL_OBJECT)
-			gameState.erase(it);
+			thingsToErase.push_back(it->first);
 
 		else
 		{
@@ -373,13 +375,16 @@ void BaseWindow::clearTransientObjects()
 	
 			if (animatedObj->animeIndex < images.size())
 				animatedObj->animeImage = &images[animatedObj->animeIndex++];
- 
 			else
-				gameState.erase(it);
+				thingsToErase.push_back(it->first);
 		}
 	}
 
-
+	while (!thingsToErase.empty())
+	{
+		gameState.erase(thingsToErase.front());
+		thingsToErase.pop_front();
+	}
 }
 
 /*------------------------------------------------------------------------------
