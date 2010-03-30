@@ -406,8 +406,8 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
     
     
     for(it = listShot.begin(); it != listShot.end(); ++it){
-        UpdateObject uo(it->actionMask);
-		uo.setRotation(it->rotation);
+        UpdateObject uo(it->id);
+		uo.setRotation(-1);
 		uo.setPosition(it->position);
 		udList.push_back(uo);
     }
