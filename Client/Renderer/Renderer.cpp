@@ -97,9 +97,18 @@ void Renderer::Initialize()
     for(int i = 0; i < list.size(); i++)
     {
         QFileInfo fileInfo = list.at(i);
-        QPixmap pix(fileInfo.filePath(), "BMP");
-        QBitmap bmp = pix.createMaskFromColor(QColor(0,0,0), Qt::MaskOutColor);
-        pix.setAlphaChannel(bmp);
+        QPixmap pix;
+        QString sfx = fileInfo.completeSuffix();
+        if(fileInfo.completeSuffix()=="png")
+        {
+            pix = QPixmap(fileInfo.filePath(), "PNG");
+        }
+        else
+        {
+            pix = QPixmap(fileInfo.filePath(), "BMP");
+            QBitmap bmp = pix.createMaskFromColor(QColor(0,0,0), Qt::MaskOutColor);
+            pix.setAlphaChannel(bmp);
+        }
         GLuint texture = bindTexture(pix, GL_TEXTURE_2D, GL_RGBA, QGLContext::InvertedYBindOption);
         textures.insert(std::pair<std::string, GLuint>(fileInfo.fileName().toStdString(), texture));
     }
@@ -183,18 +192,15 @@ void Renderer::Render()
         glEnd();
     }
 
-    glFlush();
-    glDisable(GL_TEXTURE_2D);
-
-    //    glBindTexture(GL_TEXTURE_2D, textures["colors.bmp"]);
-    //    glBegin(GL_QUADS);
-    //        glTexCoord2f(0,14/40);      glVertex2f(-100,0);
-    //        glTexCoord2f(1/128,14/40);  glVertex2f(500, 0);
-    //        glTexCoord2f(1/128,15/40);  glVertex2f(500, 500);
-    //        glTexCoord2f(0,15/40);      glVertex2f(-100, 500);
-    //    glEnd();
-    //    glFlush();
-    //    glDisable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, textures["chatbox.png"]);
+        glBegin(GL_QUADS);
+            glTexCoord2f(0,0);      glVertex2f(0,0);
+            glTexCoord2f(1,0);  glVertex2f(600, 0);
+            glTexCoord2f(1,1);  glVertex2f(600, 200);
+            glTexCoord2f(0,1);      glVertex2f(0, 200);
+        glEnd();
+        glFlush();
+        glDisable(GL_TEXTURE_2D);
     updateGL();
 }
 
