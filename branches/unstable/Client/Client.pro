@@ -44,4 +44,5 @@ LIBS += -lCore \
     -L../Core/Debug
 CONFIG += qt \
     debug \
-    warn_on
+    warn_on \
+    resources

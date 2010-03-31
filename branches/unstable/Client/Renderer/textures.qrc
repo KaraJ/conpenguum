@@ -82,5 +82,6 @@
         <file>textures/wbship.bmp</file>
         <file>textures/weroll.bmp</file>
         <file>textures/weship.bmp</file>
+        <file>textures/chatbox.png</file>
     </qresource>
 </RCC>
