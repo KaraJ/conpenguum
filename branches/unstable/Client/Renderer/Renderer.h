@@ -28,7 +28,7 @@
 
 struct RenderObject
 {
-    short x, y;
+    short x, y, textX, textY;
     GLuint texture;
     float texOffsetX, texOffsetY;
     float objectWidth, objectHeight;

@@ -7,6 +7,7 @@
 #include <cmath>
 #include <vector>
 #include <cassert>
+#include <sstream>
 #include "../../Core/resourceMgr/resourceEnums.h"
 
 using namespace std;
@@ -77,6 +78,9 @@ void Renderer::buildRenderList(QPoint center)
 
         renderList[i].x = SCRCENTREW + (it->second.position.x() - xOffset);
         renderList[i].y = SCRCENTREH + (it->second.position.y() - yOffset);
+
+        renderList[i].textX = SCRCENTREW + (it->second.position.x() - xOffset);
+        renderList[i].textY = SCRCENTREH - (it->second.position.y() - yOffset);
         renderList[i].name = it->second.owner;
         i++;
     }
@@ -157,6 +161,11 @@ void Renderer::Render()
 		quad(3,1) = renderList[i].objectHeightPx + renderList[i].y;
 		quad(3,2) = 1;
 
+		if (renderList[i].name != "")
+		{
+			renderText(renderList[i].textX - 5, renderList[i].textY - 35, renderList[i].name, font);
+		}
+
 		if(renderList[i].rotation > 0)//skip all this if the object is rotationless or at 0;
 		{
 			int centerx = (quad(0,0) + quad(2,0)) / 2;
@@ -202,11 +211,6 @@ void Renderer::Render()
         glEnd();
         glFlush();
         glDisable(GL_TEXTURE_2D);
-        for(int i = 0; i < renderCount; i++)
-		{
-			if (renderList[i].name != "")
-				renderText(renderList[i].x - 5, renderList[i].y - 35, renderList[i].name, font);
-		}
     updateGL();
 }
 
