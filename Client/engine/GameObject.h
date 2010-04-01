@@ -32,6 +32,7 @@ public:
 	Animation currentAnime;
 	Image * animeImage;
 	size_t animeIndex; //Frame index
+	QString owner;
 };
 
 #endif

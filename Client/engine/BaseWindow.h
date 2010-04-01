@@ -92,6 +92,7 @@ class BaseWindow : public QMainWindow
 		QPoint scrnCenter;
 		Renderer* ren;
 		ClientAction* clientAction;
+		std::map<int, QString> userList;
 
     public:
 		BaseWindow ();
