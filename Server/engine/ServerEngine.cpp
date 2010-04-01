@@ -82,8 +82,12 @@ void ServerEngine::timeout()
 			cout << "client logged in" << endl;
 			gameState->addShip(sm.GetClientID());
 			gameState->spawnShip(sm.GetClientID());
+			userList.insert(make_pair(sm.GetClientID(), sm.GetData()));
 			sm.SetMsgType(ServerMessage::MT_INIT); //TODO:Get score from gameplay
-			sm.SetData("");
+			ostringstream oss;
+			for (map<int, string>::iterator it = userList.begin(); it != userList.end(); ++it)
+				oss << it->first << "," << it->second << ",";
+			sm.SetData(oss.str());
 			commServer->sendServerMsg(sm);
 		}
 		if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)

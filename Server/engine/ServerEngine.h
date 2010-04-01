@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QTimer>
 #include <vector>
+#include <map>
 #include <signal.h>
 
 //User Include
@@ -46,6 +47,7 @@ private:
 	CommServer::CommServer* commServer;
 	Frame *gameState;
 	static ServerEngine *instance;
+	std::map<int, std::string> userList;
 
 private slots:
 	void timeout();
