@@ -349,6 +349,8 @@ void BaseWindow::updateGameState ()
 		else //Create GameObject
 		{
 			gameObj = new GameObject(updateObj);
+			//If object is owned by someone, add their username
+			gameObj->owner = (userList.find(objId) != userList.end() ? userList[objId] : "");
 			gameObj->animeIndex = 0;
 			gameObj->text = "wbship.bmp";
 			gameState[objId] = *gameObj;
@@ -443,6 +445,9 @@ void BaseWindow::getServerMessage()
 		if (sm.GetMsgType() == ServerMessage::MT_INIT)
 		{
 			cout << "MT_INIT RECEIVED: ID: " << clientAction->getObjectId() << endl; //TODO: Handle initial score
+			QStringList names = QString(sm.GetData().c_str()).split(',', QString::SkipEmptyParts);
+			for (int i = 0; i < names.size(); i += 2)
+				userList.insert(make_pair(atoi(names[i].toStdString().c_str()), names[i + 1]));
 		}
 		//chat msg
 		else if (sm.GetMsgType() == ServerMessage::MT_CHAT)

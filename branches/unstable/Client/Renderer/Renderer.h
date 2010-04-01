@@ -34,6 +34,7 @@ struct RenderObject
     float objectWidth, objectHeight;
     int rotation;
     int objectWidthPx, objectHeightPx;
+    QString name;
 };
 
 class Renderer : public QGLWidget

@@ -77,6 +77,7 @@ void Renderer::buildRenderList(QPoint center)
 
         renderList[i].x = SCRCENTREW + (it->second.position.x() - xOffset);
         renderList[i].y = SCRCENTREH + (it->second.position.y() - yOffset);
+        renderList[i].name = it->second.owner;
         i++;
     }
     renderCount = i;
@@ -128,6 +129,7 @@ void Renderer::resizeGL(int w, int h)
 
 void Renderer::Render()
 {
+	QFont font("Helvetica", 8);
     //clear the screen
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_TEXTURE_2D);
@@ -191,7 +193,6 @@ void Renderer::Render()
             glTexCoord2f(renderList[i].texOffsetX, renderList[i].texOffsetY+renderList[i].objectHeight); glVertex2f(quad(3,0), quad(3,1));
         glEnd();
     }
-
         glBindTexture(GL_TEXTURE_2D, textures["chatbox.png"]);
         glBegin(GL_QUADS);
             glTexCoord2f(0,0);      glVertex2f(0,0);
@@ -201,6 +202,11 @@ void Renderer::Render()
         glEnd();
         glFlush();
         glDisable(GL_TEXTURE_2D);
+        for(int i = 0; i < renderCount; i++)
+		{
+			if (renderList[i].name != "")
+				renderText(renderList[i].x - 5, renderList[i].y - 35, renderList[i].name, font);
+		}
     updateGL();
 }
 
