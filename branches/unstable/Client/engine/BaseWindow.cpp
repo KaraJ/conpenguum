@@ -356,7 +356,11 @@ void BaseWindow::updateGameState ()
 			animObj.animeImage = &images[0];
 			animObj.text = animObj.animeImage->getLink();
 			animObj.animeIndex = 0;
-			gameState[animObj.objectId] = animObj;
+			
+			if (objId != clientAction->getObjectId())
+				animObj.health = animObj.shield = -1;
+				
+			gameState[animObj.objectId] = animObj;	
 		}
 
 		if (objId == clientAction->getObjectId()) //Update position of our ship
