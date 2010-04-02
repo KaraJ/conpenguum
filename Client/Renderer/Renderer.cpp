@@ -12,7 +12,7 @@
 
 using namespace std;
 
-Renderer::Renderer(QWidget *parent,std::map<int, GameObject> &gameSt, QString &chatText) :
+Renderer::Renderer(QWidget *parent,std::map<int, GameObject> &gameSt, QString *chatText) :
 		QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt), chatText_(chatText)
 //Renderer::Renderer(QWidget *parent,std::vector<UpdateObject> &gameSt) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt)
 {
@@ -51,13 +51,13 @@ void Renderer::buildRenderList(QPoint center)
     		q = "";
     	}
 		renderList[i].texture = textures[gob->text];
-		renderList[i].texOffsetX = 0;
-		renderList[i].texOffsetY = 0;
-		renderList[i].objectHeight = 1;
-		renderList[i].objectWidth = 1;
+		renderList[i].texOffsetX = gob->animeImage->getLeftOffSet();
+		renderList[i].texOffsetY = gob->animeImage->getTopOffSet();
+		renderList[i].objectHeight = gob->animeImage->getBottomOffSet();
+		renderList[i].objectWidth = gob->animeImage->getRightOffSet();
 		renderList[i].rotation = it->second.angle * 2;
-		renderList[i].objectHeightPx = 40;
-		renderList[i].objectWidthPx = 40;
+		renderList[i].objectHeightPx = gob->animeImage->getHeight();
+		renderList[i].objectWidthPx = gob->animeImage->getWidth();
 
         renderList[i].x = SCRCENTREW + (it->second.position.x() - xOffset);
         renderList[i].y = SCRCENTREH + (it->second.position.y() - yOffset);
@@ -145,9 +145,7 @@ void Renderer::Render()
 		quad(3,2) = 1;
 
 		if (renderList[i].name != "")
-		{
 			renderText(renderList[i].textX - 5, renderList[i].textY - 35, renderList[i].name, font);
-		}
 
 		if(renderList[i].rotation > 0)//skip all this if the object is rotationless or at 0;
 		{

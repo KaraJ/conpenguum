@@ -40,7 +40,7 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
 	
 	/*this may be temporary*/
 	this->setFixedSize(1024, 768);
-	ren = new Renderer(this, gameState);
+	ren = new Renderer(this, gameState, 0);
 	this->show();
 
 	animationMap = Animation::getAnimationMap();
