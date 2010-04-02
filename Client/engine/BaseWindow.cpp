@@ -327,6 +327,11 @@ void BaseWindow::updateGameState ()
 	{
 		UpdateObject updateObj = theClient->nextUpdate();
 		int objId = updateObj.getObjectId();
+		if (objId != clientAction->getObjectId())
+		{
+			updateObj.setHealth(-1);
+			updateObj.setShield(-1);
+		}
 
 		if (objId < 31 && updateObj.getActions().isAccelerating()) //for Exhaust trails
 		{
@@ -351,14 +356,10 @@ void BaseWindow::updateGameState ()
 
 			//If object is owned by someone, add their username
 			animObj.owner = getName(objId);
-
 			animObj.currentAnime = animationMap[SHIP];
 			animObj.animeImage = &images[0];
 			animObj.text = animObj.animeImage->getLink();
 			animObj.animeIndex = 0;
-			
-			if (objId != clientAction->getObjectId())
-				animObj.health = animObj.shield = -1;
 				
 			gameState[animObj.objectId] = animObj;	
 		}
