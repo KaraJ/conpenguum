@@ -44,11 +44,6 @@ void Renderer::buildRenderList(QPoint center)
     for(std::map<int, GameObject>::iterator it = objectlist.begin(); it != objectlist.end(); ++it)
     {
     	GameObject *gob = &(it->second);
-    	if (gob->text.compare("wbship.bmp") != 0)
-    	{
-    		string q = gob->text;
-    		q = "";
-    	}
 		renderList[i].texture = textures[gob->text];
 		renderList[i].texOffsetX = 0;
 		renderList[i].texOffsetY = 0;
