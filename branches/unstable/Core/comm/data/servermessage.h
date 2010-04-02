@@ -16,7 +16,8 @@ public:
 	    	MT_INIT     = 4, // Initial message holding ScoreBoard and ClientID to Player Name mapping
 	    	MT_CHAT     = 5, // Basic chat message
 	    	MT_LOGOUT	= 6, // Logout (not actually sent, created on disconnect)
-	    	MT_FULL		= 7  // Server full
+	    	MT_FULL		= 7, // Server full
+	    	MT_SCORES	= 8  // Sends current scoreboard
 	    };
     static const int SM_HEADERSIZE = 3;								//Header size
 	static const int SM_MAX_DATA = 1024;							//Maximum Data portion size

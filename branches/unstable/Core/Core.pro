@@ -1,7 +1,8 @@
 # DO NOT USE QMAKE TO AUTOGEN THESE, IT DOESN'T WORK
 QT += core \
     xml
-HEADERS += Logger.h \
+HEADERS += Player.h \
+    Logger.h \
     ConfigParser.h \
     comm/crc.h \
     comm/globals.h \
@@ -29,6 +30,9 @@ RESOURCES += resources/sharedResources.qrc
 TEMPLATE = lib
 TARGET = Debug/Core
 OBJECTS_DIR = obj
-CONFIG += qt staticlib debug warn_on
+CONFIG += qt \
+    staticlib \
+    debug \
+    warn_on
 OTHER_FILES += resources/ships.xml \
     resources/shots.xml
