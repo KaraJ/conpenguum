@@ -79,6 +79,18 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
     element = node.toElement();
     img.soundLink = element.text().toStdString();
 
+    while(strcmp(node.nodeName().toStdString().c_str(), "numberOfFrames") != 0){node = node.nextSibling();}
+    element = node.toElement();
+    img.numFrames = atoi(element.text().toStdString().c_str());
+
+    while(strcmp(node.nodeName().toStdString().c_str(), "numberImagesWide") != 0){node = node.nextSibling();}
+    element = node.toElement();
+    img.imagesWide = atoi(element.text().toStdString().c_str());
+
+    while(strcmp(node.nodeName().toStdString().c_str(), "numberImagesTall") != 0){node = node.nextSibling();}
+    element = node.toElement();
+    img.imagesTall = atoi(element.text().toStdString().c_str());
+
     // if we are looking for ships iterate to the beginning where direction can be captured.
     while(!node.isNull())
     {

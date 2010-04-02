@@ -43,6 +43,8 @@ public:
 		std::string getDescription(){return description_;}
 		std::string soundLink;
 
+		int numFrames, imagesWide, imagesTall;
+
 private:
 		/* Need to have a way of actually storing the image within this image object.
 		   will allow us to manipulate the offsets of texture image. */
