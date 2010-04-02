@@ -19,8 +19,8 @@ using namespace std;
 map<int, Animation> Animation::getAnimationMap()
 {
     map<int, Animation> animations;
-    Animation animationEx, animationExh;
-    vector<Image> animationExplosion, animationExhaust;
+    Animation animationEx, animationExh, animationSh;
+    vector<Image> animationExplosion, animationExhaust, animationShip;
     Image readImage;
     int mapSize = -1;
     QtXmlParse *xmlParse;
@@ -29,13 +29,24 @@ map<int, Animation> Animation::getAnimationMap()
     string typeStr;
 
     // get explosion animation
-    string xmlFile("../Client/Animation/explosion.xml"), xmlFileExh("../Client/Animation/exhaust.xml");
+    string xmlFile("../Client/Animation/explosion.xml"), xmlFileExh("../Client/Animation/exhaust.xml"), xmlFileSh("../Client/Animation/ship.xml");
     xmlParse = new QtXmlParse();
     animationExplosion = xmlParse->ReadAnimationVector(type, xmlFile); // loading all Explostion animations.
     imagesCount = animationExplosion.size();
     animationEx.setAnimationImages(animationExplosion);
     animationEx.soundFile = animationExplosion.front().soundLink; // link sound from animation.
     animations.insert(std::pair<int, Animation>((int)type, animationEx));
+
+    // get ship animation
+    type = Ship;
+	animationShip = xmlParse->ReadAnimationVector(type, xmlFileSh); // loading all Explostion animations.
+	imagesCount = animationShip.size();
+	animationSh.setAnimationImages(animationShip);
+	animationSh.soundFile = animationShip.front().soundLink; // link sound from animation.
+	animationSh.numFrames_ = animationShip.front().numFrames; // link sound from animation.
+	animationSh.imagesTall_ = animationShip.front().imagesTall; // link sound from animation.
+	animationSh.imagesWide_ = animationShip.front().imagesWide; // link sound from animation.
+	animations.insert(std::pair<int, Animation>((int)type, animationSh));
 
     // get trail animations.
     type = Exhaust;
