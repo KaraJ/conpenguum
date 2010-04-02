@@ -301,8 +301,7 @@ void Frame::updateShots(void)
 
         map.move(&(*it), oldPos, it->position);
 
-
-		if(map.hasShip((*itr)->position)){
+		if(map.hasShip(it->position)){
             shiplist = map.ships(it->position);
 			for(itr = shiplist.begin(); itr != shiplist.end(); ++itr){
 			    if(dist2Points((*itr)->position, it->position) < SHIP_HIT_DIST){
