@@ -4,11 +4,13 @@
 #include <QPoint>
 
 #define VELOCITY_THRUST 2   // the velocity of a new thrust vector
-#define VELOCITY_SHOT   3   // the velocity of a shot
+#define VELOCITY_SHOT   17   // the velocity of a shot
 #define VELOCITY_MAX    64   // the max velocity of a ship^2
 #define ROTATION_RATE   2   // how many degrees a ship rotates in a frame
 #define SHIP_HIT_DIST   625 // 25^2, the distance at which ships are hit
-#define INTENSITY_OF_FART 1337
+#define SHIPRADIUS      25  // the radius of a ships "tile".
+#define SHIPSIZE        SHIPRADIUS * 2
+#define TILE_SIZE       25  // the size of a side of a tile.
 
 //PI macros
 #define PI              3.14159265358979323846

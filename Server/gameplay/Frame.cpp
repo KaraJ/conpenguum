@@ -3,15 +3,6 @@
 #include "general.h"
 #include <cstdlib>
 
-
-#define VELOCITY_THRUST 2   // the velocity of a new thrust vector.
-#define VELOCITY_SHOT   3   // the velocity of a shot.
-#define ROTATION_RATE   2   // how many degrees a ship rotates in a frame.
-#define SHIPRADIUS      25  // the radius of a ships "tile".
-#define SHIPSIZE        SHIPRADIUS*2
-#define SHIP_HIT_DIST   625 // 25^2, the distance at which ships are hit.
-#define TILE_SIZE       25  // the size of a side of a tile.
-
 using namespace std;
 
 
@@ -248,8 +239,8 @@ void Frame::updateShips(void)
 				if(listShip[i]->actionMask.isFiring())
 				{
 					QPoint spawnVec, shotVec;
-					spawnVec = rotVelToVec(listShip[i]->rotation, SHIPRADIUS);
-					shotVec =  rotVelToVec(listShip[i]->rotation, VELOCITY_SHOT);
+					spawnVec = rotVelToVec(listShip[i]->rotation * 2, SHIPRADIUS);
+					shotVec =  rotVelToVec(listShip[i]->rotation * 2, VELOCITY_SHOT);
 					Shot shot(listShip[i]->position.x() + spawnVec.x(), listShip[i]->position.y()
 						+ spawnVec.y(), shotVec.x(), shotVec.y(), listShip[i]->getNextShotID(), (frameTimer + 60));
 					addShot(shot);
@@ -301,7 +292,7 @@ void Frame::updateShots(void)
 
         if(map.isWall(it->position))
         {
-        	map.remove(&(*it), it->position);
+        	map.remove(&(*it), oldPos);
         	listShot.erase(it);
         	return;
         }
