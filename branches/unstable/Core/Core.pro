@@ -2,6 +2,7 @@
 QT += core \
     xml
 HEADERS += Player.h \
+    Player.h \
     Logger.h \
     ConfigParser.h \
     comm/crc.h \
