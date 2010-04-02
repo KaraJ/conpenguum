@@ -5,7 +5,7 @@ TEMPLATE = app
 TARGET = Server
 QT += gui core xml
 OBJECTS_DIR = obj
-
+INCPATH += -I/usr/include/mysql -I/usr/include/mysql++
 # Input
 HEADERS += gameplay/Frame.h \
            gameplay/Map.h \
@@ -46,4 +46,8 @@ SOURCES += gameplay/Frame.cpp \
            ../Core/comm/tcpconnection.cpp \
            ../Core/comm/udpConnection.cpp \
            ../Core/comm/crc.cpp
-LIBS += -lCore -L../Core/Debug
+LIBS += -lCore \
+	-lmysql \
+	-lmysql++ \
+	 -L../Core/Debug \
+	 -L/usr/lib
