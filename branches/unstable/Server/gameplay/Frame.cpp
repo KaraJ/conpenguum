@@ -281,8 +281,10 @@ void Frame::updateShips(void)
 ------------------------------------------------------------------------------*/
 void Frame::updateShots(void)
 {
-	QPoint oldPos;
+	QPoint oldPos, oldShipPos;
     list<Shot>::iterator it;
+    list<Ship*>::iterator itr;
+    list<Ship*> shiplist;
 
     for(it = listShot.begin(); it != listShot.end(); ++it)
     {
@@ -302,6 +304,20 @@ void Frame::updateShots(void)
         	return;
         }
         map.move(&(*it), oldPos, it->position);
+
+
+		if(map.hasShip((*itr)->position)){
+            shiplist = map.ships(it->position);
+			for(itr = shiplist.begin(); itr != shiplist.end(); ++itr){
+			    if(dist2Points((*itr)->position, it->position) < SHIP_HIT_DIST){
+                    //TODO: call Kara scoreboard method to add a death
+                    //(*itr)->id is the person dieing
+                    //(it->id-32)/10 is the killer
+					fragShip(**itr);
+                    destroyShot(it->id);
+				}
+			}
+		}
     }
 }
 
@@ -455,5 +471,13 @@ void Frame::printShots(void)
 		cout << "P" << it->position.x() << ',' <<  it->position.y() << " V" << it->vector.x()
 				<< ',' <<  it->vector.y() << endl;
     }
+}
+
+void Frame::fragShip(Ship ship){
+    
+}
+
+void Frame::destroyShot(size_t shotID){
+
 }
 
