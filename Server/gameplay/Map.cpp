@@ -585,7 +585,7 @@ void Map::drawMap()
 --  RETURNS:    void.
 --
 ------------------------------------------------------------------------------*/
-std::list<Ship*> Map::ships(QPoint center, int width, int height)
+/*std::list<Ship*> Map::ships(QPoint center, int width, int height)
 {
     std::list<Ship*> list, list2;
     int left   = MAX(0       , Pix2Tile(center.x() - width));
@@ -604,7 +604,7 @@ std::list<Ship*> Map::ships(QPoint center, int width, int height)
     }
     list.unique();
     return list;
-}
+}*/
 
 /*-----------------------------------------------------------------------------
 --  FUNCTION:   Map::shots
