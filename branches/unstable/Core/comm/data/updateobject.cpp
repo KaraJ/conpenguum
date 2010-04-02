@@ -71,6 +71,8 @@ UpdateObject::UpdateObject(BYTE* buffer) : actions_(0)
     pos_.setX(x);
     pos_.setY(y);
     rotation_ = buffer[7];
+    health_ = buffer[8];
+    shield_ = buffer[9];
 }
 
 /*----------------------------------------------------------------------------------------------------------
@@ -100,6 +102,10 @@ UpdateObject::UpdateObject(BYTE* buffer) : actions_(0)
 --  6      PY2 PY2 PY2 PY2 PY2 PY2 PY2 PY2
 --         56  57  58  59  60  61  62  63
 --  7      R   R   R   R   R   R   R   R
+--         64  65  66  67  68  69  70  71
+--	8	   H   H   H   H   H   H   H   H
+--         72  73  74  75  76  77  78  79
+--         S   S   S   S   S   S   S   S
 ----------------------------------------------------------------------------------------------------------*/
 void UpdateObject::serialise(BYTE** buffer) const
 {
@@ -117,6 +123,8 @@ void UpdateObject::serialise(BYTE** buffer) const
      (*buffer)[5] = (BYTE)((y & 0x0000FF00) >> 8);
      (*buffer)[6] = (BYTE)(y & 0x000000FF);
      (*buffer)[7] = (BYTE)(rotation_ & 0x000000FF);
+     (*buffer)[8] = (BYTE)(health_ & 0x000000FF);
+     (*buffer)[9] = (BYTE)(shield_ & 0x000000FF);
 }
 
 void UpdateObject::print(ostream& out) const

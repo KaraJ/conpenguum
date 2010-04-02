@@ -186,8 +186,15 @@ void Frame::updateShips(void)
             if (listShip[i]->vector.x() != 0)
             {
                 dist = map.canMove(listShip[i]->position, false, SHIPSIZE, listShip[i]->vector.x());
-                if(abs(dist) < abs(listShip[i]->vector.x())){
-			listShip[i]->vector.setX(-(listShip[i]->vector.x()));
+                if(abs(dist) < abs(listShip[i]->vector.x()))
+                {
+                	listShip[i]->vector.setX(-(listShip[i]->vector.x()));
+                	//Hit a wall, take damage
+					if (listShip[i]->shield > 0)
+						listShip[i]->shield -= 10;
+					else if (listShip[i]->health > 0)
+						listShip[i]->health -= 10;
+					//-----------------------
                 }
                 listShip[i]->position.setX(listShip[i]->position.x() + dist);
                 cout << "X:" << oldPosition.x() << "->" <<  listShip[i]->position.x() << "|" << dist << endl;
@@ -197,8 +204,15 @@ void Frame::updateShips(void)
             if (listShip[i]->vector.y() != 0)
             {
                 dist = map.canMove(listShip[i]->position, true, SHIPSIZE, listShip[i]->vector.y());
-		if(abs(dist) < abs(listShip[i]->vector.y())){
-			listShip[i]->vector.setY(-(listShip[i]->vector.y()));
+                if(abs(dist) < abs(listShip[i]->vector.y()))
+                {
+                	listShip[i]->vector.setY(-(listShip[i]->vector.y()));
+                	//Hit a wall, take damage
+                	if (listShip[i]->shield > 0)
+						listShip[i]->shield -= 10;
+					else if (listShip[i]->health > 0)
+						listShip[i]->health -= 10;
+					//-----------------------
                 }
                 listShip[i]->position.setY(listShip[i]->position.y() + dist);
             }
@@ -397,6 +411,8 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
 			UpdateObject uo(listShip[i]->actionMask);
 			uo.setRotation(listShip[i]->rotation);
 			uo.setPosition(listShip[i]->position);
+			uo.setHealth(listShip[i]->health);
+			uo.setShield(listShip[i]->shield);
 			udList.push_back(uo);
 			uo.print();
 		}

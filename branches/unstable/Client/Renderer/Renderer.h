@@ -34,6 +34,7 @@ struct RenderObject
     float objectWidth, objectHeight;
     int rotation;
     int objectWidthPx, objectHeightPx;
+    int health, shield;
     QString name;
 };
 
