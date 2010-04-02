@@ -60,7 +60,7 @@ public:
 
 private:
     int dist2Points(QPoint point1, QPoint point2);
-    void fragShip(Ship ship);
+    void fragShip(size_t shipID);
     void addShot(Shot newShot);
     Ship* getShip(size_t shipID);
     void updateShips();
