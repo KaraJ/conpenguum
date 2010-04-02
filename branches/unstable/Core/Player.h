@@ -6,7 +6,7 @@
 class Player
 {
 public:
-	Player(int id, std::string name) : id_(id), name_(name), kills_(0), deaths_(0), streak_(0) { }
+	Player(int id, std::string name) : id_(id), kills_(0), deaths_(0), streak_(0), name_(name){ }
 	Player(std::string data) {
 		QStringList player = QString(data.c_str()).split(',', QString::SkipEmptyParts);
 		id_ = atoi(player[0].toStdString().c_str());

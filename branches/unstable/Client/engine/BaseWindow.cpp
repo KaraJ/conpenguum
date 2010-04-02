@@ -327,7 +327,10 @@ void BaseWindow::updateGameState ()
 	{
 		UpdateObject updateObj = theClient->nextUpdate();
 		int objId = updateObj.getObjectId();
-		if (objId != clientAction->getObjectId())
+
+		if (objId == clientAction->getObjectId()) //Update position of our ship
+			scrnCenter = updateObj.getPos();
+		else
 		{
 			updateObj.setHealth(-1);
 			updateObj.setShield(-1);
@@ -337,7 +340,7 @@ void BaseWindow::updateGameState ()
 		{
 			vector<Image>& images = animationMap[EXHAUST].getAnimationImages();
 			GameObject animObj(updateObj);
-
+			animObj.position.setX(animObj.position.x() - 5);
 			animObj.objectId = freeIds.front();
 			freeIds.pop();
 			animObj.currentAnime = animationMap[EXHAUST];
@@ -363,9 +366,6 @@ void BaseWindow::updateGameState ()
 				
 			gameState[animObj.objectId] = animObj;	
 		}
-
-		if (objId == clientAction->getObjectId()) //Update position of our ship
-			scrnCenter = updateObj.getPos();
 	}	
 }
 
