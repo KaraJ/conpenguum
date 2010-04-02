@@ -46,11 +46,11 @@ private:
     int renderCount;
     std::map<std::string, GLuint> textures;
     std::map<int, GameObject> &objectlist;
-    QString &chatText_;
+    QString *chatText_;
 //funcs
 public:
     //Renderer(QWidget *parent, std::vector<UpdateObject> &gameSt);
-    Renderer(QWidget *parent, std::map<int, GameObject> &gameSt, QString &chatText);
+    Renderer(QWidget *parent, std::map<int, GameObject> &gameSt, QString *chatText);
     void Initialize();
     void Render();
     void buildRenderList(QPoint center);
