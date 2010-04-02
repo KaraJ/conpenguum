@@ -18,7 +18,7 @@ Renderer::Renderer(QWidget *parent,std::map<int, GameObject> &gameSt) : QGLWidge
     const char *glVersion = (const char*)glGetString(GL_VERSION);
     double glVer = atof(glVersion);
     assert(glVer > 1.1);
-    resourceManager = ResourceManager::GetInstance();
+    //resourceManager = ResourceManager::GetInstance();
     Initialize();
     this->resize(SCREENWIDTH,SCREENHEIGHT);
 }
@@ -41,9 +41,15 @@ void Renderer::buildRenderList(QPoint center)
     //hardcoding in values for now
 
     i = 0;
-    for(std::map<int, GameObject>::iterator it = objectlist.begin(); it != objectlist.end(); it++)
+    for(std::map<int, GameObject>::iterator it = objectlist.begin(); it != objectlist.end(); ++it)
     {
-		renderList[i].texture = textures["wbship.bmp"];
+    	GameObject &gob = it->second;
+    	if (gob.text.compare("wbship.bmp") != 0)
+    	{
+    		string q = gob.text.toStdString();
+    		q = "";
+    	}
+		renderList[i].texture = textures[gob.text.toStdString()];
 		renderList[i].texOffsetX = 0;
 		renderList[i].texOffsetY = 0;
 		renderList[i].objectHeight = 1;
