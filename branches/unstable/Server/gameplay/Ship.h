@@ -33,7 +33,7 @@ public:
     int shield;
 
 public:
-    Ship(size_t clientID):NewtObject(0, 0, 0, 0, clientID), rotation(0), actionMask(clientID), active(false), health(100), shield(80) {}
+    Ship(size_t clientID):NewtObject(0, 0, 0, 0, clientID), rotation(0), actionMask(clientID), active(false), health(100), shield(100) {}
     int getRot(){ return rotation; }
     void applyActionMask(ClientAction newMask); // updates the ship based on the current action mask
     int getNextShotID();
