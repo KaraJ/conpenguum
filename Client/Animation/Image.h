@@ -37,6 +37,7 @@ public:
 		void setBottomOffSet(float offset){bottomOffSet_ = offset;}
 		void setDescription(std::string desc);
 		void setLink(std::string link){ texturePath_ = link; }
+		std::string& getLink(){ return texturePath_; }
 		void setDirection(int dir){direction_ = dir;}
 		int getDirection(){return direction_;}
 		std::string getDescription(){return description_;}

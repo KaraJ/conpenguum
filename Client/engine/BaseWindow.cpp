@@ -339,6 +339,7 @@ void BaseWindow::updateGameState ()
 			freeIds.pop();
 			animObj.currentAnime = animationMap[Exhaust];
 			animObj.animeImage = &images[0];
+			animObj.text = animObj.animeImage->getLink();
 			animObj.animeIndex = 0;
 
 			gameState[animObj.objectId] = animObj;

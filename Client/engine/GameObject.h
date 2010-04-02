@@ -3,6 +3,7 @@
 #include <QPoint>
 #include <vector>
 #include <qstring.h>
+#include <string>
 #include "../Animation/Animation.h"
 #include "../Animation/Image.h"
 #include "../../Core/comm/data/updateobject.h"
@@ -28,7 +29,7 @@ public:
 	int objectId; //0 ~ 65535 Are real objects, 65537+ are transient objects
 	int angle; //Rotation angle 0-179
 	QPoint position; //XY position
-	QString text;  //Texture filename
+	std::string text;  //Texture filename
 	Animation currentAnime;
 	Image * animeImage;
 	size_t animeIndex; //Frame index

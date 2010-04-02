@@ -2,7 +2,7 @@
 <!-- 2 images tall -->
 
 <image>
-	<link>../Render/images/exhaust.bmp</link>
+	<link>exhaust.bmp</link>
 	<desc>exhaust</desc>
 	<sound></sound>
 	<numberOfFrames>38</numberOfFrames>
