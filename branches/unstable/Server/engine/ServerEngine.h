@@ -23,13 +23,13 @@
 #include <QObject>
 #include <QTimer>
 #include <vector>
-#include <map>
 #include <signal.h>
 
 //User Include
 #include "../gameplay/Frame.h"
 #include "../comm/commserver.h"
 #include "../../Core/comm/globals.h"
+#include "../../Core/Player.h"
 
 class ServerEngine : public QObject
 {
@@ -47,7 +47,7 @@ private:
 	CommServer::CommServer* commServer;
 	Frame *gameState;
 	static ServerEngine *instance;
-	std::map<int, std::string> userList;
+	std::vector<Player> playerList;
 
 private slots:
 	void timeout();

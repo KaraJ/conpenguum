@@ -350,7 +350,7 @@ void BaseWindow::updateGameState ()
 			GameObject animObj(updateObj);
 
 			//If object is owned by someone, add their username
-			animObj.owner = (userList.find(objId) != userList.end() ? userList[objId] : "");
+			animObj.owner = getName(objId);
 
 			animObj.currentAnime = animationMap[SHIP];
 			animObj.animeImage = &images[0];
@@ -366,6 +366,14 @@ void BaseWindow::updateGameState ()
 		if (objId == clientAction->getObjectId()) //Update position of our ship
 			scrnCenter = updateObj.getPos();
 	}	
+}
+
+QString BaseWindow::getName(int playerId)
+{
+	for (size_t i = 0; i < playerList.size(); i++)
+		if (playerList[i].getId() == playerId)
+			return QString(playerList[i].getName().c_str());
+	return "";
 }
 
 void BaseWindow::clearTransientObjects()
@@ -452,9 +460,12 @@ void BaseWindow::getServerMessage()
 		if (sm.GetMsgType() == ServerMessage::MT_INIT)
 		{
 			cout << "MT_INIT RECEIVED: ID: " << clientAction->getObjectId() << endl; //TODO: Handle initial score
-			QStringList names = QString(sm.GetData().c_str()).split(',', QString::SkipEmptyParts);
-			for (int i = 0; i < names.size(); i += 2)
-				userList.insert(make_pair(atoi(names[i].toStdString().c_str()), names[i + 1]));
+		}
+		else if (sm.GetMsgType() == ServerMessage::MT_SCORES)
+		{
+			QStringList players = QString(sm.GetData().c_str()).split('|', QString::SkipEmptyParts);
+				for (int i = 0; i < players.size(); i++)
+					playerList.push_back(Player(players[i].toStdString()));
 		}
 		//chat msg
 		else if (sm.GetMsgType() == ServerMessage::MT_CHAT)

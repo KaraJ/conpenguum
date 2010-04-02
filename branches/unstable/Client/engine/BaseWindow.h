@@ -7,7 +7,6 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <iostream>
-#include <map>
 #include <string>
 #include <queue>
 
@@ -17,6 +16,7 @@
 #include "../Comm/Commclient.h"
 #include "../../Core/comm/data/clientaction.h"
 #include "../../Core/comm/data/servermessage.h"
+#include "../../Core/Player.h"
 #include "../Renderer/Renderer.h"
 
 // Default frame rate is 30 frames/second.
@@ -92,7 +92,7 @@ class BaseWindow : public QMainWindow
 		QPoint scrnCenter;
 		Renderer* ren;
 		ClientAction* clientAction;
-		std::map<int, QString> userList;
+		std::vector<Player> playerList;
 
     public:
 		BaseWindow ();
@@ -113,6 +113,7 @@ class BaseWindow : public QMainWindow
 		void clearTransientObjects();
 		int handleChat(int key);
 		void toggleChat();
+		QString getName(int);
 };
 
 #endif // BASEWINDOW_H
