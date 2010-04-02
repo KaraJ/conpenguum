@@ -338,21 +338,17 @@ void BaseWindow::updateGameState ()
 
 		if (objId < 31 && updateObj.getActions().isAccelerating()) //for Exhaust trails
 		{
+			ResourceManager *rm = ResourceManager::GetInstance();
+			TexturedResourceDefinition *rd = (TexturedResourceDefinition*)rm->GetResource(EXHAUST, 0);
 			vector<Image>& images = animationMap[EXHAUST].getAnimationImages();
 			GameObject animObj(updateObj);
-
-			double angle = animObj.angle;
-			double radians = (angle * 2) * 0.017453293;
-		    int x = cos(radians) * -25, y = sin(radians) * -25;
-		    animObj.position.setX(animObj.position.x() + x);
-		    animObj.position.setY(animObj.position.y() + y);
 
 			animObj.objectId = freeIds.front();
 			freeIds.pop();
 			animObj.currentAnime = animationMap[EXHAUST];
 			animObj.animeImage = &images[0];
 			animObj.text = animObj.animeImage->getLink();
-			animObj.animeIndex = 0;
+			animObj.animeIndex = 1;
 			gameState[animObj.objectId] = animObj;
 		}
 
