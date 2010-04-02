@@ -247,7 +247,7 @@ ServerMessage CommServer::nextServerMessage()
  --
  -- NOTES: The read thread for the UDP Server.
  ----------------------------------------------------------------------------------------------------------*/
-void* CommServer::readThreadUDP(void* args)
+void* CommServer::readThreadUDP(void*)
 {
     while (true)
     {

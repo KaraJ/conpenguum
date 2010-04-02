@@ -221,7 +221,7 @@ void CommClient::sendAction(ClientAction action)
  --
  -- RETURN: NULL
  ----------------------------------------------------------------------------------------------------------*/
-void* CommClient::readThreadUDP(void* args)
+void* CommClient::readThreadUDP(void*)
 {
 	while(true)
 	{
