@@ -330,12 +330,12 @@ void BaseWindow::updateGameState ()
 
 		if (objId < 31 && updateObj.getActions().isAccelerating()) //for Exhaust trails
 		{
-			vector<Image>& images = animationMap[Exhaust].getAnimationImages();
+			vector<Image>& images = animationMap[EXHAUST].getAnimationImages();
 			GameObject animObj(updateObj);
 
 			animObj.objectId = freeIds.front();
 			freeIds.pop();
-			animObj.currentAnime = animationMap[Exhaust];
+			animObj.currentAnime = animationMap[EXHAUST];
 			animObj.animeImage = &images[0];
 			animObj.text = animObj.animeImage->getLink();
 			animObj.animeIndex = 0;
@@ -346,13 +346,13 @@ void BaseWindow::updateGameState ()
 			gameState[objId].Update(updateObj);
 		else //Create GameObject
 		{
-			vector<Image>& images = animationMap[Ship].getAnimationImages();
+			vector<Image>& images = animationMap[SHIP].getAnimationImages();
 			GameObject animObj(updateObj);
 
 			//If object is owned by someone, add their username
 			animObj.owner = (userList.find(objId) != userList.end() ? userList[objId] : "");
 
-			animObj.currentAnime = animationMap[Ship];
+			animObj.currentAnime = animationMap[SHIP];
 			animObj.animeImage = &images[0];
 			animObj.text = animObj.animeImage->getLink();
 			animObj.animeIndex = 0;
@@ -380,7 +380,7 @@ void BaseWindow::clearTransientObjects()
 		else
 		{
 			GameObject *animatedObj = &it->second;
-			vector<Image>& images = animationMap[Exhaust].getAnimationImages();
+			vector<Image>& images = animationMap[EXHAUST].getAnimationImages();
 	
 			if (animatedObj->animeIndex < images.size())
 				animatedObj->animeImage = &images[animatedObj->animeIndex++];
