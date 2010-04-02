@@ -323,8 +323,6 @@ void BaseWindow::setFrameRate (int rate)
  -----------------------------------------------------------------------------*/
 void BaseWindow::updateGameState ()
 {
-	GameObject *gameObj;
-    //gameState.clear(); //Shouldn't need to clear gameState every frame anymore
 	while (theClient->hasNextUpdate())
 	{
 		UpdateObject updateObj = theClient->nextUpdate();
@@ -341,7 +339,6 @@ void BaseWindow::updateGameState ()
 			animObj.animeImage = &images[0];
 			animObj.text = animObj.animeImage->getLink();
 			animObj.animeIndex = 0;
-
 			gameState[animObj.objectId] = animObj;
 		}
 
@@ -349,15 +346,17 @@ void BaseWindow::updateGameState ()
 			gameState[objId].Update(updateObj);
 		else //Create GameObject
 		{
-			gameObj = new GameObject(updateObj);
-			//If object is owned by someone, add their username
-			gameObj->owner = (userList.find(objId) != userList.end() ? userList[objId] : "");
-			gameObj->animeIndex = 0;
-			gameObj->text = "wbship.bmp";
-			if (objId != clientAction->getObjectId())
-				gameObj->health = gameObj->shield = -1;
+			vector<Image>& images = animationMap[Ship].getAnimationImages();
+			GameObject animObj(updateObj);
 
-			gameState[objId] = *gameObj;
+			//If object is owned by someone, add their username
+			animObj.owner = (userList.find(objId) != userList.end() ? userList[objId] : "");
+
+			animObj.currentAnime = animationMap[Ship];
+			animObj.animeImage = &images[0];
+			animObj.text = animObj.animeImage->getLink();
+			animObj.animeIndex = 0;
+			gameState[animObj.objectId] = animObj;
 		}
 
 		if (objId == clientAction->getObjectId()) //Update position of our ship
