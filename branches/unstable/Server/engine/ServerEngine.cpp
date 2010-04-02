@@ -79,27 +79,42 @@ void ServerEngine::timeout()
 		//user has logged in, add client id to ID vector
 		if (sm.GetMsgType() == ServerMessage::MT_LOGIN)
 		{
-			cout << "client logged in" << endl;
-			gameState->addShip(sm.GetClientID());
-			gameState->spawnShip(sm.GetClientID());
-			playerList.push_back(Player(sm.GetClientID(), sm.GetData()));
-			/*gameState->addShip(sm.GetClientID() + 1);
-			gameState->spawnShip(sm.GetClientID() + 1);
-			playerList.push_back(Player(sm.GetClientID() + 1, "CPU"));*/
-			sm.SetMsgType(ServerMessage::MT_INIT);
-			commServer->sendServerMsg(sm);
+			if (isNameUsed(sm.GetData()))
+			{
+				sm.SetMsgType(ServerMessage::MT_INIT);
+				sm.SetData("FULL");
+				commServer->sendServerMsg(sm);
+			}
+			else
+			{
+				cout << "client logged in" << endl;
+				gameState->addShip(sm.GetClientID());
+				gameState->spawnShip(sm.GetClientID());
+				playerList.push_back(Player(sm.GetClientID(), sm.GetData()));
+				sm.SetData("");
+				sm.SetMsgType(ServerMessage::MT_INIT);
+				commServer->sendServerMsg(sm);
 
-			ostringstream oss;
-			for (size_t i = 0; i < playerList.size(); i++)
-				oss << playerList[i] << "|";
-			sm.SetMsgType(ServerMessage::MT_SCORES);
-			sm.SetData(oss.str());
-			commServer->sendServerMsg(sm);
+				ostringstream oss;
+				for (size_t i = 0; i < playerList.size(); i++)
+					oss << playerList[i] << "|";
+				sm.SetMsgType(ServerMessage::MT_SCORES);
+				sm.SetData(oss.str());
+				commServer->sendServerMsg(sm);
+			}
 		}
 		if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)
 		{
 			cout << "client logged out" << endl;
 			gameState->removeShip(sm.GetClientID());
+			for (vector<Player>::iterator it = playerList.begin(); it != playerList.end(); ++it)
+			{
+				if (it->getId() == sm.GetClientID())
+				{
+					playerList.erase(it);
+					break;
+				}
+			}
 		}
 		//receive chat message.. send to all clients
 		if (sm.GetMsgType() == ServerMessage::MT_CHAT)
@@ -126,6 +141,14 @@ void ServerEngine::timeout()
 
 	for (size_t i = 0; i < uoBuff.size(); ++i)
 		commServer->sendUpdateToAll(uoBuff[i]);
+}
+
+bool ServerEngine::isNameUsed(string name)
+{
+	for (size_t i = 0; i < playerList.size(); i++)
+		if (playerList[i].getName() == name)
+			return true;
+	return false;
 }
 
 ServerEngine* ServerEngine::GetInstance()

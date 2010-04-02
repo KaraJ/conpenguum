@@ -42,6 +42,7 @@ public:
 private:
 	ServerEngine();
 	static void Shutdown(int code);
+	bool isNameUsed(std::string name);
 
 	QTimer *timer;
 	CommServer::CommServer* commServer;
