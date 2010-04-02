@@ -4,7 +4,7 @@
 class Player
 {
 public:
-	Player(int id, std::string name), id_(id), name_(name), kills_(0), deaths_(0), streak_(0) { }
+	Player(int id, std::string name) : id_(id), name_(name), kills_(0), deaths_(0), streak_(0) { }
 	void addDeath() { kills_++; streak_ = 0; }
 	void addKill() { kills_++; streak_++; }
 	int getId() const { return id_; }
