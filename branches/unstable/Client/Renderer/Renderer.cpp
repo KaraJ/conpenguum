@@ -43,30 +43,6 @@ void Renderer::buildRenderList(QPoint center)
     i = 0;
     for(std::map<int, GameObject>::iterator it = objectlist.begin(); it != objectlist.end(); it++)
     {
-        /*if(it->second.objectId == 32)
-		{
-            renderList[i].texture = textures["bullets.bmnp"];
-            renderList[i].texOffsetX = 0;
-            renderList[i].texOffsetY = 0;
-            renderList[i].objectHeight = 1 / 10.0;
-            renderList[i].objectWidth = 1 / 4.0;
-            renderList[i].rotation = 0;
-            renderList[i].objectHeightPx=16;
-            renderList[i].objectWidthPx=16;
-        }
-        else if(it->second.objectId == 33)
-        {
-            renderList[i].texture = textures["tiles.bmp"];
-            renderList[i].texOffsetX = 18 / 19;
-            renderList[i].texOffsetY = 5 / 10;
-            renderList[i].objectHeight = 1;
-            renderList[i].objectWidth = 1;
-            renderList[i].rotation = 0;
-            renderList[i].objectHeightPx = 25;
-            renderList[i].objectWidthPx = 25;
-        }
-        else
-        {*/
 		renderList[i].texture = textures["wbship.bmp"];
 		renderList[i].texOffsetX = 0;
 		renderList[i].texOffsetY = 0;
