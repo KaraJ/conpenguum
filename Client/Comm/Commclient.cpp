@@ -29,7 +29,8 @@ CommClient::CommClient():isConnected_(false)
 {
 	sem_init(&semTCP_, 0, 1);
 	sem_init(&semUDP_, 0, 1);
-	tcpClient_ = new TCPClient();
+	tcpClient_ = 0;
+	udpConnection_ = 0;
 }
 
 /*----------------------------------------------------------------------------------------------------------
@@ -66,11 +67,18 @@ int CommClient::connect(const string name, const string address, const string po
 {
     if (!isConnected_)
     {
+    	tcpClient_ = new TCPClient();
     	int id;
         if (!tcpClient_->Connect(address, port))
         	return -1;
+        isConnected_ = true;
         serverMsgs_.push(tcpClient_->Login(name));
+        sem_wait(&semTCP_);
+        string str = serverMsgs_.front().GetData();
         id = serverMsgs_.front().GetClientID();
+        sem_post(&semTCP_);
+        if (str == "FULL")
+        	return -2;
         tcpClient_->setClientId(id);
         tcpClient_->StartRdThread(&serverMsgs_, &semTCP_);
 
@@ -79,7 +87,6 @@ int CommClient::connect(const string name, const string address, const string po
         if (inet_pton(AF_INET, address.c_str(), &servAddr.sin_addr) != 1)
             Logger::LogNQuit("Error connection client - bad IP");
         udpConnection_ = new UDPConnection(UDP_PORT_CLI);
-        isConnected_ = true;
         pthread_create(&readThread_, NULL, CommClient::readThreadUDP, NULL);
         return id;
     }
@@ -131,10 +138,16 @@ void CommClient::disconnect()
 {
     if (isConnected_)
     {
+    	sem_wait(&semTCP_);
+    	while (!serverMsgs_.empty())
+    		serverMsgs_.pop();
+    	sem_post(&semTCP_);
     	tcpClient_->Logout();
     	isConnected_ = false;
-        delete tcpClient_;
-        delete udpConnection_;
+        if (tcpClient_)
+        	delete tcpClient_;
+        if (udpConnection_)
+        	delete udpConnection_;
         tcpClient_ = 0;
         udpConnection_ = 0;
     }

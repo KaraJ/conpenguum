@@ -76,4 +76,5 @@ private Q_SLOTS:
     void closeEvent(QCloseEvent * e);
     void serverConnect(int);
     void errorConnect();
+    void nameInUse();
 };

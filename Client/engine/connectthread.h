@@ -14,6 +14,7 @@ public:
 signals:
 	void serverConnect(int);
 	void errorConnect();
+	void nameInUse();
 
 private:
 	std::string name_, ip_, port_;

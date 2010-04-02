@@ -369,6 +369,7 @@ void Panel::flip()
 				ConnectThread *thread = new ConnectThread(ipbox->getName(), ipbox->getIp(), ipbox->getPort());
 				QObject::connect(thread, SIGNAL(serverConnect(int)), this, SLOT(serverConnect(int)));
 				QObject::connect(thread, SIGNAL(errorConnect()), this, SLOT(errorConnect()));
+				QObject::connect(thread, SIGNAL(nameInUse()), this, SLOT(nameInUse()));
 				QObject::connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
 
 				delete ipbox;
@@ -418,6 +419,12 @@ void Panel::errorConnect()
 {
 	mbox.hide();
 	QMessageBox::warning(this, "Connection Error", "Cannot connect to server", 1, 0, 0);
+}
+
+void Panel::nameInUse()
+{
+	mbox.hide();
+	QMessageBox::warning(this, "Connection Error", "Username is already in use", 1, 0, 0);
 }
 
 /*--------------------------------------------------------------------------------------
