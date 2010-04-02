@@ -56,8 +56,8 @@ void Renderer::buildRenderList(QPoint center)
 		renderList[i].objectHeight = gob->animeImage->getBottomOffSet();
 		renderList[i].objectWidth = gob->animeImage->getRightOffSet();
 		renderList[i].rotation = it->second.angle * 2;
-		renderList[i].objectHeightPx = gob->animeImage->getHeight();
-		renderList[i].objectWidthPx = gob->animeImage->getWidth();
+		renderList[i].objectHeightPx = 40;
+		renderList[i].objectWidthPx = 40;
 
         renderList[i].x = SCRCENTREW + (it->second.position.x() - xOffset);
         renderList[i].y = SCRCENTREH + (it->second.position.y() - yOffset);
