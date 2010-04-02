@@ -82,11 +82,17 @@ void ServerEngine::timeout()
 			cout << "client logged in" << endl;
 			gameState->addShip(sm.GetClientID());
 			gameState->spawnShip(sm.GetClientID());
-			userList.insert(make_pair(sm.GetClientID(), sm.GetData()));
-			sm.SetMsgType(ServerMessage::MT_INIT); //TODO:Get score from gameplay
+			playerList.push_back(Player(sm.GetClientID(), sm.GetData()));
+			/*gameState->addShip(sm.GetClientID() + 1);
+			gameState->spawnShip(sm.GetClientID() + 1);
+			playerList.push_back(Player(sm.GetClientID() + 1, "CPU"));*/
+			sm.SetMsgType(ServerMessage::MT_INIT);
+			commServer->sendServerMsg(sm);
+
 			ostringstream oss;
-			for (map<int, string>::iterator it = userList.begin(); it != userList.end(); ++it)
-				oss << it->first << "," << it->second << ",";
+			for (size_t i = 0; i < playerList.size(); i++)
+				oss << playerList[i] << "|";
+			sm.SetMsgType(ServerMessage::MT_SCORES);
 			sm.SetData(oss.str());
 			commServer->sendServerMsg(sm);
 		}
