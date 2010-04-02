@@ -29,7 +29,8 @@ ResourceManager* ResourceManager::GetInstance()
 
 ResourceDefinition* ResourceManager::GetResource(int ResourceType, int ResourceName)
 {
-    int key = (ResourceType<<16) + ResourceName;
+    //int key = (ResourceType << 16) + ResourceName;
+	int key = ResourceType;
 
     //check if we've already loaded this resource
     if(resourceMap.find(key) != resourceMap.end())
@@ -106,7 +107,7 @@ ResourceDefinition* ResourceManager::GetResource(int ResourceType, int ResourceN
     case SHOT:
         {
         QDomDocument doc("shots");
-        QFile file(":/objects/resources/shots.xml");
+        QFile file(":/objects/shots.xml");
         if (!file.open(QIODevice::ReadOnly))
             return NULL;
         if (!doc.setContent(&file)) {
@@ -150,8 +151,50 @@ ResourceDefinition* ResourceManager::GetResource(int ResourceType, int ResourceN
             break;
         }
         resourceMap.insert(std::pair<int,ResourceDefinition*>(key,rd));
-        return rd;
-        }
+                return rd;
+                }
+    case EXHAUST:
+    {
+    	QDomDocument doc("exhausts");
+		QFile file(":/objects/exhaust.xml");
+		if (!file.open(QIODevice::ReadOnly))
+			return NULL;
+		if (!doc.setContent(&file))
+		{
+			file.close();
+			return NULL;
+		}
+		file.close();
+		TexturedResourceDefinition *rd = new TexturedResourceDefinition();
+		//grab the first child of the root element
+		QDomNode n = doc.documentElement().firstChild();
+		while(!n.isNull())
+		{
+			QDomElement exh = n.toElement();
+			//skip if not an element node
+			if(exh.isNull())
+			{
+				n=n.nextSibling();
+				continue;
+			}
+			//skip if not the node we're looking for
+			if(exh.attribute("type").toInt() != ResourceName)
+			{
+				n=n.nextSibling();
+				continue;
+			}
+			QDomElement data = exh.firstChildElement();
+			rd->texture = data.text().toStdString();
+			data = data.nextSibling().toElement();
+			rd->object_width = data.text().toInt();
+			data = data.nextSibling().toElement();
+			rd->object_height = data.text().toInt();
+
+			break;
+		}
+    	resourceMap.insert(std::pair<int,ResourceDefinition*>(key,rd));
+    	return rd;
+    }
     default:
         return NULL;
     }
