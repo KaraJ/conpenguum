@@ -47,7 +47,6 @@ SOURCES += gameplay/Frame.cpp \
            ../Core/comm/udpConnection.cpp \
            ../Core/comm/crc.cpp
 LIBS += -lCore \
-	-lmysql \
-	-lmysql++ \
+	-lmysqlpp \
 	 -L../Core/Debug \
 	 -L/usr/lib
