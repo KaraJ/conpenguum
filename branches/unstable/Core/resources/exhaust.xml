@@ -1,0 +1,7 @@
+<exhausts>
+    <exhaust type="0" name="BASIC">
+        <TEXTURE>exhaust.bmp</TEXTURE>
+        <OBJECT_WIDTH>25</OBJECT_WIDTH>
+        <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+    </exhaust>
+</exhausts>

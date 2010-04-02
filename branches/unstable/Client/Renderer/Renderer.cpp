@@ -19,7 +19,7 @@ Renderer::Renderer(QWidget *parent,std::map<int, GameObject> &gameSt, QString *c
     const char *glVersion = (const char*)glGetString(GL_VERSION);
     double glVer = atof(glVersion);
     assert(glVer > 1.1);
-    //resourceManager = ResourceManager::GetInstance();
+    resourceManager = ResourceManager::GetInstance();
     Initialize();
     this->resize(SCREENWIDTH,SCREENHEIGHT);
 }
@@ -45,19 +45,23 @@ void Renderer::buildRenderList(QPoint center)
     for(std::map<int, GameObject>::iterator it = objectlist.begin(); it != objectlist.end(); ++it)
     {
     	GameObject *gob = &(it->second);
-    	if (gob->text.compare("exhaust.bmp") == 0)
-    	{
-    		string q = gob->text;
-    		q = "";
-    	}
+    	TexturedResourceDefinition *rd;
+
+    	if (gob->objectId < 32)
+    		rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHIP, 0);
+    	else if (gob->objectId > 32 && gob->objectId < MAX_REAL_OBJECT)
+    		rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHOT, 0);
+    	else
+    		rd = (TexturedResourceDefinition*)resourceManager->GetResource(EXHAUST, 0);
+
 		renderList[i].texture = textures[gob->text];
 		renderList[i].texOffsetX = gob->animeImage->getLeftOffSet();
 		renderList[i].texOffsetY = gob->animeImage->getTopOffSet();
 		renderList[i].objectHeight = gob->animeImage->getBottomOffSet() - gob->animeImage->getTopOffSet();
 		renderList[i].objectWidth = gob->animeImage->getRightOffSet() - gob->animeImage->getLeftOffSet();
 		renderList[i].rotation = it->second.angle * 2;
-		renderList[i].objectHeightPx = 40;
-		renderList[i].objectWidthPx = 40;
+		renderList[i].objectHeightPx = rd->object_width;
+		renderList[i].objectWidthPx = rd->object_height;
 
         renderList[i].x = SCRCENTREW + (it->second.position.x() - xOffset);
         renderList[i].y = SCRCENTREH + (it->second.position.y() - yOffset);

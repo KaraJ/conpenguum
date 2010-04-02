@@ -2,5 +2,6 @@
     <qresource prefix="/objects">
         <file>ships.xml</file>
         <file>shots.xml</file>
+        <file>exhaust.xml</file>
     </qresource>
 </RCC>

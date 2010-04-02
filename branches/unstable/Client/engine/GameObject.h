@@ -8,6 +8,9 @@
 #include "../Animation/Image.h"
 #include "../../Core/comm/data/updateobject.h"
 
+#define MAX_REAL_OBJECT 32767
+#define MAX_TRANSIENT_OBJECT 32767
+
 struct GameObject
 {
 public:

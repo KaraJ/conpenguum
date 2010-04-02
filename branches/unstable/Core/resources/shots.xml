@@ -1,5 +1,5 @@
 <shots>
-	<shot type=0 name="BASIC">
+	<shot type="0" name="BASIC">
 		<TEXTURE>bullets.bmp</TEXTURE>
 		<TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
 		<TEXTURE_YOFFSET>0.9</TEXTURE_YOFFSET>
