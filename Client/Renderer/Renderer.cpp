@@ -63,8 +63,8 @@ void Renderer::buildRenderList(QPoint center)
 		renderList[i].objectHeightPx = rd->object_width;
 		renderList[i].objectWidthPx = rd->object_height;
 
-        renderList[i].x = SCRCENTREW + (it->second.position.x() - xOffset);
-        renderList[i].y = SCRCENTREH + (it->second.position.y() - yOffset);
+        renderList[i].x = SCRCENTREW + (gob->position.x() - xOffset) - rd->object_width / 2;
+        renderList[i].y = SCRCENTREH + (gob->position.y() - yOffset) - rd->object_height / 2;
 
         renderList[i].textX = SCRCENTREW + (it->second.position.x() - xOffset);
         renderList[i].textY = SCRCENTREH - (it->second.position.y() - yOffset);
@@ -158,26 +158,30 @@ void Renderer::Render()
 			float hp = (float)renderList[i].health / 100;
 			float sh = (float)renderList[i].shield / 100;
 			renderText(20, 18, "Health", font);
+
 			glBindTexture(GL_TEXTURE_2D, textures["healthbar.bmp"]);
 			glBegin(GL_QUADS);
-				glTexCoord2f(0,0);      glVertex2f(20, SCREENHEIGHT - 20);
+				glTexCoord2f(0,0);  glVertex2f(20, SCREENHEIGHT - 20);
 				glTexCoord2f(1,0);  glVertex2f(20 + 100*hp, SCREENHEIGHT - 20);
 				glTexCoord2f(1,1);  glVertex2f(20 + 100*hp, SCREENHEIGHT - 35);
-				glTexCoord2f(0,1);      glVertex2f(20, SCREENHEIGHT - 35);
+				glTexCoord2f(0,1);  glVertex2f(20, SCREENHEIGHT - 35);
 			glEnd();
+
 			glBindTexture(GL_TEXTURE_2D, textures["shieldbar.bmp"]);
 			glBegin(GL_QUADS);
-				glTexCoord2f(0,0);      glVertex2f(20, SCREENHEIGHT - 20);
+				glTexCoord2f(0,0);  glVertex2f(20, SCREENHEIGHT - 20);
 				glTexCoord2f(1,0);  glVertex2f(20 + 100*sh, SCREENHEIGHT - 20);
 				glTexCoord2f(1,1);  glVertex2f(20 + 100*sh, SCREENHEIGHT - 28);
-				glTexCoord2f(0,1);      glVertex2f(20, SCREENHEIGHT - 28);
+				glTexCoord2f(0,1);  glVertex2f(20, SCREENHEIGHT - 28);
 			glEnd();
+
 			ostringstream oss;
 			int totalHp = renderList[i].health + renderList[i].shield;
 			if (totalHp <= 0)
 				oss << "Dead yo";
 			else
 				oss <<  totalHp << "/ 100";
+
 			renderText(25, 30, QString(oss.str().c_str()), font);		
 		}
 
@@ -217,15 +221,17 @@ void Renderer::Render()
             glTexCoord2f(renderList[i].texOffsetX, renderList[i].texOffsetY+renderList[i].objectHeight); glVertex2f(quad(3,0), quad(3,1));
         glEnd();
     }
-        glBindTexture(GL_TEXTURE_2D, textures["chatbox.png"]);
-        glBegin(GL_QUADS);
-            glTexCoord2f(0,0);      glVertex2f(0,0);
-            glTexCoord2f(1,0);  glVertex2f(600, 0);
-            glTexCoord2f(1,1);  glVertex2f(600, 200);
-            glTexCoord2f(0,1);      glVertex2f(0, 200);
-        glEnd();
-        glFlush();
-        glDisable(GL_TEXTURE_2D);
+
+	glBindTexture(GL_TEXTURE_2D, textures["chatbox.png"]);
+	glBegin(GL_QUADS);
+		glTexCoord2f(0,0);  glVertex2f(0,0);
+		glTexCoord2f(1,0);  glVertex2f(600, 0);
+		glTexCoord2f(1,1);  glVertex2f(600, 200);
+		glTexCoord2f(0,1);  glVertex2f(0, 200);
+	glEnd();
+
+	glFlush();
+	glDisable(GL_TEXTURE_2D);
     updateGL();
 }
 
