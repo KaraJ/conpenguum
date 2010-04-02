@@ -45,7 +45,6 @@ private:
     RenderObject renderList[MAXRENDERCOUNT];
     int renderCount;
     std::map<std::string, GLuint> textures;
-    //std::vector<UpdateObject> &objectlist;
     std::map<int, GameObject> &objectlist;
 //funcs
 public:
