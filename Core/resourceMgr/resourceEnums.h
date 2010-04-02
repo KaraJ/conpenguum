@@ -3,9 +3,10 @@
 
 enum RESOURCETYPES
 {
-    SHIP = 0,
-    SHOT,
-
+	EXPLOSION=0,
+	EXHAUST=1,
+	SHIP=2,
+	SHOT=3,
     NUMRESOURCETYPES
 };
 

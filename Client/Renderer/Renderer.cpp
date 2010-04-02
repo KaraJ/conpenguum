@@ -53,8 +53,8 @@ void Renderer::buildRenderList(QPoint center)
 		renderList[i].texture = textures[gob->text];
 		renderList[i].texOffsetX = gob->animeImage->getLeftOffSet();
 		renderList[i].texOffsetY = gob->animeImage->getTopOffSet();
-		renderList[i].objectHeight = gob->animeImage->getBottomOffSet();
-		renderList[i].objectWidth = gob->animeImage->getRightOffSet();
+		renderList[i].objectHeight = gob->animeImage->getBottomOffSet() - gob->animeImage->getTopOffSet();
+		renderList[i].objectWidth = gob->animeImage->getRightOffSet() - gob->animeImage->getLeftOffSet();
 		renderList[i].rotation = it->second.angle * 2;
 		renderList[i].objectHeightPx = 40;
 		renderList[i].objectWidthPx = 40;
