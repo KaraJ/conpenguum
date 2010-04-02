@@ -340,7 +340,13 @@ void BaseWindow::updateGameState ()
 		{
 			vector<Image>& images = animationMap[EXHAUST].getAnimationImages();
 			GameObject animObj(updateObj);
-			animObj.position.setX(animObj.position.x() - 5);
+
+			double angle = animObj.angle;
+			double radians = (angle * 2) * 0.017453293;
+		    int x = cos(radians) * -25, y = sin(radians) * -25;
+		    animObj.position.setX(animObj.position.x() + x);
+		    animObj.position.setY(animObj.position.y() + y);
+
 			animObj.objectId = freeIds.front();
 			freeIds.pop();
 			animObj.currentAnime = animationMap[EXHAUST];
