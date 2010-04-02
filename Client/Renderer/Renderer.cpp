@@ -64,6 +64,8 @@ void Renderer::buildRenderList(QPoint center)
 
         renderList[i].textX = SCRCENTREW + (it->second.position.x() - xOffset);
         renderList[i].textY = SCRCENTREH - (it->second.position.y() - yOffset);
+        renderList[i].health = it->second.health;
+        renderList[i].shield = it->second.shield;
         renderList[i].name = it->second.owner;
         i++;
     }
@@ -145,7 +147,35 @@ void Renderer::Render()
 		quad(3,2) = 1;
 
 		if (renderList[i].name != "")
-			renderText(renderList[i].textX - 5, renderList[i].textY - 35, renderList[i].name, font);
+			renderText(renderList[i].textX + 10, renderList[i].textY - 40, renderList[i].name, font);
+
+		if (renderList[i].health != -1 && renderList[i].name != "")
+		{
+			float hp = (float)renderList[i].health / 100;
+			float sh = (float)renderList[i].shield / 100;
+			renderText(20, 18, "Health", font);
+			glBindTexture(GL_TEXTURE_2D, textures["healthbar.bmp"]);
+			glBegin(GL_QUADS);
+				glTexCoord2f(0,0);      glVertex2f(20, SCREENHEIGHT - 20);
+				glTexCoord2f(1,0);  glVertex2f(20 + 100*hp, SCREENHEIGHT - 20);
+				glTexCoord2f(1,1);  glVertex2f(20 + 100*hp, SCREENHEIGHT - 35);
+				glTexCoord2f(0,1);      glVertex2f(20, SCREENHEIGHT - 35);
+			glEnd();
+			glBindTexture(GL_TEXTURE_2D, textures["shieldbar.bmp"]);
+			glBegin(GL_QUADS);
+				glTexCoord2f(0,0);      glVertex2f(20, SCREENHEIGHT - 20);
+				glTexCoord2f(1,0);  glVertex2f(20 + 100*sh, SCREENHEIGHT - 20);
+				glTexCoord2f(1,1);  glVertex2f(20 + 100*sh, SCREENHEIGHT - 28);
+				glTexCoord2f(0,1);      glVertex2f(20, SCREENHEIGHT - 28);
+			glEnd();
+			ostringstream oss;
+			int totalHp = renderList[i].health + renderList[i].shield;
+			if (totalHp <= 0)
+				oss << "Dead yo";
+			else
+				oss <<  totalHp << "/ 100";
+			renderText(25, 30, QString(oss.str().c_str()), font);		
+		}
 
 		if(renderList[i].rotation > 0)//skip all this if the object is rotationless or at 0;
 		{

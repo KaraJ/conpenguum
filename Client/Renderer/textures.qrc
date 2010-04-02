@@ -83,5 +83,7 @@
         <file>textures/weroll.bmp</file>
         <file>textures/weship.bmp</file>
         <file>textures/chatbox.png</file>
+        <file>textures/healthbar.bmp</file>
+        <file>textures/shieldbar.bmp</file>
     </qresource>
 </RCC>

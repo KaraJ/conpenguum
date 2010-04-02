@@ -354,6 +354,9 @@ void BaseWindow::updateGameState ()
 			gameObj->owner = (userList.find(objId) != userList.end() ? userList[objId] : "");
 			gameObj->animeIndex = 0;
 			gameObj->text = "wbship.bmp";
+			if (objId != clientAction->getObjectId())
+				gameObj->health = gameObj->shield = -1;
+
 			gameState[objId] = *gameObj;
 		}
 

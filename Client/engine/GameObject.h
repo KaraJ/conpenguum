@@ -17,6 +17,8 @@ public:
         objectId = obj.getObjectId();
         angle = obj.getRotation();
         position = obj.getPos();
+        health = obj.getHealth();
+        shield = obj.getShield();
     }
 
     inline void Update(UpdateObject &obj)
@@ -24,10 +26,14 @@ public:
         objectId = obj.getObjectId();
         angle = obj.getRotation();
         position = obj.getPos();
+        health = obj.getHealth();
+        shield = obj.getShield();
     }
 
 	int objectId; //0 ~ 65535 Are real objects, 65537+ are transient objects
 	int angle; //Rotation angle 0-179
+	int shield; //0-100
+	int health; //0-100
 	QPoint position; //XY position
 	std::string text;  //Texture filename
 	Animation currentAnime;
