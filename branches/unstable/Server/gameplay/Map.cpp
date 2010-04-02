@@ -380,9 +380,11 @@ void Map::remove(Shot *shot, QPoint location)
 bool Map::isWall(int x, int y)
 {
     if (x < 0 || y < 0 || x >= width || y >= height)
-    return true;
+    	return true;
+
     if (tiles[x][y] == NULL)
         return false;
+
     return tiles[x][y]->isWall();
 }
 
