@@ -23,6 +23,7 @@ public:
 	int getStreak() const { return streak_; }
 	std::string getName() const { return name_; }
 	friend inline std::ostream& operator<<(std::ostream&, const Player&);
+	friend inline bool operator<(const Player &, const Player&);
 
 private:
 	int id_, kills_, deaths_, streak_;
@@ -32,6 +33,11 @@ private:
 std::ostream& operator<<(std::ostream& os, const Player& p)
 {
 	return os << p.id_ << "," << p.name_ << "," << p.kills_ << "," << p.deaths_ << "," << p.streak_;
+}
+
+bool operator<(const Player &p1, const Player &p2)
+{
+	return (p1.kills_ < p2.kills_) || (p1.name_ < p2.name_);
 }
 
 #endif
