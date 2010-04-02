@@ -12,7 +12,8 @@
 
 using namespace std;
 
-Renderer::Renderer(QWidget *parent,std::map<int, GameObject> &gameSt) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt)
+Renderer::Renderer(QWidget *parent,std::map<int, GameObject> &gameSt, QString &chatText) :
+		QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt), chatText_(chatText)
 //Renderer::Renderer(QWidget *parent,std::vector<UpdateObject> &gameSt) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt)
 {
     const char *glVersion = (const char*)glGetString(GL_VERSION);
@@ -44,6 +45,11 @@ void Renderer::buildRenderList(QPoint center)
     for(std::map<int, GameObject>::iterator it = objectlist.begin(); it != objectlist.end(); ++it)
     {
     	GameObject *gob = &(it->second);
+    	if (gob->text.compare("exhaust.bmp") == 0)
+    	{
+    		string q = gob->text;
+    		q = "";
+    	}
 		renderList[i].texture = textures[gob->text];
 		renderList[i].texOffsetX = 0;
 		renderList[i].texOffsetY = 0;
