@@ -1,9 +1,10 @@
 #ifndef ANIMATION_H
 #define ANIMATION_H
-
+#include <string>
 #include <vector>
 #include "Image.h"
 #include <map>
+#include "../SoundEffects/SoundEffects.h"
 /*------------------------------------------------------------------------
 -- CLASS NAME: Animation
 --
@@ -18,6 +19,10 @@
 -------------------------------------------------------------------------*/
 class Animation
 {
+private:
+    int numFrames_, imagesWide_, imagesTall_;
+    std::vector<Image> images_;
+    SoundEffects soundEffect_; // holds the sound effect for this animation.
 public:
     Animation()
     {
@@ -25,6 +30,7 @@ public:
         imagesWide_ = 0;
         imagesTall_ = 0;
     }
+    Animation(const Animation& a);
     void setNumFrames(int number){numFrames_ = number;}
     void setImagesWide(int imgcount){imagesWide_ = imgcount;}
     void setImagesTall(int imgcount){imagesTall_ = imgcount;}
@@ -33,12 +39,19 @@ public:
     int getImagesWide(){return imagesWide_;}
     int getImagesTall(){return imagesTall_;}
     std::vector<Image> &getAnimationImages(){return images_;}
-    Animation(const Animation& a);
-    std::string soundFile;
+
     static std::map<int, Animation> getAnimationMap();
-private:
-    int numFrames_, imagesWide_, imagesTall_;
-    std::vector<Image> images_;
+    void setSoundEffect(SoundEffects effect)
+    {
+    	soundEffect_ = effect;
+    	//soundEffect_.effectPath_ = effect.effectPath_;
+    	//soundEffect_.type_ = effect.type_;
+    	//soundEffect_->soundEffect_ = effect->soundEffect_;
+    	//soundEffect_->SetSoundSource(effect->GetSoundSource().c_str(), effect->GetType());
+
+    }
+    SoundEffects getSoundEffect(){return soundEffect_;}
+
 
 };
 
