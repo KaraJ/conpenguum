@@ -58,8 +58,9 @@ bool ConfigParser::Parse(const string &fileName, map<string, string> &values)
     	iss.str(line);
         string parameter, value, delim;
 
-        if (iss >> parameter && iss >> delim && delim.compare("=") == 0 && iss >> value)
+        if (iss >> parameter && iss >> delim && iss >> value && delim.compare("=") == 0)
 			values.insert(pair<string, string>(parameter, value));
     }
+    configFile.close();
 	return true;
 }
