@@ -1,13 +1,15 @@
 # DO NOT USE QMAKE TO AUTOGEN THESE, IT DOESN'T WORK
 QT += core \
     gui \
-    xml
+    xml \
+    phonon
 OBJECTS_DIR = obj
 TEMPLATE = app
 TARGET = Client
 HEADERS += engine/connectthread.h \
     ../Core/comm/globals.h \
     Animation/Animation.h \
+    SoundEffects/SoundEffects.h\
     Animation/AnimationEnum.h \
     Animation/Image.h \
     Animation/qtxmlparse.h \
@@ -24,6 +26,7 @@ HEADERS += engine/connectthread.h \
     Renderer/Renderer.h
 SOURCES += engine/connectthread.cpp \
     Animation/Animation.cpp \
+    SoundEffects/SoundEffects.cpp\
     Animation/Image.cpp \
     Animation/qtxmlparse.cpp \
     Comm/Commclient.cpp \
