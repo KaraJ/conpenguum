@@ -5,7 +5,7 @@ TEMPLATE = app
 TARGET = Server
 QT += gui core xml
 OBJECTS_DIR = obj
-INCPATH += -I/usr/include/mysql -I/usr/include/mysql++
+INCPATH += /usr/include/mysql /usr/include/mysql++
 # Input
 HEADERS += gameplay/Frame.h \
            gameplay/Map.h \
@@ -15,6 +15,7 @@ HEADERS += gameplay/Frame.h \
            gameplay/Ship.h \
            gameplay/Shot.h \
            gameplay/general.h \
+           gameplay/ScoreBoard.h \
            comm/commserver.h \
            comm/TCPServer.h \
            engine/ServerEngine.h \
@@ -25,6 +26,7 @@ HEADERS += gameplay/Frame.h \
            ../Core/comm/data/servermessage.h \
            ../Core/comm/socketwrapper.h \
            ../Core/Logger.h \
+           ../Core/Player.h \
            ../Core/comm/tcpconnection.h \
            ../Core/comm/udpConnection.h \
            ../Core/comm/crc.h
@@ -34,6 +36,7 @@ SOURCES += gameplay/Frame.cpp \
            gameplay/Physics.cpp \
            gameplay/Ship.cpp \
            gameplay/Shot.cpp \
+           gameplay/ScoreBoard.cpp \
            comm/commserver.cpp \
            comm/TCPServer.cpp \
            engine/main.cpp \
@@ -46,7 +49,4 @@ SOURCES += gameplay/Frame.cpp \
            ../Core/comm/tcpconnection.cpp \
            ../Core/comm/udpConnection.cpp \
            ../Core/comm/crc.cpp
-LIBS += -lCore \
-	-lmysqlpp \
-	 -L../Core/Debug \
-	 -L/usr/lib
+LIBS += -L/usr/lib -lmysqlpp -L../Core/Debug -lCore
