@@ -8,6 +8,7 @@
 #include <vector>
 #include <cassert>
 #include <sstream>
+#include <iostream>
 #include "../../Core/resourceMgr/resourceEnums.h"
 
 using namespace std;
@@ -140,6 +141,7 @@ void Renderer::Render()
 {
 	QFont nameFont("Helvetica", 8);
 	QFont healthFont("Comic Sans MS", 10, 75);
+	QFont chatFont("Comic Sans MS", 8, 50);
     //clear the screen
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_TEXTURE_2D);
@@ -167,6 +169,15 @@ void Renderer::Render()
 		quad(3,1) = renderList[i].objectHeightPx + renderList[i].y;
 		quad(3,2) = 1;
 
+		//render chat messages
+		qglColor(Qt::yellow);
+		renderText(0, SCREENHEIGHT, chatText_[0], chatFont);
+		for (int j=1; j < 9; j++)
+		{
+			renderText(0, SCREENHEIGHT - 22*j, chatText_[j], chatFont);
+		}
+		qglColor(Qt::white);
+		
 		if (renderList[i].name != "")
 			renderText(renderList[i].textX - 5, renderList[i].textY - 20, renderList[i].name, nameFont);
 
@@ -176,7 +187,7 @@ void Renderer::Render()
 			float hp = (float)renderList[i].health / 100;
 			float sh = (float)renderList[i].shield / 100;
 			renderText(20, 18, "Health", healthFont);
-
+			
 			glBindTexture(GL_TEXTURE_2D, textures["healthbar.bmp"]);
 			glBegin(GL_QUADS);
 				glTexCoord2f(0,0);  glVertex2f(20, SCREENHEIGHT - 35);

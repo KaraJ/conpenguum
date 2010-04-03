@@ -38,9 +38,13 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
 	chatting = false;
 	theClient = CommClient::Instance();
 	
+	qChatString = new QString[9];
+	qChatString[0] = " ";
+	chatIndex = 1;
+	
 	/*this may be temporary*/
 	this->setFixedSize(1024, 768);
-	ren = new Renderer(this, gameState, 0);
+	ren = new Renderer(this, gameState, qChatString);
 	this->show();
 
 	animationMap = Animation::getAnimationMap();
@@ -130,6 +134,9 @@ void BaseWindow::keyPressEvent (QKeyEvent * event)
 			case Qt::Key_Enter:
 				toggleChat();
 				break;
+			case Qt::Key_Return:
+				toggleChat();
+				break;
 		}
 	}
 }
@@ -180,15 +187,17 @@ void BaseWindow::keyReleaseEvent (QKeyEvent * event)
 int BaseWindow::handleChat(int key)
 {
 	//if enter send the message
-	if (key == Qt::Key_Enter)
+	if ((key == Qt::Key_Enter) || (key == Qt::Key_Return))
 	{
 		theClient->sendServerMsg(chatString);
+		chatString.clear();
 		toggleChat();
 	}
 	//if backspace erase the last character
 	else if (key == Qt::Key_Backspace)
 	{
-		chatString.erase(chatString.length()-1, 1);
+		if (chatString.length() != 0)
+			chatString.erase(chatString.length()-1, 1);
 	}
 	else
 	{
@@ -203,6 +212,8 @@ int BaseWindow::handleChat(int key)
 			return -1;
 		}
 	}
+	//qchatstring[0] string being currently typed
+	qChatString[0] = chatString.c_str();
 	return 0;
 }
 
@@ -619,7 +630,11 @@ void BaseWindow::getServerMessage()
 		//chat msg
 		else if (sm.GetMsgType() == ServerMessage::MT_CHAT)
 		{
-			//TODO:handle chat message
+			//this should probably be stored in a queue not an array but for now its fine
+			if(chatIndex == 9)
+				chatIndex = 1;
+			qChatString[chatIndex] = sm.GetData().c_str();
+			chatIndex++;
 		}
 		else if(sm.GetMsgType() == ServerMessage::MT_SHUTDOWN)
 		{
