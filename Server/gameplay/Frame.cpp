@@ -182,28 +182,37 @@ void Frame::updateShips(void)
     {
         if(listShip[i] != 0 && listShip[i]->active)
         {
-		oldPosition =  listShip[i]->position;
+        	oldPosition =  listShip[i]->position;
             if (listShip[i]->vector.x() != 0)
             {
                 dist = map.canMove(listShip[i]->position, false, SHIPSIZE, listShip[i]->vector.x());
-                if(abs(dist) < abs(listShip[i]->vector.x())){
-			listShip[i]->vector.setX(-(listShip[i]->vector.x()));
+                if(abs(dist) < abs(listShip[i]->vector.x()))
+                {
+                	listShip[i]->vector.setX(-(listShip[i]->vector.x()));
+                	//Hit a wall, take damage
+					if (listShip[i]->shield > 0)
+						listShip[i]->shield -= 10;
+					else if (listShip[i]->health > 0)
+						listShip[i]->health -= 10;
                 }
                 listShip[i]->position.setX(listShip[i]->position.x() + dist);
                 cout << "X:" << oldPosition.x() << "->" <<  listShip[i]->position.x() << "|" << dist << endl;
             }
-
-
             if (listShip[i]->vector.y() != 0)
             {
                 dist = map.canMove(listShip[i]->position, true, SHIPSIZE, listShip[i]->vector.y());
-		if(abs(dist) < abs(listShip[i]->vector.y())){
-			listShip[i]->vector.setY(-(listShip[i]->vector.y()));
+                if(abs(dist) < abs(listShip[i]->vector.y()))
+                {
+                	listShip[i]->vector.setY(-(listShip[i]->vector.y()));
+                	//Hit a wall, take damage
+                	if (listShip[i]->shield > 0)
+						listShip[i]->shield -= 10;
+					else if (listShip[i]->health > 0)
+						listShip[i]->health -= 10;
                 }
                 listShip[i]->position.setY(listShip[i]->position.y() + dist);
             }
-	
-		map.move(listShip[i], oldPosition, listShip[i]->position, 50);
+            map.move(listShip[i], oldPosition, listShip[i]->position, 50);
 			
 			QPoint newVector;
 			if(listShip[i]->actionMask.isAccelerating()) // thrust forward
@@ -214,12 +223,9 @@ void Frame::updateShips(void)
 				// '-=' on a negative vector was causing more acceleration - changed to +=
 				newVector = listShip[i]->vector + rotVelToVec(listShip[i]->rotation * 2, -VELOCITY_THRUST);
 			}
-			if(listShip[i]->actionMask.isDecelerating() || listShip[i]->actionMask.isAccelerating()){
-			if(VECTORMAGNITUDE(newVector) < VELOCITY_MAX)
-			{
-				listShip[i]->vector = newVector;
-			}
-			}
+			if(listShip[i]->actionMask.isDecelerating() || listShip[i]->actionMask.isAccelerating())
+				if(VECTORMAGNITUDE(newVector) < VELOCITY_MAX)
+					listShip[i]->vector = newVector;
 			
 			if(listShip[i]->actionMask.isTurningRight()) // turn right
 			{
@@ -229,13 +235,13 @@ void Frame::updateShips(void)
 			}
 
 			if(listShip[i]->actionMask.isTurningLeft()) // turn left
-			{
 				listShip[i]->rotation = (listShip[i]->rotation + ROTATION_RATE) % 180;
-			}
-			if(listShip[i]->shotCooldown > 0){
+
+			if(listShip[i]->shotCooldown > 0)
 				listShip[i]->shotCooldown--;
-                        }
-                        if(listShip[i]->shotCooldown == 0){
+
+			if(listShip[i]->shotCooldown == 0)
+			{
 				if(listShip[i]->actionMask.isFiring())
 				{
 					QPoint spawnVec, shotVec;
@@ -289,7 +295,6 @@ void Frame::updateShots(void)
     		listShot.erase(it);
     		return;
     	}
-
 		it->position += it->vector;
 
         if(map.isWall(it->position))
@@ -298,7 +303,6 @@ void Frame::updateShots(void)
         	listShot.erase(it);
         	return;
         }
-
         map.move(&(*it), oldPos, it->position);
 
 		if(map.hasShip(it->position)){
@@ -340,8 +344,10 @@ void Frame::updateShots(void)
 void Frame::printShips(void)
 {
     int i;
-    for(i = 0; i != 31; ++i){
-		if(listShip[i] != NULL){		
+    for(i = 0; i != 31; ++i)
+    {
+		if(listShip[i] != NULL)
+		{
 		    cout << listShip[i]->id << ": P" << listShip[i]->position.x()
 		        << ',' <<  listShip[i]->position.y() << " V" << listShip[i]->vector.x()
 		        << ',' <<  listShip[i]->vector.y() <<(listShip[i]->active?" a":" d") <<
@@ -413,18 +419,18 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
 			UpdateObject uo(listShip[i]->actionMask);
 			uo.setRotation(listShip[i]->rotation);
 			uo.setPosition(listShip[i]->position);
+			uo.setHealth(listShip[i]->health);
+			uo.setShield(listShip[i]->shield);
 			udList.push_back(uo);
 			uo.print();
 		}
 	}
-    
-    
-    for(it = listShot.begin(); it != listShot.end(); ++it){
+    for(it = listShot.begin(); it != listShot.end(); ++it)
+    {
         UpdateObject uo(it->id);
 		uo.setPosition(it->position);
 		udList.push_back(uo);
     }
-
     return udList;
 }
 
@@ -460,10 +466,10 @@ void Frame::updateClientActions(vector<ClientAction> clientActions)
 void Frame::printShots(void)
 {
     std::list<Shot>::iterator it;
-    for(it = listShot.begin(); it != listShot.end(); it++){		
-		    cout << "P" << it->position.x()
-		        << ',' <<  it->position.y() << " V" << it->vector.x()
-		        << ',' <<  it->vector.y() << endl;
+    for(it = listShot.begin(); it != listShot.end(); it++)
+    {
+		cout << "P" << it->position.x() << ',' <<  it->position.y() << " V" << it->vector.x()
+				<< ',' <<  it->vector.y() << endl;
     }
 }
 
