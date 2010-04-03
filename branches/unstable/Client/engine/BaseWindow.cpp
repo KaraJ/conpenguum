@@ -336,8 +336,7 @@ void BaseWindow::updateGameState ()
 			updateObj.setShield(-1);
 		}
 
-
-                //when the playership is turning to the left
+		/*//when the playership is turning to the left
                 if(objId < 31 && updateObj.getActions().isTurningLeft())
                 {
                     vector<Image>& images = animationMap[Ship].getAnimationImages();
@@ -456,9 +455,8 @@ void BaseWindow::updateGameState ()
                         gameState[objId].animeIndex += 1; //keep banking to the right
                     }
 
-                }
-
-		if (objId < 31 && updateObj.getActions().isAccelerating()) //for Exhaust trails
+                }*/
+		if (objId < MAX_CLIENTS && updateObj.getActions().isAccelerating()) //for Exhaust trails
 		{
 			ResourceManager *rm = ResourceManager::GetInstance();
 			TexturedResourceDefinition *rd = (TexturedResourceDefinition*)rm->GetResource(EXHAUST, 0);
@@ -532,19 +530,15 @@ void BaseWindow::clearTransientObjects()
 		else
 		{
 			GameObject *animatedObj = &it->second;
-                        vector<Image>& shipImages = animationMap[Ship].getAnimationImages();
 			vector<Image>& images = animationMap[EXHAUST].getAnimationImages();
-                        //run through the ship images
-                        if(animatedObj->animeIndex < shipImages.size())
-                        {
-                            animatedObj->animeImage = &shipImages[animatedObj->animeIndex++];
-                        }
-                        else
-                        {
-                            thingsToErase.push_back(it->first);
-                        }
-
-
+	
+		/*
+		 //run through the ship images
+         if(animatedObj->animeIndex < shipImages.size())
+         	animatedObj->animeImage = &shipImages[animatedObj->animeIndex++];
+         else
+         	thingsToErase.push_back(it->first);
+		 */
 			if (animatedObj->animeIndex < images.size())
 				animatedObj->animeImage = &images[animatedObj->animeIndex++];
 			else

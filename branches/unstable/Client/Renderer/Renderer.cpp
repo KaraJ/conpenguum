@@ -47,9 +47,9 @@ void Renderer::buildRenderList(QPoint center)
     	GameObject *gob = &(it->second);
     	TexturedResourceDefinition *rd;
 
-    	if (gob->objectId < 32)
+    	if (gob->objectId < MAX_CLIENTS)
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHIP, 0);
-    	else if (gob->objectId > 32 && gob->objectId < MAX_REAL_OBJECT)
+    	else if (gob->objectId >= MAX_CLIENTS && gob->objectId < MAX_REAL_OBJECT)
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHOT, 0);
     	else
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(EXHAUST, 0);

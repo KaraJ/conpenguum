@@ -179,94 +179,103 @@ void Frame::spawnShip(size_t shipID)
 void Frame::updateShips(void)
 {
     double dist;
-        QVector2D oldPosition;
+	QVector2D oldPosition;
+
     for(size_t i = 0; i < MAX_CLIENTS; ++i)
     {
-        if(listShip[i] != 0 && listShip[i]->active)
+    	Ship *currShip = listShip[i];
+
+        if(currShip != 0 && currShip->active)
         {
-                oldPosition.setX(listShip[i]->position.x());
-                oldPosition.setY(listShip[i]->position.y());
-            if (listShip[i]->vector.x() != 0)
+			oldPosition.setX(currShip->position.x());
+			oldPosition.setY(currShip->position.y());
+
+            if (currShip->vector.x() != 0)
             {
-                dist = map.canMove(listShip[i]->position, false, SHIPSIZE, listShip[i]->vector.x());
-                if(abs(dist) < abs(listShip[i]->vector.x()))
+                dist = map.canMove(currShip->position, false, SHIPSIZE, currShip->vector.x());
+                if(abs(dist) < abs(currShip->vector.x()))
                 {
-                	listShip[i]->vector.setX(-(listShip[i]->vector.x()));
+                	currShip->vector.setX(-(currShip->vector.x()));
                 	//Hit a wall, take damage
-					if (listShip[i]->shield > 0)
-						listShip[i]->shield -= 10;
-					else if (listShip[i]->health > 0)
-						listShip[i]->health -= 10;
+					if (currShip->shield > 0)
+						currShip->shield -= 10;
+					else if (currShip->health > 0)
+						currShip->health -= 10;
                 }
-                listShip[i]->position.setX(listShip[i]->position.x() + dist);
-                cout << "X:" << oldPosition.x() << "->" <<  listShip[i]->position.x() << "|" << dist << endl;
+                currShip->position.setX(currShip->position.x() + dist);
             }
-            if (listShip[i]->vector.y() != 0)
+
+            if (currShip->vector.y() != 0)
             {
-                dist = map.canMove(listShip[i]->position, true, SHIPSIZE, listShip[i]->vector.y());
-                if(abs(dist) < abs(listShip[i]->vector.y()))
+                dist = map.canMove(currShip->position, true, SHIPSIZE, currShip->vector.y());
+
+                if(abs(dist) < abs(currShip->vector.y()))
                 {
-                	listShip[i]->vector.setY(-(listShip[i]->vector.y()));
+                	currShip->vector.setY(-(currShip->vector.y()));
                 	//Hit a wall, take damage
-                	if (listShip[i]->shield > 0)
-						listShip[i]->shield -= 10;
-					else if (listShip[i]->health > 0)
-						listShip[i]->health -= 10;
+                	if (currShip->shield > 0)
+						currShip->shield -= 10;
+					else if (currShip->health > 0)
+						currShip->health -= 10;
                 }
-                listShip[i]->position.setY(listShip[i]->position.y() + dist);
+
+                currShip->position.setY(currShip->position.y() + dist);
             }
-            map.move(listShip[i], oldPosition, listShip[i]->position, 50);
+
+            map.move(currShip, oldPosition, currShip->position, 50);
 			
-                        QVector2D newVector;
-			if(listShip[i]->actionMask.isAccelerating()) // thrust forward
-                        {
-                            QVector2D current(listShip[i]->vector);
-                                newVector = current + rotVelToVec(listShip[i]->rotation * 2, VELOCITY_THRUST);
-                        }
-			if(listShip[i]->actionMask.isDecelerating()) // thrust reverse
+			QVector2D newVector;
+			if(currShip->actionMask.isAccelerating()) // thrust forward
+			{
+				QVector2D current(currShip->vector);
+				newVector = current + rotVelToVec(currShip->rotation * 2, VELOCITY_THRUST);
+			}
+
+			if(currShip->actionMask.isDecelerating()) // thrust reverse
 			{
 				// '-=' on a negative vector was causing more acceleration - changed to +=
-                            QVector2D current(listShip[i]->vector);
-                                newVector = current + rotVelToVec(listShip[i]->rotation * 2, -VELOCITY_THRUST);
-			}
-			if(listShip[i]->actionMask.isDecelerating() || listShip[i]->actionMask.isAccelerating())
-                        {
-                            //currently, if you are at max speed your direction doesn't change because of this
-                            //fixing -- JT
-
-                                double magnitude = newVector.lengthSquared();
-
-                                if(magnitude > VELOCITY_MAX)
-                                {
-                                    newVector /= magnitude/VELOCITY_MAX;
-                                }
-                                listShip[i]->vector = newVector;
-                        }
-			if(listShip[i]->actionMask.isTurningRight()) // turn right
-			{
-				listShip[i]->rotation -= ROTATION_RATE;
-				if (listShip[i]->rotation < 0)
-					listShip[i]->rotation = 180 + listShip[i]->rotation;
+				QVector2D current(currShip->vector);
+				newVector = current + rotVelToVec(currShip->rotation * 2, -VELOCITY_THRUST);
 			}
 
-			if(listShip[i]->actionMask.isTurningLeft()) // turn left
-				listShip[i]->rotation = (listShip[i]->rotation + ROTATION_RATE) % 180;
-
-			if(listShip[i]->shotCooldown > 0)
-				listShip[i]->shotCooldown--;
-
-			if(listShip[i]->shotCooldown == 0)
+			if(currShip->actionMask.isDecelerating() || currShip->actionMask.isAccelerating())
 			{
-				if(listShip[i]->actionMask.isFiring())
+				//currently, if you are at max speed your direction doesn't change because of this
+				//fixing -- JT
+				double magnitude = newVector.lengthSquared();
+
+				if(magnitude > VELOCITY_MAX)
 				{
-                                        QVector2D spawnVec, shotVec;
-                                        spawnVec = rotVelToVec(listShip[i]->rotation * 2, SHIPRADIUS);
-                                        shotVec =  rotVelToVec(listShip[i]->rotation * 2, VELOCITY_SHOT);
-					Shot shot(listShip[i]->position.x() + spawnVec.x(), listShip[i]->position.y()
-						+ spawnVec.y(), shotVec.x(), shotVec.y(), listShip[i]->getNextShotID(), (frameTimer + 60));
+					newVector /= magnitude/VELOCITY_MAX;
+				}
+				currShip->vector = newVector;
+			}
+
+			if(currShip->actionMask.isTurningRight()) // turn right
+			{
+				currShip->rotation -= ROTATION_RATE;
+				if (currShip->rotation < 0)
+					currShip->rotation = 180 + currShip->rotation;
+			}
+
+			if(currShip->actionMask.isTurningLeft()) // turn left
+				currShip->rotation = (currShip->rotation + ROTATION_RATE) % 180;
+
+			if(currShip->shotCooldown > 0)
+				currShip->shotCooldown--;
+
+			if(currShip->shotCooldown == 0)
+			{
+				if(currShip->actionMask.isFiring())
+				{
+					QVector2D spawnVec, shotVec;
+					spawnVec = rotVelToVec(currShip->rotation * 2, SHIPRADIUS);
+					shotVec =  rotVelToVec(currShip->rotation * 2, VELOCITY_SHOT);
+					Shot shot(currShip->position.x() + spawnVec.x(), currShip->position.y()
+						+ spawnVec.y(), shotVec.x(), shotVec.y(), currShip->getNextShotID(), (frameTimer + 60));
 					addShot(shot);
 					map.add(&shot, shot.position);
-					listShip[i]->shotCooldown = 30;
+					currShip->shotCooldown = 30;
 				}
 			}
         }
@@ -296,7 +305,7 @@ void Frame::updateShips(void)
 ------------------------------------------------------------------------------*/
 void Frame::updateShots(void)
 {
-        QVector2D oldPos, oldShipPos;
+	QVector2D oldPos, oldShipPos;
     list<Shot>::iterator it;
     list<Ship*>::iterator itr;
     list<Ship*> shiplist;
@@ -319,10 +328,13 @@ void Frame::updateShots(void)
         	return;
         }
 
-		if(map.hasShip(oldPos)){
+		if(map.hasShip(oldPos))
+		{
             shiplist = map.ships(oldPos);
-			for(itr = shiplist.begin(); itr != shiplist.end(); ++itr){
-			    if(dist2Points((*itr)->position, oldPos) < SHIP_HIT_DIST){
+			for(itr = shiplist.begin(); itr != shiplist.end(); ++itr)
+			{
+			    if(dist2Points((*itr)->position, oldPos) < SHIP_HIT_DIST)
+			    {
                     //TODO: call Kara scoreboard method to add a death
                     //(*itr)->id is the person dieing
                     //(it->id-32)/10 is the killer
@@ -335,41 +347,6 @@ void Frame::updateShots(void)
 		}
 
         map.move(&(*it), oldPos, it->position);
-    }
-}
-
-/*-----------------------------------------------------------------------------
---  FUNCTION:   printShip
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  printShips(void)
---
---  NOTES:      **FOR TESTING** Prints the positions of all the ships.
---
---  FORMAT:     "<id>: <x>,<y>"
---
---  RETURNS:    void
---
-------------------------------------------------------------------------------*/
-void Frame::printShips(void)
-{
-    int i;
-    for(i = 0; i != 31; ++i)
-    {
-		if(listShip[i] != NULL)
-		{
-		    cout << listShip[i]->id << ": P" << listShip[i]->position.x()
-		        << ',' <<  listShip[i]->position.y() << " V" << listShip[i]->vector.x()
-		        << ',' <<  listShip[i]->vector.y() <<(listShip[i]->active?" a":" d") <<
-            " r" << listShip[i]->rotation << endl;
-		}
     }
 }
 
@@ -494,5 +471,3 @@ void Frame::fragShip(size_t shipID){
     Ship *ship = getShip(shipID);
     ship->active = false;
 }
-
-
