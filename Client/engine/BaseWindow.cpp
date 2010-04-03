@@ -481,7 +481,7 @@ void BaseWindow::updateGameState ()
 	}
 }
 
-void BaseWindow::createRealObject(UpdateObject &updateObj, int &objId)
+void BaseWindow::createRealObject(UpdateObject &updateObj, int objId)
 {
 	GameObject animObj(updateObj);
 
@@ -491,12 +491,14 @@ void BaseWindow::createRealObject(UpdateObject &updateObj, int &objId)
 		animObj.currentAnime = animationMap[SHIP];
 		animObj.animeImage = &images[0];
 	}
-	else
+	else if (objId < 500)
 	{
 		vector<Image>& images = animationMap[SHOT].getAnimationImages();
 		animObj.currentAnime = animationMap[SHOT];
 		animObj.animeImage = &images[0];
 	}
+	else
+	    return;
 
 	//If object is owned by someone, add their username
 	animObj.owner = getName(objId);
