@@ -9,7 +9,7 @@
 class Tile {
 private:
     bool wall;
-    bool x;
+    bool x; //TODO: This cannot be right
     bool y;
     std::list<Ship*> ships;
     std::list<Shot*> shots;

@@ -215,9 +215,9 @@ void Frame::updateShips(void)
             if (currShip->vector.x() != 0)
             {
                 dist = map.canMove(currShip->position, false, SHIPSIZE, currShip->vector.x());
-                if(abs(dist) < abs(currShip->vector.x()))
+                if((currShip->vector.x() > 0 && dist < 0) || (currShip->vector.x() < 0 && dist > 0))
                 {
-                	currShip->vector.setX(-(currShip->vector.x()));
+                	currShip->vector.setX(-currShip->vector.x());
                 	//Hit a wall, take damage
 					if (currShip->shield > 0)
 						currShip->shield -= 10;
@@ -231,9 +231,9 @@ void Frame::updateShips(void)
             {
                 dist = map.canMove(currShip->position, true, SHIPSIZE, currShip->vector.y());
 
-                if(abs(dist) < abs(currShip->vector.y()))
+                if((currShip->vector.y() > 0 && dist < 0) || (currShip->vector.y() < 0 && dist > 0))
                 {
-                	currShip->vector.setY(-(currShip->vector.y()));
+                	currShip->vector.setY(-currShip->vector.y());
                 	//Hit a wall, take damage
                 	if (currShip->shield > 0)
 						currShip->shield -= 10;
@@ -244,7 +244,7 @@ void Frame::updateShips(void)
                 currShip->position.setY(currShip->position.y() + dist);
             }
 
-            map.move(currShip, oldPosition, currShip->position, 50);
+            map.move(currShip, oldPosition, currShip->position, SHIPSIZE);
 			
 			QVector2D newVector;
 			if(currShip->actionMask.isAccelerating()) // thrust forward
