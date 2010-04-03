@@ -59,7 +59,7 @@ public:
     void printShots(void);
 
 private:
-    int dist2Points(QPoint point1, QPoint point2);
+    int dist2Points(QVector2D point1, QVector2D point2);
     void fragShip(size_t shipID);
     void addShot(Shot newShot);
     Ship* getShip(size_t shipID);

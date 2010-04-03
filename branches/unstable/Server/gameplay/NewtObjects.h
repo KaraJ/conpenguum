@@ -22,7 +22,7 @@
 #ifndef NEWTOBJECTS_H
 #define NEWTOBJECTS_H
 
-#include <QPoint>
+#include <QVector2D>
 
 /*----------------------------------------------------------------------------
 --
@@ -42,16 +42,16 @@
 class NewtObject
 {
 public:
-  QPoint position;
-  QPoint vector;
+  QVector2D position;
+  QVector2D vector;
   size_t id;
 private:
     // next ID to be used
 public:
     NewtObject(int pX, int pY, int vX, int vY, size_t ID): position(pX, pY),
         vector(vX ,vY), id(ID){}
-    QPoint getPosition(){ return position; }
-    QPoint getVector(){ return vector; }
+    QVector2D getPosition(){ return position; }
+    QVector2D getVector(){ return vector; }
     size_t getID(){ return id; }
 private:
 };

@@ -2,6 +2,8 @@
 #include "Frame.h"
 #include "general.h"
 #include <cstdlib>
+#include <QVector2D>
+#include <cmath>
 
 using namespace std;
 
@@ -149,7 +151,7 @@ void Frame::removeShip(size_t clientID)
 void Frame::spawnShip(size_t shipID)
 {
     Ship *ship = getShip(shipID);
-    QPoint spawnPoint(100,100); // map function to return a safe spawn point
+    QVector2D spawnPoint(100,100); // map function to return a safe spawn point
     ship->active = true;
     ship->position = spawnPoint;
     map.add(ship, ship->position, 50);
@@ -176,13 +178,14 @@ void Frame::spawnShip(size_t shipID)
 ------------------------------------------------------------------------------*/
 void Frame::updateShips(void)
 {
-    int dist;
-	QPoint oldPosition;
+    double dist;
+        QVector2D oldPosition;
     for(size_t i = 0; i < MAX_CLIENTS; ++i)
     {
         if(listShip[i] != 0 && listShip[i]->active)
         {
-        	oldPosition =  listShip[i]->position;
+                oldPosition.setX(listShip[i]->position.x());
+                oldPosition.setY(listShip[i]->position.y());
             if (listShip[i]->vector.x() != 0)
             {
                 dist = map.canMove(listShip[i]->position, false, SHIPSIZE, listShip[i]->vector.x());
@@ -214,19 +217,31 @@ void Frame::updateShips(void)
             }
             map.move(listShip[i], oldPosition, listShip[i]->position, 50);
 			
-			QPoint newVector;
+                        QVector2D newVector;
 			if(listShip[i]->actionMask.isAccelerating()) // thrust forward
-				newVector = listShip[i]->vector + rotVelToVec(listShip[i]->rotation * 2, VELOCITY_THRUST);
-
+                        {
+                            QVector2D current(listShip[i]->vector);
+                                newVector = current + rotVelToVec(listShip[i]->rotation * 2, VELOCITY_THRUST);
+                        }
 			if(listShip[i]->actionMask.isDecelerating()) // thrust reverse
 			{
 				// '-=' on a negative vector was causing more acceleration - changed to +=
-				newVector = listShip[i]->vector + rotVelToVec(listShip[i]->rotation * 2, -VELOCITY_THRUST);
+                            QVector2D current(listShip[i]->vector);
+                                newVector = current + rotVelToVec(listShip[i]->rotation * 2, -VELOCITY_THRUST);
 			}
 			if(listShip[i]->actionMask.isDecelerating() || listShip[i]->actionMask.isAccelerating())
-				if(VECTORMAGNITUDE(newVector) < VELOCITY_MAX)
-					listShip[i]->vector = newVector;
-			
+                        {
+                            //currently, if you are at max speed your direction doesn't change because of this
+                            //fixing -- JT
+
+                                double magnitude = newVector.lengthSquared();
+
+                                if(magnitude > VELOCITY_MAX)
+                                {
+                                    newVector /= magnitude/VELOCITY_MAX;
+                                }
+                                listShip[i]->vector = newVector;
+                        }
 			if(listShip[i]->actionMask.isTurningRight()) // turn right
 			{
 				listShip[i]->rotation -= ROTATION_RATE;
@@ -244,9 +259,9 @@ void Frame::updateShips(void)
 			{
 				if(listShip[i]->actionMask.isFiring())
 				{
-					QPoint spawnVec, shotVec;
-					spawnVec = rotVelToVec(listShip[i]->rotation * 2, SHIPRADIUS);
-					shotVec =  rotVelToVec(listShip[i]->rotation * 2, VELOCITY_SHOT);
+                                        QVector2D spawnVec, shotVec;
+                                        spawnVec = rotVelToVec(listShip[i]->rotation * 2, SHIPRADIUS);
+                                        shotVec =  rotVelToVec(listShip[i]->rotation * 2, VELOCITY_SHOT);
 					Shot shot(listShip[i]->position.x() + spawnVec.x(), listShip[i]->position.y()
 						+ spawnVec.y(), shotVec.x(), shotVec.y(), listShip[i]->getNextShotID(), (frameTimer + 60));
 					addShot(shot);
@@ -281,7 +296,7 @@ void Frame::updateShips(void)
 ------------------------------------------------------------------------------*/
 void Frame::updateShots(void)
 {
-	QPoint oldPos, oldShipPos;
+        QVector2D oldPos, oldShipPos;
     list<Shot>::iterator it;
     list<Ship*>::iterator itr;
     list<Ship*> shiplist;
@@ -369,7 +384,7 @@ void Frame::printShips(void)
 --
 --  PROGREMMER: Gameplay/Physics Team
 --
---  INTERFACE:  dist2Points(QPoint point1, QPoint point2)
+--  INTERFACE:  dist2Points(QVector2D point1, QVector2D point2)
 --
 --  NOTES:      Given two points, returns the squared distance between them. For
 --              testing only.
@@ -377,7 +392,7 @@ void Frame::printShips(void)
 --  RETURNS:    Int value of the distance
 --
 ------------------------------------------------------------------------------*/
-int Frame::dist2Points(QPoint point1, QPoint point2)
+int Frame::dist2Points(QVector2D point1, QVector2D point2)
 {
     return (point1.x()-point2.x())*(point1.x()-point2.x()) +
             (point1.y()-point2.y())*(point1.y()-point2.y());
@@ -420,7 +435,7 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
 		{
 			UpdateObject uo(listShip[i]->actionMask);
 			uo.setRotation(listShip[i]->rotation);
-			uo.setPosition(listShip[i]->position);
+                        uo.setPosition(listShip[i]->position.toPoint());
 			uo.setHealth(listShip[i]->health);
 			uo.setShield(listShip[i]->shield);
 			udList.push_back(uo);
@@ -430,7 +445,7 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
     for(it = listShot.begin(); it != listShot.end(); ++it)
     {
         UpdateObject uo(it->id);
-		uo.setPosition(it->position);
+                uo.setPosition(it->position.toPoint());
 		udList.push_back(uo);
     }
     return udList;
