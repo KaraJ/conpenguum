@@ -64,12 +64,12 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
     tileSize = map_e.attribute("tileSize", "1").toInt();
 
     // create tiles array
-    tiles=new Tile**[rows];
+    tiles=new Tile*[rows];
     for(int i = 0; i < rows; ++i)
     {
-    	*(tiles + i)=new Tile*[columns];
-    	for(int x = 0; x < columns; ++x)
-    		*(tiles[i] + x) = new Tile();
+    	*(tiles + i) = new Tile[columns];
+    	//for(int x = 0; x < columns; ++x)
+    	//	*(tiles[i] + x) = new Tile();
     }
 
     // read tiles
@@ -81,7 +81,7 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
         x = tile_e.attribute("x", "0").toInt();
         y = tile_e.attribute("y", "0").toInt();
 
-		//tiles[x][y];
+		tiles[x][y].setWall();
     }
 
     // read spawns
@@ -101,32 +101,6 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
     // seed rand(), used later in spawn selection
     srand(time(NULL));
 
-}
-
-/*-----------------------------------------------------------------------------
---  FUNCTION:   Map::tile
---
---  DATE:       February 17, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  Tile tile(int x, int y)
---              x : x position along grid of target tile
---              y : y position along grid of target tile
---
---  NOTES:      Returns the tile at the specified position.
---
---  RETURNS:    Tile at the specified position.
---
-------------------------------------------------------------------------------*/
-Tile *Map::tile(int x, int y)
-{
-    ensure(x, y);
-    return tiles[x][y];
 }
 
 /*-----------------------------------------------------------------------------
@@ -172,12 +146,12 @@ void Map::move(Ship *ship, QVector2D old_position, QVector2D new_position, doubl
             if (x < leftOld || x > rightOld || y < botOld || y > topOld) // if in new position
             {
                 if (x <= leftNew && x >= rightNew && y >= botOld && y <= topOld)
-                    tile(x, y)->add(ship);
+                    tiles[x][y].add(ship);
             }
             else // is in old position!
             {
                 if (x < leftNew || x > rightNew || y < botNew || y > topNew) // if not in new position
-                    tile(x, y)->remove(ship);
+                    tiles[x][y].remove(ship);
             }
         }
     }
@@ -211,10 +185,8 @@ void Map::move(Shot *shot, QVector2D old_position, QVector2D new_position)
     int old_y = PIX_TO_TILE(old_position.y());
     int new_x = PIX_TO_TILE(new_position.x());
     int new_y = PIX_TO_TILE(new_position.y());
-    ensure(new_x, new_y);
-    tile(new_x, new_y)->add(shot);
-    tile(old_x, old_y)->remove(shot);
-    clean(old_x, old_y);
+    tiles[new_x][new_y].add(shot);
+    tiles[old_x][old_y].remove(shot);
 }
 
 /*-----------------------------------------------------------------------------
@@ -247,10 +219,7 @@ void Map::add(Ship *ship, QVector2D location, int size)
     for (int x = x1; x < x2; ++x)
     {
         for (int y = y1; y <= y2; ++y)
-        {
-            ensure(x, y);
-            tile(x, y)->add(ship);
-        }
+            tiles[x][y].add(ship);
     }
 }
 
@@ -278,8 +247,7 @@ void Map::add(Shot *shot, QVector2D location)
 {
     int x = PIX_TO_TILE(location.x());
     int y = PIX_TO_TILE(location.y());
-    ensure(x, y);
-    tile(x, y)->add(shot);
+    tiles[x][y].add(shot);
 }
 
 /*-----------------------------------------------------------------------------
@@ -312,10 +280,7 @@ void Map::remove(Ship *ship, QVector2D location, int size)
     for (int x = x1; x < x2; ++x)
     {
         for (int y = y1; y <= y2; ++y)
-        {
-            tile(x, y)->remove(ship);
-            clean(x, y);
-        }
+            tiles[x][y].remove(ship);
     }
 }
 
@@ -344,8 +309,7 @@ void Map::remove(Shot *shot, QVector2D location)
 {
     int x = PIX_TO_TILE(location.x());
     int y = PIX_TO_TILE(location.y());
-    tile(x, y)->remove(shot);
-    clean(x, y);
+    tiles[x][y].remove(shot);
 }
 
 /*-----------------------------------------------------------------------------
@@ -373,7 +337,7 @@ bool Map::isWall(int x, int y)
     if (x < 0 || y < 0 || x >= columns || y >= rows)
     	return true;
 
-    return tiles[x][y]->isWall();
+    return tiles[x][y].isWall();
 }
 
 /*-----------------------------------------------------------------------------
@@ -409,9 +373,6 @@ double Map::canMove(QVector2D position, bool vertical, double objSize, double di
 
 	if (vertical)
 	{
-	    if (ypos + distance < 0)
-	        endTile++;
-
 		if (distance > 0)
 			endTile = PIX_TO_TILE(ypos + radius + distance);
 		else
@@ -454,69 +415,6 @@ double Map::canMove(QVector2D position, bool vertical, double objSize, double di
 	}
 
     return distance;    // no collision detected, can move full distance
-}
-
-/*-----------------------------------------------------------------------------
---  FUNCTION:   Map::ensure
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  void ensure(int x, int y)
---              x : x position on grid
---              y : y position on grid
---
---  NOTES:      ensures that there is a tile object at x,y (if tile already exists, nothing happens)
---
---  RETURNS:    void.
---
-------------------------------------------------------------------------------*/
-void Map::ensure(int x, int y)
-{
-    /*if (tiles[x][y] == NULL)
-    {
-        tiles[x][y] = new Tile(x, y);
-    }*/
-}
-
-/*-----------------------------------------------------------------------------
---  FUNCTION:   Map::clean
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  void clean(int x, int y)
---              x : x position on grid
---              y : y position on grid
---
---  NOTES:      Cleans the specified coordinates. If the tile is empty (and not a wall), it is deleted.
---              This is used to minimize ram usage (which would otherwise escalate badly for larger maps)
---
---  RETURNS:    void.
---
-------------------------------------------------------------------------------*/
-void Map::clean(int x, int y)
-{
-    /*if (tiles[x][y] == NULL)
-    {
-        return; // tile is gone, nothing to do.
-    }*/
-    if (tiles[x][y]->empty())
-    {
-        return; // tile not emtpy, DO NOT CLEAN!
-    }
-    /*delete tiles[x][y];
-    tiles[x][y] = NULL;*/
 }
 
 /*-----------------------------------------------------------------------------
@@ -582,7 +480,7 @@ void Map::drawMap()
     {
         for (int y=bottom; y <= top; ++x)
         {
-            list2 = tile(x, y)->getShips();
+            list2 = tiles[x][y].getShips();
             list.sort();
             list2.sort();
             list.merge(list2);
@@ -625,7 +523,7 @@ std::list<Shot*> Map::shots(QVector2D center, int width, int height)
     {
         for (int y=bottom; y <= top; ++x)
         {
-            list2 = tile(x, y)->getShots();
+            list2 = tiles[x][y].getShots();
             list.sort();
             list2.sort();
             list.merge(list2);
@@ -709,7 +607,7 @@ bool Map::hasShip(int x, int y)
     {
         return false;
     }*/
-    return (tile(x, y)->numShips() > 0);
+    return (tiles[x][y].numShips() > 0);
 }
 
 /*-----------------------------------------------------------------------------
@@ -739,7 +637,7 @@ std::list<Ship*> Map::ships(QVector2D location)
     {
         return std::list<Ship*>();
     }
-    return tile(x, y)->getShips();
+    return tiles[x][y].getShips();
 }
 
 QVector2D Map::getSpawn(int team, int size)

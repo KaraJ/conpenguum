@@ -27,12 +27,11 @@ typedef struct
 class Map
 {
 private :
-    Tile ***tiles;
+    Tile **tiles;
     std::vector<SpawnArea> spawns;
     int  columns;    // map width in tiles
     int  rows;   // map height in tiles
     int  tileSize; // length of tile edge in pixels
-    Tile *tile(int x, int y);    // get by grid coord
     void ensure(int x, int y);  // ensure grid location has a tile
     void clean(int x, int y);   // remove free tile memory if empty (saves LOTS of ram!!!)
     bool isWall(int x, int y);  // checks if grid coords has a wall tile
