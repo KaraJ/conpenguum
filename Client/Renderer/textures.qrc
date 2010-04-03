@@ -86,5 +86,6 @@
         <file>textures/healthbar.bmp</file>
         <file>textures/shieldbar.bmp</file>
         <file>textures/theMap</file>
+        <file>textures/firstaid.bmp</file>
     </qresource>
 </RCC>

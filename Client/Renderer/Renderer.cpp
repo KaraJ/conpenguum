@@ -49,12 +49,14 @@ void Renderer::buildRenderList(QPoint center)
 
     	if (gob->objectId < MAX_CLIENTS)
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHIP, 0);
-    	else if (gob->objectId >= MAX_CLIENTS && gob->objectId < MAX_REAL_OBJECT)
+    	else if (gob->objectId == 50)
+    		rd = (TexturedResourceDefinition*)resourceManager->GetResource(AIDBOX, 0);
+    	else if (gob->objectId > MAX_CLIENTS && gob->objectId < MAX_REAL_OBJECT)
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHOT, 0);
     	else
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(EXHAUST, 0);
 
-		renderList[i].texture = textures[gob->textureName];
+		renderList[i].texture = textures[rd->texture];
 		renderList[i].texOffsetX = gob->animeImage->getLeftOffSet();
 		renderList[i].texOffsetY = gob->animeImage->getTopOffSet();
 		renderList[i].objectHeight = gob->animeImage->getBottomOffSet() - gob->animeImage->getTopOffSet();
