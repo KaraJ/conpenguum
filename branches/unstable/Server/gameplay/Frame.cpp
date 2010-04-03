@@ -190,6 +190,22 @@ void Frame::updateShips(void)
 			oldPosition.setX(currShip->position.x());
 			oldPosition.setY(currShip->position.y());
 
+			for (list<Shot>::iterator it = listShot.begin(); it != listShot.end(); ++it)
+			{
+				QVector2D pos = it->getPosition();
+				if (abs(currShip->position.x() - pos.x()) < 25 && abs(currShip->position.y() - pos.y()) < 25)
+				{
+					if (currShip->shield > 0)
+						currShip->shield -= 10;
+					else if (currShip->health > 0)
+						currShip->health -= 10;
+					else
+						;//DEAD
+					listShot.erase(it);
+					break;
+				}
+			}
+
             if (currShip->vector.x() != 0)
             {
                 dist = map.canMove(currShip->position, false, SHIPSIZE, currShip->vector.x());
