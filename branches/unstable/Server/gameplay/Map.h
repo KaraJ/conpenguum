@@ -12,8 +12,8 @@
 #include "Tile.h"
 #include <QVector2D>
 
-#define Pix2Tile(coord) ((coord) / tileSize)
-#define Tile2Pix(tiles) ((tiles) * tileSize)
+#define PIX_TO_TILE(coord) ((coord) / tileSize)
+#define TILE_TO_PIX(tiles) ((tiles) * tileSize)
 
 typedef struct
 {
@@ -29,8 +29,8 @@ class Map
 private :
     Tile ***tiles;
     std::vector<SpawnArea> spawns;
-    int  width;    // map width in tiles
-    int  height;   // map height in tiles
+    int  columns;    // map width in tiles
+    int  rows;   // map height in tiles
     int  tileSize; // length of tile edge in pixels
     Tile *tile(int x, int y);    // get by grid coord
     void ensure(int x, int y);  // ensure grid location has a tile
@@ -42,9 +42,9 @@ public:
     void add(Shot *shot, QVector2D location);
     void remove(Ship *ship, QVector2D location, int size);
     void remove(Shot *shot, QVector2D location);
-    void move(Ship *ship, QVector2D old_position, QVector2D new_position, int size);
+    void move(Ship *ship, QVector2D old_position, QVector2D new_position, double size);
     void move(Shot *shot, QVector2D old_position, QVector2D new_position);
-    double canMove(QVector2D old_position, bool vertical, int size, double distance);
+    double canMove(QVector2D old_position, bool vertical, double size, double distance);
     //std::list<Ship*> ships(QVector2D, int width=1024, int height=768);
     std::list<Shot*> shots(QVector2D, int width=1024, int height=768);
     void drawMap();
