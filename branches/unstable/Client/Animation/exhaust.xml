@@ -5,7 +5,7 @@
 <image>
 	<link>exhaust.bmp</link>
 	<desc>exhaust</desc>
-	<sound></sound>
+	<sound>accel.wav</sound>
 	<numberOfFrames>19</numberOfFrames>
 	<numberImagesWide>19</numberImagesWide>
 	<numberImagesTall>1</numberImagesTall>
