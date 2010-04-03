@@ -35,6 +35,8 @@
 #include "../../Core/comm/data/clientaction.h"
 #include "../../Core/comm/data/updateobject.h"
 
+#define FIRSTAID 	500
+
 class Frame
 {
 private:
@@ -59,7 +61,7 @@ public:
     std::vector<UpdateObject> ListShip2listUpdateObject();
     void printShips(void);
     void printShots(void);
-    void addPwrup(int x, int y) { listPwrup.push_back(NewtObject(x, y, 0, 0, 50)); }
+    void addPwrup(int x, int y) { listPwrup.push_back(NewtObject(x, y, 0, 0, 500)); }
 
 private:
     int dist2Points(QVector2D point1, QVector2D point2);
