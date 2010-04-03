@@ -48,7 +48,7 @@ bool ServerEngine::Start()
 	}
 
 	gameState = new Frame("gameplay/map.xml");
-	gameState->addPwrup(150, 150);
+	srand(time(NULL));
 	timer->start(32);
 	return true;
 }
@@ -141,6 +141,12 @@ void ServerEngine::timeout()
 
 	gameState->tick();
 	uoBuff = gameState->ListShip2listUpdateObject();
+	if (gameState->numPwrups() == 0)
+	{
+		int x = rand() % 2450 + 26;
+		int y = rand() % 2450 + 26;
+		gameState->addPwrup(x, y);
+	}
 
 	for (size_t i = 0; i < uoBuff.size(); ++i)
 		commServer->sendUpdateToAll(uoBuff[i]);
