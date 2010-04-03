@@ -59,8 +59,8 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
     }
 
     // read map data
-    columns  = map_e.attribute("width", "0").toInt() - 1;
-    rows = map_e.attribute("height", "0").toInt() - 1;
+    columns  = map_e.attribute("width", "0").toInt();
+    rows = map_e.attribute("height", "0").toInt();
     tileSize = map_e.attribute("tileSize", "1").toInt();
 
     // create tiles array
@@ -370,11 +370,8 @@ void Map::remove(Shot *shot, QVector2D location)
 ------------------------------------------------------------------------------*/
 bool Map::isWall(int x, int y)
 {
-    if (x <= 0 || y <= 0 || x >= columns || y >= rows)
+    if (x < 0 || y < 0 || x >= columns || y >= rows)
     	return true;
-
-    /*if (tiles[x][y] == NULL)
-        return false;*/
 
     return tiles[x][y]->isWall();
 }
@@ -407,17 +404,25 @@ double Map::canMove(QVector2D position, bool vertical, double objSize, double di
 	double radius = objSize / 2;
 	//Leading edge of object
 	double start, center, end, endTile;
+	double xpos = position.x();
+	double ypos = position.y();
 
 	if (vertical)
 	{
-		if (distance > 0)
-			endTile = PIX_TO_TILE(position.y() + radius + distance);
-		else
-			endTile = PIX_TO_TILE(position.y() - radius + distance);
+	    if (ypos + distance < 0)
+	        endTile++;
 
-		center = PIX_TO_TILE(position.x());
-		start  = PIX_TO_TILE(position.x() - radius);
-		end    = PIX_TO_TILE(position.x() + radius);
+		if (distance > 0)
+			endTile = PIX_TO_TILE(ypos + radius + distance);
+		else
+			endTile = PIX_TO_TILE(ypos - radius + distance);
+
+		if (endTile < 0)
+		    return -distance;
+
+		center = PIX_TO_TILE(xpos);
+		start  = PIX_TO_TILE(xpos - radius);
+		end    = PIX_TO_TILE(xpos + radius);
 
 		if (isWall(center, endTile))
 			return -distance;
@@ -429,13 +434,16 @@ double Map::canMove(QVector2D position, bool vertical, double objSize, double di
 	else
 	{
 		if (distance > 0)
-			endTile = PIX_TO_TILE(position.x() + radius + distance);
+			endTile = PIX_TO_TILE(xpos + radius + distance);
 		else
-			endTile = PIX_TO_TILE(position.x() - radius + distance);
+			endTile = PIX_TO_TILE(xpos - radius + distance);
 
-		center = PIX_TO_TILE(position.y());
-		start  = PIX_TO_TILE(position.y() - radius);
-		end    = PIX_TO_TILE(position.y() + radius);
+        if (endTile < 0)
+            return -distance;
+
+		center = PIX_TO_TILE(ypos);
+		start  = PIX_TO_TILE(ypos - radius);
+		end    = PIX_TO_TILE(ypos + radius);
 
 		if (isWall(center, endTile))
 			return -distance;
