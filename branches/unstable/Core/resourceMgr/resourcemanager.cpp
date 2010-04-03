@@ -195,6 +195,15 @@ ResourceDefinition* ResourceManager::GetResource(int ResourceType, int ResourceN
     	resourceMap.insert(std::pair<int,ResourceDefinition*>(key,rd));
     	return rd;
     }
+    case AIDBOX:
+    {
+    	TexturedResourceDefinition *rd = new TexturedResourceDefinition();
+    	rd->object_height = 10;
+    	rd->object_width = 10;
+    	rd->texture = "firstaid.bmp";
+    	resourceMap.insert(std::pair<int,ResourceDefinition*>(key,rd));
+    	return rd;
+    }
     default:
         return NULL;
     }
