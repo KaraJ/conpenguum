@@ -49,14 +49,28 @@ void Renderer::buildRenderList(QPoint center)
 
     	if (gob->objectId < MAX_CLIENTS)
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHIP, 0);
-    	else if (gob->objectId == 50)
+    	else if (gob->objectId == 500)
+    	{
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(AIDBOX, 0);
+    		renderList[i].texture = textures["firstaid.bmp"];
+			renderList[i].texOffsetX = 0;
+			renderList[i].texOffsetY = 0;
+			renderList[i].objectHeight = 1;
+			renderList[i].objectWidth = 1;
+			renderList[i].rotation = 0;
+			renderList[i].objectHeightPx = rd->object_width;
+			renderList[i].objectWidthPx = rd->object_height;
+			renderList[i].x = SCRCENTREW + (gob->position.x() - xOffset) - rd->object_width / 2;
+			renderList[i].y = SCRCENTREH + (gob->position.y() - yOffset) - rd->object_height / 2;
+			i++;
+			continue;
+    	}
     	else if (gob->objectId > MAX_CLIENTS && gob->objectId < MAX_REAL_OBJECT)
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHOT, 0);
     	else
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(EXHAUST, 0);
 
-		renderList[i].texture = textures[rd->texture];
+    	renderList[i].texture = textures[rd->texture];
 		renderList[i].texOffsetX = gob->animeImage->getLeftOffSet();
 		renderList[i].texOffsetY = gob->animeImage->getTopOffSet();
 		renderList[i].objectHeight = gob->animeImage->getBottomOffSet() - gob->animeImage->getTopOffSet();
