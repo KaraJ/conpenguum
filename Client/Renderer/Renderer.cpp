@@ -122,7 +122,8 @@ void Renderer::resizeGL(int w, int h)
 
 void Renderer::Render()
 {
-	QFont font("Helvetica", 8);
+	QFont nameFont("Helvetica", 8);
+	QFont healthFont("Comic Sans MS", 10, 75);
     //clear the screen
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_TEXTURE_2D);
@@ -151,13 +152,14 @@ void Renderer::Render()
 		quad(3,2) = 1;
 
 		if (renderList[i].name != "")
-			renderText(renderList[i].textX + 10, renderList[i].textY - 40, renderList[i].name, font);
+			renderText(renderList[i].textX - 5, renderList[i].textY - 20, renderList[i].name, nameFont);
 
 		if (renderList[i].health != -1 && renderList[i].name != "")
 		{
+			std::string str = renderList[i].name.toStdString();
 			float hp = (float)renderList[i].health / 100;
 			float sh = (float)renderList[i].shield / 100;
-			renderText(20, 18, "Health", font);
+			renderText(20, 18, "Health", healthFont);
 
 			glBindTexture(GL_TEXTURE_2D, textures["healthbar.bmp"]);
 			glBegin(GL_QUADS);
@@ -180,9 +182,17 @@ void Renderer::Render()
 			if (totalHp <= 0)
 				oss << "Dead yo";
 			else
-				oss <<  totalHp << "/ 100";
-
-			renderText(25, 30, QString(oss.str().c_str()), font);		
+				oss <<  totalHp << " / 100";
+			if (renderList[i].shield > 0)
+				qglColor(Qt::blue);
+			else if (renderList[i].health > 70)
+				qglColor(Qt::white);
+			else if (renderList[i].health > 40)
+				qglColor(Qt::yellow);
+			else
+				qglColor(Qt::red);
+			renderText(35, 33, QString(oss.str().c_str()), healthFont);
+			qglColor(Qt::white);
 		}
 
 		if(renderList[i].rotation > 0)//skip all this if the object is rotationless or at 0;
