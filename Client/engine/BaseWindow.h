@@ -87,7 +87,9 @@ class BaseWindow : public QMainWindow
 		std::map<int, Animation> animationMap;
 		std::queue<int> freeIds;
 		bool chatting;
+		int chatIndex;
 		std::string chatString;
+		QString* qChatString;
 		CommClient::CommClient* theClient;
 		QPoint scrnCenter;
 		Renderer* ren;
