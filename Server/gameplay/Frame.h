@@ -62,6 +62,7 @@ public:
     void printShips(void);
     void printShots(void);
     void addPwrup(int x, int y) { listPwrup.push_back(NewtObject(x, y, 0, 0, 500)); }
+    int numPwrups() const { return listPwrup.size(); }
 
 private:
     int dist2Points(QVector2D point1, QVector2D point2);
