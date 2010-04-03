@@ -415,11 +415,12 @@ double Map::canMove(QVector2D position, bool vertical, int size, double distance
     // leading edge
     double edgeBegin = Pix2Tile(vertical ? position.x() : position.y());
     double edgeEnd = Pix2Tile((vertical ? position.x() : position.y()) + size);
+
     // movement
     double moveStart = Pix2Tile((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0));
     double moveStop = Pix2Tile((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0) + distance);
 
-    cout << "Moving a " << size << "px object at: " << position.x() << "x" << position.y() << (vertical ? " vertically" : " horizontally") << " by " << distance << " pixels" << endl;
+    /*cout << "Moving a " << size << "px object at: " << position.x() << "x" << position.y() << (vertical ? " vertically" : " horizontally") << " by " << distance << " pixels" << endl;
 
     // check for invalid values (starting outside the map, etc):
     if (edgeBegin < 0 || edgeEnd < 0 || moveStart < 0)
@@ -438,7 +439,7 @@ double Map::canMove(QVector2D position, bool vertical, int size, double distance
         return 0;
     }
 
-    cout << "values: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << ", moveStop=" << moveStop << endl;
+    cout << "values: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << ", moveStop=" << moveStop << endl;*/
 
     // calculation
     if (distance > 0) // moving in positive direction
