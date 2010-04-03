@@ -303,21 +303,23 @@ void Frame::updateShots(void)
         	listShot.erase(it);
         	return;
         }
-        map.move(&(*it), oldPos, it->position);
 
-		if(map.hasShip(it->position)){
-            shiplist = map.ships(it->position);
+		if(map.hasShip(oldPos)){
+            shiplist = map.ships(oldPos);
 			for(itr = shiplist.begin(); itr != shiplist.end(); ++itr){
-			    if(dist2Points((*itr)->position, it->position) < SHIP_HIT_DIST){
+			    if(dist2Points((*itr)->position, oldPos) < SHIP_HIT_DIST){
                     //TODO: call Kara scoreboard method to add a death
                     //(*itr)->id is the person dieing
                     //(it->id-32)/10 is the killer
 					fragShip((*itr)->id);
-        	        map.remove(&(*it), it->position);
+        	        map.remove(&(*it), oldPos);
         	        listShot.erase(it);
+                    return;
 				}
 			}
 		}
+
+        map.move(&(*it), oldPos, it->position);
     }
 }
 
@@ -475,7 +477,7 @@ void Frame::printShots(void)
 
 void Frame::fragShip(size_t shipID){
     Ship *ship = getShip(shipID);
-    ship->active = true;
+    ship->active = false;
 }
 
 
