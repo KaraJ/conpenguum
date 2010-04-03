@@ -180,6 +180,7 @@ void Frame::updateShips(void)
 {
     double dist;
 	QVector2D oldPosition;
+	QVector2D newVector;
 
     for(size_t i = 0; i < MAX_CLIENTS; ++i)
     {
@@ -190,43 +191,7 @@ void Frame::updateShips(void)
 			oldPosition.setX(currShip->position.x());
 			oldPosition.setY(currShip->position.y());
 
-			QVector2D newVector;
-            if(currShip->actionMask.isAccelerating()) // thrust forward
-            {
-                QVector2D current(currShip->vector);
-                newVector = current + rotVelToVec(currShip->rotation * 2, VELOCITY_THRUST);
-            }
-
-            if(currShip->actionMask.isDecelerating()) // thrust reverse
-            {
-                // '-=' on a negative vector was causing more acceleration - changed to +=
-                QVector2D current(currShip->vector);
-                newVector = current + rotVelToVec(currShip->rotation * 2, -VELOCITY_THRUST);
-            }
-
-            if(currShip->actionMask.isDecelerating() || currShip->actionMask.isAccelerating())
-            {
-                //currently, if you are at max speed your direction doesn't change because of this
-                //fixing -- JT
-                double magnitude = newVector.lengthSquared();
-
-                if(magnitude > VELOCITY_MAX)
-                {
-                    newVector /= magnitude/VELOCITY_MAX;
-                }
-                currShip->vector = newVector;
-            }
-
-            if(currShip->actionMask.isTurningRight()) // turn right
-            {
-                currShip->rotation -= ROTATION_RATE;
-                if (currShip->rotation < 0)
-                    currShip->rotation = 180 + currShip->rotation;
-            }
-
-            if(currShip->actionMask.isTurningLeft()) // turn left
-                currShip->rotation = (currShip->rotation + ROTATION_RATE) % 180;
-
+            //TODO: Iterating over all shots is inefficient, this will be changed once testing is complete.
 			for (list<Shot>::iterator it = listShot.begin(); it != listShot.end(); ++it)
 			{
 				QVector2D pos = it->getPosition();
@@ -252,15 +217,17 @@ void Frame::updateShips(void)
             if (currShip->vector.x() != 0)
             {
                 dist = map.canMove(currShip->position, false, SHIPSIZE, currShip->vector.x());
+
                 if((currShip->vector.x() > 0 && dist < 0) || (currShip->vector.x() < 0 && dist > 0))
                 {
                 	currShip->vector.setX(-currShip->vector.x());
-                	//Hit a wall, take damage
-					if (currShip->shield > 0)
+
+					if (currShip->shield > 0) //Hit a wall, take damage
 						currShip->shield -= 10;
 					else if (currShip->health > 0)
 						currShip->health -= 10;
                 }
+
                 currShip->position.setX(currShip->position.x() + dist);
             }
 
@@ -271,38 +238,67 @@ void Frame::updateShips(void)
                 if((currShip->vector.y() > 0 && dist < 0) || (currShip->vector.y() < 0 && dist > 0))
                 {
                 	currShip->vector.setY(-currShip->vector.y());
-                	//Hit a wall, take damage
-                	if (currShip->shield > 0)
+
+                	if (currShip->shield > 0) //Hit a wall, take damage
 						currShip->shield -= 10;
 					else if (currShip->health > 0)
 						currShip->health -= 10;
                 }
+
                 currShip->position.setY(currShip->position.y() + dist);
             }
 
             map.move(currShip, oldPosition, currShip->position, SHIPSIZE);
 
+            if(currShip->actionMask.isAccelerating()) // thrust forward
+                newVector = currShip->vector + rotVelToVec(currShip->rotation * 2, VELOCITY_THRUST);
+
+            if(currShip->actionMask.isDecelerating()) // thrust reverse
+                newVector = currShip->vector + rotVelToVec(currShip->rotation * 2, -VELOCITY_THRUST);
+
+            if(currShip->actionMask.isDecelerating() || currShip->actionMask.isAccelerating())
+            {
+                //currently, if you are at max speed your direction doesn't change because of this
+                //fixing -- JT
+                double magnitude = newVector.lengthSquared();
+
+                if(magnitude > VELOCITY_MAX)
+                {
+                    newVector /= magnitude/VELOCITY_MAX;
+                }
+                currShip->vector = newVector;
+            }
+
+            if(currShip->actionMask.isTurningRight()) // turn right
+            {
+                currShip->rotation -= ROTATION_RATE;
+                if (currShip->rotation < 0)
+                    currShip->rotation = 180 + currShip->rotation;
+            }
+
+            if(currShip->actionMask.isTurningLeft()) // turn left
+                currShip->rotation = (currShip->rotation + ROTATION_RATE) % 180;
+
 			if(currShip->shotCooldown > 0)
 				currShip->shotCooldown--;
 
-			if(currShip->shotCooldown == 0)
+			if(currShip->shotCooldown == 0 && currShip->actionMask.isFiring())
 			{
-				if(currShip->actionMask.isFiring())
-				{
-					QVector2D spawnVec, shotVec;
-					spawnVec = rotVelToVec(currShip->rotation * 2, SHIPRADIUS);
-					shotVec =  rotVelToVec(currShip->rotation * 2, VELOCITY_SHOT);
-					Shot shot(currShip->position.x() + spawnVec.x(), currShip->position.y()
-						+ spawnVec.y(), shotVec.x(), shotVec.y(), currShip->getNextShotID(), (frameTimer + 60));
-					addShot(shot);
-					map.add(&shot, shot.position);
-					currShip->shotCooldown = 30;
-				}
+                QVector2D spawnVec, shotVec;
+                spawnVec = rotVelToVec(currShip->rotation * 2, SHIPRADIUS);
+                shotVec =  rotVelToVec(currShip->rotation * 2, VELOCITY_SHOT);
+                Shot shot(currShip->position.x() + spawnVec.x(), currShip->position.y()
+                    + spawnVec.y(), shotVec.x(), shotVec.y(), currShip->getNextShotID(), (frameTimer + 60));
+                addShot(shot);
+                map.add(&shot, shot.position);
+                currShip->shotCooldown = 30;
 			}
+
 			if (currShip->shieldCooldown == 0)
 			{
 				if (currShip->shield < 100)
 					currShip->shield = MIN(100, (currShip->shield + 10));
+
 				currShip->shieldCooldown = 150;
 			}
 			else
