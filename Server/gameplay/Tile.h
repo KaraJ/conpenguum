@@ -9,15 +9,12 @@
 class Tile {
 private:
     bool wall;
-    bool x; //TODO: This cannot be right
-    bool y;
     std::list<Ship*> ships;
     std::list<Shot*> shots;
 public:
-    Tile();
-    Tile(int x, int y);
-    Tile(int x, int y, bool wall);
-    bool isWall();
+    Tile() : wall(false) { }
+    bool isWall() { return wall; }
+    void setWall() { wall = true; }
     int numShips();
     int numShots();
     void add(Ship *ship);
