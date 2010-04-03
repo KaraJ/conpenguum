@@ -10,25 +10,26 @@
 using namespace std;
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::Map
---
---  DATE:       February 17, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  Map(QString filename)
---              filename : filename of the map xml file
---
---  NOTES:      Constructor that parses an XML file.
---
---  RETURNS:    Map object (constructor).
---
-------------------------------------------------------------------------------*/
-Map::Map(QString filename) : width(0), height(0), tileSize(1)
+ --  FUNCTION:   Map::Map
+ --
+ --  DATE:       February 17, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  Map(QString filename)
+ --              filename : filename of the map xml file
+ --
+ --  NOTES:      Constructor that parses an XML file.
+ --
+ --  RETURNS:    Map object (constructor).
+ --
+ ------------------------------------------------------------------------------*/
+Map::Map(QString filename) :
+    width(0), height(0), tileSize(1)
 {
     QDomDocument doc;
     int x, y;
@@ -59,16 +60,16 @@ Map::Map(QString filename) : width(0), height(0), tileSize(1)
     }
 
     // read map data
-    width  = map_e.attribute("width", "0").toInt(); //Rectangular maps work just fine thankyou!
+    width = map_e.attribute("width", "0").toInt(); //Rectangular maps work just fine thankyou!
     height = map_e.attribute("height", "0").toInt();
     tileSize = map_e.attribute("tileSize", "1").toInt();
 
     // create tiles array
     tiles = new Tile**[width];
-    for(int x=0; x < width; ++x)
+    for (int x = 0; x < width; ++x)
     {
         tiles[x] = new Tile*[height];
-        for (int y=0; y < height; ++y)
+        for (int y = 0; y < height; ++y)
         {
             tiles[x][y] = NULL;
         }
@@ -96,7 +97,7 @@ Map::Map(QString filename) : width(0), height(0), tileSize(1)
     // read spawns
     QDomNodeList spawn_l = map_e.elementsByTagName("spawn");
     SpawnArea spawn;
-    for (int si=0; si < spawn_l.count(); ++si)
+    for (int si = 0; si < spawn_l.count(); ++si)
     {
         QDomElement spawn_e = spawn_l.item(si).toElement();
         spawn.x = spawn_e.attribute("x").toInt();
@@ -108,30 +109,30 @@ Map::Map(QString filename) : width(0), height(0), tileSize(1)
     }
 
     // seed rand(), used later in spawn selection
-    srand(time(NULL));
+    srand( time(NULL));
 
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::tile
---
---  DATE:       February 17, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  Tile tile(int x, int y)
---              x : x position along grid of target tile
---              y : y position along grid of target tile
---
---  NOTES:      Returns the tile at the specified position.
---
---  RETURNS:    Tile at the specified position.
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::tile
+ --
+ --  DATE:       February 17, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  Tile tile(int x, int y)
+ --              x : x position along grid of target tile
+ --              y : y position along grid of target tile
+ --
+ --  NOTES:      Returns the tile at the specified position.
+ --
+ --  RETURNS:    Tile at the specified position.
+ --
+ ------------------------------------------------------------------------------*/
 Tile *Map::tile(int x, int y)
 {
     ensure(x, y);
@@ -139,28 +140,29 @@ Tile *Map::tile(int x, int y)
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::move
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  move(Ship *ship, QVector2D old_position, QVector2D new_position, int size)
---              Ship *ship : Pointer to the ship to move
---              QVector2D old_position : the previous position of the ship.
---              QVector2D new_position : the new position of the ship.
---              int size : The size of a ship
---
---  NOTES:      Moves the ship from its old tile to the new one.
---
---  RETURNS:    void
---
-------------------------------------------------------------------------------*/
-void Map::move(Ship *ship, QVector2D old_position, QVector2D new_position, int size) {
+ --  FUNCTION:   Map::move
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  move(Ship *ship, QVector2D old_position, QVector2D new_position, int size)
+ --              Ship *ship : Pointer to the ship to move
+ --              QVector2D old_position : the previous position of the ship.
+ --              QVector2D new_position : the new position of the ship.
+ --              int size : The size of a ship
+ --
+ --  NOTES:      Moves the ship from its old tile to the new one.
+ --
+ --  RETURNS:    void
+ --
+ ------------------------------------------------------------------------------*/
+void Map::move(Ship *ship, QVector2D old_position, QVector2D new_position, int size)
+{
     double xl1 = Pix2Tile(old_position.x());
     double xr1 = Pix2Tile(old_position.x() + size);
     double xl2 = Pix2Tile(new_position.x());
@@ -180,7 +182,8 @@ void Map::move(Ship *ship, QVector2D old_position, QVector2D new_position, int s
                     ensure(x, y);
                     tile(x, y)->add(ship);
                 }
-            } else // is in old position!
+            }
+            else // is in old position!
             {
                 if (x < xl2 || x > xr2 || y < yb2 || y > yt2) // if not in new position
                 {
@@ -194,26 +197,26 @@ void Map::move(Ship *ship, QVector2D old_position, QVector2D new_position, int s
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::move
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  move(Shot *shto, QVector2D old_position, QVector2D new_position)
---              Shot *shot : Pointer to the shot to move
---              QVector2D old_position : the previous position of the shot.
---              QVector2D new_position : the new position of the shot.
---
---  NOTES:      Moves the shot from its old tile to the new one.
---
---  RETURNS:    void
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::move
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  move(Shot *shto, QVector2D old_position, QVector2D new_position)
+ --              Shot *shot : Pointer to the shot to move
+ --              QVector2D old_position : the previous position of the shot.
+ --              QVector2D new_position : the new position of the shot.
+ --
+ --  NOTES:      Moves the shot from its old tile to the new one.
+ --
+ --  RETURNS:    void
+ --
+ ------------------------------------------------------------------------------*/
 void Map::move(Shot *shot, QVector2D old_position, QVector2D new_position)
 {
     int old_x = Pix2Tile(old_position.x());
@@ -227,26 +230,26 @@ void Map::move(Shot *shot, QVector2D old_position, QVector2D new_position)
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::add
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  move(Ship *ship, QVector2D location, int size)
---              Ship *ship : Pointer to the ship to add
---              QVector2D location : location of the ship (so it can be added to the map).
---              size : Size of a ship.
---
---  NOTES:      Adds a new ship to the map.
---
---  RETURNS:    void
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::add
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  move(Ship *ship, QVector2D location, int size)
+ --              Ship *ship : Pointer to the ship to add
+ --              QVector2D location : location of the ship (so it can be added to the map).
+ --              size : Size of a ship.
+ --
+ --  NOTES:      Adds a new ship to the map.
+ --
+ --  RETURNS:    void
+ --
+ ------------------------------------------------------------------------------*/
 void Map::add(Ship *ship, QVector2D location, int size)
 {
     int x1 = Pix2Tile(location.x());
@@ -264,25 +267,25 @@ void Map::add(Ship *ship, QVector2D location, int size)
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::add
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  move(Shot *shot, QVector2D location, int size)
---              Shot *shot : Pointer to the shot to add
---              QVector2D location : location of the shot (so it can be added to the map).
---
---  NOTES:      Adds a new shot to the map.
---
---  RETURNS:    void
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::add
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  move(Shot *shot, QVector2D location, int size)
+ --              Shot *shot : Pointer to the shot to add
+ --              QVector2D location : location of the shot (so it can be added to the map).
+ --
+ --  NOTES:      Adds a new shot to the map.
+ --
+ --  RETURNS:    void
+ --
+ ------------------------------------------------------------------------------*/
 void Map::add(Shot *shot, QVector2D location)
 {
     int x = Pix2Tile(location.x());
@@ -292,26 +295,26 @@ void Map::add(Shot *shot, QVector2D location)
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::remove
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  move(Ship *ship, QVector2D location, int size)
---              Ship *ship : Pointer to the ship to remove
---              QVector2D location : location of the ship.
---              size : Size of a ship.
---
---  NOTES:      Removes a ship from the map.
---
---  RETURNS:    void
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::remove
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  move(Ship *ship, QVector2D location, int size)
+ --              Ship *ship : Pointer to the ship to remove
+ --              QVector2D location : location of the ship.
+ --              size : Size of a ship.
+ --
+ --  NOTES:      Removes a ship from the map.
+ --
+ --  RETURNS:    void
+ --
+ ------------------------------------------------------------------------------*/
 void Map::remove(Ship *ship, QVector2D location, int size)
 {
     int x1 = Pix2Tile(location.x());
@@ -329,26 +332,26 @@ void Map::remove(Ship *ship, QVector2D location, int size)
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::remove
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  move(Shot *shot, QVector2D location, int size)
---              Shot *shot : Pointer to the shot to remove
---              QVector2D location : location of the shot.
---              size : Size of a shot.
---
---  NOTES:      Removes a shot from the map.
---
---  RETURNS:    void
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::remove
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  move(Shot *shot, QVector2D location, int size)
+ --              Shot *shot : Pointer to the shot to remove
+ --              QVector2D location : location of the shot.
+ --              size : Size of a shot.
+ --
+ --  NOTES:      Removes a shot from the map.
+ --
+ --  RETURNS:    void
+ --
+ ------------------------------------------------------------------------------*/
 void Map::remove(Shot *shot, QVector2D location)
 {
     int x = Pix2Tile(location.x());
@@ -358,29 +361,29 @@ void Map::remove(Shot *shot, QVector2D location)
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::isWall
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  bool isWall(int x, int y)
---              x : x position in grid
---              y : y position in grid
---
---  NOTES:      checks if a tile is a wall.
---
---  RETURNS:    true if the tile is a wall, else false.
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::isWall
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  bool isWall(int x, int y)
+ --              x : x position in grid
+ --              y : y position in grid
+ --
+ --  NOTES:      checks if a tile is a wall.
+ --
+ --  RETURNS:    true if the tile is a wall, else false.
+ --
+ ------------------------------------------------------------------------------*/
 bool Map::isWall(int x, int y)
 {
     if (x < 0 || y < 0 || x >= width || y >= height)
-    	return true;
+        return true;
 
     if (tiles[x][y] == NULL)
         return false;
@@ -389,27 +392,27 @@ bool Map::isWall(int x, int y)
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::canMove
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  int canMove(QVector2D position, bool vertical, int size, int distance)
---              position : position of object we'd like to move (top-left corner)
---              vertical : true if trying to move vertically, false if moving horizontally
---              size : size of the object we are moving
---              distance : the distance we would like to try and move
---
---  NOTES:      calculates how far an object can move in any given direction (up to max of distance)
---
---  RETURNS:    The number of grid units the object can move or -1 if an error occured.
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::canMove
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  int canMove(QVector2D position, bool vertical, int size, int distance)
+ --              position : position of object we'd like to move (top-left corner)
+ --              vertical : true if trying to move vertically, false if moving horizontally
+ --              size : size of the object we are moving
+ --              distance : the distance we would like to try and move
+ --
+ --  NOTES:      calculates how far an object can move in any given direction (up to max of distance)
+ --
+ --  RETURNS:    The number of grid units the object can move or -1 if an error occured.
+ --
+ ------------------------------------------------------------------------------*/
 double Map::canMove(QVector2D position, bool vertical, int size, double distance)
 {
     // leading edge
@@ -422,44 +425,44 @@ double Map::canMove(QVector2D position, bool vertical, int size, double distance
 
     /*cout << "Moving a " << size << "px object at: " << position.x() << "x" << position.y() << (vertical ? " vertically" : " horizontally") << " by " << distance << " pixels" << endl;
 
-    // check for invalid values (starting outside the map, etc):
-    if (edgeBegin < 0 || edgeEnd < 0 || moveStart < 0)
-    {
-        cerr << "value below zero: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
-        return 0;
-    }
-    if (vertical && (edgeBegin >= width || edgeEnd >= width || moveStart >= height))
-    {
-        cerr << "value above width (" << width << "): edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
-        return 0;
-    }
-    if (!vertical && (edgeBegin >= height || edgeEnd >= height || moveStart >= width))
-    {
-        cerr << "value above height (" << height << "): edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
-        return 0;
-    }
+     // check for invalid values (starting outside the map, etc):
+     if (edgeBegin < 0 || edgeEnd < 0 || moveStart < 0)
+     {
+     cerr << "value below zero: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
+     return 0;
+     }
+     if (vertical && (edgeBegin >= width || edgeEnd >= width || moveStart >= height))
+     {
+     cerr << "value above width (" << width << "): edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
+     return 0;
+     }
+     if (!vertical && (edgeBegin >= height || edgeEnd >= height || moveStart >= width))
+     {
+     cerr << "value above height (" << height << "): edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << endl;
+     return 0;
+     }
 
-    cout << "values: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << ", moveStop=" << moveStop << endl;*/
+     cout << "values: edgeBegin=" << edgeBegin << ", edgeEnd=" << edgeEnd << ", moveStart=" << moveStart << ", moveStop=" << moveStop << endl;*/
 
     // calculation
     if (distance > 0) // moving in positive direction
     {
-        for (double m=moveStart; m <= moveStop; ++m)
+        for (double m = moveStart; m <= moveStop; ++m)
         {
-            for (double l=edgeBegin; l <= edgeEnd; ++l)
+            for (double l = edgeBegin; l <= edgeEnd; ++l)
             {
-                if (m >= (vertical ? height : width) || (!vertical && isWall(m, l)) || (vertical && isWall(l, m)))  // detect collision
+                if (m >= (vertical ? height : width) || (!vertical && isWall(m, l)) || (vertical && isWall(l, m))) // detect collision
                 {
-                    return Tile2Pix(m) - (vertical ? position.y() : position.x()) - size -1;
+                    return Tile2Pix(m) - (vertical ? position.y() : position.x()) - size - 1;
                 }
             }
         }
     }
     else // moving in negative direction
     {
-        for (double m=moveStart; m >= moveStop; --m)
+        for (double m = moveStart; m >= moveStop; --m)
         {
-            for (double l=edgeBegin; l <= edgeEnd; ++l)
+            for (double l = edgeBegin; l <= edgeEnd; ++l)
             {
                 if (m < 0 || (!vertical && isWall(m, l)) || (vertical && isWall(l, m))) // detect collision
                 {
@@ -468,29 +471,29 @@ double Map::canMove(QVector2D position, bool vertical, int size, double distance
             }
         }
     }
-    return distance;    // no collision detected, can move full distance
+    return distance; // no collision detected, can move full distance
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::ensure
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  void ensure(int x, int y)
---              x : x position on grid
---              y : y position on grid
---
---  NOTES:      ensures that there is a tile object at x,y (if tile already exists, nothing happens)
---
---  RETURNS:    void.
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::ensure
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  void ensure(int x, int y)
+ --              x : x position on grid
+ --              y : y position on grid
+ --
+ --  NOTES:      ensures that there is a tile object at x,y (if tile already exists, nothing happens)
+ --
+ --  RETURNS:    void.
+ --
+ ------------------------------------------------------------------------------*/
 void Map::ensure(int x, int y)
 {
     if (tiles[x][y] == NULL)
@@ -500,26 +503,26 @@ void Map::ensure(int x, int y)
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::clean
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  void clean(int x, int y)
---              x : x position on grid
---              y : y position on grid
---
---  NOTES:      Cleans the specified coordinates. If the tile is empty (and not a wall), it is deleted.
---              This is used to minimize ram usage (which would otherwise escalate badly for larger maps)
---
---  RETURNS:    void.
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::clean
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  void clean(int x, int y)
+ --              x : x position on grid
+ --              y : y position on grid
+ --
+ --  NOTES:      Cleans the specified coordinates. If the tile is empty (and not a wall), it is deleted.
+ --              This is used to minimize ram usage (which would otherwise escalate badly for larger maps)
+ --
+ --  RETURNS:    void.
+ --
+ ------------------------------------------------------------------------------*/
 void Map::clean(int x, int y)
 {
     if (tiles[x][y] == NULL)
@@ -535,28 +538,28 @@ void Map::clean(int x, int y)
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::drawMap
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  void drawMap()
---
---  NOTES:      Draws the map to stdout (used for testing & debuging maps).
---
---  RETURNS:    void.
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::drawMap
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  void drawMap()
+ --
+ --  NOTES:      Draws the map to stdout (used for testing & debuging maps).
+ --
+ --  RETURNS:    void.
+ --
+ ------------------------------------------------------------------------------*/
 void Map::drawMap()
 {
-    for(int i = 0; i < width; i++)
+    for (int i = 0; i < width; i++)
     {
-        for(int j = 0; j < height; j++)
+        for (int j = 0; j < height; j++)
         {
             std::cout << (isWall(i, j) ? "X" : "-");
         }
@@ -565,80 +568,80 @@ void Map::drawMap()
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::ships
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  std::list<Ship*> Map::ships(QVector2D center, int width=1024, int height=768)
---              center : center of the viewport
---              width : width of the viewport
---              height : height of the viewport
---
---  NOTES:      Returns all ships in a given viewport.
---              The viewport will have a margin of 50% of every side (quadrupaling total viewport area)
---
---  RETURNS:    void.
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::ships
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  std::list<Ship*> Map::ships(QVector2D center, int width=1024, int height=768)
+ --              center : center of the viewport
+ --              width : width of the viewport
+ --              height : height of the viewport
+ --
+ --  NOTES:      Returns all ships in a given viewport.
+ --              The viewport will have a margin of 50% of every side (quadrupaling total viewport area)
+ --
+ --  RETURNS:    void.
+ --
+ ------------------------------------------------------------------------------*/
 /*std::list<Ship*> Map::ships(QVector2D center, int width, int height)
-{
-    std::list<Ship*> list, list2;
-    int left   = MAX(0       , Pix2Tile(center.x() - width));
-    int right  = MIN(width-1 , Pix2Tile(center.x() + width));
-    int bottom = MAX(0       , Pix2Tile(center.y() - width));
-    int top    = MIN(height-1, Pix2Tile(center.x() + width));
-    for (int x=left; x <= right; ++x)
-    {
-        for (int y=bottom; y <= top; ++x)
-        {
-            list2 = tile(x, y)->getShips();
-            list.sort();
-            list2.sort();
-            list.merge(list2);
-        }
-    }
-    list.unique();
-    return list;
-}*/
+ {
+ std::list<Ship*> list, list2;
+ int left   = MAX(0       , Pix2Tile(center.x() - width));
+ int right  = MIN(width-1 , Pix2Tile(center.x() + width));
+ int bottom = MAX(0       , Pix2Tile(center.y() - width));
+ int top    = MIN(height-1, Pix2Tile(center.x() + width));
+ for (int x=left; x <= right; ++x)
+ {
+ for (int y=bottom; y <= top; ++x)
+ {
+ list2 = tile(x, y)->getShips();
+ list.sort();
+ list2.sort();
+ list.merge(list2);
+ }
+ }
+ list.unique();
+ return list;
+ }*/
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::shots
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  std::list<Shot*> Map::shots(QVector2D center, int width=1024, int height=768)
---              center : center of the viewport
---              width : width of the viewport
---              height : height of the viewport
---
---  NOTES:      Returns all shots in a given viewport.
---              The viewport will have a margin of 50% of every side (quadrupaling total viewport area)
---
---  RETURNS:    void.
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::shots
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  std::list<Shot*> Map::shots(QVector2D center, int width=1024, int height=768)
+ --              center : center of the viewport
+ --              width : width of the viewport
+ --              height : height of the viewport
+ --
+ --  NOTES:      Returns all shots in a given viewport.
+ --              The viewport will have a margin of 50% of every side (quadrupaling total viewport area)
+ --
+ --  RETURNS:    void.
+ --
+ ------------------------------------------------------------------------------*/
 std::list<Shot*> Map::shots(QVector2D center, int width, int height)
 {
     std::list<Shot*> list, list2;
-    int left   = MAX(0       , Pix2Tile(center.x() - width));
-    int right  = MIN(width-1 , Pix2Tile(center.x() + width));
-    int bottom = MAX(0       , Pix2Tile(center.y() - width));
-    int top    = MIN(height-1, Pix2Tile(center.x() + width));
-    for (int x=left; x <= right; ++x)
+    int left = MAX(0 , Pix2Tile(center.x() - width));
+    int right = MIN(width-1 , Pix2Tile(center.x() + width));
+    int bottom = MAX(0 , Pix2Tile(center.y() - width));
+    int top = MIN(height-1, Pix2Tile(center.x() + width));
+    for (int x = left; x <= right; ++x)
     {
-        for (int y=bottom; y <= top; ++x)
+        for (int y = bottom; y <= top; ++x)
         {
             list2 = tile(x, y)->getShots();
             list.sort();
@@ -651,73 +654,73 @@ std::list<Shot*> Map::shots(QVector2D center, int width, int height)
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::isWall
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  bool isWall(QVector2D location)
---              location : location to check for wall status
---
---  NOTES:      checks if a location is a wall.
---
---  RETURNS:    true if the location is a wall, else false.
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::isWall
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  bool isWall(QVector2D location)
+ --              location : location to check for wall status
+ --
+ --  NOTES:      checks if a location is a wall.
+ --
+ --  RETURNS:    true if the location is a wall, else false.
+ --
+ ------------------------------------------------------------------------------*/
 bool Map::isWall(QVector2D location)
 {
     return isWall(Pix2Tile(location.x()), Pix2Tile(location.y()));
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::hasShip
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  bool hasShip(QVector2D location)
---              location : location to check for ships
---
---  NOTES:      checks if a location's tile contains a ship.
---
---  RETURNS:    true if the location's tile contains a ship, else false.
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::hasShip
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  bool hasShip(QVector2D location)
+ --              location : location to check for ships
+ --
+ --  NOTES:      checks if a location's tile contains a ship.
+ --
+ --  RETURNS:    true if the location's tile contains a ship, else false.
+ --
+ ------------------------------------------------------------------------------*/
 bool Map::hasShip(QVector2D location)
 {
     return hasShip(Pix2Tile(location.x()), Pix2Tile(location.y()));
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::hasShip
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  bool hasShip(int x, int y)
---              x : x co-ord of grid to check for ships
---              y : y co-ord of grid to check for ships
---
---  NOTES:      checks if a tile contains a ship.
---
---  RETURNS:    true if the tile contains a ship, else false.
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::hasShip
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  bool hasShip(int x, int y)
+ --              x : x co-ord of grid to check for ships
+ --              y : y co-ord of grid to check for ships
+ --
+ --  NOTES:      checks if a tile contains a ship.
+ --
+ --  RETURNS:    true if the tile contains a ship, else false.
+ --
+ ------------------------------------------------------------------------------*/
 bool Map::hasShip(int x, int y)
 {
     if (tiles[x][y] == NULL)
@@ -728,24 +731,24 @@ bool Map::hasShip(int x, int y)
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   Map::ships
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  bool ships(QVector2D location)
---              location : location who's tile we need the ships from
---
---  NOTES:      gets all the ships in a given tile.
---
---  RETURNS:    std::list of ship pointers.
---
-------------------------------------------------------------------------------*/
+ --  FUNCTION:   Map::ships
+ --
+ --  DATE:       January 27, 2010
+ --
+ --  REVISIONS:  v0.1 - pinch of  code, mostly comments.
+ --
+ --  DESIGNER:   Gameplay/Physics Team
+ --
+ --  PROGREMMER: Gameplay/Physics Team
+ --
+ --  INTERFACE:  bool ships(QVector2D location)
+ --              location : location who's tile we need the ships from
+ --
+ --  NOTES:      gets all the ships in a given tile.
+ --
+ --  RETURNS:    std::list of ship pointers.
+ --
+ ------------------------------------------------------------------------------*/
 std::list<Ship*> Map::ships(QVector2D location)
 {
     int x = Pix2Tile(location.x());
@@ -763,9 +766,11 @@ QVector2D Map::getSpawn(int team, int size)
     int teamCount = 0;
     SpawnArea teamSpawns[spawns.size()];
     SpawnArea area;
-    for (size_t i=0; i < spawns.size(); ++i) {
+    for (size_t i = 0; i < spawns.size(); ++i)
+    {
         area = spawns.at(i);
-        if (area.team == team && area.width >= size && area.height >= size) {
+        if (area.team == team && area.width >= size && area.height >= size)
+        {
             teamSpawns[teamCount++] = area;
         }
     }
