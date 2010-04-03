@@ -48,6 +48,7 @@ bool ServerEngine::Start()
 	}
 
 	gameState = new Frame("gameplay/map.xml");
+	gameState->addPwrup(100, 100);
 	timer->start(32);
 	return true;
 }
