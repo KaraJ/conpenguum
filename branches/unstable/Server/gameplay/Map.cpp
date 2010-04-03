@@ -66,11 +66,7 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
     // create tiles array
     tiles=new Tile*[rows];
     for(int i = 0; i < rows; ++i)
-    {
     	*(tiles + i) = new Tile[columns];
-    	//for(int x = 0; x < columns; ++x)
-    	//	*(tiles[i] + x) = new Tile();
-    }
 
     // read tiles
     QDomNodeList tile_l = map_e.elementsByTagName("tile");
@@ -378,19 +374,9 @@ double Map::canMove(QVector2D position, bool vertical, double objSize, double di
 		else
 			endTile = PIX_TO_TILE(ypos - radius + distance);
 
-		if (endTile < 0)
-		    return -distance;
-
 		center = PIX_TO_TILE(xpos);
 		start  = PIX_TO_TILE(xpos - radius);
 		end    = PIX_TO_TILE(xpos + radius);
-
-		if (isWall(center, endTile))
-			return -distance;
-		if ((isWall(start, endTile)))
-			return -distance;
-		if (isWall(end, endTile))
-			return -distance;
 	}
 	else
 	{
@@ -399,20 +385,21 @@ double Map::canMove(QVector2D position, bool vertical, double objSize, double di
 		else
 			endTile = PIX_TO_TILE(xpos - radius + distance);
 
-        if (endTile < 0)
-            return -distance;
 
 		center = PIX_TO_TILE(ypos);
 		start  = PIX_TO_TILE(ypos - radius);
 		end    = PIX_TO_TILE(ypos + radius);
-
-		if (isWall(center, endTile))
-			return -distance;
-		if (isWall(start, endTile))
-			return -distance;
-		if (isWall(end, endTile))
-			return -distance;
 	}
+
+    if (endTile < 0)
+        return -distance;
+
+    if (isWall(center, endTile))
+        return -distance;
+    if (isWall(start, endTile))
+        return -distance;
+    if (isWall(end, endTile))
+        return -distance;
 
     return distance;    // no collision detected, can move full distance
 }
@@ -603,10 +590,6 @@ bool Map::hasShip(QVector2D location)
 ------------------------------------------------------------------------------*/
 bool Map::hasShip(int x, int y)
 {
-    /*if (tiles[x][y] == NULL)
-    {
-        return false;
-    }*/
     return (tiles[x][y].numShips() > 0);
 }
 
