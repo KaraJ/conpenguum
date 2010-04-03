@@ -335,8 +335,9 @@ void BaseWindow::updateGameState ()
 			updateObj.setHealth(-1);
 			updateObj.setShield(-1);
 		}
-
+			
 		//when the playership is turning to the left
+		/**
                 if(objId < MAX_CLIENTS && updateObj.getActions().isTurningLeft())
                 {
                     vector<Image>& images = animationMap[SHIP].getAnimationImages();
@@ -450,6 +451,7 @@ void BaseWindow::updateGameState ()
                     }
 
                 }
+		 */
 		if (objId < MAX_CLIENTS && updateObj.getActions().isAccelerating()) //for Exhaust trails
 		{
 			ResourceManager *rm = ResourceManager::GetInstance();
@@ -516,7 +518,7 @@ void BaseWindow::clearTransientObjects()
 {
 	list<int> thingsToErase;
         vector<Image>& images = animationMap[EXHAUST].getAnimationImages();
-        vector<Image>& shipImages = animationMap[SHIP].getAnimationImages();
+        //vector<Image>& shipImages = animationMap[SHIP].getAnimationImages();
 
 	for (map<int, GameObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
 	{
@@ -529,10 +531,10 @@ void BaseWindow::clearTransientObjects()
 
 
                         //run through the ship images
-                        if(animatedObj->animeIndex < shipImages.size())
-                            animatedObj->animeImage = &shipImages[animatedObj->animeIndex++];
-                        else
-                            thingsToErase.push_back(it->first);
+                        //if(animatedObj->animeIndex < shipImages.size())
+//                            animatedObj->animeImage = &shipImages[animatedObj->animeIndex++];
+//                        else
+//                            thingsToErase.push_back(it->first);
 
 			if (animatedObj->animeIndex < images.size())
 				animatedObj->animeImage = &images[animatedObj->animeIndex++];
