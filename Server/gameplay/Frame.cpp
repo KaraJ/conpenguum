@@ -154,7 +154,7 @@ void Frame::spawnShip(size_t shipID)
     QVector2D spawnPoint(100,100); // map function to return a safe spawn point
     ship->active = true;
     ship->position = spawnPoint;
-    map.add(ship, ship->position, 50);
+    map.add(ship, ship->position, SHIPSIZE);
 }
 
 /*-----------------------------------------------------------------------------
@@ -190,10 +190,47 @@ void Frame::updateShips(void)
 			oldPosition.setX(currShip->position.x());
 			oldPosition.setY(currShip->position.y());
 
+			QVector2D newVector;
+            if(currShip->actionMask.isAccelerating()) // thrust forward
+            {
+                QVector2D current(currShip->vector);
+                newVector = current + rotVelToVec(currShip->rotation * 2, VELOCITY_THRUST);
+            }
+
+            if(currShip->actionMask.isDecelerating()) // thrust reverse
+            {
+                // '-=' on a negative vector was causing more acceleration - changed to +=
+                QVector2D current(currShip->vector);
+                newVector = current + rotVelToVec(currShip->rotation * 2, -VELOCITY_THRUST);
+            }
+
+            if(currShip->actionMask.isDecelerating() || currShip->actionMask.isAccelerating())
+            {
+                //currently, if you are at max speed your direction doesn't change because of this
+                //fixing -- JT
+                double magnitude = newVector.lengthSquared();
+
+                if(magnitude > VELOCITY_MAX)
+                {
+                    newVector /= magnitude/VELOCITY_MAX;
+                }
+                currShip->vector = newVector;
+            }
+
+            if(currShip->actionMask.isTurningRight()) // turn right
+            {
+                currShip->rotation -= ROTATION_RATE;
+                if (currShip->rotation < 0)
+                    currShip->rotation = 180 + currShip->rotation;
+            }
+
+            if(currShip->actionMask.isTurningLeft()) // turn left
+                currShip->rotation = (currShip->rotation + ROTATION_RATE) % 180;
+
 			for (list<Shot>::iterator it = listShot.begin(); it != listShot.end(); ++it)
 			{
 				QVector2D pos = it->getPosition();
-				if (abs(currShip->position.x() - pos.x()) < 25 && abs(currShip->position.y() - pos.y()) < 25)
+				if (abs(currShip->position.x() - pos.x()) < SHIPRADIUS && abs(currShip->position.y() - pos.y()) < SHIPRADIUS)
 				{
 					if (currShip->shield >= 40)
 						currShip->shield -= 40;
@@ -240,48 +277,10 @@ void Frame::updateShips(void)
 					else if (currShip->health > 0)
 						currShip->health -= 10;
                 }
-
                 currShip->position.setY(currShip->position.y() + dist);
             }
 
             map.move(currShip, oldPosition, currShip->position, SHIPSIZE);
-			
-			QVector2D newVector;
-			if(currShip->actionMask.isAccelerating()) // thrust forward
-			{
-				QVector2D current(currShip->vector);
-				newVector = current + rotVelToVec(currShip->rotation * 2, VELOCITY_THRUST);
-			}
-
-			if(currShip->actionMask.isDecelerating()) // thrust reverse
-			{
-				// '-=' on a negative vector was causing more acceleration - changed to +=
-				QVector2D current(currShip->vector);
-				newVector = current + rotVelToVec(currShip->rotation * 2, -VELOCITY_THRUST);
-			}
-
-			if(currShip->actionMask.isDecelerating() || currShip->actionMask.isAccelerating())
-			{
-				//currently, if you are at max speed your direction doesn't change because of this
-				//fixing -- JT
-				double magnitude = newVector.lengthSquared();
-
-				if(magnitude > VELOCITY_MAX)
-				{
-					newVector /= magnitude/VELOCITY_MAX;
-				}
-				currShip->vector = newVector;
-			}
-
-			if(currShip->actionMask.isTurningRight()) // turn right
-			{
-				currShip->rotation -= ROTATION_RATE;
-				if (currShip->rotation < 0)
-					currShip->rotation = 180 + currShip->rotation;
-			}
-
-			if(currShip->actionMask.isTurningLeft()) // turn left
-				currShip->rotation = (currShip->rotation + ROTATION_RATE) % 180;
 
 			if(currShip->shotCooldown > 0)
 				currShip->shotCooldown--;
@@ -453,7 +452,7 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
 		{
 			UpdateObject uo(listShip[i]->actionMask);
 			uo.setRotation(listShip[i]->rotation);
-                        uo.setPosition(listShip[i]->position.toPoint());
+            uo.setPosition(listShip[i]->position.toPoint());
 			uo.setHealth(listShip[i]->health);
 			uo.setShield(listShip[i]->shield);
 			udList.push_back(uo);
