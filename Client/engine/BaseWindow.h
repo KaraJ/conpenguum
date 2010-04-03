@@ -88,6 +88,7 @@ class BaseWindow : public QMainWindow
 		std::queue<int> freeIds;
 		bool chatting;
 		int chatIndex;
+		bool shift;
 		std::string chatString;
 		QString* qChatString;
 		CommClient::CommClient* theClient;

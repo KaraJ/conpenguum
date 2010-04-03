@@ -41,6 +41,7 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
 	qChatString = new QString[9];
 	qChatString[0] = " ";
 	chatIndex = 1;
+	shift = false;
 	
 	/*this may be temporary*/
 	this->setFixedSize(1024, 768);
@@ -160,6 +161,9 @@ void BaseWindow::keyReleaseEvent (QKeyEvent * event)
 			case Qt::Key_Down:
 				clientAction->unsetDecelerating();
 				break;
+			case Qt::Key_Shift:
+				shift = false;
+				break;
 			case Qt::Key_Control:
 				clientAction->unsetFiring();
 				break;
@@ -193,6 +197,12 @@ int BaseWindow::handleChat(int key)
 		chatString.clear();
 		toggleChat();
 	}
+	//if shift set shift on
+	else if (key == Qt::Key_Shift)
+	{
+		shift = true;
+		return 0;
+	}
 	//if backspace erase the last character
 	else if (key == Qt::Key_Backspace)
 	{
@@ -204,7 +214,10 @@ int BaseWindow::handleChat(int key)
 		//if its a displayable character
 		if ((key >= 32) && (key <= 127))
 		{
-			chatString.push_back(char(key));
+			if (!shift && (char(key) >= 65) && (char(key) <= 90))
+				chatString.push_back(char(key+32));
+			else
+				chatString.push_back(char(key));
 		}
 		else
 		{
@@ -214,6 +227,7 @@ int BaseWindow::handleChat(int key)
 	}
 	//qchatstring[0] string being currently typed
 	qChatString[0] = chatString.c_str();
+	cout << chatString << endl;
 	return 0;
 }
 
