@@ -294,6 +294,26 @@ void Frame::updateShips(void)
 					currShip->shotCooldown = 30;
 				}
 			}
+			if (currShip->shieldCooldown == 0)
+			{
+				if (currShip->shield < 100)
+					currShip->shield = MIN(100, (currShip->shield + 10));
+				currShip->shieldCooldown = 150;
+			}
+			else
+				currShip->shieldCooldown--;
+			for (list<NewtObject>::iterator it = listPwrup.begin(); it != listPwrup.end(); ++it)
+			{
+				QVector2D pos = it->getPosition();
+				if (abs(currShip->position.x() - pos.x()) < 25 && abs(currShip->position.y() - pos.y()) < 25)
+				{
+					if (currShip->health == 100)
+						break;
+					currShip->health = MIN(100, (currShip->health + 50));
+					listPwrup.erase(it);
+					break;
+				}
+			}
         }
     }
 }

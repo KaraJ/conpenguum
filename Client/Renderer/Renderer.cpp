@@ -179,35 +179,44 @@ void Renderer::Render()
 
 			glBindTexture(GL_TEXTURE_2D, textures["healthbar.bmp"]);
 			glBegin(GL_QUADS);
-				glTexCoord2f(0,0);  glVertex2f(20, SCREENHEIGHT - 20);
-				glTexCoord2f(1,0);  glVertex2f(20 + 100*hp, SCREENHEIGHT - 20);
-				glTexCoord2f(1,1);  glVertex2f(20 + 100*hp, SCREENHEIGHT - 35);
-				glTexCoord2f(0,1);  glVertex2f(20, SCREENHEIGHT - 35);
+				glTexCoord2f(0,0);  glVertex2f(20, SCREENHEIGHT - 35);
+				glTexCoord2f(1,0);  glVertex2f(20 + 100*hp, SCREENHEIGHT - 35);
+				glTexCoord2f(1,1);  glVertex2f(20 + 100*hp, SCREENHEIGHT - 50);
+				glTexCoord2f(0,1);  glVertex2f(20, SCREENHEIGHT - 50);
 			glEnd();
 
 			glBindTexture(GL_TEXTURE_2D, textures["shieldbar.bmp"]);
 			glBegin(GL_QUADS);
 				glTexCoord2f(0,0);  glVertex2f(20, SCREENHEIGHT - 20);
 				glTexCoord2f(1,0);  glVertex2f(20 + 100*sh, SCREENHEIGHT - 20);
-				glTexCoord2f(1,1);  glVertex2f(20 + 100*sh, SCREENHEIGHT - 28);
-				glTexCoord2f(0,1);  glVertex2f(20, SCREENHEIGHT - 28);
+				glTexCoord2f(1,1);  glVertex2f(20 + 100*sh, SCREENHEIGHT - 35);
+				glTexCoord2f(0,1);  glVertex2f(20, SCREENHEIGHT - 35);
 			glEnd();
 
 			ostringstream oss;
 			int totalHp = renderList[i].health + renderList[i].shield;
 			if (totalHp <= 0)
-				oss << "Dead yo";
+			{
+				renderText(35, 40, "Dead yo", healthFont);
+			}
 			else
-				oss <<  totalHp << " / 100";
-			if (renderList[i].shield > 0)
-				qglColor(Qt::blue);
-			else if (renderList[i].health > 70)
-				qglColor(Qt::white);
-			else if (renderList[i].health > 40)
-				qglColor(Qt::yellow);
-			else
-				qglColor(Qt::red);
-			renderText(35, 33, QString(oss.str().c_str()), healthFont);
+			{
+				oss <<  renderList[i].shield << " / 100";
+				if (renderList[i].shield > 50)
+					qglColor(Qt::blue);
+				else
+					qglColor(Qt::white);
+				renderText(40, 33, QString(oss.str().c_str()), healthFont);
+				oss.str("");
+				oss <<  renderList[i].health << " / 100";
+				if (renderList[i].health > 70)
+					qglColor(Qt::white);
+				else if (renderList[i].health > 40)
+					qglColor(Qt::yellow);
+				else
+					qglColor(Qt::red);
+				renderText(40, 48, QString(oss.str().c_str()), healthFont);
+			}
 			qglColor(Qt::white);
 		}
 
