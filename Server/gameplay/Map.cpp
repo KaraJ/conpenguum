@@ -1,11 +1,11 @@
 #include "Map.h"
 #include "general.h"
-#include <QPoint>
 #include <QString>
 #include <QDomDocument>
 #include <QFile>
 #include <iostream>
 #include "stdlib.h"
+#include <QVector2D>
 
 using namespace std;
 
@@ -149,10 +149,10 @@ Tile *Map::tile(int x, int y)
 --
 --  PROGREMMER: Gameplay/Physics Team
 --
---  INTERFACE:  move(Ship *ship, QPoint old_position, QPoint new_position, int size)
+--  INTERFACE:  move(Ship *ship, QVector2D old_position, QVector2D new_position, int size)
 --              Ship *ship : Pointer to the ship to move
---              QPoint old_position : the previous position of the ship.
---              QPoint new_position : the new position of the ship.
+--              QVector2D old_position : the previous position of the ship.
+--              QVector2D new_position : the new position of the ship.
 --              int size : The size of a ship
 --
 --  NOTES:      Moves the ship from its old tile to the new one.
@@ -160,15 +160,15 @@ Tile *Map::tile(int x, int y)
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Map::move(Ship *ship, QPoint old_position, QPoint new_position, int size) {
-    int xl1 = Pix2Tile(old_position.x());
-    int xr1 = Pix2Tile(old_position.x() + size);
-    int xl2 = Pix2Tile(new_position.x());
-    int xr2 = Pix2Tile(new_position.x() + size);
-    int yb1 = Pix2Tile(old_position.y());
-    int yt1 = Pix2Tile(old_position.y() + size);
-    int yb2 = Pix2Tile(new_position.y());
-    int yt2 = Pix2Tile(new_position.y() + size);
+void Map::move(Ship *ship, QVector2D old_position, QVector2D new_position, int size) {
+    double xl1 = Pix2Tile(old_position.x());
+    double xr1 = Pix2Tile(old_position.x() + size);
+    double xl2 = Pix2Tile(new_position.x());
+    double xr2 = Pix2Tile(new_position.x() + size);
+    double yb1 = Pix2Tile(old_position.y());
+    double yt1 = Pix2Tile(old_position.y() + size);
+    double yb2 = Pix2Tile(new_position.y());
+    double yt2 = Pix2Tile(new_position.y() + size);
     for (int x = MIN(xl1, xl2); x <= MAX(xr1, xr2); ++x)
     {
         for (int y = MIN(yb1, yb2); y <= MAX(yt1, yt2); ++y)
@@ -204,17 +204,17 @@ void Map::move(Ship *ship, QPoint old_position, QPoint new_position, int size) {
 --
 --  PROGREMMER: Gameplay/Physics Team
 --
---  INTERFACE:  move(Shot *shto, QPoint old_position, QPoint new_position)
+--  INTERFACE:  move(Shot *shto, QVector2D old_position, QVector2D new_position)
 --              Shot *shot : Pointer to the shot to move
---              QPoint old_position : the previous position of the shot.
---              QPoint new_position : the new position of the shot.
+--              QVector2D old_position : the previous position of the shot.
+--              QVector2D new_position : the new position of the shot.
 --
 --  NOTES:      Moves the shot from its old tile to the new one.
 --
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Map::move(Shot *shot, QPoint old_position, QPoint new_position)
+void Map::move(Shot *shot, QVector2D old_position, QVector2D new_position)
 {
     int old_x = Pix2Tile(old_position.x());
     int old_y = Pix2Tile(old_position.y());
@@ -237,9 +237,9 @@ void Map::move(Shot *shot, QPoint old_position, QPoint new_position)
 --
 --  PROGREMMER: Gameplay/Physics Team
 --
---  INTERFACE:  move(Ship *ship, QPoint location, int size)
+--  INTERFACE:  move(Ship *ship, QVector2D location, int size)
 --              Ship *ship : Pointer to the ship to add
---              QPoint location : location of the ship (so it can be added to the map).
+--              QVector2D location : location of the ship (so it can be added to the map).
 --              size : Size of a ship.
 --
 --  NOTES:      Adds a new ship to the map.
@@ -247,7 +247,7 @@ void Map::move(Shot *shot, QPoint old_position, QPoint new_position)
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Map::add(Ship *ship, QPoint location, int size)
+void Map::add(Ship *ship, QVector2D location, int size)
 {
     int x1 = Pix2Tile(location.x());
     int x2 = Pix2Tile(location.x() + size);
@@ -274,16 +274,16 @@ void Map::add(Ship *ship, QPoint location, int size)
 --
 --  PROGREMMER: Gameplay/Physics Team
 --
---  INTERFACE:  move(Shot *shot, QPoint location, int size)
+--  INTERFACE:  move(Shot *shot, QVector2D location, int size)
 --              Shot *shot : Pointer to the shot to add
---              QPoint location : location of the shot (so it can be added to the map).
+--              QVector2D location : location of the shot (so it can be added to the map).
 --
 --  NOTES:      Adds a new shot to the map.
 --
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Map::add(Shot *shot, QPoint location)
+void Map::add(Shot *shot, QVector2D location)
 {
     int x = Pix2Tile(location.x());
     int y = Pix2Tile(location.y());
@@ -302,9 +302,9 @@ void Map::add(Shot *shot, QPoint location)
 --
 --  PROGREMMER: Gameplay/Physics Team
 --
---  INTERFACE:  move(Ship *ship, QPoint location, int size)
+--  INTERFACE:  move(Ship *ship, QVector2D location, int size)
 --              Ship *ship : Pointer to the ship to remove
---              QPoint location : location of the ship.
+--              QVector2D location : location of the ship.
 --              size : Size of a ship.
 --
 --  NOTES:      Removes a ship from the map.
@@ -312,7 +312,7 @@ void Map::add(Shot *shot, QPoint location)
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Map::remove(Ship *ship, QPoint location, int size)
+void Map::remove(Ship *ship, QVector2D location, int size)
 {
     int x1 = Pix2Tile(location.x());
     int x2 = Pix2Tile(location.x() + size);
@@ -339,9 +339,9 @@ void Map::remove(Ship *ship, QPoint location, int size)
 --
 --  PROGREMMER: Gameplay/Physics Team
 --
---  INTERFACE:  move(Shot *shot, QPoint location, int size)
+--  INTERFACE:  move(Shot *shot, QVector2D location, int size)
 --              Shot *shot : Pointer to the shot to remove
---              QPoint location : location of the shot.
+--              QVector2D location : location of the shot.
 --              size : Size of a shot.
 --
 --  NOTES:      Removes a shot from the map.
@@ -349,7 +349,7 @@ void Map::remove(Ship *ship, QPoint location, int size)
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Map::remove(Shot *shot, QPoint location)
+void Map::remove(Shot *shot, QVector2D location)
 {
     int x = Pix2Tile(location.x());
     int y = Pix2Tile(location.y());
@@ -399,7 +399,7 @@ bool Map::isWall(int x, int y)
 --
 --  PROGREMMER: Gameplay/Physics Team
 --
---  INTERFACE:  int canMove(QPoint position, bool vertical, int size, int distance)
+--  INTERFACE:  int canMove(QVector2D position, bool vertical, int size, int distance)
 --              position : position of object we'd like to move (top-left corner)
 --              vertical : true if trying to move vertically, false if moving horizontally
 --              size : size of the object we are moving
@@ -410,14 +410,14 @@ bool Map::isWall(int x, int y)
 --  RETURNS:    The number of grid units the object can move or -1 if an error occured.
 --
 ------------------------------------------------------------------------------*/
-int Map::canMove(QPoint position, bool vertical, int size, int distance)
+double Map::canMove(QVector2D position, bool vertical, int size, double distance)
 {
     // leading edge
-    int edgeBegin = Pix2Tile(vertical ? position.x() : position.y());
-    int edgeEnd = Pix2Tile((vertical ? position.x() : position.y()) + size);
+    double edgeBegin = Pix2Tile(vertical ? position.x() : position.y());
+    double edgeEnd = Pix2Tile((vertical ? position.x() : position.y()) + size);
     // movement
-    int moveStart = Pix2Tile((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0));
-    int moveStop = Pix2Tile((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0) + distance);
+    double moveStart = Pix2Tile((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0));
+    double moveStop = Pix2Tile((vertical ? position.y() : position.x()) + (distance > 0 ? size : 0) + distance);
 
     cout << "Moving a " << size << "px object at: " << position.x() << "x" << position.y() << (vertical ? " vertically" : " horizontally") << " by " << distance << " pixels" << endl;
 
@@ -443,9 +443,9 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
     // calculation
     if (distance > 0) // moving in positive direction
     {
-        for (int m=moveStart; m <= moveStop; ++m)
+        for (double m=moveStart; m <= moveStop; ++m)
         {
-            for (int l=edgeBegin; l <= edgeEnd; ++l)
+            for (double l=edgeBegin; l <= edgeEnd; ++l)
             {
                 if (m >= (vertical ? height : width) || (!vertical && isWall(m, l)) || (vertical && isWall(l, m)))  // detect collision
                 {
@@ -456,9 +456,9 @@ int Map::canMove(QPoint position, bool vertical, int size, int distance)
     }
     else // moving in negative direction
     {
-        for (int m=moveStart; m >= moveStop; --m)
+        for (double m=moveStart; m >= moveStop; --m)
         {
-            for (int l=edgeBegin; l <= edgeEnd; ++l)
+            for (double l=edgeBegin; l <= edgeEnd; ++l)
             {
                 if (m < 0 || (!vertical && isWall(m, l)) || (vertical && isWall(l, m))) // detect collision
                 {
@@ -574,7 +574,7 @@ void Map::drawMap()
 --
 --  PROGREMMER: Gameplay/Physics Team
 --
---  INTERFACE:  std::list<Ship*> Map::ships(QPoint center, int width=1024, int height=768)
+--  INTERFACE:  std::list<Ship*> Map::ships(QVector2D center, int width=1024, int height=768)
 --              center : center of the viewport
 --              width : width of the viewport
 --              height : height of the viewport
@@ -585,7 +585,7 @@ void Map::drawMap()
 --  RETURNS:    void.
 --
 ------------------------------------------------------------------------------*/
-/*std::list<Ship*> Map::ships(QPoint center, int width, int height)
+/*std::list<Ship*> Map::ships(QVector2D center, int width, int height)
 {
     std::list<Ship*> list, list2;
     int left   = MAX(0       , Pix2Tile(center.x() - width));
@@ -617,7 +617,7 @@ void Map::drawMap()
 --
 --  PROGREMMER: Gameplay/Physics Team
 --
---  INTERFACE:  std::list<Shot*> Map::shots(QPoint center, int width=1024, int height=768)
+--  INTERFACE:  std::list<Shot*> Map::shots(QVector2D center, int width=1024, int height=768)
 --              center : center of the viewport
 --              width : width of the viewport
 --              height : height of the viewport
@@ -628,7 +628,7 @@ void Map::drawMap()
 --  RETURNS:    void.
 --
 ------------------------------------------------------------------------------*/
-std::list<Shot*> Map::shots(QPoint center, int width, int height)
+std::list<Shot*> Map::shots(QVector2D center, int width, int height)
 {
     std::list<Shot*> list, list2;
     int left   = MAX(0       , Pix2Tile(center.x() - width));
@@ -660,7 +660,7 @@ std::list<Shot*> Map::shots(QPoint center, int width, int height)
 --
 --  PROGREMMER: Gameplay/Physics Team
 --
---  INTERFACE:  bool isWall(QPoint location)
+--  INTERFACE:  bool isWall(QVector2D location)
 --              location : location to check for wall status
 --
 --  NOTES:      checks if a location is a wall.
@@ -668,7 +668,7 @@ std::list<Shot*> Map::shots(QPoint center, int width, int height)
 --  RETURNS:    true if the location is a wall, else false.
 --
 ------------------------------------------------------------------------------*/
-bool Map::isWall(QPoint location)
+bool Map::isWall(QVector2D location)
 {
     return isWall(Pix2Tile(location.x()), Pix2Tile(location.y()));
 }
@@ -684,7 +684,7 @@ bool Map::isWall(QPoint location)
 --
 --  PROGREMMER: Gameplay/Physics Team
 --
---  INTERFACE:  bool hasShip(QPoint location)
+--  INTERFACE:  bool hasShip(QVector2D location)
 --              location : location to check for ships
 --
 --  NOTES:      checks if a location's tile contains a ship.
@@ -692,7 +692,7 @@ bool Map::isWall(QPoint location)
 --  RETURNS:    true if the location's tile contains a ship, else false.
 --
 ------------------------------------------------------------------------------*/
-bool Map::hasShip(QPoint location)
+bool Map::hasShip(QVector2D location)
 {
     return hasShip(Pix2Tile(location.x()), Pix2Tile(location.y()));
 }
@@ -737,7 +737,7 @@ bool Map::hasShip(int x, int y)
 --
 --  PROGREMMER: Gameplay/Physics Team
 --
---  INTERFACE:  bool ships(QPoint location)
+--  INTERFACE:  bool ships(QVector2D location)
 --              location : location who's tile we need the ships from
 --
 --  NOTES:      gets all the ships in a given tile.
@@ -745,7 +745,7 @@ bool Map::hasShip(int x, int y)
 --  RETURNS:    std::list of ship pointers.
 --
 ------------------------------------------------------------------------------*/
-std::list<Ship*> Map::ships(QPoint location)
+std::list<Ship*> Map::ships(QVector2D location)
 {
     int x = Pix2Tile(location.x());
     int y = Pix2Tile(location.y());
@@ -756,7 +756,7 @@ std::list<Ship*> Map::ships(QPoint location)
     return tile(x, y)->getShips();
 }
 
-QPoint Map::getSpawn(int team, int size)
+QVector2D Map::getSpawn(int team, int size)
 {
     // select random spawn area
     int teamCount = 0;
@@ -771,7 +771,7 @@ QPoint Map::getSpawn(int team, int size)
     if (teamCount == 0)
     {
         std::cerr << "ERROR: Could not locate a spawn for team " << team << ", spawning at 0,0" << std::endl;
-        return QPoint(0, 0);
+        return QVector2D(0, 0);
     }
     area = teamSpawns[rand() % teamCount];
 
@@ -783,5 +783,5 @@ QPoint Map::getSpawn(int team, int size)
         y += rand() % (area.height - size);
 
     // select random spot IN spawn area
-    return QPoint(x, y);
+    return QVector2D(x, y);
 }

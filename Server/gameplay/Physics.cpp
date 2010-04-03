@@ -21,12 +21,12 @@
 --  RETURNS:    Qpoint style vector.
 --
 ------------------------------------------------------------------------------*/
-QPoint rotVelToVec(int rot, int velocity)
+QVector2D rotVelToVec(int rot, int velocity)
 {
-    QPoint vector;
+    QVector2D vector;
     //correcting the function here and removing the magic number
     double radians = DEGTORAD(rot);
-    int x, y;
+    double x, y;
     y = sin(radians) * velocity;
     x = cos(radians) * velocity;
     vector.setX(x);

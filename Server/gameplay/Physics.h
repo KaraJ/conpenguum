@@ -1,7 +1,7 @@
 #ifndef PHYCICS_H
 #define PHYCICS_H
 
-#include <QPoint>
+#include <QVector2D>
 
 #define VELOCITY_THRUST 2   // the velocity of a new thrust vector
 #define VELOCITY_SHOT   15   // the velocity of a shot
@@ -24,8 +24,8 @@
 #define RADTODEG(a)         ((a)*DEGREESINRAD)
 
 //vector magnitude
-#define VECTORMAGNITUDE(a)    ((a.x()*a.x()) + (a.y()*a.y()))
+#define VECTORMAGNITUDE(a)    (  ( a.x()*a.x() ) + ( a.y()*a.y() )  )
 
-QPoint rotVelToVec(int rot, int velocity);
+QVector2D rotVelToVec(int rot, int velocity);
 
 #endif // PHYCICS_H
