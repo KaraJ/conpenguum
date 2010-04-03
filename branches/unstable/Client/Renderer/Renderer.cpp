@@ -141,7 +141,7 @@ void Renderer::Render()
 {
 	QFont nameFont("Helvetica", 8);
 	QFont healthFont("Comic Sans MS", 10, 75);
-	QFont chatFont("Comic Sans MS", 8, 50);
+	QFont chatFont("Comic Sans MS", 8, 75);
     //clear the screen
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_TEXTURE_2D);
