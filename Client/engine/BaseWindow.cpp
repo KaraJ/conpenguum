@@ -377,8 +377,8 @@ void BaseWindow::createRealObject(UpdateObject &updateObj, int &objId)
 	}
 	else
 	{
-		vector<Image>& images = animationMap[SHIP].getAnimationImages();
-		animObj.currentAnime = animationMap[SHIP];
+		vector<Image>& images = animationMap[SHOT].getAnimationImages();
+		animObj.currentAnime = animationMap[SHOT];
 		animObj.animeImage = &images[0];
 	}
 

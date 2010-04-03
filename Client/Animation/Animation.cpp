@@ -19,8 +19,8 @@ using namespace std;
 map<int, Animation> Animation::getAnimationMap()
 {
     map<int, Animation> animations;
-    Animation animationEx, animationExh, animationSh;
-    vector<Image> animationExplosion, animationExhaust, animationShip;
+    Animation animExplos, animExhaust, animShip, animShot;
+    vector<Image> imgVecExp, imgVecExh, imgVecShip, imgVecShot;
     Image readImage;
     int mapSize = -1;
     QtXmlParse *xmlParse;
@@ -29,43 +29,57 @@ map<int, Animation> Animation::getAnimationMap()
     string typeStr;
 
     // get explosion animation
-    string xmlFile("../Client/Animation/explosion.xml"), xmlFileExh("../Client/Animation/exhaust.xml"), xmlFileSh("../Client/Animation/ship.xml");
+    string xmlFile("../Client/Animation/explosion.xml"),
+    	   xmlFileExh("../Client/Animation/exhaust.xml"),
+    	   xmlFileSh("../Client/Animation/ship.xml"),
+    	   xmlFileShot("../Client/Animation/shot.xml");
     xmlParse = new QtXmlParse();
-    animationExplosion = xmlParse->ReadAnimationVector(type, xmlFile); // loading all Explostion animations.
-    imagesCount = animationExplosion.size();
-    animationEx.setAnimationImages(animationExplosion);
+    imgVecExp = xmlParse->ReadAnimationVector(type, xmlFile); // loading all Explostion animations.
+    imagesCount = imgVecExp.size();
+    animExplos.setAnimationImages(imgVecExp);
     // set up sound effect for animation.
 	SoundEffects effectExplosion;
-	effectExplosion.effectPath_ = animationExplosion.front().soundLink;
+	effectExplosion.effectPath_ = imgVecExp.front().soundLink;
 	effectExplosion.type_ = explosion;
 
 	//effectExplosion->SetSoundSource((char*)animationExplosion.front().soundLink.c_str(), explosion);
-	animationEx.setSoundEffect(effectExplosion);
+	animExplos.setSoundEffect(effectExplosion);
     //animationEx.soundFile = animationExplosion.front().soundLink; // link sound from animation.
-    animations.insert(std::pair<int, Animation>((int)type, animationEx));
+    animations.insert(std::pair<int, Animation>((int)type, animExplos));
 
     // get ship animation
     type = SHIP;
-	animationShip = xmlParse->ReadAnimationVector(type, xmlFileSh); // loading all Explostion animations.
-	imagesCount = animationShip.size();
-	animationSh.setAnimationImages(animationShip);
+	imgVecShip = xmlParse->ReadAnimationVector(type, xmlFileSh); // loading all Explostion animations.
+	imagesCount = imgVecShip.size();
+	animShip.setAnimationImages(imgVecShip);
 	//animationSh.soundFile = animationShip.front().soundLink; // link sound from animation.
-	animationSh.numFrames_ = animationShip.front().numFrames; // link sound from animation.
-	animationSh.imagesTall_ = animationShip.front().imagesTall; // link sound from animation.
-	animationSh.imagesWide_ = animationShip.front().imagesWide; // link sound from animation.
-	animations.insert(std::pair<int, Animation>((int)type, animationSh));
+	animShip.numFrames_ = imgVecShip.front().numFrames; // link sound from animation.
+	animShip.imagesTall_ = imgVecShip.front().imagesTall; // link sound from animation.
+	animShip.imagesWide_ = imgVecShip.front().imagesWide; // link sound from animation.
+	animations.insert(std::pair<int, Animation>((int)type, animShip));
+
+    // get ship animation
+    type = SHOT;
+	imgVecShot = xmlParse->ReadAnimationVector(type, xmlFileShot); // loading all Explostion animations.
+	imagesCount = imgVecShot.size();
+	animShot.setAnimationImages(imgVecShot);
+	//animationSh.soundFile = animationShip.front().soundLink; // link sound from animation.
+	animShot.numFrames_ = imgVecShot.front().numFrames; // link sound from animation.
+	animShot.imagesTall_ = imgVecShot.front().imagesTall; // link sound from animation.
+	animShot.imagesWide_ = imgVecShot.front().imagesWide; // link sound from animation.
+	animations.insert(std::pair<int, Animation>((int)type, animShot));
 
     // get trail animations.
     type = EXHAUST;
-    animationExhaust = xmlParse->ReadAnimationVector(type, xmlFileExh);
-    imagesCount = animationExhaust.size();
-    animationExh.setAnimationImages(animationExhaust);
+    imgVecExh = xmlParse->ReadAnimationVector(type, xmlFileExh);
+    imagesCount = imgVecExh.size();
+    animExhaust.setAnimationImages(imgVecExh);
     SoundEffects effectExhaust;
-    effectExhaust.effectPath_ = animationExhaust.front().soundLink;
+    effectExhaust.effectPath_ = imgVecExh.front().soundLink;
     effectExhaust.type_ = exhaust;
-    animationExh.setSoundEffect(effectExhaust);
+    animExhaust.setSoundEffect(effectExhaust);
     //animationExh.soundFile = animationExhaust.front().soundLink; // link sound from animation.
-	animations.insert(std::pair<int, Animation>((int)type, animationExh));
+	animations.insert(std::pair<int, Animation>((int)type, animExhaust));
 
     mapSize = (int)animations.size();
 

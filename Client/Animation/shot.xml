@@ -1,0 +1,17 @@
+<image>
+    <link>bullets.bmp</link>
+    <desc>bullets</desc>
+    <sound></sound>
+    <numberOfFrames>1</numberOfFrames>
+    <numberImagesWide>4</numberImagesWide>
+    <numberImagesTall>10</numberImagesTall>
+    <frame>
+        <desc>basic</desc>
+        <direction id="-1"> <!-- pointing straight up -->           
+            <left>0</left>
+            <bottom>0</bottom>
+            <right>.25</right>
+            <top>.1</top>
+        </direction>
+    </frame>
+</image>
