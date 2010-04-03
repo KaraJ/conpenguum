@@ -100,6 +100,7 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
         case SHIP:
         case EXHAUST:
         case EXPLOSION:
+        case SHOT:
             {
                 // looking for frame portion
                 while(strcmp(node.nodeName().toStdString().c_str(), "frame") != 0){node = node.nextSibling();}
