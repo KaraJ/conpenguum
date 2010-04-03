@@ -49,7 +49,9 @@ void Renderer::buildRenderList(QPoint center)
 
     	if (gob->objectId < MAX_CLIENTS)
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHIP, 0);
-    	else if (gob->objectId == 500)
+        else if (gob->objectId < 500)
+             rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHOT, 0);
+    	else if (gob->objectId < MAX_REAL_OBJECT)
     	{
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(AIDBOX, 0);
     		renderList[i].texture = textures["firstaid.bmp"];
@@ -65,8 +67,6 @@ void Renderer::buildRenderList(QPoint center)
 			i++;
 			continue;
     	}
-    	else if (gob->objectId > MAX_CLIENTS && gob->objectId < MAX_REAL_OBJECT)
-    		rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHOT, 0);
     	else
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(EXHAUST, 0);
 

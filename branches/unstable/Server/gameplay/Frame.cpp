@@ -307,10 +307,11 @@ void Frame::updateShips(void)
 			}
 			else
 				currShip->shieldCooldown--;
+
 			for (list<NewtObject>::iterator it = listPwrup.begin(); it != listPwrup.end(); ++it)
 			{
 				QVector2D pos = it->getPosition();
-				if (abs(currShip->position.x() - pos.x()) < 25 && abs(currShip->position.y() - pos.y()) < 25)
+				if (abs(currShip->position.x() - pos.x()) < SHIPRADIUS && abs(currShip->position.y() - pos.y()) < SHIPRADIUS)
 				{
 					if (currShip->health == 100)
 						break;
