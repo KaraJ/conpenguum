@@ -30,6 +30,7 @@
 #include "../comm/commserver.h"
 #include "../../Core/comm/globals.h"
 #include "../../Core/Player.h"
+#include "../gameplay/ScoreBoard.h"
 
 class ServerEngine : public QObject
 {
