@@ -47,6 +47,8 @@ public:
     Map map;
     Ship *listShip[MAX_CLIENTS]; // list of all ships(players) in the game.
     std::list<Shot> listShot; // list of all active shots in the game.
+    std::list<NewtObject> listPwrup;
+
 public:
     Frame(QString filename);
     void tick();
@@ -57,6 +59,7 @@ public:
     std::vector<UpdateObject> ListShip2listUpdateObject();
     void printShips(void);
     void printShots(void);
+    void addPwrup(int x, int y) { listPwrup.push_back(NewtObject(x, y, 0, 0, 50)); }
 
 private:
     int dist2Points(QVector2D point1, QVector2D point2);
