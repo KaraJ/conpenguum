@@ -1,4 +1,4 @@
-#ifndef BASEWINDOW_H
+#ifndef BASEWINDOW_HureName
 #define BASEWINDOW_H
 
 //System Includes

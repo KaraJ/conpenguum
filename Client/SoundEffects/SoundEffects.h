@@ -1,10 +1,13 @@
 #ifndef SOUNDEFFECTS_H
 #define SOUNDEFFECTS_H
+
 #include <string.h>
+
 #include <phonon/mediaobject.h>
 #include <phonon/mediaobjectinterface.h>
 #include <phonon/mediacontroller.h>
 #include <phonon/mediasource.h>
+
 enum SOUNDTYPE
 {
     explosion = 0,

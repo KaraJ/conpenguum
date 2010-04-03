@@ -473,7 +473,7 @@ void BaseWindow::updateGameState ()
 			freeIds.pop();
 			animObj.currentAnime = animationMap[EXHAUST];
 			animObj.animeImage = &images[0];
-			animObj.text = animObj.animeImage->getLink();
+			animObj.textureName = animObj.animeImage->getLink();
 			animObj.animeIndex = 1;
 			gameState[animObj.objectId] = animObj;
 		}
@@ -504,7 +504,7 @@ void BaseWindow::createRealObject(UpdateObject &updateObj, int &objId)
 
 	//If object is owned by someone, add their username
 	animObj.owner = getName(objId);
-	animObj.text = animObj.animeImage->getLink();
+	animObj.textureName = animObj.animeImage->getLink();
 	animObj.animeIndex = 0;
 
 	gameState[animObj.objectId] = animObj;

@@ -11,6 +11,7 @@ ScoreBoard* ScoreBoard::Instance()
 		instance = new ScoreBoard();
 	return instance;
 }
+
 ScoreBoard::ScoreBoard()
 {
 	ConfigParser cp;
@@ -48,6 +49,7 @@ void ScoreBoard::addPlayer(int id, string name)
 		execQuery("INSERT INTO currentGame (username) VALUES ('" + players[id].getName() + "')");
 	}
 }
+
 void ScoreBoard::removePlayer(int id)
 {
 	if(db_connected)
@@ -64,6 +66,7 @@ void ScoreBoard::removePlayer(int id)
 	}
 	players.erase(id);
 }
+
 void ScoreBoard::recordKill(int deadPlayer, int killedBy)
 {
 	players[deadPlayer].addDeath();
@@ -86,6 +89,7 @@ void ScoreBoard::execQuery(string query)
 		Logger::LogNContinue(e.what());
 	}
 }
+
 mysqlpp::StoreQueryResult ScoreBoard::storeQuery(string query)
 {
 	mysqlpp::StoreQueryResult res;
