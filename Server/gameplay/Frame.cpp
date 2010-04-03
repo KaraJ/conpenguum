@@ -195,11 +195,17 @@ void Frame::updateShips(void)
 				QVector2D pos = it->getPosition();
 				if (abs(currShip->position.x() - pos.x()) < 25 && abs(currShip->position.y() - pos.y()) < 25)
 				{
-					if (currShip->shield > 0)
-						currShip->shield -= 10;
-					else if (currShip->health > 0)
-						currShip->health -= 10;
-					else
+					if (currShip->shield >= 40)
+						currShip->shield -= 40;
+					else if (currShip->shield > 0)
+					{
+						currShip->shield -= 40;
+						currShip->health += currShip->shield;
+						currShip->shield = 0;
+					}
+					else if (currShip->health >= 40)
+						currShip->health -= 40;
+					if (currShip->health <= 0)
 						;//DEAD
 					listShot.erase(it);
 					break;
