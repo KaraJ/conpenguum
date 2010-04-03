@@ -25,6 +25,7 @@ ScoreBoard::ScoreBoard()
 		{
 			if(conn.connect(params["database_name"].c_str(), params["database_host"].c_str(), params["database_user"].c_str(), params["database_pass"].c_str()))
 			{
+				execQuery("DELETE FROM currentGame");
 				db_connected = true;
 			}
 			else
