@@ -361,20 +361,33 @@ void BaseWindow::updateGameState ()
 		if (gameState.find(objId) != gameState.end()) //If it exists
 			gameState[objId].Update(updateObj);
 		else //Create GameObject
-		{
-			vector<Image>& images = animationMap[SHIP].getAnimationImages();
-			GameObject animObj(updateObj);
+			createRealObject(updateObj, objId);
+	}
+}
 
-			//If object is owned by someone, add their username
-			animObj.owner = getName(objId);
-			animObj.currentAnime = animationMap[SHIP];
-			animObj.animeImage = &images[0];
-			animObj.text = animObj.animeImage->getLink();
-			animObj.animeIndex = 0;
-				
-			gameState[animObj.objectId] = animObj;	
-		}
-	}	
+void BaseWindow::createRealObject(UpdateObject &updateObj, int &objId)
+{
+	GameObject animObj(updateObj);
+
+	if (objId < MAX_CLIENTS)
+	{
+		vector<Image>& images = animationMap[SHIP].getAnimationImages();
+		animObj.currentAnime = animationMap[SHIP];
+		animObj.animeImage = &images[0];
+	}
+	else
+	{
+		vector<Image>& images = animationMap[SHIP].getAnimationImages();
+		animObj.currentAnime = animationMap[SHIP];
+		animObj.animeImage = &images[0];
+	}
+
+	//If object is owned by someone, add their username
+	animObj.owner = getName(objId);
+	animObj.text = animObj.animeImage->getLink();
+	animObj.animeIndex = 0;
+
+	gameState[animObj.objectId] = animObj;
 }
 
 QString BaseWindow::getName(int playerId)
