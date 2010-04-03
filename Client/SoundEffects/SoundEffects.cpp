@@ -15,9 +15,14 @@
  -- DATE: March. 28th/2010
  --
  ----------------------------------------------------------------------------*/
-SoundEffects::SoundEffects(const std::string name, SOUNDTYPE type)
+SoundEffects::SoundEffects()
 {
-    effectName_ = name;
+
+	// do nothing right now.
+}
+SoundEffects::SoundEffects(const std::string path, SOUNDTYPE type)
+{
+    effectPath_= path;
     type_ = type;
     soundEffect_ = NULL;
 }
@@ -42,6 +47,13 @@ void SoundEffects::SetSoundSource(const std::string path)
 
     // should try catch internally to handle incorrect path specs. Must confirm try catch allowed in project.
     soundEffect_ = Phonon::createPlayer(Phonon::MusicCategory, Phonon::MediaSource(path.c_str())); // set up media source for playing when needed.
+}
+SoundEffects::SoundEffects(const SoundEffects& efx)
+{
+	effectPath_ = efx.effectPath_;
+	effectName_ = efx.effectName_;
+	type_ = efx.type_;
+	soundEffect_ = efx.soundEffect_;
 }
 /*-----------------------------------------------------------------------------
  --
