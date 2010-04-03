@@ -370,7 +370,7 @@ void Map::remove(Shot *shot, QVector2D location)
 ------------------------------------------------------------------------------*/
 bool Map::isWall(int x, int y)
 {
-    if (x < 0 || y < 0 || x >= columns || y >= rows)
+    if (x <= 0 || y <= 0 || x >= columns || y >= rows)
     	return true;
 
     /*if (tiles[x][y] == NULL)

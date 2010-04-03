@@ -93,10 +93,6 @@ void ServerEngine::timeout()
 				gameState->spawnShip(sm.GetClientID());
 				playerList.push_back(Player(sm.GetClientID(), sm.GetData()));
 
-				gameState->addShip(sm.GetClientID() + 1);
-				gameState->spawnShip(sm.GetClientID() + 1);
-				playerList.push_back(Player(sm.GetClientID() + 1, "CPU"));
-
 				ScoreBoard::Instance()->addPlayer(sm.GetClientID(), sm.GetData());
 				sm.SetData("");
 				sm.SetMsgType(ServerMessage::MT_INIT);
