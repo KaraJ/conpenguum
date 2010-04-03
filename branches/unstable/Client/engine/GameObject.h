@@ -38,7 +38,7 @@ public:
 	int shield; //0-100
 	int health; //0-100
 	QPoint position; //XY position
-	std::string text;  //Texture filename
+	std::string textureName;  //Texture filename
 	Animation currentAnime;
 	Image * animeImage;
 	size_t animeIndex; //Frame index

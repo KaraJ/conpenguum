@@ -85,5 +85,6 @@
         <file>textures/chatbox.png</file>
         <file>textures/healthbar.bmp</file>
         <file>textures/shieldbar.bmp</file>
+        <file>textures/theMap</file>
     </qresource>
 </RCC>

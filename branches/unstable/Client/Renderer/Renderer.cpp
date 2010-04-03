@@ -54,7 +54,7 @@ void Renderer::buildRenderList(QPoint center)
     	else
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(EXHAUST, 0);
 
-		renderList[i].texture = textures[gob->text];
+		renderList[i].texture = textures[gob->textureName];
 		renderList[i].texOffsetX = gob->animeImage->getLeftOffSet();
 		renderList[i].texOffsetY = gob->animeImage->getTopOffSet();
 		renderList[i].objectHeight = gob->animeImage->getBottomOffSet() - gob->animeImage->getTopOffSet();
