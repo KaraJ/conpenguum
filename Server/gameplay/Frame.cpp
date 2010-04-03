@@ -203,10 +203,10 @@ void Frame::updateShips(void)
 						currShip->health += currShip->shield;
 						currShip->shield = 0;
 					}
-					else if (currShip->health >= 40)
+					else if (currShip->health > 40)
 						currShip->health -= 40;
-					if (currShip->health <= 0)
-						;//DEAD
+					if (currShip->health <= 40)
+						currShip->health = 0;//DEAD
 					listShot.erase(it);
 					break;
 				}
