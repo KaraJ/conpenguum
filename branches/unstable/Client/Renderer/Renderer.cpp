@@ -149,9 +149,13 @@ void Renderer::Render()
 
     //render chat messages
 	qglColor(Qt::yellow);
-	renderText(0, SCREENHEIGHT, chatText_[0], chatFont);
-	for (int j=1; j < 9; j++)
-		renderText(0, SCREENHEIGHT - 22*j, chatText_[j], chatFont);
+	renderText(5, SCREENHEIGHT - 5, chatText_[0], chatFont);
+	int line = 1;
+	for (int j=8; j >= 1; j--)
+	{
+		if (chatText_[j].size() > 0)
+			renderText(5, SCREENHEIGHT - 15*line++ - 10, chatText_[j], chatFont);
+	}
 
 	qglColor(Qt::white);
 
@@ -271,8 +275,8 @@ void Renderer::Render()
 	glBegin(GL_QUADS);
 		glTexCoord2f(0,0);  glVertex2f(0,0);
 		glTexCoord2f(1,0);  glVertex2f(600, 0);
-		glTexCoord2f(1,1);  glVertex2f(600, 200);
-		glTexCoord2f(0,1);  glVertex2f(0, 200);
+		glTexCoord2f(1,1);  glVertex2f(600, 150);
+		glTexCoord2f(0,1);  glVertex2f(0, 150);
 	glEnd();
 
 	glFlush();

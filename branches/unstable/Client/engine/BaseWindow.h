@@ -91,6 +91,7 @@ class BaseWindow : public QMainWindow
 		bool shift;
 		std::string chatString;
 		QString* qChatString;
+		std::vector<QString> vChatString;
 		CommClient::CommClient* theClient;
 		QPoint scrnCenter;
 		Renderer* ren;
