@@ -158,7 +158,7 @@ void Frame::spawnShip(size_t shipID)
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   updateShips
+--  FUNCTION:   updateShipsSHIPRADIUS
 --
 --  DATE:       January 27, 2010
 --
@@ -285,7 +285,7 @@ void Frame::updateShips(void)
 			if(currShip->shotCooldown == 0 && currShip->actionMask.isFiring())
 			{
                 QVector2D spawnVec, shotVec;
-                spawnVec = rotVelToVec(currShip->rotation * 2, SHIPRADIUS);
+                spawnVec = rotVelToVec(currShip->rotation * 2, SHOTSPAWNRAD);
                 shotVec =  rotVelToVec(currShip->rotation * 2, VELOCITY_SHOT);
                 Shot shot(currShip->position.x() + spawnVec.x(), currShip->position.y()
                     + spawnVec.y(), shotVec.x(), shotVec.y(), currShip->getNextShotID(), (frameTimer + 60));
@@ -512,5 +512,5 @@ void Frame::printShots(void)
 
 void Frame::fragShip(size_t shipID){
     Ship *ship = getShip(shipID);
-    ship->active = false;
+    //ship->active = false;
 }
