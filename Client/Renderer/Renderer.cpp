@@ -147,6 +147,14 @@ void Renderer::Render()
     glEnable(GL_TEXTURE_2D);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
+    //render chat messages
+	qglColor(Qt::yellow);
+	renderText(0, SCREENHEIGHT, chatText_[0], chatFont);
+	for (int j=1; j < 9; j++)
+		renderText(0, SCREENHEIGHT - 22*j, chatText_[j], chatFont);
+
+	qglColor(Qt::white);
+
     for(int i = 0; i < renderCount; i++)
 	{
 		QMatrix3x4 quad;
@@ -168,15 +176,6 @@ void Renderer::Render()
 		quad(3,0) = renderList[i].x;
 		quad(3,1) = renderList[i].objectHeightPx + renderList[i].y;
 		quad(3,2) = 1;
-
-		//render chat messages
-		qglColor(Qt::yellow);
-		renderText(0, SCREENHEIGHT, chatText_[0], chatFont);
-		for (int j=1; j < 9; j++)
-		{
-			renderText(0, SCREENHEIGHT - 22*j, chatText_[j], chatFont);
-		}
-		qglColor(Qt::white);
 		
 		if (renderList[i].name != "")
 			renderText(renderList[i].textX - 5, renderList[i].textY - 20, renderList[i].name, nameFont);

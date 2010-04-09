@@ -88,17 +88,23 @@ void ServerEngine::timeout()
 			}
 			else
 			{
+				ostringstream oss;
 				cout << "client logged in" << endl;
 				gameState->addShip(sm.GetClientID());
 				gameState->spawnShip(sm.GetClientID());
 				playerList.push_back(Player(sm.GetClientID(), sm.GetData()));
+
+				oss << "* " << sm.GetData() << " has joined the game *";
+				sm.SetMsgType(ServerMessage::MT_CHAT);
+				sm.SetData(oss.str());
+				commServer->sendServerMsg(sm);
 
 				ScoreBoard::Instance()->addPlayer(sm.GetClientID(), sm.GetData());
 				sm.SetData("");
 				sm.SetMsgType(ServerMessage::MT_INIT);
 				commServer->sendServerMsg(sm);
 
-				ostringstream oss;
+				oss.str("");
 				for (size_t i = 0; i < playerList.size(); i++)
 					oss << playerList[i] << "|";
 				sm.SetMsgType(ServerMessage::MT_SCORES);
@@ -108,12 +114,17 @@ void ServerEngine::timeout()
 		}
 		if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)
 		{
+			ostringstream oss;
 			cout << "client logged out" << endl;
 			gameState->removeShip(sm.GetClientID());
 			for (vector<Player>::iterator it = playerList.begin(); it != playerList.end(); ++it)
 			{
 				if (it->getId() == (int)sm.GetClientID())
 				{
+					oss << "* " << getPlayerName(sm.GetClientID()) << " has left the game *";
+					sm.SetMsgType(ServerMessage::MT_CHAT);
+					sm.SetData(oss.str());
+					commServer->sendServerMsg(sm);
 					ScoreBoard::Instance()->removePlayer(it->getId());
 					playerList.erase(it);
 					break;
@@ -123,7 +134,10 @@ void ServerEngine::timeout()
 		//receive chat message.. send to all clients
 		if (sm.GetMsgType() == ServerMessage::MT_CHAT)
 		{
+			ostringstream oss;
 			cout << "Received chat msg: " << sm.GetData() << endl;
+			oss << "<" << getPlayerName(sm.GetClientID()) << "> " << sm.GetData();
+			sm.SetData(oss.str());
 			commServer->sendServerMsg(sm);
 		}
 	}
@@ -159,6 +173,14 @@ bool ServerEngine::isNameUsed(string name)
 		if (playerList[i].getName() == name)
 			return true;
 	return false;
+}
+
+string ServerEngine::getPlayerName(int id)
+{
+	for (size_t i = 0; i < playerList.size(); i++)
+		if (playerList[i].getId() == id)
+			return playerList[i].getName();
+	return "";
 }
 
 ServerEngine* ServerEngine::GetInstance()
