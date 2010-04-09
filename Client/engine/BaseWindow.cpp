@@ -133,10 +133,10 @@ void BaseWindow::keyPressEvent (QKeyEvent * event)
 				clientAction->setFiring();
 				break;
 			case Qt::Key_Enter:
-				toggleChat();
-				break;
 			case Qt::Key_Return:
 				toggleChat();
+				handleChat('>');
+				handleChat(' ');
 				break;
 		}
 	}
@@ -190,10 +190,15 @@ void BaseWindow::keyReleaseEvent (QKeyEvent * event)
  -----------------------------------------------------------------------------*/
 int BaseWindow::handleChat(int key)
 {
+	if (chatString.length() > 40)
+		return 0;
+
 	//if enter send the message
 	if ((key == Qt::Key_Enter) || (key == Qt::Key_Return))
 	{
-		theClient->sendServerMsg(chatString);
+		chatString = chatString.substr(2);
+		if (chatString.size() > 0)
+			theClient->sendServerMsg(chatString);
 		chatString.clear();
 		toggleChat();
 	}
@@ -206,7 +211,7 @@ int BaseWindow::handleChat(int key)
 	//if backspace erase the last character
 	else if (key == Qt::Key_Backspace)
 	{
-		if (chatString.length() != 0)
+		if (chatString.length() != 2)
 			chatString.erase(chatString.length()-1, 1);
 	}
 	else
@@ -562,9 +567,12 @@ void BaseWindow::getServerMessage()
 		{
 			//this should probably be stored in a queue not an array but for now its fine
 			if(chatIndex == 9)
-				chatIndex = 1;
-			qChatString[chatIndex] = sm.GetData().c_str();
-			chatIndex++;
+			{
+				for (int i = 1; i < 7; i++)
+					qChatString[i] = qChatString[i + 1];
+				chatIndex = 8;
+			}
+			qChatString[chatIndex++] = sm.GetData().c_str();
 		}
 		else if(sm.GetMsgType() == ServerMessage::MT_SHUTDOWN)
 		{
