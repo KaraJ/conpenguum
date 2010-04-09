@@ -41,7 +41,9 @@ public:
 	std::string textureName;  //Texture filename
 	Animation currentAnime;
 	Image * animeImage;
-	size_t animeIndex; //Frame index
+	int animeIndex; //Frame index (-5 to 5 for ships)
+	int targetIndex; // Fro ships
+	int frameCounter; // For keeping track of how many frames have passed since last animation increment
 	QString owner;
 };
 
