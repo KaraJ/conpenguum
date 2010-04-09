@@ -466,13 +466,13 @@ void BaseWindow::clearTransientObjects()
 		{
 			if (animatedObj->frameCounter >= 5)
 			{
-				if (animtedObj->targetIndex > animatedObj->animeIndex)
+				if (animatedObj->targetIndex > animatedObj->animeIndex)
 				{
 					animatedObj->animeIndex++;
 					animatedObj->frameCounter = 0;
 
 				}
-				else if (animtedObj->targetIndex < animatedObj->animeIndex)
+				else if (animatedObj->targetIndex < animatedObj->animeIndex)
 				{
 					animatedObj->animeIndex--;
 					animatedObj->frameCounter = 0;
