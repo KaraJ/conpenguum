@@ -360,123 +360,7 @@ void BaseWindow::updateGameState ()
 			updateObj.setHealth(-1);
 			updateObj.setShield(-1);
 		}
-			
-		//when the playership is turning to the left
-		/**
-                if(objId < MAX_CLIENTS && updateObj.getActions().isTurningLeft())
-                {
-                    vector<Image>& images = animationMap[SHIP].getAnimationImages();
-                    GameObject animObj(updateObj);
 
-                    //the ship is at the left most index
-                    if(gameState[objId].animeIndex == -5)
-                    {
-                        break;
-                    }else
-                    {
-                        animObj.objectId = freeIds.front();
-                        freeIds.pop();
-                        animObj.currentAnime = animationMap[SHIP];
-                        animObj.animeImage = &images[gameState[objId].animeIndex];
-                        gameState[objId].animeIndex -= 1;
-                        animObj.animeIndex -= 1;
-                        gameState[animObj.objectId] = animObj;
-                        gameState[objId].animeIndex -= 1; //keep banking to the left
-                    }
-                }
-
-                //when the playership is not turning to the left
-                if(objId < MAX_CLIENTS && !updateObj.getActions().isTurningLeft())
-                {
-                    vector<Image>& images = animationMap[SHIP].getAnimationImages();
-                    GameObject animObj(updateObj);
-
-                    //the ship is at the left most index
-                    if(gameState[objId].animeIndex == 0)
-                    {
-                        animObj.objectId = freeIds.front();
-                        freeIds.pop();
-                        animObj.currentAnime = animationMap[SHIP];
-                        animObj.animeImage = &images[0];
-                        gameState[objId].animeIndex = 0;
-                        animObj.animeIndex = 0;
-                        gameState[animObj.objectId] = animObj;
-                        gameState[objId].animeIndex = 0; //keep banking to the left
-                        break;
-                    }else if(gameState[objId].animeIndex == 5) //reach the right most index
-                    {
-                        break;
-                    }else
-                    {
-                        animObj.objectId = freeIds.front();
-                        freeIds.pop();
-                        animObj.currentAnime = animationMap[SHIP];
-                        animObj.animeImage = &images[gameState[objId].animeIndex];
-                        gameState[objId].animeIndex += 1;
-                        animObj.animeIndex += 1;
-                        gameState[animObj.objectId] = animObj;
-                        gameState[objId].animeIndex += 1; //keep banking to the right
-                    }
-
-                }
-
-                //when the playership is not turning to the right
-                if(objId < MAX_CLIENTS && !updateObj.getActions().isTurningRight())
-                {
-                    vector<Image>& images = animationMap[SHIP].getAnimationImages();
-                    GameObject animObj(updateObj);
-                    //the ship is at the left most index
-                    if(gameState[objId].animeIndex == 0)
-                    {
-                        animObj.objectId = freeIds.front();
-                        freeIds.pop();
-                        animObj.currentAnime = animationMap[SHIP];
-                        animObj.animeImage = &images[0];
-                        gameState[objId].animeIndex = 0;
-                        animObj.animeIndex = 0;
-                        gameState[animObj.objectId] = animObj;
-                        gameState[objId].animeIndex = 0; //keep banking to the left
-
-                    }else if(gameState[objId].animeIndex == -5)
-                    {
-                        break;
-                    }else
-                    {
-                        animObj.objectId = freeIds.front();
-                        freeIds.pop();
-                        animObj.currentAnime = animationMap[SHIP];
-                        animObj.animeImage = &images[gameState[objId].animeIndex];
-                        gameState[objId].animeIndex -= 1;
-                        animObj.animeIndex -= 1;
-                        gameState[animObj.objectId] = animObj;
-                        gameState[objId].animeIndex -= 1; //keep banking to the left
-                    }
-
-                }
-
-                //when the playership is turning to the right
-                if(objId < MAX_CLIENTS && updateObj.getActions().isTurningLeft())
-                {
-                    vector<Image>& images = animationMap[SHIP].getAnimationImages();
-                    GameObject animObj(updateObj);
-                    //the ship is at the right most index
-                    if(gameState[objId].animeIndex == 5)
-                    {
-                        break;
-                    }else
-                    {
-                        animObj.objectId = freeIds.front();
-                        freeIds.pop();
-                        animObj.currentAnime = animationMap[SHIP];
-                        animObj.animeImage = &images[gameState[objId].animeIndex];
-                        gameState[objId].animeIndex += 1;
-                        animObj.animeIndex += 1;
-                        gameState[animObj.objectId] = animObj;
-                        gameState[objId].animeIndex += 1; //keep banking to the right
-                    }
-
-                }
-		 */
 		if (objId < MAX_CLIENTS && updateObj.getActions().isAccelerating()) //for Exhaust trails
 		{
 			ResourceManager *rm = ResourceManager::GetInstance();
@@ -496,11 +380,30 @@ void BaseWindow::updateGameState ()
 			animObj.animeImage = &images[0];
 			animObj.textureName = animObj.animeImage->getLink();
 			animObj.animeIndex = 1;
+
 			gameState[animObj.objectId] = animObj;
 		}
 
 		if (gameState.find(objId) != gameState.end()) //If it exists
+		{ 
 			gameState[objId].Update(updateObj);
+			
+			if (objId < MAX_CLIENTS)
+			{
+				if (updateObj.getActions().isTurningLeft())
+				{
+					gameState[objId].targetIndex = -5;
+				}
+				else if (updateObj.getActions().isTurningRight())
+				{
+					gameState[objId].targetIndex = 5;
+				}
+				else
+				{
+					gameState[objId].targetIndex = 0;
+				}
+			}
+		}
 		else //Create GameObject
 			createRealObject(updateObj, objId);
 	}
@@ -552,17 +455,30 @@ void BaseWindow::clearTransientObjects()
 		if (it->first < MAX_REAL_OBJECT)
 			thingsToErase.push_back(it->first);
 
+		GameObject *animatedObj = &it->second;
+
+		if (animatedObj->objectId < MAX_CLIENTS) // If it is a ship
+		{
+			if (animatedObj->frameCounter >= 5)
+			{
+				if (animtedObj->targetIndex > animatedObj->animeIndex)
+				{
+					animatedObj->animeIndex++;
+					animatedObj->frameCounter = 0;
+
+				}
+				else if (animtedObj->targetIndex < animatedObj->animeIndex)
+				{
+					animatedObj->animeIndex--;
+					animatedObj->frameCounter = 0;
+				}
+			}
+			
+			// @todo: Update animatedObj->animeImage
+			animatedObj->frameCounter++;
+		}
 		else
 		{
-			GameObject *animatedObj = &it->second;
-
-
-                        //run through the ship images
-                        //if(animatedObj->animeIndex < shipImages.size())
-//                            animatedObj->animeImage = &shipImages[animatedObj->animeIndex++];
-//                        else
-//                            thingsToErase.push_back(it->first);
-
 			if (animatedObj->animeIndex < images.size())
 				animatedObj->animeImage = &images[animatedObj->animeIndex++];
 			else
