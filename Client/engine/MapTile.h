@@ -6,18 +6,19 @@
 class MapTile
 {
 public:
-    MapTile(int id, QString srcTexture = QString("tiles.bmp"), int texTileSizeInPix = 16, int texWidthInTiles = 19, int texHeightInTiles = 10);
-    public int getTextureOffsetX() { return texOffsetInPixX_; }
-    public int getTextureOffsetY() { return texOffsetInPixY_; }
-    public QString getTextureName() { return texName_; }
+    MapTile(int tileNum, int row, int col, QString srcTexture = QString("tiles.bmp"), int texTileSizeInPix = 16, int texWidthInTiles = 19, int texHeightInTiles = 10);
     virtual ~MapTile();
+    int getTextureOffsetX() { return texOffsetX_; }
+    int getTextureOffsetY() { return texOffsetY_; }
+    int getTileSizeInPix() { return tileSizeInPix_; }
+    QString getTextureName() { return texName_; }
+    const QPoint& getPos() { return pos_; }
 private:
     QString texName_;
-    int texOffsetInPixX_;
-    int texOffsetInPixY_;
-    int texTileSizeInPix_;
-    int texWidthInTiles_;
-    int texHeightInTiles_;
+    int texOffsetX_;
+    int texOffsetY_;
+    int tileSizeInPix_;
+    QPoint pos_;
 };
 
 #endif
