@@ -44,6 +44,7 @@ private:
 	ServerEngine();
 	static void Shutdown(int code);
 	bool isNameUsed(std::string name);
+	std::string getPlayerName(int id);
 
 	QTimer *timer;
 	CommServer::CommServer* commServer;
