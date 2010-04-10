@@ -3,6 +3,9 @@
 #include <qdatastream.h>
 #define EXPLOSION 0
 #define EXHAUST 1
+
+using namespace std;
+
 /*------------------------------------------------------------------------
 -- FUNCTION NAME: QtXmlParse()
 --
@@ -73,6 +76,7 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
     while(strcmp(node.nodeName().toStdString().c_str(), "link") != 0){node = node.nextSibling();}
     element = node.toElement();
     img.setLink(element.text().toStdString());
+    cout << "Texture: " << img.getLink() << endl;
 
     // temporarily storing the sound to the image so it can roll up into animation.
     while(strcmp(node.nodeName().toStdString().c_str(), "sound") != 0){node = node.nextSibling();}
@@ -103,22 +107,20 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
         case SHOT:
             {
                 // looking for frame portion
-                while(strcmp(node.nodeName().toStdString().c_str(), "frame") != 0){node = node.nextSibling();}
-                //node = node.firstChild();
-                next = node.nextSibling();
-                element = node.toElement();
-                node = element.firstChild();
+                while(strcmp(node.nodeName().toStdString().c_str(), "frame") != 0)
+                	node = node.nextSibling();
+
+                node = node.firstChild();
 
                 // skip to relevant info
-                while(strcmp(element.nodeName().toStdString().c_str(), "direction") != 0){
-                    element = node.nextSiblingElement();
-                    //node = element;
-                }
+                while(strcmp(node.nodeName().toStdString().c_str(), "direction") != 0)
+                    node = node.nextSibling();
 
-                node = element.firstChild();
+                node = node.firstChild();
 
                 // get image values.
                 while(strcmp(node.nodeName().toStdString().c_str(), "left") != 0) { node = node.nextSibling(); }
+                element = node.toElement();
                 img.setLeftOffSet(atof(element.text().toStdString().c_str()));
 
                 // getting bottom offset.
