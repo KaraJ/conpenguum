@@ -158,9 +158,9 @@ void ServerEngine::timeout()
 	list<Event> events = gameState->tick();
 	for (list<Event>::iterator it = events.begin(); it != events.end(); ++it)
 	{
+		ostringstream oss;
 		if (it->type == Event::ET_KILL)
 		{
-			ostringstream oss;
 			oss << "* " << getPlayerName(it->killed);
 			oss << " was killed by " << getPlayerName(it->killer) << " *";
 			ServerMessage m;
@@ -173,6 +173,12 @@ void ServerEngine::timeout()
 		}
 		else if (it->type == Event::ET_DEATH)
 		{
+			oss << "* " << getPlayerName(it->killed) << " was killed by a wall *";
+			ServerMessage m;
+			m.SetData(oss.str());
+			m.SetMsgType(ServerMessage::MT_CHAT);
+			commServer->sendServerMsgToAll(m);
+			ScoreBoard::Instance()->recordDeath(it->killed);
 			//TODO: add death to scoreboard without kill
 		}
 	}

@@ -77,6 +77,12 @@ void ScoreBoard::recordKill(int deadPlayer, int killedBy)
 		execQuery("UPDATE currentGame SET kills=" + players[killedBy].getKillsString() + ", deaths=" + players[killedBy].getDeathsString() + " WHERE username = '" + players[killedBy].getName() + "'");
 	}
 }
+void ScoreBoard::recordDeath(int deadPlayer)
+{
+	players[deadPlayer].addDeath();
+	if(db_connected)
+		execQuery("UPDATE currentGame SET kills=" + players[deadPlayer].getKillsString() + ", deaths=" + players[deadPlayer].getDeathsString() + " WHERE username = '" + players[deadPlayer].getName() + "'");
+}
 
 void ScoreBoard::execQuery(string query)
 {
