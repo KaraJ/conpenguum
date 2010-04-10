@@ -118,9 +118,7 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
                 node = element.firstChild();
 
                 // get image values.
-                while(strcmp(element.nodeName().toStdString().c_str(), "left") != 0){
-                    element = node.nextSiblingElement();
-                }
+                while(strcmp(node.nodeName().toStdString().c_str(), "left") != 0) { node = node.nextSibling(); }
                 img.setLeftOffSet(atof(element.text().toStdString().c_str()));
 
                 // getting bottom offset.
