@@ -2,6 +2,7 @@
 #include "qtxmlparse.h"
 
 using namespace std;
+
 /*------------------------------------------------------------------------
 -- FUNCTION NAME: getAnimationMap()
 --
