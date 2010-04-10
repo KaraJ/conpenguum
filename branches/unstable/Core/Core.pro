@@ -1,7 +1,6 @@
 # DO NOT USE QMAKE TO AUTOGEN THESE, IT DOESN'T WORK
 QT += core \
     xml
-    
 HEADERS += Player.h \
     Logger.h \
     ConfigParser.h \
@@ -17,7 +16,6 @@ HEADERS += Player.h \
     comm/data/clientaction.h \
     comm/data/servermessage.h \
     comm/data/updateobject.h
-    
 SOURCES += Logger.cpp \
     ConfigParser.cpp \
     comm/crc.cpp \
@@ -28,16 +26,14 @@ SOURCES += Logger.cpp \
     comm/data/clientaction.cpp \
     comm/data/servermessage.cpp \
     comm/data/updateobject.cpp
-    
-RESOURCES += resources/sharedResources.qrc
+RESOURCES += ../Client/Resources/textures.qrc \
+    resources/sharedResources.qrc
 TEMPLATE = lib
 TARGET = Debug/Core
 OBJECTS_DIR = obj
-
 CONFIG += qt \
     staticlib \
     debug \
     warn_on
-    
 OTHER_FILES += resources/ships.xml \
     resources/shots.xml

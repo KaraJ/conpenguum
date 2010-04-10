@@ -7,7 +7,24 @@
 
 using namespace std;
 
-
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   fragShip
+--
+--  DATE:       February 19, 2010
+--
+--  REVISIONS:  v1.0
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  fragShip(size_t shipID)
+--
+--  NOTES:      Removes a ship from play.
+--
+--  RETURNS:    VOID
+--
+------------------------------------------------------------------------------*/
 Frame::Frame(QString filename): frameTimer(0), map(QString(filename))
 {
 	for (size_t i = 0; i < MAX_CLIENTS; ++i)
@@ -153,9 +170,8 @@ void Frame::removeShip(size_t clientID)
 void Frame::spawnShip(size_t shipID)
 {
     Ship *ship = getShip(shipID);
-    QVector2D spawnPoint(100,100); // map function to return a safe spawn point
     ship->active = true;
-    ship->position = spawnPoint;
+    ship->position = map.getSpawn(0, SHIPSIZE);
     map.add(ship, ship->position, SHIPSIZE);
 }
 
@@ -477,6 +493,24 @@ UpdateObject getShipObservers(int shipID, list<int> observers){
 }
 **/
 
+/*-----------------------------------------------------------------------------
+--  FUNCTION:   fragShip
+--
+--  DATE:       February 19, 2010
+--
+--  REVISIONS:  v1.0
+--
+--  DESIGNER:   Gameplay/Physics Team
+--
+--  PROGREMMER: Gameplay/Physics Team
+--
+--  INTERFACE:  fragShip(size_t shipID)
+--
+--  NOTES:      Removes a ship from play.
+--
+--  RETURNS:    VOID
+--
+------------------------------------------------------------------------------*/
 vector<UpdateObject> Frame::ListShip2listUpdateObject()
 {
     vector<UpdateObject> udList;
@@ -508,9 +542,24 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
     return udList;
 }
 
-/**
-NEEDS COMMENTS
-**/
+/*-----------------------------------------------------------------------------
+--  FUNCTION:
+--
+--  DATE:
+--
+--  REVISIONS:
+--
+--  DESIGNER:
+--
+--  PROGREMMER:
+--
+--  INTERFACE:
+--
+--  NOTES:
+--
+--  RETURNS:
+--
+------------------------------------------------------------------------------*/
 void Frame::updateClientActions(vector<ClientAction> clientActions)
 {
 	for (size_t i = 0; i < clientActions.size(); ++i)
@@ -518,37 +567,26 @@ void Frame::updateClientActions(vector<ClientAction> clientActions)
 }
 
 /*-----------------------------------------------------------------------------
---  FUNCTION:   printShots
+--  FUNCTION:   fragShip
 --
---  DATE:       March 27, 2010
+--  DATE:       February 19, 2010
 --
---  REVISIONS:  v0.1 - Ships can shoot now with proper bullet spawn position
+--  REVISIONS:  v1.0
 --
 --  DESIGNER:   Gameplay/Physics Team
 --
 --  PROGREMMER: Gameplay/Physics Team
 --
---  INTERFACE:  printShots(void)
+--  INTERFACE:  fragShip(size_t shipID)
 --
---  NOTES:      **FOR TESTING** Prints the positions of all the ships.
+--  NOTES:      Removes a ship from play.
 --
---  FORMAT:     "<id>: <x>,<y>"
---
---  RETURNS:    void
+--  RETURNS:    VOID
 --
 ------------------------------------------------------------------------------*/
-void Frame::printShots(void)
-{
-    std::list<Shot>::iterator it;
-    for(it = listShot.begin(); it != listShot.end(); it++)
-    {
-		cout << "P" << it->position.x() << ',' <<  it->position.y() << " V" << it->vector.x()
-				<< ',' <<  it->vector.y() << endl;
-    }
-}
-
 void Frame::fragShip(size_t shipID){
     Ship *ship = getShip(shipID);
     ship->active = false;
     ship->deathCooldown = 150;
+    map.remove(ship, ship->position, SHIPSIZE);
 }
