@@ -46,28 +46,18 @@ void Renderer::buildRenderList(QPoint center)
     for(std::map<int, GameObject>::iterator it = objectlist.begin(); it != objectlist.end(); ++it)
     {
     	GameObject *gob = &(it->second);
-    	TexturedResourceDefinition *rd;
 
-    	if (gob->objectId < MAX_CLIENTS)
-    		rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHIP, 0);
-        else if (gob->objectId < 500)
-             rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHOT, 0);
-    	else if (gob->objectId == 501)
-    		rd = (TexturedResourceDefinition*)resourceManager->GetResource(AIDBOX, 0);
-    	else
-    		rd = (TexturedResourceDefinition*)resourceManager->GetResource(EXHAUST, 0);
-
-    	renderList[i].texture = textures[rd->texture];
+    	renderList[i].texture = textures[gob->textureName];
 		renderList[i].texOffsetX = gob->animeImage->getLeftOffSet();
 		renderList[i].texOffsetY = gob->animeImage->getTopOffSet();
 		renderList[i].objectHeight = gob->animeImage->getBottomOffSet() - gob->animeImage->getTopOffSet();
 		renderList[i].objectWidth = gob->animeImage->getRightOffSet() - gob->animeImage->getLeftOffSet();
 		renderList[i].rotation = it->second.angle * 2;
-		renderList[i].objectHeightPx = rd->object_width;
-		renderList[i].objectWidthPx = rd->object_height;
+		renderList[i].objectHeightPx = gob->objHeight;
+		renderList[i].objectWidthPx = gob->objWidth;
 
-        renderList[i].x = SCRCENTREW + (gob->position.x() - xOffset) - rd->object_width / 2;
-        renderList[i].y = SCRCENTREH + (gob->position.y() - yOffset) - rd->object_height / 2;
+        renderList[i].x = SCRCENTREW + (gob->position.x() - xOffset) - gob->objWidth / 2;
+        renderList[i].y = SCRCENTREH + (gob->position.y() - yOffset) - gob->objHeight / 2;
 
         renderList[i].textX = SCRCENTREW + (it->second.position.x() - xOffset);
         renderList[i].textY = SCRCENTREH - (it->second.position.y() - yOffset);

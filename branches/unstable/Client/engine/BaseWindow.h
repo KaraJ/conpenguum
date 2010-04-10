@@ -122,7 +122,7 @@ class BaseWindow : public QMainWindow
 		int handleChat(int key);
 		void toggleChat();
 		QString getName(int);
-		void createRealObject(UpdateObject &updateObj, int objId);
+		void createObject(UpdateObject &updateObj, int objId);
 };
 
 #endif // BASEWINDOW_H

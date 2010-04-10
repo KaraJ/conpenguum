@@ -15,12 +15,6 @@
 #define TWOPI           (2.0 * PI)
 #define INVERSEPI       0.31830988618379067154
 
-//Degree macros
-#define RADIANSINDEG    0.017453293 //PI/180
-#define DEGREESINRAD    57.295779513 //180/PI
-#define DEGTORAD(a)     ((a)*RADIANSINDEG)
-#define RADTODEG(a)     ((a)*DEGREESINRAD)
-
 #define SCREENWIDTH     1024
 #define SCREENHEIGHT    768
 #define SCRCENTREW      512
