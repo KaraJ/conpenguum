@@ -5,6 +5,7 @@
 #include <QStringList>
 #include <string>
 #include <sstream>
+#include <stdlib.h>
 
 class Player
 {
