@@ -1,6 +1,9 @@
 #include "Physics.h"
+
 #include <QPoint>
 #include <math.h>
+
+#include "../../Core/comm/globals.h"
 
 /*-----------------------------------------------------------------------------
 --  FUNCTION:   rotVelToVec

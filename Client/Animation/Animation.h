@@ -38,7 +38,7 @@ public:
     int getNumFrames(){return numFrames_;}
     int getImagesWide(){return imagesWide_;}
     int getImagesTall(){return imagesTall_;}
-    std::vector<Image> &getAnimationImages(){return images_;}
+    std::vector<Image> *getAnimationImages(){return &images_;}
 
     static std::map<int, Animation> getAnimationMap();
     void setSoundEffect(SoundEffects effect)

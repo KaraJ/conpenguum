@@ -8,9 +8,6 @@
 #include "../Animation/Image.h"
 #include "../../Core/comm/data/updateobject.h"
 
-#define MAX_REAL_OBJECT 32767
-#define MAX_TRANSIENT_OBJECT 32767
-
 struct GameObject
 {
 public:
@@ -34,16 +31,17 @@ public:
     }
 
 	int objectId; //0 ~ 65535 Are real objects, 65537+ are transient objects
-	int angle; //Rotation angle 0-179
+	int angle;  //Rotation angle 0-179
 	int shield; //0-100
 	int health; //0-100
 	QPoint position; //XY position
 	std::string textureName;  //Texture filename
 	Animation currentAnime;
-	Image * animeImage;
-	int animeIndex; //Frame index (-5 to 5 for ships)
-	int targetIndex; // Fro ships
-	int frameCounter; // For keeping track of how many frames have passed since last animation increment
+	Image *animeImage;
+	size_t animeIndex; //Frame index (0 to 10 for ships)
+	size_t objWidth;
+	size_t objHeight;
+	//int frameCounter; // For keeping track of how many frames have passed since last animation increment
 	QString owner;
 };
 

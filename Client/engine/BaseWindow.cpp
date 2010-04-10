@@ -375,83 +375,67 @@ void BaseWindow::updateGameState()
 
         if (objId < MAX_CLIENTS && updateObj.getActions().isAccelerating()) //for Exhaust trails
         {
-            ResourceManager *rm = ResourceManager::GetInstance();
-            TexturedResourceDefinition *rd = (TexturedResourceDefinition*) rm->GetResource(EXHAUST, 0);
-            vector<Image>& images = animationMap[EXHAUST].getAnimationImages();
-            GameObject animObj(updateObj);
 
-            double angle = animObj.angle;
-            double radians = (angle * 2) * 0.017453293;
-            int x = cos(radians) * -(rd->object_width), y = sin(radians) * -(rd->object_height);
-            animObj.position.setX(animObj.position.x() + x);
-            animObj.position.setY(animObj.position.y() + y);
-
-            animObj.objectId = freeIds.front();
-            freeIds.pop();
-            animObj.currentAnime = animationMap[EXHAUST];
-            animObj.animeImage = &images[0];
-            animObj.textureName = animObj.animeImage->getLink();
-            animObj.animeIndex = 1;
-
-            gameState[animObj.objectId] = animObj;
         }
 
         if (gameState.find(objId) != gameState.end()) //If it exists
-        {
             gameState[objId].Update(updateObj);
-
-            if (objId < MAX_CLIENTS)
-            {
-                if (updateObj.getActions().isTurningLeft())
-                {
-                    gameState[objId].targetIndex = -5;
-                }
-                else if (updateObj.getActions().isTurningRight())
-                {
-                    gameState[objId].targetIndex = 5;
-                }
-                else
-                {
-                    gameState[objId].targetIndex = 0;
-                }
-            }
-        }
         else
             //Create GameObject
-            createRealObject(updateObj, objId);
+            createObject(updateObj, objId);
     }
 }
 
-void BaseWindow::createRealObject(UpdateObject &updateObj, int objId)
+void BaseWindow::createObject(UpdateObject &updateObj, int objId)
 {
     GameObject animObj(updateObj);
+    ResourceManager *rm = ResourceManager::GetInstance();
+    TexturedResourceDefinition *rd;
+    vector<Image> *images;
+
+	animObj.animeIndex = 0;
 
     if (objId < MAX_CLIENTS)
     {
-        vector<Image>& images = animationMap[SHIP].getAnimationImages();
+    	rd = (TexturedResourceDefinition*) rm->GetResource(SHIP, 0);
+        images = animationMap[SHIP].getAnimationImages();
         animObj.currentAnime = animationMap[SHIP];
-        animObj.animeImage = &images[0];
+        animObj.animeIndex = 5;
+        animObj.owner = getName(objId);
     }
-    else if (objId < 500)
+    else if (objId < MAX_SHOTS_ID)
     {
-        vector<Image>& images = animationMap[SHOT].getAnimationImages();
+    	rd = (TexturedResourceDefinition*) rm->GetResource(SHOT, 0);
+        images = animationMap[SHOT].getAnimationImages();
         animObj.currentAnime = animationMap[SHOT];
-        animObj.animeImage = &images[0];
     }
     else
-        return;
+    {
+    	rd = (TexturedResourceDefinition*) rm->GetResource(EXHAUST, 0);
+		images = animationMap[EXHAUST].getAnimationImages();
+		animObj.currentAnime = animationMap[EXHAUST];
 
-    //If object is owned by someone, add their username
-    animObj.owner = getName(objId);
+		double radians = DEGTORAD(animObj.angle * 2); //Offset so that it appears behind the ship
+		int x = cos(radians) * -(rd->object_width);
+		int y = sin(radians) * -(rd->object_height);
+		animObj.position.setX(animObj.position.x() + x);
+		animObj.position.setY(animObj.position.y() + y);
+
+		animObj.objectId = freeIds.front(); //Get an ID
+		freeIds.pop();
+    }
+
+    animObj.animeImage = &(*images)[animObj.animeIndex];
     animObj.textureName = animObj.animeImage->getLink();
-    animObj.animeIndex = 0;
+    animObj.objHeight = rd->object_height;
+    animObj.objWidth = rd->object_width;
 
     gameState[animObj.objectId] = animObj;
 }
 
 QString BaseWindow::getName(int playerId)
 {
-    for (size_t i = 0; i < playerList.size(); i++)
+    for (size_t i = 0; i < playerList.size(); ++i)
         if (playerList[i].getId() == playerId)
             return QString(playerList[i].getName().c_str());
     return "";
@@ -460,8 +444,8 @@ QString BaseWindow::getName(int playerId)
 void BaseWindow::clearTransientObjects()
 {
     list<int> thingsToErase;
-    vector<Image>& images = animationMap[EXHAUST].getAnimationImages();
-    //vector<Image>& shipImages = animationMap[SHIP].getAnimationImages();
+    vector<Image> *images = animationMap[EXHAUST].getAnimationImages();
+    vector<Image> *shipImages = animationMap[SHIP].getAnimationImages();
 
     for (map<int, GameObject>::iterator it = gameState.begin(); it != gameState.end(); ++it)
     {
@@ -472,28 +456,12 @@ void BaseWindow::clearTransientObjects()
 
         if (animatedObj->objectId < MAX_CLIENTS) // If it is a ship
         {
-            if (animatedObj->frameCounter >= 5)
-            {
-                if (animatedObj->targetIndex > animatedObj->animeIndex)
-                {
-                    animatedObj->animeIndex++;
-                    animatedObj->frameCounter = 0;
-
-                }
-                else if (animatedObj->targetIndex < animatedObj->animeIndex)
-                {
-                    animatedObj->animeIndex--;
-                    animatedObj->frameCounter = 0;
-                }
-            }
-
-            // @todo: Update animatedObj->animeImage
-            animatedObj->frameCounter++;
+			;
         }
         else
         {
-            if (animatedObj->animeIndex < images.size())
-                animatedObj->animeImage = &images[animatedObj->animeIndex++];
+            if (animatedObj->animeIndex < images->size())
+                animatedObj->animeImage = &(*images)[animatedObj->animeIndex++];
             else
                 thingsToErase.push_back(it->first);
         }

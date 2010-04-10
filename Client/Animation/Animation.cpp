@@ -104,8 +104,4 @@ Animation::Animation(const Animation &a)
     numFrames_ = a.numFrames_;
     imagesWide_ = a.imagesWide_;
     imagesTall_ = a.imagesTall_;
-   //images_ = a.getAnimationImages();
-   //numFrames_ = a.getNumFrames();
-   //imagesWide_ = a.getImagesWide();
-   //imagesTall_ = a.getImagesTall();
 }
