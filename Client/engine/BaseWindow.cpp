@@ -44,7 +44,7 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
 	shift = false;
 	
 	//loadMap
-	Map* m = new Map();
+	/*Map* m = new Map();
 	QFile mapFile("/:theMap");
 	if (!mapFile.open(QIODevice::ReadOnly | QIODevice::Text))
 	    Logger::LogNQuit("Could not open map file");
@@ -56,7 +56,7 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
 	    std::istringstream iss(line);
 	    iss >> row >> col >> tileNum;
 	    m->addTile(tileNum, row, col);
-	}
+	}*/
 
 	/*this may be temporary*/
 	this->setFixedSize(1024, 768);
