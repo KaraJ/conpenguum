@@ -66,7 +66,7 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
     // create tiles array
     tiles=new Tile*[rows];
     for(int i = 0; i < rows; ++i)
-    	*(tiles + i) = new Tile[columns];
+        *(tiles + i) = new Tile[columns];
 
     // read tiles
     QDomNodeList tile_l = map_e.elementsByTagName("tile");
@@ -76,8 +76,9 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
         QDomElement physics_e = tile_e.elementsByTagName("physics").item(0).toElement();
         x = tile_e.attribute("x", "0").toInt();
         y = tile_e.attribute("y", "0").toInt();
-
-		tiles[x][y].setWall();
+        if (phisics_e.attribute("hit") == "bounce") {
+            tiles[x][y].setWall();
+        }
     }
 
     // read spawns
@@ -184,7 +185,7 @@ void Map::move(Shot *shot, QVector2D old_position, QVector2D new_position)
 ------------------------------------------------------------------------------*/
 void Map::add(Ship *ship, QVector2D location, int size)
 {
-	int radius = size / 2;
+    int radius = size / 2;
 
     int x1 = PIX_TO_TILE(location.x() - radius);
     int x2 = PIX_TO_TILE(location.x() + radius);
@@ -248,12 +249,12 @@ void Map::add(Shot *shot, QVector2D location)
 ------------------------------------------------------------------------------*/
 void Map::remove(Ship *ship, QVector2D location, int size)
 {
-	int radius = size / 2;
+    int radius = size / 2;
 
-	int x1 = PIX_TO_TILE(location.x() - radius);
-	int x2 = PIX_TO_TILE(location.x() + radius);
-	int y1 = PIX_TO_TILE(location.y() - radius);
-	int y2 = PIX_TO_TILE(location.y() + radius);
+    int x1 = PIX_TO_TILE(location.x() - radius);
+    int x2 = PIX_TO_TILE(location.x() + radius);
+    int y1 = PIX_TO_TILE(location.y() - radius);
+    int y2 = PIX_TO_TILE(location.y() + radius);
 
     for (int x = x1; x < x2; ++x)
     {
@@ -313,7 +314,7 @@ void Map::remove(Shot *shot, QVector2D location)
 bool Map::isWall(int x, int y)
 {
     if (x < 0 || y < 0 || x >= columns || y >= rows)
-    	return true;
+        return true;
 
     return tiles[x][y].isWall();
 }
@@ -343,35 +344,35 @@ bool Map::isWall(int x, int y)
 
 double Map::canMove(QVector2D position, bool vertical, double objSize, double distance)
 {
-	double radius = objSize / 2;
-	//Leading edge of object
-	double start, center, end, endTile;
-	double xpos = position.x();
-	double ypos = position.y();
+    double radius = objSize / 2;
+    //Leading edge of object
+    double start, center, end, endTile;
+    double xpos = position.x();
+    double ypos = position.y();
 
-	if (vertical)
-	{
-		if (distance > 0)
-			endTile = PIX_TO_TILE(ypos + radius + distance);
-		else
-			endTile = PIX_TO_TILE(ypos - radius + distance);
+    if (vertical)
+    {
+        if (distance > 0)
+            endTile = PIX_TO_TILE(ypos + radius + distance);
+        else
+            endTile = PIX_TO_TILE(ypos - radius + distance);
 
-		center = PIX_TO_TILE(xpos);
-		start  = PIX_TO_TILE(xpos - radius);
-		end    = PIX_TO_TILE(xpos + radius);
-	}
-	else
-	{
-		if (distance > 0)
-			endTile = PIX_TO_TILE(xpos + radius + distance);
-		else
-			endTile = PIX_TO_TILE(xpos - radius + distance);
+        center = PIX_TO_TILE(xpos);
+        start  = PIX_TO_TILE(xpos - radius);
+        end    = PIX_TO_TILE(xpos + radius);
+    }
+    else
+    {
+        if (distance > 0)
+            endTile = PIX_TO_TILE(xpos + radius + distance);
+        else
+            endTile = PIX_TO_TILE(xpos - radius + distance);
 
 
-		center = PIX_TO_TILE(ypos);
-		start  = PIX_TO_TILE(ypos - radius);
-		end    = PIX_TO_TILE(ypos + radius);
-	}
+        center = PIX_TO_TILE(ypos);
+        start  = PIX_TO_TILE(ypos - radius);
+        end    = PIX_TO_TILE(ypos + radius);
+    }
 
     if (endTile < 0)
         return -distance;
