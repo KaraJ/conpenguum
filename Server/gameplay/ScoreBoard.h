@@ -15,6 +15,7 @@ public:
 	void addPlayer(int id, std::string name);
 	void removePlayer(int id);
 	void recordKill(int deadPlayer, int killedBy);
+	void recordDeath(int deadPlayer);
 	virtual ~ScoreBoard(){}
 private:
 	ScoreBoard();

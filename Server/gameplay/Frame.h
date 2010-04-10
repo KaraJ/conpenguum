@@ -81,7 +81,7 @@ private:
     void fragShip(size_t shipID);
     void addShot(Shot newShot);
     Ship* getShip(size_t shipID);
-    void updateShips();
+    std::list<Event> updateShips();
     std::list<Event> updateShots();
     void destroyShot(size_t shotID);
 };

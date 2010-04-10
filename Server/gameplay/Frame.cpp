@@ -34,8 +34,9 @@ Frame::Frame(QString filename): frameTimer(0), map(QString(filename))
 --
 ------------------------------------------------------------------------------*/
 list<Event> Frame::tick(void){
-    updateShips();
-    list<Event> events = updateShots();
+	list<Event> events = updateShips();
+    list<Event> events2 = updateShots();
+    events.insert(events.end(), events2.begin(), events2.end());
     ++frameTimer;
     return events;
 }
@@ -177,11 +178,12 @@ void Frame::spawnShip(size_t shipID)
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Frame::updateShips(void)
+list<Event> Frame::updateShips(void)
 {
     double dist;
 	QVector2D oldPosition;
 	QVector2D newVector;
+	list<Event> events;
 
     for(size_t i = 0; i < MAX_CLIENTS; ++i)
     {
@@ -211,6 +213,14 @@ void Frame::updateShips(void)
 						currShip->shield -= 10;
 					else if (currShip->health > 0)
 						currShip->health -= 10;
+					if (currShip->health <= 0)
+					{
+						currShip->health = 0;
+						Event t;
+						t.type = Event::ET_DEATH;
+						t.killed = currShip->id;
+						events.push_back(t);
+					}
                 }
 
                 currShip->position.setX(currShip->position.x() + dist);
@@ -228,6 +238,14 @@ void Frame::updateShips(void)
 						currShip->shield -= 10;
 					else if (currShip->health > 0)
 						currShip->health -= 10;
+                	if (currShip->health <= 0)
+					{
+						currShip->health = 0;
+						Event t;
+						t.type = Event::ET_DEATH;
+						t.killed = currShip->id;
+						events.push_back(t);
+					}
                 }
 
                 currShip->position.setY(currShip->position.y() + dist);
@@ -304,6 +322,7 @@ void Frame::updateShips(void)
 			}
         }
     }
+    return events;
 }
 
 /*-----------------------------------------------------------------------------
