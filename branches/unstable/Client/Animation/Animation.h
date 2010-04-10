@@ -55,4 +55,4 @@ public:
 
 };
 
-#endif // ANIMATION_H
+#endif
