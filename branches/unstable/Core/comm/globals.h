@@ -8,8 +8,8 @@
 
 //Game Object IDs
 #define MAX_CLIENTS	  32 //Maximum number of connected clients on server.
-#define MAX_SHOTS_ID  500
-#define MAX_PWRUP_ID  550
+#define MAX_SHOTS_ID  360
+#define MAX_PWRUP_ID  501
 #define MAX_REAL_OBJECT 32767
 
 //Degree macros

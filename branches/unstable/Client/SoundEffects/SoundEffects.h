@@ -8,17 +8,6 @@
 #include <phonon/mediacontroller.h>
 #include <phonon/mediasource.h>
 
-enum SOUNDTYPE
-{
-    explosion = 0,
-    shot = 1,
-    startgame = 2,
-    respawn = 3,
-    warp = 4,
-    endgame = 5,
-    exhaust = 6
-};
-
 class SoundEffects
 {
 private:
@@ -28,6 +17,16 @@ private:
     Phonon::MediaObject* soundEffect_; // used to play sounds;
 	*/
 public:
+	enum SOUNDTYPE
+	{
+	    EXPLOSION = 0,
+	    EXHAUST = 1,
+	    SHOT = 2,
+	    STARTGAME = 3,
+	    RESPAWN = 4,
+	    WARP = 5,
+	    ENDGAME = 6
+	};
 	std::string effectPath_; // will hold the path to the sound effect.
 	std::string effectName_;
 	SOUNDTYPE type_;

@@ -1,7 +1,9 @@
 #ifndef QTXMLPARSE_H
 #define QTXMLPARSE_H
 #include "QtXmlParse_global.h"
-#include "AnimationEnum.h"
+#include "Animation.h"
+#include "../../Core/resourceMgr/resourceEnums.h"
+
 /*------------------------------------------------------------------------
 -- CLASS NAME: QtXmlParse
 --
@@ -16,7 +18,7 @@
 class QTXMLPARSESHARED_EXPORT QtXmlParse {
 public:
     QtXmlParse();
-    std::vector<Image> ReadAnimationVector(AnimationType animation, std::string file);
+    std::vector<Image> ReadAnimationVector(std::string file);
 
 };
 

@@ -1,6 +1,5 @@
 #include "BaseWindow.h"
-
-#include "../Animation/AnimationEnum.h"
+#include "../../Core/resourceMgr/resourceEnums.h"
 
 using namespace std;
 
@@ -409,14 +408,20 @@ void BaseWindow::createObject(UpdateObject &updateObj, int objId)
     else if (objId < MAX_SHOTS_ID)
     {
     	rd = (TexturedResourceDefinition*) rm->GetResource(SHOT, 0);
-        images = animationMap[ANIMSHOT].getAnimationImages();
-        animObj.currentAnime = animationMap[ANIMSHOT];
+        images = animationMap[SHOT].getAnimationImages();
+        animObj.currentAnime = animationMap[SHOT];
+    }
+    else if (objId < MAX_PWRUP_ID)
+    {
+    	rd = (TexturedResourceDefinition*) rm->GetResource(AIDBOX, 0);
+		images = animationMap[AIDBOX].getAnimationImages();
+		animObj.currentAnime = animationMap[AIDBOX];
     }
     else
     {
     	rd = (TexturedResourceDefinition*) rm->GetResource(EXHAUST, 0);
-                images = animationMap[ANIMEXHAUST].getAnimationImages();
-                animObj.currentAnime = animationMap[ANIMEXHAUST];
+		images = animationMap[EXHAUST].getAnimationImages();
+		animObj.currentAnime = animationMap[EXHAUST];
 
 		double radians = DEGTORAD(animObj.angle * 2); //Offset so that it appears behind the ship
 		int x = cos(radians) * -(rd->object_width);
@@ -426,7 +431,7 @@ void BaseWindow::createObject(UpdateObject &updateObj, int objId)
     }
 
     animObj.animeImage = &(*images)[animObj.animeIndex];
-    animObj.textureName = animObj.animeImage->getLink();
+    animObj.textureName = (*images)[0].getLink();
     animObj.objHeight = rd->object_height;
     animObj.objWidth = rd->object_width;
 

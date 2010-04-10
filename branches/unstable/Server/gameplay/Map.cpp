@@ -97,38 +97,6 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
 
     // seed rand(), used later in spawn selection
     srand(time(NULL));
-
-}
-
-/*-----------------------------------------------------------------------------
---  FUNCTION:   Map::move
---
---  DATE:       January 27, 2010
---
---  REVISIONS:  v0.1 - pinch of  code, mostly comments.
---
---  DESIGNER:   Gameplay/Physics Team
---
---  PROGREMMER: Gameplay/Physics Team
---
---  INTERFACE:  move(Ship *ship, QVector2D old_position, QVector2D new_position, int size)
---              Ship *ship : Pointer to the ship to move
---              QVector2D old_position : the previous position of the ship.
---              QVector2D new_position : the new position of the ship.
---              int size : The size of a ship
---
---  NOTES:      Moves the ship from its old tile to the new one.
---
---  RETURNS:    void
---
-------------------------------------------------------------------------------*/
-void Map::move(Ship *ship, QVector2D old_position, QVector2D new_position, double size)
-{
-
-
-
-
-
 }
 
 /*-----------------------------------------------------------------------------

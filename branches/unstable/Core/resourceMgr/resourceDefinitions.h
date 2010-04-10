@@ -29,8 +29,4 @@ struct ShipDefinition : public TexturedResourceDefinition
 
 };
 
-struct ShotDefinition : public TexturedResourceDefinition
-{
-};
-
 #endif // RESOURCEDEFINITIONS_H
