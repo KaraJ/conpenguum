@@ -212,13 +212,6 @@ list<Event> Frame::updateShips(void)
 				oldPosition.setX(currShip->position.x());
 				oldPosition.setY(currShip->position.y());
 
-				//TODO: Iterating over all shots is inefficient, this will be changed once testing is complete.
-				/*for (list<Shot>::iterator it = listShot.begin(); it != listShot.end(); ++it)
-				{
-					QVector2D pos = it->getPosition();
-
-				}*/
-
 				if (currShip->vector.x() != 0)
 				{
 					dist = map.canMove(currShip->position, false, SHIPSIZE, currShip->vector.x());
@@ -345,9 +338,9 @@ list<Event> Frame::updateShips(void)
         	{
         		if (--currShip->deathCooldown == 0)
         		{
-        			currShip->active = true;
         			currShip->health = 100;
         			currShip->shield = 100;
+        			spawnShip(currShip->id);
         		}
         	}
         }
@@ -465,33 +458,6 @@ int Frame::dist2Points(QVector2D point1, QVector2D point2)
     return (point1.x()-point2.x())*(point1.x()-point2.x()) +
             (point1.y()-point2.y())*(point1.y()-point2.y());
 }
-
-/**
-UpdateObject getObjectObservers(int objectID, list<int> observers){
-    UpdateObject uo;
-    
-    for(int i = 0; i < MAX_CLIENTS; ++i){
-        if(listShip[i] != 0){
-            if((listShip[i]->position.x()+562>objectId.pos.x && listShip[i]->position.x()-562<objectID.pos.x) && (listShip[i]->position.y()+434>objectId.pos.y && listShip[i]->position.y()-434<objectID.pos.y)){
-                observers.push_back(objectID);
-            }
-        }
-    }
-        
-}
-
-UpdateObject getShipObservers(int shipID, list<int> observers){
-    UpdateObject uo;
-    
-    for(int i = 0; i < MAX_CLIENTS; ++i){
-        if(listShip[i] != 0){
-            if((listShip[i]->position.x()+562>shipID.pos.x && listShip[i]->position.x()-562<shipID.pos.x) && (listShip[i]->position.y()+434>shipID.pos.y && listShip[i]->position.y()-434<objectID.pos.y)){
-                observers.push_back(objectID);
-            }
-        }
-    }
-}
-**/
 
 /*-----------------------------------------------------------------------------
 --  FUNCTION:   fragShip
