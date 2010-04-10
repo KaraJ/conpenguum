@@ -1,6 +1,7 @@
 #ifndef RESOURCEMANAGER_H
 #define RESOURCEMANAGER_H
 #include "resourceDefinitions.h"
+#include "resourceEnums.h"
 #include <map>
 #include <QObject>
 

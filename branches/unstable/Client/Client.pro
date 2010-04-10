@@ -59,3 +59,4 @@ CONFIG += qt \
     debug \
     warn_on \
     resources
+OTHER_FILES += ../Core/resources/tiles.xml

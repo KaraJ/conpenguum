@@ -34,6 +34,7 @@ OBJECTS_DIR = obj
 CONFIG += qt \
     staticlib \
     debug \
-    warn_on
+    warn_on \
+    resources
 OTHER_FILES += resources/ships.xml \
     resources/shots.xml

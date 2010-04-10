@@ -8,8 +8,8 @@
 #include "../engine/GameObject.h"
 #include <map>
 #include "../../Core/resourceMgr/resourcemanager.h"
+#include "../engine/Map.h"
 #include "../../Core/Player.h"
-
 
 //PI macros
 #define PI              3.14159265358979323846
@@ -46,7 +46,9 @@ private:
     std::map<int, GameObject> &objectlist;
     std::deque<QString> *chatText_;
     QString *localText_;
+    int mapTileCount;
     int deathTime_;
+    Map *map;
 //funcs
 public:
     //Renderer(QWidget *parent, std::vector<UpdateObject> &gameSt);
@@ -54,6 +56,7 @@ public:
     void Initialize();
     void Render(int clientId, const std::vector<Player> &playerList);
     void buildRenderList(QPoint center);
+    void loadMap(Map *map);
     void setDeathTime(int time) { deathTime_ = time; }
 
 private:

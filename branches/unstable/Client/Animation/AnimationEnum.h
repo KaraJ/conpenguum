@@ -5,10 +5,10 @@
 -------------------------------------------------------------------------*/
 enum AnimationType
 {
-	EXPLOSION=0,
-	EXHAUST=1,
-	SHIP=2,
-	SHOT=3
+        ANIMEXPLOSION=0,
+        ANIMEXHAUST=1,
+        ANIMSHIP=2,
+        ANIMSHOT=3
 };
 
 #endif // ANIMATIONENUM_H
