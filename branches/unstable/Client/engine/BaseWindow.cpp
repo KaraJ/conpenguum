@@ -45,7 +45,7 @@ BaseWindow::BaseWindow() :
 
     //loadMap
     Map* m = new Map();
-    QFile mapFile(":/textures/theMap");
+    QFile mapFile("Resources/theMap");
     if (!mapFile.open(QIODevice::ReadOnly | QIODevice::Text))
         Logger::LogNQuit("Could not open map file");
     QTextStream mapStream(&mapFile);
