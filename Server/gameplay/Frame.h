@@ -37,6 +37,18 @@
 
 #define FIRSTAID 	500
 
+struct Event
+{
+	enum EventType
+	{
+		ET_KILL,
+		ET_DEATH
+	};
+	EventType type;
+	int killer;
+	int killed;
+};
+
 class Frame
 {
 private:
@@ -53,7 +65,7 @@ public:
 
 public:
     Frame(QString filename);
-    void tick();
+    std::list<Event> tick();
     void addShip(size_t clientID);
     void updateClientActions(std::vector <ClientAction>);
     void spawnShip(size_t shipID);
@@ -70,7 +82,7 @@ private:
     void addShot(Shot newShot);
     Ship* getShip(size_t shipID);
     void updateShips();
-    void updateShots();
+    std::list<Event> updateShots();
     void destroyShot(size_t shotID);
 };
 #endif // FRAME_H

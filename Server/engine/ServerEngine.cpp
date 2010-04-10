@@ -154,7 +154,22 @@ void ServerEngine::timeout()
 	if (caBuff.size() > 0) //If anyone did anything...
 		gameState->updateClientActions(caBuff);
 
-	gameState->tick();
+	list<Event> events = gameState->tick();
+	for (list<Event>::iterator it = events.begin(); it != events.end(); ++it)
+	{
+		if (it->type == Event::ET_KILL)
+		{
+			ostringstream oss;
+			oss << "* " << getPlayerName(it->killed);
+			oss << " was killed by " << getPlayerName(it->killer) << " *";
+			ServerMessage m;
+			m.SetData(oss.str());
+			m.SetClientID(it->killer);
+			m.SetMsgType(ServerMessage::MT_CHAT);
+			commServer->sendServerMsg(m);
+			ScoreBoard::Instance()->recordKill(it->killed, it->killer);
+		}
+	}
 	uoBuff = gameState->ListShip2listUpdateObject();
 	if (gameState->numPwrups() == 0)
 	{
