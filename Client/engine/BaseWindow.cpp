@@ -44,8 +44,8 @@ BaseWindow::BaseWindow() :
     localChat = "";
 
     //loadMap
-    Map* m = new Map();
-    QFile mapFile("Resources/theMap");
+    m = new Map();
+    QFile mapFile("Resources/maps/tux1");
     if (!mapFile.open(QIODevice::ReadOnly | QIODevice::Text))
         Logger::LogNQuit("Could not open map file");
     QTextStream mapStream(&mapFile);
@@ -61,6 +61,7 @@ BaseWindow::BaseWindow() :
     /*this may be temporary*/
     this->setFixedSize(1024, 768);
     ren = new Renderer(this, gameState, &chatQueue, &localChat);
+    ren->loadMap(m);
     this->show();
 
     animationMap = Animation::getAnimationMap();
@@ -408,14 +409,14 @@ void BaseWindow::createObject(UpdateObject &updateObj, int objId)
     else if (objId < MAX_SHOTS_ID)
     {
     	rd = (TexturedResourceDefinition*) rm->GetResource(SHOT, 0);
-        images = animationMap[SHOT].getAnimationImages();
-        animObj.currentAnime = animationMap[SHOT];
+        images = animationMap[ANIMSHOT].getAnimationImages();
+        animObj.currentAnime = animationMap[ANIMSHOT];
     }
     else
     {
     	rd = (TexturedResourceDefinition*) rm->GetResource(EXHAUST, 0);
-		images = animationMap[EXHAUST].getAnimationImages();
-		animObj.currentAnime = animationMap[EXHAUST];
+                images = animationMap[ANIMEXHAUST].getAnimationImages();
+                animObj.currentAnime = animationMap[ANIMEXHAUST];
 
 		double radians = DEGTORAD(animObj.angle * 2); //Offset so that it appears behind the ship
 		int x = cos(radians) * -(rd->object_width);

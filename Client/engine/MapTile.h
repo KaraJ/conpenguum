@@ -7,18 +7,12 @@
 class MapTile
 {
 public:
-    MapTile(int texTileNum, int mapRow, int mapCol, int texTileSizeInPix, int texWidthInTiles, int texHeightInTiles);
+    MapTile(int texTileNum, int mapRow, int mapCol);
     virtual ~MapTile();
-    int getTextureOffsetXStart() { return texOffsetXStart_; }
-    int getTextureOffsetYStart() { return texOffsetYStart_; }
-    int getTextureOffsetXEnd() { return texOffsetXEnd_; }
-    int getTextureOffsetYEnd() { return texOffsetYEnd_; }
     const QPoint& getPos() { return pos_; }
+    const int getTileID() const { return tileID; }
 private:
-    float texOffsetXStart_;
-    float texOffsetYStart_;
-    float texOffsetXEnd_;
-    float texOffsetYEnd_;
+    int    tileID;
     QPoint pos_;
 };
 

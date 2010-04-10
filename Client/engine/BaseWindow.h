@@ -101,6 +101,7 @@ class BaseWindow : public QMainWindow
 		Renderer* ren;
 		ClientAction* clientAction;
 		std::vector<Player> playerList;
+                Map *m;
 
     public:
 		BaseWindow ();

@@ -43,19 +43,39 @@ void Renderer::buildRenderList(QPoint center)
     //textures[(ShipDefinition*)resourceManager->GetResource(SHIP, WARBIRD)->texture]
     //hardcoding in values for now
 
-    i = 0;
+    std::vector<MapTile*> &tiles = map->getTiles();
+    for(i = 0; i < tiles.size(); i++)
+    {
+        ResourceManager * rm = ResourceManager::GetInstance();
+        TexturedResourceDefinition *rd = (TexturedResourceDefinition*)rm->GetResource(TILE, tiles[i]->getTileID());
+
+        renderList[i].texture = textures[rd->texture];
+        renderList[i].texOffsetX = rd->texture_xoffset;
+        renderList[i].texOffsetY = rd->texture_yoffset;
+        renderList[i].objectHeight = rd->texture_height;
+        renderList[i].objectWidth = rd->texture_width;
+        renderList[i].rotation = 0;
+        renderList[i].objectHeightPx = rd->object_height;
+        renderList[i].objectWidthPx = rd->object_width;
+        renderList[i].objectId = -1;
+
+        renderList[i].x = SCRCENTREW + (tiles[i]->getPos().x() - xOffset) - rd->object_width/2;
+        renderList[i].y = SCRCENTREH + (tiles[i]->getPos().y() - yOffset) - rd->object_height/2;
+    }
+    mapTileCount = i;
+
     for(std::map<int, GameObject>::iterator it = objectlist.begin(); it != objectlist.end(); ++it)
     {
     	GameObject *gob = &(it->second);
 
     	renderList[i].texture = textures[gob->textureName];
-		renderList[i].texOffsetX = gob->animeImage->getLeftOffSet();
-		renderList[i].texOffsetY = gob->animeImage->getTopOffSet();
-		renderList[i].objectHeight = gob->animeImage->getBottomOffSet() - gob->animeImage->getTopOffSet();
-		renderList[i].objectWidth = gob->animeImage->getRightOffSet() - gob->animeImage->getLeftOffSet();
-		renderList[i].rotation = it->second.angle * 2;
-		renderList[i].objectHeightPx = gob->objHeight;
-		renderList[i].objectWidthPx = gob->objWidth;
+        renderList[i].texOffsetX = gob->animeImage->getLeftOffSet();
+        renderList[i].texOffsetY = gob->animeImage->getTopOffSet();
+        renderList[i].objectHeight = gob->animeImage->getBottomOffSet() - gob->animeImage->getTopOffSet();
+        renderList[i].objectWidth = gob->animeImage->getRightOffSet() - gob->animeImage->getLeftOffSet();
+        renderList[i].rotation = it->second.angle * 2;
+        renderList[i].objectHeightPx = gob->objHeight;
+        renderList[i].objectWidthPx = gob->objWidth;
 
         renderList[i].x = SCRCENTREW + (gob->position.x() - xOffset) - gob->objWidth / 2;
         renderList[i].y = SCRCENTREH + (gob->position.y() - yOffset) - gob->objHeight / 2;
@@ -106,6 +126,11 @@ void Renderer::Initialize()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+}
+
+void Renderer::loadMap(Map *map)
+{
+    this->map = map;
 }
 
 void Renderer::resizeGL(int w, int h)

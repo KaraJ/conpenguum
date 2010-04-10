@@ -26,7 +26,7 @@ map<int, Animation> Animation::getAnimationMap()
     int mapSize = -1;
     QtXmlParse *xmlParse;
     int imagesCount = -1;
-    AnimationType type = EXPLOSION;
+    AnimationType type = ANIMEXPLOSION;
     string typeStr;
 
     // get explosion animation
@@ -49,7 +49,7 @@ map<int, Animation> Animation::getAnimationMap()
     animations.insert(std::pair<int, Animation>((int)type, animExplos));
 
     // get ship animation
-    type = SHIP;
+    type = ANIMSHIP;
 	imgVecShip = xmlParse->ReadAnimationVector(type, xmlFileSh); // loading all Explostion animations.
 	imagesCount = imgVecShip.size();
 	animShip.setAnimationImages(imgVecShip);
@@ -60,7 +60,7 @@ map<int, Animation> Animation::getAnimationMap()
 	animations.insert(std::pair<int, Animation>((int)type, animShip));
 
     // get shot animation
-    type = SHOT;
+    type = ANIMSHOT;
 	imgVecShot = xmlParse->ReadAnimationVector(type, xmlFileShot); // loading all Explostion animations.
 	imagesCount = imgVecShot.size();
 	animShot.setAnimationImages(imgVecShot);
@@ -71,7 +71,7 @@ map<int, Animation> Animation::getAnimationMap()
 	animations.insert(std::pair<int, Animation>((int)type, animShot));
 
     // get trail animations.
-    type = EXHAUST;
+    type = ANIMEXHAUST;
     imgVecExh = xmlParse->ReadAnimationVector(type, xmlFileExh);
     imagesCount = imgVecExh.size();
     animExhaust.setAnimationImages(imgVecExh);

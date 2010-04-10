@@ -100,10 +100,10 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
         // might not need switch but have it in just incase an animation xml differs a bit, but it shouldnt.
         switch(animation)
         {
-        case SHIP:
-        case EXHAUST:
-        case EXPLOSION:
-        case SHOT:
+        case ANIMSHIP:
+        case ANIMEXHAUST:
+        case ANIMEXPLOSION:
+        case ANIMSHOT:
             {
                 // looking for frame portion
                 while(strcmp(node.nodeName().toStdString().c_str(), "frame") != 0)

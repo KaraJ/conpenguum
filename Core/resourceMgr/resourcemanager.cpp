@@ -204,6 +204,56 @@ ResourceDefinition* ResourceManager::GetResource(int ResourceType, int ResourceN
     	resourceMap.insert(std::pair<int,ResourceDefinition*>(key,rd));
     	return rd;
     }
+    case TILE:
+    {
+        QDomDocument doc("tiles");
+        QFile file(":/objects/tiles.xml");
+        if (!file.open(QIODevice::ReadOnly))
+            return NULL;
+        if (!doc.setContent(&file)) {
+            file.close();
+            return NULL;
+        }
+        file.close();
+        TexturedResourceDefinition *rd = new TexturedResourceDefinition();
+        //grab the first child of the root element
+        QDomNode n = doc.documentElement().firstChild();
+        while(!n.isNull())
+        {
+            QDomElement shot = n.toElement();
+            //skip if not an element node
+            if(shot.isNull())
+            {
+                n=n.nextSibling();
+                continue;
+            }
+            //skip if not the node we're looking for
+            int tileNum = shot.attribute("type").toInt();
+            if(tileNum != ResourceName)
+            {
+                n=n.nextSibling();
+                continue;
+            }
+            QDomElement data = shot.firstChildElement();
+            rd->texture = data.text().toStdString();
+            data = data.nextSibling().toElement();
+            rd->texture_xoffset = data.text().toFloat();
+            data = data.nextSibling().toElement();
+            rd->texture_yoffset = data.text().toFloat();
+            data = data.nextSibling().toElement();
+            rd->texture_width = data.text().toFloat();
+            data = data.nextSibling().toElement();
+            rd->texture_height = data.text().toFloat();
+            data = data.nextSibling().toElement();
+            rd->object_width = data.text().toInt();
+            data = data.nextSibling().toElement();
+            rd->object_height = data.text().toInt();
+
+            break;
+        }
+        resourceMap.insert(std::pair<int,ResourceDefinition*>(key,rd));
+        return rd;
+    }
     default:
         return NULL;
     }
