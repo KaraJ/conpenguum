@@ -93,13 +93,13 @@ void ServerEngine::timeout()
 				gameState->addShip(sm.GetClientID());
 				gameState->spawnShip(sm.GetClientID());
 				playerList.push_back(Player(sm.GetClientID(), sm.GetData()));
+				ScoreBoard::Instance()->addPlayer(sm.GetClientID(), sm.GetData());
 
 				oss << "* " << sm.GetData() << " has joined the game *";
 				sm.SetMsgType(ServerMessage::MT_CHAT);
 				sm.SetData(oss.str());
 				commServer->sendServerMsg(sm);
 
-				ScoreBoard::Instance()->addPlayer(sm.GetClientID(), sm.GetData());
 				sm.SetData("");
 				sm.SetMsgType(ServerMessage::MT_INIT);
 				commServer->sendServerMsg(sm);
