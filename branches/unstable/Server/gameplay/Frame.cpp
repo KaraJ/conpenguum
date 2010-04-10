@@ -404,6 +404,9 @@ list<Event> Frame::updateShots(void)
 				currShip = *itr;
 			    if(currShip->active && dist2Points((*itr)->position, oldPos) < SHIP_HIT_DIST)
 			    {
+			    	size_t bulletOwnerId = (it->getID() - 32) / 10;
+			    	if (bulletOwnerId == currShip->id)
+			    		continue; //Don't let someone get hit by their own bullet
 					if (currShip->shield >= 40)
 						currShip->shield -= 40;
 					else if (currShip->shield > 0)
@@ -419,7 +422,7 @@ list<Event> Frame::updateShots(void)
 						currShip->health = 0;//DEAD
 						Event t;
 						t.type = Event::ET_KILL;
-						t.killer = (it->getID() - 32) / 10;
+						t.killer = bulletOwnerId;
 						t.killed = currShip->id;
 						events.push_back(t);
 						fragShip(currShip->id);

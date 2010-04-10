@@ -143,27 +143,13 @@ void Renderer::Render(int clientId, const vector<Player> &playerList)
 {
 	QFont nameFont("Helvetica", 8);
 	QFont healthFont("Comic Sans MS", 10, 75);
-	QFont chatFont("Comic Sans MS", 8, 75);
 	QFont deathFont("Helvetica", 20, 85);
+	QFont chatFont("Comic Sans MS", 8, 75);
 
     //clear the screen
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_TEXTURE_2D);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-
-    //render chat messages
-	qglColor(Qt::yellow);
-
-	int linePos = 1;
-	deque<QString>::iterator it;
-	for (it = chatText_->begin(); it != chatText_->end(); it++)
-	{
-		renderText(5, SCREENHEIGHT - 20*linePos - 5, *it, chatFont);
-		if (++linePos == 7)
-			linePos = 1;
-	}
-	renderText(5, SCREENHEIGHT - 5, *localText_, chatFont);
-	qglColor(Qt::white);
 
     for(int i = 0; i < renderCount; i++)
 	{
@@ -305,6 +291,19 @@ void Renderer::Render(int clientId, const vector<Player> &playerList)
 		qglColor(Qt::white);
 	}
     RenderScores(playerList);
+
+    //render chat messages
+	qglColor(Qt::yellow);
+	int linePos = 1;
+	deque<QString>::iterator it;
+	for (it = chatText_->begin(); it != chatText_->end(); it++)
+	{
+		renderText(5, SCREENHEIGHT - 20*linePos - 5, *it, chatFont);
+		if (++linePos == 7)
+			linePos = 1;
+	}
+	renderText(5, SCREENHEIGHT - 5, *localText_, chatFont);
+	qglColor(Qt::white);
 
 	glBindTexture(GL_TEXTURE_2D, textures["chatbox.png"]);
 	glBegin(GL_QUADS);
