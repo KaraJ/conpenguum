@@ -98,7 +98,7 @@ void ServerEngine::timeout()
 				oss << "* " << sm.GetData() << " has joined the game *";
 				sm.SetMsgType(ServerMessage::MT_CHAT);
 				sm.SetData(oss.str());
-				commServer->sendServerMsg(sm);
+				commServer->sendServerMsgToAll(sm);
 
 				sm.SetData("");
 				sm.SetMsgType(ServerMessage::MT_INIT);

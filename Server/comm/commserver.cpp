@@ -171,6 +171,11 @@ void CommServer::sendServerMsg(const ServerMessage& sm)
     tcpServer_->SendMessage(sm);
 }
 
+void CommServer::sendServerMsgToAll(const ServerMessage& sm)
+{
+    tcpServer_->SendMessageToAll(sm);
+}
+
 /*----------------------------------------------------------------------------------------------------------
  -- FUNCTION: CommServer::hasNextClientAction
  --
