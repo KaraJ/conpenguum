@@ -151,8 +151,8 @@ Panel::Panel() : selectedX(0), selectedY(0), width(1), height(3), flipped(false)
     splash->setZValue(1);
     splash->setPos(-splash->rect().width() / 2, scene->sceneRect().top());
     scene->addItem(splash);
-
-    splash->grabKeyboard();
+    splash->hide();
+    //splash->grabKeyboard();
 
     updateSelectionStep(0);
 
