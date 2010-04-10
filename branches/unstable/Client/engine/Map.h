@@ -4,7 +4,7 @@
 #include <QString>
 #include <vector>
 
-class MapTile;
+#include "MapTile.h"
 
 class Map
 {
