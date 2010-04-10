@@ -76,7 +76,7 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
         QDomElement physics_e = tile_e.elementsByTagName("physics").item(0).toElement();
         x = tile_e.attribute("x", "0").toInt();
         y = tile_e.attribute("y", "0").toInt();
-        if (phisics_e.attribute("hit") == "bounce") {
+        if (physics_e.attribute("hit") == "bounce") {
             tiles[x][y].setWall();
         }
     }
