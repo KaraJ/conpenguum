@@ -6,10 +6,11 @@ QT += core \
 OBJECTS_DIR = obj
 TEMPLATE = app
 TARGET = Client
-HEADERS += engine/connectthread.h \
+HEADERS += engine/Map.h \
+    engine/connectthread.h \
     ../Core/comm/globals.h \
     Animation/Animation.h \
-    SoundEffects/SoundEffects.h\
+    SoundEffects/SoundEffects.h \
     Animation/AnimationEnum.h \
     Animation/Image.h \
     Animation/qtxmlparse.h \
@@ -24,9 +25,10 @@ HEADERS += engine/connectthread.h \
     engine/Splashitem.h \
     engine/ipbox.h \
     Renderer/Renderer.h
-SOURCES += engine/connectthread.cpp \
+SOURCES += engine/Map.cpp \
+    engine/connectthread.cpp \
     Animation/Animation.cpp \
-    SoundEffects/SoundEffects.cpp\
+    SoundEffects/SoundEffects.cpp \
     Animation/Image.cpp \
     Animation/qtxmlparse.cpp \
     Comm/Commclient.cpp \

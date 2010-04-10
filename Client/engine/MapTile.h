@@ -2,22 +2,19 @@
 #define MAPTILE_H_
 
 #include <QString>
+#include <QPoint>
 
 class MapTile
 {
 public:
-    MapTile(int tileNum, int row, int col, QString srcTexture = QString("tiles.bmp"), int texTileSizeInPix = 16, int texWidthInTiles = 19, int texHeightInTiles = 10);
+    MapTile(int texTileNum, int row, int col);
     virtual ~MapTile();
     int getTextureOffsetX() { return texOffsetX_; }
     int getTextureOffsetY() { return texOffsetY_; }
-    int getTileSizeInPix() { return tileSizeInPix_; }
-    QString getTextureName() { return texName_; }
     const QPoint& getPos() { return pos_; }
 private:
-    QString texName_;
     int texOffsetX_;
     int texOffsetY_;
-    int tileSizeInPix_;
     QPoint pos_;
 };
 

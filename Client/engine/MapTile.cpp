@@ -1,7 +1,6 @@
 #include "MapTile.h"
 
-MapTile::MapTile(int id, int row, int col, QString srcTexture, int texTileSizeInPix, int texWidthInTiles, int texHeightInTiles)
-    : srcTexture_(srcTexture), texTileSizeInPix_(texTileSizeInPix)
+MapTile::MapTile(int texTileNum, int row, int col)
 {
     int texRow = id / texWidthInTiles;
     int texCol = id % texWidthInTiles;

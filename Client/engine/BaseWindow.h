@@ -5,10 +5,12 @@
 #include <QtGui>
 #include <QMainWindow>
 #include <QKeyEvent>
+#include <QTextStream>
 #include <QTimer>
 #include <iostream>
 #include <string>
 #include <queue>
+#include <sstream>
 
 //User Includes
 #include "GameObject.h"
@@ -18,6 +20,7 @@
 #include "../../Core/comm/data/servermessage.h"
 #include "../../Core/Player.h"
 #include "../Renderer/Renderer.h"
+#include "Map.h"
 
 // Default frame rate is 30 frames/second.
 #define DEFAULT_FRAME_RATE 30
