@@ -460,7 +460,7 @@ void BaseWindow::clearTransientObjects()
         else
         {
             if (animatedObj->animeIndex < images->size())
-                animatedObj->animeImage = &(*images)[animatedObj->animeIndex++];
+                animatedObj->animeImage = &(*images)[++animatedObj->animeIndex];
             else
                 thingsToErase.push_back(it->first);
         }
