@@ -118,7 +118,7 @@ void ServerEngine::timeout()
 					oss << "* " << getPlayerName(sm.GetClientID()) << " has left the game *";
 					sm.SetMsgType(ServerMessage::MT_CHAT);
 					sm.SetData(oss.str());
-					commServer->sendServerMsg(sm);
+					commServer->sendServerMsgToAll(sm);
 					ScoreBoard::Instance()->removePlayer(it->getId());
 					playerList.erase(it);
 					sendScores();
