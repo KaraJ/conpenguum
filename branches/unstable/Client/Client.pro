@@ -24,7 +24,8 @@ HEADERS += engine/Map.h \
     engine/Roundrectitem.h \
     engine/Splashitem.h \
     engine/ipbox.h \
-    Renderer/Renderer.h
+    Renderer/Renderer.h \
+    engine/MapTile.h
 SOURCES += engine/Map.cpp \
     engine/connectthread.cpp \
     Animation/Animation.cpp \
@@ -39,7 +40,8 @@ SOURCES += engine/Map.cpp \
     engine/Roundrectitem.cpp \
     engine/Splashitem.cpp \
     engine/ipbox.cpp \
-    Renderer/Renderer.cpp
+    Renderer/Renderer.cpp \
+    engine/MapTile.cpp
 RESOURCES += Renderer/textures.qrc \
     menuitems.qrc
 FORMS += backside.ui \
