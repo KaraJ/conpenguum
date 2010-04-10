@@ -192,27 +192,11 @@ void Frame::updateShips(void)
 			oldPosition.setY(currShip->position.y());
 
             //TODO: Iterating over all shots is inefficient, this will be changed once testing is complete.
-			for (list<Shot>::iterator it = listShot.begin(); it != listShot.end(); ++it)
+			/*for (list<Shot>::iterator it = listShot.begin(); it != listShot.end(); ++it)
 			{
 				QVector2D pos = it->getPosition();
-				if (abs(currShip->position.x() - pos.x()) < SHIPRADIUS && abs(currShip->position.y() - pos.y()) < SHIPRADIUS)
-				{
-					if (currShip->shield >= 40)
-						currShip->shield -= 40;
-					else if (currShip->shield > 0)
-					{
-						currShip->shield -= 40;
-						currShip->health += currShip->shield;
-						currShip->shield = 0;
-					}
-					else if (currShip->health > 40)
-						currShip->health -= 40;
-					if (currShip->health <= 40)
-						currShip->health = 0;//DEAD
-					listShot.erase(it);
-					break;
-				}
-			}
+
+			}*/
 
             if (currShip->vector.x() != 0)
             {
@@ -248,7 +232,8 @@ void Frame::updateShips(void)
                 currShip->position.setY(currShip->position.y() + dist);
             }
 
-            map.move(currShip, oldPosition, currShip->position, SHIPSIZE);
+			map.remove(currShip, oldPosition, SHIPSIZE);
+			map.add(currShip, currShip->position, SHIPSIZE);
 
             if(currShip->actionMask.isAccelerating()) // thrust forward
                 newVector = currShip->vector + rotVelToVec(currShip->rotation * 2, VELOCITY_THRUST);
@@ -368,22 +353,33 @@ void Frame::updateShots(void)
 
 		if(map.hasShip(oldPos))
 		{
+			Ship *currShip;
             shiplist = map.ships(oldPos);
 			for(itr = shiplist.begin(); itr != shiplist.end(); ++itr)
 			{
+				currShip = *itr;
 			    if(dist2Points((*itr)->position, oldPos) < SHIP_HIT_DIST)
 			    {
-                    //TODO: call Kara scoreboard method to add a death
-                    //(*itr)->id is the person dieing
-                    //(it->id-32)/10 is the killer
-					fragShip((*itr)->id);
-        	        map.remove(&(*it), oldPos);
-        	        listShot.erase(it);
-                    return;
+					if (currShip->shield >= 40)
+						currShip->shield -= 40;
+					else if (currShip->shield > 0)
+					{
+						currShip->shield -= 40;
+						currShip->health += currShip->shield;
+						currShip->shield = 0;
+					}
+					else if (currShip->health > 40)
+						currShip->health -= 40;
+					if (currShip->health <= 40){
+						currShip->health = 0;//DEAD
+						fragShip((*itr)->id);
+						map.remove(&(*it), oldPos);
+					}
+					listShot.erase(it);
+					return;
 				}
 			}
 		}
-
         map.move(&(*it), oldPos, it->position);
     }
 }
@@ -512,5 +508,5 @@ void Frame::printShots(void)
 
 void Frame::fragShip(size_t shipID){
     Ship *ship = getShip(shipID);
-    //ship->active = false;
+    ship->active = false;
 }
