@@ -150,8 +150,7 @@ void Renderer::Render(int clientId)
 
     //render chat messages
 	qglColor(Qt::yellow);
-	//renderText(0, SCREENHEIGHT, chatText_[0], chatFont);
-	
+
 	int linePos = 6;
 	deque<QString>::iterator it;
 	for (it = chatText_->begin(); it != chatText_->end(); it++)
@@ -166,6 +165,7 @@ void Renderer::Render(int clientId)
 
     for(int i = 0; i < renderCount; i++)
 	{
+		
 		QMatrix3x4 quad;
 
 		//set the 4 points of the ship
