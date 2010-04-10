@@ -110,6 +110,7 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
                 while(strcmp(node.nodeName().toStdString().c_str(), "frame") != 0)
                 	node = node.nextSibling();
 
+                next = node.nextSibling();
                 node = node.firstChild();
 
                 // skip to relevant info
