@@ -490,7 +490,7 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
 			uo.setHealth(listShip[i]->health);
 			uo.setShield(listShip[i]->shield);
 			udList.push_back(uo);
-			//uo.print();
+			uo.print();
 		}
 	}
     for(list<Shot>::iterator it = listShot.begin(); it != listShot.end(); ++it)
