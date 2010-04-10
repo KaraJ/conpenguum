@@ -43,6 +43,21 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
 	chatIndex = 1;
 	shift = false;
 	
+	//loadMap
+	Map* m = new Map();
+	QFile mapFile("/:theMap");
+	if (!mapFile.open(QIODevice::ReadOnly | QIODevice::Text))
+	    Logger::LogNQuit("Could not open map file");
+	QTextStream mapStream(&mapFile);
+	while (!mapStream.atEnd())
+	{
+	    int row, col, tileNum;
+	    string line = mapStream.readLine().toStdString();
+	    std::istringstream iss(line);
+	    iss >> row >> col >> tileNum;
+	    m->addTile(tileNum, row, col);
+	}
+
 	/*this may be temporary*/
 	this->setFixedSize(1024, 768);
 	ren = new Renderer(this, gameState, qChatString);
