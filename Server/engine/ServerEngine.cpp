@@ -109,7 +109,7 @@ void ServerEngine::timeout()
 					oss << playerList[i] << "|";
 				sm.SetMsgType(ServerMessage::MT_SCORES);
 				sm.SetData(oss.str());
-				commServer->sendServerMsg(sm);
+				commServer->sendServerMsgToAll(sm);
 			}
 		}
 		if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)

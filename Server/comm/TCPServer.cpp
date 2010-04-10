@@ -161,8 +161,8 @@ void TCPServer::SendMessageToAll(ServerMessage msg)
 	{
 		if (clientSockets_[i])
 		{
-			msg.SetClientID(clientSockets_[i]);
-			if (!TCPConnection::WriteMessage(msg.GetClientID(), msg))
+			msg.SetClientID(i);
+			if (!TCPConnection::WriteMessage(clientSockets_[i], msg))
 				ClientDC(i, clientSockets_[i]);
 		}
 	}
