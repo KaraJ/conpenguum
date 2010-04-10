@@ -29,8 +29,10 @@ ResourceManager* ResourceManager::GetInstance()
 
 ResourceDefinition* ResourceManager::GetResource(int ResourceType, int ResourceName)
 {
-    //int key = (ResourceType << 16) + ResourceName;
-	int key = ResourceType;
+    int key = ResourceType;
+    key = key<<16;
+    key+=  ResourceName;
+        //int key = ResourceType;
 
     //check if we've already loaded this resource
     if(resourceMap.find(key) != resourceMap.end())
