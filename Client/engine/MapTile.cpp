@@ -1,29 +1,23 @@
 #include "MapTile.h"
 
-MapTile::MapTile(int texTileNum, int row, int col)
+MapTile::MapTile(int texTileNum, int mapRow, int mapCol, int texTileSizeInPix, int texWidthInTiles, int texHeightInTiles)
 {
-    /*int texRow = id / texWidthInTiles;
-    int texCol = id % texWidthInTiles;
+    int texCol = texTileNum % texWidthInTiles;
     int texWidthInPix = texWidthInTiles * texTileSizeInPix;
-    int texHeightInPix = texHeightInTiles * texTileSizeInPix;
-    int texOffsetInPixX = texRow * texTileSizeInPix;
-    int texOffsetInPixY = texCol * texTileSizeInPix;
-    texOffsetX_ = texOffsetInPixX / textWidthInPix;
-    texOffsetY_ = texOffsetInPixY / texHeightInPix;
+    int texOffsetInPixX = texCol * texTileSizeInPix;
+    texOffsetXStart_ = texOffsetInPixX / texWidthInPix;
+    int tileWidthOffset = texTileSizeInPix / texWidthInPix;
+    texOffsetXEnd_ = texOffsetXStart_ + tileWidthOffset;
 
-    pos_.setX(col * tileSizeInPix_);
-    pos_.setY(row * tileSizeInPix_);*/
-//    int texRow = id / texWidthInTiles;
-//    int texCol = id % texWidthInTiles;
-//    int texWidthInPix = texWidthInTiles * texTileSizeInPix;
-//    int texHeightInPix = texHeightInTiles * texTileSizeInPix;
-//    int texOffsetInPixX = texRow * texTileSizeInPix;
-//    int texOffsetInPixY = texCol * texTileSizeInPix;
-//    texOffsetX_ = texOffsetInPixX / textWidthInPix;
-//    texOffsetY_ = texOffsetInPixY / texHeightInPix;
-//
-//    pos_.setX(col * tileSizeInPix_);
-//    pos_.setY(row * tileSizeInPix_);
+    int texRow = texTileNum / texWidthInTiles;
+    int texHeightInPix = texHeightInTiles * texTileSizeInPix;
+    int texOffsetInPixY = texRow * texTileSizeInPix;
+    texOffsetYStart_ = texOffsetInPixY / texHeightInPix;
+    int tileHeightOffset = texTileSizeInPix / texHeightInPix;
+    texOffsetYEnd_ = texOffsetYStart_ + tileHeightOffset;
+
+    pos_.setX(mapCol * texTileSizeInPix);
+    pos_.setY(mapRow * texTileSizeInPix);
 }
 
 MapTile::~MapTile()

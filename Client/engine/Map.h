@@ -14,10 +14,12 @@ public:
     const QString& getTexName() { return texName_; }
     int getTileSize() { return tileSize_; }
     std::vector<MapTile*> getTiles() { return tiles_; }
-    void addTile(int texTileNum, int row, int col);
+    void addTile(int texTileNum, int mapRow, int mapCol);
 private:
     QString texName_;
     int tileSize_;
+    int texWidthInTiles_;
+    int texHeightInTiles_;
     std::vector<MapTile*> tiles_;
 };
 
