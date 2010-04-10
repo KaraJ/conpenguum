@@ -574,8 +574,9 @@ void BaseWindow::getServerMessage()
         {
             if (chatIndex == 6)
                 chatQueue.pop_back();
+	    else
+		    chatIndex++;
             chatQueue.push_front(sm.GetData().c_str());
-            chatIndex++;
         }
         else if (sm.GetMsgType() == ServerMessage::MT_SHUTDOWN)
         {
