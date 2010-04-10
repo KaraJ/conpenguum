@@ -204,53 +204,48 @@ void BaseWindow::keyReleaseEvent(QKeyEvent * event)
  -----------------------------------------------------------------------------*/
 int BaseWindow::handleChat(int key)
 {
-    if (chatString.length() > 40)
-        return 0;
-
-    //if enter send the message
-    if ((key == Qt::Key_Enter) || (key == Qt::Key_Return))
-    {
-        chatString = chatString.substr(2);
-        if (chatString.size() > 0)
-            theClient->sendServerMsg(chatString);
-        chatString.clear();
-        toggleChat();
-    }
-    //if shift set shift on
-    else if (key == Qt::Key_Shift)
-    {
-        shift = true;
-        return 0;
-    }
-    //if backspace erase the last character
-    else if (key == Qt::Key_Backspace)
-    {
-        if (chatString.length() != 2)
-            chatString.erase(chatString.length() - 1, 1);
-    }
-    else
-    {
-        //if its a displayable character
-        if ((key >= 32) && (key <= 127))
-        {
-            if (chatString.length() < 67)
-            {
-                if (!shift && (char(key) >= 65) && (char(key) <= 90))
-                    chatString.push_back(char(key + 32));
-                else
-                    chatString.push_back(char(key));
-            }
-        }
-        else
-        {
-            //not a displayable character
-            return -1;
-        }
-    }
-    //qchatstring[0] string being currently typed
-    cout << chatString << endl;
-    localChat = chatString.c_str();
-    return 0;
+	//if enter send the message
+	if ((key == Qt::Key_Enter) || (key == Qt::Key_Return))
+	{
+		chatString = chatString.substr(2);
+		if (chatString.size() > 0)
+			theClient->sendServerMsg(chatString);
+		chatString.clear();
+		toggleChat();
+	}
+	//if shift set shift on
+	else if (key == Qt::Key_Shift)
+	{
+		shift = true;
+		return 0;
+	}
+	//if backspace erase the last character
+	else if (key == Qt::Key_Backspace)
+	{
+		if (chatString.length() != 2)
+			chatString.erase(chatString.length()-1, 1);
+	}
+	else
+	{
+		//if its a displayable character
+		if ((key >= 32) && (key <= 127))
+		{
+			if (chatString.length() < 57)
+			{
+				if (!shift && (char(key) >= 65) && (char(key) <= 90))
+					chatString.push_back(char(key+32));
+				else
+					chatString.push_back(char(key));
+			}
+		}
+		else
+		{
+			//not a displayable character
+			return -1;
+		}
+	}
+	localChat = chatString.c_str();
+	return 0;
 }
 
 /*------------------------------------------------------------------------------
