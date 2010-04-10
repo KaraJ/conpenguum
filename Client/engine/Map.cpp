@@ -1,7 +1,5 @@
 #include "Map.h"
 
-#include "MapTile.h"
-
 Map::Map(QString srcTexture, int tileSizeInPix, int texWidthInTiles, int texHeightInTiles)
     : texName_(srcTexture), tileSize_(tileSizeInPix)
 {
