@@ -2,6 +2,7 @@
 #define RENDERER_H
 
 #include <vector>
+#include <deque>
 #include <QGLWidget>
 #include "../../Core/comm/data/updateobject.h"
 #include "../engine/GameObject.h"
@@ -48,11 +49,12 @@ private:
     int renderCount;
     std::map<std::string, GLuint> textures;
     std::map<int, GameObject> &objectlist;
-    QString *chatText_;
+    std::deque<QString> *chatText_;
+    QString *localText_;
 //funcs
 public:
     //Renderer(QWidget *parent, std::vector<UpdateObject> &gameSt);
-    Renderer(QWidget *parent, std::map<int, GameObject> &gameSt, QString *chatText);
+    Renderer(QWidget *parent, std::map<int, GameObject> &gameSt, std::deque<QString> *chatText, QString *localText);
     void Initialize();
     void Render(int clientId);
     void buildRenderList(QPoint center);

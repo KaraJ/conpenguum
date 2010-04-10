@@ -38,11 +38,9 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
 	chatting = false;
 	theClient = CommClient::Instance();
 	
-	qChatString = new QString[9];
-	qChatString[0] = " ";
-	chatIndex = 1;
+	chatIndex = 0;
 	shift = false;
-	
+	localChat = "";
 	//loadMap
 	/*Map* m = new Map();
 	QFile mapFile("/:theMap");
@@ -60,7 +58,7 @@ BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
 
 	/*this may be temporary*/
 	this->setFixedSize(1024, 768);
-	ren = new Renderer(this, gameState, qChatString);
+	ren = new Renderer(this, gameState, &chatQueue, &localChat);
 	this->show();
 
 	animationMap = Animation::getAnimationMap();
@@ -234,10 +232,13 @@ int BaseWindow::handleChat(int key)
 		//if its a displayable character
 		if ((key >= 32) && (key <= 127))
 		{
-			if (!shift && (char(key) >= 65) && (char(key) <= 90))
-				chatString.push_back(char(key+32));
-			else
-				chatString.push_back(char(key));
+			if (chatString.length() < 67)
+			{
+				if (!shift && (char(key) >= 65) && (char(key) <= 90))
+					chatString.push_back(char(key+32));
+				else
+					chatString.push_back(char(key));
+			}
 		}
 		else
 		{
@@ -246,8 +247,8 @@ int BaseWindow::handleChat(int key)
 		}
 	}
 	//qchatstring[0] string being currently typed
-	qChatString[0] = chatString.c_str();
 	cout << chatString << endl;
+	localChat = chatString.c_str();
 	return 0;
 }
 
@@ -575,14 +576,10 @@ void BaseWindow::getServerMessage()
 		//chat msg
 		else if (sm.GetMsgType() == ServerMessage::MT_CHAT)
 		{
-			//this should probably be stored in a queue not an array but for now its fine
-			if(chatIndex == 9)
-			{
-				for (int i = 1; i < 7; i++)
-					qChatString[i] = qChatString[i + 1];
-				chatIndex = 8;
-			}
-			qChatString[chatIndex++] = sm.GetData().c_str();
+			if(chatIndex == 6)
+				chatQueue.pop_back();
+			chatQueue.push_front(sm.GetData().c_str());
+			chatIndex++;
 		}
 		else if(sm.GetMsgType() == ServerMessage::MT_SHUTDOWN)
 		{
