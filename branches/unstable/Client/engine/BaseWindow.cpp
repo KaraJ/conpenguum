@@ -542,9 +542,9 @@ void BaseWindow::getServerMessage()
         {
             if (chatIndex == 6)
                 chatQueue.pop_back();
-	    else
-		    chatIndex++;
-            chatQueue.push_front(sm.GetData().c_str());
+			else
+				chatIndex++;
+			chatQueue.push_front(sm.GetData().c_str());
         }
         else if (sm.GetMsgType() == ServerMessage::MT_SHUTDOWN)
         {
@@ -553,5 +553,7 @@ void BaseWindow::getServerMessage()
             // TODO: more graceful shutdown
             exit(0);
         }
+        else if (sm.GetMsgType() == ServerMessage::MT_DEATH)
+        	ren->setDeathTime(150);
     }
 }

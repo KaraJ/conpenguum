@@ -165,9 +165,14 @@ void ServerEngine::timeout()
 			oss << " was killed by " << getPlayerName(it->killer) << " *";
 			ServerMessage m;
 			m.SetData(oss.str());
-			m.SetClientID(it->killer);
+			m.SetClientID(it->killed);
 			m.SetMsgType(ServerMessage::MT_CHAT);
 			commServer->sendServerMsgToAll(m);
+
+			m.SetData("");
+			m.SetMsgType(ServerMessage::MT_DEATH);
+			commServer->sendServerMsg(m);
+
 			ScoreBoard::Instance()->recordKill(it->killed, it->killer);
 			//TODO: send updated scoreboard
 		}
@@ -178,6 +183,11 @@ void ServerEngine::timeout()
 			m.SetData(oss.str());
 			m.SetMsgType(ServerMessage::MT_CHAT);
 			commServer->sendServerMsgToAll(m);
+
+			m.SetData("");
+			m.SetMsgType(ServerMessage::MT_DEATH);
+			commServer->sendServerMsg(m);
+
 			ScoreBoard::Instance()->recordDeath(it->killed);
 			//TODO: add death to scoreboard without kill
 		}
