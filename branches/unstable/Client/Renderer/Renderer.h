@@ -63,6 +63,7 @@ private:
     void resizeGL(int w, int h);
     void saveGLState();
     void restoreGLState();
+    void RenderScores(const std::vector<Player> &playerList);
 };
 
 #endif // RENDERER_H
