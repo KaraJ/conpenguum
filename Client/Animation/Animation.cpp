@@ -31,7 +31,7 @@ map<int, Animation> Animation::getAnimationMap()
     // get explosion animation
     string xmlFile("../Client/Animation/explosion.xml"),
     	   xmlFileExh("../Client/Animation/exhaust.xml"),
-    	   xmlFileSh("../Client/Animation/ship.xml"),
+    	   xmlFileSh("../Client/Animation/wbship.xml"),
     	   xmlFileShot("../Client/Animation/shot.xml");
     xmlParse = new QtXmlParse();
     imgVecExp = xmlParse->ReadAnimationVector(type, xmlFile); // loading all Explostion animations.
