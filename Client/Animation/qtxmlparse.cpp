@@ -70,7 +70,6 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
     QDomNodeList nodeList;
     QString str;
     QDomElement element = node.toElement();
-    QDomNode next;
 
     // getting path to texture.
     while(strcmp(node.nodeName().toStdString().c_str(), "link") != 0){node = node.nextSibling();}
@@ -110,7 +109,6 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
                 while(strcmp(node.nodeName().toStdString().c_str(), "frame") != 0)
                 	node = node.nextSibling();
 
-                next = node.nextSibling();
                 node = node.firstChild();
 
                 // skip to relevant info
@@ -140,12 +138,13 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(AnimationType animation, std:
                 img.setTopOffSet(atof(element.text().toStdString().c_str()));
 
                 vec.push_back(img);
+                node = node.parentNode();
+                node = node.parentNode();
+                node = node.nextSibling();
                 break;
             }
 
         }
-
-        node = next; // go to next frame package in XML.
 
     }
 
