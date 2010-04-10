@@ -59,7 +59,7 @@ map<int, Animation> Animation::getAnimationMap()
 	animShip.imagesWide_ = imgVecShip.front().imagesWide; // link sound from animation.
 	animations.insert(std::pair<int, Animation>((int)type, animShip));
 
-    // get ship animation
+    // get shot animation
     type = SHOT;
 	imgVecShot = xmlParse->ReadAnimationVector(type, xmlFileShot); // loading all Explostion animations.
 	imagesCount = imgVecShot.size();
