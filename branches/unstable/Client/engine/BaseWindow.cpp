@@ -375,11 +375,6 @@ void BaseWindow::updateGameState ()
 
 		if (objId == clientAction->getObjectId()) //Update position of our ship
 			scrnCenter = updateObj.getPos();
-		else
-		{
-			updateObj.setHealth(-1);
-			updateObj.setShield(-1);
-		}
 
 		if (objId < MAX_CLIENTS && updateObj.getActions().isAccelerating()) //for Exhaust trails
 		{
@@ -541,7 +536,7 @@ void BaseWindow::timerEvent()
 	getServerMessage();
 	updateGameState();
 	ren->buildRenderList(scrnCenter);
-	ren->Render();
+	ren->Render(clientAction->getObjectId());
 	clearTransientObjects();
 }
 

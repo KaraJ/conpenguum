@@ -88,6 +88,7 @@ void Renderer::buildRenderList(QPoint center)
         renderList[i].health = it->second.health;
         renderList[i].shield = it->second.shield;
         renderList[i].name = it->second.owner;
+        renderList[i].objectId = it->second.objectId;
         i++;
     }
     renderCount = i;
@@ -137,7 +138,7 @@ void Renderer::resizeGL(int w, int h)
     gluOrtho2D(0.0, (GLdouble)w, 0.0, (GLdouble) h);
 }
 
-void Renderer::Render()
+void Renderer::Render(int clientId)
 {
 	QFont nameFont("Helvetica", 8);
 	QFont healthFont("Comic Sans MS", 10, 75);
@@ -184,11 +185,11 @@ void Renderer::Render()
 		if (renderList[i].name != "")
 			renderText(renderList[i].textX - 5, renderList[i].textY - 20, renderList[i].name, nameFont);
 
-		if (renderList[i].health != -1 && renderList[i].name != "")
+		float hp = (float)renderList[i].health / 100;
+		float sh = (float)renderList[i].shield / 100;
+		if (renderList[i].objectId == clientId)
 		{
 			std::string str = renderList[i].name.toStdString();
-			float hp = (float)renderList[i].health / 100;
-			float sh = (float)renderList[i].shield / 100;
 			renderText(20, 18, "Health", healthFont);
 			
 			glBindTexture(GL_TEXTURE_2D, textures["healthbar.bmp"]);
@@ -232,6 +233,24 @@ void Renderer::Render()
 				renderText(40, 48, QString(oss.str().c_str()), healthFont);
 			}
 			qglColor(Qt::white);
+		}
+		else if (renderList[i].name != "")// draw little health & shield bars on other ships
+		{
+			glBindTexture(GL_TEXTURE_2D, textures["shieldbar.bmp"]);
+			glBegin(GL_QUADS);
+				glTexCoord2f(0,0);  glVertex2f(quad(0,0) + 10, quad(0,1) - 5);
+				glTexCoord2f(1,0);  glVertex2f(quad(0,0) + 30*sh + 10, quad(0,1) - 5);
+				glTexCoord2f(1,1);  glVertex2f(quad(0,0) + 30*sh + 10, quad(0,1) - 8);
+				glTexCoord2f(0,1);  glVertex2f(quad(0,0) + 10, quad(0,1) -8);
+			glEnd();
+
+			glBindTexture(GL_TEXTURE_2D, textures["healthbar.bmp"]);
+			glBegin(GL_QUADS);
+				glTexCoord2f(0,0);  glVertex2f(quad(0,0) + 10, quad(0,1) - 8);
+				glTexCoord2f(1,0);  glVertex2f(quad(0,0) + 30*hp + 10, quad(0,1) - 8);
+				glTexCoord2f(1,1);  glVertex2f(quad(0,0) + 30*hp + 10, quad(0,1) - 11);
+				glTexCoord2f(0,1);  glVertex2f(quad(0,0) + 10, quad(0,1) -11);
+			glEnd();
 		}
 
 		if(renderList[i].rotation > 0)//skip all this if the object is rotationless or at 0;

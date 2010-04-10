@@ -35,6 +35,7 @@ struct RenderObject
     int rotation;
     int objectWidthPx, objectHeightPx;
     int health, shield;
+    int objectId;
     QString name;
 };
 
@@ -53,7 +54,7 @@ public:
     //Renderer(QWidget *parent, std::vector<UpdateObject> &gameSt);
     Renderer(QWidget *parent, std::map<int, GameObject> &gameSt, QString *chatText);
     void Initialize();
-    void Render();
+    void Render(int clientId);
     void buildRenderList(QPoint center);
 
 private:
