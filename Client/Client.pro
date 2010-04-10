@@ -7,7 +7,6 @@ OBJECTS_DIR = obj
 TEMPLATE = app
 TARGET = Client
 HEADERS += engine/Map.h \
-    engine/MapTile.h \
     engine/connectthread.h \
     ../Core/comm/globals.h \
     Animation/Animation.h \
@@ -26,8 +25,8 @@ HEADERS += engine/Map.h \
     engine/Splashitem.h \
     engine/ipbox.h \
     Renderer/Renderer.h \
-    SOURCES \
-    += \
+    engine/MapTile.h
+SOURCES += engine/Map.cpp \
     engine/connectthread.cpp \
     Animation/Animation.cpp \
     SoundEffects/SoundEffects.cpp \
@@ -41,7 +40,8 @@ HEADERS += engine/Map.h \
     engine/Roundrectitem.cpp \
     engine/Splashitem.cpp \
     engine/ipbox.cpp \
-    Renderer/Renderer.cpp
+    Renderer/Renderer.cpp \
+    engine/MapTile.cpp
 RESOURCES += Renderer/textures.qrc \
     menuitems.qrc
 FORMS += backside.ui \
@@ -53,5 +53,3 @@ CONFIG += qt \
     debug \
     warn_on \
     resources
-SOURCES = engine/Map.cpp \
-    engine/MapTile.cpp
