@@ -271,12 +271,12 @@ void TmxMapWriter::writeTileLayer(QXmlStreamWriter &w,
 		for (int y = 0; y < tileLayer->height(); ++y) {
             for (int x = 0; x < tileLayer->width(); ++x) {
                 const int gid = gidForTile(tileLayer->tileAt(x, y));
-				if (gid != 0)
-				{
-					ostringstream oss;
-					oss << x << " " << y << " " << QString::number(gid).toStdString() << endl;
-					w.device()->write(oss.str().c_str());
-				}
+		if (gid != 0)
+		{
+			ostringstream oss;
+			oss << x << " " << y << " " << QString::number(gid).toStdString() << endl;
+			w.device()->write(oss.str().c_str());
+		}
             }
         }
     } else {
