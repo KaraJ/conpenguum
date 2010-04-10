@@ -42,7 +42,7 @@
 			<left>0.1578984737</left> <!-- 3/19 -->
 			<bottom>1</bottom>
 			<right>0.210526316</right> <!-- 4/19 -->
-      		<top>0.5</top>
+  		<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -50,8 +50,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.210526316</left> <!-- 4/19 -->
 			<bottom>1</bottom>
-      		<right>0.263157895</right> <!-- 5/19 -->
-      		<top>0.5</top>
+  		<right>0.263157895</right> <!-- 5/19 -->
+  		<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -59,8 +59,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.263157895</left> <!-- 5/19 -->
 			<bottom>1</bottom>
-      		<right>0.315789474</right> <!-- 6/19 -->
-      		<top>0.5</top>
+  		<right>0.315789474</right> <!-- 6/19 -->
+  		<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -68,8 +68,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.315789474</left> <!-- 6/19 -->
 			<bottom>1</bottom>
-	      	<right>0.368421053</right> <!-- 7/19 -->
-	      	<top>0.5</top>
+    	<right>0.368421053</right> <!-- 7/19 -->
+    	<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -77,8 +77,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.368421053</left> <!-- 7/19 -->
 			<bottom>1</bottom>
-     		<right>0.421052632</right> <!-- 8/19 -->
-      		<top>0.5</top>
+   		<right>0.421052632</right> <!-- 8/19 -->
+  		<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -86,8 +86,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.421052632</left> <!-- 8/19 -->
 			<bottom>1</bottom>
-      		<right>0.473684211</right> <!-- 9/19 -->
-      		<top>0.5</top>
+  		<right>0.473684211</right> <!-- 9/19 -->
+  		<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -95,8 +95,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.473684211</left> <!-- 9/19 -->
 			<bottom>1</bottom>
-      		<right>0.526315789</right> <!-- 10/19 -->
-      		<top>0.5</top>
+  		<right>0.526315789</right> <!-- 10/19 -->
+  		<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -104,8 +104,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.52631579</left> <!-- 10/19 -->
 			<bottom>1</bottom>
-      		<right>0.578947369</right> <!-- 11/19 -->
-      		<top>0.5</top>
+  		<right>0.578947369</right> <!-- 11/19 -->
+  		<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -113,8 +113,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.578947369</left> <!-- 11/19 -->
 			<bottom>1</bottom>
-      		<right>0.631578947</right> <!-- 12/19 -->
-      		<top>0.5</top>
+  		<right>0.631578947</right> <!-- 12/19 -->
+  		<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -122,8 +122,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.631578947</left> <!-- 12/19 -->
 			<bottom>1</bottom>
-      		<right>0.684210526</right> <!-- 13/19 -->
-      		<top>0.5</top>
+  		<right>0.684210526</right> <!-- 13/19 -->
+  		<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -131,8 +131,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.684210526</left> <!-- 13/19 -->
 			<bottom>1</bottom>
-      		<right>0.736842105</right> <!-- 14/19 -->
-      		<top>0.5</top>
+  		<right>0.736842105</right> <!-- 14/19 -->
+  		<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -140,8 +140,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.736842105</left> <!-- 14/19 -->
 			<bottom>1</bottom>
-      		<right>0.789473684</right> <!-- 15/19 -->
-      		<top>0.5</top>
+  		<right>0.789473684</right> <!-- 15/19 -->
+  		<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -149,8 +149,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.789473684</left> <!-- 15/19 -->
 			<bottom>1</bottom>
-      		<right>0.842105263</right> <!-- 16/19 -->
-      		<top>0.5</top>
+  		<right>0.842105263</right> <!-- 16/19 -->
+  		<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -158,8 +158,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.842105263</left> <!-- 16/19 -->
 			<bottom>1</bottom>
-      		<right>0.894736842</right> <!-- 17/19 -->
-      		<top>0.5</top>
+  		<right>0.894736842</right> <!-- 17/19 -->
+  		<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -167,8 +167,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.894736842</left> <!-- 17/19 -->
 			<bottom>1</bottom>
-      		<right>0.947368421</right> <!-- 18/19 -->
-      		<top>0.5</top>
+  		<right>0.947368421</right> <!-- 18/19 -->
+  		<top>0.5</top>
 		</direction>
 	</frame>
 	<frame>
@@ -176,8 +176,8 @@
 		<direction id="-1"> <!-- no directionality required -->
 			<left>0.947368421</left> <!-- 18/19 -->
 			<bottom>1</bottom>
-      		<right>1</right> <!-- 19/19 -->
-      		<top>0.5</top>
+  		<right>1</right> <!-- 19/19 -->
+  		<top>0.5</top>
 		</direction>
 	</frame>
 </image>
