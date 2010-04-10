@@ -127,6 +127,7 @@ void ServerEngine::timeout()
 					commServer->sendServerMsg(sm);
 					ScoreBoard::Instance()->removePlayer(it->getId());
 					playerList.erase(it);
+					//TODO: send updated scoreboard
 					break;
 				}
 			}
@@ -168,6 +169,11 @@ void ServerEngine::timeout()
 			m.SetMsgType(ServerMessage::MT_CHAT);
 			commServer->sendServerMsgToAll(m);
 			ScoreBoard::Instance()->recordKill(it->killed, it->killer);
+			//TODO: send updated scoreboard
+		}
+		else if (it->type == Event::ET_DEATH)
+		{
+			//TODO: add death to scoreboard without kill
 		}
 	}
 	uoBuff = gameState->ListShip2listUpdateObject();
