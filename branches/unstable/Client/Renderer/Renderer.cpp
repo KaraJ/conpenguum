@@ -13,8 +13,8 @@
 
 using namespace std;
 
-Renderer::Renderer(QWidget *parent,std::map<int, GameObject> &gameSt, QString *chatText) :
-		QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt), chatText_(chatText)
+Renderer::Renderer(QWidget *parent,std::map<int, GameObject> &gameSt, std::deque<QString> *chatText, QString* localText) :
+		QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt), chatText_(chatText), localText_(localText)
 //Renderer::Renderer(QWidget *parent,std::vector<UpdateObject> &gameSt) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt)
 {
     const char *glVersion = (const char*)glGetString(GL_VERSION);
@@ -150,14 +150,18 @@ void Renderer::Render(int clientId)
 
     //render chat messages
 	qglColor(Qt::yellow);
-	renderText(5, SCREENHEIGHT - 5, chatText_[0], chatFont);
-	int line = 1;
-	for (int j=8; j >= 1; j--)
+	//renderText(0, SCREENHEIGHT, chatText_[0], chatFont);
+	
+	int linePos = 6;
+	deque<QString>::iterator it;
+	for (it = chatText_->begin(); it != chatText_->end(); it++)
 	{
-		if (chatText_[j].size() > 0)
-			renderText(5, SCREENHEIGHT - 15*line++ - 10, chatText_[j], chatFont);
+		renderText(0, SCREENHEIGHT - 22*linePos, *it, chatFont);
+		linePos--;
+		if (linePos == 0)
+			linePos = 6;
 	}
-
+	renderText(0, SCREENHEIGHT, *localText_, chatFont);
 	qglColor(Qt::white);
 
     for(int i = 0; i < renderCount; i++)

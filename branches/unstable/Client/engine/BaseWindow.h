@@ -93,7 +93,8 @@ class BaseWindow : public QMainWindow
 		int chatIndex;
 		bool shift;
 		std::string chatString;
-		QString* qChatString;
+		QString localChat;
+		std::deque<QString> chatQueue;
 		std::vector<QString> vChatString;
 		CommClient::CommClient* theClient;
 		QPoint scrnCenter;
