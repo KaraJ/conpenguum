@@ -5,7 +5,7 @@ TEMPLATE = app
 TARGET = Server
 QT += gui core xml
 OBJECTS_DIR = obj
-INCPATH += /usr/include/mysql /usr/include/mysql++
+INCLUDEPATH += /usr/include/mysql /usr/include/mysql++ /usr/local/include/mysql++
 # Input
 HEADERS += gameplay/Frame.h \
            gameplay/Map.h \

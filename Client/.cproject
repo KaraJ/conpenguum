@@ -179,6 +179,7 @@
 <pathentry kind="src" path=""/>
 <pathentry kind="out" path=""/>
 <pathentry kind="prj" path="/Core"/>
+<pathentry kind="lib" library="/usr/local/lib/libmysqlpp.so" path=""/>
 </storageModule>
 </cconfiguration>
 </storageModule>
