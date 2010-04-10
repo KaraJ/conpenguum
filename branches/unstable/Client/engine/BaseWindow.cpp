@@ -395,7 +395,7 @@ void BaseWindow::createObject(UpdateObject &updateObj, int objId)
     TexturedResourceDefinition *rd;
     vector<Image> *images;
 
-	animObj.animeIndex = 1;
+	animObj.animeIndex = 0;
 
     if (objId < MAX_CLIENTS)
     {
