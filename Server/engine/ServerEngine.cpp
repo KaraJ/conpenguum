@@ -133,7 +133,7 @@ void ServerEngine::timeout()
 			cout << "Received chat msg: " << sm.GetData() << endl;
 			oss << "<" << getPlayerName(sm.GetClientID()) << "> " << sm.GetData();
 			sm.SetData(oss.str());
-			commServer->sendServerMsg(sm);
+			commServer->sendServerMsgToAll(sm);
 		}
 	}
 
