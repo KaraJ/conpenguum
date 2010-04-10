@@ -33,10 +33,11 @@ Frame::Frame(QString filename): frameTimer(0), map(QString(filename))
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Frame::tick(void){
-    updateShots();
+list<Event> Frame::tick(void){
     updateShips();
+    list<Event> events = updateShots();
     ++frameTimer;
+    return events;
 }
 
 /*-----------------------------------------------------------------------------
@@ -276,7 +277,7 @@ void Frame::updateShips(void)
                     + spawnVec.y(), shotVec.x(), shotVec.y(), currShip->getNextShotID(), (frameTimer + 60));
                 addShot(shot);
                 map.add(&shot, shot.position);
-                currShip->shotCooldown = 30;
+                currShip->shotCooldown = 15;
 			}
 
 			if (currShip->shieldCooldown == 0)
@@ -326,29 +327,30 @@ void Frame::updateShips(void)
 --
 --  RETURNS:    void
 ------------------------------------------------------------------------------*/
-void Frame::updateShots(void)
+list<Event> Frame::updateShots(void)
 {
 	QVector2D oldPos, oldShipPos;
     list<Shot>::iterator it;
     list<Ship*>::iterator itr;
     list<Ship*> shiplist;
+    list<Event> events;
 
-    for(it = listShot.begin(); it != listShot.end(); ++it)
+    for(it = listShot.begin(); it != listShot.end();)
     {
     	oldPos = it->position;
     	if(frameTimer == it->deathTime)
     	{
     		map.remove(&(*it), it->position);
-    		listShot.erase(it);
-    		return;
+    		it = listShot.erase(it);
+    		continue;
     	}
 		it->position += it->vector;
 
         if(map.isWall(it->position))
         {
         	map.remove(&(*it), oldPos);
-        	listShot.erase(it);
-        	return;
+        	it = listShot.erase(it);
+        	continue;
         }
 
 		if(map.hasShip(oldPos))
@@ -368,20 +370,25 @@ void Frame::updateShots(void)
 						currShip->health += currShip->shield;
 						currShip->shield = 0;
 					}
-					else if (currShip->health > 40)
+					else
 						currShip->health -= 40;
-					if (currShip->health <= 40){
+					if (currShip->health <= 0)
+					{
 						currShip->health = 0;//DEAD
-						fragShip((*itr)->id);
-						map.remove(&(*it), oldPos);
+						Event t;
+						t.type = Event::ET_KILL;
+						t.killer = (it->getID() - 32) / 10;
+						t.killed = currShip->id;
+						events.push_back(t);
 					}
-					listShot.erase(it);
-					return;
+					it = listShot.erase(it);
+					continue;
 				}
 			}
 		}
-        map.move(&(*it), oldPos, it->position);
+        map.move(&(*it++), oldPos, it->position);
     }
+    return events;
 }
 
 /*-----------------------------------------------------------------------------
