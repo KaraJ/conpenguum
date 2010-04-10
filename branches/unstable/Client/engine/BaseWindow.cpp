@@ -375,7 +375,9 @@ void BaseWindow::updateGameState()
 
         if (objId < MAX_CLIENTS && updateObj.getActions().isAccelerating()) //for Exhaust trails
         {
-
+    		int trailId = freeIds.front(); //Get an ID
+    		freeIds.pop();
+    		createObject(updateObj, trailId);
         }
 
         if (gameState.find(objId) != gameState.end()) //If it exists
@@ -388,12 +390,12 @@ void BaseWindow::updateGameState()
 
 void BaseWindow::createObject(UpdateObject &updateObj, int objId)
 {
-    GameObject animObj(updateObj);
+    GameObject animObj(updateObj, objId);
     ResourceManager *rm = ResourceManager::GetInstance();
     TexturedResourceDefinition *rd;
     vector<Image> *images;
 
-	animObj.animeIndex = 0;
+	animObj.animeIndex = 1;
 
     if (objId < MAX_CLIENTS)
     {
@@ -420,9 +422,6 @@ void BaseWindow::createObject(UpdateObject &updateObj, int objId)
 		int y = sin(radians) * -(rd->object_height);
 		animObj.position.setX(animObj.position.x() + x);
 		animObj.position.setY(animObj.position.y() + y);
-
-		animObj.objectId = freeIds.front(); //Get an ID
-		freeIds.pop();
     }
 
     animObj.animeImage = &(*images)[animObj.animeIndex];
@@ -456,7 +455,7 @@ void BaseWindow::clearTransientObjects()
 
         if (animatedObj->objectId < MAX_CLIENTS) // If it is a ship
         {
-			;
+        	;
         }
         else
         {

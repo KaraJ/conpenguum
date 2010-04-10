@@ -12,9 +12,9 @@ struct GameObject
 {
 public:
     inline GameObject(){};
-    inline GameObject(UpdateObject &obj)
+    inline GameObject(UpdateObject &obj, int objId)
     {
-        objectId = obj.getObjectId();
+        objectId = objId;
         angle = obj.getRotation();
         position = obj.getPos();
         health = obj.getHealth();
