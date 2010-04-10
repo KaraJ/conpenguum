@@ -103,13 +103,7 @@ void ServerEngine::timeout()
 				sm.SetData("");
 				sm.SetMsgType(ServerMessage::MT_INIT);
 				commServer->sendServerMsg(sm);
-
-				oss.str("");
-				for (size_t i = 0; i < playerList.size(); i++)
-					oss << playerList[i] << "|";
-				sm.SetMsgType(ServerMessage::MT_SCORES);
-				sm.SetData(oss.str());
-				commServer->sendServerMsgToAll(sm);
+				sendScores();
 			}
 		}
 		if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)
@@ -127,7 +121,7 @@ void ServerEngine::timeout()
 					commServer->sendServerMsg(sm);
 					ScoreBoard::Instance()->removePlayer(it->getId());
 					playerList.erase(it);
-					//TODO: send updated scoreboard
+					sendScores();
 					break;
 				}
 			}
@@ -158,39 +152,10 @@ void ServerEngine::timeout()
 	list<Event> events = gameState->tick();
 	for (list<Event>::iterator it = events.begin(); it != events.end(); ++it)
 	{
-		ostringstream oss;
 		if (it->type == Event::ET_KILL)
-		{
-			oss << "* " << getPlayerName(it->killed);
-			oss << " was killed by " << getPlayerName(it->killer) << " *";
-			ServerMessage m;
-			m.SetData(oss.str());
-			m.SetClientID(it->killed);
-			m.SetMsgType(ServerMessage::MT_CHAT);
-			commServer->sendServerMsgToAll(m);
-
-			m.SetData("");
-			m.SetMsgType(ServerMessage::MT_DEATH);
-			commServer->sendServerMsg(m);
-
-			ScoreBoard::Instance()->recordKill(it->killed, it->killer);
-			//TODO: send updated scoreboard
-		}
+			addKill(it->killed, it->killer);
 		else if (it->type == Event::ET_DEATH)
-		{
-			oss << "* " << getPlayerName(it->killed) << " was killed by a wall *";
-			ServerMessage m;
-			m.SetData(oss.str());
-			m.SetMsgType(ServerMessage::MT_CHAT);
-			commServer->sendServerMsgToAll(m);
-
-			m.SetData("");
-			m.SetMsgType(ServerMessage::MT_DEATH);
-			commServer->sendServerMsg(m);
-
-			ScoreBoard::Instance()->recordDeath(it->killed);
-			//TODO: add death to scoreboard without kill
-		}
+			addDeath(it->killed);
 	}
 	uoBuff = gameState->ListShip2listUpdateObject();
 	if (gameState->numPwrups() == 0)
@@ -202,6 +167,70 @@ void ServerEngine::timeout()
 
 	for (size_t i = 0; i < uoBuff.size(); ++i)
 		commServer->sendUpdateToAll(uoBuff[i]);
+}
+
+void ServerEngine::sendScores()
+{
+	ServerMessage sm;
+	ostringstream oss;
+	for (size_t i = 0; i < playerList.size(); i++)
+		oss << playerList[i] << "|";
+	sm.SetMsgType(ServerMessage::MT_SCORES);
+	sm.SetData(oss.str());
+	commServer->sendServerMsgToAll(sm);
+}
+
+void ServerEngine::addDeath(int killed)
+{
+	ostringstream oss;
+	oss << "* " << getPlayerName(killed) << " was killed by a wall *";
+	ServerMessage m;
+	m.SetData(oss.str());
+	m.SetMsgType(ServerMessage::MT_CHAT);
+	commServer->sendServerMsgToAll(m);
+
+	m.SetData("");
+	m.SetClientID(killed);
+	m.SetMsgType(ServerMessage::MT_DEATH);
+	commServer->sendServerMsg(m);
+
+	ScoreBoard::Instance()->recordDeath(killed);
+
+	for (size_t i = 0; i < playerList.size(); i++)
+	{
+		if (playerList[i].getId() == killed)
+		{
+			playerList[i].addDeath();
+			break;
+		}
+	}
+	sendScores();
+}
+
+void ServerEngine::addKill(int killed, int killer)
+{
+	ostringstream oss;
+	oss << "* " << getPlayerName(killed) << " was killed by " << getPlayerName(killer) << " *";
+	ServerMessage m;
+	m.SetData(oss.str());
+	m.SetClientID(killed);
+	m.SetMsgType(ServerMessage::MT_CHAT);
+	commServer->sendServerMsgToAll(m);
+
+	m.SetData("");
+	m.SetMsgType(ServerMessage::MT_DEATH);
+	commServer->sendServerMsg(m);
+
+	ScoreBoard::Instance()->recordKill(killed, killer);
+
+	for (size_t i = 0; i < playerList.size(); i++)
+	{
+		if (playerList[i].getId() == killer)
+			playerList[i].addKill();
+		else if (playerList[i].getId() == killed)
+			playerList[i].addDeath();
+	}
+	sendScores();
 }
 
 bool ServerEngine::isNameUsed(string name)

@@ -500,7 +500,7 @@ void BaseWindow::timerEvent()
     getServerMessage();
     updateGameState();
     ren->buildRenderList(scrnCenter);
-    ren->Render(clientAction->getObjectId());
+    ren->Render(clientAction->getObjectId(), playerList);
     clearTransientObjects();
 }
 
@@ -532,6 +532,7 @@ void BaseWindow::getServerMessage()
         }
         else if (sm.GetMsgType() == ServerMessage::MT_SCORES)
         {
+        	playerList.clear();
             QStringList players = QString(sm.GetData().c_str()).split('|', QString::SkipEmptyParts);
             for (int i = 0; i < players.size(); i++)
                 playerList.push_back(Player(players[i].toStdString()));
