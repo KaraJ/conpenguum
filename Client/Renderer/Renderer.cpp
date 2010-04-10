@@ -9,12 +9,13 @@
 #include <cassert>
 #include <sstream>
 #include <iostream>
+#include <iomanip>
 #include "../../Core/resourceMgr/resourceEnums.h"
 
 using namespace std;
 
 Renderer::Renderer(QWidget *parent,std::map<int, GameObject> &gameSt, std::deque<QString> *chatText, QString* localText) :
-		QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt), chatText_(chatText), localText_(localText)
+		QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt), chatText_(chatText), localText_(localText), deathTime_(0)
 //Renderer::Renderer(QWidget *parent,std::vector<UpdateObject> &gameSt) : QGLWidget(QGLFormat(QGL::SampleBuffers|QGL::AlphaChannel), parent), objectlist(gameSt)
 {
     const char *glVersion = (const char*)glGetString(GL_VERSION);
@@ -119,6 +120,7 @@ void Renderer::Render(int clientId)
 	QFont nameFont("Helvetica", 8);
 	QFont healthFont("Comic Sans MS", 10, 75);
 	QFont chatFont("Comic Sans MS", 8, 75);
+	QFont deathFont("Helvetica", 20, 85);
 
     //clear the screen
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -128,16 +130,15 @@ void Renderer::Render(int clientId)
     //render chat messages
 	qglColor(Qt::yellow);
 
-	int linePos = 6;
+	int linePos = 1;
 	deque<QString>::iterator it;
 	for (it = chatText_->begin(); it != chatText_->end(); it++)
 	{
-		renderText(0, SCREENHEIGHT - 22*linePos, *it, chatFont);
-		linePos--;
-		if (linePos == 0)
-			linePos = 6;
+		renderText(5, SCREENHEIGHT - 20*linePos - 5, *it, chatFont);
+		if (++linePos == 7)
+			linePos = 1;
 	}
-	renderText(0, SCREENHEIGHT, *localText_, chatFont);
+	renderText(5, SCREENHEIGHT - 5, *localText_, chatFont);
 	qglColor(Qt::white);
 
     for(int i = 0; i < renderCount; i++)
@@ -270,6 +271,15 @@ void Renderer::Render(int clientId)
             glTexCoord2f(renderList[i].texOffsetX, renderList[i].texOffsetY+renderList[i].objectHeight); glVertex2f(quad(3,0), quad(3,1));
         glEnd();
     }
+    if (--deathTime_ > 0)
+	{
+		qglColor(Qt::red);
+		renderText(SCREENWIDTH/2 - 100, SCREENHEIGHT/2, "You lost The Game", deathFont);
+		ostringstream oss;
+		oss << "Respawning in " << (deathTime_/30) << " seconds";
+		renderText(SCREENWIDTH/2 - 130, SCREENHEIGHT/2 + 25, QString(oss.str().c_str()), deathFont);
+		qglColor(Qt::white);
+	}
 
 	glBindTexture(GL_TEXTURE_2D, textures["chatbox.png"]);
 	glBegin(GL_QUADS);

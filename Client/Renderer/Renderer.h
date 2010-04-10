@@ -45,6 +45,7 @@ private:
     std::map<int, GameObject> &objectlist;
     std::deque<QString> *chatText_;
     QString *localText_;
+    int deathTime_;
 //funcs
 public:
     //Renderer(QWidget *parent, std::vector<UpdateObject> &gameSt);
@@ -52,6 +53,7 @@ public:
     void Initialize();
     void Render(int clientId);
     void buildRenderList(QPoint center);
+    void setDeathTime(int time) { deathTime_ = time; }
 
 private:
     void resizeGL(int w, int h);

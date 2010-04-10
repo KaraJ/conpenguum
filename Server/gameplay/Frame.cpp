@@ -189,137 +189,151 @@ list<Event> Frame::updateShips(void)
     {
     	Ship *currShip = listShip[i];
 
-        if(currShip != 0 && currShip->active)
+        if(currShip != 0)
         {
-			oldPosition.setX(currShip->position.x());
-			oldPosition.setY(currShip->position.y());
+        	if (currShip->active)
+        	{
+				oldPosition.setX(currShip->position.x());
+				oldPosition.setY(currShip->position.y());
 
-            //TODO: Iterating over all shots is inefficient, this will be changed once testing is complete.
-			/*for (list<Shot>::iterator it = listShot.begin(); it != listShot.end(); ++it)
-			{
-				QVector2D pos = it->getPosition();
-
-			}*/
-
-            if (currShip->vector.x() != 0)
-            {
-                dist = map.canMove(currShip->position, false, SHIPSIZE, currShip->vector.x());
-
-                if((currShip->vector.x() > 0 && dist < 0) || (currShip->vector.x() < 0 && dist > 0))
-                {
-                	currShip->vector.setX(-currShip->vector.x());
-
-					if (currShip->shield > 0) //Hit a wall, take damage
-						currShip->shield -= 10;
-					else if (currShip->health > 0)
-						currShip->health -= 10;
-					if (currShip->health <= 0)
-					{
-						currShip->health = 0;
-						Event t;
-						t.type = Event::ET_DEATH;
-						t.killed = currShip->id;
-						events.push_back(t);
-					}
-                }
-
-                currShip->position.setX(currShip->position.x() + dist);
-            }
-
-            if (currShip->vector.y() != 0)
-            {
-                dist = map.canMove(currShip->position, true, SHIPSIZE, currShip->vector.y());
-
-                if((currShip->vector.y() > 0 && dist < 0) || (currShip->vector.y() < 0 && dist > 0))
-                {
-                	currShip->vector.setY(-currShip->vector.y());
-
-                	if (currShip->shield > 0) //Hit a wall, take damage
-						currShip->shield -= 10;
-					else if (currShip->health > 0)
-						currShip->health -= 10;
-                	if (currShip->health <= 0)
-					{
-						currShip->health = 0;
-						Event t;
-						t.type = Event::ET_DEATH;
-						t.killed = currShip->id;
-						events.push_back(t);
-					}
-                }
-
-                currShip->position.setY(currShip->position.y() + dist);
-            }
-
-			map.remove(currShip, oldPosition, SHIPSIZE);
-			map.add(currShip, currShip->position, SHIPSIZE);
-
-            if(currShip->actionMask.isAccelerating()) // thrust forward
-                newVector = currShip->vector + rotVelToVec(currShip->rotation * 2, VELOCITY_THRUST);
-
-            if(currShip->actionMask.isDecelerating()) // thrust reverse
-                newVector = currShip->vector + rotVelToVec(currShip->rotation * 2, -VELOCITY_THRUST);
-
-            if(currShip->actionMask.isDecelerating() || currShip->actionMask.isAccelerating())
-            {
-                //currently, if you are at max speed your direction doesn't change because of this
-                //fixing -- JT
-                double magnitude = newVector.lengthSquared();
-
-                if(magnitude > VELOCITY_MAX)
-                {
-                    newVector /= magnitude/VELOCITY_MAX;
-                }
-                currShip->vector = newVector;
-            }
-
-            if(currShip->actionMask.isTurningRight()) // turn right
-            {
-                currShip->rotation -= ROTATION_RATE;
-                if (currShip->rotation < 0)
-                    currShip->rotation = 180 + currShip->rotation;
-            }
-
-            if(currShip->actionMask.isTurningLeft()) // turn left
-                currShip->rotation = (currShip->rotation + ROTATION_RATE) % 180;
-
-			if(currShip->shotCooldown > 0)
-				currShip->shotCooldown--;
-
-			if(currShip->shotCooldown == 0 && currShip->actionMask.isFiring())
-			{
-                QVector2D spawnVec, shotVec;
-                spawnVec = rotVelToVec(currShip->rotation * 2, SHOTSPAWNRAD);
-                shotVec =  rotVelToVec(currShip->rotation * 2, VELOCITY_SHOT);
-                Shot shot(currShip->position.x() + spawnVec.x(), currShip->position.y()
-                    + spawnVec.y(), shotVec.x(), shotVec.y(), currShip->getNextShotID(), (frameTimer + 60));
-                addShot(shot);
-                map.add(&shot, shot.position);
-                currShip->shotCooldown = 15;
-			}
-
-			if (currShip->shieldCooldown == 0)
-			{
-				if (currShip->shield < 100)
-					currShip->shield = MIN(100, (currShip->shield + 10));
-
-				currShip->shieldCooldown = 150;
-			}
-			else
-				currShip->shieldCooldown--;
-
-			for (list<NewtObject>::iterator it = listPwrup.begin(); it != listPwrup.end(); ++it)
-			{
-				QVector2D pos = it->getPosition();
-				if (abs(currShip->position.x() - pos.x()) < SHIPRADIUS && abs(currShip->position.y() - pos.y()) < SHIPRADIUS)
+				//TODO: Iterating over all shots is inefficient, this will be changed once testing is complete.
+				/*for (list<Shot>::iterator it = listShot.begin(); it != listShot.end(); ++it)
 				{
-					if (currShip->health == 100)
-						break;
-					currShip->health = MIN(100, (currShip->health + 50));
-					listPwrup.erase(it);
-					break;
+					QVector2D pos = it->getPosition();
+
+				}*/
+
+				if (currShip->vector.x() != 0)
+				{
+					dist = map.canMove(currShip->position, false, SHIPSIZE, currShip->vector.x());
+
+					if((currShip->vector.x() > 0 && dist < 0) || (currShip->vector.x() < 0 && dist > 0))
+					{
+						currShip->vector.setX(-currShip->vector.x());
+
+						if (currShip->shield > 0) //Hit a wall, take damage
+							currShip->shield -= 10;
+						else if (currShip->health > 0)
+							currShip->health -= 10;
+						if (currShip->health <= 0)
+						{
+							currShip->health = 0;
+							Event t;
+							t.type = Event::ET_DEATH;
+							t.killed = currShip->id;
+							events.push_back(t);
+							fragShip(currShip->id);
+						}
+					}
+
+					currShip->position.setX(currShip->position.x() + dist);
 				}
-			}
+
+				if (currShip->vector.y() != 0)
+				{
+					dist = map.canMove(currShip->position, true, SHIPSIZE, currShip->vector.y());
+
+					if((currShip->vector.y() > 0 && dist < 0) || (currShip->vector.y() < 0 && dist > 0))
+					{
+						currShip->vector.setY(-currShip->vector.y());
+
+						if (currShip->shield > 0) //Hit a wall, take damage
+							currShip->shield -= 10;
+						else if (currShip->health > 0)
+							currShip->health -= 10;
+						if (currShip->health <= 0)
+						{
+							currShip->health = 0;
+							Event t;
+							t.type = Event::ET_DEATH;
+							t.killed = currShip->id;
+							events.push_back(t);
+							fragShip(currShip->id);
+						}
+					}
+
+					currShip->position.setY(currShip->position.y() + dist);
+				}
+
+				map.remove(currShip, oldPosition, SHIPSIZE);
+				map.add(currShip, currShip->position, SHIPSIZE);
+
+				if(currShip->actionMask.isAccelerating()) // thrust forward
+					newVector = currShip->vector + rotVelToVec(currShip->rotation * 2, VELOCITY_THRUST);
+
+				if(currShip->actionMask.isDecelerating()) // thrust reverse
+					newVector = currShip->vector + rotVelToVec(currShip->rotation * 2, -VELOCITY_THRUST);
+
+				if(currShip->actionMask.isDecelerating() || currShip->actionMask.isAccelerating())
+				{
+					//currently, if you are at max speed your direction doesn't change because of this
+					//fixing -- JT
+					double magnitude = newVector.lengthSquared();
+
+					if(magnitude > VELOCITY_MAX)
+					{
+						newVector /= magnitude/VELOCITY_MAX;
+					}
+					currShip->vector = newVector;
+				}
+
+				if(currShip->actionMask.isTurningRight()) // turn right
+				{
+					currShip->rotation -= ROTATION_RATE;
+					if (currShip->rotation < 0)
+						currShip->rotation = 180 + currShip->rotation;
+				}
+
+				if(currShip->actionMask.isTurningLeft()) // turn left
+					currShip->rotation = (currShip->rotation + ROTATION_RATE) % 180;
+
+				if(currShip->shotCooldown > 0)
+					currShip->shotCooldown--;
+
+				if(currShip->shotCooldown == 0 && currShip->actionMask.isFiring())
+				{
+					QVector2D spawnVec, shotVec;
+					spawnVec = rotVelToVec(currShip->rotation * 2, SHOTSPAWNRAD);
+					shotVec =  rotVelToVec(currShip->rotation * 2, VELOCITY_SHOT);
+					Shot shot(currShip->position.x() + spawnVec.x(), currShip->position.y()
+						+ spawnVec.y(), shotVec.x(), shotVec.y(), currShip->getNextShotID(), (frameTimer + 60));
+					addShot(shot);
+					map.add(&shot, shot.position);
+					currShip->shotCooldown = 15;
+				}
+
+				if (currShip->shieldCooldown == 0)
+				{
+					if (currShip->shield < 100 && currShip->active)
+						currShip->shield = MIN(100, (currShip->shield + 10));
+
+					currShip->shieldCooldown = 150;
+				}
+				else
+					currShip->shieldCooldown--;
+
+				for (list<NewtObject>::iterator it = listPwrup.begin(); it != listPwrup.end(); ++it)
+				{
+					QVector2D pos = it->getPosition();
+					if (abs(currShip->position.x() - pos.x()) < SHIPRADIUS && abs(currShip->position.y() - pos.y()) < SHIPRADIUS)
+					{
+						if (currShip->health == 100)
+							break;
+						currShip->health = MIN(100, (currShip->health + 50));
+						listPwrup.erase(it);
+						break;
+					}
+				}
+        	}
+        	else
+        	{
+        		if (--currShip->deathCooldown == 0)
+        		{
+        			currShip->active = true;
+        			currShip->health = 100;
+        			currShip->shield = 100;
+        		}
+        	}
         }
     }
     return events;
@@ -379,7 +393,7 @@ list<Event> Frame::updateShots(void)
 			for(itr = shiplist.begin(); itr != shiplist.end(); ++itr)
 			{
 				currShip = *itr;
-			    if(dist2Points((*itr)->position, oldPos) < SHIP_HIT_DIST)
+			    if(currShip->active && dist2Points((*itr)->position, oldPos) < SHIP_HIT_DIST)
 			    {
 					if (currShip->shield >= 40)
 						currShip->shield -= 40;
@@ -399,6 +413,7 @@ list<Event> Frame::updateShots(void)
 						t.killer = (it->getID() - 32) / 10;
 						t.killed = currShip->id;
 						events.push_back(t);
+						fragShip(currShip->id);
 					}
 					it = listShot.erase(it);
 					continue;
@@ -535,4 +550,5 @@ void Frame::printShots(void)
 void Frame::fragShip(size_t shipID){
     Ship *ship = getShip(shipID);
     ship->active = false;
+    ship->deathCooldown = 150;
 }

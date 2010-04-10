@@ -9,6 +9,7 @@ bool TCPConnection::ReadMessage(int sock, ServerMessage& sm)
 		sm.SetClientID(buff[0]);
 		sm.SetMsgLen(buff[1]);
 		sm.SetMsgType((ServerMessage::MessageType) buff[2]);
+		memset(buff, 0, ServerMessage::SM_MAX_SIZ);
 		if(!SocketWrapper::Read(sock, buff, sm.GetMsgLen() - ServerMessage::SM_HEADERSIZE))
 			return false;
 		sm.SetData(buff);
