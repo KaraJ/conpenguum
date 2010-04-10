@@ -115,7 +115,7 @@ void Renderer::resizeGL(int w, int h)
     gluOrtho2D(0.0, (GLdouble)w, 0.0, (GLdouble) h);
 }
 
-void Renderer::Render(int clientId)
+void Renderer::Render(int clientId, const vector<Player> &playerList)
 {
 	QFont nameFont("Helvetica", 8);
 	QFont healthFont("Comic Sans MS", 10, 75);
@@ -280,6 +280,24 @@ void Renderer::Render(int clientId)
 		renderText(SCREENWIDTH/2 - 130, SCREENHEIGHT/2 + 25, QString(oss.str().c_str()), deathFont);
 		qglColor(Qt::white);
 	}
+    //Print Scoreboard
+    int lines = 0;
+    for (size_t i = 0; i < playerList.size(); i++)
+    {
+    	ostringstream oss;
+    	renderText(SCREENWIDTH - 225, SCREENHEIGHT - 20*lines - 15, QString(playerList[i].getName().c_str()), nameFont);
+    	oss << playerList[i].getKills();
+		renderText(SCREENWIDTH - 140, SCREENHEIGHT - 20*lines - 15, QString::fromStdString(oss.str()), nameFont);
+		oss.str(""); oss << playerList[i].getDeaths();
+		renderText(SCREENWIDTH - 95, SCREENHEIGHT - 20*lines - 15, QString::fromStdString(oss.str()), nameFont);
+		oss.str(""); oss << playerList[i].getStreak();
+		renderText(SCREENWIDTH - 50, SCREENHEIGHT - 20*lines++ - 15, QString::fromStdString(oss.str()), nameFont);
+    }
+    renderText(SCREENWIDTH - 225, SCREENHEIGHT - 20*lines - 15, "Player Name", nameFont);
+    renderText(SCREENWIDTH - 140, SCREENHEIGHT - 20*lines - 15, "Kills", nameFont);
+    renderText(SCREENWIDTH - 95, SCREENHEIGHT - 20*lines - 15, "Deaths", nameFont);
+    renderText(SCREENWIDTH - 50, SCREENHEIGHT - 20*lines++ - 15, "Streak", nameFont);
+    renderText(SCREENWIDTH - 160, SCREENHEIGHT - 20*++lines - 15, "- Score Board -", nameFont);
 
 	glBindTexture(GL_TEXTURE_2D, textures["chatbox.png"]);
 	glBegin(GL_QUADS);

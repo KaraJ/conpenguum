@@ -45,6 +45,9 @@ private:
 	static void Shutdown(int code);
 	bool isNameUsed(std::string name);
 	std::string getPlayerName(int id);
+	void addDeath(int killed);
+	void addKill(int killed, int killer);
+	void sendScores();
 
 	QTimer *timer;
 	CommServer::CommServer* commServer;

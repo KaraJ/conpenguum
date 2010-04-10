@@ -8,6 +8,7 @@
 #include "../engine/GameObject.h"
 #include <map>
 #include "../../Core/resourceMgr/resourcemanager.h"
+#include "../../Core/Player.h"
 
 
 //PI macros
@@ -51,7 +52,7 @@ public:
     //Renderer(QWidget *parent, std::vector<UpdateObject> &gameSt);
     Renderer(QWidget *parent, std::map<int, GameObject> &gameSt, std::deque<QString> *chatText, QString *localText);
     void Initialize();
-    void Render(int clientId);
+    void Render(int clientId, const std::vector<Player> &playerList);
     void buildRenderList(QPoint center);
     void setDeathTime(int time) { deathTime_ = time; }
 
