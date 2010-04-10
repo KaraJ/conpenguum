@@ -334,8 +334,11 @@ void Renderer::RenderScores(const std::vector<Player> &playerList)
 		renderText(SCREENWIDTH - 50, SCREENHEIGHT - 20*lines++ - 15, QString::fromStdString(oss.str()), scoreFont);
 	}
 	renderText(SCREENWIDTH - 225, SCREENHEIGHT - 20*lines - 15, "Player Name", scoreFont);
+	//qglColor(Qt::green);
 	renderText(SCREENWIDTH - 140, SCREENHEIGHT - 20*lines - 15, "Kills", scoreFont);
+	//qglColor(Qt::red);
 	renderText(SCREENWIDTH - 95, SCREENHEIGHT - 20*lines - 15, "Deaths", scoreFont);
+	//qglColor(Qt::blue);
 	renderText(SCREENWIDTH - 50, SCREENHEIGHT - 20*lines++ - 15, "Streak", scoreFont);
 	renderText(SCREENWIDTH - 160, SCREENHEIGHT - 20*++lines - 15, "- Score Board -", scoreFont);
 }
