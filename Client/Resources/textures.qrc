@@ -15,5 +15,6 @@
         <file>textures/tiles.bmp</file>
         <file>textures/wbship.bmp</file>
         <file>textures/weship.bmp</file>
+        <file>textures/bullets.bmp</file>
     </qresource>
 </RCC>
