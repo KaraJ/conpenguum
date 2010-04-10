@@ -1,0 +1,7 @@
+<powerups>
+    <firstaid type="0" name="BASIC">
+        <TEXTURE>firstaid.bmp</TEXTURE>
+        <OBJECT_WIDTH>10</OBJECT_WIDTH>
+        <OBJECT_HEIGHT>10</OBJECT_HEIGHT>
+    </firstaid>
+</powerups>
