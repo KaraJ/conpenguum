@@ -5,14 +5,14 @@ MapTile::MapTile(int texTileNum, int mapRow, int mapCol, int texTileSizeInPix, i
     int texCol = texTileNum % texWidthInTiles;
     int texWidthInPix = texWidthInTiles * texTileSizeInPix;
     int texOffsetInPixX = texCol * texTileSizeInPix;
-    texOffsetXStart_ = texOffsetInPixX / texWidthInPix;
+    texOffsetXStart_ = texOffsetInPixX / (float)texWidthInPix;
     float tileWidthOffset = texTileSizeInPix / (float)texWidthInPix;
     texOffsetXEnd_ = texOffsetXStart_ + tileWidthOffset;
 
     int texRow = texTileNum / texWidthInTiles;
     int texHeightInPix = texHeightInTiles * texTileSizeInPix;
     int texOffsetInPixY = texRow * texTileSizeInPix;
-    texOffsetYStart_ = texOffsetInPixY / texHeightInPix;
+    texOffsetYStart_ = texOffsetInPixY / (float)texHeightInPix;
     float tileHeightOffset = texTileSizeInPix / (float)texHeightInPix;
     texOffsetYEnd_ = texOffsetYStart_ + tileHeightOffset;
 
