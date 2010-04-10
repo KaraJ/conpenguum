@@ -166,7 +166,7 @@ void ServerEngine::timeout()
 			m.SetData(oss.str());
 			m.SetClientID(it->killer);
 			m.SetMsgType(ServerMessage::MT_CHAT);
-			commServer->sendServerMsg(m);
+			commServer->sendServerMsgToAll(m);
 			ScoreBoard::Instance()->recordKill(it->killed, it->killer);
 		}
 	}
