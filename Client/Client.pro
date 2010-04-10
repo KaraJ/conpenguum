@@ -6,10 +6,8 @@ QT += core \
 OBJECTS_DIR = obj
 TEMPLATE = app
 TARGET = Client
-
 HEADERS += ../Core/comm/globals.h \
     Animation/Animation.h \
-    Animation/AnimationEnum.h \
     Animation/Image.h \
     Animation/qtxmlparse.h \
     Animation/QtXmlParse_global.h \
@@ -27,7 +25,6 @@ HEADERS += ../Core/comm/globals.h \
     engine/Splashitem.h \
     Renderer/Renderer.h \
     SoundEffects/SoundEffects.h
-    
 SOURCES += Animation/Animation.cpp \
     Animation/Image.cpp \
     Animation/qtxmlparse.cpp \
@@ -44,17 +41,13 @@ SOURCES += Animation/Animation.cpp \
     engine/Splashitem.cpp \
     Renderer/Renderer.cpp \
     SoundEffects/SoundEffects.cpp
-
 RESOURCES += Resources/textures.qrc \
     menuitems.qrc
-    
 FORMS += backside.ui \
     ipbox.ui
-    
 contains(QT_CONFIG, opengl):QT += opengl
 LIBS += -lCore \
     -L../Core/Debug
-    
 CONFIG += qt \
     debug \
     warn_on \

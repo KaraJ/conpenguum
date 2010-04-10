@@ -470,7 +470,6 @@ QPointF Panel::posForLocation(int x, int y) const
 --------------------------------------------------------------------------------------*/
 void Panel::closeEvent(QCloseEvent * e)
 {
-	this->destroy(true, false);
+	//this->destroy(true, false);
 	exit(0);
-	return;
 }

@@ -10,7 +10,7 @@ public:
     MapTile(int texTileNum, int mapRow, int mapCol);
     virtual ~MapTile();
     const QPoint& getPos() { return pos_; }
-    const int getTileID() const { return tileID; }
+    int getTileID() const { return tileID; }
 private:
     int    tileID;
     QPoint pos_;
