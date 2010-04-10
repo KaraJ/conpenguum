@@ -123,34 +123,10 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
 ------------------------------------------------------------------------------*/
 void Map::move(Ship *ship, QVector2D old_position, QVector2D new_position, double size)
 {
-	double radius = size / 2;
 
-    double leftOld = PIX_TO_TILE(old_position.x() - radius);
-    double rightOld = PIX_TO_TILE(old_position.x() + radius);
-    double botOld = PIX_TO_TILE(old_position.y() - radius);
-    double topOld = PIX_TO_TILE(old_position.y() + radius);
 
-    double leftNew = PIX_TO_TILE(new_position.x() - radius);
-    double rightNew = PIX_TO_TILE(new_position.x() + radius);
-    double botNew = PIX_TO_TILE(new_position.y()- radius);
-    double topNew = PIX_TO_TILE(new_position.y() + radius);
 
-    for (int x = MIN(leftOld, leftNew); x <= MAX(rightOld, rightNew); ++x)
-    {
-        for (int y = MIN(botOld, botNew); y <= MAX(topOld, topNew); ++y)
-        {
-            if (x < leftOld || x > rightOld || y < botOld || y > topOld) // if in new position
-            {
-                if (x <= leftNew && x >= rightNew && y >= botOld && y <= topOld)
-                    tiles[x][y].add(ship);
-            }
-            else // is in old position!
-            {
-                if (x < leftNew || x > rightNew || y < botNew || y > topNew) // if not in new position
-                    tiles[x][y].remove(ship);
-            }
-        }
-    }
+
 
 }
 
@@ -208,11 +184,14 @@ void Map::move(Shot *shot, QVector2D old_position, QVector2D new_position)
 ------------------------------------------------------------------------------*/
 void Map::add(Ship *ship, QVector2D location, int size)
 {
-    int x1 = PIX_TO_TILE(location.x());
-    int x2 = PIX_TO_TILE(location.x() + size);
-    int y1 = PIX_TO_TILE(location.y());
-    int y2 = PIX_TO_TILE(location.y() + size);
-    for (int x = x1; x < x2; ++x)
+	int radius = size / 2;
+
+    int x1 = PIX_TO_TILE(location.x() - radius);
+    int x2 = PIX_TO_TILE(location.x() + radius);
+    int y1 = PIX_TO_TILE(location.y() - radius);
+    int y2 = PIX_TO_TILE(location.y() + radius);
+
+    for (int x = x1; x <= x2; ++x)
     {
         for (int y = y1; y <= y2; ++y)
             tiles[x][y].add(ship);
@@ -269,10 +248,13 @@ void Map::add(Shot *shot, QVector2D location)
 ------------------------------------------------------------------------------*/
 void Map::remove(Ship *ship, QVector2D location, int size)
 {
-    int x1 = PIX_TO_TILE(location.x());
-    int x2 = PIX_TO_TILE(location.x() + size);
-    int y1 = PIX_TO_TILE(location.y());
-    int y2 = PIX_TO_TILE(location.y() + size);
+	int radius = size / 2;
+
+	int x1 = PIX_TO_TILE(location.x() - radius);
+	int x2 = PIX_TO_TILE(location.x() + radius);
+	int y1 = PIX_TO_TILE(location.y() - radius);
+	int y2 = PIX_TO_TILE(location.y() + radius);
+
     for (int x = x1; x < x2; ++x)
     {
         for (int y = y1; y <= y2; ++y)

@@ -20,8 +20,10 @@
 --  RETURNS:    void.
 --
 ------------------------------------------------------------------------------*/
-void Tile::add(Ship *ship) {
+void Tile::add(Ship *ship)
+{
     ships.push_back(ship);
+    ships.unique();
 }
 
 /*-----------------------------------------------------------------------------
@@ -43,8 +45,10 @@ void Tile::add(Ship *ship) {
 --  RETURNS:    void.
 --
 ------------------------------------------------------------------------------*/
-void Tile::add(Shot *shot) {
+void Tile::add(Shot *shot)
+{
     shots.push_back(shot);
+    ships.unique();
 }
 
 /*-----------------------------------------------------------------------------
@@ -66,7 +70,8 @@ void Tile::add(Shot *shot) {
 --  RETURNS:    void.
 --
 ------------------------------------------------------------------------------*/
-void Tile::remove(Ship *ship) {
+void Tile::remove(Ship *ship)
+{
     ships.remove(ship);
 }
 
@@ -89,7 +94,8 @@ void Tile::remove(Ship *ship) {
 --  RETURNS:    void.
 --
 ------------------------------------------------------------------------------*/
-void Tile::remove(Shot *shot) {
+void Tile::remove(Shot *shot)
+{
     shots.remove(shot);
 }
 
@@ -111,7 +117,8 @@ void Tile::remove(Shot *shot) {
 --  RETURNS:    The number of ships in the tile.
 --
 ------------------------------------------------------------------------------*/
-int Tile::numShips() {
+int Tile::numShips()
+{
     return ships.size();
 }
 
