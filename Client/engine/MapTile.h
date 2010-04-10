@@ -15,10 +15,10 @@ public:
     int getTextureOffsetYEnd() { return texOffsetYEnd_; }
     const QPoint& getPos() { return pos_; }
 private:
-    int texOffsetXStart_;
-    int texOffsetYStart_;
-    int texOffsetXEnd_;
-    int texOffsetYEnd_;
+    float texOffsetXStart_;
+    float texOffsetYStart_;
+    float texOffsetXEnd_;
+    float texOffsetYEnd_;
     QPoint pos_;
 };
 
