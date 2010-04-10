@@ -482,7 +482,7 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
     vector<UpdateObject> udList;
     for (size_t i = 0; i < MAX_CLIENTS; ++i)
     {
-		if (listShip[i] != 0)
+		if (listShip[i] != 0 && listShip[i]->active)
 		{
 			UpdateObject uo(listShip[i]->actionMask);
 			uo.setRotation(listShip[i]->rotation);
