@@ -17,6 +17,7 @@
         <file>textures/bombflsh.bmp</file>
         <file>textures/bombs.bmp</file>
         <file>textures/bullets.bmp</file>
+        <file>textures/chatbox.png</file>
         <file>textures/damage.bmp</file>
         <file>textures/empburst.bmp</file>
         <file>textures/engyfont.bmp</file>
@@ -24,6 +25,8 @@
         <file>textures/explode0.bmp</file>
         <file>textures/explode1.bmp</file>
         <file>textures/explode2.bmp</file>
+        <file>textures/firstaid.bmp</file>
+        <file>textures/healthbar.bmp</file>
         <file>textures/hugefont.bmp</file>
         <file>textures/hugefontf.bmp</file>
         <file>textures/junkjv.bmp</file>
@@ -54,6 +57,7 @@
         <file>textures/repel.bmp</file>
         <file>textures/rocket.bmp</file>
         <file>textures/shield.bmp</file>
+        <file>textures/shieldbar.bmp</file>
         <file>textures/shroll.bmp</file>
         <file>textures/shrtfont.bmp</file>
         <file>textures/shrtfontf.bmp</file>
@@ -78,14 +82,8 @@
         <file>textures/trail.bmp</file>
         <file>textures/wall.bmp</file>
         <file>textures/warp.bmp</file>
-        <file>textures/wbroll.bmp</file>
         <file>textures/wbship.bmp</file>
         <file>textures/weroll.bmp</file>
         <file>textures/weship.bmp</file>
-        <file>textures/chatbox.png</file>
-        <file>textures/healthbar.bmp</file>
-        <file>textures/shieldbar.bmp</file>
-        <file>textures/theMap</file>
-        <file>textures/firstaid.bmp</file>
     </qresource>
 </RCC>

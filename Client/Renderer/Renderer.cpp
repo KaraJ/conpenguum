@@ -52,22 +52,8 @@ void Renderer::buildRenderList(QPoint center)
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHIP, 0);
         else if (gob->objectId < 500)
              rd = (TexturedResourceDefinition*)resourceManager->GetResource(SHOT, 0);
-    	else if (gob->objectId < MAX_REAL_OBJECT)
-    	{
+    	else if (gob->objectId == 501)
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(AIDBOX, 0);
-    		renderList[i].texture = textures["firstaid.bmp"];
-			renderList[i].texOffsetX = 0;
-			renderList[i].texOffsetY = 0;
-			renderList[i].objectHeight = 1;
-			renderList[i].objectWidth = 1;
-			renderList[i].rotation = 0;
-			renderList[i].objectHeightPx = rd->object_width;
-			renderList[i].objectWidthPx = rd->object_height;
-			renderList[i].x = SCRCENTREW + (gob->position.x() - xOffset) - rd->object_width / 2;
-			renderList[i].y = SCRCENTREH + (gob->position.y() - yOffset) - rd->object_height / 2;
-			i++;
-			continue;
-    	}
     	else
     		rd = (TexturedResourceDefinition*)resourceManager->GetResource(EXHAUST, 0);
 
@@ -143,6 +129,7 @@ void Renderer::Render(int clientId)
 	QFont nameFont("Helvetica", 8);
 	QFont healthFont("Comic Sans MS", 10, 75);
 	QFont chatFont("Comic Sans MS", 8, 75);
+
     //clear the screen
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_TEXTURE_2D);
@@ -306,8 +293,6 @@ void Renderer::Render(int clientId)
 	glDisable(GL_TEXTURE_2D);
     updateGL();
 }
-
-
 
 void Renderer::saveGLState()
 {
