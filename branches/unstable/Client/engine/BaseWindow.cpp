@@ -28,8 +28,7 @@ using namespace std;
  -- the QTimer object used for timing.
  --
  -----------------------------------------------------------------------------*/
-BaseWindow::BaseWindow() :
-	frameRate(DEFAULT_FRAME_RATE), timer(this)
+BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
 {
 	for (size_t i = MAX_REAL_OBJECT; i < MAX_REAL_OBJECT * 2; ++i)
 		freeIds.push(i);
@@ -458,7 +457,6 @@ void BaseWindow::clearTransientObjects()
 {
 	list<int> thingsToErase;
 	vector<Image> *images = animationMap[EXHAUST].getAnimationImages();
-	vector<Image> *shipImages = animationMap[SHIP].getAnimationImages();
 
 	for (map<int, GameObject>::iterator it = gameState.begin(); it
 			!= gameState.end(); ++it)
