@@ -287,7 +287,7 @@ void Renderer::Render(int clientId, const vector<Player> &playerList)
 		renderText(SCREENWIDTH/2 - 100, SCREENHEIGHT/2, "You lost The Game", deathFont);
 		ostringstream oss;
 		oss << "Respawning in " << fixed << setprecision(1) << ((float)deathTime_/30) << " seconds";
-		renderText(SCREENWIDTH/2 - 130, SCREENHEIGHT/2 + 25, QString(oss.str().c_str()), deathFont);
+		renderText(SCREENWIDTH/2 - 145, SCREENHEIGHT/2 + 25, QString(oss.str().c_str()), deathFont);
 		qglColor(Qt::white);
 	}
     RenderScores(playerList);

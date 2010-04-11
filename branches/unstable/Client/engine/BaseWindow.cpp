@@ -372,13 +372,13 @@ void BaseWindow::updateGameState()
 
 		if (objId < MAX_CLIENTS && updateObj.getActions().isTurningLeft()) //for Exhaust trails
 		{
-			if (bankIndex[objId] > 0)
-				--bankIndex[objId];
+			if (bankIndex[objId] < 10)
+				++bankIndex[objId];
 		}
 		else if (objId < MAX_CLIENTS && updateObj.getActions().isTurningRight()) //for Exhaust trails
 		{
-			if (bankIndex[objId] < 10)
-				++bankIndex[objId];
+			if (bankIndex[objId] > 0)
+				--bankIndex[objId];
 		}
 		else if (objId < MAX_CLIENTS)
 		{
