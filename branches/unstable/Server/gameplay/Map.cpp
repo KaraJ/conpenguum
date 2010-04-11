@@ -77,7 +77,7 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
         x = tile_e.attribute("x", "0").toInt();
         y = tile_e.attribute("y", "0").toInt();
         if (physics_e.attribute("hit") == "bounce") {
-            tiles[x][(rows-1)-y].setWall();
+            tiles[x][y].setWall();
         }
     }
 
