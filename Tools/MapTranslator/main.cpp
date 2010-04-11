@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     QDomElement map = doc.createElement("map");
     map.setAttribute("width", width);
     map.setAttribute("height", height);
-    map.setAttribute("width", tileSize);
+    map.setAttribute("tileSize", tileSize);
     QDomElement tile_e = map_e.elementsByTagName("layer").item(0).toElement().elementsByTagName("data").item(0).toElement().firstChild().toElement();
     TileType *type;
     std::stringstream sString;
