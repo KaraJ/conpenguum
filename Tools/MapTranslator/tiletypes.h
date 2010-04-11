@@ -10,7 +10,6 @@ typedef struct {
     int width;
     int height;
     QString physics;
-    QString src;
     QString filename;
     int firstGid;
 } TileType;

@@ -74,30 +74,34 @@ int main(int argc, char *argv[])
                 }
                 // graphics
                 QDomElement graphics = doc.createElement("graphics");
-                graphics.setAttribute("src", type->src);
                 graphics.setAttribute("filename", type->filename);
-                // Bottom Left Horizontal
-                sString.str("");
-                sString << (gid-type->firstGid) / type->width << "/" << type->width;
-                graphics.setAttribute("blh", QString(sString.str().c_str()));
-                // Bottom Left Vertical
-                sString.str("");
-                sString << (gid-type->firstGid) % type->width << "/" << type->height;
-                graphics.setAttribute("blv", QString(sString.str().c_str()));
-                // Top Right Horizontal
-                sString.str("");
-                sString << ((gid-type->firstGid) / type->width) + 1 << "/" << type->width;
-                graphics.setAttribute("trh", QString(sString.str().c_str()));
-                // Top Right Vertical
-                sString.str("");
-                sString << ((gid-type->firstGid) % type->width) + 1 << "/" << type->height;
-                graphics.setAttribute("trv", QString(sString.str().c_str()));
+                graphics.setAttribute("tileNumber", gid - type->firstGid);
                 // add to tile
                 tile.appendChild(graphics);
                 map.appendChild(tile);
             }
             tile_e = tile_e.nextSibling().toElement();
         }
+    }
+    QDomNodeList spawn_l = map_e.elementsByTagName("objectgroup").item(0).toElement().elementsByTagName("object");
+    for (int i=0; i < spawn_l.size(); ++i)
+    {
+        QDomElement spawn_e = spawn_l.item(i).toElement();
+        QDomElement spawn = doc.createElement("spawn");
+        spawn.setAttribute("x", spawn_e.attribute("x"));
+        spawn.setAttribute("y", spawn_e.attribute("y"));
+        spawn.setAttribute("width", spawn_e.attribute("width"));
+        spawn.setAttribute("height", spawn_e.attribute("height"));
+        QDomNodeList spawn_attribute_l = spawn_e.elementsByTagName("properties").item(0).toElement().elementsByTagName("property");
+        for (int p=0; p < spawn_attribute_l.size(); ++p)
+        {
+            QDomElement spawn_attribute_e = spawn_attribute_l.item(p).toElement();
+            if (spawn_attribute_e.attribute("name") == "team")
+            {
+                spawn.setAttribute("team", spawn_attribute_e.attribute("value"));
+            }
+        }
+        map.appendChild(spawn);
     }
     doc.appendChild(map);
     if (argc > 3) {
