@@ -64,9 +64,9 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
     tileSize = map_e.attribute("tileSize", "1").toInt();
 
     // create tiles array
-    tiles=new Tile*[rows];
-    for(int i = 0; i < rows; ++i)
-        *(tiles + i) = new Tile[columns];
+    tiles=new Tile*[columns];
+    for(int i = 0; i < columns; ++i)
+        *(tiles + i) = new Tile[rows];
 
     // read tiles
     QDomNodeList tile_l = map_e.elementsByTagName("tile");
@@ -77,7 +77,7 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
         x = tile_e.attribute("x", "0").toInt();
         y = tile_e.attribute("y", "0").toInt();
         if (physics_e.attribute("hit") == "bounce") {
-            tiles[x][y].setWall();
+            tiles[x][(rows-1)-y].setWall();
         }
     }
 
@@ -375,11 +375,11 @@ double Map::canMove(QVector2D position, bool vertical, double objSize, double di
 ------------------------------------------------------------------------------*/
 void Map::drawMap()
 {
-    for(int i = 0; i < columns; i++)
+    for(int j = 0; j < rows; j++)
     {
-        for(int j = 0; j < rows; j++)
+        for(int i = 0; i < columns; i++)
         {
-            std::cout << (isWall(i, j) ? "X" : "-");
+            std::cout << (isWall(i, j) ? "X" : ".");
         }
         std::cout << std::endl;
     }
