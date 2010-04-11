@@ -43,9 +43,9 @@ BaseWindow::BaseWindow() :
     localChat = "";
 
     //loadMap
-    m = new Map();
-    QFile mapFile("Resources/maps/tux1");
-    if (!mapFile.open(QIODevice::ReadOnly | QIODevice::Text))
+    m = new Map("Resources/maps/map.xml");
+    //QFile mapFile("Resources/maps/map.xml");
+    /*if (!mapFile.open(QIODevice::ReadOnly | QIODevice::Text))
         Logger::LogNQuit("Could not open map file");
     QTextStream mapStream(&mapFile);
     while (!mapStream.atEnd())
@@ -55,7 +55,7 @@ BaseWindow::BaseWindow() :
         std::istringstream iss(line);
         iss >> row >> col >> tileNum;
         m->addTile(tileNum, row, col);
-    }
+    }*/
 
     /*this may be temporary*/
     this->setFixedSize(1024, 768);

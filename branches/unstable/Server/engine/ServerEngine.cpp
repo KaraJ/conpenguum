@@ -217,7 +217,6 @@ void ServerEngine::addKill(int killed, int killer)
 	m.SetMsgType(ServerMessage::MT_CHAT);
 	commServer->sendServerMsgToAll(m);
 
-	m.SetData("");
 	m.SetMsgType(ServerMessage::MT_DEATH);
 	commServer->sendServerMsg(m);
 
