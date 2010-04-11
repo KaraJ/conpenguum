@@ -1,5 +1,5 @@
 <!DOCTYPE Map>
-<map width="25" height="100">
+<map width="100" height="100" tileSize="25">
  <tile x="0" y="99">
   <physics hit="bounce"/>
   <graphics tileNumber="126" filename="tiles.bmp"/>
@@ -436,6 +436,54 @@
   <physics hit="bounce"/>
   <graphics tileNumber="81" filename="tiles.bmp"/>
  </tile>
+ <tile x="3" y="94">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="4" y="94">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="5" y="94">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="6" y="94">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="7" y="94">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="8" y="94">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="9" y="94">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="10" y="94">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="11" y="94">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="12" y="94">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="13" y="94">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="19" y="94">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
  <tile x="99" y="94">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -443,6 +491,34 @@
  <tile x="0" y="93">
   <physics hit="bounce"/>
   <graphics tileNumber="81" filename="tiles.bmp"/>
+ </tile>
+ <tile x="8" y="93">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="19" y="93">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="82" y="93">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="83" y="93">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="84" y="93">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="85" y="93">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="86" y="93">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="93">
   <physics hit="bounce"/>
@@ -452,6 +528,46 @@
   <physics hit="bounce"/>
   <graphics tileNumber="81" filename="tiles.bmp"/>
  </tile>
+ <tile x="8" y="92">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="19" y="92">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="79" y="92">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="80" y="92">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="81" y="92">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="82" y="92">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="85" y="92">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="86" y="92">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="87" y="92">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="88" y="92">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
  <tile x="99" y="92">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -459,6 +575,30 @@
  <tile x="0" y="91">
   <physics hit="bounce"/>
   <graphics tileNumber="81" filename="tiles.bmp"/>
+ </tile>
+ <tile x="8" y="91">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="19" y="91">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="78" y="91">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="79" y="91">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="88" y="91">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="89" y="91">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="91">
   <physics hit="bounce"/>
@@ -468,6 +608,30 @@
   <physics hit="bounce"/>
   <graphics tileNumber="81" filename="tiles.bmp"/>
  </tile>
+ <tile x="8" y="90">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="19" y="90">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="77" y="90">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="78" y="90">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="89" y="90">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="90" y="90">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
  <tile x="99" y="90">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -475,6 +639,26 @@
  <tile x="0" y="89">
   <physics hit="bounce"/>
   <graphics tileNumber="81" filename="tiles.bmp"/>
+ </tile>
+ <tile x="8" y="89">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="19" y="89">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="76" y="89">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="77" y="89">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="90" y="89">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="89">
   <physics hit="bounce"/>
@@ -484,6 +668,26 @@
   <physics hit="bounce"/>
   <graphics tileNumber="81" filename="tiles.bmp"/>
  </tile>
+ <tile x="8" y="88">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="19" y="88">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="76" y="88">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="90" y="88">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="91" y="88">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
  <tile x="99" y="88">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -492,9 +696,21 @@
   <physics hit="bounce"/>
   <graphics tileNumber="81" filename="tiles.bmp"/>
  </tile>
- <tile x="14" y="87">
+ <tile x="8" y="87">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="19" y="87">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="76" y="87">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="91" y="87">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="87">
   <physics hit="bounce"/>
@@ -504,9 +720,25 @@
   <physics hit="bounce"/>
   <graphics tileNumber="81" filename="tiles.bmp"/>
  </tile>
- <tile x="14" y="86">
+ <tile x="8" y="86">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="19" y="86">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="75" y="86">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="76" y="86">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="91" y="86">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="86">
   <physics hit="bounce"/>
@@ -516,9 +748,25 @@
   <physics hit="bounce"/>
   <graphics tileNumber="81" filename="tiles.bmp"/>
  </tile>
- <tile x="14" y="85">
+ <tile x="8" y="85">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="19" y="85">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="75" y="85">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="76" y="85">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="91" y="85">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="85">
   <physics hit="bounce"/>
@@ -528,9 +776,21 @@
   <physics hit="bounce"/>
   <graphics tileNumber="81" filename="tiles.bmp"/>
  </tile>
- <tile x="14" y="84">
+ <tile x="8" y="84">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="19" y="84">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="76" y="84">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="91" y="84">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="84">
   <physics hit="bounce"/>
@@ -540,17 +800,21 @@
   <physics hit="bounce"/>
   <graphics tileNumber="81" filename="tiles.bmp"/>
  </tile>
- <tile x="15" y="83">
+ <tile x="8" y="83">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="81" y="83">
+ <tile x="19" y="83">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="82" y="83">
+ <tile x="76" y="83">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="91" y="83">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="83">
   <physics hit="bounce"/>
@@ -560,21 +824,25 @@
   <physics hit="bounce"/>
   <graphics tileNumber="81" filename="tiles.bmp"/>
  </tile>
- <tile x="15" y="82">
+ <tile x="7" y="82">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="16" y="82">
+ <tile x="8" y="82">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="80" y="82">
+ <tile x="19" y="82">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="81" y="82">
+ <tile x="76" y="82">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="91" y="82">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="82">
   <physics hit="bounce"/>
@@ -584,21 +852,29 @@
   <physics hit="bounce"/>
   <graphics tileNumber="81" filename="tiles.bmp"/>
  </tile>
- <tile x="16" y="81">
+ <tile x="7" y="81">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="17" y="81">
+ <tile x="19" y="81">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="79" y="81">
+ <tile x="76" y="81">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="80" y="81">
+ <tile x="77" y="81">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="90" y="81">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="91" y="81">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="81">
   <physics hit="bounce"/>
@@ -608,25 +884,21 @@
   <physics hit="bounce"/>
   <graphics tileNumber="0" filename="tiles.bmp"/>
  </tile>
- <tile x="17" y="80">
+ <tile x="7" y="80">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="18" y="80">
+ <tile x="19" y="80">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="76" y="80">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="77" y="80">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="78" y="80">
+ <tile x="90" y="80">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="80">
   <physics hit="bounce"/>
@@ -636,25 +908,25 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="18" y="79">
+ <tile x="7" y="79">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="19" y="79">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="20" y="79">
+ <tile x="77" y="79">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="75" y="79">
+ <tile x="78" y="79">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="76" y="79">
+ <tile x="90" y="79">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="79">
   <physics hit="bounce"/>
@@ -664,17 +936,33 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="20" y="78">
+ <tile x="7" y="78">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="21" y="78">
+ <tile x="19" y="78">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="74" y="78">
+ <tile x="78" y="78">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="79" y="78">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="80" y="78">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="89" y="78">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="90" y="78">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="78">
   <physics hit="bounce"/>
@@ -684,21 +972,61 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
+ <tile x="19" y="77">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="20" y="77">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
  <tile x="21" y="77">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="22" y="77">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="73" y="77">
+ <tile x="23" y="77">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="74" y="77">
+ <tile x="24" y="77">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="25" y="77">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="26" y="77">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="27" y="77">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="28" y="77">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="80" y="77">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="81" y="77">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="88" y="77">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="89" y="77">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="77">
   <physics hit="bounce"/>
@@ -708,17 +1036,37 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="22" y="76">
+ <tile x="81" y="76">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="23" y="76">
+ <tile x="82" y="76">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="73" y="76">
+ <tile x="83" y="76">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="84" y="76">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="85" y="76">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="86" y="76">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="87" y="76">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="88" y="76">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="76">
   <physics hit="bounce"/>
@@ -728,22 +1076,6 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="23" y="75">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="24" y="75">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="72" y="75">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="73" y="75">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
  <tile x="99" y="75">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -751,14 +1083,6 @@
  <tile x="0" y="74">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
- </tile>
- <tile x="24" y="74">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="72" y="74">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="74">
   <physics hit="bounce"/>
@@ -768,18 +1092,6 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="24" y="73">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="25" y="73">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="72" y="73">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
  <tile x="99" y="73">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -787,22 +1099,6 @@
  <tile x="0" y="72">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
- </tile>
- <tile x="25" y="72">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="26" y="72">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="71" y="72">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="72" y="72">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="72">
   <physics hit="bounce"/>
@@ -812,18 +1108,6 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="26" y="71">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="27" y="71">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="71" y="71">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
  <tile x="99" y="71">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -831,18 +1115,6 @@
  <tile x="0" y="70">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
- </tile>
- <tile x="27" y="70">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="28" y="70">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="71" y="70">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="70">
   <physics hit="bounce"/>
@@ -852,18 +1124,6 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="28" y="69">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="29" y="69">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="71" y="69">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
  <tile x="99" y="69">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -871,18 +1131,6 @@
  <tile x="0" y="68">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
- </tile>
- <tile x="29" y="68">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="30" y="68">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="71" y="68">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="68">
   <physics hit="bounce"/>
@@ -892,18 +1140,6 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="31" y="67">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="32" y="67">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="70" y="67">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
  <tile x="99" y="67">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -911,14 +1147,6 @@
  <tile x="0" y="66">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
- </tile>
- <tile x="32" y="66">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="69" y="66">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="66">
   <physics hit="bounce"/>
@@ -928,21 +1156,29 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="32" y="65">
+ <tile x="50" y="65">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="33" y="65">
+ <tile x="51" y="65">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="68" y="65">
+ <tile x="52" y="65">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="69" y="65">
+ <tile x="53" y="65">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="54" y="65">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="55" y="65">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="65">
   <physics hit="bounce"/>
@@ -952,17 +1188,21 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="33" y="64">
+ <tile x="50" y="64">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="34" y="64">
+ <tile x="55" y="64">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="68" y="64">
+ <tile x="56" y="64">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="57" y="64">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="64">
   <physics hit="bounce"/>
@@ -972,25 +1212,9 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="34" y="63">
+ <tile x="57" y="63">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="35" y="63">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="36" y="63">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="67" y="63">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="68" y="63">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="63">
   <physics hit="bounce"/>
@@ -1000,17 +1224,9 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="36" y="62">
+ <tile x="58" y="62">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="66" y="62">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="67" y="62">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="62">
   <physics hit="bounce"/>
@@ -1020,13 +1236,9 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="37" y="61">
+ <tile x="58" y="61">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="66" y="61">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="61">
   <physics hit="bounce"/>
@@ -1036,13 +1248,9 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="37" y="60">
+ <tile x="59" y="60">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="66" y="60">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="60">
   <physics hit="bounce"/>
@@ -1052,21 +1260,13 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="37" y="59">
+ <tile x="58" y="59">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="38" y="59">
+ <tile x="59" y="59">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="65" y="59">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="66" y="59">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="59">
   <physics hit="bounce"/>
@@ -1076,17 +1276,9 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="38" y="58">
+ <tile x="58" y="58">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="64" y="58">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="65" y="58">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="58">
   <physics hit="bounce"/>
@@ -1096,13 +1288,13 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="63" y="57">
+ <tile x="57" y="57">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="64" y="57">
+ <tile x="58" y="57">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="57">
   <physics hit="bounce"/>
@@ -1112,6 +1304,26 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
+ <tile x="52" y="56">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="53" y="56">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="55" y="56">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="56" y="56">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="57" y="56">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
  <tile x="99" y="56">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -1120,9 +1332,17 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="49" y="55">
+ <tile x="52" y="55">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="54" y="55">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="55" y="55">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="55">
   <physics hit="bounce"/>
@@ -1132,9 +1352,9 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="49" y="54">
+ <tile x="52" y="54">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="54">
   <physics hit="bounce"/>
@@ -1144,9 +1364,9 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="49" y="53">
+ <tile x="52" y="53">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="53">
   <physics hit="bounce"/>
@@ -1156,9 +1376,9 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="49" y="52">
+ <tile x="52" y="52">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="52">
   <physics hit="bounce"/>
@@ -1168,9 +1388,9 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="49" y="51">
+ <tile x="52" y="51">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="51">
   <physics hit="bounce"/>
@@ -1180,57 +1400,9 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="44" y="50">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="45" y="50">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="46" y="50">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="47" y="50">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="48" y="50">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="49" y="50">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="50" y="50">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="51" y="50">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
  <tile x="52" y="50">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="53" y="50">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="54" y="50">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="55" y="50">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="56" y="50">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="50">
   <physics hit="bounce"/>
@@ -1240,9 +1412,9 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="49" y="49">
+ <tile x="52" y="49">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="49">
   <physics hit="bounce"/>
@@ -1252,9 +1424,9 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="49" y="48">
+ <tile x="52" y="48">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="48">
   <physics hit="bounce"/>
@@ -1264,9 +1436,9 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="49" y="47">
+ <tile x="52" y="47">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="47">
   <physics hit="bounce"/>
@@ -1276,10 +1448,6 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="49" y="46">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
  <tile x="99" y="46">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -1287,10 +1455,6 @@
  <tile x="0" y="45">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
- </tile>
- <tile x="49" y="45">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="45">
   <physics hit="bounce"/>
@@ -1300,10 +1464,6 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="49" y="44">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
  <tile x="99" y="44">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -1312,17 +1472,17 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="49" y="43">
+ <tile x="50" y="43">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="61" y="43">
+ <tile x="51" y="43">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="62" y="43">
+ <tile x="52" y="43">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="43">
   <physics hit="bounce"/>
@@ -1332,13 +1492,21 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="62" y="42">
+ <tile x="50" y="42">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="63" y="42">
+ <tile x="51" y="42">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="52" y="42">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="53" y="42">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="42">
   <physics hit="bounce"/>
@@ -1348,13 +1516,21 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="63" y="41">
+ <tile x="50" y="41">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="64" y="41">
+ <tile x="51" y="41">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="52" y="41">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="53" y="41">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="41">
   <physics hit="bounce"/>
@@ -1364,17 +1540,21 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="35" y="40">
+ <tile x="50" y="40">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="65" y="40">
+ <tile x="51" y="40">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="66" y="40">
+ <tile x="52" y="40">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="53" y="40">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="40">
   <physics hit="bounce"/>
@@ -1384,18 +1564,6 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="35" y="39">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="66" y="39">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="67" y="39">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
  <tile x="99" y="39">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -1403,14 +1571,6 @@
  <tile x="0" y="38">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
- </tile>
- <tile x="35" y="38">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="68" y="38">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="38">
   <physics hit="bounce"/>
@@ -1420,14 +1580,6 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="34" y="37">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="68" y="37">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
  <tile x="99" y="37">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -1435,22 +1587,6 @@
  <tile x="0" y="36">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
- </tile>
- <tile x="32" y="36">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="33" y="36">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="34" y="36">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="68" y="36">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="36">
   <physics hit="bounce"/>
@@ -1460,30 +1596,6 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="31" y="35">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="32" y="35">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="33" y="35">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="34" y="35">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="35" y="35">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="68" y="35">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
  <tile x="99" y="35">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -1491,14 +1603,6 @@
  <tile x="0" y="34">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
- </tile>
- <tile x="32" y="34">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="68" y="34">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="34">
   <physics hit="bounce"/>
@@ -1508,14 +1612,6 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="32" y="33">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="68" y="33">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
  <tile x="99" y="33">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -1523,18 +1619,6 @@
  <tile x="0" y="32">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
- </tile>
- <tile x="31" y="32">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="32" y="32">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="68" y="32">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="32">
   <physics hit="bounce"/>
@@ -1544,21 +1628,61 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="30" y="31">
+ <tile x="16" y="31">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="31" y="31">
+ <tile x="17" y="31">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="68" y="31">
+ <tile x="18" y="31">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="69" y="31">
+ <tile x="19" y="31">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="20" y="31">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="21" y="31">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="22" y="31">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="23" y="31">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="24" y="31">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="25" y="31">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="26" y="31">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="27" y="31">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="28" y="31">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="29" y="31">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="31">
   <physics hit="bounce"/>
@@ -1568,13 +1692,13 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="30" y="30">
+ <tile x="27" y="30">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="69" y="30">
+ <tile x="29" y="30">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="30">
   <physics hit="bounce"/>
@@ -1584,17 +1708,17 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
+ <tile x="26" y="29">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="27" y="29">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
  <tile x="29" y="29">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="30" y="29">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="69" y="29">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="29">
   <physics hit="bounce"/>
@@ -1604,17 +1728,17 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="28" y="28">
+ <tile x="25" y="28">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="26" y="28">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="29" y="28">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
- </tile>
- <tile x="70" y="28">
-  <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="28">
   <physics hit="bounce"/>
@@ -1624,17 +1748,25 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="28" y="27">
+ <tile x="25" y="27">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="70" y="27">
+ <tile x="29" y="27">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="71" y="27">
+ <tile x="73" y="27">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="74" y="27">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="91" y="27">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="27">
   <physics hit="bounce"/>
@@ -1644,13 +1776,29 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="28" y="26">
+ <tile x="24" y="26">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="71" y="26">
+ <tile x="29" y="26">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="74" y="26">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="75" y="26">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="90" y="26">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="91" y="26">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="26">
   <physics hit="bounce"/>
@@ -1660,17 +1808,25 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="26" y="25">
+ <tile x="23" y="25">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="27" y="25">
+ <tile x="24" y="25">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="72" y="25">
+ <tile x="29" y="25">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="75" y="25">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="90" y="25">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="25">
   <physics hit="bounce"/>
@@ -1680,13 +1836,29 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="26" y="24">
+ <tile x="23" y="24">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="73" y="24">
+ <tile x="29" y="24">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="30" y="24">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="76" y="24">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="89" y="24">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="90" y="24">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="24">
   <physics hit="bounce"/>
@@ -1696,21 +1868,29 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="25" y="23">
+ <tile x="22" y="23">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="26" y="23">
+ <tile x="23" y="23">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="73" y="23">
+ <tile x="30" y="23">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="74" y="23">
+ <tile x="77" y="23">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="88" y="23">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="89" y="23">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="23">
   <physics hit="bounce"/>
@@ -1720,21 +1900,29 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="24" y="22">
+ <tile x="21" y="22">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="25" y="22">
+ <tile x="22" y="22">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="74" y="22">
+ <tile x="30" y="22">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="75" y="22">
+ <tile x="78" y="22">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="87" y="22">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="88" y="22">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="22">
   <physics hit="bounce"/>
@@ -1744,21 +1932,29 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="23" y="21">
+ <tile x="20" y="21">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="24" y="21">
+ <tile x="21" y="21">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="75" y="21">
+ <tile x="30" y="21">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="76" y="21">
+ <tile x="78" y="21">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="86" y="21">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="87" y="21">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="21">
   <physics hit="bounce"/>
@@ -1768,17 +1964,25 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="23" y="20">
+ <tile x="20" y="20">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="76" y="20">
+ <tile x="30" y="20">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="77" y="20">
+ <tile x="79" y="20">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="85" y="20">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="86" y="20">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="20">
   <physics hit="bounce"/>
@@ -1788,13 +1992,29 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="23" y="19">
+ <tile x="19" y="19">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="77" y="19">
+ <tile x="20" y="19">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="30" y="19">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="80" y="19">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="84" y="19">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="85" y="19">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="19">
   <physics hit="bounce"/>
@@ -1804,17 +2024,25 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="22" y="18">
+ <tile x="18" y="18">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="77" y="18">
+ <tile x="19" y="18">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="78" y="18">
+ <tile x="30" y="18">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="80" y="18">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="84" y="18">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="18">
   <physics hit="bounce"/>
@@ -1824,21 +2052,25 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="21" y="17">
+ <tile x="17" y="17">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="22" y="17">
+ <tile x="18" y="17">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="78" y="17">
+ <tile x="81" y="17">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="79" y="17">
+ <tile x="83" y="17">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="84" y="17">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="17">
   <physics hit="bounce"/>
@@ -1848,17 +2080,21 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="21" y="16">
+ <tile x="17" y="16">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="79" y="16">
+ <tile x="81" y="16">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="80" y="16">
+ <tile x="82" y="16">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="83" y="16">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="16">
   <physics hit="bounce"/>
@@ -1868,17 +2104,21 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="20" y="15">
+ <tile x="16" y="15">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="21" y="15">
+ <tile x="17" y="15">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="80" y="15">
+ <tile x="81" y="15">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="82" y="15">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="15">
   <physics hit="bounce"/>
@@ -1888,17 +2128,21 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="19" y="14">
+ <tile x="16" y="14">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
- <tile x="20" y="14">
+ <tile x="80" y="14">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="81" y="14">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="83" y="14">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="14">
   <physics hit="bounce"/>
@@ -1908,9 +2152,17 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
- <tile x="19" y="13">
+ <tile x="15" y="13">
   <physics hit="bounce"/>
-  <graphics tileNumber="88" filename="tiles.bmp"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="80" y="13">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="84" y="13">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="13">
   <physics hit="bounce"/>
@@ -1920,6 +2172,34 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
+ <tile x="14" y="12">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="15" y="12">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="78" y="12">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="79" y="12">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="80" y="12">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="84" y="12">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="85" y="12">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
  <tile x="99" y="12">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -1927,6 +2207,26 @@
  <tile x="0" y="11">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
+ </tile>
+ <tile x="13" y="11">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="14" y="11">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="77" y="11">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="78" y="11">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="85" y="11">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="11">
   <physics hit="bounce"/>
@@ -1936,6 +2236,26 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
+ <tile x="13" y="10">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="75" y="10">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="76" y="10">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="77" y="10">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="86" y="10">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
  <tile x="99" y="10">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -1944,6 +2264,22 @@
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
  </tile>
+ <tile x="74" y="9">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="75" y="9">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="86" y="9">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="87" y="9">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
  <tile x="99" y="9">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
@@ -1951,6 +2287,14 @@
  <tile x="0" y="8">
   <physics hit="bounce"/>
   <graphics tileNumber="80" filename="tiles.bmp"/>
+ </tile>
+ <tile x="87" y="8">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
+ </tile>
+ <tile x="88" y="8">
+  <physics hit="bounce"/>
+  <graphics tileNumber="89" filename="tiles.bmp"/>
  </tile>
  <tile x="99" y="8">
   <physics hit="bounce"/>
