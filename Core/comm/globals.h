@@ -10,7 +10,7 @@
 #define MAX_CLIENTS	  32 //Maximum number of connected clients on server.
 #define MAX_SHOTS_ID  360
 #define MAX_PWRUP_ID  501
-#define MAX_REAL_OBJECT 32767
+#define MAX_REAL_OBJECT 1024
 
 //Degree macros
 #define RADIANSINDEG    0.017453293 //PI/180

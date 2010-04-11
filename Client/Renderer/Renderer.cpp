@@ -299,7 +299,7 @@ void Renderer::Render(int clientId, const vector<Player> &playerList)
 	for (it = chatText_->begin(); it != chatText_->end(); it++)
 	{
 		renderText(5, SCREENHEIGHT - 20*linePos - 5, *it, chatFont);
-		if (++linePos == 7)
+		if (++linePos == MAXCHATLINES + 1)
 			linePos = 1;
 	}
 	renderText(5, SCREENHEIGHT - 5, *localText_, chatFont);
@@ -308,9 +308,9 @@ void Renderer::Render(int clientId, const vector<Player> &playerList)
 	glBindTexture(GL_TEXTURE_2D, textures["chatbox.png"]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0,0);  glVertex2f(0,0);
-		glTexCoord2f(1,0);  glVertex2f(600, 0);
-		glTexCoord2f(1,1);  glVertex2f(600, 150);
-		glTexCoord2f(0,1);  glVertex2f(0, 150);
+		glTexCoord2f(1,0);  glVertex2f(510, 0);
+		glTexCoord2f(1,1);  glVertex2f(510, 180);
+		glTexCoord2f(0,1);  glVertex2f(0, 180);
 	glEnd();
 
 	glFlush();
@@ -340,7 +340,7 @@ void Renderer::RenderScores(const std::vector<Player> &playerList)
 	renderText(SCREENWIDTH - 95, SCREENHEIGHT - 20*lines - 15, "Deaths", scoreFont);
 	//qglColor(Qt::blue);
 	renderText(SCREENWIDTH - 50, SCREENHEIGHT - 20*lines++ - 15, "Streak", scoreFont);
-	renderText(SCREENWIDTH - 160, SCREENHEIGHT - 20*++lines - 15, "- Score Board -", scoreFont);
+	renderText(SCREENWIDTH - 160, SCREENHEIGHT - 20*lines - 25, "- Score Board -", scoreFont);
 }
 
 void Renderer::saveGLState()
