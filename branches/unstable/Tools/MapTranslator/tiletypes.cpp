@@ -18,7 +18,6 @@ TileTypes::TileTypes(QDomDocument *typesDoc, QDomDocument *tmxDoc)
         type->width = te.attribute("width").toInt();
         type->height = te.attribute("height").toInt();
         type->physics = te.attribute("physics");
-        type->src = te.attribute("src");
         type->filename = te.attribute("filename");
         type->firstGid = 0;
         add(type);
