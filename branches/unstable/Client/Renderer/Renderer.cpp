@@ -59,8 +59,8 @@ void Renderer::buildRenderList(QPoint center)
         renderList[i].objectWidthPx = rd->object_width;
         renderList[i].objectId = -1;
 
-        renderList[i].x = SCRCENTREW + (tiles[i]->getPos().x() - xOffset) - rd->object_width/2;
-        renderList[i].y = SCRCENTREH + (tiles[i]->getPos().y() - yOffset) - rd->object_height/2;
+        renderList[i].x = SCRCENTREW + (tiles[i]->getPos().x() - xOffset);// - rd->object_width/2;
+        renderList[i].y = SCRCENTREH + (tiles[i]->getPos().y() - yOffset);// - rd->object_height/2;
     }
     mapTileCount = i;
 
