@@ -24,8 +24,6 @@
 
 // Default frame rate is 30 frames/second.
 #define DEFAULT_FRAME_RATE 30
-#define MAX_REAL_OBJECT 32767
-#define MAX_TRANSIENT_OBJECT 32767
 
 /*------------------------------------------------------------------------------
  --
@@ -101,7 +99,8 @@ class BaseWindow : public QMainWindow
 		Renderer* ren;
 		ClientAction* clientAction;
 		std::vector<Player> playerList;
-		Map *m;
+        Map *m;
+        int bankIndex[MAX_CLIENTS];
 
     public:
 		BaseWindow ();
