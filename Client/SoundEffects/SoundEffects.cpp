@@ -15,17 +15,20 @@
  -- DATE: March. 28th/2010
  --
  ----------------------------------------------------------------------------*/
-SoundEffects::SoundEffects()
+SoundEffects::SoundEffects(QObject *parent) : QObject(parent)
 {
 
 	// do nothing right now.
 }
+
+
 SoundEffects::SoundEffects(const std::string path, SOUNDTYPE type)
 {
     effectPath_= path;
     type_ = type;
     soundEffect_ = NULL;
 }
+
 /*-----------------------------------------------------------------------------
  --
  -- FUNCION NAME: SetSoundSource
@@ -48,32 +51,16 @@ void SoundEffects::SetSoundSource(const std::string path)
     // should try catch internally to handle incorrect path specs. Must confirm try catch allowed in project.
     soundEffect_ = Phonon::createPlayer(Phonon::MusicCategory, Phonon::MediaSource(path.c_str())); // set up media source for playing when needed.
 }
-SoundEffects::SoundEffects(const SoundEffects& efx)
+
+
+SoundEffects::SoundEffects(const SoundEffects& efx) : QObject()
 {
 	effectPath_ = efx.effectPath_;
 	effectName_ = efx.effectName_;
 	type_ = efx.type_;
 	soundEffect_ = efx.soundEffect_;
 }
-/*-----------------------------------------------------------------------------
- --
- -- FUNCION NAME: GetSoundSource
- --
- -- FUNCTION PURPOSE: returns source file path.
- --
- -- FUNCTION INTERFACE: std::string SoundEffects::GetSoundSource()
- --
- -- FUNCTION RETURN: file path.
- --
- -- PROGRAMMER: Jordan Lewis
- --
- -- DATE: March. 28th/2010
- --
- ----------------------------------------------------------------------------*/
-std::string SoundEffects::GetSoundSource()
-{
-    return effectPath_;
-}
+
 /*-----------------------------------------------------------------------------
  --
  -- FUNCION NAME: PlaySound
@@ -89,6 +76,16 @@ std::string SoundEffects::GetSoundSource()
  ----------------------------------------------------------------------------*/
 void SoundEffects::PlaySound()
 {
+
+	Phonon::MediaObject *mediaObject;
+	Phonon::AudioOutput *audioOutput;
+
+	audioOutput = new Phonon::AudioOutput(Phonon::MusicCategory, this);
+	mediaObject = new Phonon::MediaObject(this);
+
+	Phonon::MediaSource source(Phonon::MediaSource("./1.wav"));
+	Phonon::createPath(mediaObject, audioOutput);
+
     if(soundEffect_ !=  NULL)
     {
         soundEffect_->play(); // will play sound effect.

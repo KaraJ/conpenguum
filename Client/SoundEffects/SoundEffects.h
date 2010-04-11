@@ -1,16 +1,17 @@
 #ifndef SOUNDEFFECTS_H
 #define SOUNDEFFECTS_H
 
+#include <QObject>
+#include <QBuffer>
+#include <Phonon/MediaObject>
+#include <Phonon/AudioOutput>
+#include <Phonon/Global>
+#include <Phonon/Path>
 #include <string.h>
 
-#include <phonon/mediaobject.h>
-#include <phonon/mediaobjectinterface.h>
-#include <phonon/mediacontroller.h>
-#include <phonon/mediasource.h>
-
-class SoundEffects
+class SoundEffects: public QObject
 {
-private:
+	Q_OBJECT
     /*std::string effectPath_; // will hold the path to the sound effect.
     std::string effectName_;
     SOUNDTYPE type_;
@@ -27,22 +28,23 @@ public:
 	    WARP = 5,
 	    ENDGAME = 6
 	};
+	SoundEffects(QObject *parent = 0);
+
+	SoundEffects(const SoundEffects& efx);
+	SoundEffects(const std::string, SOUNDTYPE); // constructor
+
+	void SetSoundSource(const std::string);
+	std::string GetSoundName(){return effectName_;}
+	std::string GetSoundSource(){return effectPath_;};
+	Phonon::MediaObject* GetSoundEffectObject(){return soundEffect_;}
+	SOUNDTYPE GetType(){return type_;}
+	void PlaySound(); // will play current sound.
+
+
 	std::string effectPath_; // will hold the path to the sound effect.
 	std::string effectName_;
 	SOUNDTYPE type_;
 	Phonon::MediaObject* soundEffect_; // used to play sounds;
-
-	SoundEffects();
-
-    SoundEffects(const std::string, SOUNDTYPE); // constructor
-    SoundEffects(const SoundEffects& efx);
-    void SetSoundSource(const std::string);
-    std::string GetSoundName(){return effectName_;}
-    std::string GetSoundSource();
-    Phonon::MediaObject* GetSoundEffectObject(){return soundEffect_;}
-    SOUNDTYPE GetType(){return type_;}
-    void PlaySound(); // will play current sound.
-
 
 };
 #endif // SOUNDEFFECTS_H
