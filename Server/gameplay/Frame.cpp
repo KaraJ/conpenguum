@@ -171,6 +171,7 @@ void Frame::spawnShip(size_t shipID)
 {
     Ship *ship = getShip(shipID);
     ship->active = true;
+    ship->vector = QVector2D(0,0);
     ship->position = map.getSpawn(0, SHIPSIZE);
     map.add(ship, ship->position, SHIPSIZE);
 }
