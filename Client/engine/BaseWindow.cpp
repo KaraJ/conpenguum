@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "BaseWindow.h"
 #include "../../Core/resourceMgr/resourceEnums.h"
 
@@ -502,6 +503,12 @@ void BaseWindow::clearTransientObjects()
  -- if so, it calls render().
  --
  -----------------------------------------------------------------------------*/
+
+bool cmp(Player p1, Player p2)
+{
+	return (p1.getKills() < p2.getKills()) || (p1.getStreak() < p2.getStreak())
+			|| (p1.getName() < p2.getName());
+}
 void BaseWindow::timerEvent()
 {
 	theClient->sendAction(*clientAction);
@@ -546,6 +553,7 @@ void BaseWindow::getServerMessage()
 					QString::SkipEmptyParts);
 			for (int i = 0; i < players.size(); i++)
 				playerList.push_back(Player(players[i].toStdString()));
+			sort(playerList.begin(), playerList.end(), cmp);
 		}
 		//chat msg
 		else if (sm.GetMsgType() == ServerMessage::MT_CHAT)
