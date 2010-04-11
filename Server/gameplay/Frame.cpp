@@ -230,6 +230,8 @@ list<Event> Frame::updateShips(void)
 							Event t;
 							t.type = Event::ET_DEATH;
 							t.killed = currShip->id;
+							//TODO: Ben
+							//t.pos = QPoint(currShip->position.getX(), currShip->position.getY());
 							events.push_back(t);
 							fragShip(currShip->id);
 						}

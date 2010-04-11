@@ -47,6 +47,7 @@ struct Event
 	EventType type;
 	int killer;
 	int killed;
+	QPoint pos;
 };
 
 class Frame
