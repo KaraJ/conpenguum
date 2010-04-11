@@ -221,9 +221,9 @@ list<Event> Frame::updateShips(void)
 						currShip->vector.setX(-currShip->vector.x());
 
 						if (currShip->shield > 0) //Hit a wall, take damage
-							currShip->shield -= 10;
+							currShip->shield -= WALLDAMAGE;
 						else if (currShip->health > 0)
-							currShip->health -= 10;
+							currShip->health -= WALLDAMAGE;
 						if (currShip->health <= 0)
 						{
 							currShip->health = 0;
@@ -249,9 +249,9 @@ list<Event> Frame::updateShips(void)
 						currShip->vector.setY(-currShip->vector.y());
 
 						if (currShip->shield > 0) //Hit a wall, take damage
-							currShip->shield -= 10;
+							currShip->shield -= WALLDAMAGE;
 						else if (currShip->health > 0)
-							currShip->health -= 10;
+							currShip->health -= WALLDAMAGE;
 						if (currShip->health <= 0)
 						{
 							currShip->health = 0;
@@ -409,16 +409,16 @@ list<Event> Frame::updateShots(void)
 			    	size_t bulletOwnerId = (it->getID() - 32) / 10;
 			    	if (bulletOwnerId == currShip->id)
 			    		continue; //Don't let someone get hit by their own bullet
-					if (currShip->shield >= 40)
-						currShip->shield -= 40;
+					if (currShip->shield >= SHOTDAMAGE)
+						currShip->shield -= SHOTDAMAGE;
 					else if (currShip->shield > 0)
 					{
-						currShip->shield -= 40;
+						currShip->shield -= SHOTDAMAGE;
 						currShip->health += currShip->shield;
 						currShip->shield = 0;
 					}
 					else
-						currShip->health -= 40;
+						currShip->health -= SHOTDAMAGE;
 					if (currShip->health <= 0)
 					{
 						currShip->health = 0;//DEAD
