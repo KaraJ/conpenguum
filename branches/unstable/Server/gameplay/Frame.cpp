@@ -231,8 +231,7 @@ list<Event> Frame::updateShips(void)
 							Event t;
 							t.type = Event::ET_DEATH;
 							t.killed = currShip->id;
-							//TODO: Ben
-							//t.pos = QPoint(currShip->position.getX(), currShip->position.getY());
+							t.pos = QPoint(currShip->position.x(), currShip->position.y());
 							events.push_back(t);
 							fragShip(currShip->id);
 						}
@@ -259,6 +258,7 @@ list<Event> Frame::updateShips(void)
 							Event t;
 							t.type = Event::ET_DEATH;
 							t.killed = currShip->id;
+							t.pos = QPoint(currShip->position.x(), currShip->position.y());
 							events.push_back(t);
 							fragShip(currShip->id);
 						}
@@ -427,6 +427,7 @@ list<Event> Frame::updateShots(void)
 						t.type = Event::ET_KILL;
 						t.killer = bulletOwnerId;
 						t.killed = currShip->id;
+						t.pos = QPoint(currShip->position.x(), currShip->position.y());
 						events.push_back(t);
 						fragShip(currShip->id);
 					}

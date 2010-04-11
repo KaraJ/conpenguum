@@ -21,6 +21,7 @@
 #define SCRCENTREW      512
 #define SCRCENTREH      384
 #define MAXRENDERCOUNT  40000
+#define MAXCHATLINES	8
 
 struct RenderObject
 {

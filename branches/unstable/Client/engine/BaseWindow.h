@@ -86,7 +86,8 @@ class BaseWindow : public QMainWindow
 		QTimer timer;
 		std::map<int, GameObject> gameState;
 		std::map<int, Animation> animationMap;
-		std::queue<int> freeIds;
+		std::queue<int> freeExhaustIds;
+		std::queue<int> freeExplosionIds;
 		bool chatting;
 		int chatIndex;
 		bool shift;

@@ -153,9 +153,9 @@ void ServerEngine::timeout()
 	for (list<Event>::iterator it = events.begin(); it != events.end(); ++it)
 	{
 		if (it->type == Event::ET_KILL)
-			addKill(it->killed, it->killer);
+			addKill(*it);
 		else if (it->type == Event::ET_DEATH)
-			addDeath(it->killed);
+			addDeath(*it);
 	}
 	uoBuff = gameState->ListShip2listUpdateObject();
 	if (gameState->numPwrups() == 0)
@@ -180,25 +180,27 @@ void ServerEngine::sendScores()
 	commServer->sendServerMsgToAll(sm);
 }
 
-void ServerEngine::addDeath(int killed)
+void ServerEngine::addDeath(Event event)
 {
 	ostringstream oss;
-	oss << "* " << getPlayerName(killed) << " was killed by a wall *";
+	oss << "* " << getPlayerName(event.killed) << " was killed by a wall *";
 	ServerMessage m;
 	m.SetData(oss.str());
 	m.SetMsgType(ServerMessage::MT_CHAT);
 	commServer->sendServerMsgToAll(m);
 
-	m.SetData("");
-	m.SetClientID(killed);
+	oss.str("");
+	oss << event.killed << "," << event.pos.x() << "," << event.pos.y();
+	m.SetData(oss.str());
+	m.SetClientID(event.killed);
 	m.SetMsgType(ServerMessage::MT_DEATH);
-	commServer->sendServerMsg(m);
+	commServer->sendServerMsgToAll(m);
 
-	ScoreBoard::Instance()->recordDeath(killed);
+	ScoreBoard::Instance()->recordDeath(event.killed);
 
 	for (size_t i = 0; i < playerList.size(); i++)
 	{
-		if (playerList[i].getId() == killed)
+		if (playerList[i].getId() == event.killed)
 		{
 			playerList[i].addDeath();
 			break;
@@ -207,26 +209,29 @@ void ServerEngine::addDeath(int killed)
 	sendScores();
 }
 
-void ServerEngine::addKill(int killed, int killer)
+void ServerEngine::addKill(Event event)
 {
 	ostringstream oss;
-	oss << "* " << getPlayerName(killed) << " was killed by " << getPlayerName(killer) << " *";
+	oss << "* " << getPlayerName(event.killed) << " was killed by " << getPlayerName(event.killer) << " *";
 	ServerMessage m;
 	m.SetData(oss.str());
-	m.SetClientID(killed);
+	m.SetClientID(event.killed);
 	m.SetMsgType(ServerMessage::MT_CHAT);
 	commServer->sendServerMsgToAll(m);
 
+	oss.str("");
+	oss << event.killed << "," << event.pos.x() << "," << event.pos.y();
+	m.SetData(oss.str());
 	m.SetMsgType(ServerMessage::MT_DEATH);
-	commServer->sendServerMsg(m);
+	commServer->sendServerMsgToAll(m);
 
-	ScoreBoard::Instance()->recordKill(killed, killer);
+	ScoreBoard::Instance()->recordKill(event.killed, event.killer);
 
 	for (size_t i = 0; i < playerList.size(); i++)
 	{
-		if (playerList[i].getId() == killer)
+		if (playerList[i].getId() == event.killer)
 			playerList[i].addKill();
-		else if (playerList[i].getId() == killed)
+		else if (playerList[i].getId() == event.killed)
 			playerList[i].addDeath();
 	}
 	sendScores();

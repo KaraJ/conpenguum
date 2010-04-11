@@ -31,8 +31,11 @@ using namespace std;
  -----------------------------------------------------------------------------*/
 BaseWindow::BaseWindow() : frameRate(DEFAULT_FRAME_RATE), timer(this)
 {
-	for (size_t i = MAX_REAL_OBJECT; i < MAX_REAL_OBJECT * 2; ++i)
-		freeIds.push(i);
+	for (size_t i = MAX_REAL_OBJECT; i < MAX_REAL_OBJECT + 512; ++i)
+		freeExhaustIds.push(i);
+
+	for (size_t i = MAX_REAL_OBJECT + 512; i < MAX_REAL_OBJECT + 1024; ++i)
+		freeExplosionIds.push(i);
 
 	for (size_t i = 0; i < MAX_CLIENTS; ++i)
 		bankIndex[i] = 5;
@@ -366,8 +369,8 @@ void BaseWindow::updateGameState()
 
 		if (objId < MAX_CLIENTS && updateObj.getActions().isAccelerating()) //for Exhaust trails
 		{
-			int trailId = freeIds.front(); //Get an ID
-			freeIds.pop();
+			int trailId = freeExhaustIds.front(); //Get an ID
+			freeExhaustIds.pop();
 			createObject(updateObj, trailId);
 		}
 
@@ -425,7 +428,7 @@ void BaseWindow::createObject(UpdateObject &updateObj, int objId)
 		images = animationMap[AIDBOX].getAnimationImages();
 		animObj.currentAnime = animationMap[AIDBOX];
 	}
-	else
+	else if (objId < MAX_REAL_OBJECT + 512) //Exhaust
 	{
 		rd = (TexturedResourceDefinition*) rm->GetResource(EXHAUST, 0);
 		images = animationMap[EXHAUST].getAnimationImages();
@@ -436,6 +439,12 @@ void BaseWindow::createObject(UpdateObject &updateObj, int objId)
 		int y = sin(radians) * -(rd->object_height);
 		animObj.position.setX(animObj.position.x() + x);
 		animObj.position.setY(animObj.position.y() + y);
+	}
+	else //Explosion
+	{
+		rd = (TexturedResourceDefinition*) rm->GetResource(EXHAUST, 0);
+		images = animationMap[EXHAUST].getAnimationImages();
+		animObj.currentAnime = animationMap[EXHAUST];
 	}
 
 	animObj.animeImage = &(*images)[animObj.animeIndex];
@@ -471,7 +480,13 @@ void BaseWindow::clearTransientObjects()
 			if (animatedObj->animeIndex < images->size())
 				animatedObj->animeImage = &(*images)[++animatedObj->animeIndex];
 			else
+			{
+				if (animatedObj->objectId < MAX_REAL_OBJECT + 512)
+					freeExhaustIds.push(animatedObj->objectId);
+				else
+					freeExplosionIds.push(animatedObj->objectId);
 				thingsToErase.push_back(it->first);
+			}
 		}
 	}
 
@@ -558,7 +573,7 @@ void BaseWindow::getServerMessage()
 		//chat msg
 		else if (sm.GetMsgType() == ServerMessage::MT_CHAT)
 		{
-			if (chatIndex == 6)
+			if (chatIndex == MAXCHATLINES)
 				chatQueue.pop_back();
 			else
 				chatIndex++;
@@ -573,6 +588,18 @@ void BaseWindow::getServerMessage()
 			exit(0);
 		}
 		else if (sm.GetMsgType() == ServerMessage::MT_DEATH)
-			ren->setDeathTime(150);
+		{
+			QStringList strList = QString::fromStdString(sm.GetData()).split(',', QString::SkipEmptyParts);
+			int id = strList[0].toInt();
+			int xPos = strList[1].toInt();
+			int yPos = strList[2].toInt();
+			if (id == clientAction->getObjectId()) // if this client died, display the message
+				ren->setDeathTime(150);
+			int trailId = freeExplosionIds.front(); //Get an ID
+			freeExplosionIds.pop();
+			UpdateObject uo(trailId);
+			uo.setPosition(QPoint(xPos, yPos));
+			createObject(uo, trailId);
+		}
 	}
 }
