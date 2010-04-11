@@ -23,7 +23,7 @@ class Animation
 private:
     int numFrames_, imagesWide_, imagesTall_;
     std::vector<Image> images_;
-    SoundEffects soundEffect_; // holds the sound effect for this animation.
+    //SoundEffects soundEffect_; // holds the sound effect for this animation.
 public:
     Animation()
     {
@@ -42,16 +42,16 @@ public:
     std::vector<Image> *getAnimationImages(){return &images_;}
 
     static std::map<int, Animation> getAnimationMap();
-    void setSoundEffect(SoundEffects effect)
-    {
-    	soundEffect_ = effect;
+    //void setSoundEffect(SoundEffects effect)
+    //{
+    	//soundEffect_ = effect;
     	//soundEffect_.effectPath_ = effect.effectPath_;
     	//soundEffect_.type_ = effect.type_;
     	//soundEffect_->soundEffect_ = effect->soundEffect_;
     	//soundEffect_->SetSoundSource(effect->GetSoundSource().c_str(), effect->GetType());
 
-    }
-    SoundEffects getSoundEffect(){return soundEffect_;}
+    //}
+    //SoundEffects getSoundEffect(){return soundEffect_;}
 
 
 };

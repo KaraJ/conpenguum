@@ -22,7 +22,7 @@ map<int, Animation> Animation::getAnimationMap()
     map<int, Animation> animations;
     Animation animation;
     vector<Image> vImage;
-    SoundEffects sEffect;
+    //SoundEffects sEffect;
     QtXmlParse *xmlParse = new QtXmlParse();;
     RESOURCETYPES type;
     string xmlFile;
@@ -31,13 +31,13 @@ map<int, Animation> Animation::getAnimationMap()
     type = EXPLOSION;
     xmlFile = "../Client/Animation/explosion.xml";
     vImage = xmlParse->ReadAnimationVector(xmlFile);
-    sEffect.effectPath_ = vImage.front().soundLink;
-    sEffect.type_ = (SoundEffects::SOUNDTYPE)type;
+    //sEffect.effectPath_ = vImage.front().soundLink;
+    //sEffect.type_ = (SoundEffects::SOUNDTYPE)type;
     animation.numFrames_  = vImage.front().numFrames; // link sound from animation.
     animation.imagesTall_ = vImage.front().imagesTall; // link sound from animation.
     animation.imagesWide_ = vImage.front().imagesWide; // link sound from animation.
     animation.setAnimationImages(vImage);
-    animation.setSoundEffect(sEffect);
+    //animation.setSoundEffect(sEffect);
     animations.insert(std::pair<int, Animation>((int)type, animation));
 
     // get ship animation
@@ -64,13 +64,13 @@ map<int, Animation> Animation::getAnimationMap()
 	xmlFile = "../Client/Animation/exhaust.xml";
     type = EXHAUST;
     vImage = xmlParse->ReadAnimationVector(xmlFile);
-	sEffect.effectPath_ = vImage.front().soundLink;
-	sEffect.type_ = (SoundEffects::SOUNDTYPE) type;
+	//sEffect.effectPath_ = vImage.front().soundLink;
+	//sEffect.type_ = (SoundEffects::SOUNDTYPE) type;
 	animation.numFrames_  = vImage.front().numFrames; // link sound from animation.
 	animation.imagesTall_ = vImage.front().imagesTall; // link sound from animation.
 	animation.imagesWide_ = vImage.front().imagesWide; // link sound from animation.
 	animation.setAnimationImages(vImage);
-	animation.setSoundEffect(sEffect);
+	//animation.setSoundEffect(sEffect);
 	animations.insert(std::pair<int, Animation>((int)type, animation));
 
 	// get powerup animations
