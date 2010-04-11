@@ -25,11 +25,6 @@ Map::Map(QString filename)
     int rows = map_e.attribute("height", "0").toInt();
     int tileSize = map_e.attribute("tileSize", "1").toInt();
 
-    // create tiles array
-    //tiles = new Tile*[rows];
-    //for (int i = 0; i < rows; ++i)
-        //*(tiles + i) = new Tile[columns];
-
     // read tiles
     QDomNodeList tile_l = map_e.elementsByTagName("tile");
     for (int ti = 0; ti < tile_l.count(); ++ti)
