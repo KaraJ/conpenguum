@@ -1,5 +1,5 @@
 <!DOCTYPE Map>
-<map width="25" height="100">
+<map width="100" height="100" tileSize="25">
  <tile x="0" y="99">
   <physics hit="bounce"/>
   <graphics tileNumber="126" filename="tiles.bmp"/>
