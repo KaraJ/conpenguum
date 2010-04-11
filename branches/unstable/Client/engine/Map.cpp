@@ -1,10 +1,13 @@
 #include "Map.h"
 
+using namespace std;
+
 Map::Map(QString filename)
 {
     QDomDocument doc;
     int x, y;
     QFile file(filename);
+    string fname = filename.toStdString();
 
     // open file
     if (!file.open(QIODevice::ReadOnly))
