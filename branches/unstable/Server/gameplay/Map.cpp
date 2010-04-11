@@ -79,6 +79,10 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
         if (physics_e.attribute("hit") == "bounce") {
             tiles[x][y].setWall();
         }
+        else
+        {
+            std::cerr << "Wall-Type: " << physics_e.attribute("hit").toStdString() << std::endl;
+        }
     }
 
     // read spawns
