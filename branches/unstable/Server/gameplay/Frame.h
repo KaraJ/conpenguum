@@ -35,7 +35,9 @@
 #include "../../Core/comm/data/clientaction.h"
 #include "../../Core/comm/data/updateobject.h"
 
-#define FIRSTAID 	500
+#define FIRSTAID 		500
+#define SHOTDAMAGE		40
+#define	WALLDAMAGE		10
 
 struct Event
 {

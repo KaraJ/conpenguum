@@ -18,7 +18,5 @@
 #define DEGTORAD(a)     ((a) * RADIANSINDEG)
 #define RADTODEG(a)     ((a) * DEGREESINRAD)
 
-#define SHOTDAMAGE		40
-#define	WALLDAMAGE		1
 
 #endif
