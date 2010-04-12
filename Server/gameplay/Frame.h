@@ -37,7 +37,7 @@
 
 #define FIRSTAID 		500
 #define SHOTDAMAGE		40
-#define	WALLDAMAGE		10
+#define	WALLDAMAGE		5
 
 struct Event
 {
