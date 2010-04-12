@@ -442,9 +442,9 @@ void BaseWindow::createObject(UpdateObject &updateObj, int objId)
 	}
 	else //Explosion
 	{
-		rd = (TexturedResourceDefinition*) rm->GetResource(EXHAUST, 0);
-		images = animationMap[EXHAUST].getAnimationImages();
-		animObj.currentAnime = animationMap[EXHAUST];
+		rd = (TexturedResourceDefinition*) rm->GetResource(EXPLOSION, 0);
+		images = animationMap[EXPLOSION].getAnimationImages();
+		animObj.currentAnime = animationMap[EXPLOSION];
 	}
 
 	animObj.animeImage = &(*images)[animObj.animeIndex];
@@ -466,7 +466,8 @@ QString BaseWindow::getName(int playerId)
 void BaseWindow::clearTransientObjects()
 {
 	list<int> thingsToErase;
-	vector<Image> *images = animationMap[EXHAUST].getAnimationImages();
+	vector<Image> *exhImages = animationMap[EXHAUST].getAnimationImages();
+	vector<Image> *expImages = animationMap[EXPLOSION].getAnimationImages();
 
 	for (map<int, GameObject>::iterator it = gameState.begin(); it
 			!= gameState.end(); ++it)
@@ -476,16 +477,25 @@ void BaseWindow::clearTransientObjects()
 		else
 		{
 			GameObject *animatedObj = &it->second;
-
-			if (animatedObj->animeIndex < images->size())
-				animatedObj->animeImage = &(*images)[++animatedObj->animeIndex];
+			if (animatedObj->objectId < MAX_REAL_OBJECT + 512)
+			{
+				if (animatedObj->animeIndex < exhImages->size())
+					animatedObj->animeImage = &(*exhImages)[++animatedObj->animeIndex];
+				else
+				{
+					freeExhaustIds.push(animatedObj->objectId);
+					thingsToErase.push_back(it->first);
+				}
+			}
 			else
 			{
-				if (animatedObj->objectId < MAX_REAL_OBJECT + 512)
-					freeExhaustIds.push(animatedObj->objectId);
+				if (animatedObj->animeIndex < expImages->size())
+					animatedObj->animeImage = &(*expImages)[++animatedObj->animeIndex];
 				else
+				{
 					freeExplosionIds.push(animatedObj->objectId);
-				thingsToErase.push_back(it->first);
+					thingsToErase.push_back(it->first);
+				}
 			}
 		}
 	}
