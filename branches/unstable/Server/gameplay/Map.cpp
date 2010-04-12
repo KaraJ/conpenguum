@@ -77,7 +77,7 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
         x = tile_e.attribute("x", "0").toInt();
         y = tile_e.attribute("y", "0").toInt();
         if (physics_e.attribute("hit") == "bounce") {
-            tiles[x][(rows-1)-y].setWall();
+            tiles[x][y].setWall();
         }
     }
 
@@ -314,50 +314,50 @@ double Map::canMove(QVector2D position, bool vertical, double objSize, double di
 {
     double radius = objSize / 2;
     //Leading edge of object
-    double start, center, end, endTile;
+    double start, center, end, boundingLine;
     double xpos = position.x();
     double ypos = position.y();
 
     if (vertical)
     {
         if (distance > 0)
-            endTile = PIX_TO_TILE(ypos + radius + distance);
+            boundingLine = PIX_TO_TILE(ypos + radius + distance);
         else
-            endTile = PIX_TO_TILE(ypos - radius + distance);
+            boundingLine = PIX_TO_TILE(ypos - radius + distance);
 
-        if (endTile < 0)
+        if (boundingLine < 0)
             return -distance;
 
         center = PIX_TO_TILE(xpos);
         start  = PIX_TO_TILE(xpos - radius);
         end    = PIX_TO_TILE(xpos + radius);
 
-        if (isWall(endTile, center))
+        if (isWall(center, boundingLine))
             return -distance;
-        if (isWall(endTile, start))
+        if (isWall(start, boundingLine))
             return -distance;
-        if (isWall(endTile, end))
+        if (isWall(end, boundingLine))
             return -distance;
     }
     else
     {
         if (distance > 0)
-            endTile = PIX_TO_TILE(xpos + radius + distance);
+            boundingLine = PIX_TO_TILE(xpos + radius + distance);
         else
-            endTile = PIX_TO_TILE(xpos - radius + distance);
+            boundingLine = PIX_TO_TILE(xpos - radius + distance);
 
-        if (endTile < 0)
+        if (boundingLine < 0)
             return -distance;
 
         center = PIX_TO_TILE(ypos);
         start  = PIX_TO_TILE(ypos - radius);
         end    = PIX_TO_TILE(ypos + radius);
 
-        if (isWall(center, endTile))
+        if (isWall(boundingLine, center))
             return -distance;
-        if (isWall(start, endTile))
+        if (isWall(boundingLine, start))
             return -distance;
-        if (isWall(end, endTile))
+        if (isWall(boundingLine, end))
             return -distance;
     }
 
@@ -388,7 +388,7 @@ void Map::drawMap()
     {
         for(int i = 0; i < columns; i++)
         {
-            std::cout << (isWall(i, j) ? "X" : ".");
+            std::cout << (tiles[i][j].isWall() ? "X" : ".");
         }
         std::cout << std::endl;
     }
