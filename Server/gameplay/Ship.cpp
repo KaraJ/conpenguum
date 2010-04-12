@@ -2,7 +2,7 @@
 
 Ship::Ship(size_t clientID) : NewtObject(0, 0, 0, 0, clientID),
 	rotation(0), actionMask(clientID), active(false), shotCooldown(0),
-	shieldCooldown(10), deathCooldown(0), health(40), shield(50)
+	shieldCooldown(10), deathCooldown(0), health(100), shield(100)
 {
 	currentShot = 0;
 }

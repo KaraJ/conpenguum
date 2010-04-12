@@ -107,7 +107,7 @@ void ServerEngine::timeout()
 				sendScores();
 			}
 		}
-		if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)
+		else if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)
 		{
 			ostringstream oss;
 			cout << "client logged out" << endl;
@@ -128,7 +128,7 @@ void ServerEngine::timeout()
 			}
 		}
 		//receive chat message.. send to all clients
-		if (sm.GetMsgType() == ServerMessage::MT_CHAT)
+		else if (sm.GetMsgType() == ServerMessage::MT_CHAT)
 		{
 			ostringstream oss;
 			cout << "Received chat msg: " << sm.GetData() << endl;
