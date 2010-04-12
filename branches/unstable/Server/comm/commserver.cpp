@@ -223,6 +223,11 @@ bool CommServer::hasNextServerMessage()
     return result;
 }
 
+void CommServer::DisconnectClient(int clientID)
+{
+	tcpServer_->ClientDC(clientID);
+}
+
 /*----------------------------------------------------------------------------------------------------------
  -- FUNCTION: CommServer::nextServerMessage
  --
