@@ -103,9 +103,9 @@ void* TCPServer::ReadThread(void* vptr)
 			if (--ready == 0)
 				continue;
 		}
-		for (int i = 0; i < MAX_CLIENTS; ++i)
+		for (int clientID = 0; clientID < MAX_CLIENTS; ++clientID)
 		{
-			if ((clientSocket = clientSockets_[i]) == 0)
+			if ((clientSocket = clientSockets_[clientID]) == 0)
 				continue;
 
 			if (FD_ISSET(clientSocket, &currSet))
@@ -115,15 +115,18 @@ void* TCPServer::ReadThread(void* vptr)
 					switch (msgBuff.GetMsgType())
 					{
 					case ServerMessage::MT_LOGIN: //If login msg, client doesnt know own id yet - add it
-						msgBuff.SetClientID(i);
+						msgBuff.SetClientID(clientID);
 						break;
 					}
 					sem_wait(semSM_);
 					msgBuff_->push(msgBuff);
 					sem_post(semSM_);
 				}
-				else //Read failed on client socket, DC
-					ClientDC(i, clientSocket);
+				else
+				{
+					SendLogoutMessage(clientID);
+					ClientDC(clientID);
+				}
 			}
 			if (--ready == 0)
 				continue;
@@ -132,15 +135,20 @@ void* TCPServer::ReadThread(void* vptr)
 	return 0;
 }
 
-void TCPServer::ClientDC(int clientId, int clientSocket)
+void TCPServer::SendLogoutMessage(int clientId)
 {
-	ServerMessage msgBuff;
-	msgBuff.SetClientID(clientId);
-	msgBuff.SetData("");
-	msgBuff.SetMsgType(ServerMessage::MT_LOGOUT);
-	sem_wait(semSM_);
-	msgBuff_->push(msgBuff);
-	sem_post(semSM_);
+    ServerMessage logoutMsg;
+    logoutMsg.SetClientID(clientId);
+    logoutMsg.SetData("");
+    logoutMsg.SetMsgType(ServerMessage::MT_LOGOUT);
+    sem_wait(semSM_);
+    msgBuff_->push(logoutMsg);
+    sem_post(semSM_);
+}
+
+void TCPServer::ClientDC(int clientId)
+{
+	int clientSocket = clientSockets_[clientId];
 	FD_CLR(clientSocket, &allSet_);
 	clientSockets_[clientId] = 0;
 	if (clientSocket == maxClientSocket_)
@@ -152,7 +160,10 @@ void TCPServer::ClientDC(int clientId, int clientSocket)
 void TCPServer::SendMessage(ServerMessage msg)
 {
 	if (!TCPConnection::WriteMessage(clientSockets_[msg.GetClientID()], msg))
-		ClientDC(msg.GetClientID(), clientSockets_[msg.GetClientID()]);
+	{
+		SendLogoutMessage(msg.GetClientID());
+		ClientDC(msg.GetClientID());
+	}
 }
 
 void TCPServer::SendMessageToAll(ServerMessage msg)
@@ -163,7 +174,10 @@ void TCPServer::SendMessageToAll(ServerMessage msg)
 		{
 			msg.SetClientID(i);
 			if (!TCPConnection::WriteMessage(clientSockets_[i], msg))
-				ClientDC(i, clientSockets_[i]);
+			{
+				SendLogoutMessage(i);
+				ClientDC(i);
+			}
 		}
 	}
 }

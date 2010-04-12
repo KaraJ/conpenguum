@@ -38,6 +38,7 @@ public:
     void sendUpdate(const UpdateObject& update, const std::vector<int>& clientIDs);
     void sendUpdateToAll(const UpdateObject& update);
     void Shutdown();
+    void DisconnectClient(int clientID);
 private:
     CommServer();
     ~CommServer();

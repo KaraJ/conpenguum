@@ -25,9 +25,8 @@ public:
 	void SendMessage(ServerMessage msg);
 	void SendMessageToAll(ServerMessage msg);
 	static void* ReadThread(void*);
-
-private:
-	static void ClientDC(int, int);
+    static void SendLogoutMessage(int clientId);
+	static void ClientDC(int);
 
 private:
 	int listenSocket_;

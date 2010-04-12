@@ -90,7 +90,7 @@ void ServerEngine::timeout()
 			else
 			{
 				ostringstream oss;
-				cout << "client logged in" << endl;
+				cout << sm.GetClientID() << " logged in" << endl;
 				gameState->addShip(sm.GetClientID());
 				gameState->spawnShip(sm.GetClientID());
 				playerList.push_back(Player(sm.GetClientID(), sm.GetData()));
