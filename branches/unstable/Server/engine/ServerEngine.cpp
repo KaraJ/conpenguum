@@ -159,7 +159,7 @@ void ServerEngine::timeout()
 			addDeath(*it);
 	}
 	uoBuff = gameState->ListShip2listUpdateObject();
-	if (gameState->numPwrups() == 0)
+	if (gameState->numPwrups() < MAXPOWERUPS)
 	{
 		int x = rand() % 2450 + 26;
 		int y = rand() % 2450 + 26;
