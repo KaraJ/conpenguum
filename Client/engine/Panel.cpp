@@ -138,7 +138,7 @@ Panel::Panel() : selectedX(0), selectedY(0), width(1), height(3), flipped(false)
                 item->setPixmap(QPixmap(":/images/start.png"));
                 break;
             case 1:
-                item->setPixmap(QPixmap(":/images/settings.png"));
+                item->setPixmap(QPixmap(":/images/ships.png"));
                 break;
             case 2:
                 item->setPixmap(QPixmap(":/images/quit.png"));

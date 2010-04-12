@@ -12,5 +12,6 @@
         <file>images/6teship.png</file>
         <file>images/7wbship.png</file>
         <file>images/8weship.png</file>
+        <file>images/ships.png</file>
     </qresource>
 </RCC>
