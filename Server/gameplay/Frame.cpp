@@ -29,6 +29,9 @@ Frame::Frame(QString filename): frameTimer(0), map(QString(filename))
 {
 	for (size_t i = 0; i < MAX_CLIENTS; ++i)
 		listShip[i] = 0;
+
+	for (size_t i = 0; i < MAXPOWERUPS; i++)
+		powerups[i] = 0;
 }
 /*-----------------------------------------------------------------------------
 --  FUNCTION:   tick
@@ -340,16 +343,20 @@ list<Event> Frame::updateShips(void)
 				else
 					currShip->shieldCooldown--;
 
-				for (list<NewtObject>::iterator it = listPwrup.begin(); it != listPwrup.end(); ++it)
+				for (size_t i = 0; i < MAXPOWERUPS; i++)
 				{
-					QVector2D pos = it->getPosition();
-					if (abs(currShip->position.x() - pos.x()) < SHIPRADIUS && abs(currShip->position.y() - pos.y()) < SHIPRADIUS)
+					if (powerups[i])
 					{
-						if (currShip->health == 100)
+						QVector2D pos = powerups[i]->getPosition();
+						if (abs(currShip->position.x() - pos.x()) < SHIPRADIUS && abs(currShip->position.y() - pos.y()) < SHIPRADIUS)
+						{
+							if (currShip->health == 100)
+								break;
+							currShip->health = MIN(100, (currShip->health + 50));
+							delete powerups[i];
+							powerups[i] = 0;
 							break;
-						currShip->health = MIN(100, (currShip->health + 50));
-						listPwrup.erase(it);
-						break;
+						}
 					}
 				}
         	}
@@ -522,12 +529,15 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
 		uo.setPosition(it->position.toPoint());
 		udList.push_back(uo);
     }
-    for(list<NewtObject>::iterator it = listPwrup.begin(); it != listPwrup.end(); ++it)
-	{
-		UpdateObject uo(it->id);
-		uo.setPosition(it->position.toPoint());
-		udList.push_back(uo);
-	}
+    for (size_t i = 0; i < MAXPOWERUPS; i++)
+    {
+    	if (powerups[i])
+    	{
+			UpdateObject uo(powerups[i]->id);
+			uo.setPosition(powerups[i]->position.toPoint());
+			udList.push_back(uo);
+    	}
+    }
     return udList;
 }
 
@@ -581,4 +591,31 @@ void Frame::fragShip(size_t shipID){
     ship->active = false;
     ship->deathCooldown = 150;
     map.remove(ship, ship->position, SHIPSIZE);
+}
+
+void Frame::addPwrup(int x, int y)
+{
+	size_t i;
+	for (i = 0; i < MAXPOWERUPS; i++)
+	{
+		if (powerups[i] == 0)
+		{
+			powerups[i] = new NewtObject(x, y, 0, 0, MAX_SHOTS_ID + i);
+			break;
+		}
+	}
+	if (i == MAXPOWERUPS)
+	{
+		delete powerups[0];
+		powerups[0] = new NewtObject(x, y, 0, 0, MAX_SHOTS_ID + i);
+	}
+}
+
+int Frame::numPwrups()
+{
+	int num = 0;
+	for (size_t i = 0; i < MAXPOWERUPS; i++)
+		if (powerups[i])
+			num++;
+	return num;
 }

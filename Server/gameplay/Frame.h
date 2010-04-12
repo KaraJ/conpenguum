@@ -35,7 +35,7 @@
 #include "../../Core/comm/data/clientaction.h"
 #include "../../Core/comm/data/updateobject.h"
 
-#define FIRSTAID 		500
+#define MAXPOWERUPS		5
 #define SHOTDAMAGE		40
 #define	WALLDAMAGE		5
 
@@ -65,6 +65,7 @@ public:
     Ship *listShip[MAX_CLIENTS]; // list of all ships(players) in the game.
     std::list<Shot> listShot; // list of all active shots in the game.
     std::list<NewtObject> listPwrup;
+    NewtObject *powerups[MAXPOWERUPS];
 
 public:
     Frame(QString filename);
@@ -76,8 +77,8 @@ public:
     std::vector<UpdateObject> ListShip2listUpdateObject();
     void printShips(void);
     void printShots(void);
-    void addPwrup(int x, int y) { listPwrup.push_back(NewtObject(x, y, 0, 0, 500)); }
-    int numPwrups() const { return listPwrup.size(); }
+    void addPwrup(int x, int y);
+    int numPwrups();
 
 private:
     int dist2Points(QVector2D point1, QVector2D point2);
