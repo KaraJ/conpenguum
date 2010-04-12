@@ -4,5 +4,13 @@
         <file>images/quit.png</file>
         <file>images/settings.png</file>
         <file>images/start.png</file>
+        <file>images/1jvship.png</file>
+        <file>images/2lvship.png</file>
+        <file>images/3nwship.png</file>
+        <file>images/4shship.png</file>
+        <file>images/5spship.png</file>
+        <file>images/6teship.png</file>
+        <file>images/7wbship.png</file>
+        <file>images/8weship.png</file>
     </qresource>
 </RCC>

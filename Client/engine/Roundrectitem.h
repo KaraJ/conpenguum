@@ -40,6 +40,8 @@ public:
 
     qreal opacity() const;
     void setOpacity(qreal opacity);
+    void checkCheatEntry();
+    QString selectedShip;
 
 Q_SIGNALS:
     void activated();
@@ -48,7 +50,7 @@ protected:
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
 
-private slots:
+public slots:
     void updateValue(qreal value);
 
 private:
