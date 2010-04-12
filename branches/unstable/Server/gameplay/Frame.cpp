@@ -375,26 +375,26 @@ list<Event> Frame::updateShips(void)
 list<Event> Frame::updateShots(void)
 {
 	QVector2D oldPos, oldShipPos;
-    list<Shot>::iterator it;
-    list<Ship*>::iterator itr;
+    list<Shot>::iterator shotIT;
+    list<Ship*>::iterator shipIT;
     list<Ship*> shiplist;
     list<Event> events;
 
-    for(it = listShot.begin(); it != listShot.end();)
+    for(shotIT = listShot.begin(); shotIT != listShot.end(); ++shotIT)
     {
-    	oldPos = it->position;
-    	if(frameTimer == it->deathTime)
+    	oldPos = shotIT->position;
+    	if(frameTimer == shotIT->deathTime)
     	{
-    		map.remove(&(*it), it->position);
-    		it = listShot.erase(it);
+    		map.remove(&(*shotIT), shotIT->position);
+    		shotIT = listShot.erase(shotIT);
     		continue;
     	}
-		it->position += it->vector;
+		shotIT->position += shotIT->vector;
 
-        if(map.isWall(it->position))
+        if(map.isWall(shotIT->position))
         {
-        	map.remove(&(*it), oldPos);
-        	it = listShot.erase(it);
+        	map.remove(&(*shotIT), oldPos);
+        	shotIT = listShot.erase(shotIT);
         	continue;
         }
 
@@ -402,12 +402,12 @@ list<Event> Frame::updateShots(void)
 		{
 			Ship *currShip;
             shiplist = map.ships(oldPos);
-			for(itr = shiplist.begin(); itr != shiplist.end(); ++itr)
+			for(shipIT = shiplist.begin(); shipIT != shiplist.end(); ++shipIT)
 			{
-				currShip = *itr;
-			    if(currShip->active && dist2Points((*itr)->position, oldPos) < SHIP_HIT_DIST)
+				currShip = *shipIT;
+			    if(currShip->active && dist2Points((*shipIT)->position, oldPos) < SHIP_HIT_DIST)
 			    {
-			    	size_t bulletOwnerId = (it->getID() - 32) / 10;
+			    	size_t bulletOwnerId = (shotIT->getID() - 32) / 10;
 			    	if (bulletOwnerId == currShip->id)
 			    		continue; //Don't let someone get hit by their own bullet
 					if (currShip->shield >= SHOTDAMAGE)
@@ -431,12 +431,12 @@ list<Event> Frame::updateShots(void)
 						events.push_back(t);
 						fragShip(currShip->id);
 					}
-					it = listShot.erase(it);
-					continue;
+					shotIT = listShot.erase(shotIT);
+					break;
 				}
 			}
 		}
-        map.move(&(*it++), oldPos, it->position);
+        map.move(&(*shotIT), oldPos, shotIT->position);
     }
     return events;
 }
