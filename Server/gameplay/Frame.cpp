@@ -141,6 +141,7 @@ void Frame::removeShip(size_t clientID)
     {
         if(listShip[i] != 0 && listShip[i]->getID() == clientID)
         {
+        	map.remove(listShip[i], listShip[i]->position, SHIPSIZE);
         	delete listShip[i];
         	listShip[i] = 0;
             return;
@@ -550,8 +551,11 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
 ------------------------------------------------------------------------------*/
 void Frame::updateClientActions(vector<ClientAction> clientActions)
 {
-	for (size_t i = 0; i < clientActions.size(); ++i)
-		listShip[clientActions[i].getObjectId()]->applyActionMask(clientActions[i]);
+	for (size_t i = 0; i < clientActions.size(); ++i){
+		if(listShip[i] != 0){
+			listShip[clientActions[i].getObjectId()]->applyActionMask(clientActions[i]);
+		}
+	}
 }
 
 /*-----------------------------------------------------------------------------
