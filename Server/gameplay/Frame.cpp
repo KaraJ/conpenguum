@@ -270,11 +270,26 @@ list<Event> Frame::updateShips(void)
 				map.remove(currShip, oldPosition, SHIPSIZE);
 				map.add(currShip, currShip->position, SHIPSIZE);
 
-				if(currShip->actionMask.isAccelerating()) // thrust forward
+				if(currShip->actionMask.isAccelerating()){ // thrust forward
 					newVector = currShip->vector + rotVelToVec(currShip->rotation * 2, VELOCITY_THRUST);
+					double magnitude = newVector.lengthSquared();
 
-				if(currShip->actionMask.isDecelerating()) // thrust reverse
+					if(magnitude > VELOCITY_MAX)
+					{
+						newVector /= magnitude/VELOCITY_MAX;
+					}
+					currShip->vector = newVector;
+				}
+				if(currShip->actionMask.isDecelerating()){ // thrust reverse
 					newVector = currShip->vector + rotVelToVec(currShip->rotation * 2, -VELOCITY_THRUST);
+					double magnitude = newVector.lengthSquared();
+
+					if(magnitude > RVELOCITY_MAX)
+					{
+						newVector /= magnitude/RVELOCITY_MAX;
+					}
+					currShip->vector = newVector;
+				}
 
 				if(currShip->actionMask.isDecelerating() || currShip->actionMask.isAccelerating())
 				{
