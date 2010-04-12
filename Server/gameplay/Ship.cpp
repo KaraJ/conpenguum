@@ -7,7 +7,8 @@ Ship::Ship(size_t clientID) : NewtObject(0, 0, 0, 0, clientID),
 	currentShot = 0;
 }
 
-int Ship::getNextShotID(){
+int Ship::getNextShotID()
+{
     int nextShotID = MAX_CLIENTS + id * 10 + currentShot++;
 
     if(currentShot > 9)

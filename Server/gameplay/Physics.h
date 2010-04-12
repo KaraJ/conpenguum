@@ -10,13 +10,9 @@
 #define ROTATION_RATE   2   // how many degrees a ship rotates in a frame
 #define SHIP_HIT_DIST   400 // 20^2, the distance at which ships are hit
 #define SHIPRADIUS      20  // the radius of a ships "tile".
-#define SHOTSPAWNRAD    SHIPRADIUS+1
-#define SHIPSIZE        SHIPRADIUS * 2
+#define SHOTSPAWNRAD    (SHIPRADIUS + 1)
+#define SHIPSIZE        (SHIPRADIUS * 2)
 #define TILE_SIZE       25  // the size of a side of a tile.
-#define MAXPLAYERS      32  // not used yet
-#define FIRERATE        10  // not used yet
-#define SHOTDEATH_TIMER 120 // not used yet
-#define MAXSHOTS
 
 //PI macros
 #define PI              3.14159265358979323846
