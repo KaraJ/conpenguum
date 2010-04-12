@@ -110,12 +110,12 @@ void ServerEngine::timeout()
 		else if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)
 		{
 			ostringstream oss;
-			cout << "client logged out" << endl;
-			gameState->removeShip(sm.GetClientID());
 			for (vector<Player>::iterator it = playerList.begin(); it != playerList.end(); ++it)
 			{
 				if (it->getId() == (int)sm.GetClientID())
 				{
+					cout << getPlayerName(sm.GetClientID()) << " logged out" << endl;
+					gameState->removeShip(sm.GetClientID());
 					oss << "* " << getPlayerName(sm.GetClientID()) << " has left the game *";
 					sm.SetMsgType(ServerMessage::MT_CHAT);
 					sm.SetData(oss.str());
