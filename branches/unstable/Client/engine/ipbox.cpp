@@ -44,10 +44,15 @@ void IpBox::on_okbutton_clicked()
 		if (isValidPort(ui->portentry->text().toStdString()))
 		{
 			port = ui->portentry->text();
-			if (ui->nameentry->text().size() < 9)
+			if (ui->nameentry->text().size() < 15)
 			{
-				name = ui->nameentry->text();
-				this->hide();
+				if (!ui->nameentry->text().contains("\"", Qt::CaseInsensitive) && !ui->nameentry->text().contains("\'", Qt::CaseInsensitive))
+				{
+					name = ui->nameentry->text();
+					this->hide();
+				}
+				else
+					QMessageBox::warning(this, "Error", "Invalide Characters", 1, 0, 0);
 			}
 			else
 				QMessageBox::warning(this, "Error", "Username too long", 1, 0, 0);
