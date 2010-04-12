@@ -325,9 +325,19 @@ double Map::canMove(QVector2D position, bool vertical, double objSize, double di
         else
             endTile = PIX_TO_TILE(ypos - radius + distance);
 
+        if (endTile < 0)
+            return -distance;
+
         center = PIX_TO_TILE(xpos);
         start  = PIX_TO_TILE(xpos - radius);
         end    = PIX_TO_TILE(xpos + radius);
+
+        if (isWall(endTile, center))
+            return -distance;
+        if (isWall(endTile, start))
+            return -distance;
+        if (isWall(endTile, end))
+            return -distance;
     }
     else
     {
@@ -336,21 +346,20 @@ double Map::canMove(QVector2D position, bool vertical, double objSize, double di
         else
             endTile = PIX_TO_TILE(xpos - radius + distance);
 
+        if (endTile < 0)
+            return -distance;
 
         center = PIX_TO_TILE(ypos);
         start  = PIX_TO_TILE(ypos - radius);
         end    = PIX_TO_TILE(ypos + radius);
+
+        if (isWall(center, endTile))
+            return -distance;
+        if (isWall(start, endTile))
+            return -distance;
+        if (isWall(end, endTile))
+            return -distance;
     }
-
-    if (endTile < 0)
-        return -distance;
-
-    if (isWall(center, endTile))
-        return -distance;
-    if (isWall(start, endTile))
-        return -distance;
-    if (isWall(end, endTile))
-        return -distance;
 
     return distance;    // no collision detected, can move full distance
 }
