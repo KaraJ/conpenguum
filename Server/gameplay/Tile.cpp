@@ -1,6 +1,7 @@
 #include "general.h"
 #include "Tile.h"
 
+using namespace std;
 /*-----------------------------------------------------------------------------
 --  FUNCTION:   Tile::add
 --
@@ -22,8 +23,12 @@
 ------------------------------------------------------------------------------*/
 void Tile::add(Ship *ship)
 {
+	for (list<Ship*>::iterator it = ships.begin(); it != ships.end(); ++it)
+	{
+		if ((*it)->id == ship->id)
+			return;
+	}
     ships.push_back(ship);
-    ships.unique();
 }
 
 /*-----------------------------------------------------------------------------
@@ -47,8 +52,12 @@ void Tile::add(Ship *ship)
 ------------------------------------------------------------------------------*/
 void Tile::add(Shot *shot)
 {
+	for (list<Shot*>::iterator it = shots.begin(); it != shots.end(); ++it)
+	{
+		if ((*it)->id == shot->id)
+			return;
+	}
     shots.push_back(shot);
-    ships.unique();
 }
 
 /*-----------------------------------------------------------------------------
@@ -70,9 +79,17 @@ void Tile::add(Shot *shot)
 --  RETURNS:    void.
 --
 ------------------------------------------------------------------------------*/
+
 void Tile::remove(Ship *ship)
 {
-    ships.remove(ship);
+	for (list<Ship*>::iterator it = ships.begin(); it != ships.end(); ++it)
+	{
+		if ((*it)->id == ship->id)
+		{
+			ships.erase(it);
+			return;
+		}
+	}
 }
 
 /*-----------------------------------------------------------------------------
@@ -96,7 +113,14 @@ void Tile::remove(Ship *ship)
 ------------------------------------------------------------------------------*/
 void Tile::remove(Shot *shot)
 {
-    shots.remove(shot);
+	for (list<Shot*>::iterator it = shots.begin(); it != shots.end(); ++it)
+	{
+		if ((*it)->id == shot->id)
+		{
+			shots.erase(it);
+			return;
+		}
+	}
 }
 
 /*-----------------------------------------------------------------------------
@@ -162,7 +186,8 @@ int Tile::numShots() {
 --  RETURNS:    true if the tile is empty and not a wall, else false.
 --
 ------------------------------------------------------------------------------*/
-bool Tile::empty() {
+bool Tile::empty()
+{
     return (!isWall() && numShots() == 0 && numShips() == 0);
 }
 
@@ -184,7 +209,8 @@ bool Tile::empty() {
 --  RETURNS:    std::list of Ship pointers.
 --
 ------------------------------------------------------------------------------*/
-std::list<Ship*> Tile::getShips() {
+std::list<Ship*> Tile::getShips()
+{
     return ships;
 }
 
@@ -206,6 +232,7 @@ std::list<Ship*> Tile::getShips() {
 --  RETURNS:    std::list of Shot pointers.
 --
 ------------------------------------------------------------------------------*/
-std::list<Shot*> Tile::getShots() {
+std::list<Shot*> Tile::getShots()
+{
     return shots;
 }
