@@ -227,9 +227,8 @@ list<Event> Frame::updateShips(void)
 						currShip->vector.setX(-currShip->vector.x());
 
 						if (currShip->shield > 0) //Hit a wall, take damage
-							currShip->shield -= WALLDAMAGE;
-						else if (currShip->health > 0)
-							currShip->health -= WALLDAMAGE;
+							currShip->shield = MAX(currShip->shield - WALLDAMAGE, 0);
+
 						if (currShip->health <= 0)
 						{
 							currShip->health = 0;
@@ -254,9 +253,8 @@ list<Event> Frame::updateShips(void)
 						currShip->vector.setY(-currShip->vector.y());
 
 						if (currShip->shield > 0) //Hit a wall, take damage
-							currShip->shield -= WALLDAMAGE;
-						else if (currShip->health > 0)
-							currShip->health -= WALLDAMAGE;
+							currShip->shield = MAX(currShip->shield - WALLDAMAGE, 0);
+
 						if (currShip->health <= 0)
 						{
 							currShip->health = 0;
@@ -322,7 +320,7 @@ list<Event> Frame::updateShips(void)
 				if(currShip->shotCooldown > 0)
 					currShip->shotCooldown--;
 
-				if(currShip->shotCooldown == 0 && currShip->actionMask.isFiring() && currShip->shield > 30)
+				if(currShip->shotCooldown == 0 && currShip->actionMask.isFiring())
 				{
 					QVector2D spawnVec, shotVec;
 					spawnVec = rotVelToVec(currShip->rotation * 2, SHOTSPAWNRAD);
@@ -332,7 +330,7 @@ list<Event> Frame::updateShips(void)
 					addShot(shot);
 					map.add(&shot, shot.position);
 					currShip->shotCooldown = 15;
-					currShip->shield -= 30;
+					currShip->shield = MAX(currShip->shield - 30, 0);
 				}
 
 				if (--currShip->shieldCooldown <= 0)
