@@ -350,7 +350,7 @@ list<Event> Frame::updateShips(void)
 						{
 							if (currShip->health == 100)
 								break;
-							currShip->health = MIN(100, (currShip->health + 50));
+							currShip->health = MIN(100, (currShip->health + 40));
 							delete powerups[i];
 							powerups[i] = 0;
 							break;
