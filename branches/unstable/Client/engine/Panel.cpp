@@ -85,13 +85,23 @@ Panel::Panel() : selectedX(0), selectedY(0), width(1), height(3), flipped(false)
     // settings background bounding box
     settingBaseItem = new RoundRectItem(settingsBaseBounds, QColor(255, 255, 255, 65));
     settingBaseItem->setVisible(false);
-    scene->addItem(settingBaseItem);
+	scene->addItem(settingBaseItem);
 
     // settings box
     QWidget *embed = new QWidget;
     ui = new Ui_BackSide;
     ui->setupUi(embed);
-    ui->comboBox->setFocus();
+    selectedShip = "jvship";
+    QObject::connect(ui->ship1b, SIGNAL(clicked()), this, SLOT(b1Clicked()));
+	QObject::connect(ui->ship2b, SIGNAL(clicked()), this, SLOT(b2Clicked()));
+	QObject::connect(ui->ship3b, SIGNAL(clicked()), this, SLOT(b3Clicked()));
+	QObject::connect(ui->ship4b, SIGNAL(clicked()), this, SLOT(b4Clicked()));
+	QObject::connect(ui->ship5b, SIGNAL(clicked()), this, SLOT(b5Clicked()));
+	QObject::connect(ui->ship6b, SIGNAL(clicked()), this, SLOT(b1Clicked()));
+	QObject::connect(ui->ship7b, SIGNAL(clicked()), this, SLOT(b7Clicked()));
+	QObject::connect(ui->ship8b, SIGNAL(clicked()), this, SLOT(b8Clicked()));
+
+    //ui->comboBox->setFocus();
     backItem = new RoundRectItem(settingsBaseBounds, embed->palette().window(), embed);
     backItem->setTransform(QTransform().rotate(180, Qt::YAxis));
     backItem->setParentItem(settingBaseItem);
@@ -361,7 +371,13 @@ void Panel::flip()
 					&& params.find("server_ip") != params.end()
 					&& params.find("tcp_port") != params.end())
 			{
+				QString cheat = ui->cheatEntry->text();
 
+				if(cheat == "Aman")
+				{
+					selectedShip = "adminship";
+				}
+				cerr << selectedShip.c_str();
 				ipbox = new IpBox(this, params["username"], params["server_ip"], params["tcp_port"]);
 				ipbox->exec();
 
@@ -371,6 +387,7 @@ void Panel::flip()
 				QObject::connect(thread, SIGNAL(errorConnect()), this, SLOT(errorConnect()));
 				QObject::connect(thread, SIGNAL(nameInUse()), this, SLOT(nameInUse()));
 				QObject::connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+
 
 				delete ipbox;
 				thread->start();

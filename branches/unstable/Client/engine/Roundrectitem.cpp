@@ -40,6 +40,8 @@ RoundRectItem::RoundRectItem(const QRectF &rect, const QBrush &brush, QWidget *e
         proxyWidget->setWidget(embeddedWidget);
         proxyWidget->setGeometry(boundingRect().adjusted(25, 25, -25, -25));
     }
+
+    //selectedShip = "jvship";
 }
 
 void RoundRectItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *qw)
@@ -130,6 +132,7 @@ void RoundRectItem::keyPressEvent(QKeyEvent *event)
     timeLine.setDirection(QTimeLine::Forward);
     timeLine.start();
     emit activated();
+    checkCheatEntry();
 }
 
 void RoundRectItem::keyReleaseEvent(QKeyEvent *event)
@@ -152,4 +155,10 @@ void RoundRectItem::updateValue(qreal value)
     {
         setTransform(QTransform().scale(1 - value / 10.0, 1 - value / 10.0));
     }
+}
+
+
+void RoundRectItem::checkCheatEntry()
+{
+
 }

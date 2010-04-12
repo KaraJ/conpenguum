@@ -59,11 +59,23 @@ private:
 
     Ui_BackSide *ui;
     QMessageBox mbox;
+    std::string selectedShip;
 
 public:
     Panel();
     ~Panel();
     void quit();
+
+public slots:
+	void b1Clicked(){selectedShip = "jvship";}
+    void b2Clicked(){selectedShip = "lvship";}
+    void b3Clicked(){selectedShip = "nwship";}
+    void b4Clicked(){selectedShip = "shship";}
+    void b5Clicked(){selectedShip = "spship";}
+    void b6Clicked(){selectedShip = "teship";}
+    void b7Clicked(){selectedShip = "wbship";}
+    void b8Clicked(){selectedShip = "weship";}
+
 
 protected:
     void keyPressEvent(QKeyEvent *event);
