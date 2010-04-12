@@ -92,7 +92,7 @@ ServerMessage TCPClient::Login(string playerName)
 {
 	ServerMessage msgBuff;
 
-	msgBuff.SetClientID(0);
+	msgBuff.SetClientID(MAX_CLIENTS + 1);
 	msgBuff.SetMsgType(ServerMessage::MT_LOGIN);
 	msgBuff.SetData(playerName);
 
