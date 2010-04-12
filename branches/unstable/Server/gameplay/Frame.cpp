@@ -53,7 +53,8 @@ Frame::Frame(QString filename): frameTimer(0), map(QString(filename))
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-list<Event> Frame::tick(void){
+list<Event> Frame::tick(void)
+{
 	list<Event> events = updateShips();
     list<Event> events2 = updateShots();
     events.insert(events.end(), events2.begin(), events2.end());
@@ -321,7 +322,7 @@ list<Event> Frame::updateShips(void)
 				if(currShip->shotCooldown > 0)
 					currShip->shotCooldown--;
 
-				if(currShip->shotCooldown == 0 && currShip->actionMask.isFiring())
+				if(currShip->shotCooldown == 0 && currShip->actionMask.isFiring() && currShip->shield > 30)
 				{
 					QVector2D spawnVec, shotVec;
 					spawnVec = rotVelToVec(currShip->rotation * 2, SHOTSPAWNRAD);
@@ -331,17 +332,16 @@ list<Event> Frame::updateShips(void)
 					addShot(shot);
 					map.add(&shot, shot.position);
 					currShip->shotCooldown = 15;
+					currShip->shield -= 30;
 				}
 
-				if (currShip->shieldCooldown == 0)
+				if (--currShip->shieldCooldown <= 0)
 				{
 					if (currShip->shield < 100 && currShip->active)
-						currShip->shield = MIN(100, (currShip->shield + 10));
+						currShip->shield = MIN(100, (currShip->shield + 1));
 
-					currShip->shieldCooldown = 150;
+					currShip->shieldCooldown = 1;
 				}
-				else
-					currShip->shieldCooldown--;
 
 				for (size_t i = 0; i < MAXPOWERUPS; i++)
 				{
