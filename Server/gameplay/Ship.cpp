@@ -1,8 +1,10 @@
 #include "Ship.h"
 
-void Ship::applyActionMask(ClientAction newMask)
+Ship::Ship(size_t clientID) : NewtObject(0, 0, 0, 0, clientID),
+	rotation(0), actionMask(clientID), active(false), shotCooldown(0),
+	shieldCooldown(0), deathCooldown(0), health(40), shield(50)
 {
-    actionMask = newMask;
+	currentShot = 0;
 }
 
 int Ship::getNextShotID(){
