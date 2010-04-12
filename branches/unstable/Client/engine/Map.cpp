@@ -36,7 +36,7 @@ Map::Map(QString filename)
         QDomElement graphics_e = tile_e.elementsByTagName("graphics").item(0).toElement();
         x = tile_e.attribute("x", "0").toInt();
         y = tile_e.attribute("y", "0").toInt();
-        int tileNum = graphics_e.attribute("tileNum").toInt();
+        int tileNum = graphics_e.attribute("tileNumber").toInt();
         addTile(tileNum, y, x);
     }
 }
