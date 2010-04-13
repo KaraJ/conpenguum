@@ -23,7 +23,7 @@
 #include "Map.h"
 
 // Default frame rate is 30 frames/second.
-#define DEFAULT_FRAME_RATE 30
+#define DEFAULT_FRAME_RATE 60
 
 /*------------------------------------------------------------------------------
  --

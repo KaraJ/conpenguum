@@ -50,7 +50,7 @@ bool ServerEngine::Start()
 	gameState = new Frame("gameplay/map.xml");
 	gameState->map.drawMap();
 	srand(time(NULL));
-	timer->start(32);
+	timer->start(16);
 	return true;
 }
 
