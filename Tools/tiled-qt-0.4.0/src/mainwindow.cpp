@@ -329,6 +329,29 @@ void MainWindow::newMap()
 
     setCurrentFileName(QString());
     updateActions();
+    //Edits JT: automagically loading the tilesets we want
+    QLatin1String dirname(":/tilesets/");
+    QDir dir(dirname);
+    QFileInfoList list = dir.entryInfoList();
+    //manually add the tiles.bmp first
+
+    QFileInfo fileInfo = list.at(list.size()-1);
+    Tileset *tileset = new Tileset(fileInfo.baseName(), 16, 16, 0, 0);
+    tileset->loadFromImage(fileInfo.absoluteFilePath());
+    if (tileset)
+        mMapDocument->addTileset(tileset);
+
+    for(int i = 0; i < list.size()-1; i++)
+    {
+        QFileInfo fileInfo = list.at(i);
+        QImage img(fileInfo.absoluteFilePath());
+        int width=16,height=16;
+        Tileset *tileset = new Tileset(fileInfo.baseName(), width, height, 0, 0);
+        tileset->loadFromImage(fileInfo.absoluteFilePath());
+
+        if (tileset)
+            mMapDocument->addTileset(tileset);
+    }
 }
 
 bool MainWindow::openFile(const QString &fileName)
@@ -396,9 +419,54 @@ bool MainWindow::saveFile(const QString &fileName)
                               mapWriter.errorString());
         return false;
     }
+    QStringList enums, xml;
+    QList<Tileset*> tileSets = mMapDocument->map()->tilesets();
+    int totalTiles = 0;
+    int numTileSets = tileSets.size();
+    for(int i = 0; i < numTileSets; i++)
+    {
+        Tileset *tileset = tileSets.at(i);
+        for(int j = 0; j < tileset->tileCount(); j++)
+        {
+            int rows, cols;
+            rows = tileset->tileCount()/tileset->columnCount();
+            cols = tileset->columnCount();
+            double textureXOffset = (j%cols)/(double)cols;
+            double textureYOffset = (rows-1-(j/cols))/(double)rows;
+
+            enums<<QString(QLatin1String("TILE%1,\n")).arg(totalTiles);
+            xml<<QString(QLatin1String("<tile type=\"%1\" name=\"\">\n")).arg(totalTiles);
+            xml<<QString(QLatin1String("\t<TEXTURE>%1.bmp</TEXTURE>\n")).arg(tileset->name());
+            xml<<QString(QLatin1String("\t<TEXTURE_XOFFSET>%1</TEXTURE_XOFFSET>\n")).arg(textureXOffset,0,'g',16);
+            xml<<QString(QLatin1String("\t<TEXTURE_YOFFSET>%1</TEXTURE_YOFFSET>\n")).arg(textureYOffset,0,'g',16);
+            xml<<QString(QLatin1String("\t<TEXTURE_WIDTH>%1</TEXTURE_WIDTH>\n")).arg(1/(double)cols,0,'g',16);
+            xml<<QString(QLatin1String("\t<TEXTURE_HEIGHT>%1</TEXTURE_HEIGHT>\n")).arg(1/(double)rows,0,'g',16);
+            xml<<QString(QLatin1String("\t<OBJECT_WIDTH>25</OBJECT_WIDTH>\n"));
+            xml<<QString(QLatin1String("\t<OBJECT_HEIGHT>25</OBJECT_HEIGHT>\n"));
+            xml<<QString(QLatin1String("</tile>\n"));
+            totalTiles++;
+        }
+    }
+
+
 
     mMapDocument->undoStack()->setClean();
     setCurrentFileName(fileName);
+
+    QFile enumsFile(QLatin1String("tileEnums.h"));
+    QFile enumsXml(QLatin1String("tileXml.xml"));
+    enumsFile.open(QIODevice::WriteOnly);
+    enumsXml.open(QIODevice::WriteOnly);
+    foreach(QString str, enums)
+    {
+        enumsFile.write(str.toAscii());
+    }
+    enumsFile.close();
+    foreach(QString str, xml)
+    {
+        enumsXml.write(str.toAscii());
+    }
+    enumsXml.close();
     return true;
 }
 

@@ -164,6 +164,8 @@ private:
     int mTileSpacing;
     int mMargin;
     int mColumnCount;
+    int mTileSetHeight;
+    int mTileSetWidth;
     QList<Tile*> mTiles;
 };
 

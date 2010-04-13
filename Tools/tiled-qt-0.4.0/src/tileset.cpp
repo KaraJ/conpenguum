@@ -44,6 +44,8 @@ bool Tileset::loadFromImage(const QString &fileName)
     if (image.isNull())
         return false;
 
+    mTileSetHeight = image.height();
+    mTileSetWidth = image.width();
     const int stopWidth = image.width() - mTileWidth;
     const int stopHeight = image.height() - mTileHeight;
 
