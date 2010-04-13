@@ -64,7 +64,6 @@ int main(int argc, char *argv[])
                 tile.setAttribute("x", x);
                 tile.setAttribute("y", y);
                 // physics
-                std::cerr << gid << std::endl;
                 if (gid <= MAX_BOUNCE_GID)
                 {
                     QDomElement physics = doc.createElement("physics");
