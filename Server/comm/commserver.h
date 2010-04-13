@@ -39,6 +39,16 @@ public:
     void sendUpdateToAll(const UpdateObject& update);
     void Shutdown();
     void DisconnectClient(int clientID);
+
+	void setClientActive(int clientID, bool active)
+	{
+		tcpServer_->setClientActive(clientID, active);
+	}
+
+	bool isClientActive(int clientID)
+	{
+		return tcpServer_->isClientActive(clientID);
+	}
 private:
     CommServer();
     ~CommServer();
