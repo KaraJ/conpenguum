@@ -30,11 +30,11 @@ public:
 private:
     static void* ReadThread(void*);
 
-    static bool connected_;
-    static std::queue<ServerMessage> *msgBuff_;
-    static sem_t *semSM_;
+    bool connected_;
+    std::queue<ServerMessage> *msgBuff_;
+    sem_t *semSM_;
 
-    int  tcpSocket;
+    int tcpSocket_;
     int clientId_;
     pthread_t rThread_;
 };
