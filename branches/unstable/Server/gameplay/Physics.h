@@ -3,11 +3,11 @@
 
 #include <QVector2D>
 
-#define VELOCITY_THRUST 2   // the velocity of a new thrust vector
-#define VELOCITY_SHOT   16   // the velocity of a shot
-#define VELOCITY_MAX    64   // the max velocity of a ship^2
-#define RVELOCITY_MAX   49  //  the reverse velocity
-#define ROTATION_RATE   2   // how many degrees a ship rotates in a frame
+#define VELOCITY_THRUST 1   // the velocity of a new thrust vector
+#define VELOCITY_SHOT   10   // the velocity of a shot
+#define VELOCITY_MAX    32   // the max velocity of a ship^2
+#define RVELOCITY_MAX   25  //  the reverse velocity
+#define ROTATION_RATE   1   // how many degrees a ship rotates in a frame
 #define SHIP_HIT_DIST   400 // 20^2, the distance at which ships are hit
 #define SHIPRADIUS      20  // the radius of a ships "tile".
 #define SHOTSPAWNRAD    (SHIPRADIUS + 1)

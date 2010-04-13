@@ -145,9 +145,9 @@ void ServerEngine::timeout()
 	while (commServer->hasNextClientAction()) //Grab all client actions
 	{
 		ClientAction ca = commServer->nextClientAction();
-		std::cout << "Received client action from " << ca.getObjectId() << std::endl;
+		//std::cout << "Received client action from " << ca.getObjectId() << std::endl;
 		//ca.print();
-		std::cout.flush();
+		//std::cout.flush();
 		caBuff.push_back(ca);
 	}
 
