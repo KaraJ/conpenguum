@@ -67,6 +67,16 @@ void Renderer::buildRenderList(QPoint center)
     for(std::map<int, GameObject>::iterator it = objectlist.begin(); it != objectlist.end(); ++it)
     {
     	GameObject *gob = &(it->second);
+    	int scale = 1;
+    	if (gob->health == -1)
+    	{
+    		if (gob->shield > 5)
+    			scale = 10;
+    		else if (gob->shield > 3)
+    			scale = 5;
+    		else if (gob->shield > 0)
+    			scale = 2;
+    	}
 
     	renderList[i].texture = textures[gob->textureName];
         renderList[i].texOffsetX = gob->animeImage->getLeftOffSet();
@@ -74,11 +84,11 @@ void Renderer::buildRenderList(QPoint center)
         renderList[i].objectHeight = gob->animeImage->getBottomOffSet() - gob->animeImage->getTopOffSet();
         renderList[i].objectWidth = gob->animeImage->getRightOffSet() - gob->animeImage->getLeftOffSet();
         renderList[i].rotation = it->second.angle * 2;
-        renderList[i].objectHeightPx = gob->objHeight;
-        renderList[i].objectWidthPx = gob->objWidth;
+        renderList[i].objectHeightPx = gob->objHeight * scale;
+        renderList[i].objectWidthPx = gob->objWidth * scale;
 
-        renderList[i].x = SCRCENTREW + (gob->position.x() - xOffset) - gob->objWidth / 2;
-        renderList[i].y = SCRCENTREH + (gob->position.y() - yOffset) - gob->objHeight / 2;
+        renderList[i].x = SCRCENTREW + (gob->position.x() - xOffset) - (gob->objWidth * scale) / 2;
+        renderList[i].y = SCRCENTREH + (gob->position.y() - yOffset) - (gob->objHeight * scale) / 2;
 
         renderList[i].textX = SCRCENTREW + (it->second.position.x() - xOffset);
         renderList[i].textY = SCRCENTREH - (it->second.position.y() - yOffset);

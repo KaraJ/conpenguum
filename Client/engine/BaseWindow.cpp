@@ -463,6 +463,14 @@ QString BaseWindow::getName(int playerId)
 	return "";
 }
 
+int BaseWindow::getPlayerStreak(int id)
+{
+	for (size_t i = 0; i < playerList.size(); i++)
+		if (playerList[i].getId() == id)
+			return playerList[i].getStreak();
+	return 0;
+}
+
 void BaseWindow::clearTransientObjects()
 {
 	list<int> thingsToErase;
@@ -609,6 +617,8 @@ void BaseWindow::getServerMessage()
 			freeExplosionIds.pop();
 			UpdateObject uo(trailId);
 			uo.setPosition(QPoint(xPos, yPos));
+			uo.setHealth(-1);
+			uo.setShield(getPlayerStreak(id));
 			createObject(uo, trailId);
 		}
 	}

@@ -124,6 +124,7 @@ class BaseWindow : public QMainWindow
 		void toggleChat();
 		QString getName(int);
 		void createObject(UpdateObject &updateObj, int objId);
+		int getPlayerStreak(int id);
 };
 
 #endif // BASEWINDOW_H
