@@ -36,8 +36,8 @@
 #include "../../Core/comm/data/updateobject.h"
 
 #define MAXPOWERUPS		5
-#define SHOTDAMAGE		40
-#define	WALLDAMAGE		30
+#define SHOTDAMAGE		50
+#define	WALLDAMAGE		25
 
 struct Event
 {
