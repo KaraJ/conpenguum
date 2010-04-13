@@ -19,7 +19,7 @@ size_t ServerMessage::Serialize(char *data)
 	size_t i;
 
 	data[0] = (uint8) clientID;
-	data[1] = (uint8) (msgLen >> 8);
+	data[1] = (uint8) ((msgLen >> 8) & 0xFF);
 	data[2] = (uint8) (msgLen & 0xFF);
 	data[3] = (uint8) msgType;
 
