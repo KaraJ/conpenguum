@@ -3,49 +3,44 @@
 using std::queue;
 using std::string;
 
-//Storage for class variables
-queue<ServerMessage> *TCPClient::msgBuff_;
-sem_t *TCPClient::semSM_;
-bool TCPClient::connected_;
-
 void TCPClient::SendMessage(string message)
 {
 	ServerMessage msgBuff;
 	msgBuff.SetClientID(clientId_); //TODO: Why is this hard coded?
 	msgBuff.SetData(message);
 	msgBuff.SetMsgType(ServerMessage::MT_CHAT);
-	TCPConnection::WriteMessage(tcpSocket, msgBuff);
+	TCPConnection::WriteMessage(tcpSocket_, msgBuff);
 }
 
 void* TCPClient::ReadThread(void* param)
 {
-	int socket = *((int*)param);
-	ServerMessage msgBuff;
-	while (TCPClient::connected_)
+	TCPClient* tcpClient = (TCPClient*)param;
+	ServerMessage incomingMsg;
+	while (tcpClient->connected_)
 	{
-		if(!TCPConnection::ReadMessage(socket, msgBuff))
+		if(!TCPConnection::ReadMessage(tcpClient->tcpSocket_, incomingMsg))
 		{
 			ServerMessage shutdown;
 			shutdown.SetMsgType(ServerMessage::MT_SHUTDOWN);
-			sem_wait(semSM_);
-			msgBuff_->push(shutdown);
-			sem_post(semSM_);
+			sem_wait(tcpClient->semSM_);
+			tcpClient->msgBuff_->push(shutdown);
+			sem_post(tcpClient->semSM_);
 			break;
 		}
-		sem_wait(semSM_);
-		msgBuff_->push(msgBuff);
-		sem_post(semSM_);
+		sem_wait(tcpClient->semSM_);
+		tcpClient->msgBuff_->push(incomingMsg);
+		sem_post(tcpClient->semSM_);
 	}
 	return 0;
 }
 
 void TCPClient::StartRdThread(std::queue<ServerMessage> *msgBuff, sem_t *semSM)
 {
-	TCPClient::msgBuff_ = msgBuff;
-	TCPClient::semSM_ = semSM;
+	msgBuff_ = msgBuff;
+	semSM_ = semSM;
 	pthread_attr_t attr;
 	pthread_attr_init(&attr);
-	if (pthread_create(&rThread_, &attr, TCPClient::ReadThread, &tcpSocket))
+	if (pthread_create(&rThread_, &attr, TCPClient::ReadThread, this))
 		Logger::LogNQuit("TCPClient: Unable to start read thread.");
 }
 
@@ -68,15 +63,15 @@ bool TCPClient::Connect(const string& ip, const string& port)
 
 	for (p = servList; p != NULL; p = p->ai_next)
 	{
-		tcpSocket = SocketWrapper::Socket(p->ai_family, p->ai_socktype, p->ai_protocol);
+		tcpSocket_ = SocketWrapper::Socket(p->ai_family, p->ai_socktype, p->ai_protocol);
 
-		if (SocketWrapper::Connect(tcpSocket, (sockaddr_in*)p->ai_addr, p->ai_addrlen))
+		if (SocketWrapper::Connect(tcpSocket_, (sockaddr_in*)p->ai_addr, p->ai_addrlen))
 		{
 			result = true;
 			break; /* Success */
 		}
 
-		close(tcpSocket);
+		close(tcpSocket_);
 	}
 
 	if (p == NULL)
@@ -96,8 +91,8 @@ ServerMessage TCPClient::Login(string playerName)
 	msgBuff.SetMsgType(ServerMessage::MT_LOGIN);
 	msgBuff.SetData(playerName);
 
-	TCPConnection::WriteMessage(tcpSocket, msgBuff); //Send login message to server
-	TCPConnection::ReadMessage(tcpSocket, msgBuff); //Get init message from server
+	TCPConnection::WriteMessage(tcpSocket_, msgBuff); //Send login message to server
+	TCPConnection::ReadMessage(tcpSocket_, msgBuff); //Get init message from server
 
 	return msgBuff;
 }
@@ -105,6 +100,6 @@ ServerMessage TCPClient::Login(string playerName)
 void TCPClient::Logout()
 {
 	connected_ = false;
-	shutdown(tcpSocket, SHUT_RDWR);
-	close(tcpSocket);
+	shutdown(tcpSocket_, SHUT_RDWR);
+	close(tcpSocket_);
 }
