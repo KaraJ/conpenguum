@@ -270,6 +270,7 @@ void* CommServer::readThreadUDP(void*)
         else if (size == ClientAction::serialiseSize)
         {
             ClientAction action(buffer);
+            free(buffer);
             sem_wait(&CommServer::Instance()->semUDP_);
             CommServer::Instance()->actions_.push(action);
             sem_post(&CommServer::Instance()->semUDP_);
