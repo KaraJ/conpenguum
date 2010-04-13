@@ -140,7 +140,14 @@ void BaseWindow::keyPressEvent(QKeyEvent * event)
 			break;
 		case Qt::Key_Control:
 			clientAction->setFiring();
-			break;
+			break;//Animation::Animation(const Animation &a)
+			//{
+			//    images_ = a.images_;
+			//    numFrames_ = a.numFrames_;
+			//    imagesWide_ = a.imagesWide_;
+			//    imagesTall_ = a.imagesTall_;
+			//}
+
 		case Qt::Key_Enter:
 		case Qt::Key_Return:
 			toggleChat();
@@ -408,6 +415,7 @@ void BaseWindow::createObject(UpdateObject &updateObj, int objId)
 
 	animObj.animeIndex = 0;
 
+
 	if (objId < MAX_CLIENTS)
 	{
 		rd = (TexturedResourceDefinition*) rm->GetResource(SHIP, 0);
@@ -415,6 +423,7 @@ void BaseWindow::createObject(UpdateObject &updateObj, int objId)
 		animObj.currentAnime = animationMap[SHIP];
 		animObj.animeIndex = bankIndex[objId];
 		animObj.owner = getName(objId);
+
 	}
 	else if (objId < MAX_SHOTS_ID)
 	{
@@ -451,6 +460,16 @@ void BaseWindow::createObject(UpdateObject &updateObj, int objId)
 	animObj.textureName = (*images)[0].getLink();
 	animObj.objHeight = rd->object_height;
 	animObj.objWidth = rd->object_width;
+
+
+	if(animObj.currentAnime.hasSound())
+	{
+		if(animObj.currentAnime.getSound()->state() == Phonon::StoppedState || animObj.currentAnime.getSound()->remainingTime() == 0)
+		{
+			animObj.currentAnime.getSound()->stop();
+			animObj.currentAnime.getSound()->play();
+		}
+	}
 
 	gameState[animObj.objectId] = animObj;
 }
@@ -575,8 +594,7 @@ void BaseWindow::getServerMessage()
 		//init msg
 		if (sm.GetMsgType() == ServerMessage::MT_INIT)
 		{
-			cout << "MT_INIT RECEIVED: ID: " << clientAction->getObjectId()
-					<< endl; //TODO: Handle initial score
+			cout << "MT_INIT RECEIVED: ID: " << clientAction->getObjectId() << endl; //TODO: Handle initial score
 		}
 		else if (sm.GetMsgType() == ServerMessage::MT_SCORES)
 		{

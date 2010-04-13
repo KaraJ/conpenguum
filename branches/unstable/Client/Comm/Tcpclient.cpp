@@ -20,6 +20,7 @@ void* TCPClient::ReadThread(void* param)
 	{
 		if(!TCPConnection::ReadMessage(tcpClient->tcpSocket_, incomingMsg))
 		{
+			tcpClient->Disconnect();
 			ServerMessage shutdown;
 			shutdown.SetMsgType(ServerMessage::MT_SHUTDOWN);
 			sem_wait(tcpClient->semSM_);
@@ -33,7 +34,10 @@ void* TCPClient::ReadThread(void* param)
 	}
 	return 0;
 }
-
+void TCPClient::Disconnect()
+{
+	close(tcpSocket_);
+}
 void TCPClient::StartRdThread(std::queue<ServerMessage> *msgBuff, sem_t *semSM)
 {
 	msgBuff_ = msgBuff;

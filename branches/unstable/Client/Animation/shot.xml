@@ -1,7 +1,7 @@
 <image>
     <link>bullets.bmp</link>
     <desc>bullets</desc>
-    <sound></sound>
+    <sound>Resources/sounds/shot.wav</sound>
     <numberOfFrames>1</numberOfFrames>
     <numberImagesWide>4</numberImagesWide>
     <numberImagesTall>10</numberImagesTall>
