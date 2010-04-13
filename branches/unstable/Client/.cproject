@@ -120,6 +120,7 @@
 <buildTargets>
 <target name="Qt Release Build" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 <buildCommand>make</buildCommand>
+<buildArguments/>
 <buildTarget>release</buildTarget>
 <stopOnError>false</stopOnError>
 <useDefaultCommand>false</useDefaultCommand>
@@ -127,6 +128,7 @@
 </target>
 <target name="Qt Debug Build" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 <buildCommand>make</buildCommand>
+<buildArguments/>
 <buildTarget>debug</buildTarget>
 <stopOnError>false</stopOnError>
 <useDefaultCommand>false</useDefaultCommand>
@@ -198,6 +200,7 @@
 <pathentry base-path="/usr/include/qt4" include="protocols" kind="inc" path="" system="true"/>
 <pathentry base-path="/usr/include/qt4" include="glibmm-2.4" kind="inc" path="" system="true"/>
 <pathentry base-path="/usr/include/qt4" include="xulrunner-sdk-1.9.1" kind="inc" path="" system="true"/>
+<pathentry base-path="/usr/include/qt4" include="kde4" kind="inc" path="" system="true"/>
 <pathentry base-path="/usr/include/qt4" include="QtAssistant" kind="inc" path="" system="true"/>
 <pathentry base-path="/usr/include/qt4" include="QtNetwork" kind="inc" path="" system="true"/>
 <pathentry base-path="/usr/include/qt4" include="gnome-desktop-2.0" kind="inc" path="" system="true"/>
@@ -205,6 +208,7 @@
 <pathentry base-path="/usr/include/qt4" include="nss3" kind="inc" path="" system="true"/>
 <pathentry base-path="/usr/include/qt4" include="gobject-introspection-1.0" kind="inc" path="" system="true"/>
 <pathentry base-path="/usr/include/qt4" include="libglade-2.0" kind="inc" path="" system="true"/>
+<pathentry base-path="/usr/include/qt4" include="include" kind="inc" path="" system="true"/>
 <pathentry base-path="/usr/include/qt4" include="QtUiTools" kind="inc" path="" system="true"/>
 <pathentry base-path="/usr/include/qt4" include="gp11" kind="inc" path="" system="true"/>
 <pathentry base-path="/usr/include/qt4" include="X11" kind="inc" path="" system="true"/>
