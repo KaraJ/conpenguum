@@ -27,28 +27,21 @@ public:
 	void SendMessage(ServerMessage msg);
 	void SendMessageToAll(ServerMessage msg);
 	static void* ReadThread(void*);
-    static void SendLogoutMessage(int clientId);
-	static void ClientDC(int);
-	static void setClientActive(int clientID, bool active)
-	{
-		activeClients[clientID] = active;
-	}
-
-	static bool isClientActive(int clientID)
-	{
-		return activeClients[clientID];
-	}
+    void SendLogoutMessage(int clientId);
+	void ClientDC(int);
+	void setClientActive(int clientID, bool active){activeClients[clientID] = active;}
+	bool isClientActive(int clientID){return activeClients[clientID];}
 
 private:
 	int listenSocket_;
-	static fd_set allSet_;
-	static int maxClientSocket_;
-	static int clientSockets_[MAX_CLIENTS];
-	static sem_t *semSM_;
-	static std::queue<ServerMessage> *msgBuff_;
-	static std::map<int,in_addr> *clientAddressMap_;
+	fd_set allSet_;
+	int maxClientSocket_;
+	int clientSockets_[MAX_CLIENTS];
+	sem_t *semSM_;
+	std::queue<ServerMessage> *msgBuff_;
+	std::map<int,in_addr> *clientAddressMap_;
 	pthread_t rThread_;
-	static bool activeClients[MAX_CLIENTS];
+	bool activeClients[MAX_CLIENTS];
 
 };
 
