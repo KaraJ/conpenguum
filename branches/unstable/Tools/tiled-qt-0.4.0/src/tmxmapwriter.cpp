@@ -194,7 +194,7 @@ void TmxMapWriter::writeTileset(QXmlStreamWriter &w, const Tileset *tileset,
         w.writeStartElement(QLatin1String("image"));
         QString source = imageSource;
         if (!mUseAbsolutePaths)
-            source = mMapDir.relativeFilePath(source);
+            source = mMapDir.absoluteFilePath(source);
         w.writeAttribute(QLatin1String("source"), source);
 
         const QColor transColor = tileset->transparentColor();

@@ -166,8 +166,9 @@ FORMS += aboutdialog.ui \
     newtilesetdialog.ui \
     saveasimagedialog.ui \
     offsetmapdialog.ui
-RESOURCES += tiled.qrc
-mac {
+RESOURCES += tiled.qrc \
+    ../tilesets.qrc
+mac { 
     TARGET = Tiled
     LIBS += -lz
 }
