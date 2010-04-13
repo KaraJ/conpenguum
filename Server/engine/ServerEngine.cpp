@@ -95,8 +95,8 @@ void ServerEngine::timeout()
 				gameState->spawnShip(sm.GetClientID());
 				playerList.push_back(Player(sm.GetClientID(), sm.GetData()));
 				ScoreBoard::Instance()->addPlayer(sm.GetClientID(), sm.GetData());
-
-				string pName = sm.GetData();
+				oss << "* " << sm.GetData() << " has joined the game *";
+				cout <<  getPlayerName(sm.GetClientID()) << " " << sm.GetClientID() << " logged in" << endl;
 
 				sm.SetData("");
 				sm.SetMsgType(ServerMessage::MT_INIT);
@@ -104,11 +104,9 @@ void ServerEngine::timeout()
 				sendScores();
 				commServer->setClientActive(sm.GetClientID(), true);
 
-				oss << "* " << pName << " has joined the game *";
 				sm.SetMsgType(ServerMessage::MT_CHAT);
 				sm.SetData(oss.str());
 				commServer->sendServerMsgToAll(sm);
-				cout <<  getPlayerName(sm.GetClientID()) << " " << sm.GetClientID() << " logged in" << endl;
 			}
 		}
 		else if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)
