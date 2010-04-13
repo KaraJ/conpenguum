@@ -10,6 +10,8 @@
 #include <pthread.h>
 #include <map>
 
+#include <iostream>
+
 //User Includes
 #include "../Core/comm/data/servermessage.h"
 #include "../Core/comm/socketwrapper.h"
@@ -27,6 +29,15 @@ public:
 	static void* ReadThread(void*);
     static void SendLogoutMessage(int clientId);
 	static void ClientDC(int);
+	static void setClientActive(int clientID, bool active)
+	{
+		activeClients[clientID] = active;
+	}
+
+	static bool isClientActive(int clientID)
+	{
+		return activeClients[clientID];
+	}
 
 private:
 	int listenSocket_;
@@ -37,6 +48,7 @@ private:
 	static std::queue<ServerMessage> *msgBuff_;
 	static std::map<int,in_addr> *clientAddressMap_;
 	pthread_t rThread_;
+	static bool activeClients[MAX_CLIENTS];
 
 };
 

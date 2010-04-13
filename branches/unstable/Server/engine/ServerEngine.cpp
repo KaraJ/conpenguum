@@ -86,15 +86,17 @@ void ServerEngine::timeout()
 				sm.SetMsgType(ServerMessage::MT_INIT);
 				sm.SetData("FULL");
 				commServer->sendServerMsg(sm);
+				commServer->setClientActive(sm.GetClientID(), false);
 			}
 			else
 			{
 				ostringstream oss;
-				cout << sm.GetClientID() << " logged in" << endl;
 				gameState->addShip(sm.GetClientID());
 				gameState->spawnShip(sm.GetClientID());
 				playerList.push_back(Player(sm.GetClientID(), sm.GetData()));
 				ScoreBoard::Instance()->addPlayer(sm.GetClientID(), sm.GetData());
+
+				commServer->setClientActive(sm.GetClientID(), true);
 
 				oss << "* " << sm.GetData() << " has joined the game *";
 				sm.SetMsgType(ServerMessage::MT_CHAT);
@@ -105,6 +107,7 @@ void ServerEngine::timeout()
 				sm.SetMsgType(ServerMessage::MT_INIT);
 				commServer->sendServerMsg(sm);
 				sendScores();
+				cout <<  getPlayerName(sm.GetClientID()) << " " << sm.GetClientID() << " logged in" << endl;
 			}
 		}
 		else if (sm.GetMsgType() == ServerMessage::MT_LOGOUT)
@@ -114,7 +117,8 @@ void ServerEngine::timeout()
 			{
 				if (it->getId() == (int)sm.GetClientID())
 				{
-					cout << getPlayerName(sm.GetClientID()) << " logged out" << endl;
+					cout << getPlayerName(sm.GetClientID()) << " " << sm.GetClientID() << " logged out" << endl;
+
 					gameState->removeShip(sm.GetClientID());
 					oss << "* " << getPlayerName(sm.GetClientID()) << " has left the game *";
 					sm.SetMsgType(ServerMessage::MT_CHAT);
@@ -141,9 +145,9 @@ void ServerEngine::timeout()
 	while (commServer->hasNextClientAction()) //Grab all client actions
 	{
 		ClientAction ca = commServer->nextClientAction();
-		//cout << "Received client action" << endl;
+		std::cout << "Received client action from " << ca.getObjectId() << std::endl;
 		//ca.print();
-		//cout.flush();
+		std::cout.flush();
 		caBuff.push_back(ca);
 	}
 

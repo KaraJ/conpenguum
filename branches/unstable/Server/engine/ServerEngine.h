@@ -25,6 +25,8 @@
 #include <vector>
 #include <signal.h>
 
+#include <iostream>
+
 //User Include
 #include "../gameplay/Frame.h"
 #include "../comm/commserver.h"
@@ -39,7 +41,6 @@ class ServerEngine : public QObject
 public:
 	static ServerEngine* GetInstance();
 	bool Start();
-
 private:
 	ServerEngine();
 	static void Shutdown(int code);

@@ -560,9 +560,8 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
 void Frame::updateClientActions(vector<ClientAction> clientActions)
 {
 	for (size_t i = 0; i < clientActions.size(); ++i){
-		if(listShip[i] != 0){
+		if(listShip[clientActions[i].getObjectId()] != 0)
 			listShip[clientActions[i].getObjectId()]->applyActionMask(clientActions[i]);
-		}
 	}
 }
 

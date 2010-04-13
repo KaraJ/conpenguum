@@ -13,10 +13,12 @@ fd_set TCPServer::allSet_;
 sem_t *TCPServer::semSM_;
 queue<ServerMessage> *TCPServer::msgBuff_;
 map<int,in_addr> *TCPServer::clientAddressMap_;
+bool TCPServer::activeClients[MAX_CLIENTS];
 
 TCPServer::TCPServer()
 {
 	bzero(clientSockets_, MAX_CLIENTS * sizeof(int));
+	memset(activeClients, false, sizeof(bool) * MAX_CLIENTS);
 }
 
 void TCPServer::Init(const string port)
@@ -137,17 +139,22 @@ void* TCPServer::ReadThread(void* vptr)
 
 void TCPServer::SendLogoutMessage(int clientId)
 {
-    ServerMessage logoutMsg;
-    logoutMsg.SetClientID(clientId);
-    logoutMsg.SetData("");
-    logoutMsg.SetMsgType(ServerMessage::MT_LOGOUT);
-    sem_wait(semSM_);
-    msgBuff_->push(logoutMsg);
-    sem_post(semSM_);
+	std::cout << "Logged Out " << clientId << std::endl;
+	if (isClientActive(clientId))
+	{
+		ServerMessage logoutMsg;
+		logoutMsg.SetClientID(clientId);
+		logoutMsg.SetData("");
+		logoutMsg.SetMsgType(ServerMessage::MT_LOGOUT);
+		sem_wait(semSM_);
+		msgBuff_->push(logoutMsg);
+		sem_post(semSM_);
+	}
 }
 
 void TCPServer::ClientDC(int clientId)
 {
+	std::cout << "Disconnected " << clientId << std::endl;
 	int clientSocket = clientSockets_[clientId];
 	FD_CLR(clientSocket, &allSet_);
 	clientSockets_[clientId] = 0;
