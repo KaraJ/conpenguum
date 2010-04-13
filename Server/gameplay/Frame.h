@@ -37,7 +37,7 @@
 
 #define MAXPOWERUPS		5
 #define SHOTDAMAGE		50
-#define	WALLDAMAGE		25
+#define	WALLDAMAGE		15
 
 struct Event
 {
