@@ -44,7 +44,8 @@ struct Event
 	enum EventType
 	{
 		ET_KILL,
-		ET_DEATH
+		ET_DEATH,
+		ET_BULLET
 	};
 	EventType type;
 	int killer;

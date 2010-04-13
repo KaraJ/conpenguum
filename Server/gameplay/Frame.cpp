@@ -414,6 +414,10 @@ list<Event> Frame::updateShots(void)
 
         if(map.isWall(shotIT->position))
         {
+        	Event ev;
+			ev.type = Event::ET_BULLET;
+			ev.pos = QPoint(oldPos.x(), oldPos.y());
+			events.push_back(ev);
         	map.remove(&(*shotIT), oldPos);
         	shotIT = listShot.erase(shotIT);
         	continue;
@@ -452,6 +456,10 @@ list<Event> Frame::updateShots(void)
 						events.push_back(t);
 						fragShip(currShip->id);
 					}
+					Event ev;
+					ev.type = Event::ET_BULLET;
+					ev.pos = QPoint(oldPos.x(), oldPos.y());
+					events.push_back(ev);
 					shotIT = listShot.erase(shotIT);
 					break;
 				}
