@@ -65,21 +65,22 @@ CommClient* CommClient::Instance()
  ----------------------------------------------------------------------------------------------------------*/
 int CommClient::connect(const string name, const string address, const string port)
 {
+	ServerMessage sm;
+
     if (!isConnected_)
     {
     	tcpClient_ = new TCPClient();
-    	int id;
+
         if (!tcpClient_->Connect(address, port))
         	return -1;
         isConnected_ = true;
-        serverMsgs_.push(tcpClient_->Login(name));
-        sem_wait(&semTCP_);
-        string str = serverMsgs_.front().GetData();
-        id = serverMsgs_.front().GetClientID();
-        sem_post(&semTCP_);
-        if (str == "FULL")
+
+        sm = tcpClient_->Login(name);
+
+        if (sm.GetData() == "FULL")
         	return -2;
-        tcpClient_->setClientId(id);
+
+        tcpClient_->setClientId(sm.GetClientID());
         tcpClient_->StartRdThread(&serverMsgs_, &semTCP_);
 
         servAddr.sin_family = AF_INET;
@@ -88,7 +89,7 @@ int CommClient::connect(const string name, const string address, const string po
             Logger::LogNQuit("Error connection client - bad IP");
         udpConnection_ = new UDPConnection(UDP_PORT_CLI);
         pthread_create(&readThread_, NULL, CommClient::readThreadUDP, NULL);
-        return id;
+        return sm.GetClientID();
     }
     return -1;
 }

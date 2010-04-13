@@ -594,7 +594,7 @@ void BaseWindow::getServerMessage()
 		//init msg
 		if (sm.GetMsgType() == ServerMessage::MT_INIT)
 		{
-			cout << "MT_INIT RECEIVED: ID: " << clientAction->getObjectId() << endl; //TODO: Handle initial score
+			cout << "MT_INIT RECEIVED: ID: " << clientAction->getObjectId() << endl;
 		}
 		else if (sm.GetMsgType() == ServerMessage::MT_SCORES)
 		{
