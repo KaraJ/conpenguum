@@ -23,8 +23,7 @@ HEADERS += ../Core/comm/globals.h \
     engine/Panel.h \
     engine/Roundrectitem.h \
     engine/Splashitem.h \
-    Renderer/Renderer.h \
-    SoundEffects/SoundEffects.h
+    Renderer/Renderer.h
 SOURCES += Animation/Animation.cpp \
     Animation/Image.cpp \
     Animation/qtxmlparse.cpp \
@@ -39,8 +38,7 @@ SOURCES += Animation/Animation.cpp \
     engine/Panel.cpp \
     engine/Roundrectitem.cpp \
     engine/Splashitem.cpp \
-    Renderer/Renderer.cpp \
-    SoundEffects/SoundEffects.cpp
+    Renderer/Renderer.cpp
 RESOURCES += Resources/textures.qrc \
     menuitems.qrc
 FORMS += backside.ui \
