@@ -331,7 +331,7 @@ list<Event> Frame::updateShips(void)
 					addShot(shot);
 					map.add(&shot, shot.position);
 					currShip->shotCooldown = 30;
-					currShip->shield = MAX(currShip->shield - 30, 0);
+					currShip->shield = MAX(currShip->shield - 10, 0);
 				}
 
 				if (--currShip->shieldCooldown <= 0)
@@ -339,7 +339,7 @@ list<Event> Frame::updateShips(void)
 					if (currShip->shield < 100 && currShip->active)
 						currShip->shield = MIN(100, (currShip->shield + 1));
 
-					currShip->shieldCooldown = 4;
+					currShip->shieldCooldown = 5;
 				}
 
 				for (size_t i = 0; i < MAXPOWERUPS; i++)
