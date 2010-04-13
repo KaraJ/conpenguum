@@ -339,7 +339,7 @@ list<Event> Frame::updateShips(void)
 					if (currShip->shield < 100 && currShip->active)
 						currShip->shield = MIN(100, (currShip->shield + 1));
 
-					currShip->shieldCooldown = 1;
+					currShip->shieldCooldown = 2;
 				}
 
 				for (size_t i = 0; i < MAXPOWERUPS; i++)
