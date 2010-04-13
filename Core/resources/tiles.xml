@@ -1709,4 +1709,3757 @@
                 <OBJECT_WIDTH>25</OBJECT_WIDTH>
                 <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
         </tile>
+        <tile type="190" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="191" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="192" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="193" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="194" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="195" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="196" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="197" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="198" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="199" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="200" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="201" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="202" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="203" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="204" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="205" name="">
+                <TEXTURE>bg01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="206" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="207" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="208" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="209" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="210" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="211" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="212" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="213" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="214" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="215" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="216" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="217" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="218" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="219" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="220" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="221" name="">
+                <TEXTURE>bg02.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="222" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="223" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="224" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="225" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="226" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="227" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="228" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="229" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="230" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="231" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="232" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="233" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="234" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="235" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="236" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="237" name="">
+                <TEXTURE>bg03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="238" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="239" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="240" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="241" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="242" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="243" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="244" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="245" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="246" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="247" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="248" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="249" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="250" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="251" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="252" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="253" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="254" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="255" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="256" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="257" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="258" name="">
+                <TEXTURE>bg04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.33333333333333331483</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="259" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="260" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="261" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="262" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.75</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="263" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="264" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="265" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="266" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="267" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="268" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="269" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="270" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.25</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="271" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="272" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="273" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="274" name="">
+                <TEXTURE>bg05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.25</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="275" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="276" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="277" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="278" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="279" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="280" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="281" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="282" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="283" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="284" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="285" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="286" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="287" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="288" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="289" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="290" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="291" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="292" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="293" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="294" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="295" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="296" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="297" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="298" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="299" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="300" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="301" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="302" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="303" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="304" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="305" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="306" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="307" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="308" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="309" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="310" name="">
+                <TEXTURE>bg06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="311" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="312" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="313" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="314" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="315" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="316" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="317" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="318" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="319" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="320" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="321" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="322" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="323" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="324" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="325" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="326" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="327" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="328" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="329" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="330" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="331" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="332" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="333" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="334" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="335" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="336" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="337" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="338" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="339" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="340" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="341" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="342" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="343" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="344" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="345" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="346" name="">
+                <TEXTURE>bg07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="347" name="">
+                <TEXTURE>bg08.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.5</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.5</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="348" name="">
+                <TEXTURE>bg08.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.5</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.5</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="349" name="">
+                <TEXTURE>bg08.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.5</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.5</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="350" name="">
+                <TEXTURE>bg08.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.5</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.5</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="351" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="352" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="353" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="354" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="355" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="356" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="357" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="358" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="359" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="360" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="361" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="362" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="363" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="364" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="365" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="366" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="367" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="368" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="369" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="370" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="371" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="372" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="373" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="374" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="375" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="376" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.16666666666666665741</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="377" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="378" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="379" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="380" name="">
+                <TEXTURE>bg09.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.83333333333333337034</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.16666666666666665741</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="381" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="382" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="383" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="384" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="385" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="386" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="387" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="388" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="389" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="390" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="391" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="392" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="393" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="394" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="395" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="396" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="397" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="398" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="399" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="400" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="401" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="402" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="403" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="404" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="405" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="406" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="407" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="408" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="409" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="410" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="411" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="412" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="413" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="414" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="415" name="">
+                <TEXTURE>bg10.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="416" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.88888888888888883955</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="417" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.11111111111111110494</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.88888888888888883955</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="418" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.22222222222222220989</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.88888888888888883955</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="419" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.88888888888888883955</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="420" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.44444444444444441977</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.88888888888888883955</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="421" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.55555555555555558023</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.88888888888888883955</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="422" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.88888888888888883955</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="423" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.77777777777777779011</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.88888888888888883955</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="424" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.88888888888888883955</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.88888888888888883955</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="425" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.77777777777777779011</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="426" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.11111111111111110494</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.77777777777777779011</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="427" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.22222222222222220989</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.77777777777777779011</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="428" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.77777777777777779011</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="429" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.44444444444444441977</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.77777777777777779011</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="430" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.55555555555555558023</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.77777777777777779011</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="431" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.77777777777777779011</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="432" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.77777777777777779011</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.77777777777777779011</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="433" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.88888888888888883955</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.77777777777777779011</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="434" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="435" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.11111111111111110494</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="436" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.22222222222222220989</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="437" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="438" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.44444444444444441977</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="439" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.55555555555555558023</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="440" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="441" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.77777777777777779011</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="442" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.88888888888888883955</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="443" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.55555555555555558023</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="444" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.11111111111111110494</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.55555555555555558023</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="445" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.22222222222222220989</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.55555555555555558023</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="446" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.55555555555555558023</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="447" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.44444444444444441977</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.55555555555555558023</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="448" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.55555555555555558023</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.55555555555555558023</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="449" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.55555555555555558023</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="450" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.77777777777777779011</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.55555555555555558023</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="451" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.88888888888888883955</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.55555555555555558023</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="452" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.44444444444444441977</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="453" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.11111111111111110494</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.44444444444444441977</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="454" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.22222222222222220989</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.44444444444444441977</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="455" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.44444444444444441977</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="456" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.44444444444444441977</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.44444444444444441977</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="457" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.55555555555555558023</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.44444444444444441977</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="458" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.44444444444444441977</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="459" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.77777777777777779011</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.44444444444444441977</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="460" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.88888888888888883955</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.44444444444444441977</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="461" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="462" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.11111111111111110494</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="463" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.22222222222222220989</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="464" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="465" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.44444444444444441977</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="466" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.55555555555555558023</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="467" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="468" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.77777777777777779011</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="469" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.88888888888888883955</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="470" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.22222222222222220989</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="471" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.11111111111111110494</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.22222222222222220989</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="472" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.22222222222222220989</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.22222222222222220989</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="473" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.22222222222222220989</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="474" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.44444444444444441977</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.22222222222222220989</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="475" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.55555555555555558023</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.22222222222222220989</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="476" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.22222222222222220989</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="477" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.77777777777777779011</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.22222222222222220989</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="478" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.88888888888888883955</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.22222222222222220989</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="479" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.11111111111111110494</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="480" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.11111111111111110494</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.11111111111111110494</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="481" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.22222222222222220989</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.11111111111111110494</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="482" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.11111111111111110494</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="483" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.44444444444444441977</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.11111111111111110494</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="484" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.55555555555555558023</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.11111111111111110494</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="485" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.11111111111111110494</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="486" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.77777777777777779011</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.11111111111111110494</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="487" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.88888888888888883955</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.11111111111111110494</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="488" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="489" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.11111111111111110494</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="490" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.22222222222222220989</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="491" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.33333333333333331483</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="492" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.44444444444444441977</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="493" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.55555555555555558023</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="494" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.66666666666666662966</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="495" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.77777777777777779011</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="496" name="">
+                <TEXTURE>bg11.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.88888888888888883955</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.11111111111111110494</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.11111111111111110494</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="497" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="498" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="499" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="500" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="501" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="502" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="503" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="504" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="505" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="506" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="507" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="508" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="509" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="510" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="511" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="512" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="513" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="514" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="515" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="516" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="517" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="518" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="519" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="520" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="521" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="522" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="523" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="524" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="525" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="526" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="527" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="528" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="529" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="530" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="531" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="532" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="533" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="534" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="535" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="536" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="537" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="538" name="">
+                <TEXTURE>bg12.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="539" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="540" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="541" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="542" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.80000000000000004441</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="543" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="544" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="545" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="546" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5999999999999999778</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="547" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="548" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="549" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="550" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.4000000000000000222</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="551" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="552" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="553" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="554" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.2000000000000000111</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="555" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="556" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.25</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="557" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.5</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="558" name="">
+                <TEXTURE>bg13.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.75</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.25</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.2000000000000000111</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="559" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="560" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="561" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="562" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="563" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="564" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="565" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.83333333333333337034</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="566" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="567" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="568" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="569" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="570" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="571" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="572" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.66666666666666662966</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="573" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="574" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="575" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="576" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="577" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="578" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="579" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.5</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="580" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="581" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="582" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="583" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="584" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="585" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="586" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.33333333333333331483</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="587" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="588" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="589" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="590" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="591" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="592" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="593" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0.16666666666666665741</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="594" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="595" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.14285714285714284921</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="596" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.28571428571428569843</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="597" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.42857142857142854764</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="598" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.57142857142857139685</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="599" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.71428571428571430157</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="600" name="">
+                <TEXTURE>bg14.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0.85714285714285709528</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>0.14285714285714284921</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>0.16666666666666665741</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="601" name="">
+                <TEXTURE>star01.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>1</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>1</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="602" name="">
+                <TEXTURE>star03.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>1</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>1</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="603" name="">
+                <TEXTURE>star04.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>1</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>1</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="604" name="">
+                <TEXTURE>star05.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>1</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>1</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="605" name="">
+                <TEXTURE>star06.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>1</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>1</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
+        <tile type="606" name="">
+                <TEXTURE>star07.bmp</TEXTURE>
+                <TEXTURE_XOFFSET>0</TEXTURE_XOFFSET>
+                <TEXTURE_YOFFSET>0</TEXTURE_YOFFSET>
+                <TEXTURE_WIDTH>1</TEXTURE_WIDTH>
+                <TEXTURE_HEIGHT>1</TEXTURE_HEIGHT>
+                <OBJECT_WIDTH>25</OBJECT_WIDTH>
+                <OBJECT_HEIGHT>25</OBJECT_HEIGHT>
+        </tile>
 </tiles>

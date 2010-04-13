@@ -37,4 +37,5 @@ CONFIG += qt \
     warn_on \
     resources
 OTHER_FILES += resources/ships.xml \
-    resources/shots.xml
+    resources/shots.xml \
+    resources/tiles.xml
