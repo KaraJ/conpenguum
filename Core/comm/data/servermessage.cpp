@@ -19,8 +19,9 @@ size_t ServerMessage::Serialize(char *data)
 	size_t i;
 
 	data[0] = (uint8) clientID;
-	data[1] = (uint8) msgLen;
-	data[2] = (uint8) msgType;
+	data[1] = (uint8) (msgLen >> 8);
+	data[2] = (uint8) (msgLen & 0xFF);
+	data[3] = (uint8) msgType;
 
 	for (i = 0; i < msgData.length(); ++i)
 		data[i + SM_HEADERSIZE] = msgData[i];

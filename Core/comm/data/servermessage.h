@@ -19,8 +19,8 @@ public:
 	    	MT_FULL		= 7, // Server full
 	    	MT_SCORES	= 8  // Sends current scoreboard
 	    };
-    static const int SM_HEADERSIZE = 3;								//Header size
-	static const int SM_MAX_DATA = 1024;							//Maximum Data portion size
+    static const int SM_HEADERSIZE = 4;								//Header size
+	static const int SM_MAX_DATA = 4096;							//Maximum Data portion size
 	static const int SM_MAX_SIZ = (SM_MAX_DATA +  SM_HEADERSIZE);	//Maximum Total ServerMessage size
 
 	size_t Serialize(char *data);
