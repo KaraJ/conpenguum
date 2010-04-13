@@ -96,17 +96,16 @@ void ServerEngine::timeout()
 				playerList.push_back(Player(sm.GetClientID(), sm.GetData()));
 				ScoreBoard::Instance()->addPlayer(sm.GetClientID(), sm.GetData());
 
+				sm.SetData("");
+				sm.SetMsgType(ServerMessage::MT_INIT);
+				commServer->sendServerMsg(sm);
+				sendScores();
 				commServer->setClientActive(sm.GetClientID(), true);
 
 				oss << "* " << sm.GetData() << " has joined the game *";
 				sm.SetMsgType(ServerMessage::MT_CHAT);
 				sm.SetData(oss.str());
 				commServer->sendServerMsgToAll(sm);
-
-				sm.SetData("");
-				sm.SetMsgType(ServerMessage::MT_INIT);
-				commServer->sendServerMsg(sm);
-				sendScores();
 				cout <<  getPlayerName(sm.GetClientID()) << " " << sm.GetClientID() << " logged in" << endl;
 			}
 		}

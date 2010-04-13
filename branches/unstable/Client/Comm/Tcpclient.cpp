@@ -92,7 +92,12 @@ ServerMessage TCPClient::Login(string playerName)
 	msgBuff.SetData(playerName);
 
 	TCPConnection::WriteMessage(tcpSocket_, msgBuff); //Send login message to server
-	TCPConnection::ReadMessage(tcpSocket_, msgBuff); //Get init message from server
+	while (msgBuff.GetMsgType() != ServerMessage::MT_INIT)
+	{
+		TCPConnection::ReadMessage(tcpSocket_, msgBuff); //Get init message from server
+		if (msgBuff.GetMsgType() != ServerMessage::MT_INIT)
+			Logger::LogNContinue("Expecting INIT message but received something else");
+	}
 
 	return msgBuff;
 }
