@@ -99,8 +99,8 @@ ServerMessage TCPClient::Login(string playerName)
 	while (msgBuff.GetMsgType() != ServerMessage::MT_INIT)
 	{
 		TCPConnection::ReadMessage(tcpSocket_, msgBuff); //Get init message from server
-		if (msgBuff.GetMsgType() != ServerMessage::MT_INIT)
-			Logger::LogNContinue("Expecting INIT message but received something else");
+		Logger::LogNContinue("Expecting INIT message but received:");
+		Logger::LogNQuit(msgBuff.msgType);
 	}
 
 	return msgBuff;
