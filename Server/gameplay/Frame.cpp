@@ -349,9 +349,41 @@ list<Event> Frame::updateShips(void)
 						QVector2D pos = powerups[i]->getPosition();
 						if (abs(currShip->position.x() - pos.x()) < SHIPRADIUS && abs(currShip->position.y() - pos.y()) < SHIPRADIUS)
 						{
-							if (currShip->health == 100)
-								break;
-							currShip->health = MIN(100, (currShip->health + 40));
+							if (rand() % 100 < 20)
+							{
+								if (currShip->shield > 0)
+								{
+									currShip->shield -= 50;
+									if (currShip->shield < 0)
+									{
+										currShip->health += currShip->shield;
+										currShip->shield = 0;
+									}
+								}
+								else
+									currShip->health -= 50;
+
+								if (currShip->health <= 0)
+								{
+									currShip->health = 0;
+									Event t;
+									t.type = Event::ET_DEATH;
+									t.killed = currShip->id;
+									t.pos = QPoint(currShip->position.x(), currShip->position.y());
+									events.push_back(t);
+									fragShip(currShip->id);
+								}
+								Event ev;
+								ev.type = Event::ET_BULLET;
+								ev.pos = QPoint(pos.x(), pos.y());
+								events.push_back(ev);
+							}
+							else
+							{
+								if (currShip->health == 100)
+									break;
+								currShip->health = MIN(100, (currShip->health + 40));
+							}
 							delete powerups[i];
 							powerups[i] = 0;
 							break;
