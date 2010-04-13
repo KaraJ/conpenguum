@@ -11,7 +11,6 @@ int main(int argc, char *argv[])
 {
     int width;
     int height;
-    int tileSize;
     QCoreApplication a(argc, argv);
     if (argc < 3 || argc > 4) {
         std::cerr << "Usage: MapTranslator <types.xml> <map.tmx> [<map.xml>]" << std::endl;
@@ -43,20 +42,18 @@ int main(int argc, char *argv[])
     // generate xml
     width = map_e.attribute("width").toInt();
     height = map_e.attribute("height").toInt();
-    tileSize = map_e.attribute("tilewidth").toInt();
     TileTypes tileTypes(&typesDoc, &tmxDoc);
 
     QDomDocument doc("Map");
     QDomElement map = doc.createElement("map");
     map.setAttribute("width", width);
     map.setAttribute("height", height);
-    map.setAttribute("tileSize", tileSize);
-    QDomElement tile_e = map_e.elementsByTagName("layer").item(0).toElement().elementsByTagName("data").item(0).toElement().firstChild().toElement();
+    QDomElement tile_e = map_e.elementsByTagName("layer").at(0).toElement().elementsByTagName("data").item(0).toElement().firstChild().toElement();
     TileType *type;
     std::stringstream sString;
     for (int y=height-1; y >= 0; --y) {
         for (int x=0; x < width; ++x) {
-            int gid=tile_e.attribute("gid").toInt();
+            int gid = tile_e.attribute("gid").toInt();
             if (gid > 0) {
                 type = tileTypes.byGid(gid);
                 if (type == NULL) {
@@ -67,15 +64,16 @@ int main(int argc, char *argv[])
                 tile.setAttribute("x", x);
                 tile.setAttribute("y", y);
                 // physics
-                if (type->physics != "") {
+                std::cerr << gid << std::endl;
+                if (gid <= MAX_BOUNCE_GID)
+                {
                     QDomElement physics = doc.createElement("physics");
-                    physics.setAttribute("hit", type->physics);
+                    physics.setAttribute("hit", "bounce");
                     tile.appendChild(physics);
                 }
                 // graphics
                 QDomElement graphics = doc.createElement("graphics");
-                graphics.setAttribute("filename", type->filename);
-                graphics.setAttribute("tileNumber", gid - type->firstGid);
+                graphics.setAttribute("tileNumber", gid-1);
                 // add to tile
                 tile.appendChild(graphics);
                 map.appendChild(tile);
