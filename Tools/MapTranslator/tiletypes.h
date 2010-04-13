@@ -5,7 +5,9 @@
 #include <QString>
 #include <QDomDocument>
 
-#define MAX_BOUNCE_GID 189
+#define MAX_BOUNCE_GID  189
+#define EDITOR_TILESIZE 16.0
+#define FINAL_TILESIZE  25.0
 
 typedef struct {
     QString name;

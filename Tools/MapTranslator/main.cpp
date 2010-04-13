@@ -81,14 +81,26 @@ int main(int argc, char *argv[])
         }
     }
     QDomNodeList spawn_l = map_e.elementsByTagName("objectgroup").item(0).toElement().elementsByTagName("object");
+    float spawn_ratio = FINAL_TILESIZE / EDITOR_TILESIZE;
+    int spawn_x;
+    int spawn_y;
+    int spawn_w;
+    int spawn_h;
     for (int i=0; i < spawn_l.size(); ++i)
     {
         QDomElement spawn_e = spawn_l.item(i).toElement();
         QDomElement spawn = doc.createElement("spawn");
-        spawn.setAttribute("x", spawn_e.attribute("x"));
-        spawn.setAttribute("y", spawn_e.attribute("y"));
-        spawn.setAttribute("width", spawn_e.attribute("width"));
-        spawn.setAttribute("height", spawn_e.attribute("height"));
+
+        spawn_x = (int)(spawn_ratio * spawn_e.attribute("x").toInt());
+        spawn_y = (int)(spawn_ratio * spawn_e.attribute("y").toInt());
+        spawn_w = (int)(spawn_ratio * spawn_e.attribute("width").toInt());
+        spawn_h = (int)(spawn_ratio * spawn_e.attribute("height").toInt());
+        std::cerr << spawn_x << "," << spawn_y << " -> " << spawn_w << "x" << spawn_h << "(" << (FINAL_TILESIZE*height) - (spawn_y + spawn_h) << ")" << std::endl;
+
+        spawn.setAttribute("x", spawn_x);
+        spawn.setAttribute("y", (FINAL_TILESIZE*height) - (spawn_y + spawn_h));
+        spawn.setAttribute("width", spawn_w);
+        spawn.setAttribute("height", spawn_h);
         QDomNodeList spawn_attribute_l = spawn_e.elementsByTagName("properties").item(0).toElement().elementsByTagName("property");
         for (int p=0; p < spawn_attribute_l.size(); ++p)
         {
