@@ -2,7 +2,7 @@
 <image>
 	<link>explode.bmp</link>
 	<desc>explosion</desc>
-	<sound>explosion.wav</sound>
+	<sound>Resources/sounds/explosion.wav</sound>
 	<numberOfFrames>44</numberOfFrames>
 	<numberImagesWide>4</numberImagesWide>
 	<numberImagesTall>11</numberImagesTall>
