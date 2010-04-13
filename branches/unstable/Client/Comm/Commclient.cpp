@@ -245,6 +245,7 @@ void* CommClient::readThreadUDP(void*)
 		if (size == UpdateObject::serializeSize)
 		{
 			UpdateObject update(buffer);
+			free(buffer);
 			sem_wait(&CommClient::Instance()->semUDP_);
 			CommClient::Instance()->updates_.push(update);
 			sem_post(&CommClient::Instance()->semUDP_);
