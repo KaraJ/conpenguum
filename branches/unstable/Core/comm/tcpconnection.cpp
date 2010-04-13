@@ -7,6 +7,8 @@ bool TCPConnection::ReadMessage(int sock, ServerMessage& sm)
 	if (SocketWrapper::Read(sock, buff, ServerMessage::SM_HEADERSIZE)) //Read clientID, msgLen, msgType
 	{
 		sm.SetClientID(buff[0]);
+		size_t msgLen = buff[1] << 8;
+		msgLen += buff[2];
 		sm.SetMsgLen(buff[1]);
 		sm.SetMsgType((ServerMessage::MessageType) buff[2]);
 		memset(buff, 0, ServerMessage::SM_MAX_SIZ);
