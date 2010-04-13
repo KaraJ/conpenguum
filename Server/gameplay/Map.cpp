@@ -61,7 +61,7 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
     // read map data
     columns  = map_e.attribute("width", "0").toInt();
     rows = map_e.attribute("height", "0").toInt();
-    tileSize = map_e.attribute("tileSize", "1").toInt();
+    tileSize = 25;
 
     // create tiles array
     tiles=new Tile*[columns];
@@ -73,13 +73,11 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
     for (int ti = 0; ti < tile_l.count(); ++ti)
     {
         QDomElement tile_e = tile_l.item(ti).toElement();
-        if (tile_e.elementsByTagName.size() > 0) {
-            QDomElement physics_e = tile_e.elementsByTagName("physics").item(0).toElement();
-            x = tile_e.attribute("x", "0").toInt();
-            y = tile_e.attribute("y", "0").toInt();
-            if (physics_e.attribute("hit") == "bounce") {
-                tiles[x][y].setWall();
-            }
+        QDomElement physics_e = tile_e.elementsByTagName("physics").item(0).toElement();
+        x = tile_e.attribute("x", "0").toInt();
+        y = tile_e.attribute("y", "0").toInt();
+        if (physics_e.attribute("hit") == "bounce") {
+            tiles[x][y].setWall();
         }
     }
 
@@ -599,8 +597,8 @@ QVector2D Map::getSpawn(int team, int size)
     }
     if (teamCount == 0)
     {
-        std::cerr << "ERROR: Could not locate a spawn for team " << team << ", spawning at 0,0" << std::endl;
-        return QVector2D(0, 0);
+        std::cerr << "ERROR: Could not locate a spawn for team " << team << ", spawning at 100,100" << std::endl;
+        return QVector2D(100, 100);
     }
     area = teamSpawns[rand() % teamCount];
 

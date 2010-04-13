@@ -5,6 +5,8 @@
 #include <QString>
 #include <QDomDocument>
 
+#define MAX_BOUNCE_GID 189
+
 typedef struct {
     QString name;
     int width;
