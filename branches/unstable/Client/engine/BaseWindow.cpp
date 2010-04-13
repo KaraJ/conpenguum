@@ -539,8 +539,7 @@ void BaseWindow::clearTransientObjects()
 
 bool cmp(Player p1, Player p2)
 {
-	return (p1.getKills() < p2.getKills()) || (p1.getStreak() < p2.getStreak())
-			|| (p1.getName() < p2.getName());
+	return (p1.getKills() < p2.getKills()) || (p1.getName() < p2.getName());
 }
 void BaseWindow::timerEvent()
 {
@@ -612,13 +611,16 @@ void BaseWindow::getServerMessage()
 			int xPos = strList[1].toInt();
 			int yPos = strList[2].toInt();
 			if (id == clientAction->getObjectId()) // if this client died, display the message
-				ren->setDeathTime(150);
+				ren->setDeathTime(145);
 			int trailId = freeExplosionIds.front(); //Get an ID
 			freeExplosionIds.pop();
 			UpdateObject uo(trailId);
 			uo.setPosition(QPoint(xPos, yPos));
 			uo.setHealth(-1);
-			uo.setShield(getPlayerStreak(id));
+			if (id == -1)
+				uo.setShield(-1);
+			else
+				uo.setShield(getPlayerStreak(id));
 			createObject(uo, trailId);
 		}
 	}

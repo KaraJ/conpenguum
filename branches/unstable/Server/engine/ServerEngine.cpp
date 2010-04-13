@@ -161,6 +161,15 @@ void ServerEngine::timeout()
 			addKill(*it);
 		else if (it->type == Event::ET_DEATH)
 			addDeath(*it);
+		else if (it->type == Event::ET_BULLET)
+		{
+			ServerMessage m;
+			ostringstream oss;
+			oss << "-1," << it->pos.x() << "," << it->pos.y();
+			m.SetData(oss.str());
+			m.SetMsgType(ServerMessage::MT_DEATH);
+			commServer->sendServerMsgToAll(m);
+		}
 	}
 	uoBuff = gameState->ListShip2listUpdateObject();
 	if (gameState->numPwrups() < MAXPOWERUPS)

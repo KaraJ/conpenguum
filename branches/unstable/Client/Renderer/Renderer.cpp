@@ -71,11 +71,13 @@ void Renderer::buildRenderList(QPoint center)
     	if (gob->health == -1)
     	{
     		if (gob->shield > 5)
-    			scale = 10;
+    			scale = 20;
     		else if (gob->shield > 3)
-    			scale = 5;
+    			scale = 10;
     		else if (gob->shield > 0)
-    			scale = 2;
+    			scale = 4;
+    		else if (gob->shield == 0)
+				scale = 2;
     	}
 
     	renderList[i].texture = textures[gob->textureName];
