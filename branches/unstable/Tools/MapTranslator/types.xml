@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <tileTypes>
     <tileType name="tiles" width="19" height="10" physics="bounce" filename="tiles.bmp" />
-    <tileType name="mines" width="10" height="8" physics="die" filename="mines.bmp" />
+    <tileType name="bg" width="19" height="10" physics="" filename="tiles.bmp" />
     <tileType name="bg01" width="1" height="1" physics="" filename="bg01.bmp" />
     <tileType name="bg02" width="1" height="1" physics="" filename="bg02.bmp" />
     <tileType name="bg03" width="1" height="1" physics="" filename="bg03.bmp" />
