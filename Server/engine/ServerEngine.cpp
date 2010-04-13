@@ -96,13 +96,15 @@ void ServerEngine::timeout()
 				playerList.push_back(Player(sm.GetClientID(), sm.GetData()));
 				ScoreBoard::Instance()->addPlayer(sm.GetClientID(), sm.GetData());
 
+				string pName = sm.GetData();
+
 				sm.SetData("");
 				sm.SetMsgType(ServerMessage::MT_INIT);
 				commServer->sendServerMsg(sm);
 				sendScores();
 				commServer->setClientActive(sm.GetClientID(), true);
 
-				oss << "* " << sm.GetData() << " has joined the game *";
+				oss << "* " << pName << " has joined the game *";
 				sm.SetMsgType(ServerMessage::MT_CHAT);
 				sm.SetData(oss.str());
 				commServer->sendServerMsgToAll(sm);
