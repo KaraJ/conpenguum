@@ -73,11 +73,13 @@ Map::Map(QString filename) : columns(0), rows(0), tileSize(1)
     for (int ti = 0; ti < tile_l.count(); ++ti)
     {
         QDomElement tile_e = tile_l.item(ti).toElement();
-        QDomElement physics_e = tile_e.elementsByTagName("physics").item(0).toElement();
-        x = tile_e.attribute("x", "0").toInt();
-        y = tile_e.attribute("y", "0").toInt();
-        if (physics_e.attribute("hit") == "bounce") {
-            tiles[x][y].setWall();
+        if (tile_e.elementsByTagName.size() > 0) {
+            QDomElement physics_e = tile_e.elementsByTagName("physics").item(0).toElement();
+            x = tile_e.attribute("x", "0").toInt();
+            y = tile_e.attribute("y", "0").toInt();
+            if (physics_e.attribute("hit") == "bounce") {
+                tiles[x][y].setWall();
+            }
         }
     }
 
