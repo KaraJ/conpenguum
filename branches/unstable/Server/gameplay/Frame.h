@@ -78,7 +78,7 @@ public:
     std::vector<UpdateObject> ListShip2listUpdateObject();
     void printShips(void);
     void printShots(void);
-    void addPwrup(int x, int y);
+    void addPwrup();
     int numPwrups();
 
 private:
