@@ -3,6 +3,7 @@
 bool TCPConnection::ReadMessage(int sock, ServerMessage *sm)
 {
 	char buff[ServerMessage::SM_MAX_SIZ];
+	int x = ServerMessage::SM_MAX_SIZ;
 	memset(buff, 0, ServerMessage::SM_MAX_SIZ);
 	if (SocketWrapper::Read(sock, buff, ServerMessage::SM_HEADERSIZE)) //Read clientID, msgLen, msgType
 	{

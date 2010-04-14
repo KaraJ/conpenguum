@@ -33,8 +33,8 @@ public:
 
     //send messages or updates
     void sendServerMsg(ServerMessage msg, const std::vector<size_t>& clients);
-    void sendServerMsg(const ServerMessage& msg);
-    void sendServerMsgToAll(const ServerMessage& msg);
+    void sendServerMsg(const ServerMessage msg);
+    void sendServerMsgToAll(const ServerMessage msg);
     void sendUpdate(const UpdateObject& update, const std::vector<int>& clientIDs);
     void sendUpdateToAll(const UpdateObject& update);
     void Shutdown();
