@@ -330,7 +330,7 @@ list<Event> Frame::updateShips(void)
 						+ spawnVec.y(), shotVec.x(), shotVec.y(), currShip->getNextShotID(), (frameTimer + 120));
 					addShot(shot);
 					map.add(&shot, shot.position);
-					currShip->shotCooldown = 30;
+					currShip->shotCooldown = 20;
 					currShip->shield = MAX(currShip->shield - 10, 0);
 				}
 
