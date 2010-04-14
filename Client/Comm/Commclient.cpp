@@ -79,6 +79,8 @@ int CommClient::connect(const string name, const string address, const string po
 
         if (sm.GetData() == "FULL")
         	return -2;
+        else if (sm.GetClientID() == MAX_CLIENTS + 1)
+        	return -2;
 
         tcpClient_->setClientId(sm.GetClientID());
         tcpClient_->StartRdThread(&serverMsgs_, &semTCP_);

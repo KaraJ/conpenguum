@@ -96,11 +96,11 @@ ServerMessage TCPClient::Login(string playerName)
 	msgBuff.SetData(playerName);
 
 	TCPConnection::WriteMessage(tcpSocket_, msgBuff); //Send login message to server
-	while (msgBuff.GetMsgType() != ServerMessage::MT_INIT)
+
+	if (msgBuff.GetMsgType() != ServerMessage::MT_INIT)
 	{
-		TCPConnection::ReadMessage(tcpSocket_, msgBuff); //Get init message from server
 		Logger::LogNContinue("Expecting INIT message but received:");
-		Logger::LogNQuit(msgBuff.msgType);
+		msgBuff.SetClientID(MAX_CLIENTS + 1);
 	}
 
 	return msgBuff;

@@ -304,7 +304,8 @@ std::string BaseWindow::getChatString()
  -----------------------------------------------------------------------------*/
 void BaseWindow::startRendering()
 {
-	timer.start(1000 / frameRate);
+	int refTime = 1000 / frameRate;
+	timer.start(refTime);
 }
 
 /*------------------------------------------------------------------------------
