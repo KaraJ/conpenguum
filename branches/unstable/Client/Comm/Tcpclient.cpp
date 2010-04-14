@@ -36,7 +36,7 @@ void* TCPClient::ReadThread(void* param)
 	ServerMessage incomingMsg;
 	while (tcpClient->connected_)
 	{
-		if(!TCPConnection::ReadMessage(tcpClient->tcpSocket_, incomingMsg))
+		if(!TCPConnection::ReadMessage(tcpClient->tcpSocket_, &incomingMsg))
 		{
 			tcpClient->Logout();
 			ServerMessage shutdown;
@@ -141,7 +141,7 @@ ServerMessage TCPClient::Login(string playerName)
 
 	TCPConnection::WriteMessage(tcpSocket_, msgBuff); //Send login message to server
 
-	TCPConnection::ReadMessage(tcpSocket_, msgBuff);
+	TCPConnection::ReadMessage(tcpSocket_, &msgBuff);
 	if (msgBuff.GetMsgType() != ServerMessage::MT_INIT)
 	{
 		Logger::LogNContinue("Expecting INIT message but received:");

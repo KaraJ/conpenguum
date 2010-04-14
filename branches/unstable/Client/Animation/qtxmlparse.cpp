@@ -77,7 +77,6 @@ std::vector<Image> QtXmlParse::ReadAnimationVector(std::string file)
 	}
 	element = node.toElement();
 	img.setLink(element.text().toStdString());
-	cout << "Texture: " << img.getLink() << endl;
 
 	// temporarily storing the sound to the image so it can roll up into animation.
 	while (strcmp(node.nodeName().toStdString().c_str(), "sound") != 0)
