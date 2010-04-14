@@ -113,47 +113,15 @@ p, li { white-space: pre-wrap; }
    <sender>okbutton</sender>
    <signal>clicked()</signal>
    <receiver>IpBox</receiver>
-   <slot>accept()</slot>
+   <slot>on_okbutton_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>179</x>
      <y>175</y>
     </hint>
     <hint type="destinationlabel">
-     <x>86</x>
-     <y>166</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ipentry</sender>
-   <signal>returnPressed()</signal>
-   <receiver>IpBox</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>143</x>
-     <y>51</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>217</x>
-     <y>77</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>portentry</sender>
-   <signal>returnPressed()</signal>
-   <receiver>IpBox</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>123</x>
-     <y>70</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>219</x>
-     <y>114</y>
+     <x>77</x>
+     <y>161</y>
     </hint>
    </hints>
   </connection>
@@ -161,17 +129,52 @@ p, li { white-space: pre-wrap; }
    <sender>nameentry</sender>
    <signal>returnPressed()</signal>
    <receiver>IpBox</receiver>
-   <slot>accept()</slot>
+   <slot>on_okbutton_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>106</y>
+     <x>136</x>
+     <y>109</y>
     </hint>
     <hint type="destinationlabel">
-     <x>65</x>
-     <y>127</y>
+     <x>115</x>
+     <y>134</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>portentry</sender>
+   <signal>returnPressed()</signal>
+   <receiver>IpBox</receiver>
+   <slot>on_okbutton_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>80</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>10</x>
+     <y>70</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ipentry</sender>
+   <signal>returnPressed()</signal>
+   <receiver>IpBox</receiver>
+   <slot>on_okbutton_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>175</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>206</x>
+     <y>32</y>
     </hint>
    </hints>
   </connection>
  </connections>
+ <slots>
+  <slot>on_okbutton_clicked()</slot>
+ </slots>
 </ui>
