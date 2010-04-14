@@ -81,7 +81,10 @@ void ServerEngine::timeout()
 		//user has logged in, add client id to ID vector
 		if (sm.GetMsgType() == ServerMessage::MT_LOGIN)
 		{
-			if (isNameUsed(sm.GetData()))
+			string data = sm.GetData();
+			string name = data.substr(0, data.find(','));
+			string ship = data.substr(data.find(',') + 1);
+			if (isNameUsed(name))
 			{
 				sm.SetMsgType(ServerMessage::MT_INIT);
 				sm.SetData("FULL");
@@ -91,9 +94,6 @@ void ServerEngine::timeout()
 			else
 			{
 				ostringstream oss;
-				string data = sm.GetData();
-				string name = data.substr(0, data.find(','));
-				string ship = data.substr(data.find(',') + 1);
 				gameState->addShip(sm.GetClientID(), ship);
 				gameState->spawnShip(sm.GetClientID());
 				playerList.push_back(Player(sm.GetClientID(), name));
