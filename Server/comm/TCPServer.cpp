@@ -113,7 +113,7 @@ void* TCPServer::ReadThread(void* vptr)
 
 			if (FD_ISSET(clientSocket, &currSet))
 			{
-				if (TCPConnection::ReadMessage(clientSocket, msgBuff))
+				if (TCPConnection::ReadMessage(clientSocket, &msgBuff))
 				{
 					switch (msgBuff.GetMsgType())
 					{

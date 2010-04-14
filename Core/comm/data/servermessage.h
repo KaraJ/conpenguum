@@ -24,7 +24,7 @@ public:
 	static const int SM_MAX_SIZ = (SM_MAX_DATA +  SM_HEADERSIZE);	//Maximum Total ServerMessage size
 
 	size_t Serialize(char *data);
-    ServerMessage() { }
+    ServerMessage() : clientID(0) { SetData(""); }
     size_t  GetClientID() { return clientID; }
     void SetClientID(size_t id) { clientID = id; }
     int  GetMsgType() { return msgType; }
