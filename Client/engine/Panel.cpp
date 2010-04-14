@@ -379,7 +379,11 @@ void Panel::flip()
 				}
 				cerr << selectedShip.c_str();
 				ipbox = new IpBox(this, params["username"], params["server_ip"], params["tcp_port"]);
-				ipbox->exec();
+				if (!ipbox->exec())
+				{
+					delete ipbox;
+					return;
+				}
 
 				cerr << "\nname: " << ipbox->getName() << "\nip: " << ipbox->getIp() << "\nport: " << ipbox->getPort() << endl;
 				ConnectThread *thread = new ConnectThread(ipbox->getName(), ipbox->getIp(), ipbox->getPort(), selectedShip);
