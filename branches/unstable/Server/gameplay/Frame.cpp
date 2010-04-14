@@ -328,7 +328,7 @@ list<Event> Frame::updateShips(void)
 					spawnVec = rotVelToVec(currShip->rotation * 2, SHOTSPAWNRAD);
 					shotVec =  rotVelToVec(currShip->rotation * 2, VELOCITY_SHOT);
 					Shot shot(currShip->position.x() + spawnVec.x(), currShip->position.y()
-						+ spawnVec.y(), shotVec.x(), shotVec.y(), currShip->getNextShotID(), (frameTimer + 120));
+						+ spawnVec.y(), shotVec.x(), shotVec.y(), currShip->getNextShotID(), (frameTimer + 40));
 					addShot(shot);
 					map.add(&shot, shot.position);
 					currShip->shotCooldown = 20;
@@ -441,7 +441,6 @@ list<Event> Frame::updateShots(void)
     	if(frameTimer == shotIT->deathTime)
     	{
     		map.remove(&(*shotIT), shotIT->position);
-    		cout << shotIT->id << "deathTime" << endl;
     		shotIT = listShot.erase(shotIT);
     		continue;
     	}
@@ -454,7 +453,6 @@ list<Event> Frame::updateShots(void)
 			ev.pos = QPoint(oldPos.x(), oldPos.y());
 			events.push_back(ev);
         	map.remove(&(*shotIT), oldPos);
-        	cout << shotIT->id << "wall" << endl;
         	shotIT = listShot.erase(shotIT);
         	continue;
         }
