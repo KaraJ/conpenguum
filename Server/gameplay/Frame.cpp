@@ -350,7 +350,7 @@ list<Event> Frame::updateShips(void)
 						QVector2D pos = powerups[i]->getPosition();
 						if (abs(currShip->position.x() - pos.x()) < SHIPRADIUS && abs(currShip->position.y() - pos.y()) < SHIPRADIUS)
 						{
-							if (rand() % 100 < 20)
+							if (rand() % 100 < 5)
 							{
 								if (currShip->shield > 0)
 								{
