@@ -30,7 +30,7 @@ size_t ServerMessage::Serialize(char *data)
 	i += SM_HEADERSIZE;
 	data[i] = 0;
 
-	return i;
+	return i + 1;
 }
 
 /*----------------------------------------------------------------------------------------------------------
@@ -48,5 +48,5 @@ size_t ServerMessage::Serialize(char *data)
 void ServerMessage::SetData(string data)
 {
 	msgData = data.substr(0, SM_MAX_DATA);
-	msgLen = msgData.length() + SM_HEADERSIZE;
+	msgLen = msgData.length() + 1 + SM_HEADERSIZE;
 }
