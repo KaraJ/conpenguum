@@ -15663,9 +15663,5 @@
     <property name="team" value="0"/>
    </properties>
   </object>
-  <object name="" x="1048" y="2664"/>
-  <object name="" x="884" y="2196"/>
-  <object name="" x="2380" y="1860"/>
-  <object name="" x="2812" y="2308"/>
  </objectgroup>
 </map>
