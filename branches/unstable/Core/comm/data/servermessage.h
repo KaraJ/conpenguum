@@ -4,10 +4,11 @@
 //System Includes
 #include <string>
 
+#include "../globals.h"
+
 class ServerMessage
 {
 public:
-	typedef unsigned char uint8;
 	enum MessageType
 	    {
 	    	MT_LOGIN    = 1,

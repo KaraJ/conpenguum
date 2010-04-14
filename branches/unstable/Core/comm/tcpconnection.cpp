@@ -2,7 +2,7 @@
 
 bool TCPConnection::ReadMessage(int sock, ServerMessage *sm)
 {
-	char buff[ServerMessage::SM_MAX_SIZ];
+	uint8 buff[ServerMessage::SM_MAX_SIZ];
 	memset(buff, 0, ServerMessage::SM_MAX_SIZ);
 	if (SocketWrapper::Read(sock, buff, ServerMessage::SM_HEADERSIZE)) //Read clientID, msgLen, msgType
 	{
@@ -14,7 +14,7 @@ bool TCPConnection::ReadMessage(int sock, ServerMessage *sm)
 		memset(buff, 0, ServerMessage::SM_MAX_SIZ);
 		if(!SocketWrapper::Read(sock, buff, sm->GetMsgLen() - ServerMessage::SM_HEADERSIZE))
 			return false;
-		sm->SetData(buff);
+		sm->SetData((char*)buff);
 		return true;
 	}
 	return false;
