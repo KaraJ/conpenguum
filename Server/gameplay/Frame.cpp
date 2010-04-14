@@ -633,9 +633,17 @@ void Frame::fragShip(size_t shipID){
     map.remove(ship, ship->position, SHIPSIZE);
 }
 
-void Frame::addPwrup(int x, int y)
+void Frame::addPwrup()
 {
 	size_t i;
+	int x, y;
+	do
+	{
+		x = rand() % 2450 + 26;
+		y = rand() % 2450 + 26;
+	}
+	while (map.isWall(QVector2D(x, y)));
+
 	for (i = 0; i < MAXPOWERUPS; i++)
 	{
 		if (powerups[i] == 0)

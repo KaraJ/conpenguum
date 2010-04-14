@@ -175,11 +175,7 @@ void ServerEngine::timeout()
 	}
 	uoBuff = gameState->ListShip2listUpdateObject();
 	if (gameState->numPwrups() < MAXPOWERUPS)
-	{
-		int x = rand() % 2450 + 26;
-		int y = rand() % 2450 + 26;
-		gameState->addPwrup(x, y);
-	}
+		gameState->addPwrup();
 
 	for (size_t i = 0; i < uoBuff.size(); ++i)
 		commServer->sendUpdateToAll(uoBuff[i]);
