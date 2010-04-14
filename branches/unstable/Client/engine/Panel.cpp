@@ -379,7 +379,8 @@ void Panel::flip()
 				}
 				cerr << selectedShip.c_str();
 				ipbox = new IpBox(this, params["username"], params["server_ip"], params["tcp_port"]);
-				if (!ipbox->exec())
+				ipbox->exec();
+				if (ipbox->result() == 0)
 				{
 					delete ipbox;
 					return;

@@ -108,5 +108,70 @@ p, li { white-space: pre-wrap; }
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>okbutton</sender>
+   <signal>clicked()</signal>
+   <receiver>IpBox</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>179</x>
+     <y>175</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>86</x>
+     <y>166</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ipentry</sender>
+   <signal>returnPressed()</signal>
+   <receiver>IpBox</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>143</x>
+     <y>51</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>217</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>portentry</sender>
+   <signal>returnPressed()</signal>
+   <receiver>IpBox</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>123</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>219</x>
+     <y>114</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>nameentry</sender>
+   <signal>returnPressed()</signal>
+   <receiver>IpBox</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>106</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>65</x>
+     <y>127</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
