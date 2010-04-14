@@ -125,6 +125,8 @@ void UpdateObject::serialise(BYTE** buffer) const
      (*buffer)[7] = (BYTE)(rotation_ & 0x000000FF);
      (*buffer)[8] = (BYTE)(health_ & 0x000000FF);
      (*buffer)[9] = (BYTE)(shield_ & 0x000000FF);
+     //Im in ur code fixin ur memory leaks
+     delete[] pActionBytes;
 }
 
 void UpdateObject::print(ostream& out) const
