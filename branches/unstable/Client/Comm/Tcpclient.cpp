@@ -133,22 +133,22 @@ bool TCPClient::Connect(const string& ip, const string& port)
  ----------------------------------------------------------------------------------------------------------*/
 ServerMessage TCPClient::Login(string playerName)
 {
-	ServerMessage msgBuff;
+	ServerMessage msg;
 
-	msgBuff.SetClientID(MAX_CLIENTS + 1);
-	msgBuff.SetMsgType(ServerMessage::MT_LOGIN);
-	msgBuff.SetData(playerName);
+	msg.SetClientID(MAX_CLIENTS + 1);
+	msg.SetMsgType(ServerMessage::MT_LOGIN);
+	msg.SetData(playerName);
 
-	TCPConnection::WriteMessage(tcpSocket_, msgBuff); //Send login message to server
+	TCPConnection::WriteMessage(tcpSocket_, msg); //Send login message to server
 
-	TCPConnection::ReadMessage(tcpSocket_, &msgBuff);
-	if (msgBuff.GetMsgType() != ServerMessage::MT_INIT)
+	TCPConnection::ReadMessage(tcpSocket_, &msg);
+	if (msg.GetMsgType() != ServerMessage::MT_INIT)
 	{
 		Logger::LogNContinue("Expecting INIT message but received:");
-		msgBuff.SetClientID(MAX_CLIENTS + 1);
+		msg.SetClientID(MAX_CLIENTS + 1);
 	}
 
-	return msgBuff;
+	return msg;
 }
 
 /*----------------------------------------------------------------------------------------------------------

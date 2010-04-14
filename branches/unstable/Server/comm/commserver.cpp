@@ -168,12 +168,12 @@ void CommServer::sendServerMsg(ServerMessage sm, const vector<size_t>& clients)
  -- INTERFACE:
  --  ServerMessage sm: Message to send to client
  ----------------------------------------------------------------------------------------------------------*/
-void CommServer::sendServerMsg(const ServerMessage& sm)
+void CommServer::sendServerMsg(const ServerMessage sm)
 {
     tcpServer_->SendMessage(sm);
 }
 
-void CommServer::sendServerMsgToAll(const ServerMessage& sm)
+void CommServer::sendServerMsgToAll(const ServerMessage sm)
 {
     tcpServer_->SendMessageToAll(sm);
 }
