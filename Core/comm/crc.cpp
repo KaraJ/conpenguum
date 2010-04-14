@@ -29,7 +29,8 @@ BYTE CRC::makeCRC(const BYTE* data, size_t size)
 
 	for (size_t i = 0; i < size; ++i)
 		crc = genCrc8(crc, buff[i]);
-
+        //Im in ur code fixin ur memory leaks
+        free(buff);
 	return crc;
 }
 
