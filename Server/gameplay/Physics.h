@@ -3,7 +3,7 @@
 
 #include <QVector2D>
 
-#define VELOCITY_THRUST 1   // the velocity of a new thrust vector
+#define VELOCITY_THRUST 0.6  // the velocity of a new thrust vector
 #define VELOCITY_SHOT   20   // the velocity of a shot
 #define VELOCITY_MAX    64   // the max velocity of a ship^2
 #define RVELOCITY_MAX   25  //  the reverse velocity
@@ -22,6 +22,6 @@
 //vector magnitude
 #define VECTORMAGNITUDE(a)    (  ( a.x()*a.x() ) + ( a.y()*a.y() )  )
 
-QVector2D rotVelToVec(int rot, int velocity);
+QVector2D rotVelToVec(int rot, double velocity);
 
 #endif // PHYCICS_H

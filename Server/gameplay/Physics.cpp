@@ -24,7 +24,7 @@
 --  RETURNS:    Qpoint style vector.
 --
 ------------------------------------------------------------------------------*/
-QVector2D rotVelToVec(int rot, int velocity)
+QVector2D rotVelToVec(int rot, double velocity)
 {
     QVector2D vector;
     //correcting the function here and removing the magic number
