@@ -381,7 +381,7 @@ void Panel::flip()
 					selectedShip = "adminship";
 				}
 				cerr << selectedShip.c_str();
-				ipbox = new IpBox(this, params["username"], params["server_ip"], params["tcp_port"]);
+				ipbox = new IpBox(this, params["username"], params["server_ip"], params["tcp_port"], selectedShip);
 				ipbox->exec();
 				if (ipbox->result() == 0)
 				{
@@ -498,3 +498,19 @@ void Panel::closeEvent(QCloseEvent * e)
 	//this->destroy(true, false);
 	exit(0);
 }
+void Panel::b1Clicked()
+{selectedShip = "jvship";backItem->stopTimeLine();}
+void Panel::b2Clicked()
+{selectedShip = "lvship";backItem->stopTimeLine();}
+void Panel::b3Clicked()
+{selectedShip = "nwship";backItem->stopTimeLine();}
+void Panel::b4Clicked()
+{selectedShip = "shship";backItem->stopTimeLine();}
+void Panel::b5Clicked()
+{selectedShip = "spship";backItem->stopTimeLine();}
+void Panel::b6Clicked()
+{selectedShip = "teship";backItem->stopTimeLine();}
+void Panel::b7Clicked()
+{selectedShip = "wbship";backItem->stopTimeLine();}
+void Panel::b8Clicked()
+{selectedShip = "weship";backItem->stopTimeLine();}

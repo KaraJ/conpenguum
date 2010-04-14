@@ -67,15 +67,14 @@ public:
     void quit();
 
 public slots:
-	void b1Clicked(){selectedShip = "jvship";}
-    void b2Clicked(){selectedShip = "lvship";}
-    void b3Clicked(){selectedShip = "nwship";}
-    void b4Clicked(){selectedShip = "shship";}
-    void b5Clicked(){selectedShip = "spship";}
-    void b6Clicked(){selectedShip = "teship";}
-    void b7Clicked(){selectedShip = "wbship";}
-    void b8Clicked(){selectedShip = "weship";}
-
+	void b1Clicked();
+    void b2Clicked();
+    void b3Clicked();
+    void b4Clicked();
+    void b5Clicked();
+    void b6Clicked();
+    void b7Clicked();
+    void b8Clicked();
 
 protected:
     void keyPressEvent(QKeyEvent *event);
