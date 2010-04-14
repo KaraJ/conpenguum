@@ -10,7 +10,7 @@
 class UpdateObject
 {
 public:
-    static const int serializeSize = 10;
+    static const int serializeSize = 11;
 
     UpdateObject(int objID);
     UpdateObject(ClientAction& a);
@@ -30,10 +30,12 @@ public:
     void setHealth(int hp) { health_ = hp; }
     int getShield() const { return shield_; }
     void setShield(int sh) { shield_ = sh; }
+    int getShipType() const { return type_; }
+    void setShipType(int t) { type_ = t; }
 
 private:
     int rotation_;
-    int health_, shield_;
+    int health_, shield_, type_;
     QPoint pos_;
     ClientAction actions_;
 };

@@ -5,19 +5,12 @@ enum RESOURCETYPES
 {
 	EXPLOSION=0,
         EXHAUST, //you don't need the =# for any one after the first
-        SHIP,
         SHOT,
         AIDBOX,
         TILE,
+        SHIP,  // Ship has to be last on this list
 
     NUMRESOURCETYPES
-};
-
-enum SHIPTYPES
-{
-    WARBIRD = 0,
-
-    NUMSHIPS
 };
 
 enum SHOTTYPES

@@ -91,13 +91,13 @@ Panel::Panel() : selectedX(0), selectedY(0), width(1), height(3), flipped(false)
     QWidget *embed = new QWidget;
     ui = new Ui_BackSide;
     ui->setupUi(embed);
-    selectedShip = "jvship";
+    selectedShip = "wbship";
     QObject::connect(ui->ship1b, SIGNAL(clicked()), this, SLOT(b1Clicked()));
 	QObject::connect(ui->ship2b, SIGNAL(clicked()), this, SLOT(b2Clicked()));
 	QObject::connect(ui->ship3b, SIGNAL(clicked()), this, SLOT(b3Clicked()));
 	QObject::connect(ui->ship4b, SIGNAL(clicked()), this, SLOT(b4Clicked()));
 	QObject::connect(ui->ship5b, SIGNAL(clicked()), this, SLOT(b5Clicked()));
-	QObject::connect(ui->ship6b, SIGNAL(clicked()), this, SLOT(b1Clicked()));
+	QObject::connect(ui->ship6b, SIGNAL(clicked()), this, SLOT(b6Clicked()));
 	QObject::connect(ui->ship7b, SIGNAL(clicked()), this, SLOT(b7Clicked()));
 	QObject::connect(ui->ship8b, SIGNAL(clicked()), this, SLOT(b8Clicked()));
 
@@ -382,7 +382,7 @@ void Panel::flip()
 				ipbox->exec();
 
 				cerr << "\nname: " << ipbox->getName() << "\nip: " << ipbox->getIp() << "\nport: " << ipbox->getPort() << endl;
-				ConnectThread *thread = new ConnectThread(ipbox->getName(), ipbox->getIp(), ipbox->getPort());
+				ConnectThread *thread = new ConnectThread(ipbox->getName(), ipbox->getIp(), ipbox->getPort(), selectedShip);
 				QObject::connect(thread, SIGNAL(serverConnect(int)), this, SLOT(serverConnect(int)));
 				QObject::connect(thread, SIGNAL(errorConnect()), this, SLOT(errorConnect()));
 				QObject::connect(thread, SIGNAL(nameInUse()), this, SLOT(nameInUse()));

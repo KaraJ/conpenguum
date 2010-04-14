@@ -8,7 +8,7 @@ class ConnectThread : public QThread
 	Q_OBJECT
 
 public:
-	ConnectThread(std::string name, std::string ip, std::string port);
+	ConnectThread(std::string name, std::string ip, std::string port, std::string ship);
 	void run();
 
 signals:
@@ -17,7 +17,7 @@ signals:
 	void nameInUse();
 
 private:
-	std::string name_, ip_, port_;
+	std::string name_, ip_, port_, ship_;
 };
 
 #endif /* CONNECTTHREAD_H_ */

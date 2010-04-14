@@ -1,8 +1,8 @@
 #include "Ship.h"
 
-Ship::Ship(size_t clientID) : NewtObject(0, 0, 0, 0, clientID),
+Ship::Ship(size_t clientID, std::string ship) : NewtObject(0, 0, 0, 0, clientID),
 	rotation(0), actionMask(clientID), active(false), shotCooldown(0),
-	shieldCooldown(1), deathCooldown(0), health(100), shield(100)
+	shieldCooldown(1), deathCooldown(0), health(100), shield(100), shipType(ship)
 {
 	currentShot = 0;
 }
