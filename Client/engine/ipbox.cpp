@@ -39,25 +39,31 @@ bool isValidPort(string str)
 void IpBox::on_okbutton_clicked()
 {
 	if (isValidIp(ui->ipentry->text().toStdString()))
-	{
 		ip = ui->ipentry->text();
-		if (isValidPort(ui->portentry->text().toStdString()))
-		{
-			port = ui->portentry->text();
-
-				if (!ui->nameentry->text().contains("\"", Qt::CaseInsensitive) && !ui->nameentry->text().contains("\'", Qt::CaseInsensitive))
-				{
-					name = ui->nameentry->text();
-					this->hide();
-				}
-				else
-					QMessageBox::warning(this, "Error", "Invalid Characters", 1, 0, 0);
-		}
-		else
-			QMessageBox::warning(this, "Error", "Invalid port number", 1, 0, 0);
-	}
 	else
+	{
 		QMessageBox::warning(this, "Error", "Invalid IP address", 1, 0, 0);
+		return;
+	}
+
+
+	if (isValidPort(ui->portentry->text().toStdString()))
+		port = ui->portentry->text();
+	else
+	{
+		QMessageBox::warning(this, "Error", "Invalid port number", 1, 0, 0);
+		return;
+	}
+
+	if (!ui->nameentry->text().contains("\"", Qt::CaseInsensitive) && !ui->nameentry->text().contains("\'", Qt::CaseInsensitive))
+		name = ui->nameentry->text();
+	else
+	{
+		QMessageBox::warning(this, "Error", "Invalid Characters", 1, 0, 0);
+		return;
+	}
+
+	this->accept();
 }
 
 string IpBox::getName()
