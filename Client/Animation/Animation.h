@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <Phonon/MediaObject>
+#include <phonon/mediaobject.h>
 
 
 #include "Image.h"
