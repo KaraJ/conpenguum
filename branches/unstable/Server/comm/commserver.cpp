@@ -136,6 +136,8 @@ void CommServer::sendUpdateToAll(const UpdateObject& update)
         to.sin_port = htons(UDP_PORT_CLI);
         udpConnection_->sendMessage((sockaddr*) &to, buffer, UpdateObject::serializeSize);
     }
+    //Im in ur code fixin ur memory leaks
+    delete[] buffer;
 }
 
 /*----------------------------------------------------------------------------------------------------------
