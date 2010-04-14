@@ -1,7 +1,8 @@
 # DO NOT USE QMAKE TO AUTOGEN THESE, IT DOESN'T WORK
 QT += core \
     xml
-HEADERS += Player.h \
+HEADERS += ShipType.h \
+    Player.h \
     Logger.h \
     ConfigParser.h \
     comm/crc.h \

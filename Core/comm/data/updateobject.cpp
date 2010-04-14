@@ -73,6 +73,7 @@ UpdateObject::UpdateObject(BYTE* buffer) : actions_(0)
     rotation_ = buffer[7];
     health_ = buffer[8];
     shield_ = buffer[9];
+    type_ = buffer[10];
 }
 
 /*----------------------------------------------------------------------------------------------------------
@@ -105,7 +106,9 @@ UpdateObject::UpdateObject(BYTE* buffer) : actions_(0)
 --         64  65  66  67  68  69  70  71
 --	8	   H   H   H   H   H   H   H   H
 --         72  73  74  75  76  77  78  79
---         S   S   S   S   S   S   S   S
+--  9      S   S   S   S   S   S   S   S
+--         80  81  82  83  84  85  86  87
+--  10     T   T   T   T   T   T   T   T
 ----------------------------------------------------------------------------------------------------------*/
 void UpdateObject::serialise(BYTE** buffer) const
 {
@@ -125,6 +128,7 @@ void UpdateObject::serialise(BYTE** buffer) const
      (*buffer)[7] = (BYTE)(rotation_ & 0x000000FF);
      (*buffer)[8] = (BYTE)(health_ & 0x000000FF);
      (*buffer)[9] = (BYTE)(shield_ & 0x000000FF);
+     (*buffer)[10] = (BYTE)(type_ & 0x000000FF);
      //Im in ur code fixin ur memory leaks
      delete[] pActionBytes;
 }

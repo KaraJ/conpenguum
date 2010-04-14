@@ -419,9 +419,10 @@ void BaseWindow::createObject(UpdateObject &updateObj, int objId)
 
 	if (objId < MAX_CLIENTS)
 	{
-		rd = (TexturedResourceDefinition*) rm->GetResource(SHIP, 0);
-		images = animationMap[SHIP].getAnimationImages();
-		animObj.currentAnime = animationMap[SHIP];
+		int type = updateObj.getShipType();
+		rd = (TexturedResourceDefinition*) rm->GetResource(SHIP, type);
+		images = animationMap[SHIP + type].getAnimationImages();
+		animObj.currentAnime = animationMap[SHIP + type];
 		animObj.animeIndex = bankIndex[objId];
 		animObj.owner = getName(objId);
 

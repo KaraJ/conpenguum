@@ -91,11 +91,14 @@ void ServerEngine::timeout()
 			else
 			{
 				ostringstream oss;
-				gameState->addShip(sm.GetClientID());
+				string data = sm.GetData();
+				string name = data.substr(0, data.find(','));
+				string ship = data.substr(data.find(',') + 1);
+				gameState->addShip(sm.GetClientID(), ship);
 				gameState->spawnShip(sm.GetClientID());
-				playerList.push_back(Player(sm.GetClientID(), sm.GetData()));
-				ScoreBoard::Instance()->addPlayer(sm.GetClientID(), sm.GetData());
-				oss << "* " << sm.GetData() << " has joined the game *";
+				playerList.push_back(Player(sm.GetClientID(), name));
+				ScoreBoard::Instance()->addPlayer(sm.GetClientID(), name);
+				oss << "* " << name << " has joined the game *";
 				cout <<  getPlayerName(sm.GetClientID()) << " " << sm.GetClientID() << " logged in" << endl;
 
 				sm.SetData("");

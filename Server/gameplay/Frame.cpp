@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <QVector2D>
 #include <cmath>
+#include "../../Core/ShipType.h"
 
 using namespace std;
 
@@ -80,10 +81,10 @@ list<Event> Frame::tick(void)
 --  RETURNS:    void
 --
 ------------------------------------------------------------------------------*/
-void Frame::addShip(size_t clientID)
+void Frame::addShip(size_t clientID, string ship)
 {
     // adds a ship to the ship list
-	listShip[clientID] = new Ship(clientID);
+	listShip[clientID] = new Ship(clientID, ship);
 }
 
 /*-----------------------------------------------------------------------------
@@ -560,6 +561,7 @@ vector<UpdateObject> Frame::ListShip2listUpdateObject()
             uo.setPosition(listShip[i]->position.toPoint());
 			uo.setHealth(listShip[i]->health);
 			uo.setShield(listShip[i]->shield);
+			uo.setShipType(ShipType::getShipId(listShip[i]->shipType));
 			udList.push_back(uo);
 			//uo.print();
 		}

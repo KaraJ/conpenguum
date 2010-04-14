@@ -71,7 +71,7 @@ public:
 public:
     Frame(QString filename);
     std::list<Event> tick();
-    void addShip(size_t clientID);
+    void addShip(size_t clientID, std::string ship);
     void updateClientActions(std::vector <ClientAction>);
     void spawnShip(size_t shipID);
     void removeShip(size_t clientID);

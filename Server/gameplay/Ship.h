@@ -33,9 +33,10 @@ public:
     int deathCooldown;
     int health;
     int shield;
+    std::string shipType;
 
 public:
-    Ship(size_t clientID);
+    Ship(size_t clientID, std::string ship);
     int getRot() { return rotation; }
     void applyActionMask(ClientAction newMask) { actionMask = newMask; }
     int getNextShotID();

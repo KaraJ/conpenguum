@@ -63,7 +63,7 @@ CommClient* CommClient::Instance()
  --         If that name is in use: -2
  --         If other network error: -3
  ----------------------------------------------------------------------------------------------------------*/
-int CommClient::connect(const string name, const string address, const string port)
+int CommClient::connect(const string name, const string address, const string port, const string ship)
 {
 	ServerMessage sm;
 
@@ -74,8 +74,8 @@ int CommClient::connect(const string name, const string address, const string po
         if (!tcpClient_->Connect(address, port))
         	return -1;
         isConnected_ = true;
-
-        sm = tcpClient_->Login(name);
+        string msg = name + "," + ship;
+        sm = tcpClient_->Login(msg);
 
         if (sm.GetData() == "FULL")
         	return -2;
@@ -86,7 +86,6 @@ int CommClient::connect(const string name, const string address, const string po
         tcpClient_->StartRdThread(&serverMsgs_, &semTCP_);
 
         servAddr.sin_family = AF_INET;
-        //int port = (rand() % 10000) + 30000;
         servAddr.sin_port = htons(UDP_PORT_SERV);
         if (inet_pton(AF_INET, address.c_str(), &servAddr.sin_addr) != 1)
             Logger::LogNQuit("Error connection client - bad IP");

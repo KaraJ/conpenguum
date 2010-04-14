@@ -1,6 +1,6 @@
 #include "Animation.h"
 #include "qtxmlparse.h"
-
+#include "../../Core/ShipType.h"
 using namespace std;
 
 /*------------------------------------------------------------------------
@@ -24,7 +24,14 @@ map<int, Animation> Animation::getAnimationMap()
     map<int, Animation> animations;
 
     animations.insert(std::pair<int, Animation>((int)EXPLOSION, makeAnimation("Animation/explosion.xml")));
-	animations.insert(std::pair<int, Animation>((int)SHIP, makeAnimation("Animation/wbship.xml")));
+    animations.insert(std::pair<int, Animation>((int)SHIP + (int)ShipType::JVSHIP, makeAnimation("Animation/jvship.xml")));
+    animations.insert(std::pair<int, Animation>((int)SHIP + (int)ShipType::LVSHIP, makeAnimation("Animation/lvship.xml")));
+    animations.insert(std::pair<int, Animation>((int)SHIP + (int)ShipType::NWSHIP, makeAnimation("Animation/nwship.xml")));
+    animations.insert(std::pair<int, Animation>((int)SHIP + (int)ShipType::SHSHIP, makeAnimation("Animation/shship.xml")));
+    animations.insert(std::pair<int, Animation>((int)SHIP + (int)ShipType::SPSHIP, makeAnimation("Animation/spship.xml")));
+	animations.insert(std::pair<int, Animation>((int)SHIP + (int)ShipType::TESHIP, makeAnimation("Animation/teship.xml")));
+	animations.insert(std::pair<int, Animation>((int)SHIP + (int)ShipType::WARBIRD, makeAnimation("Animation/wbship.xml")));
+	animations.insert(std::pair<int, Animation>((int)SHIP + (int)ShipType::WESHIP, makeAnimation("Animation/weship.xml")));
 	animations.insert(std::pair<int, Animation>((int)SHOT, makeAnimation("Animation/shot.xml")));
 	animations.insert(std::pair<int, Animation>((int)EXHAUST, makeAnimation("Animation/exhaust.xml")));
 	animations.insert(std::pair<int, Animation>((int)AIDBOX, makeAnimation("Animation/powerups.xml")));
