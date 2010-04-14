@@ -3,15 +3,33 @@
 using std::queue;
 using std::string;
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: TCPClient::SendMessage
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: void
+ --
+ -- NOTES: Call this function to send a chat message to other players.
+ ----------------------------------------------------------------------------------------------------------*/
 void TCPClient::SendMessage(string message)
 {
 	ServerMessage msgBuff;
-	msgBuff.SetClientID(clientId_); //TODO: Why is this hard coded?
+	msgBuff.SetClientID(clientId_);
 	msgBuff.SetData(message);
 	msgBuff.SetMsgType(ServerMessage::MT_CHAT);
 	TCPConnection::WriteMessage(tcpSocket_, msgBuff);
 }
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: TCPClient::ReadThread
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: void
+ --
+ -- NOTES: Main read thread function, read messages sent over TCP and push into queue.
+ ----------------------------------------------------------------------------------------------------------*/
 void* TCPClient::ReadThread(void* param)
 {
 	TCPClient* tcpClient = (TCPClient*)param;
@@ -20,7 +38,7 @@ void* TCPClient::ReadThread(void* param)
 	{
 		if(!TCPConnection::ReadMessage(tcpClient->tcpSocket_, incomingMsg))
 		{
-			tcpClient->Disconnect();
+			tcpClient->Logout();
 			ServerMessage shutdown;
 			shutdown.SetMsgType(ServerMessage::MT_SHUTDOWN);
 			sem_wait(tcpClient->semSM_);
@@ -34,20 +52,37 @@ void* TCPClient::ReadThread(void* param)
 	}
 	return 0;
 }
-void TCPClient::Disconnect()
+
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: TCPClient::StartRdThread
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: void
+ --
+ -- NOTES: Read thread creation wrapper, passes the Tcpclient as a parameter to the read thread.
+ ----------------------------------------------------------------------------------------------------------*/
+void TCPClient::StartRdThread(queue<ServerMessage> *msgBuff, sem_t *semSM)
 {
-	close(tcpSocket_);
-}
-void TCPClient::StartRdThread(std::queue<ServerMessage> *msgBuff, sem_t *semSM)
-{
-	msgBuff_ = msgBuff;
-	semSM_ = semSM;
 	pthread_attr_t attr;
 	pthread_attr_init(&attr);
+
+	msgBuff_ = msgBuff;
+	semSM_ = semSM;
+
 	if (pthread_create(&rThread_, &attr, TCPClient::ReadThread, this))
 		Logger::LogNQuit("TCPClient: Unable to start read thread.");
 }
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: TCPClient::Connect
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: true on success, false otherwise
+ --
+ -- NOTES: Call this function to attempt to connect via TCP to the specified IP on the specified port.
+ ----------------------------------------------------------------------------------------------------------*/
 bool TCPClient::Connect(const string& ip, const string& port)
 {
 	struct addrinfo  hints;
@@ -87,6 +122,15 @@ bool TCPClient::Connect(const string& ip, const string& port)
 	return result;
 }
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: TCPClient::Login
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: ServerMessage: The Init message containing your new clientId.
+ --
+ -- NOTES: Remember to check the returned clientId, if it is > MAX_CLIENTS, an error has occurred.
+ ----------------------------------------------------------------------------------------------------------*/
 ServerMessage TCPClient::Login(string playerName)
 {
 	ServerMessage msgBuff;
@@ -107,9 +151,17 @@ ServerMessage TCPClient::Login(string playerName)
 	return msgBuff;
 }
 
+/*----------------------------------------------------------------------------------------------------------
+ -- FUNCTION: TCPClient::Logout
+ --
+ -- DATE: 2010-01-23
+ --
+ -- RETURN: void
+ --
+ -- NOTES: Call this function to close an established TCP connection.
+ ----------------------------------------------------------------------------------------------------------*/
 void TCPClient::Logout()
 {
 	connected_ = false;
-	shutdown(tcpSocket_, SHUT_RDWR);
 	close(tcpSocket_);
 }

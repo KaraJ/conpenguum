@@ -12,7 +12,8 @@ using std::string;
 --
 -- RETURN: The length of the  serialized data.
 --
--- NOTES:
+-- NOTES: Call this function to fill the specified buffer with the data from this server message for
+--			transmission.
 ----------------------------------------------------------------------------------------------------------*/
 size_t ServerMessage::Serialize(char *data)
 {
@@ -42,7 +43,7 @@ size_t ServerMessage::Serialize(char *data)
 --
 -- RETURN:	void
 --
--- NOTES:
+-- NOTES: Set the data of this server message to the specified string.
 ----------------------------------------------------------------------------------------------------------*/
 void ServerMessage::SetData(string data)
 {
