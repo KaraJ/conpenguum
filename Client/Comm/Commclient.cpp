@@ -86,6 +86,7 @@ int CommClient::connect(const string name, const string address, const string po
         tcpClient_->StartRdThread(&serverMsgs_, &semTCP_);
 
         servAddr.sin_family = AF_INET;
+        //int port = (rand() % 10000) + 30000;
         servAddr.sin_port = htons(UDP_PORT_SERV);
         if (inet_pton(AF_INET, address.c_str(), &servAddr.sin_addr) != 1)
             Logger::LogNQuit("Error connection client - bad IP");
@@ -221,6 +222,7 @@ void CommClient::sendAction(ClientAction action)
 	{
 		action.serialise(&buffer);
 		udpConnection_->sendMessage((sockaddr*)&this->servAddr, buffer, ClientAction::serialiseSize);
+		free(buffer);
 	}
 	else
 	{
