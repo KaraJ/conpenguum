@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="125" height="125" tilewidth="25" tileheight="25">
+<map version="1.0" orientation="orthogonal" width="125" height="125" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16">
   <image source="textures/tiles.bmp"/>
  </tileset>
@@ -15633,22 +15633,22 @@
   </data>
  </layer>
  <objectgroup name="spawns" width="125" height="125">
-  <object name="Left" type="spawn" x="300" y="1312" width="500" height="500">
+  <object name="Left" type="spawn" x="192" y="840" width="320" height="320">
    <properties>
     <property name="team" value="1"/>
    </properties>
   </object>
-  <object name="Top" type="spawn" x="1312" y="300" width="500" height="500">
+  <object name="Top" type="spawn" x="840" y="192" width="320" height="320">
    <properties>
     <property name="team" value="0"/>
    </properties>
   </object>
-  <object name="Right" type="spawn" x="2325" y="1312" width="500" height="500">
+  <object name="Right" type="spawn" x="1488" y="840" width="320" height="320">
    <properties>
     <property name="team" value="2"/>
    </properties>
   </object>
-  <object name="Bottom" type="spawn" x="1312" y="2325" width="500" height="500">
+  <object name="Bottom" type="spawn" x="840" y="1488" width="320" height="320">
    <properties>
     <property name="team" value="0"/>
    </properties>

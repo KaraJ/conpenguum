@@ -5,60 +5,44 @@
 #include <QTextStream>
 #include <sstream>
 
-#include "tiletypes.h"
+#define MAX_BOUNCE_GID  189
+#define EDITOR_TILESIZE 16.0
+#define FINAL_TILESIZE  25.0
 
 int main(int argc, char *argv[])
 {
     int width;
     int height;
     QCoreApplication a(argc, argv);
-    if (argc < 3 || argc > 4) {
-        std::cerr << "Usage: MapTranslator <types.xml> <map.tmx> [<map.xml>]" << std::endl;
+    if (argc < 2 || argc > 3) {
+        std::cerr << "Usage: MapTranslator <map.tmx> [<map.xml>]" << std::endl;
     }
 
-    QDomDocument typesDoc;
-    QFile typesFile(argv[1]);
-    if (!typesFile.open(QIODevice::ReadOnly)) {
+    QDomDocument tmxDoc;
+    QFile tmxFile(argv[1]);
+    if (!tmxFile.open(QIODevice::ReadOnly)) {
         std::cerr << "Cannot open " << argv[1] << std::endl;
         return 1;
     }
-    if (!typesDoc.setContent(&typesFile)) {
-        std::cerr << "Unusable file " << argv[1] << std::endl;
-        return 1;
-    }
-    typesFile.close();
-
-    QDomDocument tmxDoc;
-    QFile tmxFile(argv[2]);
-    if (!tmxFile.open(QIODevice::ReadOnly)) {
-        std::cerr << "Cannot open " << argv[2] << std::endl;
-        return 1;
-    }
     if (!tmxDoc.setContent(&tmxFile)) {
-        std::cerr << "Unusable file " << argv[2] << std:: endl;
+        std::cerr << "Unusable file " << argv[1] << std:: endl;
     }
     QDomElement map_e = tmxDoc.documentElement();
 
     // generate xml
     width = map_e.attribute("width").toInt();
     height = map_e.attribute("height").toInt();
-    TileTypes tileTypes(&typesDoc, &tmxDoc);
 
     QDomDocument doc("Map");
     QDomElement map = doc.createElement("map");
     map.setAttribute("width", width);
     map.setAttribute("height", height);
     QDomElement tile_e = map_e.elementsByTagName("layer").at(0).toElement().elementsByTagName("data").item(0).toElement().firstChild().toElement();
-    TileType *type;
     std::stringstream sString;
     for (int y=height-1; y >= 0; --y) {
         for (int x=0; x < width; ++x) {
             int gid = tile_e.attribute("gid").toInt();
             if (gid > 0) {
-                type = tileTypes.byGid(gid);
-                if (type == NULL) {
-                    std::cerr << "type(" << gid << ") == NULL!!! @ " << x << "x" << y << std::endl;
-                }
                 QDomElement tile = doc.createElement("tile");
                 // tile
                 tile.setAttribute("x", x);
@@ -95,6 +79,7 @@ int main(int argc, char *argv[])
         spawn_y = (int)(spawn_ratio * spawn_e.attribute("y").toInt());
         spawn_w = (int)(spawn_ratio * spawn_e.attribute("width").toInt());
         spawn_h = (int)(spawn_ratio * spawn_e.attribute("height").toInt());
+        std::cerr << "(" << FINAL_TILESIZE << "*" << height << ") - (" << spawn_y  << "+" <<  spawn_h << ")" << std::endl;
         std::cerr << spawn_x << "," << spawn_y << " -> " << spawn_w << "x" << spawn_h << "(" << (FINAL_TILESIZE*height) - (spawn_y + spawn_h) << ")" << std::endl;
 
         spawn.setAttribute("x", spawn_x);
@@ -113,10 +98,10 @@ int main(int argc, char *argv[])
         map.appendChild(spawn);
     }
     doc.appendChild(map);
-    if (argc > 3) {
-        QFile xmlFile(argv[3]);
+    if (argc > 2) {
+        QFile xmlFile(argv[2]);
         if (!xmlFile.open(QIODevice::WriteOnly)) {
-            std::cerr << "Unable to open " << argv[3] << " for writing" << std::endl;
+            std::cerr << "Unable to open " << argv[2] << " for writing" << std::endl;
         } else {
             QTextStream xmlStream(&xmlFile);
             xmlStream << doc.toString();
