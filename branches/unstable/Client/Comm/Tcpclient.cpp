@@ -97,6 +97,7 @@ ServerMessage TCPClient::Login(string playerName)
 
 	TCPConnection::WriteMessage(tcpSocket_, msgBuff); //Send login message to server
 
+	TCPConnection::ReadMessage(tcpSocket_, msgBuff);
 	if (msgBuff.GetMsgType() != ServerMessage::MT_INIT)
 	{
 		Logger::LogNContinue("Expecting INIT message but received:");
