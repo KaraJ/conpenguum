@@ -55,6 +55,9 @@ using namespace std;
 --------------------------------------------------------------------------------------*/
 Panel::Panel() : selectedX(0), selectedY(0), width(1), height(3), flipped(false), flipLeft(true)
 {
+    Phonon::MediaObject *startupMusic =
+        Phonon::createPlayer(Phonon::MusicCategory,Phonon::MediaSource("Resources/sounds/startup.wav"));
+    startupMusic->play();
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setCacheMode(CacheBackground);
