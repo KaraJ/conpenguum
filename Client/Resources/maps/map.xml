@@ -3956,8 +3956,8 @@
   <physics hit="bounce"/>
   <graphics tileNumber="125"/>
  </tile>
- <spawn width="781" x="468" y="294" height="781" team="1"/>
- <spawn width="781" x="2050" y="1876" height="781" team="0"/>
- <spawn width="781" x="3632" y="294" height="781" team="2"/>
- <spawn width="781" x="2050" y="-1288" height="781" team="0"/>
+ <spawn width="500" x="300" y="1313" height="500" team="1"/>
+ <spawn width="500" x="1312" y="2325" height="500" team="0"/>
+ <spawn width="500" x="2325" y="1313" height="500" team="2"/>
+ <spawn width="500" x="1312" y="300" height="500" team="0"/>
 </map>
