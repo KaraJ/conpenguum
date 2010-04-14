@@ -16,5 +16,26 @@
         <file>textures/wbship.bmp</file>
         <file>textures/weship.bmp</file>
         <file>textures/bullets.bmp</file>
+        <file>textures/bg01.bmp</file>
+        <file>textures/bg02.bmp</file>
+        <file>textures/bg03.bmp</file>
+        <file>textures/bg04.bmp</file>
+        <file>textures/bg05.bmp</file>
+        <file>textures/bg06.bmp</file>
+        <file>textures/bg07.bmp</file>
+        <file>textures/bg08.bmp</file>
+        <file>textures/bg09.bmp</file>
+        <file>textures/bg10.bmp</file>
+        <file>textures/bg11.bmp</file>
+        <file>textures/bg12.bmp</file>
+        <file>textures/bg13.bmp</file>
+        <file>textures/bg14.bmp</file>
+        <file>textures/star01.bmp</file>
+        <file>textures/star02.bmp</file>
+        <file>textures/star03.bmp</file>
+        <file>textures/star04.bmp</file>
+        <file>textures/star05.bmp</file>
+        <file>textures/star06.bmp</file>
+        <file>textures/star07.bmp</file>
     </qresource>
 </RCC>
