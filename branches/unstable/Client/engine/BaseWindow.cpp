@@ -560,7 +560,7 @@ void BaseWindow::clearTransientObjects()
 
 bool cmp(Player p1, Player p2)
 {
-	return (p1.getKills() < p2.getKills()) || (p1.getName() < p2.getName());
+	return (p1.getKills() < p2.getKills()) || (p1.getKills() == p2.getKills() && p1.getName() < p2.getName());
 }
 void BaseWindow::timerEvent()
 {
