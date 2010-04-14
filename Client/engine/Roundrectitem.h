@@ -42,6 +42,7 @@ public:
     void setOpacity(qreal opacity);
     void checkCheatEntry();
     QString selectedShip;
+    void stopTimeLine();
 
 Q_SIGNALS:
     void activated();

@@ -1,8 +1,10 @@
 #include "ipbox.h"
-
+#include "../../Core/ShipType.h"
+#include <sstream>
 using std::string;
+using std::ostringstream;
 
-IpBox::IpBox(QWidget *parent, string alias, string addr, string prt)
+IpBox::IpBox(QWidget *parent, string alias, string addr, string prt, string ship)
 : QDialog(parent), ui(new Ui_IpBox), ip(QString(addr.c_str())), port(QString(prt.c_str())), name(QString(alias.c_str()))
 {
     ui->setupUi(this);
@@ -11,6 +13,10 @@ IpBox::IpBox(QWidget *parent, string alias, string addr, string prt)
     ui->ipentry->setText(ip);
     ui->portentry->setText(port);
     ui->ipentry->setFocus();
+    ostringstream oss;
+    oss << ":/images/" << (ShipType::getShipId(ship) + 1) << ship << ".png";
+    QPixmap map = QPixmap(QString::fromStdString(oss.str()));
+    ui->iconBtn->setIcon(map);
 }
 
 bool isValidIp(string str)

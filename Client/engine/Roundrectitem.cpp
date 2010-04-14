@@ -134,7 +134,13 @@ void RoundRectItem::keyPressEvent(QKeyEvent *event)
     emit activated();
     checkCheatEntry();
 }
-
+void RoundRectItem::stopTimeLine()
+{
+	timeLine.stop();
+	timeLine.setDirection(QTimeLine::Forward);
+	timeLine.start();
+	emit activated();
+}
 void RoundRectItem::keyReleaseEvent(QKeyEvent *event)
 {
     if(event->key() != Qt::Key_Return)
