@@ -4,6 +4,7 @@
 #include "resourceEnums.h"
 #include <map>
 #include <QObject>
+#include <QtXml>
 
 class ResourceManager : public QObject
 {
@@ -12,6 +13,7 @@ private:
     std::map<int, ResourceDefinition*> resourceMap;
     static ResourceManager* resourceManager;
     ResourceManager();
+    QDomDocument *xmldoc;
 public:
     static ResourceManager *GetInstance();
     ~ResourceManager();

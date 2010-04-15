@@ -8,7 +8,7 @@ ResourceManager* ResourceManager::resourceManager = NULL;
 
 ResourceManager::ResourceManager()
 {
-
+        xmldoc = NULL;
 	Q_INIT_RESOURCE(sharedResources);
 }
 
@@ -303,19 +303,23 @@ ResourceDefinition* ResourceManager::GetResource(int ResourceType,
 	}
 	case TILE:
 	{
-		QDomDocument doc("tiles");
-		QFile file(":/objects/tiles.xml");
-		if (!file.open(QIODevice::ReadOnly))
+                if(!xmldoc)
+                {
+                    xmldoc = new QDomDocument("tiles");
+                    QFile file(":/objects/tiles.xml");
+                    if (!file.open(QIODevice::ReadOnly))
 			return NULL;
-		if (!doc.setContent(&file))
-		{
-			file.close();
-			return NULL;
-		}
-		file.close();
+
+                    if (!xmldoc->setContent(&file))
+                    {
+                            file.close();
+                            return NULL;
+                    }
+                    file.close();
+                }
 		TexturedResourceDefinition *rd = new TexturedResourceDefinition();
 		//grab the first child of the root element
-		QDomNode n = doc.documentElement().firstChild();
+                QDomNode n = xmldoc->documentElement().firstChild();
 		while (!n.isNull())
 		{
 			QDomElement shot = n.toElement();
