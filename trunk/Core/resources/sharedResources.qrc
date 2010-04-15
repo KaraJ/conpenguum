@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/objects">
+        <file>ships.xml</file>
+        <file>shots.xml</file>
+        <file>exhaust.xml</file>
+        <file>powerups.xml</file>
+        <file>tiles.xml</file>
+        <file>explosions.xml</file>
+    </qresource>
+</RCC>

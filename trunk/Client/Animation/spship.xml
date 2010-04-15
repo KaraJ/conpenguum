@@ -1,0 +1,110 @@
+<!-- oriented from bottom left (0%, 0%) to top right (100%, 100%) -->
+<!-- direction id's are indexes from 1 - 11, 6 being flat -->
+
+<image>
+	<link>spship.bmp</link>
+	<desc>Spider Ship</desc>
+	<sound></sound>
+	<numberOfFrames>11</numberOfFrames>
+  <numberImagesWide>11</numberImagesWide>
+  <numberImagesTall>1</numberImagesTall>
+	<frame>
+		<desc>Bank Left 5</desc>
+		<direction id="1"> <!-- full left tilt -->
+			<left>0</left>
+			<bottom>0</bottom>
+      <right>0.090909091</right>
+      <top>1</top>
+		</direction>
+	</frame>
+	<frame>
+    <desc>Bank Left 4</desc>
+    <direction id="2">
+      <left>0.090909091</left>
+      <bottom>0</bottom>
+      <right>0.181818182</right>
+      <top>1</top>
+    </direction>
+  </frame>
+  <frame>
+    <desc>Bank Left 3</desc>
+    <direction id="3">
+      <left>0.181818182</left>
+      <bottom>0</bottom>
+      <right>0.272727273</right>
+      <top>1</top>
+    </direction>
+  </frame>
+  <frame>
+    <desc>Bank Left 2</desc>
+    <direction id="4">
+      <left>0.272727273</left>
+      <bottom>0</bottom>
+      <right>0.363636364</right>
+      <top>1</top>
+    </direction>
+  </frame>
+  <frame>
+    <desc>Bank Left 1</desc>
+    <direction id="5">
+      <left>0.363636364</left>
+      <bottom>0</bottom>
+      <right>0.454545455</right>
+      <top>1</top>
+    </direction>
+  </frame>
+  <frame>
+    <desc>Center</desc>
+    <direction id="6"> <!-- flat -->
+      <left>0.454545455</left>
+      <bottom>0</bottom>
+      <right>0.545454545</right>
+      <top>1</top>
+    </direction>
+  </frame>
+  <frame>
+    <desc>Bank Right 1</desc>
+    <direction id="7">
+      <left>0.545454545</left>
+      <bottom>0</bottom>
+      <right>0.636363636</right>
+      <top>1</top>
+    </direction>
+  </frame>
+  <frame>
+    <desc>Bank Right 2</desc>
+    <direction id="8">
+      <left>0.636363636</left>
+      <bottom>0</bottom>
+      <right>0.727272727</right>
+      <top>1</top>
+    </direction>
+  </frame>
+  <frame>
+    <desc>Bank Right 3</desc>
+    <direction id="9">
+      <left>0.727272727</left>
+      <bottom>0</bottom>
+      <right>0.818181818</right>
+      <top>1</top>
+    </direction>
+  </frame>
+  <frame>
+    <desc>Bank Right 4</desc>
+    <direction id="10">
+      <left>0.818181818</left>
+      <bottom>0</bottom>
+      <right>0.909090909</right>
+      <top>1</top>
+    </direction>
+  </frame>
+  <frame>
+    <desc>Bank Right 5</desc>
+    <direction id="11"> <!-- full right tilt -->
+      <left>0.909090909</left>
+      <bottom>0</bottom>
+      <right>1</right>
+      <top>1</top>
+    </direction>
+  </frame>
+</image>

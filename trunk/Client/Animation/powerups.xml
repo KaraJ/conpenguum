@@ -1,0 +1,17 @@
+<image>
+    <link>firstaid.bmp</link>
+    <desc>firstaid</desc>
+    <sound></sound>
+    <numberOfFrames>1</numberOfFrames>
+    <numberImagesWide>1</numberImagesWide>
+    <numberImagesTall>1</numberImagesTall>
+    <frame>
+        <desc>basic</desc>
+        <direction id="-1">  
+            <left>0</left>
+            <bottom>0</bottom>
+            <right>1</right>
+            <top>1</top>
+        </direction>
+    </frame>
+</image>
