@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/">
+        <file>tilesets/bg01.bmp</file>
+        <file>tilesets/bg02.bmp</file>
+        <file>tilesets/bg03.bmp</file>
+        <file>tilesets/bg04.bmp</file>
+        <file>tilesets/bg05.bmp</file>
+        <file>tilesets/bg06.bmp</file>
+        <file>tilesets/bg07.bmp</file>
+        <file>tilesets/bg08.bmp</file>
+        <file>tilesets/bg09.bmp</file>
+        <file>tilesets/bg10.bmp</file>
+        <file>tilesets/bg11.bmp</file>
+        <file>tilesets/bg12.bmp</file>
+        <file>tilesets/bg13.bmp</file>
+        <file>tilesets/bg14.bmp</file>
+        <file>tilesets/star01.bmp</file>
+        <file>tilesets/star02.bmp</file>
+        <file>tilesets/star03.bmp</file>
+        <file>tilesets/star04.bmp</file>
+        <file>tilesets/star05.bmp</file>
+        <file>tilesets/star06.bmp</file>
+        <file>tilesets/star07.bmp</file>
+        <file>tilesets/tiles.bmp</file>
+    </qresource>
+</RCC>
