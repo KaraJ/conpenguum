@@ -464,14 +464,14 @@ void BaseWindow::createObject(UpdateObject &updateObj, int objId)
 	animObj.objWidth = rd->object_width;
 
 
-	if(animObj.currentAnime.hasSound())
-	{
-		if(animObj.currentAnime.getSound()->state() == Phonon::StoppedState || animObj.currentAnime.getSound()->remainingTime() == 0)
-		{
-			animObj.currentAnime.getSound()->stop();
-			animObj.currentAnime.getSound()->play();
-		}
-	}
+//	if(animObj.currentAnime.hasSound())
+//	{
+//		if(animObj.currentAnime.getSound()->state() == Phonon::StoppedState || animObj.currentAnime.getSound()->remainingTime() == 0)
+//		{
+//			animObj.currentAnime.getSound()->stop();
+//			animObj.currentAnime.getSound()->play();
+//		}
+//	}
 
 	gameState[animObj.objectId] = animObj;
 }
