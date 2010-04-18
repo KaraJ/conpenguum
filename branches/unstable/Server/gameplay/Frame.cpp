@@ -110,7 +110,7 @@ void Frame::addShip(size_t clientID, string ship)
 void Frame::addShot(Shot newShot){
     // adds a shot to the shot list
     listShot.push_back(newShot);
-    cout << newShot.id << "fired" << endl;
+    //cout << newShot.id << "fired" << endl;
 }
 
 /*-----------------------------------------------------------------------------
