@@ -95,7 +95,7 @@ class BaseWindow : public QMainWindow
 		QString localChat;
 		std::deque<QString> chatQueue;
 		std::vector<QString> vChatString;
-		CommClient::CommClient* theClient;
+		CommClient* theClient;
 		QPoint scrnCenter;
 		Renderer* ren;
 		ClientAction* clientAction;
