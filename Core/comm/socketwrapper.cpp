@@ -1,4 +1,5 @@
 #include "socketwrapper.h"
+#include "unistd.h"
 
 int SocketWrapper::Socket(int family, int type, int protocol)
 {
