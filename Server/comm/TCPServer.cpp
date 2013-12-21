@@ -1,4 +1,5 @@
 #include "TCPServer.h"
+#include "unistd.h"
 
 
 using std::string;

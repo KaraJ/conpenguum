@@ -1,5 +1,7 @@
 #include "Renderer.h"
 #include <QtGlobal>
+#include <GL/glu.h>
+#include <GL/glut.h>
 #include <QPainter>
 #include <QtGui>
 #include <QGLWidget>

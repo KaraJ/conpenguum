@@ -1,4 +1,5 @@
 #include "Tcpclient.h"
+#include "unistd.h"
 
 using std::queue;
 using std::string;

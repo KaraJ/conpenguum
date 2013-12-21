@@ -51,7 +51,7 @@ private:
 	void sendScores();
 
 	QTimer *timer;
-	CommServer::CommServer* commServer;
+	CommServer* commServer;
 	Frame *gameState;
 	static ServerEngine *instance;
 	std::vector<Player> playerList;

@@ -46,7 +46,10 @@ FORMS += backside.ui \
     ipbox.ui
 contains(QT_CONFIG, opengl):QT += opengl
 LIBS += -lCore \
-    -L../Core/Debug
+    -L../Core/Debug \
+    -lGL \
+    -lGLU \
+    -lglut
 CONFIG += qt \
     debug \
     warn_on \
